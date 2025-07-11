@@ -2,7 +2,7 @@ bookdown::bs4_book:
   css: style.css
   theme:
     primary: "#545863"
-  repo: https://github.com/OscarGOGO/Libro_Prueba
+  repo: https://github.com/OscarGOGO/Makurhini_manual_esp
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex
