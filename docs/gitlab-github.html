@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 2 GitLab GitHub | Notas backend BiodiversidadES</title>
+<meta name="author" content="Oscar Godínez Gómez">
+<meta name="description" content="2.1 Generar nuevo proyecto (GitLab) o repositorio (GitHub) 1. GitLab, crear nuevo repositorio. Paso 1. Crear nuevo repositorio en GitLab  Paso 1. Crear nuevo repositorio en GitHub 2. Configurar...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Chapter 2 GitLab GitHub | Notas backend BiodiversidadES">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://oscargogo.github.io/Libro_Prueba/gitlab-github.html">
+<meta property="og:image" content="https://oscargogo.github.io/Libro_Prueba/BiodiversidadES3.png">
+<meta property="og:description" content="2.1 Generar nuevo proyecto (GitLab) o repositorio (GitHub) 1. GitLab, crear nuevo repositorio. Paso 1. Crear nuevo repositorio en GitLab  Paso 1. Crear nuevo repositorio en GitHub 2. Configurar...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 2 GitLab GitHub | Notas backend BiodiversidadES">
+<meta name="twitter:description" content="2.1 Generar nuevo proyecto (GitLab) o repositorio (GitHub) 1. GitLab, crear nuevo repositorio. Paso 1. Crear nuevo repositorio en GitLab  Paso 1. Crear nuevo repositorio en GitHub 2. Configurar...">
+<meta name="twitter:image" content="https://oscargogo.github.io/Libro_Prueba/BiodiversidadES3.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.15/datatables.js"></script><link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script><link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet">
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Notas backend BiodiversidadES</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Biodiversidades</a></li>
+<li><a class="" href="git.html"><span class="header-section-number">1</span> Git</a></li>
+<li><a class="active" href="gitlab-github.html"><span class="header-section-number">2</span> GitLab GitHub</a></li>
+<li><a class="" href="organizaci%C3%B3n-de-documentos-y-carpetas-en-el-repositorio.html"><span class="header-section-number">3</span> Organización de documentos y carpetas en el repositorio</a></li>
+<li><a class="" href="organizaci%C3%B3n-de-documentos-y-carpetas-en-el-dico-duro-gap.html"><span class="header-section-number">4</span> Organización de documentos y carpetas en el dico duro $(\gap)</a></li>
+<li><a class="" href="loops-en-r.-funciones-base-de-r.html"><span class="header-section-number">5</span> Loops en R. Funciones base de R</a></li>
+<li><a class="" href="loops-en-r.-paquete-purrr.html"><span class="header-section-number">6</span> Loops en R. Paquete purrr</a></li>
+<li><a class="" href="loops-en-r.-paralelizar.html"><span class="header-section-number">7</span> Loops en R. Paralelizar</a></li>
+<li><a class="" href="consultas-al-cat-usando-zacatuche-y-r.html"><span class="header-section-number">8</span> Consultas al CAT usando zacatuche y R</a></li>
+<li><a class="" href="consulta-de-snib-registros-usando-zacatuche-y-r.html"><span class="header-section-number">9</span> Consulta de SNIB registros usando zacatuche y R</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/OscarGOGO/Libro_Prueba">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="gitlab-github" class="section level1" number="2">
+<h1>
+<span class="header-section-number">2</span> GitLab GitHub<a class="anchor" aria-label="anchor" href="#gitlab-github"><i class="fas fa-link"></i></a>
+</h1>
+<div id="generar-nuevo-proyecto-gitlab-o-repositorio-github" class="section level2" number="2.1">
+<h2>
+<span class="header-section-number">2.1</span> Generar nuevo proyecto (GitLab) o repositorio (GitHub)<a class="anchor" aria-label="anchor" href="#generar-nuevo-proyecto-gitlab-o-repositorio-github"><i class="fas fa-link"></i></a>
+</h2>
+<p><strong>1. GitLab, crear nuevo repositorio.</strong></p>
+<p><img src="images/0b.PNG" width="591"><img src="images/0c.PNG" width="589">
+Paso 1. Crear nuevo repositorio en GitLab</p>
+<div class="inline-figure">
+<img src="images/0.PNG" width="600">
+Paso 1. Crear nuevo repositorio en GitHub</div>
+<p><strong>2. Configurar proyecto o repositorio</strong></p>
+<p>Se deben considerar al menos 4 cosas:</p>
+<ol style="list-style-type: decimal">
+<li><p>Nombre (obligatorio)</p></li>
+<li><p>Privacidad (obligatorio)</p></li>
+<li><p>Readme (opcional)</p></li>
+<li><p>Click crear :P</p></li>
+</ol>
+<p><img src="images/1b.PNG" width="604"><strong>Paso 2.</strong> GitLab</p>
+<div class="inline-figure">
+<img src="images/1.PNG" width="600">
+Paso 2. GitHub</div>
+</div>
+<div id="crear-proyecto-en-rstudio" class="section level2" number="2.2">
+<h2>
+<span class="header-section-number">2.2</span> Crear proyecto en RStudio<a class="anchor" aria-label="anchor" href="#crear-proyecto-en-rstudio"><i class="fas fa-link"></i></a>
+</h2>
+<p><strong>1. En GitLab o GitHub debes clonar el repositorio en tu maquina haciendo Click en <code>clone</code></strong></p>
+<div class="inline-figure"><img src="images/2.PNG" width="622"></div>
+<p><strong>2. Copiar el código de SSH o HTTPS.</strong></p>
+<div class="inline-figure"><img src="images/3b.PNG" width="400"></div>
+<p><strong>3. Abrir RStudio</strong></p>
+<p><strong>4. Crear nuevo proyecto</strong> <img src="images/4.PNG" width="614"></p>
+<p><strong>5. Seleccionar Version control</strong></p>
+<div class="inline-figure"><img src="images/5.PNG" width="548"></div>
+<p><strong>6. Seleccionar Git</strong> <img src="images/6.PNG" width="600"></p>
+<p><strong>7. Pegar en Repository URL el código SSH o HTTPS de GitLab, dar un nombre y seleccionar subdirectorio</strong> <img src="images/7.PNG" width="600"></p>
+<div class="float">
+<img src="images/8.PNG" width="600" alt="Ver pestaña de Git"><div class="figcaption"><strong>Ver pestaña de Git</strong></div>
+</div>
+</div>
+<div id="push" class="section level2" number="2.3">
+<h2>
+<span class="header-section-number">2.3</span> PUSH<a class="anchor" aria-label="anchor" href="#push"><i class="fas fa-link"></i></a>
+</h2>
+<p><strong>1. Crear un nuevo archivo de R y colocar cualquier cosa, por ejemplo, crear el script de R <code>test.R</code></strong></p>
+<div class="float">
+<img src="images/9.PNG" width="600" alt="Ver pestaña de Git"><div class="figcaption">Ver pestaña de Git</div>
+</div>
+<p><strong>El archivo <code>test.R</code> aparece en la pestaña <code>Git</code>. Ahora daremos <em>click en <code>Commit</code></em></strong></p>
+<p><img src="images/10.PNG" width="600" alt="Ver pestaña de Git"><img src="images/11.PNG" width="600" alt="Ver pestaña de Git"></p>
+<p><strong>Se despliega una nueva ventana. Seleccionar los archivos que se buscan subir o actualizar en el repositorio de GitLab y marcar (Stage). Escribir un mensaje (<code>Commit message</code>) y hacer click en <code>Push</code></strong><img src="images/12.PNG" width="600" alt="Ver pestaña de Git"></p>
+<div class="float">
+<img src="images/13.PNG" width="600" alt="Ver pestaña de Git"><div class="figcaption">Ver pestaña de Git</div>
+</div>
+<div class="float">
+<img src="images/14.PNG" width="600" alt="Ver pestaña de Git"><div class="figcaption">Ver pestaña de Git</div>
+</div>
+<div class="float">
+<img src="images/15.PNG" width="600" alt="Ver pestaña de Git"><div class="figcaption">Ver pestaña de Git</div>
+</div>
+<div class="float">
+<img src="images/16.PNG" width="600" alt="Ver pestaña de Git"><div class="figcaption">Ver pestaña de Git</div>
+</div>
+</div>
+<div id="pull" class="section level2" number="2.4">
+<h2>
+<span class="header-section-number">2.4</span> PULL<a class="anchor" aria-label="anchor" href="#pull"><i class="fas fa-link"></i></a>
+</h2>
+<p><strong>1. Abrimos el repositorio de GitLab</strong> <strong>2. Editamos el archivo <code>test.R</code></strong></p>
+<div class="float">
+<img src="images/17.PNG" width="600" alt="Seleccionar editor y dar click"><div class="figcaption">Seleccionar editor y dar click</div>
+</div>
+<div class="float">
+<img src="images/18.PNG" width="600" alt="Agregamos algún comando o texto"><div class="figcaption">Agregamos algún comando o texto</div>
+</div>
+<p><strong>3. Hacemos un comentario en <code>Commit messages</code> y damos click en <code>Commit changes</code></strong></p>
+<div class="inline-figure"><img src="images/20.PNG" width="600"></div>
+<p><strong>4. Regresamos a nuestro proyecto en RStudio y buscamos nuestra ventana con la pestaña Git que por lo general es la superior derecha.</strong></p>
+<p><strong>5. Damos click en Pull</strong></p>
+<div class="inline-figure"><img src="images/21.PNG" width="600"></div>
+<p><strong>6. Podemos ver los cambios haciendo click en <code>Diff</code> o en <code>Commit</code> seguido de Changes:</strong>
+<img src="images/22.PNG" width="600"></p>
+<div class="inline-figure"><img src="images/23.PNG" width="600"></div>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="git.html"><span class="header-section-number">1</span> Git</a></div>
+<div class="next"><a href="organizaci%C3%B3n-de-documentos-y-carpetas-en-el-repositorio.html"><span class="header-section-number">3</span> Organización de documentos y carpetas en el repositorio</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#gitlab-github"><span class="header-section-number">2</span> GitLab GitHub</a></li>
+<li><a class="nav-link" href="#generar-nuevo-proyecto-gitlab-o-repositorio-github"><span class="header-section-number">2.1</span> Generar nuevo proyecto (GitLab) o repositorio (GitHub)</a></li>
+<li><a class="nav-link" href="#crear-proyecto-en-rstudio"><span class="header-section-number">2.2</span> Crear proyecto en RStudio</a></li>
+<li><a class="nav-link" href="#push"><span class="header-section-number">2.3</span> PUSH</a></li>
+<li><a class="nav-link" href="#pull"><span class="header-section-number">2.4</span> PULL</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/OscarGOGO/Libro_Prueba/blob/master/02-GitLab.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/OscarGOGO/Libro_Prueba/edit/master/02-GitLab.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Notas backend BiodiversidadES</strong>" was written by Oscar Godínez Gómez. It was last built on 2023-07-13.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

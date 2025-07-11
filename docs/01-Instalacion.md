@@ -1,0 +1,115 @@
+# Instalación del paquete Makurhini
+
+## Instalación estandar
+
+-   Depende de R (\> 4.0.0), igraph (\>= 1.2.6)
+
+
+``` r
+install.packages("igraph")
+```
+
+-   Se recomienda pre-instalar Rtools:
+<https://cran.r-project.org/bin/windows/Rtools/>
+
+-   Se recomienda pre-instalar los paquetes devtools y remotes
+
+
+``` r
+install.packages(c(“devtools”, “remotes”))
+```
+
+
+``` r
+library(devtools) 
+library(remotes)
+install_github("connectscape/Makurhini", dependencies = TRUE, upgrade = "never")
+```
+
+En caso de que no aparezca en la lista de paquetes, cierre la sesión de
+R y vuelva a abrirla.
+
+**Si se produce el siguiente error durante la instalación:**
+
+
+``` r
+Using github PAT
+from envvar GITHUB_PAT Error: Failed to install 'unknown package' from
+GitHub: HTTP error 401. Bad credentials
+```
+
+**Entonces intenta lo siguiente:**
+
+
+``` r
+Sys.getenv("GITHUB_PAT") 
+Sys.unsetenv("GITHUB_PAT")
+```
+
+## Instalar en Linux
+
+Makurhini en Linux Para instalar Makurhini en linux considere los
+siguientes pasos:
+
+Utilice la línea de comandos de Linux para instalar el paquete de la
+unidad:
+
+
+``` r
+sudo apt-get install -y libudunits2-dev
+```
+
+Utilice la línea de comandos de Linux para instalar gdal:
+
+
+``` r
+sudo apt install libgdal-dev
+```
+
+Utilice la línea de comandos de Linux para instalar libfontconfig y
+libharfbuzz:
+
+
+``` r
+sudo apt install libfontconfig1-dev
+
+sudo apt install libharfbuzz-dev libfribidi-dev
+```
+
+Ahora puede instalar los paquetes devtools y remotes, y los paquetes
+terra, raster y sf directamente en su R o RStudio.
+
+
+``` r
+install.packages(c('remotes', 'devtools', 'terra', 'raster', 'sf'))
+```
+
+Utiliza la línea de comandos de Linux para instalar igraph:
+
+
+``` r
+sudo apt-get install libnlopt-dev
+
+sudo apt-get install r-cran-igraph
+```
+
+Ahora puede instalar los paquetes gdistance, graph4lg y ggpubr
+directamente en su R o RStudio.
+
+
+``` r
+install.packages(c('gdistance', 'graph4lg', 'ggpubr'))
+```
+
+Ahora puedes instalar Makurhini directamente en tu R o RStudio.
+
+
+``` r
+library(devtools) 
+library(remotes) 
+install_github("connectscape/Makurhini", dependencies = TRUE, upgrade = "never") 
+```
+
+Tenga en cuenta que la instalación de Makurhini en Linux depende de su
+versión del sistema operativo y de que consiga instalar los paquetes de
+los que depende Makurhini.

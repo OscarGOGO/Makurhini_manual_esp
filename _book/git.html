@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>1 Git | Notas backend BiodiversidadES</title>
+<meta name="author" content="Oscar Godínez Gómez">
+<meta name="description" content='1.1 Instalar git y configurar 1. Crear cuenta en GitLab o GitHub 2. Instalar Git: https://git-scm.com/ 3. Abrir Git bash 4. Configurar Usename escribiendo: git config –-global user.name "tu user...'>
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="1 Git | Notas backend BiodiversidadES">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://oscargogo.github.io/Libro_Prueba/git.html">
+<meta property="og:image" content="https://oscargogo.github.io/Libro_Prueba/BiodiversidadES3.png">
+<meta property="og:description" content='1.1 Instalar git y configurar 1. Crear cuenta en GitLab o GitHub 2. Instalar Git: https://git-scm.com/ 3. Abrir Git bash 4. Configurar Usename escribiendo: git config –-global user.name "tu user...'>
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="1 Git | Notas backend BiodiversidadES">
+<meta name="twitter:description" content='1.1 Instalar git y configurar 1. Crear cuenta en GitLab o GitHub 2. Instalar Git: https://git-scm.com/ 3. Abrir Git bash 4. Configurar Usename escribiendo: git config –-global user.name "tu user...'>
+<meta name="twitter:image" content="https://oscargogo.github.io/Libro_Prueba/BiodiversidadES3.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.15/datatables.js"></script><link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script><link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet">
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Notas backend BiodiversidadES</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Biodiversidades</a></li>
+<li><a class="active" href="git.html"><span class="header-section-number">1</span> Git</a></li>
+<li><a class="" href="gitlab-github.html"><span class="header-section-number">2</span> GitLab GitHub</a></li>
+<li><a class="" href="organizaci%C3%B3n-de-documentos-y-carpetas-en-el-repositorio.html"><span class="header-section-number">3</span> Organización de documentos y carpetas en el repositorio</a></li>
+<li><a class="" href="organizaci%C3%B3n-de-documentos-y-carpetas-en-el-dico-duro-gap.html"><span class="header-section-number">4</span> Organización de documentos y carpetas en el dico duro $(\gap)</a></li>
+<li><a class="" href="loops-en-r.-funciones-base-de-r.html"><span class="header-section-number">5</span> Loops en R. Funciones base de R</a></li>
+<li><a class="" href="loops-en-r.-paquete-purrr.html"><span class="header-section-number">6</span> Loops en R. Paquete purrr</a></li>
+<li><a class="" href="loops-en-r.-paralelizar.html"><span class="header-section-number">7</span> Loops en R. Paralelizar</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/OscarGOGO/Libro_Prueba">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="git" class="section level1" number="1">
+<h1>
+<span class="header-section-number">1</span> Git<a class="anchor" aria-label="anchor" href="#git"><i class="fas fa-link"></i></a>
+</h1>
+<div id="instalar-git-y-configurar" class="section level2" number="1.1">
+<h2>
+<span class="header-section-number">1.1</span> Instalar git y configurar<a class="anchor" aria-label="anchor" href="#instalar-git-y-configurar"><i class="fas fa-link"></i></a>
+</h2>
+<p><strong>1. Crear cuenta en GitLab o GitHub</strong></p>
+<p><strong>2. Instalar Git:</strong> <a href="https://git-scm.com/" class="uri">https://git-scm.com/</a></p>
+<p><strong>3. Abrir Git bash</strong></p>
+<p><strong>4. Configurar Usename escribiendo:</strong></p>
+<p><code>git config –-global user.name "tu user name"</code></p>
+<div class="inline-figure"><img src="images/24.PNG" width="600"></div>
+<p><strong>5. Configurar correo escribiendo:</strong></p>
+<p><code>git config –-global user.email "tu user email"</code></p>
+<div class="inline-figure"><img src="images/25.PNG" width="600"></div>
+<p><strong>6. Corroborar que se grabó el user name y correo con (Si se necesita puedes salir escribiendo laletra q y enter):</strong></p>
+<p><code>git config –-list</code></p>
+</div>
+<div id="git-gitlab-y-rstudio" class="section level2" number="1.2">
+<h2>
+<span class="header-section-number">1.2</span> Git, GitLab y RStudio<a class="anchor" aria-label="anchor" href="#git-gitlab-y-rstudio"><i class="fas fa-link"></i></a>
+</h2>
+<p><strong>1. Abrimos RStudio</strong></p>
+<p><strong>2. Nos dirigimos a la pestaña de Tools -&gt; Global options -&gt; Git/SVN</strong> <img src="images/26.PNG" width="600"></p>
+<p><strong>3. Generamos una llave SSH (Solo se necesita hacer una ocasión) y la copiamos</strong></p>
+<p><img src="images/27.PNG" width="400"><img src="images/28.PNG" width="400"></p>
+<p><strong>4. Abrimos GitLab y nos dirigimos a Preferences o User settings -&gt; SSH Keys</strong> <img src="images/29.png" width="600"></p>
+<p><strong>5. Pegamos el código anterior en la opción key</strong></p>
+<p><strong>6. Le damos un título y retiramos la fecha de expiración.</strong> /</p>
+<div class="inline-figure"><img src="images/30.png" width="600"></div>
+<p><strong>7. Finalmente, damos click en Add Key</strong></p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="index.html">Biodiversidades</a></div>
+<div class="next"><a href="gitlab-github.html"><span class="header-section-number">2</span> GitLab GitHub</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#git"><span class="header-section-number">1</span> Git</a></li>
+<li><a class="nav-link" href="#instalar-git-y-configurar"><span class="header-section-number">1.1</span> Instalar git y configurar</a></li>
+<li><a class="nav-link" href="#git-gitlab-y-rstudio"><span class="header-section-number">1.2</span> Git, GitLab y RStudio</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/OscarGOGO/Libro_Prueba/blob/master/01-Git.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/OscarGOGO/Libro_Prueba/edit/master/01-Git.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Notas backend BiodiversidadES</strong>" was written by Oscar Godínez Gómez. It was last built on 2023-05-29.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

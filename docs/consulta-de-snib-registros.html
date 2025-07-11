@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 9 Consulta de SNIB registros | Notas backend BiodiversidadES</title>
+<meta name="author" content="Oscar Godínez Gómez">
+<meta name="description" content="9.1 Usando ID valido Aquí el parámetro buscar_CAT puede ser igual a FALSE, es decir no hace falta consultar al CAT para obtener los id validos porque previamente los obtuve Tapir &lt;-...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Chapter 9 Consulta de SNIB registros | Notas backend BiodiversidadES">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://oscargogo.github.io/Libro_Prueba/consulta-de-snib-registros.html">
+<meta property="og:image" content="https://oscargogo.github.io/Libro_Prueba/BiodiversidadES3.png">
+<meta property="og:description" content="9.1 Usando ID valido Aquí el parámetro buscar_CAT puede ser igual a FALSE, es decir no hace falta consultar al CAT para obtener los id validos porque previamente los obtuve Tapir &lt;-...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 9 Consulta de SNIB registros | Notas backend BiodiversidadES">
+<meta name="twitter:description" content="9.1 Usando ID valido Aquí el parámetro buscar_CAT puede ser igual a FALSE, es decir no hace falta consultar al CAT para obtener los id validos porque previamente los obtuve Tapir &lt;-...">
+<meta name="twitter:image" content="https://oscargogo.github.io/Libro_Prueba/BiodiversidadES3.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.15/datatables.js"></script><link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script><link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet">
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Notas backend BiodiversidadES</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Biodiversidades</a></li>
+<li><a class="" href="git.html"><span class="header-section-number">1</span> Git</a></li>
+<li><a class="" href="gitlab-github.html"><span class="header-section-number">2</span> GitLab GitHub</a></li>
+<li><a class="" href="organizaci%C3%B3n-de-documentos-y-carpetas-en-el-repositorio.html"><span class="header-section-number">3</span> Organización de documentos y carpetas en el repositorio</a></li>
+<li><a class="" href="organizaci%C3%B3n-de-documentos-y-carpetas-en-el-dico-duro-gap.html"><span class="header-section-number">4</span> Organización de documentos y carpetas en el dico duro $(\gap)</a></li>
+<li><a class="" href="loops-en-r.-funciones-base-de-r.html"><span class="header-section-number">5</span> Loops en R. Funciones base de R</a></li>
+<li><a class="" href="loops-en-r.-paquete-purrr.html"><span class="header-section-number">6</span> Loops en R. Paquete purrr</a></li>
+<li><a class="" href="loops-en-r.-paralelizar.html"><span class="header-section-number">7</span> Loops en R. Paralelizar</a></li>
+<li><a class="" href="consultas-al-cat-y-snib-registros-usando-zacatuche-y-r.html"><span class="header-section-number">8</span> Consultas al CAT y SNIB registros usando zacatuche y R</a></li>
+<li><a class="active" href="consulta-de-snib-registros.html"><span class="header-section-number">9</span> Consulta de SNIB registros</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/OscarGOGO/Libro_Prueba">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="consulta-de-snib-registros" class="section level1" number="9">
+<h1>
+<span class="header-section-number">9</span> Consulta de SNIB registros<a class="anchor" aria-label="anchor" href="#consulta-de-snib-registros"><i class="fas fa-link"></i></a>
+</h1>
+<div id="usando-id-valido" class="section level2" number="9.1">
+<h2>
+<span class="header-section-number">9.1</span> Usando ID valido<a class="anchor" aria-label="anchor" href="#usando-id-valido"><i class="fas fa-link"></i></a>
+</h2>
+<p>Aquí el parámetro buscar_CAT puede ser igual a FALSE, es decir no hace falta consultar al CAT para obtener los id validos porque previamente los obtuve</p>
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span> <span class="va">Tapir</span> <span class="op">&lt;-</span> <span class="kw"><a href="https://rdrr.io/r/base/conditions.html">tryCatch</a></span><span class="op">(</span><span class="va">CAT_SNIB_ENVI</span><span class="op">$</span><span class="fu">taxon_coordenadas</span><span class="op">(</span>consulta_SNIB <span class="op">=</span> <span class="va">tapir</span><span class="op">$</span><span class="va">Valido.id</span>,</span>
+<span>                                                            remover_exotica_invasora <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                                                            remover_duplicados <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                                                            filtros <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>pais <span class="op">=</span> <span class="st">"MEXICO"</span>, </span>
+<span>                                                                           anio_min <span class="op">=</span> <span class="cn">NULL</span>, </span>
+<span>                                                                           anio_max <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                                                                           rem_novalPais <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                                                                           rem_novalEdo <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                                                                           rem_novalMun <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>                                                                           rem_novalLoc <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,</span>
+<span>                                                            parallel <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>                                                            intern <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>                                                            messages <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>                                                            tabla_TipoDistribucion <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                                                            returnCAT <span class="op">=</span> <span class="cn">FALSE</span>, </span>
+<span>                                                            buscar_CAT <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>                                                            save_RDS <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>, error <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">err</span><span class="op">)</span><span class="va">err</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="usando-nombre-cientifico" class="section level2" number="9.2">
+<h2>
+<span class="header-section-number">9.2</span> Usando Nombre cientifico<a class="anchor" aria-label="anchor" href="#usando-nombre-cientifico"><i class="fas fa-link"></i></a>
+</h2>
+<p>Con esta opción tenemos que dar el valor de TRUE al parámetro <em>buscar_cat</em> para que busqué el id valido.</p>
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">entrada_consulta</span> <span class="op">&lt;-</span> <span class="va">CAT_SNIB_ENVI</span><span class="op">$</span><span class="fu">CatalogoClass</span><span class="op">(</span>taxon <span class="op">=</span> <span class="st">"Tapirus bairdii"</span>, reino <span class="op">=</span> <span class="st">"Animalia"</span>, categoria_taxonomica <span class="op">=</span> <span class="st">"especie"</span>, categoria_busqueda <span class="op">=</span> <span class="st">"especie"</span><span class="op">)</span></span>
+<span></span>
+<span> <span class="va">Tapir.2</span> <span class="op">&lt;-</span> <span class="kw"><a href="https://rdrr.io/r/base/conditions.html">tryCatch</a></span><span class="op">(</span><span class="va">CAT_SNIB_ENVI</span><span class="op">$</span><span class="fu">taxon_coordenadas</span><span class="op">(</span>consulta_SNIB <span class="op">=</span> <span class="va">entrada_consulta</span>,</span>
+<span>                                                            remover_exotica_invasora <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                                                            remover_duplicados <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                                                            filtros <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>pais <span class="op">=</span> <span class="st">"MEXICO"</span>, </span>
+<span>                                                                           anio_min <span class="op">=</span> <span class="cn">NULL</span>, </span>
+<span>                                                                           anio_max <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                                                                           rem_novalPais <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                                                                           rem_novalEdo <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                                                                           rem_novalMun <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>                                                                           rem_novalLoc <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,</span>
+<span>                                                            parallel <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                                                            intern <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>                                                            messages <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>                                                            tabla_TipoDistribucion <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                                                            returnCAT <span class="op">=</span> <span class="cn">FALSE</span>, </span>
+<span>                                                            buscar_CAT <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                                                            save_RDS <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>, error <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">err</span><span class="op">)</span><span class="va">err</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="podemos-buscar-varias-especies" class="section level2" number="9.3">
+<h2>
+<span class="header-section-number">9.3</span> Podemos buscar varias especies<a class="anchor" aria-label="anchor" href="#podemos-buscar-varias-especies"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">entrada_consulta</span> <span class="op">&lt;-</span> <span class="va">CAT_SNIB_ENVI</span><span class="op">$</span><span class="fu">CatalogoClass</span><span class="op">(</span>taxon <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Tapirus bairdii"</span>, <span class="st">"Manilkara zapota"</span><span class="op">)</span>, </span>
+<span>                                                reino <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Animalia"</span>, <span class="st">"Plantae"</span><span class="op">)</span>,</span>
+<span>                                                categoria_taxonomica <span class="op">=</span> <span class="st">"especie"</span>,</span>
+<span>                                                categoria_busqueda <span class="op">=</span> <span class="st">"especie"</span><span class="op">)</span></span>
+<span></span>
+<span> <span class="va">varios</span> <span class="op">&lt;-</span> <span class="kw"><a href="https://rdrr.io/r/base/conditions.html">tryCatch</a></span><span class="op">(</span><span class="va">CAT_SNIB_ENVI</span><span class="op">$</span><span class="fu">taxon_coordenadas</span><span class="op">(</span>consulta_SNIB <span class="op">=</span> <span class="va">entrada_consulta</span>,</span>
+<span>                                                            remover_exotica_invasora <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                                                            remover_duplicados <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                                                            terrestres <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                                                            dulceacuicola <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                                                            marinas <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>                                                            filtros <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>pais <span class="op">=</span> <span class="st">"MEXICO"</span>, </span>
+<span>                                                                           anio_min <span class="op">=</span> <span class="cn">NULL</span>, </span>
+<span>                                                                           anio_max <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                                                                           rem_novalPais <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                                                                           rem_novalEdo <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                                                                           rem_novalMun <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>                                                                           rem_novalLoc <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,</span>
+<span>                                                            parallel <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                                                            intern <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>                                                            messages <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>                                                            tabla_TipoDistribucion <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                                                            returnCAT <span class="op">=</span> <span class="cn">FALSE</span>, </span>
+<span>                                                            buscar_CAT <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                                                            save_RDS <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>, error <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">err</span><span class="op">)</span><span class="va">err</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="podemos-alterar-la-busqueda" class="section level2" number="9.4">
+<h2>
+<span class="header-section-number">9.4</span> Podemos alterar la busqueda<a class="anchor" aria-label="anchor" href="#podemos-alterar-la-busqueda"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">Ejemplares_query</span> <span class="op">&lt;-</span> <span class="va">CAT_SNIB_ENVI</span><span class="op">$</span><span class="fu">Consulta_searchEjemplar</span><span class="op">(</span>DATOS_URL <span class="op">=</span> <span class="st">"http://zacatuche2.conabio.gob.mx:4000/graphql"</span>,</span>
+<span>                                                          idnombrecat <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"id"</span>, <span class="st">"taxon"</span><span class="op">)</span>,</span>
+<span>                                                          taxonValido <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"id"</span>, <span class="st">"taxon"</span><span class="op">)</span>,</span>
+<span>                                                          ejemplar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"latitud"</span>, <span class="st">"longitud"</span>, <span class="st">"aniocolecta"</span>, <span class="st">"validacionambiente"</span>,</span>
+<span>                                                                       <span class="st">"geovalidacion"</span>, <span class="st">"exoticainvasora"</span>, <span class="st">"nivelprioridad"</span>,</span>
+<span>                                                                       <span class="st">"nom059"</span>, <span class="st">"iucn"</span>, <span class="st">"cites"</span>, <span class="st">"endemismo"</span>,</span>
+<span>                                                                       <span class="st">"paiscoleccion"</span>, <span class="st">"paismapa"</span>,</span>
+<span>                                                                       <span class="st">"especie"</span>, <span class="st">"especievalida"</span>,</span>
+<span>                                                                       <span class="st">"grupobio"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">entrada_consulta</span> <span class="op">&lt;-</span> <span class="va">CAT_SNIB_ENVI</span><span class="op">$</span><span class="fu">CatalogoClass</span><span class="op">(</span>taxon <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Tapirus bairdii"</span>, <span class="st">"Manilkara zapota"</span><span class="op">)</span>, </span>
+<span>                                                reino <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Animalia"</span>, <span class="st">"Plantae"</span><span class="op">)</span>,</span>
+<span>                                                categoria_taxonomica <span class="op">=</span> <span class="st">"especie"</span>,</span>
+<span>                                                categoria_busqueda <span class="op">=</span> <span class="st">"especie"</span><span class="op">)</span></span>
+<span></span>
+<span> <span class="va">varios</span> <span class="op">&lt;-</span> <span class="kw"><a href="https://rdrr.io/r/base/conditions.html">tryCatch</a></span><span class="op">(</span><span class="va">CAT_SNIB_ENVI</span><span class="op">$</span><span class="fu">taxon_coordenadas</span><span class="op">(</span>consulta_SNIB <span class="op">=</span> <span class="va">entrada_consulta</span>,</span>
+<span>                                                            remover_exotica_invasora <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                                                            remover_duplicados <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                                                            filtros <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>pais <span class="op">=</span> <span class="st">"MEXICO"</span>, </span>
+<span>                                                                           anio_min <span class="op">=</span> <span class="cn">NULL</span>, </span>
+<span>                                                                           anio_max <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                                                                           rem_novalPais <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                                                                           rem_novalEdo <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                                                                           rem_novalMun <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>                                                                           rem_novalLoc <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,</span>
+<span>                                                            parallel <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                                                            intern <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>                                                            messages <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>                                                            Ejemplares_query <span class="op">=</span> <span class="va">Ejemplares_query</span>,</span>
+<span>                                                            tabla_TipoDistribucion <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                                                            returnCAT <span class="op">=</span> <span class="cn">FALSE</span>, </span>
+<span>                                                            buscar_CAT <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                                                            save_RDS <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>, error <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">err</span><span class="op">)</span><span class="va">err</span><span class="op">)</span></span></code></pre></div>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="consultas-al-cat-y-snib-registros-usando-zacatuche-y-r.html"><span class="header-section-number">8</span> Consultas al CAT y SNIB registros usando zacatuche y R</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#consulta-de-snib-registros"><span class="header-section-number">9</span> Consulta de SNIB registros</a></li>
+<li><a class="nav-link" href="#usando-id-valido"><span class="header-section-number">9.1</span> Usando ID valido</a></li>
+<li><a class="nav-link" href="#usando-nombre-cientifico"><span class="header-section-number">9.2</span> Usando Nombre cientifico</a></li>
+<li><a class="nav-link" href="#podemos-buscar-varias-especies"><span class="header-section-number">9.3</span> Podemos buscar varias especies</a></li>
+<li><a class="nav-link" href="#podemos-alterar-la-busqueda"><span class="header-section-number">9.4</span> Podemos alterar la busqueda</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/OscarGOGO/Libro_Prueba/blob/master/09-Zacatuche_CAT.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/OscarGOGO/Libro_Prueba/edit/master/09-Zacatuche_CAT.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Notas backend BiodiversidadES</strong>" was written by Oscar Godínez Gómez. It was last built on 2023-07-13.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>
