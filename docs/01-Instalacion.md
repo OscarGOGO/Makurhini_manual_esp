@@ -16,7 +16,7 @@ install.packages("igraph")
 
 
 ``` r
-install.packages(c(“devtools”, “remotes”))
+install.packages(c("devtools", "remotes"))
 ```
 
 

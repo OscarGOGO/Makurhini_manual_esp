@@ -1,7 +1,7 @@
 ---
 title: "Manual de uso de Makurhini"
 author: "Oscar Godínez Gómez"
-date: "2025-07-11"
+date: "2025-07-16"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography:

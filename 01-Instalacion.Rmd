@@ -14,7 +14,7 @@ install.packages("igraph")
 -   Se recomienda pre-instalar los paquetes devtools y remotes
 
 ```{r eval=FALSE}
-install.packages(c(“devtools”, “remotes”))
+install.packages(c("devtools", "remotes"))
 ```
 
 ```{r eval=FALSE}
