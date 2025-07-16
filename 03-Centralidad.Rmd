@@ -1,0 +1,316 @@
+# Índices de centralidad
+
+## Insumos y paquetes
+Seguimos trabajando con los mismos shapefiles de la sección anterior: habitat_nodes y paisaje.
+
+```{r eval=FALSE}
+library(ggplot2)
+library(sf)
+library(Makurhini)
+library(RColorBrewer)
+```
+
+```{r echo=FALSE}
+library(Makurhini)
+library(sf)
+library(ggplot2)
+
+habitat_nodes <- read_sf("C:/Users/oscta/OneDrive/Documents/RedBioma/Clase_3/ejemplo_insumos/habitat_nodes.shp")
+nrow(habitat_nodes)
+paisaje <- read_sf("C:/Users/oscta/OneDrive/Documents/RedBioma/Clase_3/ejemplo_insumos/paisaje.shp")
+
+```
+
+
+```{r}
+ggplot() +  
+  geom_sf(data = paisaje, aes(color = "Study area"), fill = NA, color = "black") +
+  geom_sf(data = habitat_nodes, aes(color = "Parches"), fill = "forestgreen", linewidth = 0.5) +
+  scale_color_manual(name = "", values = "black")+
+  theme_minimal() +
+  theme(axis.title.x = element_blank(),
+        axis.title.y = element_blank())
+
+```
+
+En caso de necesitar abrir otro vector (e.g., .shp, .gpkg) necesitan usar la fución `read_sf()` del paquete `sf`, la función `shapefile()` del paquete `raster`, o la funcion `vect()` del paquete `terra`.
+
+Para abrirlo solo necesitan colocar la dirección de su archivo, el nombre y la extensión, ejemplo:
+
+-   `vegetation_patches <- sf::read_sf("D:/Datos/vegetation_patches.shp")`
+
+-   `vegetation_patches <- raster::shapefile("D:/Datos/vegetation_patches.shp")`
+
+-   `vegetation_patches <- terra::vect("D:/Datos/vegetation_patches.shp")`
+
+
+
+## MK_RMCentrality()
+
+La función **`MK_RMCentrality()`** calcula medidas radiales (es decir, grado, fuerza, centralidad de vectores propios y centralidad de proximidad) y mediales (es decir, centralidad de interrelación, pertenencia a nodos y modularidad) de la centralidad de nodos para identificar, por ejemplo, stepping stones.
+
+
+Las medidas o índices que estima son los siguientes:
+
+-   **Centralidad de Grado (degree)**: Cuántas conexiones directas tiene un nodo. Es como contar cuántos parches de hábitat están potencialmente conectados con el parche focal.
+**Más conexiones = mayor grado = más centralidad.**
+-  **Centralidad de Grado (degree)**
+
+### 1. Centralidad de Grado (`degree`)
+> Cuántas conexiones directas tiene un nodo.
+
+- Es como contar cuántos parches de hábitat o áreas protegidas están conectados con uno.
+- Más conexiones = mayor grado = más centralidad.
+
+### 2. Fuerza (`strength`) *(para redes ponderadas)*
+> Como el grado, pero suma los **pesos** (o probabilidades) de los enlaces.
+
+- En lugar de solo contar conexiones, se suman qué tan **fuertes o probables** son (por ejemplo, probabilidad de dispersión).
+- Un nodo con pocas pero fuertes conexiones puede ser más central que uno con muchas pero débiles.
+
+### 3. Centralidad de Vector Propio (`eigen`)
+> Mide cuán conectado está un nodo con **otros nodos importantes**.
+
+- Un nodo es importante si está conectado a otros nodos que también lo son.
+- Útil para detectar “nodos influyentes” en la red.
+
+### 4. Centralidad de Cercanía (`close`)
+> Qué tan cerca está un nodo de todos los demás.
+
+- Se calcula como el inverso de la suma de distancias a todos los demás nodos.
+- Los nodos con alta cercanía pueden **difundir o recibir información rápidamente**.
+
+---
+
+### Medidas Mediales (¿Quién está en medio o conecta otros nodos?)
+
+#### 5. Centralidad de Intermediación (`BWC`)
+> Cuántas veces un nodo se encuentra **en las rutas más cortas** entre otros nodos.
+
+- Nodos con alta intermediación actúan como puentes o **cuellos de botella**.
+- Muy importantes para la conectividad — si se eliminan, pueden fragmentar la red.
+
+---
+
+### Detección de Comunidades (¿Quién pertenece al mismo grupo?)
+
+#### 6. Caminatas Aleatorias Cortas (`memb.rw`)
+> Agrupa nodos según la probabilidad de que una caminata aleatoria **permanezca dentro del grupo**.
+
+- Simula un animal moviéndose aleatoriamente por la red.
+- Detecta grupos **fuertemente conectados**.
+
+#### 7. Algoritmo de Louvain (`memb.louvain`)
+> Divide la red en comunidades para **maximizar la modularidad** (qué tan separados están los grupos).
+
+- Encuentra grupos donde los nodos están más conectados entre sí que con el resto.
+- Es rápido y muy usado en redes ecológicas grandes.
+
+---
+
+### La función
+
+```{r eval=FALSE}
+MK_RMCentrality(
+  nodes,
+  distance = list(type = "centroid"),
+  distance_thresholds = NULL,
+  binary = TRUE,
+  probability = NULL,
+  rasterparallel = FALSE,
+  write = NULL,
+  intern = TRUE
+)
+Ar
+```
+
+
+
+### Descripción de los argumentos de la función
+
+| Argumento           | Tipo       | Descripción |
+|---------------------|------------|-------------|
+| `nodes`             | objeto     | Objeto que representa los nodos o fragmentos de hábitat. Puede ser un `data.frame`, objeto espacial vectorial (`sf`, `SpatVector`, etc.) o raster (`RasterLayer`, `SpatRaster`). Debe estar en un sistema de coordenadas proyectadas. En rasters, los valores deben ser enteros (ID de los nodos) y los no hábitat como `NA`. |
+| `distance`          | matriz o lista | Matriz cuadrada con las distancias entre nodos o una lista con los parámetros para calcularlas. Puede incluir tipo (`"centroid"`, `"edge"`, `"least-cost"`, `"commute-time"`) y resistencia. |
+| `distance_thresholds` | numérico   | Distancia de dispersión (en metros) de la especie. Si es `NULL`, se calcula como la mediana entre nodos. También se puede estimar con la función `dispersal_distance`. |
+| `binary`            | lógico     | Si es `TRUE`, se calcula conectividad binaria: nodos conectados (1) o no conectados (0) según el umbral de distancia. No usa `probability`. |
+| `probability`       | numérico   | Probabilidad de conexión asociada al umbral de distancia. Por ejemplo, `0.5` para distancias medianas, `0.05` para distancias máximas. Por defecto es `0.5` si es `NULL`. |
+| `rasterparallel`    | lógico     | Si `nodes` es un raster, permite asignar las métricas calculadas al raster de nodos. Útil cuando la resolución es menor a 100 m². |
+| `write`             | texto      | Ruta y prefijo para guardar los resultados (`sf`). Ejemplo: `"C:/ejemplo"`. |
+| `intern`            | lógico     | Muestra el progreso del proceso. Por defecto `TRUE`. Puede no llegar al 100% si el cálculo es muy rápido. |
+
+
+
+## Ejemplo 1
+
+```{r}
+library(Makurhini)
+library(sf)
+data("habitat_nodes", package = "Makurhini")
+nrow(habitat_nodes) # Number of patches
+#Two distance threshold,
+centrality_test <- MK_RMCentrality(nodes = habitat_nodes,
+                                distance = list(type = "centroid"),
+                                 distance_thresholds = 10000,
+                                 probability = 0.5,
+                                 write = NULL)
+centrality_test
+
+```
+
+
+
+Exploremos otra forma de hacer el plot usando intervalos
+
+```{r eval=FALSE}
+install.packages("ClassInt"), dependencies = TRUE)
+install.packages("dplyr"), dependencies = TRUE)
+```
+
+
+
+-   Strength:
+
+```{r}
+library(classInt)
+library(dplyr)
+
+# Calcular los intervalos de Jenks para strength
+breaks <- classInt::classIntervals(centrality_test$strength, n = 9, style = "quantile")
+
+# Crear una nueva variable categórica con los intervalos
+centrality_test <- centrality_test %>%
+  mutate(strength_q = cut(strength,
+                              breaks = breaks$brks,
+                              include.lowest = TRUE,
+                              dig.lab = 5))  
+
+# Graficar en ggplot2 usando las clases Jenks
+ggplot() +  
+  geom_sf(data = paisaje, fill = NA, color = "black") +
+  geom_sf(data = centrality_test, aes(fill = strength_q), color = "black", size = 0.1) +
+  scale_fill_brewer(palette = "RdYlGn", direction = 1, name = "Fuerza (Jenks)") +
+  theme_minimal() +
+  labs(
+    title = "Centralidad a nivel de parche (Strength)",
+    fill = "Strength\n(Jenks)"
+  ) +
+  theme(
+    legend.position = "right",
+    plot.title = element_text(hjust = 0.5)
+  )
+
+```
+
+
+
+-   BWC:
+
+
+```{r}
+breaks <- classInt::classIntervals(centrality_test$BWC, n = 9, style = "jenks")
+centrality_test <- centrality_test %>%
+  mutate(BWC_jenks = cut(BWC,
+                              breaks = breaks$brks,
+                              include.lowest = TRUE,
+                              dig.lab = 5))
+ggplot() +  
+  geom_sf(data = paisaje, fill = NA, color = "black") +
+  geom_sf(data = centrality_test, aes(fill = BWC_jenks), color = "black", size = 0.1) +
+  scale_fill_brewer(palette = "RdYlGn", direction = 1, name = "BWC (Jenks)") +
+  theme_minimal() +
+  labs(
+    title = "Centralidad a nivel de parche (BWC)",
+    fill = "BWC\n(Jenks)"
+  ) +
+  theme(
+    legend.position = "right",
+    plot.title = element_text(hjust = 0.5)
+  )
+
+
+```
+
+
+
+-   Membresía por random walk:
+
+```{r}
+ggplot() +  
+  geom_sf(data = paisaje, fill = NA, color = "black") +
+  geom_sf(data = centrality_test, aes(fill = as.factor(memb.rw)), color = "black", size = 0.1) +
+  scale_fill_brewer(
+    palette = "Set3",
+    name = "Membership RW"
+  ) +
+  theme_minimal() +
+  labs(
+    title = "Agrupación de parches (Random walks)",
+    fill = "Membership RW"
+  ) +
+  theme(
+    legend.position = "right",
+    plot.title = element_text(hjust = 0.5)
+  )
+
+```
+
+
+
+-   Membresía por Louvain:
+
+```{r}
+ggplot() +  
+  geom_sf(data = paisaje, fill = NA, color = "black") +
+  geom_sf(data = centrality_test, aes(fill = as.factor(memb.louvain)), color = "black", size = 0.1) +
+  scale_fill_brewer(
+    palette = "Set3",
+    name = "Membership LV"
+  ) +
+  theme_minimal() +
+  labs(
+    title = "Agrupación de parches (Louvain)",
+    fill = "Membership LV"
+  ) +
+  theme(
+    legend.position = "right",
+    plot.title = element_text(hjust = 0.5)
+  )
+
+```
+
+
+
+## Ejemplo 2
+
+Usando más de un umbral de distancia
+
+
+```{r}
+centrality_test <- MK_RMCentrality(nodes = habitat_nodes,
+                                distance = list(type = "centroid"),
+                                 distance_thresholds = c(10000, 100000),
+                                 probability = 0.5,
+                                 write = NULL)
+centrality_test
+
+```
+
+
+10 km:
+
+```{r}
+plot(centrality_test$d10000["BWC"], breaks = "jenks")
+```
+
+100 km:
+
+
+```{r}
+plot(centrality_test$`d1e+05`["BWC"], breaks = "quantile")
+```
+
+
+
+
+

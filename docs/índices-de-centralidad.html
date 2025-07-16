@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 3 Índices de centralidad | Manual de uso de Makurhini</title>
+<meta name="author" content="Oscar Godínez Gómez">
+<meta name="description" content="3.1 Insumos y paquetes Seguimos trabajando con los mismos shapefiles de la sección anterior: habitat_nodes y paisaje. library(ggplot2) library(sf) library(Makurhini) library(RColorBrewer) #&gt;...">
+<meta name="generator" content="bookdown 0.43 with bs4_book()">
+<meta property="og:title" content="Chapter 3 Índices de centralidad | Manual de uso de Makurhini">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://oscargogo.github.io/Makurhini_manual_esp/índices-de-centralidad.html">
+<meta property="og:image" content="https://oscargogo.github.io/Makurhini_manual_esp/LOGO_MAKHURINI.png">
+<meta property="og:description" content="3.1 Insumos y paquetes Seguimos trabajando con los mismos shapefiles de la sección anterior: habitat_nodes y paisaje. library(ggplot2) library(sf) library(Makurhini) library(RColorBrewer) #&gt;...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 3 Índices de centralidad | Manual de uso de Makurhini">
+<meta name="twitter:description" content="3.1 Insumos y paquetes Seguimos trabajando con los mismos shapefiles de la sección anterior: habitat_nodes y paisaje. library(ggplot2) library(sf) library(Makurhini) library(RColorBrewer) #&gt;...">
+<meta name="twitter:image" content="https://oscargogo.github.io/Makurhini_manual_esp/LOGO_MAKHURINI.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Manual de uso de Makurhini</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Makurhini</a></li>
+<li><a class="" href="instalaci%C3%B3n-del-paquete-makurhini.html"><span class="header-section-number">1</span> Instalación del paquete Makurhini</a></li>
+<li><a class="" href="estad%C3%ADsticas-de-fragmentaci%C3%B3n-del-paisaje.html"><span class="header-section-number">2</span> Estadísticas de fragmentación del paisaje</a></li>
+<li><a class="active" href="%C3%ADndices-de-centralidad.html"><span class="header-section-number">3</span> Índices de centralidad</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/OscarGOGO/Makurhini_manual_esp">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="índices-de-centralidad" class="section level1" number="3">
+<h1>
+<span class="header-section-number">3</span> Índices de centralidad<a class="anchor" aria-label="anchor" href="#%C3%ADndices-de-centralidad"><i class="fas fa-link"></i></a>
+</h1>
+<div id="insumos-y-paquetes" class="section level2" number="3.1">
+<h2>
+<span class="header-section-number">3.1</span> Insumos y paquetes<a class="anchor" aria-label="anchor" href="#insumos-y-paquetes"><i class="fas fa-link"></i></a>
+</h2>
+<p>Seguimos trabajando con los mismos shapefiles de la sección anterior: habitat_nodes y paisaje.</p>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/connectscape/Makurhini">Makurhini</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">RColorBrewer</span><span class="op">)</span></span></code></pre></div>
+<pre><code>#&gt; Cargando paquete requerido: igraph
+#&gt; 
+#&gt; Adjuntando el paquete: 'igraph'
+#&gt; The following objects are masked from 'package:stats':
+#&gt; 
+#&gt;     decompose, spectrum
+#&gt; The following object is masked from 'package:base':
+#&gt; 
+#&gt;     union
+#&gt; Cargando paquete requerido: cppRouting
+#&gt; Linking to GEOS 3.13.0, GDAL 3.10.1, PROJ 9.5.1;
+#&gt; sf_use_s2() is TRUE
+#&gt; [1] 404</code></pre>
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paisaje</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"Study area"</span><span class="op">)</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">habitat_nodes</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"Parches"</span><span class="op">)</span>, fill <span class="op">=</span> <span class="st">"forestgreen"</span>, linewidth <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">""</span>, values <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.title.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>        axis.title.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="03-Centralidad_files/figure-html/unnamed-chunk-3-1.png" width="672"></div>
+<p>En caso de necesitar abrir otro vector (e.g., .shp, .gpkg) necesitan usar la fución <code><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf()</a></code> del paquete <code>sf</code>, la función <code>shapefile()</code> del paquete <code>raster</code>, o la funcion <code>vect()</code> del paquete <code>terra</code>.</p>
+<p>Para abrirlo solo necesitan colocar la dirección de su archivo, el nombre y la extensión, ejemplo:</p>
+<ul>
+<li><p><code>vegetation_patches &lt;- sf::read_sf("D:/Datos/vegetation_patches.shp")</code></p></li>
+<li><p><code>vegetation_patches &lt;- raster::shapefile("D:/Datos/vegetation_patches.shp")</code></p></li>
+<li><p><code>vegetation_patches &lt;- terra::vect("D:/Datos/vegetation_patches.shp")</code></p></li>
+</ul>
+</div>
+<div id="mk_rmcentrality" class="section level2" number="3.2">
+<h2>
+<span class="header-section-number">3.2</span> MK_RMCentrality()<a class="anchor" aria-label="anchor" href="#mk_rmcentrality"><i class="fas fa-link"></i></a>
+</h2>
+<p>La función <strong><code><a href="https://rdrr.io/pkg/Makurhini/man/MK_RMCentrality.html">MK_RMCentrality()</a></code></strong> calcula medidas radiales (es decir, grado, fuerza, centralidad de vectores propios y centralidad de proximidad) y mediales (es decir, centralidad de interrelación, pertenencia a nodos y modularidad) de la centralidad de nodos para identificar, por ejemplo, stepping stones.</p>
+<p>Las medidas o índices que estima son los siguientes:</p>
+<ul>
+<li>
+<strong>Centralidad de Grado (degree)</strong>: Cuántas conexiones directas tiene un nodo. Es como contar cuántos parches de hábitat están potencialmente conectados con el parche focal.
+<strong>Más conexiones = mayor grado = más centralidad.</strong>
+</li>
+<li><strong>Centralidad de Grado (degree)</strong></li>
+</ul>
+<div id="centralidad-de-grado-degree" class="section level3" number="3.2.1">
+<h3>
+<span class="header-section-number">3.2.1</span> 1. Centralidad de Grado (<code>degree</code>)<a class="anchor" aria-label="anchor" href="#centralidad-de-grado-degree"><i class="fas fa-link"></i></a>
+</h3>
+<blockquote>
+<p>Cuántas conexiones directas tiene un nodo.</p>
+</blockquote>
+<ul>
+<li>Es como contar cuántos parches de hábitat o áreas protegidas están conectados con uno.</li>
+<li>Más conexiones = mayor grado = más centralidad.</li>
+</ul>
+</div>
+<div id="fuerza-strength-para-redes-ponderadas" class="section level3" number="3.2.2">
+<h3>
+<span class="header-section-number">3.2.2</span> 2. Fuerza (<code>strength</code>) <em>(para redes ponderadas)</em><a class="anchor" aria-label="anchor" href="#fuerza-strength-para-redes-ponderadas"><i class="fas fa-link"></i></a>
+</h3>
+<blockquote>
+<p>Como el grado, pero suma los <strong>pesos</strong> (o probabilidades) de los enlaces.</p>
+</blockquote>
+<ul>
+<li>En lugar de solo contar conexiones, se suman qué tan <strong>fuertes o probables</strong> son (por ejemplo, probabilidad de dispersión).</li>
+<li>Un nodo con pocas pero fuertes conexiones puede ser más central que uno con muchas pero débiles.</li>
+</ul>
+</div>
+<div id="centralidad-de-vector-propio-eigen" class="section level3" number="3.2.3">
+<h3>
+<span class="header-section-number">3.2.3</span> 3. Centralidad de Vector Propio (<code>eigen</code>)<a class="anchor" aria-label="anchor" href="#centralidad-de-vector-propio-eigen"><i class="fas fa-link"></i></a>
+</h3>
+<blockquote>
+<p>Mide cuán conectado está un nodo con <strong>otros nodos importantes</strong>.</p>
+</blockquote>
+<ul>
+<li>Un nodo es importante si está conectado a otros nodos que también lo son.</li>
+<li>Útil para detectar “nodos influyentes” en la red.</li>
+</ul>
+</div>
+<div id="centralidad-de-cercanía-close" class="section level3" number="3.2.4">
+<h3>
+<span class="header-section-number">3.2.4</span> 4. Centralidad de Cercanía (<code>close</code>)<a class="anchor" aria-label="anchor" href="#centralidad-de-cercan%C3%ADa-close"><i class="fas fa-link"></i></a>
+</h3>
+<blockquote>
+<p>Qué tan cerca está un nodo de todos los demás.</p>
+</blockquote>
+<ul>
+<li>Se calcula como el inverso de la suma de distancias a todos los demás nodos.</li>
+<li>Los nodos con alta cercanía pueden <strong>difundir o recibir información rápidamente</strong>.</li>
+</ul>
+<hr>
+</div>
+<div id="medidas-mediales-quién-está-en-medio-o-conecta-otros-nodos" class="section level3" number="3.2.5">
+<h3>
+<span class="header-section-number">3.2.5</span> Medidas Mediales (¿Quién está en medio o conecta otros nodos?)<a class="anchor" aria-label="anchor" href="#medidas-mediales-qui%C3%A9n-est%C3%A1-en-medio-o-conecta-otros-nodos"><i class="fas fa-link"></i></a>
+</h3>
+<div id="centralidad-de-intermediación-bwc" class="section level4" number="3.2.5.1">
+<h4>
+<span class="header-section-number">3.2.5.1</span> 5. Centralidad de Intermediación (<code>BWC</code>)<a class="anchor" aria-label="anchor" href="#centralidad-de-intermediaci%C3%B3n-bwc"><i class="fas fa-link"></i></a>
+</h4>
+<blockquote>
+<p>Cuántas veces un nodo se encuentra <strong>en las rutas más cortas</strong> entre otros nodos.</p>
+</blockquote>
+<ul>
+<li>Nodos con alta intermediación actúan como puentes o <strong>cuellos de botella</strong>.</li>
+<li>Muy importantes para la conectividad — si se eliminan, pueden fragmentar la red.</li>
+</ul>
+<hr>
+</div>
+</div>
+<div id="detección-de-comunidades-quién-pertenece-al-mismo-grupo" class="section level3" number="3.2.6">
+<h3>
+<span class="header-section-number">3.2.6</span> Detección de Comunidades (¿Quién pertenece al mismo grupo?)<a class="anchor" aria-label="anchor" href="#detecci%C3%B3n-de-comunidades-qui%C3%A9n-pertenece-al-mismo-grupo"><i class="fas fa-link"></i></a>
+</h3>
+<div id="caminatas-aleatorias-cortas-memb.rw" class="section level4" number="3.2.6.1">
+<h4>
+<span class="header-section-number">3.2.6.1</span> 6. Caminatas Aleatorias Cortas (<code>memb.rw</code>)<a class="anchor" aria-label="anchor" href="#caminatas-aleatorias-cortas-memb.rw"><i class="fas fa-link"></i></a>
+</h4>
+<blockquote>
+<p>Agrupa nodos según la probabilidad de que una caminata aleatoria <strong>permanezca dentro del grupo</strong>.</p>
+</blockquote>
+<ul>
+<li>Simula un animal moviéndose aleatoriamente por la red.</li>
+<li>Detecta grupos <strong>fuertemente conectados</strong>.</li>
+</ul>
+</div>
+<div id="algoritmo-de-louvain-memb.louvain" class="section level4" number="3.2.6.2">
+<h4>
+<span class="header-section-number">3.2.6.2</span> 7. Algoritmo de Louvain (<code>memb.louvain</code>)<a class="anchor" aria-label="anchor" href="#algoritmo-de-louvain-memb.louvain"><i class="fas fa-link"></i></a>
+</h4>
+<blockquote>
+<p>Divide la red en comunidades para <strong>maximizar la modularidad</strong> (qué tan separados están los grupos).</p>
+</blockquote>
+<ul>
+<li>Encuentra grupos donde los nodos están más conectados entre sí que con el resto.</li>
+<li>Es rápido y muy usado en redes ecológicas grandes.</li>
+</ul>
+<hr>
+</div>
+</div>
+<div id="la-función" class="section level3" number="3.2.7">
+<h3>
+<span class="header-section-number">3.2.7</span> La función<a class="anchor" aria-label="anchor" href="#la-funci%C3%B3n"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_RMCentrality.html">MK_RMCentrality</a></span><span class="op">(</span></span>
+<span>  <span class="va">nodes</span>,</span>
+<span>  distance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"centroid"</span><span class="op">)</span>,</span>
+<span>  distance_thresholds <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  binary <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  probability <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  rasterparallel <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  write <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  intern <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">Ar</span></span></code></pre></div>
+</div>
+<div id="descripción-de-los-argumentos-de-la-función" class="section level3" number="3.2.8">
+<h3>
+<span class="header-section-number">3.2.8</span> Descripción de los argumentos de la función<a class="anchor" aria-label="anchor" href="#descripci%C3%B3n-de-los-argumentos-de-la-funci%C3%B3n"><i class="fas fa-link"></i></a>
+</h3>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="45%">
+<col width="26%">
+<col width="28%">
+</colgroup>
+<thead><tr class="header">
+<th>Argumento</th>
+<th>Tipo</th>
+<th>Descripción</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code>nodes</code></td>
+<td>objeto</td>
+<td>Objeto que representa los nodos o fragmentos de hábitat. Puede ser un <code>data.frame</code>, objeto espacial vectorial (<code>sf</code>, <code>SpatVector</code>, etc.) o raster (<code>RasterLayer</code>, <code>SpatRaster</code>). Debe estar en un sistema de coordenadas proyectadas. En rasters, los valores deben ser enteros (ID de los nodos) y los no hábitat como <code>NA</code>.</td>
+</tr>
+<tr class="even">
+<td><code>distance</code></td>
+<td>matriz o lista</td>
+<td>Matriz cuadrada con las distancias entre nodos o una lista con los parámetros para calcularlas. Puede incluir tipo (<code>"centroid"</code>, <code>"edge"</code>, <code>"least-cost"</code>, <code>"commute-time"</code>) y resistencia.</td>
+</tr>
+<tr class="odd">
+<td><code>distance_thresholds</code></td>
+<td>numérico</td>
+<td>Distancia de dispersión (en metros) de la especie. Si es <code>NULL</code>, se calcula como la mediana entre nodos. También se puede estimar con la función <code>dispersal_distance</code>.</td>
+</tr>
+<tr class="even">
+<td><code>binary</code></td>
+<td>lógico</td>
+<td>Si es <code>TRUE</code>, se calcula conectividad binaria: nodos conectados (1) o no conectados (0) según el umbral de distancia. No usa <code>probability</code>.</td>
+</tr>
+<tr class="odd">
+<td><code>probability</code></td>
+<td>numérico</td>
+<td>Probabilidad de conexión asociada al umbral de distancia. Por ejemplo, <code>0.5</code> para distancias medianas, <code>0.05</code> para distancias máximas. Por defecto es <code>0.5</code> si es <code>NULL</code>.</td>
+</tr>
+<tr class="even">
+<td><code>rasterparallel</code></td>
+<td>lógico</td>
+<td>Si <code>nodes</code> es un raster, permite asignar las métricas calculadas al raster de nodos. Útil cuando la resolución es menor a 100 m².</td>
+</tr>
+<tr class="odd">
+<td><code>write</code></td>
+<td>texto</td>
+<td>Ruta y prefijo para guardar los resultados (<code>sf</code>). Ejemplo: <code>"C:/ejemplo"</code>.</td>
+</tr>
+<tr class="even">
+<td><code>intern</code></td>
+<td>lógico</td>
+<td>Muestra el progreso del proceso. Por defecto <code>TRUE</code>. Puede no llegar al 100% si el cálculo es muy rápido.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div id="ejemplo-1" class="section level2" number="3.3">
+<h2>
+<span class="header-section-number">3.3</span> Ejemplo 1<a class="anchor" aria-label="anchor" href="#ejemplo-1"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/connectscape/Makurhini">Makurhini</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"habitat_nodes"</span>, package <span class="op">=</span> <span class="st">"Makurhini"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">habitat_nodes</span><span class="op">)</span> <span class="co"># Number of patches</span></span>
+<span><span class="co">#&gt; [1] 404</span></span>
+<span><span class="co">#Two distance threshold,</span></span>
+<span><span class="va">centrality_test</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_RMCentrality.html">MK_RMCentrality</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">habitat_nodes</span>,</span>
+<span>                                distance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"centroid"</span><span class="op">)</span>,</span>
+<span>                                 distance_thresholds <span class="op">=</span> <span class="fl">10000</span>,</span>
+<span>                                 probability <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>                                 write <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Done!</span></span>
+<span><span class="va">centrality_test</span></span>
+<span><span class="co">#&gt; Simple feature collection with 404 features and 8 fields</span></span>
+<span><span class="co">#&gt; Geometry type: POLYGON</span></span>
+<span><span class="co">#&gt; Dimension:     XY</span></span>
+<span><span class="co">#&gt; Bounding box:  xmin: -108954 ymin: 2025032 xmax: 202330.2 ymax: 2198936</span></span>
+<span><span class="co">#&gt; Projected CRS: NAD_1927_Albers</span></span>
+<span><span class="co">#&gt; First 10 features:</span></span>
+<span><span class="co">#&gt;    Id strength        eigen      close  BWC cluster memb.rw</span></span>
+<span><span class="co">#&gt; 1   1 30228524 0.0010435836 0.03840356    0       1       6</span></span>
+<span><span class="co">#&gt; 2   2 21600031 0.0006195356 0.03995935    1       1       6</span></span>
+<span><span class="co">#&gt; 3   3 29320545 0.0009026418 0.03831019    0       1       6</span></span>
+<span><span class="co">#&gt; 4   4 16499522 0.0005867564 0.04187906   23       1       6</span></span>
+<span><span class="co">#&gt; 5   5 26068911 0.0011987437 0.04240465    0       1       6</span></span>
+<span><span class="co">#&gt; 6   6 12737692 0.0005630043 0.04627714   17       1       6</span></span>
+<span><span class="co">#&gt; 7   7 12497243 0.0005499038 0.04634291   15       1       6</span></span>
+<span><span class="co">#&gt; 8   8 13198398 0.0005859873 0.04607765    0       1       6</span></span>
+<span><span class="co">#&gt; 9   9 22276433 0.0010276194 0.04296412  567       1       6</span></span>
+<span><span class="co">#&gt; 10 10 12804425 0.0004306005 0.04405417 1063       1       6</span></span>
+<span><span class="co">#&gt;    memb.louvain                       geometry</span></span>
+<span><span class="co">#&gt; 1             1 POLYGON ((54911.05 2035815,...</span></span>
+<span><span class="co">#&gt; 2             1 POLYGON ((44591.28 2042209,...</span></span>
+<span><span class="co">#&gt; 3             1 POLYGON ((46491.11 2042467,...</span></span>
+<span><span class="co">#&gt; 4             1 POLYGON ((54944.49 2048163,...</span></span>
+<span><span class="co">#&gt; 5             2 POLYGON ((80094.28 2064140,...</span></span>
+<span><span class="co">#&gt; 6             2 POLYGON ((69205.24 2066394,...</span></span>
+<span><span class="co">#&gt; 7             2 POLYGON ((68554.2 2066632, ...</span></span>
+<span><span class="co">#&gt; 8             2 POLYGON ((69995.53 2066880,...</span></span>
+<span><span class="co">#&gt; 9             2 POLYGON ((79368.68 2067324,...</span></span>
+<span><span class="co">#&gt; 10            1 POLYGON ((23378.32 2067554,...</span></span></code></pre></div>
+<p>Exploremos otra forma de hacer el plot usando intervalos</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="%C3%ADndices-de-centralidad.html#cb42-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ClassInt"</span>), dependencies <span class="ot">=</span> <span class="cn">TRUE</span><span class="er">)</span></span>
+<span id="cb42-2"><a href="%C3%ADndices-de-centralidad.html#cb42-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"dplyr"</span>), dependencies <span class="ot">=</span> <span class="cn">TRUE</span><span class="er">)</span></span></code></pre></div>
+<ul>
+<li>Strength:</li>
+</ul>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/classInt/">classInt</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Adjuntando el paquete: 'dplyr'</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:igraph':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     as_data_frame, groups, union</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     filter, lag</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
+<span></span>
+<span><span class="co"># Calcular los intervalos de Jenks para strength</span></span>
+<span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu">classInt</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html">classIntervals</a></span><span class="op">(</span><span class="va">centrality_test</span><span class="op">$</span><span class="va">strength</span>, n <span class="op">=</span> <span class="fl">9</span>, style <span class="op">=</span> <span class="st">"quantile"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
+<span><span class="va">centrality_test</span> <span class="op">&lt;-</span> <span class="va">centrality_test</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>strength_q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">strength</span>,</span>
+<span>                              breaks <span class="op">=</span> <span class="va">breaks</span><span class="op">$</span><span class="va">brks</span>,</span>
+<span>                              include.lowest <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                              dig.lab <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span>  </span>
+<span></span>
+<span><span class="co"># Graficar en ggplot2 usando las clases Jenks</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paisaje</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">centrality_test</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">strength_q</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"RdYlGn"</span>, direction <span class="op">=</span> <span class="fl">1</span>, name <span class="op">=</span> <span class="st">"Fuerza (Jenks)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Centralidad a nivel de parche (Strength)"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"Strength\n(Jenks)"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="03-Centralidad_files/figure-html/unnamed-chunk-7-1.png" width="672"></div>
+<ul>
+<li>BWC:</li>
+</ul>
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu">classInt</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html">classIntervals</a></span><span class="op">(</span><span class="va">centrality_test</span><span class="op">$</span><span class="va">BWC</span>, n <span class="op">=</span> <span class="fl">9</span>, style <span class="op">=</span> <span class="st">"jenks"</span><span class="op">)</span></span>
+<span><span class="va">centrality_test</span> <span class="op">&lt;-</span> <span class="va">centrality_test</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>BWC_jenks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">BWC</span>,</span>
+<span>                              breaks <span class="op">=</span> <span class="va">breaks</span><span class="op">$</span><span class="va">brks</span>,</span>
+<span>                              include.lowest <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                              dig.lab <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paisaje</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">centrality_test</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">BWC_jenks</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"RdYlGn"</span>, direction <span class="op">=</span> <span class="fl">1</span>, name <span class="op">=</span> <span class="st">"BWC (Jenks)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Centralidad a nivel de parche (BWC)"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"BWC\n(Jenks)"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="03-Centralidad_files/figure-html/unnamed-chunk-8-1.png" width="672"></div>
+<ul>
+<li>Membresía por random walk:</li>
+</ul>
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paisaje</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">centrality_test</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">memb.rw</span><span class="op">)</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span></span>
+<span>    palette <span class="op">=</span> <span class="st">"Set3"</span>,</span>
+<span>    name <span class="op">=</span> <span class="st">"Membership RW"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Agrupación de parches (Random walks)"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"Membership RW"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="03-Centralidad_files/figure-html/unnamed-chunk-9-1.png" width="672"></div>
+<ul>
+<li>Membresía por Louvain:</li>
+</ul>
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paisaje</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">centrality_test</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">memb.louvain</span><span class="op">)</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span></span>
+<span>    palette <span class="op">=</span> <span class="st">"Set3"</span>,</span>
+<span>    name <span class="op">=</span> <span class="st">"Membership LV"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Agrupación de parches (Louvain)"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"Membership LV"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="03-Centralidad_files/figure-html/unnamed-chunk-10-1.png" width="672"></div>
+</div>
+<div id="ejemplo-2" class="section level2" number="3.4">
+<h2>
+<span class="header-section-number">3.4</span> Ejemplo 2<a class="anchor" aria-label="anchor" href="#ejemplo-2"><i class="fas fa-link"></i></a>
+</h2>
+<p>Usando más de un umbral de distancia</p>
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">centrality_test</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_RMCentrality.html">MK_RMCentrality</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">habitat_nodes</span>,</span>
+<span>                                distance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"centroid"</span><span class="op">)</span>,</span>
+<span>                                 distance_thresholds <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10000</span>, <span class="fl">100000</span><span class="op">)</span>,</span>
+<span>                                 probability <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>                                 write <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Done!</span></span>
+<span><span class="va">centrality_test</span></span>
+<span><span class="co">#&gt; $d10000</span></span>
+<span><span class="co">#&gt; Simple feature collection with 404 features and 8 fields</span></span>
+<span><span class="co">#&gt; Geometry type: POLYGON</span></span>
+<span><span class="co">#&gt; Dimension:     XY</span></span>
+<span><span class="co">#&gt; Bounding box:  xmin: -108954 ymin: 2025032 xmax: 202330.2 ymax: 2198936</span></span>
+<span><span class="co">#&gt; Projected CRS: NAD_1927_Albers</span></span>
+<span><span class="co">#&gt; First 10 features:</span></span>
+<span><span class="co">#&gt;    Id strength        eigen      close  BWC cluster memb.rw</span></span>
+<span><span class="co">#&gt; 1   1 30228524 0.0010435836 0.03840356    0       1       6</span></span>
+<span><span class="co">#&gt; 2   2 21600031 0.0006195356 0.03995935    1       1       6</span></span>
+<span><span class="co">#&gt; 3   3 29320545 0.0009026418 0.03831019    0       1       6</span></span>
+<span><span class="co">#&gt; 4   4 16499522 0.0005867564 0.04187906   23       1       6</span></span>
+<span><span class="co">#&gt; 5   5 26068911 0.0011987437 0.04240465    0       1       6</span></span>
+<span><span class="co">#&gt; 6   6 12737692 0.0005630043 0.04627714   17       1       6</span></span>
+<span><span class="co">#&gt; 7   7 12497243 0.0005499038 0.04634291   15       1       6</span></span>
+<span><span class="co">#&gt; 8   8 13198398 0.0005859873 0.04607765    0       1       6</span></span>
+<span><span class="co">#&gt; 9   9 22276433 0.0010276194 0.04296412  567       1       6</span></span>
+<span><span class="co">#&gt; 10 10 12804425 0.0004306005 0.04405417 1063       1       6</span></span>
+<span><span class="co">#&gt;    memb.louvain                       geometry</span></span>
+<span><span class="co">#&gt; 1             1 POLYGON ((54911.05 2035815,...</span></span>
+<span><span class="co">#&gt; 2             2 POLYGON ((44591.28 2042209,...</span></span>
+<span><span class="co">#&gt; 3             2 POLYGON ((46491.11 2042467,...</span></span>
+<span><span class="co">#&gt; 4             2 POLYGON ((54944.49 2048163,...</span></span>
+<span><span class="co">#&gt; 5             1 POLYGON ((80094.28 2064140,...</span></span>
+<span><span class="co">#&gt; 6             1 POLYGON ((69205.24 2066394,...</span></span>
+<span><span class="co">#&gt; 7             1 POLYGON ((68554.2 2066632, ...</span></span>
+<span><span class="co">#&gt; 8             1 POLYGON ((69995.53 2066880,...</span></span>
+<span><span class="co">#&gt; 9             1 POLYGON ((79368.68 2067324,...</span></span>
+<span><span class="co">#&gt; 10            2 POLYGON ((23378.32 2067554,...</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $`d1e+05`</span></span>
+<span><span class="co">#&gt; Simple feature collection with 404 features and 8 fields</span></span>
+<span><span class="co">#&gt; Geometry type: POLYGON</span></span>
+<span><span class="co">#&gt; Dimension:     XY</span></span>
+<span><span class="co">#&gt; Bounding box:  xmin: -108954 ymin: 2025032 xmax: 202330.2 ymax: 2198936</span></span>
+<span><span class="co">#&gt; Projected CRS: NAD_1927_Albers</span></span>
+<span><span class="co">#&gt; First 10 features:</span></span>
+<span><span class="co">#&gt;    Id strength     eigen     close BWC cluster memb.rw</span></span>
+<span><span class="co">#&gt; 1   1 958.4815 0.6679253 0.4207380   0       1       1</span></span>
+<span><span class="co">#&gt; 2   2 925.0415 0.6471542 0.4356561   0       1       1</span></span>
+<span><span class="co">#&gt; 3   3 960.2533 0.6700437 0.4197704   0       1       1</span></span>
+<span><span class="co">#&gt; 4   4 896.6891 0.6266304 0.4494531   0       1       1</span></span>
+<span><span class="co">#&gt; 5   5 871.2094 0.6057986 0.4632174   0       1       1</span></span>
+<span><span class="co">#&gt; 6   6 836.4790 0.5842254 0.4818295   0       1       1</span></span>
+<span><span class="co">#&gt; 7   7 836.5028 0.5843345 0.4818097   0       1       1</span></span>
+<span><span class="co">#&gt; 8   8 837.6158 0.5848721 0.4811889   0       1       1</span></span>
+<span><span class="co">#&gt; 9   9 858.0974 0.5971238 0.4701554   0       1       1</span></span>
+<span><span class="co">#&gt; 10 10 874.7611 0.6125436 0.4606972   0       1       1</span></span>
+<span><span class="co">#&gt;    memb.louvain                       geometry</span></span>
+<span><span class="co">#&gt; 1             1 POLYGON ((54911.05 2035815,...</span></span>
+<span><span class="co">#&gt; 2             1 POLYGON ((44591.28 2042209,...</span></span>
+<span><span class="co">#&gt; 3             1 POLYGON ((46491.11 2042467,...</span></span>
+<span><span class="co">#&gt; 4             1 POLYGON ((54944.49 2048163,...</span></span>
+<span><span class="co">#&gt; 5             1 POLYGON ((80094.28 2064140,...</span></span>
+<span><span class="co">#&gt; 6             1 POLYGON ((69205.24 2066394,...</span></span>
+<span><span class="co">#&gt; 7             1 POLYGON ((68554.2 2066632, ...</span></span>
+<span><span class="co">#&gt; 8             1 POLYGON ((69995.53 2066880,...</span></span>
+<span><span class="co">#&gt; 9             1 POLYGON ((79368.68 2067324,...</span></span>
+<span><span class="co">#&gt; 10            1 POLYGON ((23378.32 2067554,...</span></span></code></pre></div>
+<p>10 km:</p>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">centrality_test</span><span class="op">$</span><span class="va">d10000</span><span class="op">[</span><span class="st">"BWC"</span><span class="op">]</span>, breaks <span class="op">=</span> <span class="st">"jenks"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="03-Centralidad_files/figure-html/unnamed-chunk-12-1.png" width="672"></div>
+<p>100 km:</p>
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">centrality_test</span><span class="op">$</span><span class="va">`d1e+05`</span><span class="op">[</span><span class="st">"BWC"</span><span class="op">]</span>, breaks <span class="op">=</span> <span class="st">"quantile"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="03-Centralidad_files/figure-html/unnamed-chunk-13-1.png" width="672"></div>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="estad%C3%ADsticas-de-fragmentaci%C3%B3n-del-paisaje.html"><span class="header-section-number">2</span> Estadísticas de fragmentación del paisaje</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#%C3%ADndices-de-centralidad"><span class="header-section-number">3</span> Índices de centralidad</a></li>
+<li><a class="nav-link" href="#insumos-y-paquetes"><span class="header-section-number">3.1</span> Insumos y paquetes</a></li>
+<li>
+<a class="nav-link" href="#mk_rmcentrality"><span class="header-section-number">3.2</span> MK_RMCentrality()</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#centralidad-de-grado-degree"><span class="header-section-number">3.2.1</span> 1. Centralidad de Grado (degree)</a></li>
+<li><a class="nav-link" href="#fuerza-strength-para-redes-ponderadas"><span class="header-section-number">3.2.2</span> 2. Fuerza (strength) (para redes ponderadas)</a></li>
+<li><a class="nav-link" href="#centralidad-de-vector-propio-eigen"><span class="header-section-number">3.2.3</span> 3. Centralidad de Vector Propio (eigen)</a></li>
+<li><a class="nav-link" href="#centralidad-de-cercan%C3%ADa-close"><span class="header-section-number">3.2.4</span> 4. Centralidad de Cercanía (close)</a></li>
+<li><a class="nav-link" href="#medidas-mediales-qui%C3%A9n-est%C3%A1-en-medio-o-conecta-otros-nodos"><span class="header-section-number">3.2.5</span> Medidas Mediales (¿Quién está en medio o conecta otros nodos?)</a></li>
+<li><a class="nav-link" href="#detecci%C3%B3n-de-comunidades-qui%C3%A9n-pertenece-al-mismo-grupo"><span class="header-section-number">3.2.6</span> Detección de Comunidades (¿Quién pertenece al mismo grupo?)</a></li>
+<li><a class="nav-link" href="#la-funci%C3%B3n"><span class="header-section-number">3.2.7</span> La función</a></li>
+<li><a class="nav-link" href="#descripci%C3%B3n-de-los-argumentos-de-la-funci%C3%B3n"><span class="header-section-number">3.2.8</span> Descripción de los argumentos de la función</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#ejemplo-1"><span class="header-section-number">3.3</span> Ejemplo 1</a></li>
+<li><a class="nav-link" href="#ejemplo-2"><span class="header-section-number">3.4</span> Ejemplo 2</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/OscarGOGO/Makurhini_manual_esp/blob/master/03-Centralidad.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/OscarGOGO/Makurhini_manual_esp/edit/master/03-Centralidad.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Manual de uso de Makurhini</strong>" was written by Oscar Godínez Gómez. It was last built on 2025-07-16.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

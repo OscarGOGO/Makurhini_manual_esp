@@ -1,0 +1,414 @@
+# Estadísticas de fragmentación del paisaje
+
+Exploraremos la función **`MK_Fragmentation()`** para caracterizar la composición y la configuración espacial de los parches en nuestro paisaje.
+
+La función calcula **ocho métricas a nivel de nodo** (como el área de nodo, el porcentaje de borde y la dimensión fractal) y **13 estadísticas de fragmentación a nivel de paisaje** (como el número de nodos, el tamaño medio, la densidad de borde y el tamaño efectivo de la malla).
+
+Las entradas incluyen un **objeto vectorial** que representa los nodos del paisaje y un parámetro que define la distancia o profundidad de la influencia del borde (es decir, la distancia al borde del nodo).
+
+Los resultados consisten en un **archivo vectorial tipo poligonal** que contiene métricas a nivel de nodo y **una tabla** que detalla las métricas a nivel de paisaje.
+
+## Inputs
+
+Usaremos la librerias sf, para trabajar con un shapefile que contiene 404 parches de vegetación con la menor alteración o signos de degradación en un estado de México llamado Michoacán. Tambien cargaremos el paisaje de estudio donde se encuentran los parches y que fue delimitado usando el limite politico del estado y la región fisiográfica denominada Eje Neovolcánico.
+
+El shapefile lo pueden encontrar en la siguiente carpeta del drive:
+
+<https://drive.google.com/drive/folders/1yJcxk2JsEfVjqBx7QM6SV5sIbq7YD1iX?usp=sharing>
+
+```{r echo=FALSE}
+library(Makurhini)
+library(sf)
+
+habitat_nodes <- read_sf("C:/Users/oscta/OneDrive/Documents/RedBioma/Clase_3/ejemplo_insumos/habitat_nodes.shp")
+nrow(habitat_nodes)
+paisaje <- read_sf("C:/Users/oscta/OneDrive/Documents/RedBioma/Clase_3/ejemplo_insumos/paisaje.shp")
+
+```
+
+
+```{r eval=FALSE}
+library(Makurhini)
+library(sf)
+
+habitat_nodes <- read_sf("C:/Users/habitat_nodes.shp")
+nrow(habitat_nodes)
+paisaje <- read_sf("C:/Users/paisaje.shp")
+
+```
+
+
+
+Para gráficarlo necesitamos ggplot2, favor de instalarlo si no lo tiene entre sus paquetes.
+
+```{r eval=FALSE}
+install.packages("ggplot2"), dependencies = TRUE)
+install.packages("RColorBrewer"), dependencies = TRUE)
+
+```
+
+```{r}
+library(ggplot2)
+library(RColorBrewer)
+ggplot() +  
+  geom_sf(data = paisaje, aes(color = "Study area"), fill = NA, color = "black") +
+  geom_sf(data = habitat_nodes, aes(color = "Parches"), fill = "forestgreen", linewidth = 0.5) +
+  scale_color_manual(name = "", values = "black")+
+  theme_minimal() +
+  theme(axis.title.x = element_blank(),
+        axis.title.y = element_blank())
+
+```
+
+En caso de necesitar abrir otro vector (e.g., .shp, .gpkg) necesitan usar la fución `read_sf()` del paquete `sf`, la función `shapefile()` del paquete `raster`, o la funcion `vect()` del paquete `terra`.
+
+Para abrirlo solo necesitan colocar la dirección de su archivo, el nombre y la extensión, ejemplo:
+
+-   `vegetation_patches <- sf::read_sf("D:/Datos/vegetation_patches.shp")`
+
+-   `vegetation_patches <- raster::shapefile("D:/Datos/vegetation_patches.shp")`
+
+-   `vegetation_patches <- terra::vect("D:/Datos/vegetation_patches.shp")`
+
+Para definir el borde usaremos una distancia de 500 m a partir del límite de los parches (Haddad et al. 2015).
+
+![](Imagen1.png){width="503"}
+
+## Funcion
+
+```{r eval=FALSE}
+MK_Fragmentation(
+  nodes = NULL,
+  edge_distance = 500,
+  min_node_area = 100,
+  landscape_area = NULL,
+  area_unit = "ha",
+  perimeter_unit = "km",
+  plot = FALSE,
+  write = NULL
+)
+```
+
+
+Los argumento de la función que usaremos son:
+
+-   *nodes* = objeto con los parches,
+-   *edge_distance* = profundidad del efecto de borde.
+-   *min_node_area* = Área mínima del nodo utilizada para calcular el número de nodos con un área menor a la proporcionada. Por defecto igual a 100 km² (Haddad et al. 2015).
+-   *landscape_area* = Área total del paisaje de estudio (opcional). Si se deja como NULL, se utilizará el área total de los nodos. La unidad de área debe ser igual a la seleccionada en el párametro *area_unit*.
+-   *area_unit* = Puedes establecer una unidad de área (por ejemplo, "km2", "cm2", "m2", "ha"; ver unit_convert). Por defecto es kilómetros cuadrados "km2".
+-   *perimeter_unit* = Puedes establecer una unidad de perímetro (por ejemplo, "km", "cm", "m", "ha"; ver unit_convert). Por defecto es kilómetros "km".
+-   *plot* = Genera histogramas básicos y un mapa de área núcleo - borde.
+-   *write* = Guarda la tabla (estadísticas del paisaje), el objeto sf (estadísticas de parches/nodos) y las gráficas. Es necesario especificar la ruta y el prefijo. Por ejemplo, para guardar en la ruta "C:/Folder" con el prefijo "Fragmentation": "C:/Folder/Fragmentation"
+
+```{r  eval=FALSE}
+MK_Fragmentation()
+```
+
+## Ejercicio 1
+
+Estimamos el área del paisaje de estudio.
+
+```{r }
+area_paisaje <- st_area(paisaje) 
+area_paisaje <- unit_convert(area_paisaje, "m2", "ha") 
+
+```
+
+Aplicamos la función.
+
+```{r }
+Fragmentacion <- MK_Fragmentation(nodes = habitat_nodes, 
+                                  edge_distance = 500,
+                                  min_node_area = 100,
+                                  landscape_area = area_paisaje,
+                                  area_unit = "ha",
+                                  perimeter_unit = "km",
+                                  plot = TRUE)
+```
+
+### Estadisticos a nivel de parche
+
+El primer resultado "Patch statistics shapefile" es un shapefile con estadísticos de fragmentación a nivel de parche.
+
+```{r}
+Fragmentacion$`Patch statistics shapefile`
+```
+
+Son espacialmente explicitos y podemos visualizarlos con librerias como ggplot2
+
+-   \% de área núcleo:
+
+```{r }
+ggplot() +  
+  geom_sf(data = paisaje, aes(color = "Study area"), fill = NA, color = "black") +
+  geom_sf(data = Fragmentacion$`Patch statistics shapefile`, aes(fill = CAPercent), color = "black", size = 0.1) +
+  scale_fill_distiller(
+    palette = "RdYlGn",
+    direction = 1, 
+    name = "% Área Núcleo"
+  ) +
+  theme_minimal() +
+  labs(
+    title = "Fragmentación a nivel de parche",
+    fill = "% Área Núcleo"
+  ) +
+  theme(
+    legend.position = "right",
+    plot.title = element_text(hjust = 0.5)
+  )
+
+```
+
+-   \% de borde
+
+```{r }
+ggplot() +  
+  geom_sf(data = paisaje, aes(color = "Study area"), fill = NA, color = "black") +
+  geom_sf(data = Fragmentacion$`Patch statistics shapefile`, aes(fill = EdgePercent), color = "black", size = 0.1) +
+  scale_fill_distiller(
+    palette = "RdYlGn",
+    direction = -1, 
+    name = "% Borde"
+  ) +
+  theme_minimal() +
+  labs(
+    title = "Fragmentación a nivel de parche",
+    fill = "% Borde"
+  ) +
+  theme(
+    legend.position = "right",
+    plot.title = element_text(hjust = 0.5)
+  )
+```
+
+-   Perimeter
+
+```{r }
+ggplot() +  
+  geom_sf(data = paisaje, aes(color = "Study area"), fill = NA, color = "black") +
+  geom_sf(data = Fragmentacion$`Patch statistics shapefile`, aes(fill = Perimeter), color = "black", size = 0.1) +
+  scale_fill_distiller(
+    palette = "RdYlGn",
+    direction = -1, 
+    name = "Perímetro"
+  ) +
+  theme_minimal() +
+  labs(
+    title = "Fragmentación a nivel de parche",
+    fill = "Perímetro"
+  ) +
+  theme(
+    legend.position = "right",
+    plot.title = element_text(hjust = 0.5)
+  )
+
+```
+
+-   Perimeter-Area Ratio
+
+```{r }
+ggplot() +  
+  geom_sf(data = paisaje, aes(color = "Study area"), fill = NA, color = "black") +
+  geom_sf(data = Fragmentacion$`Patch statistics shapefile`, aes(fill = PARA), color = "black", size = 0.1) +
+  scale_fill_distiller(
+    palette = "RdYlGn",
+    direction = -1, 
+    name = "PARA"
+  ) +
+  theme_minimal() +
+  labs(
+    title = "Fragmentación a nivel de parche",
+    fill = "PARA"
+  ) +
+  theme(
+    legend.position = "right",
+    plot.title = element_text(hjust = 0.5)
+  )
+```
+
+-   Shape Index
+
+```{r }
+ggplot() +  
+  geom_sf(data = paisaje, aes(color = "Study area"), fill = NA, color = "black") +
+  geom_sf(data = Fragmentacion$`Patch statistics shapefile`, aes(fill = ShapeIndex), color = "black", size = 0.1) +
+  scale_fill_distiller(
+    palette = "PiYG",
+    direction = -1, 
+    name = "Shape Index"
+  ) +
+  theme_minimal() +
+  labs(
+    title = "Fragmentación a nivel de parche",
+    fill = "Shape Index"
+  ) +
+  theme(
+    legend.position = "right",
+    plot.title = element_text(hjust = 0.5)
+  )
+```
+
+-   Fractal Dimension Index
+
+```{r }
+ggplot() +  
+  geom_sf(data = paisaje, aes(color = "Study area"), fill = NA, color = "black") +
+  geom_sf(data = Fragmentacion$`Patch statistics shapefile`, aes(fill = FRAC), color = "black", size = 0.1) +
+  scale_fill_distiller(
+    palette = "PiYG",
+    direction = -1, 
+    name = "FRAC"
+  ) +
+  theme_minimal() +
+  labs(
+    title = "Fragmentación a nivel de parche",
+    fill = "FRAC"
+  ) +
+  theme(
+    legend.position = "right",
+    plot.title = element_text(hjust = 0.5)
+  )
+```
+
+### Estadísticos a nivel de paisaje
+
+Los resultados se presentan a manera de una lista, el primer resultado se llama "Summary landscape metrics (Viewer Panel)" y tiene estadisticos de fragmentación a nivel de paisaje.
+
+```{r }
+class(Fragmentacion)
+Fragmentacion$`Summary landscape metrics (Viewer Panel)`
+```
+
+![](5.png)![](6.png) ![](7.png)
+
+La densidad de malla efectiva (MESH) es una medida del grado en que el movimiento entre diferentes partes del paisaje se ve interrumpido por una Fragmentación. El índice MESH se ha popularizado debido a su facilidad de interpretación. Si conocemos el área de nuestro paisaje, entonces podemos estimar el porcentage de fragmentación:
+
+```{r}
+mesh <- as.data.frame(Fragmentacion[[1]])
+mesh <- mesh[13,2]
+mesh_porcentage <-  (area_paisaje - mesh) * 100 / area_paisaje 
+mesh_porcentage
+```
+
+## Ejercicio 2
+
+Hagamos un loop en donde exploramos distintas distancias de profundidad del efecto borde.
+
+```{r eval=FALSE}
+#Loop edge distance
+library(purrr)
+Fragmentacion.2 <- map_dfr(seq(100, 1000, 100), function(x){
+  x.1 <- MK_Fragmentation(nodes = habitat_nodes, 
+                          edge_distance = x, plot = FALSE)[[2]]
+  CA <- mean(x.1$CAPercent)
+  Edge <- mean(x.1$EdgePercent)
+  x.2 <- rbind(data.frame('Edge distance' = x, Type = "Core Area", Percentage = CA),
+                     data.frame('Edge distance' = x, Type = "Edge", Percentage = Edge))
+  return(x.2)
+}, .progress = TRUE)
+
+
+Fragmentacion.2 
+```
+
+```{r echo=FALSE}
+Fragmentacion.2 <- readRDS("Fragmentacion.rds")
+Fragmentacion.2
+```
+
+El porcentaje promedio de área núcleo (ausencia de efecto de borde) para todos los parches disminuye en más del 70% cuando se considera un efecto de borde con una penetración de 1 km.
+
+| Distancia de profundidad | %Área Núcleo |
+|--------------------------|:------------:|
+| 100                      |    65.76%    |
+| 500                      |    12.86%    |
+| 1000                     |    3.63%     |
+
+Podemos gráficar el promedio del porcentaje de área npucleo de los parches y el porcentaje del borde de los parches (%área núcleo + % de borde = 100%).
+
+```{r }
+library(ggplot2)
+ggplot(Fragmentacion.2, aes(x=Edge.distance, y=Percentage, group=Type)) +
+  geom_line(aes(color=Type))+
+  geom_point(aes(color=Type))+ ylim(0,100)+
+  scale_x_continuous("Distancia", labels = as.character(Fragmentacion.2$Edge.distance), breaks = Fragmentacion.2$Edge.distance)+
+  scale_color_brewer(palette="Dark2")+
+  theme_classic()
+```
+
+## Ejercicio 3
+
+Ahora probemos los alcances de la función estimando el índice MESH sobre un grid.
+
+Grid de 40 km2
+
+```{r}
+Grid_test <- make_grid(x = paisaje, hexagonal = FALSE,
+                  cell_area = unit_convert(40, "km2", "m2"),
+                  clip = TRUE)
+plot(Grid_test)
+```
+
+Estimar MESH usando un loop sencillo tipo `for()`
+
+```{r}
+#Variable dummy
+Grid_test$MESH <- 0
+
+```
+
+```{r eval=FALSE}
+
+for(i in 1:nrow(test)){
+  cat(paste0(i, " de ", nrow(test)))
+  grid.i <- Grid_test[i,]
+  nodes.i <- suppressWarnings(st_intersection(habitat_nodes, grid.i))
+  
+  if(nrow(nodes.i) > 0){
+    area_paisaje.i <- st_area(grid.i)
+    area_paisaje.i <- unit_convert(area_paisaje.i, "m2", "ha")
+    Fragmentacion.i <- MK_Fragmentation(nodes = nodes.i, 
+                                      edge_distance = 500,
+                                      min_node_area = 100,
+                                      landscape_area = ,
+                                      area_unit = "ha",
+                                      perimeter_unit = "km",
+                                      plot = FALSE)
+    mesh <- as.data.frame(Fragmentacion.i[[1]])
+    mesh <- mesh[13,2]
+    mesh_porcentage <-  (area_paisaje.i - mesh)*100/area_paisaje.i 
+    Grid_test$MESH[i] <- mesh_porcentage
+  } else {
+    Grid_test$MESH[i] <- 100
+  }
+}
+
+```
+
+```{r echo=FALSE}
+Grid_test <- read_sf("MESH.gpkg")
+```
+
+Lo podemos visualizar con `ggplot2`
+
+```{r}
+ggplot() +  
+  geom_sf(data = paisaje, aes(color = "Study area"), fill = NA, color = "black") +
+  geom_sf(data = Grid_test, aes(fill = MESH), color = "black", size = 0.1) +
+  scale_fill_distiller(
+    palette = "RdYlGn",
+    direction = -1, 
+    name = "% Fragmentación"
+  ) +
+  theme_minimal() +
+  labs(
+    title = "GRID fragmentación (MESH)",
+    fill = "% Fragmentación"
+  ) +
+  theme(
+    legend.position = "right",
+    plot.title = element_text(hjust = 0.5)
+  )
+
+```
