@@ -837,8 +837,8 @@ Estimar MESH usando un loop sencillo tipo \texttt{for()}
 \begin{Shaded}
 \begin{Highlighting}[]
 
-\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{nrow}\NormalTok{(test))\{}
-  \FunctionTok{cat}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(i, }\StringTok{" de "}\NormalTok{, }\FunctionTok{nrow}\NormalTok{(test)))}
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{nrow}\NormalTok{(Grid\_test))\{}
+  \FunctionTok{cat}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(i, }\StringTok{" de "}\NormalTok{, }\FunctionTok{nrow}\NormalTok{(Grid\_test), }\StringTok{"}\SpecialCharTok{\textbackslash{}r}\StringTok{"}\NormalTok{))}
 \NormalTok{  grid.i }\OtherTok{\textless{}{-}}\NormalTok{ Grid\_test[i,]}
 \NormalTok{  nodes.i }\OtherTok{\textless{}{-}} \FunctionTok{suppressWarnings}\NormalTok{(}\FunctionTok{st\_intersection}\NormalTok{(habitat\_nodes, grid.i))}
   
@@ -953,15 +953,6 @@ La función \textbf{\texttt{MK\_RMCentrality()}} calcula medidas radiales (es de
 
 Las medidas o índices que estima son los siguientes:
 
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Centralidad de Grado (degree)}: Cuántas conexiones directas tiene un nodo. Es como contar cuántos parches de hábitat están potencialmente conectados con el parche focal.
-  \textbf{Más conexiones = mayor grado = más centralidad.}
-\item
-  \textbf{Centralidad de Grado (degree)}
-\end{itemize}
-
 \subsection{\texorpdfstring{1. Centralidad de Grado (\texttt{degree})}{1. Centralidad de Grado (degree)}}\label{centralidad-de-grado-degree}
 
 \begin{quote}
@@ -971,7 +962,7 @@ Cuántas conexiones directas tiene un nodo.
 \begin{itemize}
 \tightlist
 \item
-  Es como contar cuántos parches de hábitat o áreas protegidas están conectados con uno.
+  Es como contar cuántos parches de hábitat o áreas protegidas están conectados con cada parche.
 \item
   Más conexiones = mayor grado = más centralidad.
 \end{itemize}
@@ -993,7 +984,7 @@ Como el grado, pero suma los \textbf{pesos} (o probabilidades) de los enlaces.
 \subsection{\texorpdfstring{3. Centralidad de Vector Propio (\texttt{eigen})}{3. Centralidad de Vector Propio (eigen)}}\label{centralidad-de-vector-propio-eigen}
 
 \begin{quote}
-Mide cuán conectado está un nodo con \textbf{otros nodos importantes}.
+Mide cuán conectado está un nodo con \textbf{otros nodos importantes para la conectividad}.
 \end{quote}
 
 \begin{itemize}
@@ -1015,7 +1006,7 @@ Qué tan cerca está un nodo de todos los demás.
 \item
   Se calcula como el inverso de la suma de distancias a todos los demás nodos.
 \item
-  Los nodos con alta cercanía pueden \textbf{difundir o recibir información rápidamente}.
+  Los nodos con alta cercanía pueden \textbf{difundir o recibir flujo rápidamente}.
 \end{itemize}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
@@ -1031,7 +1022,7 @@ Cuántas veces un nodo se encuentra \textbf{en las rutas más cortas} entre otro
 \begin{itemize}
 \tightlist
 \item
-  Nodos con alta intermediación actúan como puentes o \textbf{cuellos de botella}.
+  Nodos con alta intermediación actúan como puentes (\textbf{stepping stones}) o \textbf{cuellos de botella}.
 \item
   Muy importantes para la conectividad --- si se eliminan, pueden fragmentar la red.
 \end{itemize}
@@ -1070,7 +1061,7 @@ Divide la red en comunidades para \textbf{maximizar la modularidad} (qué tan se
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsection{La función}\label{la-funciuxf3n}
+\subsection{La función (no correr)}\label{la-funciuxf3n-no-correr}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1084,7 +1075,6 @@ Divide la red en comunidades para \textbf{maximizar la modularidad} (qué tan se
   \AttributeTok{write =} \ConstantTok{NULL}\NormalTok{,}
   \AttributeTok{intern =} \ConstantTok{TRUE}
 \NormalTok{)}
-\NormalTok{Ar}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1152,15 +1142,15 @@ Descripción
 \CommentTok{\#\textgreater{} 10 10 12804425 0.0004306005 0.04405417 1063       1       6}
 \CommentTok{\#\textgreater{}    memb.louvain                       geometry}
 \CommentTok{\#\textgreater{} 1             1 POLYGON ((54911.05 2035815,...}
-\CommentTok{\#\textgreater{} 2             1 POLYGON ((44591.28 2042209,...}
-\CommentTok{\#\textgreater{} 3             1 POLYGON ((46491.11 2042467,...}
-\CommentTok{\#\textgreater{} 4             1 POLYGON ((54944.49 2048163,...}
-\CommentTok{\#\textgreater{} 5             2 POLYGON ((80094.28 2064140,...}
-\CommentTok{\#\textgreater{} 6             2 POLYGON ((69205.24 2066394,...}
-\CommentTok{\#\textgreater{} 7             2 POLYGON ((68554.2 2066632, ...}
-\CommentTok{\#\textgreater{} 8             2 POLYGON ((69995.53 2066880,...}
-\CommentTok{\#\textgreater{} 9             2 POLYGON ((79368.68 2067324,...}
-\CommentTok{\#\textgreater{} 10            1 POLYGON ((23378.32 2067554,...}
+\CommentTok{\#\textgreater{} 2             2 POLYGON ((44591.28 2042209,...}
+\CommentTok{\#\textgreater{} 3             2 POLYGON ((46491.11 2042467,...}
+\CommentTok{\#\textgreater{} 4             2 POLYGON ((54944.49 2048163,...}
+\CommentTok{\#\textgreater{} 5             1 POLYGON ((80094.28 2064140,...}
+\CommentTok{\#\textgreater{} 6             1 POLYGON ((69205.24 2066394,...}
+\CommentTok{\#\textgreater{} 7             1 POLYGON ((68554.2 2066632, ...}
+\CommentTok{\#\textgreater{} 8             1 POLYGON ((69995.53 2066880,...}
+\CommentTok{\#\textgreater{} 9             1 POLYGON ((79368.68 2067324,...}
+\CommentTok{\#\textgreater{} 10            2 POLYGON ((23378.32 2067554,...}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1349,7 +1339,7 @@ Usando más de un umbral de distancia
 \CommentTok{\#\textgreater{} 1             1 POLYGON ((54911.05 2035815,...}
 \CommentTok{\#\textgreater{} 2             2 POLYGON ((44591.28 2042209,...}
 \CommentTok{\#\textgreater{} 3             2 POLYGON ((46491.11 2042467,...}
-\CommentTok{\#\textgreater{} 4             1 POLYGON ((54944.49 2048163,...}
+\CommentTok{\#\textgreater{} 4             2 POLYGON ((54944.49 2048163,...}
 \CommentTok{\#\textgreater{} 5             1 POLYGON ((80094.28 2064140,...}
 \CommentTok{\#\textgreater{} 6             1 POLYGON ((69205.24 2066394,...}
 \CommentTok{\#\textgreater{} 7             1 POLYGON ((68554.2 2066632, ...}

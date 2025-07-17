@@ -21,7 +21,7 @@ centralidad-de-intermediación-bwc
 detección-de-comunidades-quién-pertenece-al-mismo-grupo
 caminatas-aleatorias-cortas-memb.rw
 algoritmo-de-louvain-memb.louvain
-la-función
+la-función-no-correr
 descripción-de-los-argumentos-de-la-función
 ejemplo-1
 ejemplo-2

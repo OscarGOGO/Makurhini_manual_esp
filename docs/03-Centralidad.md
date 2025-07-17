@@ -61,14 +61,10 @@ La función **`MK_RMCentrality()`** calcula medidas radiales (es decir, grado, f
 
 Las medidas o índices que estima son los siguientes:
 
--   **Centralidad de Grado (degree)**: Cuántas conexiones directas tiene un nodo. Es como contar cuántos parches de hábitat están potencialmente conectados con el parche focal.
-**Más conexiones = mayor grado = más centralidad.**
--  **Centralidad de Grado (degree)**
-
 ### 1. Centralidad de Grado (`degree`)
 > Cuántas conexiones directas tiene un nodo.
 
-- Es como contar cuántos parches de hábitat o áreas protegidas están conectados con uno.
+- Es como contar cuántos parches de hábitat o áreas protegidas están conectados con cada parche.
 - Más conexiones = mayor grado = más centralidad.
 
 ### 2. Fuerza (`strength`) *(para redes ponderadas)*
@@ -78,7 +74,7 @@ Las medidas o índices que estima son los siguientes:
 - Un nodo con pocas pero fuertes conexiones puede ser más central que uno con muchas pero débiles.
 
 ### 3. Centralidad de Vector Propio (`eigen`)
-> Mide cuán conectado está un nodo con **otros nodos importantes**.
+> Mide cuán conectado está un nodo con **otros nodos importantes para la conectividad**.
 
 - Un nodo es importante si está conectado a otros nodos que también lo son.
 - Útil para detectar “nodos influyentes” en la red.
@@ -87,7 +83,7 @@ Las medidas o índices que estima son los siguientes:
 > Qué tan cerca está un nodo de todos los demás.
 
 - Se calcula como el inverso de la suma de distancias a todos los demás nodos.
-- Los nodos con alta cercanía pueden **difundir o recibir información rápidamente**.
+- Los nodos con alta cercanía pueden **difundir o recibir flujo rápidamente**.
 
 ---
 
@@ -96,7 +92,7 @@ Las medidas o índices que estima son los siguientes:
 #### 5. Centralidad de Intermediación (`BWC`)
 > Cuántas veces un nodo se encuentra **en las rutas más cortas** entre otros nodos.
 
-- Nodos con alta intermediación actúan como puentes o **cuellos de botella**.
+- Nodos con alta intermediación actúan como puentes (**stepping stones**) o **cuellos de botella**.
 - Muy importantes para la conectividad — si se eliminan, pueden fragmentar la red.
 
 ---
@@ -117,7 +113,7 @@ Las medidas o índices que estima son los siguientes:
 
 ---
 
-### La función
+### La función (no correr)
 
 
 ``` r
@@ -131,7 +127,6 @@ MK_RMCentrality(
   write = NULL,
   intern = TRUE
 )
-Ar
 ```
 
 
@@ -187,15 +182,15 @@ centrality_test
 #> 10 10 12804425 0.0004306005 0.04405417 1063       1       6
 #>    memb.louvain                       geometry
 #> 1             1 POLYGON ((54911.05 2035815,...
-#> 2             2 POLYGON ((44591.28 2042209,...
-#> 3             2 POLYGON ((46491.11 2042467,...
-#> 4             2 POLYGON ((54944.49 2048163,...
-#> 5             1 POLYGON ((80094.28 2064140,...
-#> 6             1 POLYGON ((69205.24 2066394,...
-#> 7             1 POLYGON ((68554.2 2066632, ...
-#> 8             1 POLYGON ((69995.53 2066880,...
-#> 9             1 POLYGON ((79368.68 2067324,...
-#> 10            2 POLYGON ((23378.32 2067554,...
+#> 2             1 POLYGON ((44591.28 2042209,...
+#> 3             1 POLYGON ((46491.11 2042467,...
+#> 4             1 POLYGON ((54944.49 2048163,...
+#> 5             2 POLYGON ((80094.28 2064140,...
+#> 6             2 POLYGON ((69205.24 2066394,...
+#> 7             2 POLYGON ((68554.2 2066632, ...
+#> 8             2 POLYGON ((69995.53 2066880,...
+#> 9             2 POLYGON ((79368.68 2067324,...
+#> 10            1 POLYGON ((23378.32 2067554,...
 ```
 
 
@@ -376,7 +371,7 @@ centrality_test
 #> 1             1 POLYGON ((54911.05 2035815,...
 #> 2             2 POLYGON ((44591.28 2042209,...
 #> 3             2 POLYGON ((46491.11 2042467,...
-#> 4             1 POLYGON ((54944.49 2048163,...
+#> 4             2 POLYGON ((54944.49 2048163,...
 #> 5             1 POLYGON ((80094.28 2064140,...
 #> 6             1 POLYGON ((69205.24 2066394,...
 #> 7             1 POLYGON ((68554.2 2066632, ...

@@ -52,14 +52,10 @@ La función **`MK_RMCentrality()`** calcula medidas radiales (es decir, grado, f
 
 Las medidas o índices que estima son los siguientes:
 
--   **Centralidad de Grado (degree)**: Cuántas conexiones directas tiene un nodo. Es como contar cuántos parches de hábitat están potencialmente conectados con el parche focal.
-**Más conexiones = mayor grado = más centralidad.**
--  **Centralidad de Grado (degree)**
-
 ### 1. Centralidad de Grado (`degree`)
 > Cuántas conexiones directas tiene un nodo.
 
-- Es como contar cuántos parches de hábitat o áreas protegidas están conectados con uno.
+- Es como contar cuántos parches de hábitat o áreas protegidas están conectados con cada parche.
 - Más conexiones = mayor grado = más centralidad.
 
 ### 2. Fuerza (`strength`) *(para redes ponderadas)*
@@ -69,7 +65,7 @@ Las medidas o índices que estima son los siguientes:
 - Un nodo con pocas pero fuertes conexiones puede ser más central que uno con muchas pero débiles.
 
 ### 3. Centralidad de Vector Propio (`eigen`)
-> Mide cuán conectado está un nodo con **otros nodos importantes**.
+> Mide cuán conectado está un nodo con **otros nodos importantes para la conectividad**.
 
 - Un nodo es importante si está conectado a otros nodos que también lo son.
 - Útil para detectar “nodos influyentes” en la red.
@@ -78,7 +74,7 @@ Las medidas o índices que estima son los siguientes:
 > Qué tan cerca está un nodo de todos los demás.
 
 - Se calcula como el inverso de la suma de distancias a todos los demás nodos.
-- Los nodos con alta cercanía pueden **difundir o recibir información rápidamente**.
+- Los nodos con alta cercanía pueden **difundir o recibir flujo rápidamente**.
 
 ---
 
@@ -87,7 +83,7 @@ Las medidas o índices que estima son los siguientes:
 #### 5. Centralidad de Intermediación (`BWC`)
 > Cuántas veces un nodo se encuentra **en las rutas más cortas** entre otros nodos.
 
-- Nodos con alta intermediación actúan como puentes o **cuellos de botella**.
+- Nodos con alta intermediación actúan como puentes (**stepping stones**) o **cuellos de botella**.
 - Muy importantes para la conectividad — si se eliminan, pueden fragmentar la red.
 
 ---
@@ -108,7 +104,7 @@ Las medidas o índices que estima son los siguientes:
 
 ---
 
-### La función
+### La función (no correr)
 
 ```{r eval=FALSE}
 MK_RMCentrality(
@@ -121,7 +117,6 @@ MK_RMCentrality(
   write = NULL,
   intern = TRUE
 )
-Ar
 ```
 
 

@@ -360,8 +360,8 @@ Grid_test$MESH <- 0
 
 ```{r eval=FALSE}
 
-for(i in 1:nrow(test)){
-  cat(paste0(i, " de ", nrow(test)))
+for(i in 1:nrow(Grid_test)){
+  cat(paste0(i, " de ", nrow(Grid_test), "\r"))
   grid.i <- Grid_test[i,]
   nodes.i <- suppressWarnings(st_intersection(habitat_nodes, grid.i))
   

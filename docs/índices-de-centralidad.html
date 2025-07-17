@@ -107,13 +107,6 @@
 </h2>
 <p>La función <strong><code><a href="https://rdrr.io/pkg/Makurhini/man/MK_RMCentrality.html">MK_RMCentrality()</a></code></strong> calcula medidas radiales (es decir, grado, fuerza, centralidad de vectores propios y centralidad de proximidad) y mediales (es decir, centralidad de interrelación, pertenencia a nodos y modularidad) de la centralidad de nodos para identificar, por ejemplo, stepping stones.</p>
 <p>Las medidas o índices que estima son los siguientes:</p>
-<ul>
-<li>
-<strong>Centralidad de Grado (degree)</strong>: Cuántas conexiones directas tiene un nodo. Es como contar cuántos parches de hábitat están potencialmente conectados con el parche focal.
-<strong>Más conexiones = mayor grado = más centralidad.</strong>
-</li>
-<li><strong>Centralidad de Grado (degree)</strong></li>
-</ul>
 <div id="centralidad-de-grado-degree" class="section level3" number="3.2.1">
 <h3>
 <span class="header-section-number">3.2.1</span> 1. Centralidad de Grado (<code>degree</code>)<a class="anchor" aria-label="anchor" href="#centralidad-de-grado-degree"><i class="fas fa-link"></i></a>
@@ -122,7 +115,7 @@
 <p>Cuántas conexiones directas tiene un nodo.</p>
 </blockquote>
 <ul>
-<li>Es como contar cuántos parches de hábitat o áreas protegidas están conectados con uno.</li>
+<li>Es como contar cuántos parches de hábitat o áreas protegidas están conectados con cada parche.</li>
 <li>Más conexiones = mayor grado = más centralidad.</li>
 </ul>
 </div>
@@ -143,7 +136,7 @@
 <span class="header-section-number">3.2.3</span> 3. Centralidad de Vector Propio (<code>eigen</code>)<a class="anchor" aria-label="anchor" href="#centralidad-de-vector-propio-eigen"><i class="fas fa-link"></i></a>
 </h3>
 <blockquote>
-<p>Mide cuán conectado está un nodo con <strong>otros nodos importantes</strong>.</p>
+<p>Mide cuán conectado está un nodo con <strong>otros nodos importantes para la conectividad</strong>.</p>
 </blockquote>
 <ul>
 <li>Un nodo es importante si está conectado a otros nodos que también lo son.</li>
@@ -159,7 +152,7 @@
 </blockquote>
 <ul>
 <li>Se calcula como el inverso de la suma de distancias a todos los demás nodos.</li>
-<li>Los nodos con alta cercanía pueden <strong>difundir o recibir información rápidamente</strong>.</li>
+<li>Los nodos con alta cercanía pueden <strong>difundir o recibir flujo rápidamente</strong>.</li>
 </ul>
 <hr>
 </div>
@@ -175,7 +168,7 @@
 <p>Cuántas veces un nodo se encuentra <strong>en las rutas más cortas</strong> entre otros nodos.</p>
 </blockquote>
 <ul>
-<li>Nodos con alta intermediación actúan como puentes o <strong>cuellos de botella</strong>.</li>
+<li>Nodos con alta intermediación actúan como puentes (<strong>stepping stones</strong>) o <strong>cuellos de botella</strong>.</li>
 <li>Muy importantes para la conectividad — si se eliminan, pueden fragmentar la red.</li>
 </ul>
 <hr>
@@ -211,9 +204,9 @@
 <hr>
 </div>
 </div>
-<div id="la-función" class="section level3" number="3.2.7">
+<div id="la-función-no-correr" class="section level3" number="3.2.7">
 <h3>
-<span class="header-section-number">3.2.7</span> La función<a class="anchor" aria-label="anchor" href="#la-funci%C3%B3n"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.2.7</span> La función (no correr)<a class="anchor" aria-label="anchor" href="#la-funci%C3%B3n-no-correr"><i class="fas fa-link"></i></a>
 </h3>
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_RMCentrality.html">MK_RMCentrality</a></span><span class="op">(</span></span>
@@ -225,8 +218,7 @@
 <span>  rasterparallel <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  write <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  intern <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span><span class="op">)</span></span>
-<span><span class="va">Ar</span></span></code></pre></div>
+<span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="descripción-de-los-argumentos-de-la-función" class="section level3" number="3.2.8">
 <h3>
@@ -546,7 +538,7 @@
 <li><a class="nav-link" href="#centralidad-de-cercan%C3%ADa-close"><span class="header-section-number">3.2.4</span> 4. Centralidad de Cercanía (close)</a></li>
 <li><a class="nav-link" href="#medidas-mediales-qui%C3%A9n-est%C3%A1-en-medio-o-conecta-otros-nodos"><span class="header-section-number">3.2.5</span> Medidas Mediales (¿Quién está en medio o conecta otros nodos?)</a></li>
 <li><a class="nav-link" href="#detecci%C3%B3n-de-comunidades-qui%C3%A9n-pertenece-al-mismo-grupo"><span class="header-section-number">3.2.6</span> Detección de Comunidades (¿Quién pertenece al mismo grupo?)</a></li>
-<li><a class="nav-link" href="#la-funci%C3%B3n"><span class="header-section-number">3.2.7</span> La función</a></li>
+<li><a class="nav-link" href="#la-funci%C3%B3n-no-correr"><span class="header-section-number">3.2.7</span> La función (no correr)</a></li>
 <li><a class="nav-link" href="#descripci%C3%B3n-de-los-argumentos-de-la-funci%C3%B3n"><span class="header-section-number">3.2.8</span> Descripción de los argumentos de la función</a></li>
 </ul>
 </li>
