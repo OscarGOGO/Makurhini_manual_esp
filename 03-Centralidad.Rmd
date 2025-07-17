@@ -184,7 +184,7 @@ centrality_test <- centrality_test %>%
 ggplot() +  
   geom_sf(data = paisaje, fill = NA, color = "black") +
   geom_sf(data = centrality_test, aes(fill = strength_q), color = "black", size = 0.1) +
-  scale_fill_brewer(palette = "RdYlGn", direction = 1, name = "Fuerza (Jenks)") +
+  scale_fill_brewer(palette = "RdYlGn", direction = 1, name = "Fuerza (Q)") +
   theme_minimal() +
   labs(
     title = "Centralidad a nivel de parche (Strength)",
@@ -295,7 +295,7 @@ centrality_test
 10 km:
 
 ```{r}
-plot(centrality_test$d10000["BWC"], breaks = "jenks")
+plot(centrality_test$d10000["BWC"], breaks = "quantile")
 ```
 
 100 km:

@@ -1142,15 +1142,15 @@ Descripción
 \CommentTok{\#\textgreater{} 10 10 12804425 0.0004306005 0.04405417 1063       1       6}
 \CommentTok{\#\textgreater{}    memb.louvain                       geometry}
 \CommentTok{\#\textgreater{} 1             1 POLYGON ((54911.05 2035815,...}
-\CommentTok{\#\textgreater{} 2             2 POLYGON ((44591.28 2042209,...}
-\CommentTok{\#\textgreater{} 3             2 POLYGON ((46491.11 2042467,...}
-\CommentTok{\#\textgreater{} 4             2 POLYGON ((54944.49 2048163,...}
-\CommentTok{\#\textgreater{} 5             1 POLYGON ((80094.28 2064140,...}
-\CommentTok{\#\textgreater{} 6             1 POLYGON ((69205.24 2066394,...}
-\CommentTok{\#\textgreater{} 7             1 POLYGON ((68554.2 2066632, ...}
-\CommentTok{\#\textgreater{} 8             1 POLYGON ((69995.53 2066880,...}
-\CommentTok{\#\textgreater{} 9             1 POLYGON ((79368.68 2067324,...}
-\CommentTok{\#\textgreater{} 10            2 POLYGON ((23378.32 2067554,...}
+\CommentTok{\#\textgreater{} 2             1 POLYGON ((44591.28 2042209,...}
+\CommentTok{\#\textgreater{} 3             1 POLYGON ((46491.11 2042467,...}
+\CommentTok{\#\textgreater{} 4             1 POLYGON ((54944.49 2048163,...}
+\CommentTok{\#\textgreater{} 5             2 POLYGON ((80094.28 2064140,...}
+\CommentTok{\#\textgreater{} 6             2 POLYGON ((69205.24 2066394,...}
+\CommentTok{\#\textgreater{} 7             2 POLYGON ((68554.2 2066632, ...}
+\CommentTok{\#\textgreater{} 8             2 POLYGON ((69995.53 2066880,...}
+\CommentTok{\#\textgreater{} 9             2 POLYGON ((79368.68 2067324,...}
+\CommentTok{\#\textgreater{} 10            1 POLYGON ((23378.32 2067554,...}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1199,7 +1199,7 @@ Exploremos otra forma de hacer el plot usando intervalos
 \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}  
   \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ paisaje, }\AttributeTok{fill =} \ConstantTok{NA}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ centrality\_test, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ strength\_q), }\AttributeTok{color =} \StringTok{"black"}\NormalTok{, }\AttributeTok{size =} \FloatTok{0.1}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{scale\_fill\_brewer}\NormalTok{(}\AttributeTok{palette =} \StringTok{"RdYlGn"}\NormalTok{, }\AttributeTok{direction =} \DecValTok{1}\NormalTok{, }\AttributeTok{name =} \StringTok{"Fuerza (Jenks)"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_brewer}\NormalTok{(}\AttributeTok{palette =} \StringTok{"RdYlGn"}\NormalTok{, }\AttributeTok{direction =} \DecValTok{1}\NormalTok{, }\AttributeTok{name =} \StringTok{"Fuerza (Q)"}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
   \FunctionTok{labs}\NormalTok{(}
     \AttributeTok{title =} \StringTok{"Centralidad a nivel de parche (Strength)"}\NormalTok{,}
@@ -1315,6 +1315,7 @@ Usando más de un umbral de distancia
                                  \AttributeTok{distance\_thresholds =} \FunctionTok{c}\NormalTok{(}\DecValTok{10000}\NormalTok{, }\DecValTok{100000}\NormalTok{),}
                                  \AttributeTok{probability =} \FloatTok{0.5}\NormalTok{,}
                                  \AttributeTok{write =} \ConstantTok{NULL}\NormalTok{)}
+\CommentTok{\#\textgreater{}  ===============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   50\% |  ETA:  1s}
 \CommentTok{\#\textgreater{} Done!}
 \NormalTok{centrality\_test}
 \CommentTok{\#\textgreater{} $d10000}
@@ -1383,7 +1384,7 @@ Usando más de un umbral de distancia
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{plot}\NormalTok{(centrality\_test}\SpecialCharTok{$}\NormalTok{d10000[}\StringTok{"BWC"}\NormalTok{], }\AttributeTok{breaks =} \StringTok{"jenks"}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(centrality\_test}\SpecialCharTok{$}\NormalTok{d10000[}\StringTok{"BWC"}\NormalTok{], }\AttributeTok{breaks =} \StringTok{"quantile"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 

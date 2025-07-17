@@ -317,15 +317,15 @@
 <span><span class="co">#&gt; 10 10 12804425 0.0004306005 0.04405417 1063       1       6</span></span>
 <span><span class="co">#&gt;    memb.louvain                       geometry</span></span>
 <span><span class="co">#&gt; 1             1 POLYGON ((54911.05 2035815,...</span></span>
-<span><span class="co">#&gt; 2             1 POLYGON ((44591.28 2042209,...</span></span>
-<span><span class="co">#&gt; 3             1 POLYGON ((46491.11 2042467,...</span></span>
-<span><span class="co">#&gt; 4             1 POLYGON ((54944.49 2048163,...</span></span>
-<span><span class="co">#&gt; 5             2 POLYGON ((80094.28 2064140,...</span></span>
-<span><span class="co">#&gt; 6             2 POLYGON ((69205.24 2066394,...</span></span>
-<span><span class="co">#&gt; 7             2 POLYGON ((68554.2 2066632, ...</span></span>
-<span><span class="co">#&gt; 8             2 POLYGON ((69995.53 2066880,...</span></span>
-<span><span class="co">#&gt; 9             2 POLYGON ((79368.68 2067324,...</span></span>
-<span><span class="co">#&gt; 10            1 POLYGON ((23378.32 2067554,...</span></span></code></pre></div>
+<span><span class="co">#&gt; 2             2 POLYGON ((44591.28 2042209,...</span></span>
+<span><span class="co">#&gt; 3             2 POLYGON ((46491.11 2042467,...</span></span>
+<span><span class="co">#&gt; 4             2 POLYGON ((54944.49 2048163,...</span></span>
+<span><span class="co">#&gt; 5             1 POLYGON ((80094.28 2064140,...</span></span>
+<span><span class="co">#&gt; 6             1 POLYGON ((69205.24 2066394,...</span></span>
+<span><span class="co">#&gt; 7             1 POLYGON ((68554.2 2066632, ...</span></span>
+<span><span class="co">#&gt; 8             1 POLYGON ((69995.53 2066880,...</span></span>
+<span><span class="co">#&gt; 9             1 POLYGON ((79368.68 2067324,...</span></span>
+<span><span class="co">#&gt; 10            2 POLYGON ((23378.32 2067554,...</span></span></code></pre></div>
 <p>Exploremos otra forma de hacer el plot usando intervalos</p>
 <div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="%C3%ADndices-de-centralidad.html#cb42-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ClassInt"</span>), dependencies <span class="ot">=</span> <span class="cn">TRUE</span><span class="er">)</span></span>
 <span id="cb42-2"><a href="%C3%ADndices-de-centralidad.html#cb42-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"dplyr"</span>), dependencies <span class="ot">=</span> <span class="cn">TRUE</span><span class="er">)</span></span></code></pre></div>
@@ -361,7 +361,7 @@
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paisaje</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">centrality_test</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">strength_q</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"RdYlGn"</span>, direction <span class="op">=</span> <span class="fl">1</span>, name <span class="op">=</span> <span class="st">"Fuerza (Jenks)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"RdYlGn"</span>, direction <span class="op">=</span> <span class="fl">1</span>, name <span class="op">=</span> <span class="st">"Fuerza (Q)"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
 <span>    title <span class="op">=</span> <span class="st">"Centralidad a nivel de parche (Strength)"</span>,</span>
@@ -474,7 +474,7 @@
 <span><span class="co">#&gt; 1             1 POLYGON ((54911.05 2035815,...</span></span>
 <span><span class="co">#&gt; 2             2 POLYGON ((44591.28 2042209,...</span></span>
 <span><span class="co">#&gt; 3             2 POLYGON ((46491.11 2042467,...</span></span>
-<span><span class="co">#&gt; 4             2 POLYGON ((54944.49 2048163,...</span></span>
+<span><span class="co">#&gt; 4             1 POLYGON ((54944.49 2048163,...</span></span>
 <span><span class="co">#&gt; 5             1 POLYGON ((80094.28 2064140,...</span></span>
 <span><span class="co">#&gt; 6             1 POLYGON ((69205.24 2066394,...</span></span>
 <span><span class="co">#&gt; 7             1 POLYGON ((68554.2 2066632, ...</span></span>
@@ -513,7 +513,7 @@
 <span><span class="co">#&gt; 10            1 POLYGON ((23378.32 2067554,...</span></span></code></pre></div>
 <p>10 km:</p>
 <div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">centrality_test</span><span class="op">$</span><span class="va">d10000</span><span class="op">[</span><span class="st">"BWC"</span><span class="op">]</span>, breaks <span class="op">=</span> <span class="st">"jenks"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">centrality_test</span><span class="op">$</span><span class="va">d10000</span><span class="op">[</span><span class="st">"BWC"</span><span class="op">]</span>, breaks <span class="op">=</span> <span class="st">"quantile"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="03-Centralidad_files/figure-html/unnamed-chunk-12-1.png" width="672"></div>
 <p>100 km:</p>
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
