@@ -317,15 +317,15 @@
 <span><span class="co">#&gt; 10 10 12804425 0.0004306005 0.04405417 1063       1       6</span></span>
 <span><span class="co">#&gt;    memb.louvain                       geometry</span></span>
 <span><span class="co">#&gt; 1             1 POLYGON ((54911.05 2035815,...</span></span>
-<span><span class="co">#&gt; 2             2 POLYGON ((44591.28 2042209,...</span></span>
-<span><span class="co">#&gt; 3             2 POLYGON ((46491.11 2042467,...</span></span>
-<span><span class="co">#&gt; 4             2 POLYGON ((54944.49 2048163,...</span></span>
-<span><span class="co">#&gt; 5             1 POLYGON ((80094.28 2064140,...</span></span>
-<span><span class="co">#&gt; 6             1 POLYGON ((69205.24 2066394,...</span></span>
-<span><span class="co">#&gt; 7             1 POLYGON ((68554.2 2066632, ...</span></span>
-<span><span class="co">#&gt; 8             1 POLYGON ((69995.53 2066880,...</span></span>
-<span><span class="co">#&gt; 9             1 POLYGON ((79368.68 2067324,...</span></span>
-<span><span class="co">#&gt; 10            2 POLYGON ((23378.32 2067554,...</span></span></code></pre></div>
+<span><span class="co">#&gt; 2             1 POLYGON ((44591.28 2042209,...</span></span>
+<span><span class="co">#&gt; 3             1 POLYGON ((46491.11 2042467,...</span></span>
+<span><span class="co">#&gt; 4             1 POLYGON ((54944.49 2048163,...</span></span>
+<span><span class="co">#&gt; 5             2 POLYGON ((80094.28 2064140,...</span></span>
+<span><span class="co">#&gt; 6             2 POLYGON ((69205.24 2066394,...</span></span>
+<span><span class="co">#&gt; 7             2 POLYGON ((68554.2 2066632, ...</span></span>
+<span><span class="co">#&gt; 8             2 POLYGON ((69995.53 2066880,...</span></span>
+<span><span class="co">#&gt; 9             2 POLYGON ((79368.68 2067324,...</span></span>
+<span><span class="co">#&gt; 10            1 POLYGON ((23378.32 2067554,...</span></span></code></pre></div>
 <p>Exploremos otra forma de hacer el plot usando intervalos</p>
 <div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="%C3%ADndices-de-centralidad.html#cb42-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ClassInt"</span>), dependencies <span class="ot">=</span> <span class="cn">TRUE</span><span class="er">)</span></span>
 <span id="cb42-2"><a href="%C3%ADndices-de-centralidad.html#cb42-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"dplyr"</span>), dependencies <span class="ot">=</span> <span class="cn">TRUE</span><span class="er">)</span></span></code></pre></div>
@@ -450,6 +450,7 @@
 <span>                                 distance_thresholds <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10000</span>, <span class="fl">100000</span><span class="op">)</span>,</span>
 <span>                                 probability <span class="op">=</span> <span class="fl">0.5</span>,</span>
 <span>                                 write <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■                  50% |  ETA:  3s</span></span>
 <span><span class="co">#&gt; Done!</span></span>
 <span><span class="va">centrality_test</span></span>
 <span><span class="co">#&gt; $d10000</span></span>
@@ -472,15 +473,15 @@
 <span><span class="co">#&gt; 10 10 12804425 0.0004306005 0.04405417 1063       1       6</span></span>
 <span><span class="co">#&gt;    memb.louvain                       geometry</span></span>
 <span><span class="co">#&gt; 1             1 POLYGON ((54911.05 2035815,...</span></span>
-<span><span class="co">#&gt; 2             2 POLYGON ((44591.28 2042209,...</span></span>
-<span><span class="co">#&gt; 3             2 POLYGON ((46491.11 2042467,...</span></span>
+<span><span class="co">#&gt; 2             1 POLYGON ((44591.28 2042209,...</span></span>
+<span><span class="co">#&gt; 3             1 POLYGON ((46491.11 2042467,...</span></span>
 <span><span class="co">#&gt; 4             1 POLYGON ((54944.49 2048163,...</span></span>
-<span><span class="co">#&gt; 5             1 POLYGON ((80094.28 2064140,...</span></span>
-<span><span class="co">#&gt; 6             1 POLYGON ((69205.24 2066394,...</span></span>
-<span><span class="co">#&gt; 7             1 POLYGON ((68554.2 2066632, ...</span></span>
-<span><span class="co">#&gt; 8             1 POLYGON ((69995.53 2066880,...</span></span>
-<span><span class="co">#&gt; 9             1 POLYGON ((79368.68 2067324,...</span></span>
-<span><span class="co">#&gt; 10            2 POLYGON ((23378.32 2067554,...</span></span>
+<span><span class="co">#&gt; 5             2 POLYGON ((80094.28 2064140,...</span></span>
+<span><span class="co">#&gt; 6             2 POLYGON ((69205.24 2066394,...</span></span>
+<span><span class="co">#&gt; 7             2 POLYGON ((68554.2 2066632, ...</span></span>
+<span><span class="co">#&gt; 8             2 POLYGON ((69995.53 2066880,...</span></span>
+<span><span class="co">#&gt; 9             2 POLYGON ((79368.68 2067324,...</span></span>
+<span><span class="co">#&gt; 10            1 POLYGON ((23378.32 2067554,...</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`d1e+05`</span></span>
 <span><span class="co">#&gt; Simple feature collection with 404 features and 8 fields</span></span>
@@ -561,7 +562,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Manual de uso de Makurhini</strong>" was written by Oscar Godínez Gómez. It was last built on 2025-07-16.</p>
+    <p>"<strong>Manual de uso de Makurhini</strong>" was written by Oscar Godínez Gómez. It was last built on 2025-07-18.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

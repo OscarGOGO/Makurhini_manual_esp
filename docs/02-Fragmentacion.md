@@ -469,7 +469,7 @@ Fragmentacion.2
 #> 20          1000      Edge  96.366220
 ```
 
-El porcentaje promedio de área núcleo (ausencia de efecto de borde) para todos los parches disminuye en más del 70% cuando se considera un efecto de borde con una penetración de 1 km.
+El porcentaje promedio de área núcleo (ausencia de efecto de borde) para todos los parches disminuye en más del 65% cuando se considera un efecto de borde con una penetración de 1 km.
 
 | Distancia de profundidad | %Área Núcleo |
 |--------------------------|:------------:|
@@ -531,7 +531,7 @@ for(i in 1:nrow(Grid_test)){
     Fragmentacion.i <- MK_Fragmentation(nodes = nodes.i, 
                                       edge_distance = 500,
                                       min_node_area = 100,
-                                      landscape_area = ,
+                                      landscape_area = area_paisaje.i,
                                       area_unit = "ha",
                                       perimeter_unit = "km",
                                       plot = FALSE)
