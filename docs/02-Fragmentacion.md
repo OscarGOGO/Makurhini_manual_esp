@@ -17,21 +17,6 @@ El shapefile lo pueden encontrar en la siguiente carpeta del drive:
 <https://drive.google.com/drive/folders/1yJcxk2JsEfVjqBx7QM6SV5sIbq7YD1iX?usp=sharing>
 
 
-```
-#> Cargando paquete requerido: igraph
-#> 
-#> Adjuntando el paquete: 'igraph'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     decompose, spectrum
-#> The following object is masked from 'package:base':
-#> 
-#>     union
-#> Cargando paquete requerido: cppRouting
-#> Linking to GEOS 3.13.0, GDAL 3.10.1, PROJ 9.5.1;
-#> sf_use_s2() is TRUE
-#> [1] 404
-```
 
 
 
@@ -51,8 +36,8 @@ Para gráficarlo necesitamos ggplot2, favor de instalarlo si no lo tiene entre s
 
 
 ``` r
-install.packages("ggplot2"), dependencies = TRUE)
-install.packages("RColorBrewer"), dependencies = TRUE)
+install.packages("ggplot2", dependencies = TRUE)
+install.packages("RColorBrewer", dependencies = TRUE)
 
 ```
 
@@ -114,10 +99,6 @@ Los argumento de la función que usaremos son:
 -   *write* = Guarda la tabla (estadísticas del paisaje), el objeto sf (estadísticas de parches/nodos) y las gráficas. Es necesario especificar la ruta y el prefijo. Por ejemplo, para guardar en la ruta "C:/Folder" con el prefijo "Fragmentation": "C:/Folder/Fragmentation"
 
 
-``` r
-MK_Fragmentation()
-```
-
 ## Ejercicio 1
 
 Estimamos el área del paisaje de estudio.
@@ -142,7 +123,7 @@ Fragmentacion <- MK_Fragmentation(nodes = habitat_nodes,
                                   plot = TRUE)
 ```
 
-![](02-Fragmentacion_files/figure-epub3/unnamed-chunk-8-1.png)<!-- -->![](02-Fragmentacion_files/figure-epub3/unnamed-chunk-8-2.png)<!-- -->
+![](02-Fragmentacion_files/figure-epub3/unnamed-chunk-7-1.png)<!-- -->![](02-Fragmentacion_files/figure-epub3/unnamed-chunk-7-2.png)<!-- -->
 
 ### Estadisticos a nivel de parche
 
@@ -206,7 +187,7 @@ ggplot() +
   )
 ```
 
-![](02-Fragmentacion_files/figure-epub3/unnamed-chunk-10-1.png)<!-- -->
+![](02-Fragmentacion_files/figure-epub3/unnamed-chunk-9-1.png)<!-- -->
 
 -   \% de borde
 
@@ -231,7 +212,7 @@ ggplot() +
   )
 ```
 
-![](02-Fragmentacion_files/figure-epub3/unnamed-chunk-11-1.png)<!-- -->
+![](02-Fragmentacion_files/figure-epub3/unnamed-chunk-10-1.png)<!-- -->
 
 -   Perimeter
 
@@ -256,7 +237,7 @@ ggplot() +
   )
 ```
 
-![](02-Fragmentacion_files/figure-epub3/unnamed-chunk-12-1.png)<!-- -->
+![](02-Fragmentacion_files/figure-epub3/unnamed-chunk-11-1.png)<!-- -->
 
 -   Perimeter-Area Ratio
 
@@ -281,7 +262,7 @@ ggplot() +
   )
 ```
 
-![](02-Fragmentacion_files/figure-epub3/unnamed-chunk-13-1.png)<!-- -->
+![](02-Fragmentacion_files/figure-epub3/unnamed-chunk-12-1.png)<!-- -->
 
 -   Shape Index
 
@@ -306,7 +287,7 @@ ggplot() +
   )
 ```
 
-![](02-Fragmentacion_files/figure-epub3/unnamed-chunk-14-1.png)<!-- -->
+![](02-Fragmentacion_files/figure-epub3/unnamed-chunk-13-1.png)<!-- -->
 
 -   Fractal Dimension Index
 
@@ -331,7 +312,7 @@ ggplot() +
   )
 ```
 
-![](02-Fragmentacion_files/figure-epub3/unnamed-chunk-15-1.png)<!-- -->
+![](02-Fragmentacion_files/figure-epub3/unnamed-chunk-14-1.png)<!-- -->
 
 ### Estadísticos a nivel de paisaje
 
@@ -490,7 +471,7 @@ ggplot(Fragmentacion.2, aes(x=Edge.distance, y=Percentage, group=Type)) +
   theme_classic()
 ```
 
-![](02-Fragmentacion_files/figure-epub3/unnamed-chunk-20-1.png)<!-- -->
+![](02-Fragmentacion_files/figure-epub3/unnamed-chunk-19-1.png)<!-- -->
 
 ## Ejercicio 3
 
@@ -506,7 +487,7 @@ Grid_test <- make_grid(x = paisaje, hexagonal = FALSE,
 plot(Grid_test)
 ```
 
-![](02-Fragmentacion_files/figure-epub3/unnamed-chunk-21-1.png)<!-- -->
+![](02-Fragmentacion_files/figure-epub3/unnamed-chunk-20-1.png)<!-- -->
 
 Estimar MESH usando un loop sencillo tipo `for()`
 
@@ -571,4 +552,4 @@ ggplot() +
   )
 ```
 
-![](02-Fragmentacion_files/figure-epub3/unnamed-chunk-25-1.png)<!-- -->
+![](02-Fragmentacion_files/figure-epub3/unnamed-chunk-24-1.png)<!-- -->

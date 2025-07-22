@@ -158,8 +158,8 @@ centrality_test
 Exploremos otra forma de hacer el plot usando intervalos
 
 ```{r eval=FALSE}
-install.packages("ClassInt"), dependencies = TRUE)
-install.packages("dplyr"), dependencies = TRUE)
+install.packages("ClassInt", dependencies = TRUE)
+install.packages("dplyr", dependencies = TRUE)
 ```
 
 

@@ -119,7 +119,7 @@
 
 \title{Manual de uso de Makurhini}
 \author{Oscar Godínez Gómez}
-\date{2025-07-18}
+\date{2025-07-22}
 
 \begin{document}
 \maketitle
@@ -288,22 +288,6 @@ El shapefile lo pueden encontrar en la siguiente carpeta del drive:
 
 \url{https://drive.google.com/drive/folders/1yJcxk2JsEfVjqBx7QM6SV5sIbq7YD1iX?usp=sharing}
 
-\begin{verbatim}
-#> Cargando paquete requerido: igraph
-#> 
-#> Adjuntando el paquete: 'igraph'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     decompose, spectrum
-#> The following object is masked from 'package:base':
-#> 
-#>     union
-#> Cargando paquete requerido: cppRouting
-#> Linking to GEOS 3.13.0, GDAL 3.10.1, PROJ 9.5.1;
-#> sf_use_s2() is TRUE
-#> [1] 404
-\end{verbatim}
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(Makurhini)}
@@ -319,8 +303,8 @@ Para gráficarlo necesitamos ggplot2, favor de instalarlo si no lo tiene entre s
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{install.packages}\NormalTok{(}\StringTok{"ggplot2"}\NormalTok{), dependencies }\OtherTok{=} \ConstantTok{TRUE}\ErrorTok{)}
-\FunctionTok{install.packages}\NormalTok{(}\StringTok{"RColorBrewer"}\NormalTok{), dependencies }\OtherTok{=} \ConstantTok{TRUE}\ErrorTok{)}
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"ggplot2"}\NormalTok{, }\AttributeTok{dependencies =} \ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"RColorBrewer"}\NormalTok{, }\AttributeTok{dependencies =} \ConstantTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -396,12 +380,6 @@ Los argumento de la función que usaremos son:
   \emph{write} = Guarda la tabla (estadísticas del paisaje), el objeto sf (estadísticas de parches/nodos) y las gráficas. Es necesario especificar la ruta y el prefijo. Por ejemplo, para guardar en la ruta ``C:/Folder'' con el prefijo ``Fragmentation'': ``C:/Folder/Fragmentation''
 \end{itemize}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{MK\_Fragmentation}\NormalTok{()}
-\end{Highlighting}
-\end{Shaded}
-
 \section{Ejercicio 1}\label{ejercicio-1}
 
 Estimamos el área del paisaje de estudio.
@@ -427,7 +405,7 @@ Aplicamos la función.
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{02-Fragmentacion_files/figure-latex/unnamed-chunk-8-1.pdf}} \pandocbounded{\includegraphics[keepaspectratio]{02-Fragmentacion_files/figure-latex/unnamed-chunk-8-2.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{02-Fragmentacion_files/figure-latex/unnamed-chunk-7-1.pdf}} \pandocbounded{\includegraphics[keepaspectratio]{02-Fragmentacion_files/figure-latex/unnamed-chunk-7-2.pdf}}
 
 \subsection{Estadisticos a nivel de parche}\label{estadisticos-a-nivel-de-parche}
 
@@ -497,7 +475,7 @@ Son espacialmente explicitos y podemos visualizarlos con librerias como ggplot2
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{02-Fragmentacion_files/figure-latex/unnamed-chunk-10-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{02-Fragmentacion_files/figure-latex/unnamed-chunk-9-1.pdf}}
 
 \begin{itemize}
 \tightlist
@@ -527,7 +505,7 @@ Son espacialmente explicitos y podemos visualizarlos con librerias como ggplot2
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{02-Fragmentacion_files/figure-latex/unnamed-chunk-11-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{02-Fragmentacion_files/figure-latex/unnamed-chunk-10-1.pdf}}
 
 \begin{itemize}
 \tightlist
@@ -557,7 +535,7 @@ Son espacialmente explicitos y podemos visualizarlos con librerias como ggplot2
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{02-Fragmentacion_files/figure-latex/unnamed-chunk-12-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{02-Fragmentacion_files/figure-latex/unnamed-chunk-11-1.pdf}}
 
 \begin{itemize}
 \tightlist
@@ -587,7 +565,7 @@ Son espacialmente explicitos y podemos visualizarlos con librerias como ggplot2
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{02-Fragmentacion_files/figure-latex/unnamed-chunk-13-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{02-Fragmentacion_files/figure-latex/unnamed-chunk-12-1.pdf}}
 
 \begin{itemize}
 \tightlist
@@ -617,7 +595,7 @@ Son espacialmente explicitos y podemos visualizarlos con librerias como ggplot2
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{02-Fragmentacion_files/figure-latex/unnamed-chunk-14-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{02-Fragmentacion_files/figure-latex/unnamed-chunk-13-1.pdf}}
 
 \begin{itemize}
 \tightlist
@@ -647,7 +625,7 @@ Son espacialmente explicitos y podemos visualizarlos con librerias como ggplot2
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{02-Fragmentacion_files/figure-latex/unnamed-chunk-15-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{02-Fragmentacion_files/figure-latex/unnamed-chunk-14-1.pdf}}
 
 \subsection{Estadísticos a nivel de paisaje}\label{estaduxedsticos-a-nivel-de-paisaje}
 
@@ -806,7 +784,7 @@ Podemos gráficar el promedio del porcentaje de área npucleo de los parches y e
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{02-Fragmentacion_files/figure-latex/unnamed-chunk-20-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{02-Fragmentacion_files/figure-latex/unnamed-chunk-19-1.pdf}}
 
 \section{Ejercicio 3}\label{ejercicio-3}
 
@@ -823,7 +801,7 @@ Grid de 40 km2
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{02-Fragmentacion_files/figure-latex/unnamed-chunk-21-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{02-Fragmentacion_files/figure-latex/unnamed-chunk-20-1.pdf}}
 
 Estimar MESH usando un loop sencillo tipo \texttt{for()}
 
@@ -887,7 +865,7 @@ Lo podemos visualizar con \texttt{ggplot2}
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{02-Fragmentacion_files/figure-latex/unnamed-chunk-25-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{02-Fragmentacion_files/figure-latex/unnamed-chunk-24-1.pdf}}
 
 \chapter{Índices de centralidad}\label{uxedndices-de-centralidad}
 
@@ -1142,15 +1120,15 @@ Descripción
 \CommentTok{\#\textgreater{} 10 10 12804425 0.0004306005 0.04405417 1063       1       6}
 \CommentTok{\#\textgreater{}    memb.louvain                       geometry}
 \CommentTok{\#\textgreater{} 1             1 POLYGON ((54911.05 2035815,...}
-\CommentTok{\#\textgreater{} 2             2 POLYGON ((44591.28 2042209,...}
-\CommentTok{\#\textgreater{} 3             2 POLYGON ((46491.11 2042467,...}
-\CommentTok{\#\textgreater{} 4             2 POLYGON ((54944.49 2048163,...}
-\CommentTok{\#\textgreater{} 5             1 POLYGON ((80094.28 2064140,...}
-\CommentTok{\#\textgreater{} 6             1 POLYGON ((69205.24 2066394,...}
-\CommentTok{\#\textgreater{} 7             1 POLYGON ((68554.2 2066632, ...}
-\CommentTok{\#\textgreater{} 8             1 POLYGON ((69995.53 2066880,...}
-\CommentTok{\#\textgreater{} 9             1 POLYGON ((79368.68 2067324,...}
-\CommentTok{\#\textgreater{} 10            2 POLYGON ((23378.32 2067554,...}
+\CommentTok{\#\textgreater{} 2             1 POLYGON ((44591.28 2042209,...}
+\CommentTok{\#\textgreater{} 3             1 POLYGON ((46491.11 2042467,...}
+\CommentTok{\#\textgreater{} 4             1 POLYGON ((54944.49 2048163,...}
+\CommentTok{\#\textgreater{} 5             2 POLYGON ((80094.28 2064140,...}
+\CommentTok{\#\textgreater{} 6             2 POLYGON ((69205.24 2066394,...}
+\CommentTok{\#\textgreater{} 7             2 POLYGON ((68554.2 2066632, ...}
+\CommentTok{\#\textgreater{} 8             2 POLYGON ((69995.53 2066880,...}
+\CommentTok{\#\textgreater{} 9             2 POLYGON ((79368.68 2067324,...}
+\CommentTok{\#\textgreater{} 10            1 POLYGON ((23378.32 2067554,...}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1158,8 +1136,8 @@ Exploremos otra forma de hacer el plot usando intervalos
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{install.packages}\NormalTok{(}\StringTok{"ClassInt"}\NormalTok{), dependencies }\OtherTok{=} \ConstantTok{TRUE}\ErrorTok{)}
-\FunctionTok{install.packages}\NormalTok{(}\StringTok{"dplyr"}\NormalTok{), dependencies }\OtherTok{=} \ConstantTok{TRUE}\ErrorTok{)}
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"ClassInt"}\NormalTok{, }\AttributeTok{dependencies =} \ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"dplyr"}\NormalTok{, }\AttributeTok{dependencies =} \ConstantTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1315,7 +1293,6 @@ Usando más de un umbral de distancia
                                  \AttributeTok{distance\_thresholds =} \FunctionTok{c}\NormalTok{(}\DecValTok{10000}\NormalTok{, }\DecValTok{100000}\NormalTok{),}
                                  \AttributeTok{probability =} \FloatTok{0.5}\NormalTok{,}
                                  \AttributeTok{write =} \ConstantTok{NULL}\NormalTok{)}
-\CommentTok{\#\textgreater{}  ===============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   50\% |  ETA:  4s}
 \CommentTok{\#\textgreater{} Done!}
 \NormalTok{centrality\_test}
 \CommentTok{\#\textgreater{} $d10000}

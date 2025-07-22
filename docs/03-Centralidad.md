@@ -184,7 +184,7 @@ centrality_test
 #> 1             1 POLYGON ((54911.05 2035815,...
 #> 2             2 POLYGON ((44591.28 2042209,...
 #> 3             2 POLYGON ((46491.11 2042467,...
-#> 4             1 POLYGON ((54944.49 2048163,...
+#> 4             2 POLYGON ((54944.49 2048163,...
 #> 5             1 POLYGON ((80094.28 2064140,...
 #> 6             1 POLYGON ((69205.24 2066394,...
 #> 7             1 POLYGON ((68554.2 2066632, ...
@@ -199,8 +199,8 @@ Exploremos otra forma de hacer el plot usando intervalos
 
 
 ``` r
-install.packages("ClassInt"), dependencies = TRUE)
-install.packages("dplyr"), dependencies = TRUE)
+install.packages("ClassInt", dependencies = TRUE)
+install.packages("dplyr", dependencies = TRUE)
 ```
 
 
@@ -347,7 +347,6 @@ centrality_test <- MK_RMCentrality(nodes = habitat_nodes,
                                  distance_thresholds = c(10000, 100000),
                                  probability = 0.5,
                                  write = NULL)
-#>  ■■■■■■■■■■■■■■■■                  50% |  ETA:  3s
 #> Done!
 centrality_test
 #> $d10000

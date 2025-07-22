@@ -16,12 +16,11 @@ El shapefile lo pueden encontrar en la siguiente carpeta del drive:
 
 <https://drive.google.com/drive/folders/1yJcxk2JsEfVjqBx7QM6SV5sIbq7YD1iX?usp=sharing>
 
-```{r echo=FALSE}
+```{r echo=FALSE, warning=FALSE, message=FALSE}
 library(Makurhini)
 library(sf)
 
 habitat_nodes <- read_sf("C:/Users/oscta/OneDrive/Documents/RedBioma/Clase_3/ejemplo_insumos/habitat_nodes.shp")
-nrow(habitat_nodes)
 paisaje <- read_sf("C:/Users/oscta/OneDrive/Documents/RedBioma/Clase_3/ejemplo_insumos/paisaje.shp")
 
 ```
@@ -42,8 +41,8 @@ paisaje <- read_sf("C:/Users/paisaje.shp")
 Para gráficarlo necesitamos ggplot2, favor de instalarlo si no lo tiene entre sus paquetes.
 
 ```{r eval=FALSE}
-install.packages("ggplot2"), dependencies = TRUE)
-install.packages("RColorBrewer"), dependencies = TRUE)
+install.packages("ggplot2", dependencies = TRUE)
+install.packages("RColorBrewer", dependencies = TRUE)
 
 ```
 
@@ -101,9 +100,6 @@ Los argumento de la función que usaremos son:
 -   *plot* = Genera histogramas básicos y un mapa de área núcleo - borde.
 -   *write* = Guarda la tabla (estadísticas del paisaje), el objeto sf (estadísticas de parches/nodos) y las gráficas. Es necesario especificar la ruta y el prefijo. Por ejemplo, para guardar en la ruta "C:/Folder" con el prefijo "Fragmentation": "C:/Folder/Fragmentation"
 
-```{r  eval=FALSE}
-MK_Fragmentation()
-```
 
 ## Ejercicio 1
 
