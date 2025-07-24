@@ -1,11 +1,10 @@
 # Kernel de dispersión
 
-En Makurhini podemos simular las kernel dispersion usando distintas distancias asociadas a medianas de dispersión. Pare ello, usaremos la función probability_distance(). Esta función tiene tres parametros principales:
+En Makurhini podemos simular las kernel dispersion usando distintas distancias asociadas a medianas de dispersión. Pare ello, usaremos la función `probability_distance()`. Esta función tiene tres parametros principales:
 
--   probability. Probabilidad de dispersión en el parámetro median_distance.
--   median_distance. Hasta cinco distancias máximas de dispersión en km.
--   eval_distance. Calcula la probabilidad de dispersión a una distancia mediana específica (km). Disponible cuando sólo se utiliza una distancia_mediana.
-
+-   `probability`. Probabilidad de dispersión en el parámetro median_distance.
+-   `median_distance`. Hasta cinco distancias máximas de dispersión en km.
+-   `eval_distance`. Calcula la probabilidad de dispersión a una distancia mediana específica (km). Disponible cuando sólo se utiliza una distancia_mediana.
 
 ```{r}
 library(Makurhini)
@@ -23,11 +22,10 @@ probability_distance(probability= 0.5, median_distance = 50, eval_distance = 25)
 
 ```
 
-
-
 # índice integral de conectividad y Probabilidad de conectividad
 
 ## Insumos y paquetes
+
 Seguimos trabajando con los mismos shapefiles de la sección anterior: habitat_nodes y paisaje.
 
 ```{r eval=FALSE}
@@ -48,7 +46,6 @@ paisaje <- read_sf("C:/Users/oscta/OneDrive/Documents/RedBioma/Clase_3/ejemplo_i
 
 ```
 
-
 ```{r}
 ggplot() +  
   geom_sf(data = paisaje, aes(color = "Study area"), fill = NA, color = "black") +
@@ -60,12 +57,9 @@ ggplot() +
 
 ```
 
-
-
 ## MK_dPCIIC()
 
 Esta función calcula tanto la conectividad global del paisaje como la importancia (contribución) de cada nodo (o parche de hábitat) para mantener la conectividad del paisaje. Utiliza los índices PC e IIC bajo uno o varios umbrales de distancia.
-
 
 ### La función (no correr)
 
@@ -93,11 +87,10 @@ MK_dPCIIC(
 )
 ```
 
-
 ### Descripción de los argumentos de la función
 
-| Argumento         | Descripción |
-|-------------------|-------------|
+| Argumento | Descripción |
+|------------------------------------------|------------------------------|
 | `nodes` | Objeto que contiene la información de los nodos (e.g., fragmentos de hábitat). Puede ser un `data.frame` (mínimo dos columnas: ID y atributo), un objeto espacial vectorial (`sf`, `SpatVector`) o un raster con valores enteros que representen los ID de cada nodo. Debe estar en un sistema de coordenadas proyectadas. |
 | `attribute` | Nombre de la columna o vector numérico con el atributo de los nodos. Si es `NULL`, se utiliza el área como atributo. Si `nodes` es raster, debe ser un vector numérico de igual longitud al número de nodos. |
 | `weighted` | Lógico. Si `TRUE` y `nodes` es raster, el atributo será ponderado por el área de cada nodo. |
@@ -105,7 +98,7 @@ MK_dPCIIC(
 | `area_unit` | Unidad de área (opcional, por defecto `"m2"`). Puede ser `"m2"`, `"km2"`, `"cm2"` o `"ha"`. |
 | `restoration` | Vector o nombre de columna que indica si cada nodo es existente (1) o propuesto para restauración (0). Si es `NULL`, se considera que todos los nodos existen. |
 | `onlyrestor` | Lógico. Si `TRUE`, solo se calcularán métricas relacionadas con restauración. |
-| `distance` | Matriz o lista con parámetros para calcular distancia entre nodos. Puede ser matriz de distancias o una lista con parámetros como `type` (e.g., `"centroid"`, `"least-cost"`) y `resistance` (raster de resistencia). |
+| `distance` | Matriz o lista con parámetros para calcular distancia entre nodos. Puede ser matriz de distancias o una lista con parámetros como `type` (i.e., `"centroid"`, `"edge",``"least-cost",``"commute-time"`) y `resistance` (raster de resistencia). |
 | `metric` | Métrica de conectividad a usar: `"PC"` (probabilidad de conectividad) o `"IIC"` (índice integral de conectividad). |
 | `probability` | Valor numérico que representa la probabilidad asociada a la distancia umbral (e.g., 0.5 si es la mediana de dispersión). Solo se usa con la métrica `"PC"`. |
 | `distance_thresholds` | Distancia(s) de dispersión en metros. Si es `NULL`, se estima como la mediana de dispersión entre nodos. Puede usarse la función `dispersal_distance`. |
@@ -113,20 +106,20 @@ MK_dPCIIC(
 | `overall` | Lógico. Si `TRUE`, se calcula el índice de conectividad del paisaje completo (EC). El resultado será una lista. |
 | `onlyoverall` | Lógico. Si `TRUE`, solo se calcularán métricas globales del paisaje. |
 | `parallel` | Número de núcleos a usar en paralelización para estimar índices. Útil con más de 1000 nodos. |
-| `parallel_mode` | Modo de paralelización: 1 (por defecto, recomendado < 1000 nodos) o 2 (recomendado > 1000 nodos). |
+| `parallel_mode` | Modo de paralelización: 1 (por defecto, recomendado \< 1000 nodos) o 2 (recomendado \> 1000 nodos). |
 | `write` | Ruta y prefijo para guardar los resultados (e.g., `"C:/ejemplo/test_PC_"`). Se guardan archivos de importancia de nodos y conectividad general si `overall = TRUE`. |
 | `id_sel` | Uso interno. No debe usarse por el usuario. |
 | `intern` | Lógico. Muestra el progreso del proceso (`TRUE` por defecto). |
 
-## IIC
+## Índice integral de conectividad (IIC)
 
 ## Ejemplo 1. Distancia euclidiana
 
-- **Sin usar LA**
-- **sin usar attribute**
-- **10 km de mediana de dispersión**
-- **Unidad de área en ha**
-- **Solo índice para todo el paisaje**
+-   **Sin usar LA**
+-   **sin usar attribute**
+-   **10 km de mediana de dispersión**
+-   **Unidad de área en ha**
+-   **Solo índice para todo el paisaje**
 
 ```{r}
 IIC <- MK_dPCIIC(nodes = habitat_nodes,
@@ -141,13 +134,12 @@ IIC <- MK_dPCIIC(nodes = habitat_nodes,
 IIC
 ```
 
-
 ## Ejemplo 2. Distancia euclidiana
 
-- **sin usar attribute**
-- **10 km de mediana de dispersión**
-- **Unidad de área en ha**
-- **Solo índice para todo el paisaje**
+-   **sin usar attribute**
+-   **10 km de mediana de dispersión**
+-   **Unidad de área en ha**
+-   **Solo índice para todo el paisaje**
 
 ```{r}
 area_paisaje <- st_area(paisaje) 
@@ -165,13 +157,12 @@ IIC <- MK_dPCIIC(nodes = habitat_nodes,
 IIC
 ```
 
-
 ## Ejemplo 3. Distancia euclidiana
 
-- **sin usar attribute**
-- **10 km de mediana de dispersión**
-- **Unidad de área en ha**
-- **Solo índice para todo el paisaje**
+-   **sin usar attribute**
+-   **10 km de mediana de dispersión**
+-   **Unidad de área en ha**
+-   **Solo índice para todo el paisaje**
 
 ```{r}
 area_paisaje <- st_area(paisaje) 
@@ -189,7 +180,6 @@ IIC <- MK_dPCIIC(nodes = habitat_nodes,
 IIC
 ```
 
-
 ```{r}
 area_paisaje <- st_area(paisaje) 
 area_paisaje <- unit_convert(area_paisaje, "m2", "ha") 
@@ -206,13 +196,11 @@ IIC <- MK_dPCIIC(nodes = habitat_nodes,
 IIC
 ```
 
-
-
 ## Ejemplo 4. Distancia euclidiana: fracciones
 
-- **sin usar attribute**
-- **10 km de mediana de dispersión**
-- **Unidad de área en ha**
+-   **sin usar attribute**
+-   **10 km de mediana de dispersión**
+-   **Unidad de área en ha**
 
 ```{r}
 area_paisaje <- st_area(paisaje) 
@@ -230,11 +218,9 @@ IIC <- MK_dPCIIC(nodes = habitat_nodes,
 IIC
 ```
 
-
-
 Exploremos un plot usando intervalos:
 
-- dIIC
+-   dIIC
 
 ```{r}
 library(classInt)
@@ -267,8 +253,8 @@ ggplot() +
 
 ```
 
+-   dIICIntra
 
--  dIICIntra
 ```{r}
 # Calcular los intervalos de Jenks para strength
 breaks <- classInt::classIntervals(IIC$dIICintra, n = 9, style = "jenks")
@@ -297,8 +283,8 @@ ggplot() +
 
 ```
 
+-   dIICflux
 
--  dIICflux
 ```{r}
 # Calcular los intervalos de Jenks para strength
 breaks <- classInt::classIntervals(IIC$dIICflux, n = 9, style = "jenks")
@@ -327,12 +313,8 @@ ggplot() +
 
 ```
 
+-   dIICconnector
 
-
-
-
-
--  dIICconnector
 ```{r}
 # Calcular los intervalos de Jenks para strength
 breaks <- classInt::classIntervals(IIC$dIICconnector, n = 9, style = "jenks")
@@ -361,12 +343,11 @@ ggplot() +
 
 ```
 
-
 ## Ejemplo 5. Distancia euclidiana: fracciones y overall
 
-- **sin usar attribute**
-- **10 km de mediana de dispersión**
-- **Unidad de área en ha**
+-   **sin usar attribute**
+-   **10 km de mediana de dispersión**
+-   **Unidad de área en ha**
 
 ```{r}
 area_paisaje <- st_area(paisaje) 
@@ -385,39 +366,11 @@ IIC <- MK_dPCIIC(nodes = habitat_nodes,
 IIC
 ```
 
+## Ejemplo 6. Distancia euclidiana: varios umbrales de distancia
 
-
-
-## Ejemplo 6. Distancia euclidiana: fracciones y overall
-
-- **sin usar attribute**
-- **10 km de mediana de dispersión**
-- **Unidad de área en ha**
-
-```{r}
-area_paisaje <- st_area(paisaje) 
-area_paisaje <- unit_convert(area_paisaje, "m2", "ha") 
-
-IIC <- MK_dPCIIC(nodes = habitat_nodes,
-                attribute = NULL,
-                area_unit = "ha",
-                distance = list(type = "edge", keep = 0.1),
-                LA = area_paisaje,
-                overall = TRUE,
-                onlyoverall = FALSE,
-                metric = "IIC",
-                distance_thresholds = 10000,
-                intern = TRUE) #10 km
-IIC
-```
-
-
-
-## Ejemplo 7. Distancia euclidiana: varios umbrales de distancia
-
-- **sin usar attribute**
-- **2, 10 y 50 km de medianas de dispersión**
-- **Unidad de área en ha**
+-   **sin usar attribute**
+-   **2, 10 y 50 km de medianas de dispersión**
+-   **Unidad de área en ha**
 
 ```{r}
 area_paisaje <- st_area(paisaje) 
@@ -436,17 +389,15 @@ IIC <- MK_dPCIIC(nodes = habitat_nodes,
 IIC
 ```
 
-
-## PC
-
+## Probabilidad de conectividad (PC)
 
 ## Ejemplo 1. Distancia euclidiana
 
-- **Sin usar LA**
-- **sin usar attribute**
-- **10 km de mediana de dispersión con una probabilidad de 0.5**
-- **Unidad de área en ha**
-- **Solo índice para todo el paisaje**
+-   **Sin usar LA**
+-   **sin usar attribute**
+-   **10 km de mediana de dispersión con una probabilidad de 0.5**
+-   **Unidad de área en ha**
+-   **Solo índice para todo el paisaje**
 
 ```{r}
 PC <- MK_dPCIIC(nodes = habitat_nodes,
@@ -462,14 +413,12 @@ PC <- MK_dPCIIC(nodes = habitat_nodes,
 PC
 ```
 
-
-
 ## Ejemplo 2. Distancia euclidiana
 
-- **sin usar attribute**
-- **10 km de mediana de dispersión con una probabilidad de 0.5**
-- **Unidad de área en ha**
-- **Solo índice para todo el paisaje**
+-   **sin usar attribute**
+-   **10 km de mediana de dispersión con una probabilidad de 0.5**
+-   **Unidad de área en ha**
+-   **Solo índice para todo el paisaje**
 
 ```{r}
 area_paisaje <- st_area(paisaje) 
@@ -488,37 +437,11 @@ PC <- MK_dPCIIC(nodes = habitat_nodes,
 PC
 ```
 
+## Ejemplo 3. Distancia euclidiana: fracciones
 
-## Ejemplo 3. Distancia euclidiana: fracciones y overall
-
-- **sin usar attribute**
-- **10 km de mediana de dispersión con una probabilidad de 0.5**
-- **Unidad de área en ha**
-
-```{r}
-area_paisaje <- st_area(paisaje) 
-area_paisaje <- unit_convert(area_paisaje, "m2", "ha") 
-
-PC <- MK_dPCIIC(nodes = habitat_nodes,
-                attribute = NULL,
-                area_unit = "ha",
-                distance = list(type = "edge", keep = 0.1),
-                LA = area_paisaje,
-                overall = TRUE,
-                onlyoverall = FALSE,
-                metric = "PC",
-                probability = 0.5,
-                distance_thresholds = 10000,
-                intern = TRUE) #10 km
-PC
-```
-
-
-## Ejemplo 4. Distancia euclidiana: fracciones
-
-- **sin usar attribute**
-- **10 km de mediana de dispersión con una probabilidad de 0.5**
-- **Unidad de área en ha**
+-   **sin usar attribute**
+-   **10 km de mediana de dispersión con una probabilidad de 0.5**
+-   **Unidad de área en ha**
 
 ```{r}
 area_paisaje <- st_area(paisaje) 
@@ -536,12 +459,10 @@ PC <- MK_dPCIIC(nodes = habitat_nodes,
                 intern = TRUE) #10 km
 PC
 ```
-
-
 
 Exploremos un plot usando intervalos:
 
-- dPC
+-   dPC
 
 ```{r}
 library(classInt)
@@ -574,8 +495,8 @@ ggplot() +
 
 ```
 
+-   dPCIntra
 
--  dPCIntra
 ```{r}
 # Calcular los intervalos de Jenks para strength
 breaks <- classInt::classIntervals(PC$dPCintra, n = 9, style = "jenks")
@@ -604,8 +525,8 @@ ggplot() +
 
 ```
 
+-   dPCflux
 
--  dPCflux
 ```{r}
 # Calcular los intervalos de Jenks para strength
 breaks <- classInt::classIntervals(PC$dPCflux, n = 9, style = "jenks")
@@ -634,12 +555,8 @@ ggplot() +
 
 ```
 
+-   dPCconnector
 
-
-
-
-
--  dPCconnector
 ```{r}
 # Calcular los intervalos de Jenks para strength
 breaks <- classInt::classIntervals(PC$dPCconnector, n = 9, style = "jenks")
@@ -668,14 +585,37 @@ ggplot() +
 
 ```
 
+## Ejemplo 4. Distancia euclidiana: fracciones y overall
+
+-   **sin usar attribute**
+-   **10 km de mediana de dispersión con una probabilidad de 0.5**
+-   **Unidad de área en ha**
+
+```{r}
+area_paisaje <- st_area(paisaje) 
+area_paisaje <- unit_convert(area_paisaje, "m2", "ha") 
+
+PC <- MK_dPCIIC(nodes = habitat_nodes,
+                attribute = NULL,
+                area_unit = "ha",
+                distance = list(type = "edge", keep = 0.1),
+                LA = area_paisaje,
+                overall = TRUE,
+                onlyoverall = FALSE,
+                metric = "PC",
+                probability = 0.5,
+                distance_thresholds = 10000,
+                intern = TRUE) #10 km
+PC
+```
 
 ## Ejemplo 5. Distancia euclidiana: paralelizar
 
-- **sin usar attribute**
-- **10 km de mediana de dispersión con una probabilidad de 0.5**
-- **Unidad de área en ha**
+-   **sin usar attribute**
+-   **10 km de mediana de dispersión con una probabilidad de 0.5**
+-   **Unidad de área en ha**
 
-El argumento parallel solo se activa si tienes más de 2000 parches. 
+El argumento parallel solo se activa si tienes más de 2000 parches. Si tienes menos de 4000 parches utiliza `parallel_mode = 1`.
 
 ```{r eval=FALSE}
 PC <- MK_dPCIIC(nodes = habitat_nodes,
@@ -693,23 +633,23 @@ PC <- MK_dPCIIC(nodes = habitat_nodes,
 PC
 ```
 
+Siempre utiliza la mitad de tus cores disponibles en tu máquina, es decir si son 12 los cores totales utiliza 6. También puedes restar uno o dos cores del total, es decir, si son 12 los totales utiliza 11 o 10.
 
 ```{r}
-# Conocer numero de nodos de tu maquina
+# Conocer numero de Cores de tu maquina
 library(parallel)
 parallel::detectCores()
 ```
 
-
-
-
 ## Ejemplo 6. Distancia costo
 
-- **sin usar attribute**
-- **10 km de mediana de dispersión con una probabilidad de 0.5**
-- **Unidad de área en ha**
-- **Usa un raster con valores de resistencia al movimiento**
+-   **sin usar attribute**
+-   **10 km de mediana de dispersión con una probabilidad de 0.5**
+-   **Unidad de área en ha**
+-   **Usa un raster con valores de resistencia al movimiento**
+-   **Para este ejemplo solo estimaremos los valores a nivel de parche**
 
+La resistencia del paisaje a la dispersión se estimó con una resolución de 100 metros utilizando un índice espacial de huella humana, intensidad del uso del suelo, tiempo de intervención humana en el paisaje, vulnerabilidad biofísica, fragmentación y pérdida de hábitat (Correa Ayram et al., 2017, <https://doi.org/10.1016/j.ecolind.2016.09.007>). El raster se agregó usando un factor de 5 para cambiar su resolución original de 100 m a 500 m.
 
 ```{r}
 library(terra)
@@ -732,31 +672,159 @@ ggplot() +
 
 ```
 
+Estamos utilizando un raster de resistencia que esta incluido en el paquete Makurhini. Para cargar un raster de resistencia para tu estudio puedes utilizar la función `raster()` del paquete `raster` o la función `rast()` del paquete `terra`.
 
+```{r eval=FALSE}
+library(raster)
+resistance_matrix <- raster("direccion/nombre.tif") #puedes usar otras extensiones raster
 
+library(terra)
+resistance_matrix <- rast("direccion/nombre.tif") 
+```
+
+Se utiliza el tipo de distancia de menor costo `type = "least-cost"` y al usar una distancia de resistencia se tiene que usar el otro argumento resistance, es decir, `resistance =` resistance_matrix.
 
 ```{r}
-PC <- MK_dPCIIC(nodes = habitat_nodes_raster,
+PC <- MK_dPCIIC(nodes = habitat_nodes,
                 attribute = NULL,
                 distance = list(type = "least-cost",
                                 resistance = resistance_matrix),
                 metric = "PC", probability = 0.5,
-                overall = TRUE,
-                distance_thresholds = 40000) # 40 km
-PC$overall_d40000
-PC$node_importances_d40000
-plot(PC$node_importances_d40000)
+                overall = FALSE,
+                distance_thresholds = 10000) # 10 km
+PC
+```
+
+```{r}
+library(classInt)
+library(dplyr)
+
+# Calcular los intervalos de Jenks para strength
+breaks <- classInt::classIntervals(PC$dPC, n = 9, style = "jenks")
+
+# Crear una nueva variable categórica con los intervalos
+PC <- PC %>%
+  mutate(dPC_q = cut(dPC,
+                          breaks = breaks$brks,
+                          include.lowest = TRUE,
+                          dig.lab = 5))  
+
+# Graficar en ggplot2 usando las clases Jenks
+ggplot() +  
+  geom_sf(data = paisaje, fill = NA, color = "black") +
+  geom_sf(data = PC, aes(fill = dPC_q), color = "black", size = 0.1) +
+  scale_fill_brewer(palette = "RdYlGn", direction = 1, name = "dPC (jenks)") +
+  theme_minimal() +
+  labs(
+    title = "dPC",
+    fill = "dPC"
+  ) +
+  theme(
+    legend.position = "right",
+    plot.title = element_text(hjust = 0.5)
+  )
 
 ```
 
+-   dPCIntra
 
+```{r}
+# Calcular los intervalos de Jenks para strength
+breaks <- classInt::classIntervals(PC$dPCintra, n = 9, style = "jenks")
 
+# Crear una nueva variable categórica con los intervalos
+PC <- PC %>%
+  mutate(dPC_q = cut(dPCintra,
+                      breaks = breaks$brks,
+                      include.lowest = TRUE,
+                      dig.lab = 5))  
+
+# Graficar en ggplot2 usando las clases Jenks
+ggplot() +  
+  geom_sf(data = paisaje, fill = NA, color = "black") +
+  geom_sf(data = PC, aes(fill = dPC_q), color = "black", size = 0.1) +
+  scale_fill_brewer(palette = "RdYlGn", direction = 1, name = "dPCIntra (jenks)") +
+  theme_minimal() +
+  labs(
+    title = "dPCIntra",
+    fill = "dPCIntra"
+  ) +
+  theme(
+    legend.position = "right",
+    plot.title = element_text(hjust = 0.5)
+  )
+
+```
+
+-   dPCflux
+
+```{r}
+# Calcular los intervalos de Jenks para strength
+breaks <- classInt::classIntervals(PC$dPCflux, n = 9, style = "jenks")
+
+# Crear una nueva variable categórica con los intervalos
+PC <- PC %>%
+  mutate(dPC_q = cut(dPCflux,
+                      breaks = breaks$brks,
+                      include.lowest = TRUE,
+                      dig.lab = 5))  
+
+# Graficar en ggplot2 usando las clases Jenks
+ggplot() +  
+  geom_sf(data = paisaje, fill = NA, color = "black") +
+  geom_sf(data = PC, aes(fill = dPC_q), color = "black", size = 0.1) +
+  scale_fill_brewer(palette = "RdYlGn", direction = 1, name = "dPCFlux (jenks)") +
+  theme_minimal() +
+  labs(
+    title = "dPCFlux",
+    fill = "dPCFlux"
+  ) +
+  theme(
+    legend.position = "right",
+    plot.title = element_text(hjust = 0.5)
+  )
+
+```
+
+-   dPCconnector
+
+```{r}
+# Calcular los intervalos de Jenks para strength
+breaks <- classInt::classIntervals(PC$dPCconnector, n = 9, style = "jenks")
+
+# Crear una nueva variable categórica con los intervalos
+PC <- PC %>%
+  mutate(dPC_q = cut(dPCconnector,
+                     breaks = breaks$brks,
+                     include.lowest = TRUE,
+                     dig.lab = 5))  
+
+# Graficar en ggplot2 usando las clases Jenks
+ggplot() +  
+  geom_sf(data = paisaje, fill = NA, color = "black") +
+  geom_sf(data = PC, aes(fill = dPC_q), color = "black", size = 0.1) +
+  scale_fill_brewer(palette = "RdYlGn", direction = 1, name = "dPCConnector (jenks)") +
+  theme_minimal() +
+  labs(
+    title = "dPCConnector",
+    fill = "dPCConnector"
+  ) +
+  theme(
+    legend.position = "right",
+    plot.title = element_text(hjust = 0.5)
+  )
+
+```
 
 ## Ejemplo 7. Distancia costo en Java
 
+Se utiliza el tipo de distancia de menor costo `type = "least-cost"` y al usar una distancia de resistencia se tiene que usar el otro argumento resistance. Sin embargo, la resistencia tiene que tener solo valores enteros y no decimales. Se debe utilizar el argumento `least_cost.java = TRUE`. Además puedes usar `cores.java` = numero de cores para paralelizar el proceso y `ram.java` = memoria ram para estimar las distancias.
+
 ```{r eval=FALSE}
+#Convertimos la resistencia a valores enteros
 resist2 <- resistance_matrix
 resist2 <- round(resistance_matrix)
+
 
 PC <- MK_dPCIIC(nodes = habitat_nodes,
                 attribute = NULL,
@@ -768,21 +836,27 @@ PC <- MK_dPCIIC(nodes = habitat_nodes,
                 metric = "PC", probability = 0.5,
                 overall = TRUE,
                 distance_thresholds = 40000) # 40 km
-PC$overall_d40000
-PC$node_importances_d40000
+PC
 
 ```
 
+## Ejemplo 8. Usando nodos en formato raster
 
-
-## Ejemplo 7. Usando nodos en formato raster
 ```{r}
 data("habitat_nodes_raster", package = "Makurhini")
 plot(habitat_nodes_raster)
 
 ```
 
+Estamos utilizando un raster de nodos que esta incluido en el paquete Makurhini. Para cargar un raster de nodos para tu estudio puedes utilizar la función `raster()` del paquete `raster` o la función `rast()` del paquete `terra`.
 
+```{r eval=FALSE}
+library(raster)
+habitat_nodes_raster <- raster("direccion/nombre.tif") #puedes usar otras extensiones raster
+
+library(terra)
+habitat_nodes_raster <- rast("direccion/nombre.tif") 
+```
 
 ```{r}
 PC <- MK_dPCIIC(nodes = habitat_nodes_raster,
@@ -795,4 +869,3 @@ PC$overall_d40000
 PC$node_importances_d40000
 plot(PC$node_importances_d40000)
 ```
-
