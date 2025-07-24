@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 4 índice integral de conectividad | Manual de uso de Makurhini</title>
+<meta name="author" content="Oscar Godínez Gómez">
+<meta name="description" content="4.1 Insumos y paquetes Seguimos trabajando con los mismos shapefiles de la sección anterior: habitat_nodes y paisaje. library(ggplot2) library(sf) library(Makurhini) library(RColorBrewer) #&gt;...">
+<meta name="generator" content="bookdown 0.43 with bs4_book()">
+<meta property="og:title" content="Chapter 4 índice integral de conectividad | Manual de uso de Makurhini">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://oscargogo.github.io/Makurhini_manual_esp/índice-integral-de-conectividad.html">
+<meta property="og:image" content="https://oscargogo.github.io/Makurhini_manual_esp/LOGO_MAKHURINI.png">
+<meta property="og:description" content="4.1 Insumos y paquetes Seguimos trabajando con los mismos shapefiles de la sección anterior: habitat_nodes y paisaje. library(ggplot2) library(sf) library(Makurhini) library(RColorBrewer) #&gt;...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 4 índice integral de conectividad | Manual de uso de Makurhini">
+<meta name="twitter:description" content="4.1 Insumos y paquetes Seguimos trabajando con los mismos shapefiles de la sección anterior: habitat_nodes y paisaje. library(ggplot2) library(sf) library(Makurhini) library(RColorBrewer) #&gt;...">
+<meta name="twitter:image" content="https://oscargogo.github.io/Makurhini_manual_esp/LOGO_MAKHURINI.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Manual de uso de Makurhini</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled"><li><a class="" href="index.html"><span class="header-section-number">Chapter 4</span> índice integral de conectividad</a></li></ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/OscarGOGO/Makurhini_manual_esp">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="índice-integral-de-conectividad" class="section level1" number="4">
+<h1>
+<span class="header-section-number">4</span> índice integral de conectividad<a class="anchor" aria-label="anchor" href="#%C3%ADndice-integral-de-conectividad"><i class="fas fa-link"></i></a>
+</h1>
+<div id="insumos-y-paquetes-1" class="section level2" number="4.1">
+<h2>
+<span class="header-section-number">4.1</span> Insumos y paquetes<a class="anchor" aria-label="anchor" href="#insumos-y-paquetes-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>Seguimos trabajando con los mismos shapefiles de la sección anterior: habitat_nodes y paisaje.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/connectscape/Makurhini">Makurhini</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">RColorBrewer</span><span class="op">)</span></span></code></pre></div>
+<pre><code>#&gt; Cargando paquete requerido: igraph
+#&gt; 
+#&gt; Adjuntando el paquete: 'igraph'
+#&gt; The following objects are masked from 'package:stats':
+#&gt; 
+#&gt;     decompose, spectrum
+#&gt; The following object is masked from 'package:base':
+#&gt; 
+#&gt;     union
+#&gt; Cargando paquete requerido: cppRouting
+#&gt; Linking to GEOS 3.13.0, GDAL 3.10.1, PROJ 9.5.1;
+#&gt; sf_use_s2() is TRUE
+#&gt; [1] 404</code></pre>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paisaje</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"Study area"</span><span class="op">)</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">habitat_nodes</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"Parches"</span><span class="op">)</span>, fill <span class="op">=</span> <span class="st">"forestgreen"</span>, linewidth <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">""</span>, values <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.title.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>        axis.title.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="04-IIC_PC_files/figure-html/unnamed-chunk-3-1.png" width="672"></div>
+</div>
+<div id="mk_dpciic" class="section level2" number="4.2">
+<h2>
+<span class="header-section-number">4.2</span> MK_dPCIIC()<a class="anchor" aria-label="anchor" href="#mk_dpciic"><i class="fas fa-link"></i></a>
+</h2>
+<p>Esta función calcula tanto la conectividad global del paisaje como la importancia (contribución) de cada nodo (o parche de hábitat) para mantener la conectividad del paisaje. Utiliza los índices PC e IIC bajo uno o varios umbrales de distancia.</p>
+<div id="la-función-no-correr-1" class="section level3" number="4.2.1">
+<h3>
+<span class="header-section-number">4.2.1</span> La función (no correr)<a class="anchor" aria-label="anchor" href="#la-funci%C3%B3n-no-correr-1"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_dPCIIC.html">MK_dPCIIC</a></span><span class="op">(</span></span>
+<span>  <span class="va">nodes</span>,</span>
+<span>  attribute <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  weighted <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  LA <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  area_unit <span class="op">=</span> <span class="st">"m2"</span>,</span>
+<span>  restoration <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  onlyrestor <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  distance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"centroid"</span>, resistance <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>,</span>
+<span>  metric <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"IIC"</span>, <span class="st">"PC"</span><span class="op">)</span>,</span>
+<span>  probability <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  distance_thresholds <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  threshold <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  overall <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  onlyoverall <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  parallel <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  parallel_mode <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  write <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  id_sel <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  intern <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="descripción-de-los-argumentos-de-la-función-1" class="section level3" number="4.2.2">
+<h3>
+<span class="header-section-number">4.2.2</span> Descripción de los argumentos de la función<a class="anchor" aria-label="anchor" href="#descripci%C3%B3n-de-los-argumentos-de-la-funci%C3%B3n-1"><i class="fas fa-link"></i></a>
+</h3>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="59%">
+<col width="40%">
+</colgroup>
+<thead><tr class="header">
+<th>Argumento</th>
+<th>Descripción</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code>nodes</code></td>
+<td>Objeto que contiene la información de los nodos (e.g., fragmentos de hábitat). Puede ser un <code>data.frame</code> (mínimo dos columnas: ID y atributo), un objeto espacial vectorial (<code>sf</code>, <code>SpatVector</code>) o un raster con valores enteros que representen los ID de cada nodo. Debe estar en un sistema de coordenadas proyectadas.</td>
+</tr>
+<tr class="even">
+<td><code>attribute</code></td>
+<td>Nombre de la columna o vector numérico con el atributo de los nodos. Si es <code>NULL</code>, se utiliza el área como atributo. Si <code>nodes</code> es raster, debe ser un vector numérico de igual longitud al número de nodos.</td>
+</tr>
+<tr class="odd">
+<td><code>weighted</code></td>
+<td>Lógico. Si <code>TRUE</code> y <code>nodes</code> es raster, el atributo será ponderado por el área de cada nodo.</td>
+</tr>
+<tr class="even">
+<td><code>LA</code></td>
+<td>Valor numérico (opcional). Atributo máximo del paisaje. Por ejemplo, el área total si el atributo es área. Se usa para calcular la conectividad global, no afecta la importancia relativa de nodos.</td>
+</tr>
+<tr class="odd">
+<td><code>area_unit</code></td>
+<td>Unidad de área (opcional, por defecto <code>"m2"</code>). Puede ser <code>"m2"</code>, <code>"km2"</code>, <code>"cm2"</code> o <code>"ha"</code>.</td>
+</tr>
+<tr class="even">
+<td><code>restoration</code></td>
+<td>Vector o nombre de columna que indica si cada nodo es existente (1) o propuesto para restauración (0). Si es <code>NULL</code>, se considera que todos los nodos existen.</td>
+</tr>
+<tr class="odd">
+<td><code>onlyrestor</code></td>
+<td>Lógico. Si <code>TRUE</code>, solo se calcularán métricas relacionadas con restauración.</td>
+</tr>
+<tr class="even">
+<td><code>distance</code></td>
+<td>Matriz o lista con parámetros para calcular distancia entre nodos. Puede ser matriz de distancias o una lista con parámetros como <code>type</code> (e.g., <code>"centroid"</code>, <code>"least-cost"</code>) y <code>resistance</code> (raster de resistencia).</td>
+</tr>
+<tr class="odd">
+<td><code>metric</code></td>
+<td>Métrica de conectividad a usar: <code>"PC"</code> (probabilidad de conectividad) o <code>"IIC"</code> (índice integral de conectividad).</td>
+</tr>
+<tr class="even">
+<td><code>probability</code></td>
+<td>Valor numérico que representa la probabilidad asociada a la distancia umbral (e.g., 0.5 si es la mediana de dispersión). Solo se usa con la métrica <code>"PC"</code>.</td>
+</tr>
+<tr class="odd">
+<td><code>distance_thresholds</code></td>
+<td>Distancia(s) de dispersión en metros. Si es <code>NULL</code>, se estima como la mediana de dispersión entre nodos. Puede usarse la función <code>dispersal_distance</code>.</td>
+</tr>
+<tr class="even">
+<td><code>threshold</code></td>
+<td>Distancia máxima entre pares de nodos a considerar. Mejora eficiencia al eliminar pares lejanos.</td>
+</tr>
+<tr class="odd">
+<td><code>overall</code></td>
+<td>Lógico. Si <code>TRUE</code>, se calcula el índice de conectividad del paisaje completo (EC). El resultado será una lista.</td>
+</tr>
+<tr class="even">
+<td><code>onlyoverall</code></td>
+<td>Lógico. Si <code>TRUE</code>, solo se calcularán métricas globales del paisaje.</td>
+</tr>
+<tr class="odd">
+<td><code>parallel</code></td>
+<td>Número de núcleos a usar en paralelización para estimar índices. Útil con más de 1000 nodos.</td>
+</tr>
+<tr class="even">
+<td><code>parallel_mode</code></td>
+<td>Modo de paralelización: 1 (por defecto, recomendado &lt; 1000 nodos) o 2 (recomendado &gt; 1000 nodos).</td>
+</tr>
+<tr class="odd">
+<td><code>write</code></td>
+<td>Ruta y prefijo para guardar los resultados (e.g., <code>"C:/ejemplo/test_PC_"</code>). Se guardan archivos de importancia de nodos y conectividad general si <code>overall = TRUE</code>.</td>
+</tr>
+<tr class="even">
+<td><code>id_sel</code></td>
+<td>Uso interno. No debe usarse por el usuario.</td>
+</tr>
+<tr class="odd">
+<td><code>intern</code></td>
+<td>Lógico. Muestra el progreso del proceso (<code>TRUE</code> por defecto).</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="empty"></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <div id="book-on-this-page"></div>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Manual de uso de Makurhini</strong>" was written by Oscar Godínez Gómez. It was last built on 2025-07-22.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

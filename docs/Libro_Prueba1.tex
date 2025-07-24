@@ -119,7 +119,7 @@
 
 \title{Manual de uso de Makurhini}
 \author{Oscar Godínez Gómez}
-\date{2025-07-22}
+\date{2025-07-23}
 
 \begin{document}
 \maketitle
@@ -1293,6 +1293,7 @@ Usando más de un umbral de distancia
                                  \AttributeTok{distance\_thresholds =} \FunctionTok{c}\NormalTok{(}\DecValTok{10000}\NormalTok{, }\DecValTok{100000}\NormalTok{),}
                                  \AttributeTok{probability =} \FloatTok{0.5}\NormalTok{,}
                                  \AttributeTok{write =} \ConstantTok{NULL}\NormalTok{)}
+\CommentTok{\#\textgreater{}  ===============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   50\% |  ETA:  2s}
 \CommentTok{\#\textgreater{} Done!}
 \NormalTok{centrality\_test}
 \CommentTok{\#\textgreater{} $d10000}
@@ -1315,15 +1316,15 @@ Usando más de un umbral de distancia
 \CommentTok{\#\textgreater{} 10 10 12804425 0.0004306005 0.04405417 1063       1       6}
 \CommentTok{\#\textgreater{}    memb.louvain                       geometry}
 \CommentTok{\#\textgreater{} 1             1 POLYGON ((54911.05 2035815,...}
-\CommentTok{\#\textgreater{} 2             1 POLYGON ((44591.28 2042209,...}
-\CommentTok{\#\textgreater{} 3             1 POLYGON ((46491.11 2042467,...}
+\CommentTok{\#\textgreater{} 2             2 POLYGON ((44591.28 2042209,...}
+\CommentTok{\#\textgreater{} 3             2 POLYGON ((46491.11 2042467,...}
 \CommentTok{\#\textgreater{} 4             1 POLYGON ((54944.49 2048163,...}
-\CommentTok{\#\textgreater{} 5             2 POLYGON ((80094.28 2064140,...}
-\CommentTok{\#\textgreater{} 6             2 POLYGON ((69205.24 2066394,...}
-\CommentTok{\#\textgreater{} 7             2 POLYGON ((68554.2 2066632, ...}
-\CommentTok{\#\textgreater{} 8             2 POLYGON ((69995.53 2066880,...}
-\CommentTok{\#\textgreater{} 9             2 POLYGON ((79368.68 2067324,...}
-\CommentTok{\#\textgreater{} 10            1 POLYGON ((23378.32 2067554,...}
+\CommentTok{\#\textgreater{} 5             1 POLYGON ((80094.28 2064140,...}
+\CommentTok{\#\textgreater{} 6             1 POLYGON ((69205.24 2066394,...}
+\CommentTok{\#\textgreater{} 7             1 POLYGON ((68554.2 2066632, ...}
+\CommentTok{\#\textgreater{} 8             1 POLYGON ((69995.53 2066880,...}
+\CommentTok{\#\textgreater{} 9             1 POLYGON ((79368.68 2067324,...}
+\CommentTok{\#\textgreater{} 10            2 POLYGON ((23378.32 2067554,...}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} $\textasciigrave{}d1e+05\textasciigrave{}}
 \CommentTok{\#\textgreater{} Simple feature collection with 404 features and 8 fields}
@@ -1376,6 +1377,1467 @@ Usando más de un umbral de distancia
 \end{Shaded}
 
 \pandocbounded{\includegraphics[keepaspectratio]{03-Centralidad_files/figure-latex/unnamed-chunk-13-1.pdf}}
+
+\chapter{Kernel de dispersión}\label{kernel-de-dispersiuxf3n}
+
+En Makurhini podemos simular las kernel dispersion usando distintas distancias asociadas a medianas de dispersión. Pare ello, usaremos la función probability\_distance(). Esta función tiene tres parametros principales:
+
+\begin{itemize}
+\tightlist
+\item
+  probability. Probabilidad de dispersión en el parámetro median\_distance.
+\item
+  median\_distance. Hasta cinco distancias máximas de dispersión en km.
+\item
+  eval\_distance. Calcula la probabilidad de dispersión a una distancia mediana específica (km). Disponible cuando sólo se utiliza una distancia\_mediana.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(Makurhini)}
+\CommentTok{\#\textgreater{} Cargando paquete requerido: igraph}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Adjuntando el paquete: \textquotesingle{}igraph\textquotesingle{}}
+\CommentTok{\#\textgreater{} The following objects are masked from \textquotesingle{}package:stats\textquotesingle{}:}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{}     decompose, spectrum}
+\CommentTok{\#\textgreater{} The following object is masked from \textquotesingle{}package:base\textquotesingle{}:}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{}     union}
+\CommentTok{\#\textgreater{} Cargando paquete requerido: cppRouting}
+\FunctionTok{probability\_distance}\NormalTok{(}\AttributeTok{probability=} \FloatTok{0.5}\NormalTok{, }\AttributeTok{median\_distance =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{30}\NormalTok{, }\DecValTok{100}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{04-IIC_PC_files/figure-latex/unnamed-chunk-1-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{probability\_distance}\NormalTok{(}\AttributeTok{probability=} \FloatTok{0.5}\NormalTok{, }\AttributeTok{median\_distance =} \DecValTok{100}\NormalTok{, }\AttributeTok{eval\_distance =} \DecValTok{100}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{04-IIC_PC_files/figure-latex/unnamed-chunk-2-1.pdf}}
+
+\begin{verbatim}
+#> [1] 0.5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{probability\_distance}\NormalTok{(}\AttributeTok{probability=} \FloatTok{0.5}\NormalTok{, }\AttributeTok{median\_distance =} \DecValTok{50}\NormalTok{, }\AttributeTok{eval\_distance =} \DecValTok{25}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{04-IIC_PC_files/figure-latex/unnamed-chunk-3-1.pdf}}
+
+\begin{verbatim}
+#> [1] 0.7071068
+\end{verbatim}
+
+\chapter{índice integral de conectividad y Probabilidad de conectividad}\label{uxedndice-integral-de-conectividad-y-probabilidad-de-conectividad}
+
+\section{Insumos y paquetes}\label{insumos-y-paquetes-1}
+
+Seguimos trabajando con los mismos shapefiles de la sección anterior: habitat\_nodes y paisaje.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(sf)}
+\FunctionTok{library}\NormalTok{(Makurhini)}
+\FunctionTok{library}\NormalTok{(RColorBrewer)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+#> Linking to GEOS 3.13.0, GDAL 3.10.1, PROJ 9.5.1;
+#> sf_use_s2() is TRUE
+#> [1] 404
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}  
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ paisaje, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =} \StringTok{"Study area"}\NormalTok{), }\AttributeTok{fill =} \ConstantTok{NA}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ habitat\_nodes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =} \StringTok{"Parches"}\NormalTok{), }\AttributeTok{fill =} \StringTok{"forestgreen"}\NormalTok{, }\AttributeTok{linewidth =} \FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_color\_manual}\NormalTok{(}\AttributeTok{name =} \StringTok{""}\NormalTok{, }\AttributeTok{values =} \StringTok{"black"}\NormalTok{)}\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.title.x =} \FunctionTok{element\_blank}\NormalTok{(),}
+        \AttributeTok{axis.title.y =} \FunctionTok{element\_blank}\NormalTok{())}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{04-IIC_PC_files/figure-latex/unnamed-chunk-6-1.pdf}}
+
+\section{MK\_dPCIIC()}\label{mk_dpciic}
+
+Esta función calcula tanto la conectividad global del paisaje como la importancia (contribución) de cada nodo (o parche de hábitat) para mantener la conectividad del paisaje. Utiliza los índices PC e IIC bajo uno o varios umbrales de distancia.
+
+\subsection{La función (no correr)}\label{la-funciuxf3n-no-correr-1}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{MK\_dPCIIC}\NormalTok{(}
+\NormalTok{  nodes,}
+  \AttributeTok{attribute =} \ConstantTok{NULL}\NormalTok{,}
+  \AttributeTok{weighted =} \ConstantTok{FALSE}\NormalTok{,}
+  \AttributeTok{LA =} \ConstantTok{NULL}\NormalTok{,}
+  \AttributeTok{area\_unit =} \StringTok{"m2"}\NormalTok{,}
+  \AttributeTok{restoration =} \ConstantTok{NULL}\NormalTok{,}
+  \AttributeTok{onlyrestor =} \ConstantTok{FALSE}\NormalTok{,}
+  \AttributeTok{distance =} \FunctionTok{list}\NormalTok{(}\AttributeTok{type =} \StringTok{"centroid"}\NormalTok{, }\AttributeTok{resistance =} \ConstantTok{NULL}\NormalTok{),}
+  \AttributeTok{metric =} \FunctionTok{c}\NormalTok{(}\StringTok{"IIC"}\NormalTok{, }\StringTok{"PC"}\NormalTok{),}
+  \AttributeTok{probability =} \ConstantTok{NULL}\NormalTok{,}
+  \AttributeTok{distance\_thresholds =} \ConstantTok{NULL}\NormalTok{,}
+  \AttributeTok{threshold =} \ConstantTok{NULL}\NormalTok{,}
+  \AttributeTok{overall =} \ConstantTok{FALSE}\NormalTok{,}
+  \AttributeTok{onlyoverall =} \ConstantTok{FALSE}\NormalTok{,}
+  \AttributeTok{parallel =} \ConstantTok{NULL}\NormalTok{,}
+  \AttributeTok{parallel\_mode =} \DecValTok{1}\NormalTok{,}
+  \AttributeTok{write =} \ConstantTok{NULL}\NormalTok{,}
+  \AttributeTok{id\_sel =} \ConstantTok{NULL}\NormalTok{,}
+  \AttributeTok{intern =} \ConstantTok{TRUE}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Descripción de los argumentos de la función}\label{descripciuxf3n-de-los-argumentos-de-la-funciuxf3n-1}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5938}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.4062}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Argumento
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Descripción
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{nodes} & Objeto que contiene la información de los nodos (e.g., fragmentos de hábitat). Puede ser un \texttt{data.frame} (mínimo dos columnas: ID y atributo), un objeto espacial vectorial (\texttt{sf}, \texttt{SpatVector}) o un raster con valores enteros que representen los ID de cada nodo. Debe estar en un sistema de coordenadas proyectadas. \\
+\texttt{attribute} & Nombre de la columna o vector numérico con el atributo de los nodos. Si es \texttt{NULL}, se utiliza el área como atributo. Si \texttt{nodes} es raster, debe ser un vector numérico de igual longitud al número de nodos. \\
+\texttt{weighted} & Lógico. Si \texttt{TRUE} y \texttt{nodes} es raster, el atributo será ponderado por el área de cada nodo. \\
+\texttt{LA} & Valor numérico (opcional). Atributo máximo del paisaje. Por ejemplo, el área total si el atributo es área. Se usa para calcular la conectividad global, no afecta la importancia relativa de nodos. \\
+\texttt{area\_unit} & Unidad de área (opcional, por defecto \texttt{"m2"}). Puede ser \texttt{"m2"}, \texttt{"km2"}, \texttt{"cm2"} o \texttt{"ha"}. \\
+\texttt{restoration} & Vector o nombre de columna que indica si cada nodo es existente (1) o propuesto para restauración (0). Si es \texttt{NULL}, se considera que todos los nodos existen. \\
+\texttt{onlyrestor} & Lógico. Si \texttt{TRUE}, solo se calcularán métricas relacionadas con restauración. \\
+\texttt{distance} & Matriz o lista con parámetros para calcular distancia entre nodos. Puede ser matriz de distancias o una lista con parámetros como \texttt{type} (e.g., \texttt{"centroid"}, \texttt{"least-cost"}) y \texttt{resistance} (raster de resistencia). \\
+\texttt{metric} & Métrica de conectividad a usar: \texttt{"PC"} (probabilidad de conectividad) o \texttt{"IIC"} (índice integral de conectividad). \\
+\texttt{probability} & Valor numérico que representa la probabilidad asociada a la distancia umbral (e.g., 0.5 si es la mediana de dispersión). Solo se usa con la métrica \texttt{"PC"}. \\
+\texttt{distance\_thresholds} & Distancia(s) de dispersión en metros. Si es \texttt{NULL}, se estima como la mediana de dispersión entre nodos. Puede usarse la función \texttt{dispersal\_distance}. \\
+\texttt{threshold} & Distancia máxima entre pares de nodos a considerar. Mejora eficiencia al eliminar pares lejanos. \\
+\texttt{overall} & Lógico. Si \texttt{TRUE}, se calcula el índice de conectividad del paisaje completo (EC). El resultado será una lista. \\
+\texttt{onlyoverall} & Lógico. Si \texttt{TRUE}, solo se calcularán métricas globales del paisaje. \\
+\texttt{parallel} & Número de núcleos a usar en paralelización para estimar índices. Útil con más de 1000 nodos. \\
+\texttt{parallel\_mode} & Modo de paralelización: 1 (por defecto, recomendado \textless{} 1000 nodos) o 2 (recomendado \textgreater{} 1000 nodos). \\
+\texttt{write} & Ruta y prefijo para guardar los resultados (e.g., \texttt{"C:/ejemplo/test\_PC\_"}). Se guardan archivos de importancia de nodos y conectividad general si \texttt{overall\ =\ TRUE}. \\
+\texttt{id\_sel} & Uso interno. No debe usarse por el usuario. \\
+\texttt{intern} & Lógico. Muestra el progreso del proceso (\texttt{TRUE} por defecto). \\
+\end{longtable}
+
+\section{IIC}\label{iic}
+
+\section{Ejemplo 1. Distancia euclidiana}\label{ejemplo-1.-distancia-euclidiana}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Sin usar LA}
+\item
+  \textbf{sin usar attribute}
+\item
+  \textbf{10 km de mediana de dispersión}
+\item
+  \textbf{Unidad de área en ha}
+\item
+  \textbf{Solo índice para todo el paisaje}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{IIC }\OtherTok{\textless{}{-}} \FunctionTok{MK\_dPCIIC}\NormalTok{(}\AttributeTok{nodes =}\NormalTok{ habitat\_nodes,}
+                \AttributeTok{attribute =} \ConstantTok{NULL}\NormalTok{,}
+                \AttributeTok{area\_unit =} \StringTok{"ha"}\NormalTok{,}
+                \AttributeTok{distance =} \FunctionTok{list}\NormalTok{(}\AttributeTok{type =} \StringTok{"centroid"}\NormalTok{),}
+                \AttributeTok{LA =} \ConstantTok{NULL}\NormalTok{,}
+                \AttributeTok{onlyoverall =} \ConstantTok{TRUE}\NormalTok{,}
+                \AttributeTok{metric =} \StringTok{"IIC"}\NormalTok{,}
+                \AttributeTok{distance\_thresholds =} \DecValTok{10000}\NormalTok{,}
+                \AttributeTok{intern =} \ConstantTok{TRUE}\NormalTok{) }\CommentTok{\#10 km}
+\CommentTok{\#\textgreater{} Estimating IIC index. This may take several minutes depending on the number of nodes}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Done!}
+\NormalTok{IIC}
+\CommentTok{\#\textgreater{}     Index        Value}
+\CommentTok{\#\textgreater{} 1  IICnum 2.041990e+11}
+\CommentTok{\#\textgreater{} 2 EC(IIC) 4.518839e+05}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Ejemplo 2. Distancia euclidiana}\label{ejemplo-2.-distancia-euclidiana}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{sin usar attribute}
+\item
+  \textbf{10 km de mediana de dispersión}
+\item
+  \textbf{Unidad de área en ha}
+\item
+  \textbf{Solo índice para todo el paisaje}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{area\_paisaje }\OtherTok{\textless{}{-}} \FunctionTok{st\_area}\NormalTok{(paisaje) }
+\NormalTok{area\_paisaje }\OtherTok{\textless{}{-}} \FunctionTok{unit\_convert}\NormalTok{(area\_paisaje, }\StringTok{"m2"}\NormalTok{, }\StringTok{"ha"}\NormalTok{) }
+
+\NormalTok{IIC }\OtherTok{\textless{}{-}} \FunctionTok{MK\_dPCIIC}\NormalTok{(}\AttributeTok{nodes =}\NormalTok{ habitat\_nodes,}
+                \AttributeTok{attribute =} \ConstantTok{NULL}\NormalTok{,}
+                \AttributeTok{area\_unit =} \StringTok{"ha"}\NormalTok{,}
+                \AttributeTok{distance =} \FunctionTok{list}\NormalTok{(}\AttributeTok{type =} \StringTok{"centroid"}\NormalTok{),}
+                \AttributeTok{LA =}\NormalTok{ area\_paisaje,}
+                \AttributeTok{onlyoverall =} \ConstantTok{TRUE}\NormalTok{,}
+                \AttributeTok{metric =} \StringTok{"IIC"}\NormalTok{,}
+                \AttributeTok{distance\_thresholds =} \DecValTok{10000}\NormalTok{,}
+                \AttributeTok{intern =} \ConstantTok{TRUE}\NormalTok{) }\CommentTok{\#10 km}
+\CommentTok{\#\textgreater{} Estimating IIC index. This may take several minutes depending on the number of nodes}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Done!}
+\NormalTok{IIC}
+\CommentTok{\#\textgreater{}     Index        Value}
+\CommentTok{\#\textgreater{} 1  IICnum 2.041990e+11}
+\CommentTok{\#\textgreater{} 2 EC(IIC) 4.518839e+05}
+\CommentTok{\#\textgreater{} 3     IIC 2.677956e{-}02}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Ejemplo 3. Distancia euclidiana}\label{ejemplo-3.-distancia-euclidiana}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{sin usar attribute}
+\item
+  \textbf{10 km de mediana de dispersión}
+\item
+  \textbf{Unidad de área en ha}
+\item
+  \textbf{Solo índice para todo el paisaje}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{area\_paisaje }\OtherTok{\textless{}{-}} \FunctionTok{st\_area}\NormalTok{(paisaje) }
+\NormalTok{area\_paisaje }\OtherTok{\textless{}{-}} \FunctionTok{unit\_convert}\NormalTok{(area\_paisaje, }\StringTok{"m2"}\NormalTok{, }\StringTok{"ha"}\NormalTok{) }
+
+\NormalTok{IIC }\OtherTok{\textless{}{-}} \FunctionTok{MK\_dPCIIC}\NormalTok{(}\AttributeTok{nodes =}\NormalTok{ habitat\_nodes,}
+                \AttributeTok{attribute =} \ConstantTok{NULL}\NormalTok{,}
+                \AttributeTok{area\_unit =} \StringTok{"ha"}\NormalTok{,}
+                \AttributeTok{distance =} \FunctionTok{list}\NormalTok{(}\AttributeTok{type =} \StringTok{"edge"}\NormalTok{),}
+                \AttributeTok{LA =}\NormalTok{ area\_paisaje,}
+                \AttributeTok{onlyoverall =} \ConstantTok{TRUE}\NormalTok{,}
+                \AttributeTok{metric =} \StringTok{"IIC"}\NormalTok{,}
+                \AttributeTok{distance\_thresholds =} \DecValTok{10000}\NormalTok{,}
+                \AttributeTok{intern =} \ConstantTok{TRUE}\NormalTok{) }\CommentTok{\#10 km}
+\CommentTok{\#\textgreater{} Estimating IIC index. This may take several minutes depending on the number of nodes}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Done!}
+\NormalTok{IIC}
+\CommentTok{\#\textgreater{}     Index        Value}
+\CommentTok{\#\textgreater{} 1  IICnum 5.700691e+11}
+\CommentTok{\#\textgreater{} 2 EC(IIC) 7.550292e+05}
+\CommentTok{\#\textgreater{} 3     IIC 7.476136e{-}02}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{area\_paisaje }\OtherTok{\textless{}{-}} \FunctionTok{st\_area}\NormalTok{(paisaje) }
+\NormalTok{area\_paisaje }\OtherTok{\textless{}{-}} \FunctionTok{unit\_convert}\NormalTok{(area\_paisaje, }\StringTok{"m2"}\NormalTok{, }\StringTok{"ha"}\NormalTok{) }
+
+\NormalTok{IIC }\OtherTok{\textless{}{-}} \FunctionTok{MK\_dPCIIC}\NormalTok{(}\AttributeTok{nodes =}\NormalTok{ habitat\_nodes,}
+                \AttributeTok{attribute =} \ConstantTok{NULL}\NormalTok{,}
+                \AttributeTok{area\_unit =} \StringTok{"ha"}\NormalTok{,}
+                \AttributeTok{distance =} \FunctionTok{list}\NormalTok{(}\AttributeTok{type =} \StringTok{"edge"}\NormalTok{, }\AttributeTok{keep =} \FloatTok{0.1}\NormalTok{),}
+                \AttributeTok{LA =}\NormalTok{ area\_paisaje,}
+                \AttributeTok{onlyoverall =} \ConstantTok{TRUE}\NormalTok{,}
+                \AttributeTok{metric =} \StringTok{"IIC"}\NormalTok{,}
+                \AttributeTok{distance\_thresholds =} \DecValTok{10000}\NormalTok{,}
+                \AttributeTok{intern =} \ConstantTok{TRUE}\NormalTok{) }\CommentTok{\#10 km}
+\CommentTok{\#\textgreater{} Estimating IIC index. This may take several minutes depending on the number of nodes}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Done!}
+\NormalTok{IIC}
+\CommentTok{\#\textgreater{}     Index        Value}
+\CommentTok{\#\textgreater{} 1  IICnum 5.693868e+11}
+\CommentTok{\#\textgreater{} 2 EC(IIC) 7.545772e+05}
+\CommentTok{\#\textgreater{} 3     IIC 7.467188e{-}02}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Ejemplo 4. Distancia euclidiana: fracciones}\label{ejemplo-4.-distancia-euclidiana-fracciones}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{sin usar attribute}
+\item
+  \textbf{10 km de mediana de dispersión}
+\item
+  \textbf{Unidad de área en ha}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{area\_paisaje }\OtherTok{\textless{}{-}} \FunctionTok{st\_area}\NormalTok{(paisaje) }
+\NormalTok{area\_paisaje }\OtherTok{\textless{}{-}} \FunctionTok{unit\_convert}\NormalTok{(area\_paisaje, }\StringTok{"m2"}\NormalTok{, }\StringTok{"ha"}\NormalTok{) }
+
+\NormalTok{IIC }\OtherTok{\textless{}{-}} \FunctionTok{MK\_dPCIIC}\NormalTok{(}\AttributeTok{nodes =}\NormalTok{ habitat\_nodes,}
+                \AttributeTok{attribute =} \ConstantTok{NULL}\NormalTok{,}
+                \AttributeTok{area\_unit =} \StringTok{"ha"}\NormalTok{,}
+                \AttributeTok{distance =} \FunctionTok{list}\NormalTok{(}\AttributeTok{type =} \StringTok{"edge"}\NormalTok{, }\AttributeTok{keep =} \FloatTok{0.1}\NormalTok{),}
+                \AttributeTok{LA =}\NormalTok{ area\_paisaje,}
+                \AttributeTok{onlyoverall =} \ConstantTok{FALSE}\NormalTok{,}
+                \AttributeTok{metric =} \StringTok{"IIC"}\NormalTok{,}
+                \AttributeTok{distance\_thresholds =} \DecValTok{10000}\NormalTok{,}
+                \AttributeTok{intern =} \ConstantTok{TRUE}\NormalTok{) }\CommentTok{\#10 km}
+\CommentTok{\#\textgreater{} Estimating IIC index. This may take several minutes depending on the number of nodes}
+\CommentTok{\#\textgreater{}  ==================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   62\% |  ETA:  2s}
+\CommentTok{\#\textgreater{}  ============================\textgreater{}{-}{-}   94\% |  ETA:  0s}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Done!}
+\NormalTok{IIC}
+\CommentTok{\#\textgreater{} Simple feature collection with 404 features and 5 fields}
+\CommentTok{\#\textgreater{} Geometry type: POLYGON}
+\CommentTok{\#\textgreater{} Dimension:     XY}
+\CommentTok{\#\textgreater{} Bounding box:  xmin: {-}108954 ymin: 2025032 xmax: 202330.2 ymax: 2198936}
+\CommentTok{\#\textgreater{} Projected CRS: NAD\_1927\_Albers}
+\CommentTok{\#\textgreater{} First 10 features:}
+\CommentTok{\#\textgreater{}    Id      dIIC dIICintra  dIICflux dIICconnector}
+\CommentTok{\#\textgreater{} 1   1 0.0067065 0.0000013 0.0067052   0.000000000}
+\CommentTok{\#\textgreater{} 2   2 0.0210320 0.0000085 0.0210235   0.000000000}
+\CommentTok{\#\textgreater{} 3   3 1.0591462 0.0213281 1.0312790   0.006539041}
+\CommentTok{\#\textgreater{} 4   4 0.0115557 0.0000026 0.0115531   0.000000000}
+\CommentTok{\#\textgreater{} 5   5 0.0254291 0.0000060 0.0254231   0.000000000}
+\CommentTok{\#\textgreater{} 6   6 0.0036214 0.0000001 0.0036212   0.000000000}
+\CommentTok{\#\textgreater{} 7   7 0.0059875 0.0000003 0.0059872   0.000000000}
+\CommentTok{\#\textgreater{} 8   8 0.0079222 0.0000006 0.0079216   0.000000000}
+\CommentTok{\#\textgreater{} 9   9 0.0280103 0.0000073 0.0280030   0.000000000}
+\CommentTok{\#\textgreater{} 10 10 4.5575494 0.1522233 3.3954709   1.009855242}
+\CommentTok{\#\textgreater{}                          geometry}
+\CommentTok{\#\textgreater{} 1  POLYGON ((54911.05 2035815,...}
+\CommentTok{\#\textgreater{} 2  POLYGON ((44591.28 2042209,...}
+\CommentTok{\#\textgreater{} 3  POLYGON ((46491.11 2042467,...}
+\CommentTok{\#\textgreater{} 4  POLYGON ((54944.49 2048163,...}
+\CommentTok{\#\textgreater{} 5  POLYGON ((80094.28 2064140,...}
+\CommentTok{\#\textgreater{} 6  POLYGON ((69205.24 2066394,...}
+\CommentTok{\#\textgreater{} 7  POLYGON ((68554.2 2066632, ...}
+\CommentTok{\#\textgreater{} 8  POLYGON ((69995.53 2066880,...}
+\CommentTok{\#\textgreater{} 9  POLYGON ((79368.68 2067324,...}
+\CommentTok{\#\textgreater{} 10 POLYGON ((23378.32 2067554,...}
+\end{Highlighting}
+\end{Shaded}
+
+Exploremos un plot usando intervalos:
+
+\begin{itemize}
+\tightlist
+\item
+  dIIC
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(classInt)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Adjuntando el paquete: \textquotesingle{}dplyr\textquotesingle{}}
+\CommentTok{\#\textgreater{} The following objects are masked from \textquotesingle{}package:igraph\textquotesingle{}:}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{}     as\_data\_frame, groups, union}
+\CommentTok{\#\textgreater{} The following objects are masked from \textquotesingle{}package:stats\textquotesingle{}:}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{}     filter, lag}
+\CommentTok{\#\textgreater{} The following objects are masked from \textquotesingle{}package:base\textquotesingle{}:}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{}     intersect, setdiff, setequal, union}
+
+\CommentTok{\# Calcular los intervalos de Jenks para strength}
+\NormalTok{breaks }\OtherTok{\textless{}{-}}\NormalTok{ classInt}\SpecialCharTok{::}\FunctionTok{classIntervals}\NormalTok{(IIC}\SpecialCharTok{$}\NormalTok{dIIC, }\AttributeTok{n =} \DecValTok{9}\NormalTok{, }\AttributeTok{style =} \StringTok{"jenks"}\NormalTok{)}
+
+\CommentTok{\# Crear una nueva variable categórica con los intervalos}
+\NormalTok{IIC }\OtherTok{\textless{}{-}}\NormalTok{ IIC }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{dIIC\_q =} \FunctionTok{cut}\NormalTok{(dIIC,}
+                          \AttributeTok{breaks =}\NormalTok{ breaks}\SpecialCharTok{$}\NormalTok{brks,}
+                          \AttributeTok{include.lowest =} \ConstantTok{TRUE}\NormalTok{,}
+                          \AttributeTok{dig.lab =} \DecValTok{5}\NormalTok{))  }
+
+\CommentTok{\# Graficar en ggplot2 usando las clases Jenks}
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}  
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ paisaje, }\AttributeTok{fill =} \ConstantTok{NA}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ IIC, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ dIIC\_q), }\AttributeTok{color =} \StringTok{"black"}\NormalTok{, }\AttributeTok{size =} \FloatTok{0.1}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_brewer}\NormalTok{(}\AttributeTok{palette =} \StringTok{"RdYlGn"}\NormalTok{, }\AttributeTok{direction =} \DecValTok{1}\NormalTok{, }\AttributeTok{name =} \StringTok{"dIIC (jenks)"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \StringTok{"dIIC"}\NormalTok{,}
+    \AttributeTok{fill =} \StringTok{"dIIC"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}
+    \AttributeTok{legend.position =} \StringTok{"right"}\NormalTok{,}
+    \AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{04-IIC_PC_files/figure-latex/unnamed-chunk-13-1.pdf}}
+
+\begin{itemize}
+\tightlist
+\item
+  dIICIntra
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calcular los intervalos de Jenks para strength}
+\NormalTok{breaks }\OtherTok{\textless{}{-}}\NormalTok{ classInt}\SpecialCharTok{::}\FunctionTok{classIntervals}\NormalTok{(IIC}\SpecialCharTok{$}\NormalTok{dIICintra, }\AttributeTok{n =} \DecValTok{9}\NormalTok{, }\AttributeTok{style =} \StringTok{"jenks"}\NormalTok{)}
+
+\CommentTok{\# Crear una nueva variable categórica con los intervalos}
+\NormalTok{IIC }\OtherTok{\textless{}{-}}\NormalTok{ IIC }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{dIIC\_q =} \FunctionTok{cut}\NormalTok{(dIICintra,}
+                          \AttributeTok{breaks =}\NormalTok{ breaks}\SpecialCharTok{$}\NormalTok{brks,}
+                          \AttributeTok{include.lowest =} \ConstantTok{TRUE}\NormalTok{,}
+                          \AttributeTok{dig.lab =} \DecValTok{5}\NormalTok{))  }
+
+\CommentTok{\# Graficar en ggplot2 usando las clases Jenks}
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}  
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ paisaje, }\AttributeTok{fill =} \ConstantTok{NA}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ IIC, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ dIIC\_q), }\AttributeTok{color =} \StringTok{"black"}\NormalTok{, }\AttributeTok{size =} \FloatTok{0.1}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_brewer}\NormalTok{(}\AttributeTok{palette =} \StringTok{"RdYlGn"}\NormalTok{, }\AttributeTok{direction =} \DecValTok{1}\NormalTok{, }\AttributeTok{name =} \StringTok{"dIICIntra (jenks)"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \StringTok{"dIICIntra"}\NormalTok{,}
+    \AttributeTok{fill =} \StringTok{"dIICIntra"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}
+    \AttributeTok{legend.position =} \StringTok{"right"}\NormalTok{,}
+    \AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{04-IIC_PC_files/figure-latex/unnamed-chunk-14-1.pdf}}
+
+\begin{itemize}
+\tightlist
+\item
+  dIICflux
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calcular los intervalos de Jenks para strength}
+\NormalTok{breaks }\OtherTok{\textless{}{-}}\NormalTok{ classInt}\SpecialCharTok{::}\FunctionTok{classIntervals}\NormalTok{(IIC}\SpecialCharTok{$}\NormalTok{dIICflux, }\AttributeTok{n =} \DecValTok{9}\NormalTok{, }\AttributeTok{style =} \StringTok{"jenks"}\NormalTok{)}
+
+\CommentTok{\# Crear una nueva variable categórica con los intervalos}
+\NormalTok{IIC }\OtherTok{\textless{}{-}}\NormalTok{ IIC }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{dIIC\_q =} \FunctionTok{cut}\NormalTok{(dIICflux,}
+                          \AttributeTok{breaks =}\NormalTok{ breaks}\SpecialCharTok{$}\NormalTok{brks,}
+                          \AttributeTok{include.lowest =} \ConstantTok{TRUE}\NormalTok{,}
+                          \AttributeTok{dig.lab =} \DecValTok{5}\NormalTok{))  }
+
+\CommentTok{\# Graficar en ggplot2 usando las clases Jenks}
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}  
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ paisaje, }\AttributeTok{fill =} \ConstantTok{NA}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ IIC, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ dIIC\_q), }\AttributeTok{color =} \StringTok{"black"}\NormalTok{, }\AttributeTok{size =} \FloatTok{0.1}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_brewer}\NormalTok{(}\AttributeTok{palette =} \StringTok{"RdYlGn"}\NormalTok{, }\AttributeTok{direction =} \DecValTok{1}\NormalTok{, }\AttributeTok{name =} \StringTok{"dIICFlux (jenks)"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \StringTok{"dIICFlux"}\NormalTok{,}
+    \AttributeTok{fill =} \StringTok{"dIICFlux"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}
+    \AttributeTok{legend.position =} \StringTok{"right"}\NormalTok{,}
+    \AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{04-IIC_PC_files/figure-latex/unnamed-chunk-15-1.pdf}}
+
+\begin{itemize}
+\tightlist
+\item
+  dIICconnector
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calcular los intervalos de Jenks para strength}
+\NormalTok{breaks }\OtherTok{\textless{}{-}}\NormalTok{ classInt}\SpecialCharTok{::}\FunctionTok{classIntervals}\NormalTok{(IIC}\SpecialCharTok{$}\NormalTok{dIICconnector, }\AttributeTok{n =} \DecValTok{9}\NormalTok{, }\AttributeTok{style =} \StringTok{"jenks"}\NormalTok{)}
+
+\CommentTok{\# Crear una nueva variable categórica con los intervalos}
+\NormalTok{IIC }\OtherTok{\textless{}{-}}\NormalTok{ IIC }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{dIIC\_q =} \FunctionTok{cut}\NormalTok{(dIICconnector,}
+                          \AttributeTok{breaks =}\NormalTok{ breaks}\SpecialCharTok{$}\NormalTok{brks,}
+                          \AttributeTok{include.lowest =} \ConstantTok{TRUE}\NormalTok{,}
+                          \AttributeTok{dig.lab =} \DecValTok{5}\NormalTok{))  }
+
+\CommentTok{\# Graficar en ggplot2 usando las clases Jenks}
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}  
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ paisaje, }\AttributeTok{fill =} \ConstantTok{NA}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ IIC, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ dIIC\_q), }\AttributeTok{color =} \StringTok{"black"}\NormalTok{, }\AttributeTok{size =} \FloatTok{0.1}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_brewer}\NormalTok{(}\AttributeTok{palette =} \StringTok{"RdYlGn"}\NormalTok{, }\AttributeTok{direction =} \DecValTok{1}\NormalTok{, }\AttributeTok{name =} \StringTok{"dIICConnector (jenks)"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \StringTok{"dIICConnector"}\NormalTok{,}
+    \AttributeTok{fill =} \StringTok{"dIICConnector"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}
+    \AttributeTok{legend.position =} \StringTok{"right"}\NormalTok{,}
+    \AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{04-IIC_PC_files/figure-latex/unnamed-chunk-16-1.pdf}}
+
+\section{Ejemplo 5. Distancia euclidiana: fracciones y overall}\label{ejemplo-5.-distancia-euclidiana-fracciones-y-overall}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{sin usar attribute}
+\item
+  \textbf{10 km de mediana de dispersión}
+\item
+  \textbf{Unidad de área en ha}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{area\_paisaje }\OtherTok{\textless{}{-}} \FunctionTok{st\_area}\NormalTok{(paisaje) }
+\NormalTok{area\_paisaje }\OtherTok{\textless{}{-}} \FunctionTok{unit\_convert}\NormalTok{(area\_paisaje, }\StringTok{"m2"}\NormalTok{, }\StringTok{"ha"}\NormalTok{) }
+
+\NormalTok{IIC }\OtherTok{\textless{}{-}} \FunctionTok{MK\_dPCIIC}\NormalTok{(}\AttributeTok{nodes =}\NormalTok{ habitat\_nodes,}
+                \AttributeTok{attribute =} \ConstantTok{NULL}\NormalTok{,}
+                \AttributeTok{area\_unit =} \StringTok{"ha"}\NormalTok{,}
+                \AttributeTok{distance =} \FunctionTok{list}\NormalTok{(}\AttributeTok{type =} \StringTok{"edge"}\NormalTok{, }\AttributeTok{keep =} \FloatTok{0.1}\NormalTok{),}
+                \AttributeTok{LA =}\NormalTok{ area\_paisaje,}
+                \AttributeTok{overall =} \ConstantTok{TRUE}\NormalTok{,}
+                \AttributeTok{onlyoverall =} \ConstantTok{FALSE}\NormalTok{,}
+                \AttributeTok{metric =} \StringTok{"IIC"}\NormalTok{,}
+                \AttributeTok{distance\_thresholds =} \DecValTok{10000}\NormalTok{,}
+                \AttributeTok{intern =} \ConstantTok{TRUE}\NormalTok{) }\CommentTok{\#10 km}
+\CommentTok{\#\textgreater{} Estimating IIC index. This may take several minutes depending on the number of nodes}
+\CommentTok{\#\textgreater{}  ================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   54\% |  ETA:  3s}
+\CommentTok{\#\textgreater{}  ==============================\textgreater{}   99\% |  ETA:  0s}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Done!}
+\NormalTok{IIC}
+\CommentTok{\#\textgreater{} $node\_importances\_d10000}
+\CommentTok{\#\textgreater{} Simple feature collection with 404 features and 5 fields}
+\CommentTok{\#\textgreater{} Geometry type: POLYGON}
+\CommentTok{\#\textgreater{} Dimension:     XY}
+\CommentTok{\#\textgreater{} Bounding box:  xmin: {-}108954 ymin: 2025032 xmax: 202330.2 ymax: 2198936}
+\CommentTok{\#\textgreater{} Projected CRS: NAD\_1927\_Albers}
+\CommentTok{\#\textgreater{} First 10 features:}
+\CommentTok{\#\textgreater{}    Id      dIIC dIICintra  dIICflux dIICconnector}
+\CommentTok{\#\textgreater{} 1   1 0.0067065 0.0000013 0.0067052   0.000000000}
+\CommentTok{\#\textgreater{} 2   2 0.0210320 0.0000085 0.0210235   0.000000000}
+\CommentTok{\#\textgreater{} 3   3 1.0591462 0.0213281 1.0312790   0.006539041}
+\CommentTok{\#\textgreater{} 4   4 0.0115557 0.0000026 0.0115531   0.000000000}
+\CommentTok{\#\textgreater{} 5   5 0.0254291 0.0000060 0.0254231   0.000000000}
+\CommentTok{\#\textgreater{} 6   6 0.0036214 0.0000001 0.0036212   0.000000000}
+\CommentTok{\#\textgreater{} 7   7 0.0059875 0.0000003 0.0059872   0.000000000}
+\CommentTok{\#\textgreater{} 8   8 0.0079222 0.0000006 0.0079216   0.000000000}
+\CommentTok{\#\textgreater{} 9   9 0.0280103 0.0000073 0.0280030   0.000000000}
+\CommentTok{\#\textgreater{} 10 10 4.5575494 0.1522233 3.3954709   1.009855242}
+\CommentTok{\#\textgreater{}                          geometry}
+\CommentTok{\#\textgreater{} 1  POLYGON ((54911.05 2035815,...}
+\CommentTok{\#\textgreater{} 2  POLYGON ((44591.28 2042209,...}
+\CommentTok{\#\textgreater{} 3  POLYGON ((46491.11 2042467,...}
+\CommentTok{\#\textgreater{} 4  POLYGON ((54944.49 2048163,...}
+\CommentTok{\#\textgreater{} 5  POLYGON ((80094.28 2064140,...}
+\CommentTok{\#\textgreater{} 6  POLYGON ((69205.24 2066394,...}
+\CommentTok{\#\textgreater{} 7  POLYGON ((68554.2 2066632, ...}
+\CommentTok{\#\textgreater{} 8  POLYGON ((69995.53 2066880,...}
+\CommentTok{\#\textgreater{} 9  POLYGON ((79368.68 2067324,...}
+\CommentTok{\#\textgreater{} 10 POLYGON ((23378.32 2067554,...}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $overall\_d10000}
+\CommentTok{\#\textgreater{}     Index        Value}
+\CommentTok{\#\textgreater{} 1  IICnum 5.693868e+11}
+\CommentTok{\#\textgreater{} 2 EC(IIC) 7.545772e+05}
+\CommentTok{\#\textgreater{} 3     IIC 7.467188e{-}02}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Ejemplo 6. Distancia euclidiana: fracciones y overall}\label{ejemplo-6.-distancia-euclidiana-fracciones-y-overall}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{sin usar attribute}
+\item
+  \textbf{10 km de mediana de dispersión}
+\item
+  \textbf{Unidad de área en ha}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{area\_paisaje }\OtherTok{\textless{}{-}} \FunctionTok{st\_area}\NormalTok{(paisaje) }
+\NormalTok{area\_paisaje }\OtherTok{\textless{}{-}} \FunctionTok{unit\_convert}\NormalTok{(area\_paisaje, }\StringTok{"m2"}\NormalTok{, }\StringTok{"ha"}\NormalTok{) }
+
+\NormalTok{IIC }\OtherTok{\textless{}{-}} \FunctionTok{MK\_dPCIIC}\NormalTok{(}\AttributeTok{nodes =}\NormalTok{ habitat\_nodes,}
+                \AttributeTok{attribute =} \ConstantTok{NULL}\NormalTok{,}
+                \AttributeTok{area\_unit =} \StringTok{"ha"}\NormalTok{,}
+                \AttributeTok{distance =} \FunctionTok{list}\NormalTok{(}\AttributeTok{type =} \StringTok{"edge"}\NormalTok{, }\AttributeTok{keep =} \FloatTok{0.1}\NormalTok{),}
+                \AttributeTok{LA =}\NormalTok{ area\_paisaje,}
+                \AttributeTok{overall =} \ConstantTok{TRUE}\NormalTok{,}
+                \AttributeTok{onlyoverall =} \ConstantTok{FALSE}\NormalTok{,}
+                \AttributeTok{metric =} \StringTok{"IIC"}\NormalTok{,}
+                \AttributeTok{distance\_thresholds =} \DecValTok{10000}\NormalTok{,}
+                \AttributeTok{intern =} \ConstantTok{TRUE}\NormalTok{) }\CommentTok{\#10 km}
+\CommentTok{\#\textgreater{} Estimating IIC index. This may take several minutes depending on the number of nodes}
+\CommentTok{\#\textgreater{}  ===============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   50\% |  ETA:  3s}
+\CommentTok{\#\textgreater{}  ==========================\textgreater{}{-}{-}{-}{-}   87\% |  ETA:  1s}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Done!}
+\NormalTok{IIC}
+\CommentTok{\#\textgreater{} $node\_importances\_d10000}
+\CommentTok{\#\textgreater{} Simple feature collection with 404 features and 5 fields}
+\CommentTok{\#\textgreater{} Geometry type: POLYGON}
+\CommentTok{\#\textgreater{} Dimension:     XY}
+\CommentTok{\#\textgreater{} Bounding box:  xmin: {-}108954 ymin: 2025032 xmax: 202330.2 ymax: 2198936}
+\CommentTok{\#\textgreater{} Projected CRS: NAD\_1927\_Albers}
+\CommentTok{\#\textgreater{} First 10 features:}
+\CommentTok{\#\textgreater{}    Id      dIIC dIICintra  dIICflux dIICconnector}
+\CommentTok{\#\textgreater{} 1   1 0.0067065 0.0000013 0.0067052   0.000000000}
+\CommentTok{\#\textgreater{} 2   2 0.0210320 0.0000085 0.0210235   0.000000000}
+\CommentTok{\#\textgreater{} 3   3 1.0591462 0.0213281 1.0312790   0.006539041}
+\CommentTok{\#\textgreater{} 4   4 0.0115557 0.0000026 0.0115531   0.000000000}
+\CommentTok{\#\textgreater{} 5   5 0.0254291 0.0000060 0.0254231   0.000000000}
+\CommentTok{\#\textgreater{} 6   6 0.0036214 0.0000001 0.0036212   0.000000000}
+\CommentTok{\#\textgreater{} 7   7 0.0059875 0.0000003 0.0059872   0.000000000}
+\CommentTok{\#\textgreater{} 8   8 0.0079222 0.0000006 0.0079216   0.000000000}
+\CommentTok{\#\textgreater{} 9   9 0.0280103 0.0000073 0.0280030   0.000000000}
+\CommentTok{\#\textgreater{} 10 10 4.5575494 0.1522233 3.3954709   1.009855242}
+\CommentTok{\#\textgreater{}                          geometry}
+\CommentTok{\#\textgreater{} 1  POLYGON ((54911.05 2035815,...}
+\CommentTok{\#\textgreater{} 2  POLYGON ((44591.28 2042209,...}
+\CommentTok{\#\textgreater{} 3  POLYGON ((46491.11 2042467,...}
+\CommentTok{\#\textgreater{} 4  POLYGON ((54944.49 2048163,...}
+\CommentTok{\#\textgreater{} 5  POLYGON ((80094.28 2064140,...}
+\CommentTok{\#\textgreater{} 6  POLYGON ((69205.24 2066394,...}
+\CommentTok{\#\textgreater{} 7  POLYGON ((68554.2 2066632, ...}
+\CommentTok{\#\textgreater{} 8  POLYGON ((69995.53 2066880,...}
+\CommentTok{\#\textgreater{} 9  POLYGON ((79368.68 2067324,...}
+\CommentTok{\#\textgreater{} 10 POLYGON ((23378.32 2067554,...}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $overall\_d10000}
+\CommentTok{\#\textgreater{}     Index        Value}
+\CommentTok{\#\textgreater{} 1  IICnum 5.693868e+11}
+\CommentTok{\#\textgreater{} 2 EC(IIC) 7.545772e+05}
+\CommentTok{\#\textgreater{} 3     IIC 7.467188e{-}02}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Ejemplo 7. Distancia euclidiana: varios umbrales de distancia}\label{ejemplo-7.-distancia-euclidiana-varios-umbrales-de-distancia}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{sin usar attribute}
+\item
+  \textbf{2, 10 y 50 km de medianas de dispersión}
+\item
+  \textbf{Unidad de área en ha}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{area\_paisaje }\OtherTok{\textless{}{-}} \FunctionTok{st\_area}\NormalTok{(paisaje) }
+\NormalTok{area\_paisaje }\OtherTok{\textless{}{-}} \FunctionTok{unit\_convert}\NormalTok{(area\_paisaje, }\StringTok{"m2"}\NormalTok{, }\StringTok{"ha"}\NormalTok{) }
+
+\NormalTok{IIC }\OtherTok{\textless{}{-}} \FunctionTok{MK\_dPCIIC}\NormalTok{(}\AttributeTok{nodes =}\NormalTok{ habitat\_nodes,}
+                \AttributeTok{attribute =} \ConstantTok{NULL}\NormalTok{,}
+                \AttributeTok{area\_unit =} \StringTok{"ha"}\NormalTok{,}
+                \AttributeTok{distance =} \FunctionTok{list}\NormalTok{(}\AttributeTok{type =} \StringTok{"edge"}\NormalTok{, }\AttributeTok{keep =} \FloatTok{0.1}\NormalTok{),}
+                \AttributeTok{LA =}\NormalTok{ area\_paisaje,}
+                \AttributeTok{overall =} \ConstantTok{TRUE}\NormalTok{,}
+                \AttributeTok{onlyoverall =} \ConstantTok{FALSE}\NormalTok{,}
+                \AttributeTok{metric =} \StringTok{"IIC"}\NormalTok{,}
+                \AttributeTok{distance\_thresholds =} \FunctionTok{c}\NormalTok{(}\DecValTok{2000}\NormalTok{, }\DecValTok{10000}\NormalTok{, }\DecValTok{50000}\NormalTok{),}
+                \AttributeTok{intern =} \ConstantTok{TRUE}\NormalTok{)}
+\CommentTok{\#\textgreater{} Estimating IIC index. This may take several minutes depending on the number of nodes}
+\CommentTok{\#\textgreater{} }
+  \SpecialCharTok{|}                                                        
+  \ErrorTok{|}                                                  \ErrorTok{|}   \DecValTok{0}\NormalTok{\%}
+\CommentTok{\#\textgreater{}  ===================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   64\% |  ETA:  1s}
+\CommentTok{\#\textgreater{} }
+  \SpecialCharTok{|}                                                        
+  \ErrorTok{|=================}                                 \ErrorTok{|}  \DecValTok{33}\NormalTok{\%}
+\CommentTok{\#\textgreater{}  ===============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   51\% |  ETA:  3s}
+\CommentTok{\#\textgreater{}  =========================\textgreater{}{-}{-}{-}{-}{-}   82\% |  ETA:  1s}
+\CommentTok{\#\textgreater{} }
+  \SpecialCharTok{|}                                                        
+  \ErrorTok{|=================================}                 \ErrorTok{|}  \DecValTok{67}\NormalTok{\%}
+\CommentTok{\#\textgreater{}  ======\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   20\% |  ETA: 12s}
+\CommentTok{\#\textgreater{}  =========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   31\% |  ETA: 13s}
+\CommentTok{\#\textgreater{}  ===============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   49\% |  ETA: 10s}
+\CommentTok{\#\textgreater{}  ====================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   68\% |  ETA:  6s}
+\CommentTok{\#\textgreater{}  ==========================\textgreater{}{-}{-}{-}{-}   86\% |  ETA:  2s}
+\CommentTok{\#\textgreater{} }
+  \SpecialCharTok{|}                                                        
+  \ErrorTok{|==================================================|} \DecValTok{100}\NormalTok{\%}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Done!}
+\NormalTok{IIC}
+\CommentTok{\#\textgreater{} $d2000}
+\CommentTok{\#\textgreater{} $d2000$node\_importances\_d2000}
+\CommentTok{\#\textgreater{} Simple feature collection with 404 features and 5 fields}
+\CommentTok{\#\textgreater{} Geometry type: POLYGON}
+\CommentTok{\#\textgreater{} Dimension:     XY}
+\CommentTok{\#\textgreater{} Bounding box:  xmin: {-}108954 ymin: 2025032 xmax: 202330.2 ymax: 2198936}
+\CommentTok{\#\textgreater{} Projected CRS: NAD\_1927\_Albers}
+\CommentTok{\#\textgreater{} First 10 features:}
+\CommentTok{\#\textgreater{}    Id      dIIC dIICintra  dIICflux dIICconnector}
+\CommentTok{\#\textgreater{} 1   1 0.0069060 0.0000016 0.0069043  2.682750e{-}15}
+\CommentTok{\#\textgreater{} 2   2 0.0211089 0.0000107 0.0210982  8.038710e{-}15}
+\CommentTok{\#\textgreater{} 3   3 1.0630868 0.0268336 1.0295579  6.695335e{-}03}
+\CommentTok{\#\textgreater{} 4   4 0.0114992 0.0000032 0.0114959  3.714040e{-}15}
+\CommentTok{\#\textgreater{} 5   5 0.0208395 0.0000075 0.0208320  1.025569e{-}14}
+\CommentTok{\#\textgreater{} 6   6 0.0029673 0.0000002 0.0029671  9.421720e{-}15}
+\CommentTok{\#\textgreater{} 7   7 0.0049061 0.0000004 0.0049057  5.947500e{-}15}
+\CommentTok{\#\textgreater{} 8   8 0.0088114 0.0000007 0.0088105  9.729792e{-}08}
+\CommentTok{\#\textgreater{} 9   9 0.0519838 0.0000091 0.0311509  2.082369e{-}02}
+\CommentTok{\#\textgreater{} 10 10 4.3995157 0.1915165 3.2149196  9.930796e{-}01}
+\CommentTok{\#\textgreater{}                          geometry}
+\CommentTok{\#\textgreater{} 1  POLYGON ((54911.05 2035815,...}
+\CommentTok{\#\textgreater{} 2  POLYGON ((44591.28 2042209,...}
+\CommentTok{\#\textgreater{} 3  POLYGON ((46491.11 2042467,...}
+\CommentTok{\#\textgreater{} 4  POLYGON ((54944.49 2048163,...}
+\CommentTok{\#\textgreater{} 5  POLYGON ((80094.28 2064140,...}
+\CommentTok{\#\textgreater{} 6  POLYGON ((69205.24 2066394,...}
+\CommentTok{\#\textgreater{} 7  POLYGON ((68554.2 2066632, ...}
+\CommentTok{\#\textgreater{} 8  POLYGON ((69995.53 2066880,...}
+\CommentTok{\#\textgreater{} 9  POLYGON ((79368.68 2067324,...}
+\CommentTok{\#\textgreater{} 10 POLYGON ((23378.32 2067554,...}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $d2000$overall\_d2000}
+\CommentTok{\#\textgreater{}     Index        Value}
+\CommentTok{\#\textgreater{} 1  IICnum 4.525664e+11}
+\CommentTok{\#\textgreater{} 2 EC(IIC) 6.727305e+05}
+\CommentTok{\#\textgreater{} 3     IIC 5.935154e{-}02}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $d10000}
+\CommentTok{\#\textgreater{} $d10000$node\_importances\_d10000}
+\CommentTok{\#\textgreater{} Simple feature collection with 404 features and 5 fields}
+\CommentTok{\#\textgreater{} Geometry type: POLYGON}
+\CommentTok{\#\textgreater{} Dimension:     XY}
+\CommentTok{\#\textgreater{} Bounding box:  xmin: {-}108954 ymin: 2025032 xmax: 202330.2 ymax: 2198936}
+\CommentTok{\#\textgreater{} Projected CRS: NAD\_1927\_Albers}
+\CommentTok{\#\textgreater{} First 10 features:}
+\CommentTok{\#\textgreater{}    Id      dIIC dIICintra  dIICflux dIICconnector}
+\CommentTok{\#\textgreater{} 1   1 0.0067065 0.0000013 0.0067052   0.000000000}
+\CommentTok{\#\textgreater{} 2   2 0.0210320 0.0000085 0.0210235   0.000000000}
+\CommentTok{\#\textgreater{} 3   3 1.0591462 0.0213281 1.0312790   0.006539041}
+\CommentTok{\#\textgreater{} 4   4 0.0115557 0.0000026 0.0115531   0.000000000}
+\CommentTok{\#\textgreater{} 5   5 0.0254291 0.0000060 0.0254231   0.000000000}
+\CommentTok{\#\textgreater{} 6   6 0.0036214 0.0000001 0.0036212   0.000000000}
+\CommentTok{\#\textgreater{} 7   7 0.0059875 0.0000003 0.0059872   0.000000000}
+\CommentTok{\#\textgreater{} 8   8 0.0079222 0.0000006 0.0079216   0.000000000}
+\CommentTok{\#\textgreater{} 9   9 0.0280103 0.0000073 0.0280030   0.000000000}
+\CommentTok{\#\textgreater{} 10 10 4.5575494 0.1522233 3.3954709   1.009855242}
+\CommentTok{\#\textgreater{}                          geometry}
+\CommentTok{\#\textgreater{} 1  POLYGON ((54911.05 2035815,...}
+\CommentTok{\#\textgreater{} 2  POLYGON ((44591.28 2042209,...}
+\CommentTok{\#\textgreater{} 3  POLYGON ((46491.11 2042467,...}
+\CommentTok{\#\textgreater{} 4  POLYGON ((54944.49 2048163,...}
+\CommentTok{\#\textgreater{} 5  POLYGON ((80094.28 2064140,...}
+\CommentTok{\#\textgreater{} 6  POLYGON ((69205.24 2066394,...}
+\CommentTok{\#\textgreater{} 7  POLYGON ((68554.2 2066632, ...}
+\CommentTok{\#\textgreater{} 8  POLYGON ((69995.53 2066880,...}
+\CommentTok{\#\textgreater{} 9  POLYGON ((79368.68 2067324,...}
+\CommentTok{\#\textgreater{} 10 POLYGON ((23378.32 2067554,...}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $d10000$overall\_d10000}
+\CommentTok{\#\textgreater{}     Index        Value}
+\CommentTok{\#\textgreater{} 1  IICnum 5.693868e+11}
+\CommentTok{\#\textgreater{} 2 EC(IIC) 7.545772e+05}
+\CommentTok{\#\textgreater{} 3     IIC 7.467188e{-}02}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $d50000}
+\CommentTok{\#\textgreater{} $d50000$node\_importances\_d50000}
+\CommentTok{\#\textgreater{} Simple feature collection with 404 features and 5 fields}
+\CommentTok{\#\textgreater{} Geometry type: POLYGON}
+\CommentTok{\#\textgreater{} Dimension:     XY}
+\CommentTok{\#\textgreater{} Bounding box:  xmin: {-}108954 ymin: 2025032 xmax: 202330.2 ymax: 2198936}
+\CommentTok{\#\textgreater{} Projected CRS: NAD\_1927\_Albers}
+\CommentTok{\#\textgreater{} First 10 features:}
+\CommentTok{\#\textgreater{}    Id      dIIC dIICintra  dIICflux dIICconnector}
+\CommentTok{\#\textgreater{} 1   1 0.0108854 0.0000010 0.0108844  5.535500e{-}15}
+\CommentTok{\#\textgreater{} 2   2 0.0280741 0.0000064 0.0280677  4.312520e{-}15}
+\CommentTok{\#\textgreater{} 3   3 1.4048675 0.0159201 1.3889474  6.883380e{-}15}
+\CommentTok{\#\textgreater{} 4   4 0.0154866 0.0000019 0.0154847  0.000000e+00}
+\CommentTok{\#\textgreater{} 5   5 0.0241239 0.0000045 0.0241194  0.000000e+00}
+\CommentTok{\#\textgreater{} 6   6 0.0034401 0.0000001 0.0034400  9.836320e{-}15}
+\CommentTok{\#\textgreater{} 7   7 0.0056974 0.0000002 0.0056972  5.062790e{-}15}
+\CommentTok{\#\textgreater{} 8   8 0.0075250 0.0000004 0.0075246  1.169117e{-}14}
+\CommentTok{\#\textgreater{} 9   9 0.0265849 0.0000054 0.0265795  1.066508e{-}14}
+\CommentTok{\#\textgreater{} 10 10 4.1637595 0.1136249 4.0497996  3.349366e{-}04}
+\CommentTok{\#\textgreater{}                          geometry}
+\CommentTok{\#\textgreater{} 1  POLYGON ((54911.05 2035815,...}
+\CommentTok{\#\textgreater{} 2  POLYGON ((44591.28 2042209,...}
+\CommentTok{\#\textgreater{} 3  POLYGON ((46491.11 2042467,...}
+\CommentTok{\#\textgreater{} 4  POLYGON ((54944.49 2048163,...}
+\CommentTok{\#\textgreater{} 5  POLYGON ((80094.28 2064140,...}
+\CommentTok{\#\textgreater{} 6  POLYGON ((69205.24 2066394,...}
+\CommentTok{\#\textgreater{} 7  POLYGON ((68554.2 2066632, ...}
+\CommentTok{\#\textgreater{} 8  POLYGON ((69995.53 2066880,...}
+\CommentTok{\#\textgreater{} 9  POLYGON ((79368.68 2067324,...}
+\CommentTok{\#\textgreater{} 10 POLYGON ((23378.32 2067554,...}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $d50000$overall\_d50000}
+\CommentTok{\#\textgreater{}     Index        Value}
+\CommentTok{\#\textgreater{} 1  IICnum 7.628072e+11}
+\CommentTok{\#\textgreater{} 2 EC(IIC) 8.733883e+05}
+\CommentTok{\#\textgreater{} 3     IIC 1.000379e{-}01}
+\end{Highlighting}
+\end{Shaded}
+
+\section{PC}\label{pc}
+
+\section{Ejemplo 1. Distancia euclidiana}\label{ejemplo-1.-distancia-euclidiana-1}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Sin usar LA}
+\item
+  \textbf{sin usar attribute}
+\item
+  \textbf{10 km de mediana de dispersión con una probabilidad de 0.5}
+\item
+  \textbf{Unidad de área en ha}
+\item
+  \textbf{Solo índice para todo el paisaje}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{PC }\OtherTok{\textless{}{-}} \FunctionTok{MK\_dPCIIC}\NormalTok{(}\AttributeTok{nodes =}\NormalTok{ habitat\_nodes,}
+                \AttributeTok{attribute =} \ConstantTok{NULL}\NormalTok{,}
+                \AttributeTok{area\_unit =} \StringTok{"ha"}\NormalTok{,}
+                \AttributeTok{distance =} \FunctionTok{list}\NormalTok{(}\AttributeTok{type =} \StringTok{"edge"}\NormalTok{, }\AttributeTok{keep =} \FloatTok{0.1}\NormalTok{),}
+                \AttributeTok{LA =} \ConstantTok{NULL}\NormalTok{,}
+                \AttributeTok{onlyoverall =} \ConstantTok{TRUE}\NormalTok{,}
+                \AttributeTok{metric =} \StringTok{"PC"}\NormalTok{,}
+                \AttributeTok{probability =} \FloatTok{0.5}\NormalTok{,}
+                \AttributeTok{distance\_thresholds =} \DecValTok{10000}\NormalTok{,}
+                \AttributeTok{intern =} \ConstantTok{TRUE}\NormalTok{) }\CommentTok{\#10 km}
+\CommentTok{\#\textgreater{} Estimating PC index. This may take several minutes depending on the number of nodes}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Done!}
+\NormalTok{PC}
+\CommentTok{\#\textgreater{}    Index        Value}
+\CommentTok{\#\textgreater{} 1  PCnum 1.301622e+12}
+\CommentTok{\#\textgreater{} 2 EC(PC) 1.140887e+06}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Ejemplo 2. Distancia euclidiana}\label{ejemplo-2.-distancia-euclidiana-1}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{sin usar attribute}
+\item
+  \textbf{10 km de mediana de dispersión con una probabilidad de 0.5}
+\item
+  \textbf{Unidad de área en ha}
+\item
+  \textbf{Solo índice para todo el paisaje}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{area\_paisaje }\OtherTok{\textless{}{-}} \FunctionTok{st\_area}\NormalTok{(paisaje) }
+\NormalTok{area\_paisaje }\OtherTok{\textless{}{-}} \FunctionTok{unit\_convert}\NormalTok{(area\_paisaje, }\StringTok{"m2"}\NormalTok{, }\StringTok{"ha"}\NormalTok{) }
+
+\NormalTok{PC }\OtherTok{\textless{}{-}} \FunctionTok{MK\_dPCIIC}\NormalTok{(}\AttributeTok{nodes =}\NormalTok{ habitat\_nodes,}
+                \AttributeTok{attribute =} \ConstantTok{NULL}\NormalTok{,}
+                \AttributeTok{area\_unit =} \StringTok{"ha"}\NormalTok{,}
+                \AttributeTok{distance =} \FunctionTok{list}\NormalTok{(}\AttributeTok{type =} \StringTok{"centroid"}\NormalTok{),}
+                \AttributeTok{LA =}\NormalTok{ area\_paisaje,}
+                \AttributeTok{onlyoverall =} \ConstantTok{TRUE}\NormalTok{,}
+                \AttributeTok{metric =} \StringTok{"PC"}\NormalTok{,}
+                \AttributeTok{probability =} \FloatTok{0.5}\NormalTok{,}
+                \AttributeTok{distance\_thresholds =} \DecValTok{10000}\NormalTok{,}
+                \AttributeTok{intern =} \ConstantTok{TRUE}\NormalTok{) }\CommentTok{\#10 km}
+\CommentTok{\#\textgreater{} Estimating PC index. This may take several minutes depending on the number of nodes}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Done!}
+\NormalTok{PC}
+\CommentTok{\#\textgreater{}    Index        Value}
+\CommentTok{\#\textgreater{} 1  PCnum 2.136028e+11}
+\CommentTok{\#\textgreater{} 2 EC(PC) 4.621718e+05}
+\CommentTok{\#\textgreater{} 3     PC 2.801281e{-}02}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Ejemplo 3. Distancia euclidiana: fracciones y overall}\label{ejemplo-3.-distancia-euclidiana-fracciones-y-overall}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{sin usar attribute}
+\item
+  \textbf{10 km de mediana de dispersión con una probabilidad de 0.5}
+\item
+  \textbf{Unidad de área en ha}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{area\_paisaje }\OtherTok{\textless{}{-}} \FunctionTok{st\_area}\NormalTok{(paisaje) }
+\NormalTok{area\_paisaje }\OtherTok{\textless{}{-}} \FunctionTok{unit\_convert}\NormalTok{(area\_paisaje, }\StringTok{"m2"}\NormalTok{, }\StringTok{"ha"}\NormalTok{) }
+
+\NormalTok{PC }\OtherTok{\textless{}{-}} \FunctionTok{MK\_dPCIIC}\NormalTok{(}\AttributeTok{nodes =}\NormalTok{ habitat\_nodes,}
+                \AttributeTok{attribute =} \ConstantTok{NULL}\NormalTok{,}
+                \AttributeTok{area\_unit =} \StringTok{"ha"}\NormalTok{,}
+                \AttributeTok{distance =} \FunctionTok{list}\NormalTok{(}\AttributeTok{type =} \StringTok{"edge"}\NormalTok{, }\AttributeTok{keep =} \FloatTok{0.1}\NormalTok{),}
+                \AttributeTok{LA =}\NormalTok{ area\_paisaje,}
+                \AttributeTok{overall =} \ConstantTok{TRUE}\NormalTok{,}
+                \AttributeTok{onlyoverall =} \ConstantTok{FALSE}\NormalTok{,}
+                \AttributeTok{metric =} \StringTok{"PC"}\NormalTok{,}
+                \AttributeTok{probability =} \FloatTok{0.5}\NormalTok{,}
+                \AttributeTok{distance\_thresholds =} \DecValTok{10000}\NormalTok{,}
+                \AttributeTok{intern =} \ConstantTok{TRUE}\NormalTok{) }\CommentTok{\#10 km}
+\CommentTok{\#\textgreater{} Estimating PC index. This may take several minutes depending on the number of nodes}
+\CommentTok{\#\textgreater{}  ==\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}    5\% |  ETA: 46s}
+\CommentTok{\#\textgreater{}  ===\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}    9\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ====\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   15\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ======\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   19\% |  ETA: 50s}
+\CommentTok{\#\textgreater{}  =======\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   22\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  =======\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   24\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   27\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  =========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   29\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ==========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   33\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ===========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   36\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   40\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  =============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   43\% |  ETA: 47s}
+\CommentTok{\#\textgreater{}  ==============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   47\% |  ETA: 45s}
+\CommentTok{\#\textgreater{}  ===============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   49\% |  ETA: 43s}
+\CommentTok{\#\textgreater{}  ================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   53\% |  ETA: 40s}
+\CommentTok{\#\textgreater{}  =================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   56\% |  ETA: 37s}
+\CommentTok{\#\textgreater{}  ==================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   60\% |  ETA: 34s}
+\CommentTok{\#\textgreater{}  ===================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   63\% |  ETA: 32s}
+\CommentTok{\#\textgreater{}  ====================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   66\% |  ETA: 29s}
+\CommentTok{\#\textgreater{}  =====================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}   69\% |  ETA: 27s}
+\CommentTok{\#\textgreater{}  ======================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}   73\% |  ETA: 24s}
+\CommentTok{\#\textgreater{}  =======================\textgreater{}{-}{-}{-}{-}{-}{-}{-}   76\% |  ETA: 21s}
+\CommentTok{\#\textgreater{}  ========================\textgreater{}{-}{-}{-}{-}{-}{-}   79\% |  ETA: 18s}
+\CommentTok{\#\textgreater{}  =========================\textgreater{}{-}{-}{-}{-}{-}   83\% |  ETA: 15s}
+\CommentTok{\#\textgreater{}  ==========================\textgreater{}{-}{-}{-}{-}   86\% |  ETA: 12s}
+\CommentTok{\#\textgreater{}  ==========================\textgreater{}{-}{-}{-}{-}   88\% |  ETA: 11s}
+\CommentTok{\#\textgreater{}  ===========================\textgreater{}{-}{-}{-}   91\% |  ETA:  8s}
+\CommentTok{\#\textgreater{}  ============================\textgreater{}{-}{-}   94\% |  ETA:  6s}
+\CommentTok{\#\textgreater{}  =============================\textgreater{}{-}   98\% |  ETA:  2s}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Done!}
+\NormalTok{PC}
+\CommentTok{\#\textgreater{} $node\_importances\_d10000}
+\CommentTok{\#\textgreater{} Simple feature collection with 404 features and 5 fields}
+\CommentTok{\#\textgreater{} Geometry type: POLYGON}
+\CommentTok{\#\textgreater{} Dimension:     XY}
+\CommentTok{\#\textgreater{} Bounding box:  xmin: {-}108954 ymin: 2025032 xmax: 202330.2 ymax: 2198936}
+\CommentTok{\#\textgreater{} Projected CRS: NAD\_1927\_Albers}
+\CommentTok{\#\textgreater{} First 10 features:}
+\CommentTok{\#\textgreater{}    Id       dPC  dPCintra   dPCflux dPCconnector}
+\CommentTok{\#\textgreater{} 1   1 0.0128564 0.0000006 0.0128558 0.000000e+00}
+\CommentTok{\#\textgreater{} 2   2 0.0332059 0.0000037 0.0332022 0.000000e+00}
+\CommentTok{\#\textgreater{} 3   3 1.6831849 0.0093299 1.6665804 7.274621e{-}03}
+\CommentTok{\#\textgreater{} 4   4 0.0184037 0.0000011 0.0184026 0.000000e+00}
+\CommentTok{\#\textgreater{} 5   5 0.0285162 0.0000026 0.0285136 0.000000e+00}
+\CommentTok{\#\textgreater{} 6   6 0.0040938 0.0000001 0.0040937 5.309968e{-}08}
+\CommentTok{\#\textgreater{} 7   7 0.0069481 0.0000001 0.0068704 7.758334e{-}05}
+\CommentTok{\#\textgreater{} 8   8 0.0088543 0.0000003 0.0088540 0.000000e+00}
+\CommentTok{\#\textgreater{} 9   9 0.0369150 0.0000032 0.0331109 3.800919e{-}03}
+\CommentTok{\#\textgreater{} 10 10 5.5556530 0.0665892 4.4246468 1.064417e+00}
+\CommentTok{\#\textgreater{}                          geometry}
+\CommentTok{\#\textgreater{} 1  POLYGON ((54911.05 2035815,...}
+\CommentTok{\#\textgreater{} 2  POLYGON ((44591.28 2042209,...}
+\CommentTok{\#\textgreater{} 3  POLYGON ((46491.11 2042467,...}
+\CommentTok{\#\textgreater{} 4  POLYGON ((54944.49 2048163,...}
+\CommentTok{\#\textgreater{} 5  POLYGON ((80094.28 2064140,...}
+\CommentTok{\#\textgreater{} 6  POLYGON ((69205.24 2066394,...}
+\CommentTok{\#\textgreater{} 7  POLYGON ((68554.2 2066632, ...}
+\CommentTok{\#\textgreater{} 8  POLYGON ((69995.53 2066880,...}
+\CommentTok{\#\textgreater{} 9  POLYGON ((79368.68 2067324,...}
+\CommentTok{\#\textgreater{} 10 POLYGON ((23378.32 2067554,...}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $overall\_d10000}
+\CommentTok{\#\textgreater{}    Index        Value}
+\CommentTok{\#\textgreater{} 1  PCnum 1.301622e+12}
+\CommentTok{\#\textgreater{} 2 EC(PC) 1.140887e+06}
+\CommentTok{\#\textgreater{} 3     PC 1.707004e{-}01}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Ejemplo 4. Distancia euclidiana: fracciones}\label{ejemplo-4.-distancia-euclidiana-fracciones-1}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{sin usar attribute}
+\item
+  \textbf{10 km de mediana de dispersión con una probabilidad de 0.5}
+\item
+  \textbf{Unidad de área en ha}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{area\_paisaje }\OtherTok{\textless{}{-}} \FunctionTok{st\_area}\NormalTok{(paisaje) }
+\NormalTok{area\_paisaje }\OtherTok{\textless{}{-}} \FunctionTok{unit\_convert}\NormalTok{(area\_paisaje, }\StringTok{"m2"}\NormalTok{, }\StringTok{"ha"}\NormalTok{) }
+
+\NormalTok{PC }\OtherTok{\textless{}{-}} \FunctionTok{MK\_dPCIIC}\NormalTok{(}\AttributeTok{nodes =}\NormalTok{ habitat\_nodes,}
+                \AttributeTok{attribute =} \ConstantTok{NULL}\NormalTok{,}
+                \AttributeTok{area\_unit =} \StringTok{"ha"}\NormalTok{,}
+                \AttributeTok{distance =} \FunctionTok{list}\NormalTok{(}\AttributeTok{type =} \StringTok{"edge"}\NormalTok{, }\AttributeTok{keep =} \FloatTok{0.1}\NormalTok{),}
+                \AttributeTok{LA =}\NormalTok{ area\_paisaje,}
+                \AttributeTok{onlyoverall =} \ConstantTok{FALSE}\NormalTok{,}
+                \AttributeTok{metric =} \StringTok{"PC"}\NormalTok{,}
+                \AttributeTok{probability =} \FloatTok{0.5}\NormalTok{,}
+                \AttributeTok{distance\_thresholds =} \DecValTok{10000}\NormalTok{,}
+                \AttributeTok{intern =} \ConstantTok{TRUE}\NormalTok{) }\CommentTok{\#10 km}
+\CommentTok{\#\textgreater{} Estimating PC index. This may take several minutes depending on the number of nodes}
+\CommentTok{\#\textgreater{}  =\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}    5\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ===\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}    9\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ====\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   13\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  =====\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   17\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ======\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   20\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  =======\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   23\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   26\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  =========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   30\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ==========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   33\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ===========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   37\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   40\% |  ETA: 49s}
+\CommentTok{\#\textgreater{}  =============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   44\% |  ETA: 47s}
+\CommentTok{\#\textgreater{}  ==============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   47\% |  ETA: 45s}
+\CommentTok{\#\textgreater{}  ===============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   50\% |  ETA: 42s}
+\CommentTok{\#\textgreater{}  ================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   53\% |  ETA: 40s}
+\CommentTok{\#\textgreater{}  =================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   57\% |  ETA: 37s}
+\CommentTok{\#\textgreater{}  ==================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   59\% |  ETA: 35s}
+\CommentTok{\#\textgreater{}  ===================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   63\% |  ETA: 32s}
+\CommentTok{\#\textgreater{}  ====================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   66\% |  ETA: 30s}
+\CommentTok{\#\textgreater{}  =====================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}   70\% |  ETA: 26s}
+\CommentTok{\#\textgreater{}  ======================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}   73\% |  ETA: 23s}
+\CommentTok{\#\textgreater{}  =======================\textgreater{}{-}{-}{-}{-}{-}{-}{-}   76\% |  ETA: 20s}
+\CommentTok{\#\textgreater{}  ========================\textgreater{}{-}{-}{-}{-}{-}{-}   80\% |  ETA: 17s}
+\CommentTok{\#\textgreater{}  =========================\textgreater{}{-}{-}{-}{-}{-}   83\% |  ETA: 15s}
+\CommentTok{\#\textgreater{}  ==========================\textgreater{}{-}{-}{-}{-}   87\% |  ETA: 12s}
+\CommentTok{\#\textgreater{}  ===========================\textgreater{}{-}{-}{-}   90\% |  ETA:  9s}
+\CommentTok{\#\textgreater{}  ============================\textgreater{}{-}{-}   93\% |  ETA:  6s}
+\CommentTok{\#\textgreater{}  =============================\textgreater{}{-}   95\% |  ETA:  4s}
+\CommentTok{\#\textgreater{}  ==============================\textgreater{}   99\% |  ETA:  1s}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Done!}
+\NormalTok{PC}
+\CommentTok{\#\textgreater{} Simple feature collection with 404 features and 5 fields}
+\CommentTok{\#\textgreater{} Geometry type: POLYGON}
+\CommentTok{\#\textgreater{} Dimension:     XY}
+\CommentTok{\#\textgreater{} Bounding box:  xmin: {-}108954 ymin: 2025032 xmax: 202330.2 ymax: 2198936}
+\CommentTok{\#\textgreater{} Projected CRS: NAD\_1927\_Albers}
+\CommentTok{\#\textgreater{} First 10 features:}
+\CommentTok{\#\textgreater{}    Id       dPC  dPCintra   dPCflux dPCconnector}
+\CommentTok{\#\textgreater{} 1   1 0.0128564 0.0000006 0.0128558 0.000000e+00}
+\CommentTok{\#\textgreater{} 2   2 0.0332059 0.0000037 0.0332022 0.000000e+00}
+\CommentTok{\#\textgreater{} 3   3 1.6831849 0.0093299 1.6665804 7.274621e{-}03}
+\CommentTok{\#\textgreater{} 4   4 0.0184037 0.0000011 0.0184026 0.000000e+00}
+\CommentTok{\#\textgreater{} 5   5 0.0285162 0.0000026 0.0285136 0.000000e+00}
+\CommentTok{\#\textgreater{} 6   6 0.0040938 0.0000001 0.0040937 5.309968e{-}08}
+\CommentTok{\#\textgreater{} 7   7 0.0069481 0.0000001 0.0068704 7.758334e{-}05}
+\CommentTok{\#\textgreater{} 8   8 0.0088543 0.0000003 0.0088540 0.000000e+00}
+\CommentTok{\#\textgreater{} 9   9 0.0369150 0.0000032 0.0331109 3.800919e{-}03}
+\CommentTok{\#\textgreater{} 10 10 5.5556530 0.0665892 4.4246468 1.064417e+00}
+\CommentTok{\#\textgreater{}                          geometry}
+\CommentTok{\#\textgreater{} 1  POLYGON ((54911.05 2035815,...}
+\CommentTok{\#\textgreater{} 2  POLYGON ((44591.28 2042209,...}
+\CommentTok{\#\textgreater{} 3  POLYGON ((46491.11 2042467,...}
+\CommentTok{\#\textgreater{} 4  POLYGON ((54944.49 2048163,...}
+\CommentTok{\#\textgreater{} 5  POLYGON ((80094.28 2064140,...}
+\CommentTok{\#\textgreater{} 6  POLYGON ((69205.24 2066394,...}
+\CommentTok{\#\textgreater{} 7  POLYGON ((68554.2 2066632, ...}
+\CommentTok{\#\textgreater{} 8  POLYGON ((69995.53 2066880,...}
+\CommentTok{\#\textgreater{} 9  POLYGON ((79368.68 2067324,...}
+\CommentTok{\#\textgreater{} 10 POLYGON ((23378.32 2067554,...}
+\end{Highlighting}
+\end{Shaded}
+
+Exploremos un plot usando intervalos:
+
+\begin{itemize}
+\tightlist
+\item
+  dPC
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(classInt)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+
+\CommentTok{\# Calcular los intervalos de Jenks para strength}
+\NormalTok{breaks }\OtherTok{\textless{}{-}}\NormalTok{ classInt}\SpecialCharTok{::}\FunctionTok{classIntervals}\NormalTok{(PC}\SpecialCharTok{$}\NormalTok{dPC, }\AttributeTok{n =} \DecValTok{9}\NormalTok{, }\AttributeTok{style =} \StringTok{"jenks"}\NormalTok{)}
+
+\CommentTok{\# Crear una nueva variable categórica con los intervalos}
+\NormalTok{PC }\OtherTok{\textless{}{-}}\NormalTok{ PC }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{dPC\_q =} \FunctionTok{cut}\NormalTok{(dPC,}
+                          \AttributeTok{breaks =}\NormalTok{ breaks}\SpecialCharTok{$}\NormalTok{brks,}
+                          \AttributeTok{include.lowest =} \ConstantTok{TRUE}\NormalTok{,}
+                          \AttributeTok{dig.lab =} \DecValTok{5}\NormalTok{))  }
+
+\CommentTok{\# Graficar en ggplot2 usando las clases Jenks}
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}  
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ paisaje, }\AttributeTok{fill =} \ConstantTok{NA}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ PC, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ dPC\_q), }\AttributeTok{color =} \StringTok{"black"}\NormalTok{, }\AttributeTok{size =} \FloatTok{0.1}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_brewer}\NormalTok{(}\AttributeTok{palette =} \StringTok{"RdYlGn"}\NormalTok{, }\AttributeTok{direction =} \DecValTok{1}\NormalTok{, }\AttributeTok{name =} \StringTok{"dPC (jenks)"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \StringTok{"dPC"}\NormalTok{,}
+    \AttributeTok{fill =} \StringTok{"dPC"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}
+    \AttributeTok{legend.position =} \StringTok{"right"}\NormalTok{,}
+    \AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{04-IIC_PC_files/figure-latex/unnamed-chunk-24-1.pdf}}
+
+\begin{itemize}
+\tightlist
+\item
+  dPCIntra
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calcular los intervalos de Jenks para strength}
+\NormalTok{breaks }\OtherTok{\textless{}{-}}\NormalTok{ classInt}\SpecialCharTok{::}\FunctionTok{classIntervals}\NormalTok{(PC}\SpecialCharTok{$}\NormalTok{dPCintra, }\AttributeTok{n =} \DecValTok{9}\NormalTok{, }\AttributeTok{style =} \StringTok{"jenks"}\NormalTok{)}
+
+\CommentTok{\# Crear una nueva variable categórica con los intervalos}
+\NormalTok{PC }\OtherTok{\textless{}{-}}\NormalTok{ PC }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{dPC\_q =} \FunctionTok{cut}\NormalTok{(dPCintra,}
+                      \AttributeTok{breaks =}\NormalTok{ breaks}\SpecialCharTok{$}\NormalTok{brks,}
+                      \AttributeTok{include.lowest =} \ConstantTok{TRUE}\NormalTok{,}
+                      \AttributeTok{dig.lab =} \DecValTok{5}\NormalTok{))  }
+
+\CommentTok{\# Graficar en ggplot2 usando las clases Jenks}
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}  
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ paisaje, }\AttributeTok{fill =} \ConstantTok{NA}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ PC, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ dPC\_q), }\AttributeTok{color =} \StringTok{"black"}\NormalTok{, }\AttributeTok{size =} \FloatTok{0.1}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_brewer}\NormalTok{(}\AttributeTok{palette =} \StringTok{"RdYlGn"}\NormalTok{, }\AttributeTok{direction =} \DecValTok{1}\NormalTok{, }\AttributeTok{name =} \StringTok{"dPCIntra (jenks)"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \StringTok{"dPCIntra"}\NormalTok{,}
+    \AttributeTok{fill =} \StringTok{"dPCIntra"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}
+    \AttributeTok{legend.position =} \StringTok{"right"}\NormalTok{,}
+    \AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{04-IIC_PC_files/figure-latex/unnamed-chunk-25-1.pdf}}
+
+\begin{itemize}
+\tightlist
+\item
+  dPCflux
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calcular los intervalos de Jenks para strength}
+\NormalTok{breaks }\OtherTok{\textless{}{-}}\NormalTok{ classInt}\SpecialCharTok{::}\FunctionTok{classIntervals}\NormalTok{(PC}\SpecialCharTok{$}\NormalTok{dPCflux, }\AttributeTok{n =} \DecValTok{9}\NormalTok{, }\AttributeTok{style =} \StringTok{"jenks"}\NormalTok{)}
+
+\CommentTok{\# Crear una nueva variable categórica con los intervalos}
+\NormalTok{PC }\OtherTok{\textless{}{-}}\NormalTok{ PC }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{dPC\_q =} \FunctionTok{cut}\NormalTok{(dPCflux,}
+                      \AttributeTok{breaks =}\NormalTok{ breaks}\SpecialCharTok{$}\NormalTok{brks,}
+                      \AttributeTok{include.lowest =} \ConstantTok{TRUE}\NormalTok{,}
+                      \AttributeTok{dig.lab =} \DecValTok{5}\NormalTok{))  }
+
+\CommentTok{\# Graficar en ggplot2 usando las clases Jenks}
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}  
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ paisaje, }\AttributeTok{fill =} \ConstantTok{NA}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ PC, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ dPC\_q), }\AttributeTok{color =} \StringTok{"black"}\NormalTok{, }\AttributeTok{size =} \FloatTok{0.1}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_brewer}\NormalTok{(}\AttributeTok{palette =} \StringTok{"RdYlGn"}\NormalTok{, }\AttributeTok{direction =} \DecValTok{1}\NormalTok{, }\AttributeTok{name =} \StringTok{"dPCFlux (jenks)"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \StringTok{"dPCFlux"}\NormalTok{,}
+    \AttributeTok{fill =} \StringTok{"dPCFlux"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}
+    \AttributeTok{legend.position =} \StringTok{"right"}\NormalTok{,}
+    \AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{04-IIC_PC_files/figure-latex/unnamed-chunk-26-1.pdf}}
+
+\begin{itemize}
+\tightlist
+\item
+  dPCconnector
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calcular los intervalos de Jenks para strength}
+\NormalTok{breaks }\OtherTok{\textless{}{-}}\NormalTok{ classInt}\SpecialCharTok{::}\FunctionTok{classIntervals}\NormalTok{(PC}\SpecialCharTok{$}\NormalTok{dPCconnector, }\AttributeTok{n =} \DecValTok{9}\NormalTok{, }\AttributeTok{style =} \StringTok{"jenks"}\NormalTok{)}
+
+\CommentTok{\# Crear una nueva variable categórica con los intervalos}
+\NormalTok{PC }\OtherTok{\textless{}{-}}\NormalTok{ PC }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{dPC\_q =} \FunctionTok{cut}\NormalTok{(dPCconnector,}
+                     \AttributeTok{breaks =}\NormalTok{ breaks}\SpecialCharTok{$}\NormalTok{brks,}
+                     \AttributeTok{include.lowest =} \ConstantTok{TRUE}\NormalTok{,}
+                     \AttributeTok{dig.lab =} \DecValTok{5}\NormalTok{))  }
+
+\CommentTok{\# Graficar en ggplot2 usando las clases Jenks}
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}  
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ paisaje, }\AttributeTok{fill =} \ConstantTok{NA}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ PC, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ dPC\_q), }\AttributeTok{color =} \StringTok{"black"}\NormalTok{, }\AttributeTok{size =} \FloatTok{0.1}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_brewer}\NormalTok{(}\AttributeTok{palette =} \StringTok{"RdYlGn"}\NormalTok{, }\AttributeTok{direction =} \DecValTok{1}\NormalTok{, }\AttributeTok{name =} \StringTok{"dPCConnector (jenks)"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \StringTok{"dPCConnector"}\NormalTok{,}
+    \AttributeTok{fill =} \StringTok{"dPCConnector"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}
+    \AttributeTok{legend.position =} \StringTok{"right"}\NormalTok{,}
+    \AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{04-IIC_PC_files/figure-latex/unnamed-chunk-27-1.pdf}}
+
+\section{Ejemplo 5. Distancia euclidiana: paralelizar}\label{ejemplo-5.-distancia-euclidiana-paralelizar}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{sin usar attribute}
+\item
+  \textbf{10 km de mediana de dispersión con una probabilidad de 0.5}
+\item
+  \textbf{Unidad de área en ha}
+\end{itemize}
+
+El argumento parallel solo se activa si tienes más de 2000 parches.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{PC }\OtherTok{\textless{}{-}} \FunctionTok{MK\_dPCIIC}\NormalTok{(}\AttributeTok{nodes =}\NormalTok{ habitat\_nodes,}
+                \AttributeTok{attribute =} \ConstantTok{NULL}\NormalTok{,}
+                \AttributeTok{area\_unit =} \StringTok{"ha"}\NormalTok{,}
+                \AttributeTok{distance =} \FunctionTok{list}\NormalTok{(}\AttributeTok{type =} \StringTok{"edge"}\NormalTok{, }\AttributeTok{keep =} \FloatTok{0.1}\NormalTok{),}
+                \AttributeTok{LA =}\NormalTok{ area\_paisaje,}
+                \AttributeTok{onlyoverall =} \ConstantTok{FALSE}\NormalTok{,}
+                \AttributeTok{metric =} \StringTok{"PC"}\NormalTok{,}
+                \AttributeTok{probability =} \FloatTok{0.5}\NormalTok{,}
+                \AttributeTok{distance\_thresholds =} \DecValTok{10000}\NormalTok{,}
+                \AttributeTok{parallel =} \DecValTok{4}\NormalTok{,}
+                \AttributeTok{parallel\_mode =} \DecValTok{1}\NormalTok{,}
+                \AttributeTok{intern =} \ConstantTok{TRUE}\NormalTok{) }\CommentTok{\#10 km}
+\NormalTok{PC}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Conocer numero de nodos de tu maquina}
+\FunctionTok{library}\NormalTok{(parallel)}
+\NormalTok{parallel}\SpecialCharTok{::}\FunctionTok{detectCores}\NormalTok{()}
+\CommentTok{\#\textgreater{} [1] 22}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Ejemplo 6. Distancia costo}\label{ejemplo-6.-distancia-costo}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{sin usar attribute}
+\item
+  \textbf{10 km de mediana de dispersión con una probabilidad de 0.5}
+\item
+  \textbf{Unidad de área en ha}
+\item
+  \textbf{Usa un raster con valores de resistencia al movimiento}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(terra)}
+\CommentTok{\#\textgreater{} terra 1.8.29}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Adjuntando el paquete: \textquotesingle{}terra\textquotesingle{}}
+\CommentTok{\#\textgreater{} The following objects are masked from \textquotesingle{}package:igraph\textquotesingle{}:}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{}     blocks, compare}
+\FunctionTok{data}\NormalTok{(}\StringTok{"resistance\_matrix"}\NormalTok{, }\AttributeTok{package =} \StringTok{"Makurhini"}\NormalTok{)}
+
+\NormalTok{raster\_map }\OtherTok{\textless{}{-}} \FunctionTok{as}\NormalTok{(resistance\_matrix, }\StringTok{"SpatialPixelsDataFrame"}\NormalTok{)}
+\NormalTok{raster\_map }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(raster\_map)}
+\FunctionTok{colnames}\NormalTok{(raster\_map) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"value"}\NormalTok{, }\StringTok{"x"}\NormalTok{, }\StringTok{"y"}\NormalTok{)}
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}  
+  \FunctionTok{geom\_tile}\NormalTok{(}\AttributeTok{data =}\NormalTok{ raster\_map, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ x, }\AttributeTok{y =}\NormalTok{ y, }\AttributeTok{fill =}\NormalTok{ value), }\AttributeTok{alpha =} \FloatTok{0.8}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ paisaje, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =} \StringTok{"Study area"}\NormalTok{), }\AttributeTok{fill =} \ConstantTok{NA}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ habitat\_nodes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =} \StringTok{"Habitat nodes"}\NormalTok{), }\AttributeTok{fill =} \StringTok{"forestgreen"}\NormalTok{, }\AttributeTok{linewidth =} \FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_gradientn}\NormalTok{(}\AttributeTok{colors =} \FunctionTok{c}\NormalTok{(}\StringTok{"\#000004FF"}\NormalTok{, }\StringTok{"\#1B0C42FF"}\NormalTok{, }\StringTok{"\#4B0C6BFF"}\NormalTok{, }\StringTok{"\#781C6DFF"}\NormalTok{,}
+                                  \StringTok{"\#A52C60FF"}\NormalTok{, }\StringTok{"\#CF4446FF"}\NormalTok{, }\StringTok{"\#ED6925FF"}\NormalTok{, }\StringTok{"\#FB9A06FF"}\NormalTok{,}
+                                  \StringTok{"\#F7D03CFF"}\NormalTok{, }\StringTok{"\#FCFFA4FF"}\NormalTok{))}\SpecialCharTok{+}
+  \FunctionTok{scale\_color\_manual}\NormalTok{(}\AttributeTok{name =} \StringTok{""}\NormalTok{, }\AttributeTok{values =} \StringTok{"black"}\NormalTok{)}\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.title.x =} \FunctionTok{element\_blank}\NormalTok{(),}
+        \AttributeTok{axis.title.y =} \FunctionTok{element\_blank}\NormalTok{())}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{04-IIC_PC_files/figure-latex/unnamed-chunk-30-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{PC }\OtherTok{\textless{}{-}} \FunctionTok{MK\_dPCIIC}\NormalTok{(}\AttributeTok{nodes =}\NormalTok{ habitat\_nodes\_raster,}
+                \AttributeTok{attribute =} \ConstantTok{NULL}\NormalTok{,}
+                \AttributeTok{distance =} \FunctionTok{list}\NormalTok{(}\AttributeTok{type =} \StringTok{"least{-}cost"}\NormalTok{,}
+                                \AttributeTok{resistance =}\NormalTok{ resistance\_matrix),}
+                \AttributeTok{metric =} \StringTok{"PC"}\NormalTok{, }\AttributeTok{probability =} \FloatTok{0.5}\NormalTok{,}
+                \AttributeTok{overall =} \ConstantTok{TRUE}\NormalTok{,}
+                \AttributeTok{distance\_thresholds =} \DecValTok{40000}\NormalTok{) }\CommentTok{\# 40 km}
+\CommentTok{\#\textgreater{} Estimating distances. This may take several minutes depending on the number of nodes and raster resolution}
+\CommentTok{\#\textgreater{} Estimating PC index. This may take several minutes depending on the number of nodes}
+\CommentTok{\#\textgreater{}  ====\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   14\% |  ETA: 24s}
+\CommentTok{\#\textgreater{}  ======\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   21\% |  ETA: 25s}
+\CommentTok{\#\textgreater{}  ========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   28\% |  ETA: 25s}
+\CommentTok{\#\textgreater{}  ============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   39\% |  ETA: 20s}
+\CommentTok{\#\textgreater{}  ===============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   49\% |  ETA: 17s}
+\CommentTok{\#\textgreater{}  =================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   58\% |  ETA: 13s}
+\CommentTok{\#\textgreater{}  =====================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}   69\% |  ETA: 10s}
+\CommentTok{\#\textgreater{}  =======================\textgreater{}{-}{-}{-}{-}{-}{-}{-}   78\% |  ETA:  7s}
+\CommentTok{\#\textgreater{}  ==========================\textgreater{}{-}{-}{-}{-}   86\% |  ETA:  4s}
+\CommentTok{\#\textgreater{}  =============================\textgreater{}{-}   96\% |  ETA:  1s}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Done!}
+\NormalTok{PC}\SpecialCharTok{$}\NormalTok{overall\_d40000}
+\CommentTok{\#\textgreater{}    Index        Value}
+\CommentTok{\#\textgreater{} 1  PCnum 3.606425e+19}
+\CommentTok{\#\textgreater{} 2 EC(PC) 6.005352e+09}
+\NormalTok{PC}\SpecialCharTok{$}\NormalTok{node\_importances\_d40000}
+\CommentTok{\#\textgreater{} class      : RasterStack }
+\CommentTok{\#\textgreater{} dimensions : 357, 624, 222768, 5  (nrow, ncol, ncell, nlayers)}
+\CommentTok{\#\textgreater{} resolution : 500, 500  (x, y)}
+\CommentTok{\#\textgreater{} extent     : {-}109586.4, 202413.6, 2024737, 2203237  (xmin, xmax, ymin, ymax)}
+\CommentTok{\#\textgreater{} crs        : +proj=aea +lat\_0=0 +lon\_0={-}102 +lat\_1=17.5 +lat\_2=29.5 +x\_0=0 +y\_0=0 +datum=NAD27 +units=m +no\_defs }
+\CommentTok{\#\textgreater{} names      :        Id,       dPC,  dPCintra,   dPCflux, dPCconnector }
+\CommentTok{\#\textgreater{} min values : 1.0000000, 0.0007076, 0.0000002, 0.0007074,    0.0000000 }
+\CommentTok{\#\textgreater{} max values : 404.00000,  68.33354,  46.45223,  21.88131,     22.76918}
+\FunctionTok{plot}\NormalTok{(PC}\SpecialCharTok{$}\NormalTok{node\_importances\_d40000)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{04-IIC_PC_files/figure-latex/unnamed-chunk-31-1.pdf}}
+
+\section{Ejemplo 7. Distancia costo en Java}\label{ejemplo-7.-distancia-costo-en-java}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{resist2 }\OtherTok{\textless{}{-}}\NormalTok{ resistance\_matrix}
+\NormalTok{resist2 }\OtherTok{\textless{}{-}} \FunctionTok{round}\NormalTok{(resistance\_matrix)}
+
+\NormalTok{PC }\OtherTok{\textless{}{-}} \FunctionTok{MK\_dPCIIC}\NormalTok{(}\AttributeTok{nodes =}\NormalTok{ habitat\_nodes,}
+                \AttributeTok{attribute =} \ConstantTok{NULL}\NormalTok{,}
+                \AttributeTok{distance =} \FunctionTok{list}\NormalTok{(}\AttributeTok{type =} \StringTok{"least{-}cost"}\NormalTok{,}
+                                \AttributeTok{resistance =}\NormalTok{ resist2,}
+                                \AttributeTok{least\_cost.java =} \ConstantTok{TRUE}\NormalTok{,}
+                                \AttributeTok{cores.java =} \DecValTok{2}\NormalTok{,}
+                                \AttributeTok{ram.java =} \ConstantTok{NULL}\NormalTok{),}
+                \AttributeTok{metric =} \StringTok{"PC"}\NormalTok{, }\AttributeTok{probability =} \FloatTok{0.5}\NormalTok{,}
+                \AttributeTok{overall =} \ConstantTok{TRUE}\NormalTok{,}
+                \AttributeTok{distance\_thresholds =} \DecValTok{40000}\NormalTok{) }\CommentTok{\# 40 km}
+\NormalTok{PC}\SpecialCharTok{$}\NormalTok{overall\_d40000}
+\NormalTok{PC}\SpecialCharTok{$}\NormalTok{node\_importances\_d40000}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Ejemplo 7. Usando nodos en formato raster}\label{ejemplo-7.-usando-nodos-en-formato-raster}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{data}\NormalTok{(}\StringTok{"habitat\_nodes\_raster"}\NormalTok{, }\AttributeTok{package =} \StringTok{"Makurhini"}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(habitat\_nodes\_raster)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{04-IIC_PC_files/figure-latex/unnamed-chunk-33-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{PC }\OtherTok{\textless{}{-}} \FunctionTok{MK\_dPCIIC}\NormalTok{(}\AttributeTok{nodes =}\NormalTok{ habitat\_nodes\_raster,}
+                \AttributeTok{attribute =} \ConstantTok{NULL}\NormalTok{,}
+                \AttributeTok{distance =} \FunctionTok{list}\NormalTok{(}\AttributeTok{type =} \StringTok{"centroid"}\NormalTok{),}
+                \AttributeTok{metric =} \StringTok{"PC"}\NormalTok{, }\AttributeTok{probability =} \FloatTok{0.5}\NormalTok{,}
+                \AttributeTok{overall =} \ConstantTok{TRUE}\NormalTok{,}
+                \AttributeTok{distance\_thresholds =} \DecValTok{40000}\NormalTok{) }\CommentTok{\# 40 km}
+\CommentTok{\#\textgreater{} Estimating PC index. This may take several minutes depending on the number of nodes}
+\CommentTok{\#\textgreater{}  ===\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   10\% |  ETA: 25s}
+\CommentTok{\#\textgreater{}  ======\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   18\% |  ETA: 25s}
+\CommentTok{\#\textgreater{}  ========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   26\% |  ETA: 25s}
+\CommentTok{\#\textgreater{}  ==========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   35\% |  ETA: 22s}
+\CommentTok{\#\textgreater{}  =============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   42\% |  ETA: 20s}
+\CommentTok{\#\textgreater{}  ===============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   51\% |  ETA: 17s}
+\CommentTok{\#\textgreater{}  ==================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   59\% |  ETA: 14s}
+\CommentTok{\#\textgreater{}  ====================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   67\% |  ETA: 12s}
+\CommentTok{\#\textgreater{}  =======================\textgreater{}{-}{-}{-}{-}{-}{-}{-}   76\% |  ETA:  9s}
+\CommentTok{\#\textgreater{}  =========================\textgreater{}{-}{-}{-}{-}{-}   84\% |  ETA:  6s}
+\CommentTok{\#\textgreater{}  ============================\textgreater{}{-}{-}   92\% |  ETA:  3s}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Done!}
+\NormalTok{PC}\SpecialCharTok{$}\NormalTok{overall\_d40000}
+\CommentTok{\#\textgreater{}    Index        Value}
+\CommentTok{\#\textgreater{} 1  PCnum 5.116326e+19}
+\CommentTok{\#\textgreater{} 2 EC(PC) 7.152850e+09}
+\NormalTok{PC}\SpecialCharTok{$}\NormalTok{node\_importances\_d40000}
+\CommentTok{\#\textgreater{} class      : RasterStack }
+\CommentTok{\#\textgreater{} dimensions : 357, 624, 222768, 5  (nrow, ncol, ncell, nlayers)}
+\CommentTok{\#\textgreater{} resolution : 500, 500  (x, y)}
+\CommentTok{\#\textgreater{} extent     : {-}109586.4, 202413.6, 2024737, 2203237  (xmin, xmax, ymin, ymax)}
+\CommentTok{\#\textgreater{} crs        : +proj=aea +lat\_0=0 +lon\_0={-}102 +lat\_1=17.5 +lat\_2=29.5 +x\_0=0 +y\_0=0 +datum=NAD27 +units=m +no\_defs }
+\CommentTok{\#\textgreater{} names      :           Id,          dPC,     dPCintra,      dPCflux, dPCconnector }
+\CommentTok{\#\textgreater{} min values :    1.0000000,    0.0020195,    0.0000001,    0.0020194,    0.0000000 }
+\CommentTok{\#\textgreater{} max values : 4.040000e+02, 5.778878e+01, 3.274351e+01, 2.504527e+01, 9.513220e{-}15}
+\FunctionTok{plot}\NormalTok{(PC}\SpecialCharTok{$}\NormalTok{node\_importances\_d40000)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{04-IIC_PC_files/figure-latex/unnamed-chunk-34-1.pdf}}
 
   \bibliography{book.bib,packages.bib}
 

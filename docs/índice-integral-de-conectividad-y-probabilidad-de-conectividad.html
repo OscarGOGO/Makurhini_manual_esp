@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 5 índice integral de conectividad y Probabilidad de conectividad | Manual de uso de Makurhini</title>
+<meta name="author" content="Oscar Godínez Gómez">
+<meta name="description" content="5.1 Insumos y paquetes Seguimos trabajando con los mismos shapefiles de la sección anterior: habitat_nodes y paisaje. library(ggplot2) library(sf) library(Makurhini) library(RColorBrewer) #&gt;...">
+<meta name="generator" content="bookdown 0.43 with bs4_book()">
+<meta property="og:title" content="Chapter 5 índice integral de conectividad y Probabilidad de conectividad | Manual de uso de Makurhini">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://oscargogo.github.io/Makurhini_manual_esp/índice-integral-de-conectividad-y-probabilidad-de-conectividad.html">
+<meta property="og:image" content="https://oscargogo.github.io/Makurhini_manual_esp/LOGO_MAKHURINI.png">
+<meta property="og:description" content="5.1 Insumos y paquetes Seguimos trabajando con los mismos shapefiles de la sección anterior: habitat_nodes y paisaje. library(ggplot2) library(sf) library(Makurhini) library(RColorBrewer) #&gt;...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 5 índice integral de conectividad y Probabilidad de conectividad | Manual de uso de Makurhini">
+<meta name="twitter:description" content="5.1 Insumos y paquetes Seguimos trabajando con los mismos shapefiles de la sección anterior: habitat_nodes y paisaje. library(ggplot2) library(sf) library(Makurhini) library(RColorBrewer) #&gt;...">
+<meta name="twitter:image" content="https://oscargogo.github.io/Makurhini_manual_esp/LOGO_MAKHURINI.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Manual de uso de Makurhini</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Makurhini</a></li>
+<li><a class="" href="instalaci%C3%B3n-del-paquete-makurhini.html"><span class="header-section-number">1</span> Instalación del paquete Makurhini</a></li>
+<li><a class="" href="estad%C3%ADsticas-de-fragmentaci%C3%B3n-del-paisaje.html"><span class="header-section-number">2</span> Estadísticas de fragmentación del paisaje</a></li>
+<li><a class="" href="%C3%ADndices-de-centralidad.html"><span class="header-section-number">3</span> Índices de centralidad</a></li>
+<li><a class="" href="kernel-de-dispersi%C3%B3n.html"><span class="header-section-number">4</span> Kernel de dispersión</a></li>
+<li><a class="active" href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html"><span class="header-section-number">5</span> índice integral de conectividad y Probabilidad de conectividad</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/OscarGOGO/Makurhini_manual_esp">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="índice-integral-de-conectividad-y-probabilidad-de-conectividad" class="section level1" number="5">
+<h1>
+<span class="header-section-number">5</span> índice integral de conectividad y Probabilidad de conectividad<a class="anchor" aria-label="anchor" href="#%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad"><i class="fas fa-link"></i></a>
+</h1>
+<div id="insumos-y-paquetes-1" class="section level2" number="5.1">
+<h2>
+<span class="header-section-number">5.1</span> Insumos y paquetes<a class="anchor" aria-label="anchor" href="#insumos-y-paquetes-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>Seguimos trabajando con los mismos shapefiles de la sección anterior: habitat_nodes y paisaje.</p>
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/connectscape/Makurhini">Makurhini</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">RColorBrewer</span><span class="op">)</span></span></code></pre></div>
+<pre><code>#&gt; Linking to GEOS 3.13.0, GDAL 3.10.1, PROJ 9.5.1;
+#&gt; sf_use_s2() is TRUE
+#&gt; [1] 404</code></pre>
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paisaje</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"Study area"</span><span class="op">)</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">habitat_nodes</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"Parches"</span><span class="op">)</span>, fill <span class="op">=</span> <span class="st">"forestgreen"</span>, linewidth <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">""</span>, values <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.title.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>        axis.title.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="04-IIC_PC_files/figure-html/unnamed-chunk-6-1.png" width="672"></div>
+</div>
+<div id="mk_dpciic" class="section level2" number="5.2">
+<h2>
+<span class="header-section-number">5.2</span> MK_dPCIIC()<a class="anchor" aria-label="anchor" href="#mk_dpciic"><i class="fas fa-link"></i></a>
+</h2>
+<p>Esta función calcula tanto la conectividad global del paisaje como la importancia (contribución) de cada nodo (o parche de hábitat) para mantener la conectividad del paisaje. Utiliza los índices PC e IIC bajo uno o varios umbrales de distancia.</p>
+<div id="la-función-no-correr-1" class="section level3" number="5.2.1">
+<h3>
+<span class="header-section-number">5.2.1</span> La función (no correr)<a class="anchor" aria-label="anchor" href="#la-funci%C3%B3n-no-correr-1"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_dPCIIC.html">MK_dPCIIC</a></span><span class="op">(</span></span>
+<span>  <span class="va">nodes</span>,</span>
+<span>  attribute <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  weighted <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  LA <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  area_unit <span class="op">=</span> <span class="st">"m2"</span>,</span>
+<span>  restoration <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  onlyrestor <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  distance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"centroid"</span>, resistance <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>,</span>
+<span>  metric <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"IIC"</span>, <span class="st">"PC"</span><span class="op">)</span>,</span>
+<span>  probability <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  distance_thresholds <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  threshold <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  overall <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  onlyoverall <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  parallel <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  parallel_mode <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  write <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  id_sel <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  intern <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="descripción-de-los-argumentos-de-la-función-1" class="section level3" number="5.2.2">
+<h3>
+<span class="header-section-number">5.2.2</span> Descripción de los argumentos de la función<a class="anchor" aria-label="anchor" href="#descripci%C3%B3n-de-los-argumentos-de-la-funci%C3%B3n-1"><i class="fas fa-link"></i></a>
+</h3>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="59%">
+<col width="40%">
+</colgroup>
+<thead><tr class="header">
+<th>Argumento</th>
+<th>Descripción</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code>nodes</code></td>
+<td>Objeto que contiene la información de los nodos (e.g., fragmentos de hábitat). Puede ser un <code>data.frame</code> (mínimo dos columnas: ID y atributo), un objeto espacial vectorial (<code>sf</code>, <code>SpatVector</code>) o un raster con valores enteros que representen los ID de cada nodo. Debe estar en un sistema de coordenadas proyectadas.</td>
+</tr>
+<tr class="even">
+<td><code>attribute</code></td>
+<td>Nombre de la columna o vector numérico con el atributo de los nodos. Si es <code>NULL</code>, se utiliza el área como atributo. Si <code>nodes</code> es raster, debe ser un vector numérico de igual longitud al número de nodos.</td>
+</tr>
+<tr class="odd">
+<td><code>weighted</code></td>
+<td>Lógico. Si <code>TRUE</code> y <code>nodes</code> es raster, el atributo será ponderado por el área de cada nodo.</td>
+</tr>
+<tr class="even">
+<td><code>LA</code></td>
+<td>Valor numérico (opcional). Atributo máximo del paisaje. Por ejemplo, el área total si el atributo es área. Se usa para calcular la conectividad global, no afecta la importancia relativa de nodos.</td>
+</tr>
+<tr class="odd">
+<td><code>area_unit</code></td>
+<td>Unidad de área (opcional, por defecto <code>"m2"</code>). Puede ser <code>"m2"</code>, <code>"km2"</code>, <code>"cm2"</code> o <code>"ha"</code>.</td>
+</tr>
+<tr class="even">
+<td><code>restoration</code></td>
+<td>Vector o nombre de columna que indica si cada nodo es existente (1) o propuesto para restauración (0). Si es <code>NULL</code>, se considera que todos los nodos existen.</td>
+</tr>
+<tr class="odd">
+<td><code>onlyrestor</code></td>
+<td>Lógico. Si <code>TRUE</code>, solo se calcularán métricas relacionadas con restauración.</td>
+</tr>
+<tr class="even">
+<td><code>distance</code></td>
+<td>Matriz o lista con parámetros para calcular distancia entre nodos. Puede ser matriz de distancias o una lista con parámetros como <code>type</code> (e.g., <code>"centroid"</code>, <code>"least-cost"</code>) y <code>resistance</code> (raster de resistencia).</td>
+</tr>
+<tr class="odd">
+<td><code>metric</code></td>
+<td>Métrica de conectividad a usar: <code>"PC"</code> (probabilidad de conectividad) o <code>"IIC"</code> (índice integral de conectividad).</td>
+</tr>
+<tr class="even">
+<td><code>probability</code></td>
+<td>Valor numérico que representa la probabilidad asociada a la distancia umbral (e.g., 0.5 si es la mediana de dispersión). Solo se usa con la métrica <code>"PC"</code>.</td>
+</tr>
+<tr class="odd">
+<td><code>distance_thresholds</code></td>
+<td>Distancia(s) de dispersión en metros. Si es <code>NULL</code>, se estima como la mediana de dispersión entre nodos. Puede usarse la función <code>dispersal_distance</code>.</td>
+</tr>
+<tr class="even">
+<td><code>threshold</code></td>
+<td>Distancia máxima entre pares de nodos a considerar. Mejora eficiencia al eliminar pares lejanos.</td>
+</tr>
+<tr class="odd">
+<td><code>overall</code></td>
+<td>Lógico. Si <code>TRUE</code>, se calcula el índice de conectividad del paisaje completo (EC). El resultado será una lista.</td>
+</tr>
+<tr class="even">
+<td><code>onlyoverall</code></td>
+<td>Lógico. Si <code>TRUE</code>, solo se calcularán métricas globales del paisaje.</td>
+</tr>
+<tr class="odd">
+<td><code>parallel</code></td>
+<td>Número de núcleos a usar en paralelización para estimar índices. Útil con más de 1000 nodos.</td>
+</tr>
+<tr class="even">
+<td><code>parallel_mode</code></td>
+<td>Modo de paralelización: 1 (por defecto, recomendado &lt; 1000 nodos) o 2 (recomendado &gt; 1000 nodos).</td>
+</tr>
+<tr class="odd">
+<td><code>write</code></td>
+<td>Ruta y prefijo para guardar los resultados (e.g., <code>"C:/ejemplo/test_PC_"</code>). Se guardan archivos de importancia de nodos y conectividad general si <code>overall = TRUE</code>.</td>
+</tr>
+<tr class="even">
+<td><code>id_sel</code></td>
+<td>Uso interno. No debe usarse por el usuario.</td>
+</tr>
+<tr class="odd">
+<td><code>intern</code></td>
+<td>Lógico. Muestra el progreso del proceso (<code>TRUE</code> por defecto).</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div id="iic" class="section level2" number="5.3">
+<h2>
+<span class="header-section-number">5.3</span> IIC<a class="anchor" aria-label="anchor" href="#iic"><i class="fas fa-link"></i></a>
+</h2>
+</div>
+<div id="ejemplo-1.-distancia-euclidiana" class="section level2" number="5.4">
+<h2>
+<span class="header-section-number">5.4</span> Ejemplo 1. Distancia euclidiana<a class="anchor" aria-label="anchor" href="#ejemplo-1.-distancia-euclidiana"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li><strong>Sin usar LA</strong></li>
+<li><strong>sin usar attribute</strong></li>
+<li><strong>10 km de mediana de dispersión</strong></li>
+<li><strong>Unidad de área en ha</strong></li>
+<li><strong>Solo índice para todo el paisaje</strong></li>
+</ul>
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">IIC</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_dPCIIC.html">MK_dPCIIC</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">habitat_nodes</span>,</span>
+<span>                attribute <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                area_unit <span class="op">=</span> <span class="st">"ha"</span>,</span>
+<span>                distance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"centroid"</span><span class="op">)</span>,</span>
+<span>                LA <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                onlyoverall <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                metric <span class="op">=</span> <span class="st">"IIC"</span>,</span>
+<span>                distance_thresholds <span class="op">=</span> <span class="fl">10000</span>,</span>
+<span>                intern <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co">#10 km</span></span>
+<span><span class="co">#&gt; Estimating IIC index. This may take several minutes depending on the number of nodes</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Done!</span></span>
+<span><span class="va">IIC</span></span>
+<span><span class="co">#&gt;     Index        Value</span></span>
+<span><span class="co">#&gt; 1  IICnum 2.041990e+11</span></span>
+<span><span class="co">#&gt; 2 EC(IIC) 4.518839e+05</span></span></code></pre></div>
+</div>
+<div id="ejemplo-2.-distancia-euclidiana" class="section level2" number="5.5">
+<h2>
+<span class="header-section-number">5.5</span> Ejemplo 2. Distancia euclidiana<a class="anchor" aria-label="anchor" href="#ejemplo-2.-distancia-euclidiana"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li><strong>sin usar attribute</strong></li>
+<li><strong>10 km de mediana de dispersión</strong></li>
+<li><strong>Unidad de área en ha</strong></li>
+<li><strong>Solo índice para todo el paisaje</strong></li>
+</ul>
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">area_paisaje</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_measures.html">st_area</a></span><span class="op">(</span><span class="va">paisaje</span><span class="op">)</span> </span>
+<span><span class="va">area_paisaje</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/unit_convert.html">unit_convert</a></span><span class="op">(</span><span class="va">area_paisaje</span>, <span class="st">"m2"</span>, <span class="st">"ha"</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="va">IIC</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_dPCIIC.html">MK_dPCIIC</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">habitat_nodes</span>,</span>
+<span>                attribute <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                area_unit <span class="op">=</span> <span class="st">"ha"</span>,</span>
+<span>                distance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"centroid"</span><span class="op">)</span>,</span>
+<span>                LA <span class="op">=</span> <span class="va">area_paisaje</span>,</span>
+<span>                onlyoverall <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                metric <span class="op">=</span> <span class="st">"IIC"</span>,</span>
+<span>                distance_thresholds <span class="op">=</span> <span class="fl">10000</span>,</span>
+<span>                intern <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co">#10 km</span></span>
+<span><span class="co">#&gt; Estimating IIC index. This may take several minutes depending on the number of nodes</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Done!</span></span>
+<span><span class="va">IIC</span></span>
+<span><span class="co">#&gt;     Index        Value</span></span>
+<span><span class="co">#&gt; 1  IICnum 2.041990e+11</span></span>
+<span><span class="co">#&gt; 2 EC(IIC) 4.518839e+05</span></span>
+<span><span class="co">#&gt; 3     IIC 2.677956e-02</span></span></code></pre></div>
+</div>
+<div id="ejemplo-3.-distancia-euclidiana" class="section level2" number="5.6">
+<h2>
+<span class="header-section-number">5.6</span> Ejemplo 3. Distancia euclidiana<a class="anchor" aria-label="anchor" href="#ejemplo-3.-distancia-euclidiana"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li><strong>sin usar attribute</strong></li>
+<li><strong>10 km de mediana de dispersión</strong></li>
+<li><strong>Unidad de área en ha</strong></li>
+<li><strong>Solo índice para todo el paisaje</strong></li>
+</ul>
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">area_paisaje</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_measures.html">st_area</a></span><span class="op">(</span><span class="va">paisaje</span><span class="op">)</span> </span>
+<span><span class="va">area_paisaje</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/unit_convert.html">unit_convert</a></span><span class="op">(</span><span class="va">area_paisaje</span>, <span class="st">"m2"</span>, <span class="st">"ha"</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="va">IIC</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_dPCIIC.html">MK_dPCIIC</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">habitat_nodes</span>,</span>
+<span>                attribute <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                area_unit <span class="op">=</span> <span class="st">"ha"</span>,</span>
+<span>                distance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"edge"</span><span class="op">)</span>,</span>
+<span>                LA <span class="op">=</span> <span class="va">area_paisaje</span>,</span>
+<span>                onlyoverall <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                metric <span class="op">=</span> <span class="st">"IIC"</span>,</span>
+<span>                distance_thresholds <span class="op">=</span> <span class="fl">10000</span>,</span>
+<span>                intern <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co">#10 km</span></span>
+<span><span class="co">#&gt; Estimating IIC index. This may take several minutes depending on the number of nodes</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Done!</span></span>
+<span><span class="va">IIC</span></span>
+<span><span class="co">#&gt;     Index        Value</span></span>
+<span><span class="co">#&gt; 1  IICnum 5.700691e+11</span></span>
+<span><span class="co">#&gt; 2 EC(IIC) 7.550292e+05</span></span>
+<span><span class="co">#&gt; 3     IIC 7.476136e-02</span></span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">area_paisaje</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_measures.html">st_area</a></span><span class="op">(</span><span class="va">paisaje</span><span class="op">)</span> </span>
+<span><span class="va">area_paisaje</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/unit_convert.html">unit_convert</a></span><span class="op">(</span><span class="va">area_paisaje</span>, <span class="st">"m2"</span>, <span class="st">"ha"</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="va">IIC</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_dPCIIC.html">MK_dPCIIC</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">habitat_nodes</span>,</span>
+<span>                attribute <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                area_unit <span class="op">=</span> <span class="st">"ha"</span>,</span>
+<span>                distance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"edge"</span>, keep <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>,</span>
+<span>                LA <span class="op">=</span> <span class="va">area_paisaje</span>,</span>
+<span>                onlyoverall <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                metric <span class="op">=</span> <span class="st">"IIC"</span>,</span>
+<span>                distance_thresholds <span class="op">=</span> <span class="fl">10000</span>,</span>
+<span>                intern <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co">#10 km</span></span>
+<span><span class="co">#&gt; Estimating IIC index. This may take several minutes depending on the number of nodes</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Done!</span></span>
+<span><span class="va">IIC</span></span>
+<span><span class="co">#&gt;     Index        Value</span></span>
+<span><span class="co">#&gt; 1  IICnum 5.693868e+11</span></span>
+<span><span class="co">#&gt; 2 EC(IIC) 7.545772e+05</span></span>
+<span><span class="co">#&gt; 3     IIC 7.467188e-02</span></span></code></pre></div>
+</div>
+<div id="ejemplo-4.-distancia-euclidiana-fracciones" class="section level2" number="5.7">
+<h2>
+<span class="header-section-number">5.7</span> Ejemplo 4. Distancia euclidiana: fracciones<a class="anchor" aria-label="anchor" href="#ejemplo-4.-distancia-euclidiana-fracciones"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li><strong>sin usar attribute</strong></li>
+<li><strong>10 km de mediana de dispersión</strong></li>
+<li><strong>Unidad de área en ha</strong></li>
+</ul>
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">area_paisaje</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_measures.html">st_area</a></span><span class="op">(</span><span class="va">paisaje</span><span class="op">)</span> </span>
+<span><span class="va">area_paisaje</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/unit_convert.html">unit_convert</a></span><span class="op">(</span><span class="va">area_paisaje</span>, <span class="st">"m2"</span>, <span class="st">"ha"</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="va">IIC</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_dPCIIC.html">MK_dPCIIC</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">habitat_nodes</span>,</span>
+<span>                attribute <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                area_unit <span class="op">=</span> <span class="st">"ha"</span>,</span>
+<span>                distance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"edge"</span>, keep <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>,</span>
+<span>                LA <span class="op">=</span> <span class="va">area_paisaje</span>,</span>
+<span>                onlyoverall <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>                metric <span class="op">=</span> <span class="st">"IIC"</span>,</span>
+<span>                distance_thresholds <span class="op">=</span> <span class="fl">10000</span>,</span>
+<span>                intern <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co">#10 km</span></span>
+<span><span class="co">#&gt; Estimating IIC index. This may take several minutes depending on the number of nodes</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■                56% |  ETA:  2s</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Done!</span></span>
+<span><span class="va">IIC</span></span>
+<span><span class="co">#&gt; Simple feature collection with 404 features and 5 fields</span></span>
+<span><span class="co">#&gt; Geometry type: POLYGON</span></span>
+<span><span class="co">#&gt; Dimension:     XY</span></span>
+<span><span class="co">#&gt; Bounding box:  xmin: -108954 ymin: 2025032 xmax: 202330.2 ymax: 2198936</span></span>
+<span><span class="co">#&gt; Projected CRS: NAD_1927_Albers</span></span>
+<span><span class="co">#&gt; First 10 features:</span></span>
+<span><span class="co">#&gt;    Id      dIIC dIICintra  dIICflux dIICconnector</span></span>
+<span><span class="co">#&gt; 1   1 0.0067065 0.0000013 0.0067052   0.000000000</span></span>
+<span><span class="co">#&gt; 2   2 0.0210320 0.0000085 0.0210235   0.000000000</span></span>
+<span><span class="co">#&gt; 3   3 1.0591462 0.0213281 1.0312790   0.006539041</span></span>
+<span><span class="co">#&gt; 4   4 0.0115557 0.0000026 0.0115531   0.000000000</span></span>
+<span><span class="co">#&gt; 5   5 0.0254291 0.0000060 0.0254231   0.000000000</span></span>
+<span><span class="co">#&gt; 6   6 0.0036214 0.0000001 0.0036212   0.000000000</span></span>
+<span><span class="co">#&gt; 7   7 0.0059875 0.0000003 0.0059872   0.000000000</span></span>
+<span><span class="co">#&gt; 8   8 0.0079222 0.0000006 0.0079216   0.000000000</span></span>
+<span><span class="co">#&gt; 9   9 0.0280103 0.0000073 0.0280030   0.000000000</span></span>
+<span><span class="co">#&gt; 10 10 4.5575494 0.1522233 3.3954709   1.009855242</span></span>
+<span><span class="co">#&gt;                          geometry</span></span>
+<span><span class="co">#&gt; 1  POLYGON ((54911.05 2035815,...</span></span>
+<span><span class="co">#&gt; 2  POLYGON ((44591.28 2042209,...</span></span>
+<span><span class="co">#&gt; 3  POLYGON ((46491.11 2042467,...</span></span>
+<span><span class="co">#&gt; 4  POLYGON ((54944.49 2048163,...</span></span>
+<span><span class="co">#&gt; 5  POLYGON ((80094.28 2064140,...</span></span>
+<span><span class="co">#&gt; 6  POLYGON ((69205.24 2066394,...</span></span>
+<span><span class="co">#&gt; 7  POLYGON ((68554.2 2066632, ...</span></span>
+<span><span class="co">#&gt; 8  POLYGON ((69995.53 2066880,...</span></span>
+<span><span class="co">#&gt; 9  POLYGON ((79368.68 2067324,...</span></span>
+<span><span class="co">#&gt; 10 POLYGON ((23378.32 2067554,...</span></span></code></pre></div>
+<p>Exploremos un plot usando intervalos:</p>
+<ul>
+<li>dIIC</li>
+</ul>
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/classInt/">classInt</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Adjuntando el paquete: 'dplyr'</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:igraph':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     as_data_frame, groups, union</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     filter, lag</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
+<span></span>
+<span><span class="co"># Calcular los intervalos de Jenks para strength</span></span>
+<span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu">classInt</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html">classIntervals</a></span><span class="op">(</span><span class="va">IIC</span><span class="op">$</span><span class="va">dIIC</span>, n <span class="op">=</span> <span class="fl">9</span>, style <span class="op">=</span> <span class="st">"jenks"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
+<span><span class="va">IIC</span> <span class="op">&lt;-</span> <span class="va">IIC</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>dIIC_q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">dIIC</span>,</span>
+<span>                          breaks <span class="op">=</span> <span class="va">breaks</span><span class="op">$</span><span class="va">brks</span>,</span>
+<span>                          include.lowest <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                          dig.lab <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span>  </span>
+<span></span>
+<span><span class="co"># Graficar en ggplot2 usando las clases Jenks</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paisaje</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">IIC</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">dIIC_q</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"RdYlGn"</span>, direction <span class="op">=</span> <span class="fl">1</span>, name <span class="op">=</span> <span class="st">"dIIC (jenks)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"dIIC"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"dIIC"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="04-IIC_PC_files/figure-html/unnamed-chunk-13-1.png" width="672"></div>
+<ul>
+<li>dIICIntra</li>
+</ul>
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Calcular los intervalos de Jenks para strength</span></span>
+<span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu">classInt</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html">classIntervals</a></span><span class="op">(</span><span class="va">IIC</span><span class="op">$</span><span class="va">dIICintra</span>, n <span class="op">=</span> <span class="fl">9</span>, style <span class="op">=</span> <span class="st">"jenks"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
+<span><span class="va">IIC</span> <span class="op">&lt;-</span> <span class="va">IIC</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>dIIC_q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">dIICintra</span>,</span>
+<span>                          breaks <span class="op">=</span> <span class="va">breaks</span><span class="op">$</span><span class="va">brks</span>,</span>
+<span>                          include.lowest <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                          dig.lab <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span>  </span>
+<span></span>
+<span><span class="co"># Graficar en ggplot2 usando las clases Jenks</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paisaje</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">IIC</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">dIIC_q</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"RdYlGn"</span>, direction <span class="op">=</span> <span class="fl">1</span>, name <span class="op">=</span> <span class="st">"dIICIntra (jenks)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"dIICIntra"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"dIICIntra"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="04-IIC_PC_files/figure-html/unnamed-chunk-14-1.png" width="672"></div>
+<ul>
+<li>dIICflux</li>
+</ul>
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Calcular los intervalos de Jenks para strength</span></span>
+<span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu">classInt</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html">classIntervals</a></span><span class="op">(</span><span class="va">IIC</span><span class="op">$</span><span class="va">dIICflux</span>, n <span class="op">=</span> <span class="fl">9</span>, style <span class="op">=</span> <span class="st">"jenks"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
+<span><span class="va">IIC</span> <span class="op">&lt;-</span> <span class="va">IIC</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>dIIC_q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">dIICflux</span>,</span>
+<span>                          breaks <span class="op">=</span> <span class="va">breaks</span><span class="op">$</span><span class="va">brks</span>,</span>
+<span>                          include.lowest <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                          dig.lab <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span>  </span>
+<span></span>
+<span><span class="co"># Graficar en ggplot2 usando las clases Jenks</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paisaje</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">IIC</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">dIIC_q</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"RdYlGn"</span>, direction <span class="op">=</span> <span class="fl">1</span>, name <span class="op">=</span> <span class="st">"dIICFlux (jenks)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"dIICFlux"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"dIICFlux"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="04-IIC_PC_files/figure-html/unnamed-chunk-15-1.png" width="672"></div>
+<ul>
+<li>dIICconnector</li>
+</ul>
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Calcular los intervalos de Jenks para strength</span></span>
+<span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu">classInt</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html">classIntervals</a></span><span class="op">(</span><span class="va">IIC</span><span class="op">$</span><span class="va">dIICconnector</span>, n <span class="op">=</span> <span class="fl">9</span>, style <span class="op">=</span> <span class="st">"jenks"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
+<span><span class="va">IIC</span> <span class="op">&lt;-</span> <span class="va">IIC</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>dIIC_q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">dIICconnector</span>,</span>
+<span>                          breaks <span class="op">=</span> <span class="va">breaks</span><span class="op">$</span><span class="va">brks</span>,</span>
+<span>                          include.lowest <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                          dig.lab <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span>  </span>
+<span></span>
+<span><span class="co"># Graficar en ggplot2 usando las clases Jenks</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paisaje</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">IIC</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">dIIC_q</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"RdYlGn"</span>, direction <span class="op">=</span> <span class="fl">1</span>, name <span class="op">=</span> <span class="st">"dIICConnector (jenks)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"dIICConnector"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"dIICConnector"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="04-IIC_PC_files/figure-html/unnamed-chunk-16-1.png" width="672"></div>
+</div>
+<div id="ejemplo-5.-distancia-euclidiana-fracciones-y-overall" class="section level2" number="5.8">
+<h2>
+<span class="header-section-number">5.8</span> Ejemplo 5. Distancia euclidiana: fracciones y overall<a class="anchor" aria-label="anchor" href="#ejemplo-5.-distancia-euclidiana-fracciones-y-overall"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li><strong>sin usar attribute</strong></li>
+<li><strong>10 km de mediana de dispersión</strong></li>
+<li><strong>Unidad de área en ha</strong></li>
+</ul>
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">area_paisaje</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_measures.html">st_area</a></span><span class="op">(</span><span class="va">paisaje</span><span class="op">)</span> </span>
+<span><span class="va">area_paisaje</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/unit_convert.html">unit_convert</a></span><span class="op">(</span><span class="va">area_paisaje</span>, <span class="st">"m2"</span>, <span class="st">"ha"</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="va">IIC</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_dPCIIC.html">MK_dPCIIC</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">habitat_nodes</span>,</span>
+<span>                attribute <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                area_unit <span class="op">=</span> <span class="st">"ha"</span>,</span>
+<span>                distance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"edge"</span>, keep <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>,</span>
+<span>                LA <span class="op">=</span> <span class="va">area_paisaje</span>,</span>
+<span>                overall <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                onlyoverall <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>                metric <span class="op">=</span> <span class="st">"IIC"</span>,</span>
+<span>                distance_thresholds <span class="op">=</span> <span class="fl">10000</span>,</span>
+<span>                intern <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co">#10 km</span></span>
+<span><span class="co">#&gt; Estimating IIC index. This may take several minutes depending on the number of nodes</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■                  50% |  ETA:  3s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■     95% |  ETA:  0s</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Done!</span></span>
+<span><span class="va">IIC</span></span>
+<span><span class="co">#&gt; $node_importances_d10000</span></span>
+<span><span class="co">#&gt; Simple feature collection with 404 features and 5 fields</span></span>
+<span><span class="co">#&gt; Geometry type: POLYGON</span></span>
+<span><span class="co">#&gt; Dimension:     XY</span></span>
+<span><span class="co">#&gt; Bounding box:  xmin: -108954 ymin: 2025032 xmax: 202330.2 ymax: 2198936</span></span>
+<span><span class="co">#&gt; Projected CRS: NAD_1927_Albers</span></span>
+<span><span class="co">#&gt; First 10 features:</span></span>
+<span><span class="co">#&gt;    Id      dIIC dIICintra  dIICflux dIICconnector</span></span>
+<span><span class="co">#&gt; 1   1 0.0067065 0.0000013 0.0067052   0.000000000</span></span>
+<span><span class="co">#&gt; 2   2 0.0210320 0.0000085 0.0210235   0.000000000</span></span>
+<span><span class="co">#&gt; 3   3 1.0591462 0.0213281 1.0312790   0.006539041</span></span>
+<span><span class="co">#&gt; 4   4 0.0115557 0.0000026 0.0115531   0.000000000</span></span>
+<span><span class="co">#&gt; 5   5 0.0254291 0.0000060 0.0254231   0.000000000</span></span>
+<span><span class="co">#&gt; 6   6 0.0036214 0.0000001 0.0036212   0.000000000</span></span>
+<span><span class="co">#&gt; 7   7 0.0059875 0.0000003 0.0059872   0.000000000</span></span>
+<span><span class="co">#&gt; 8   8 0.0079222 0.0000006 0.0079216   0.000000000</span></span>
+<span><span class="co">#&gt; 9   9 0.0280103 0.0000073 0.0280030   0.000000000</span></span>
+<span><span class="co">#&gt; 10 10 4.5575494 0.1522233 3.3954709   1.009855242</span></span>
+<span><span class="co">#&gt;                          geometry</span></span>
+<span><span class="co">#&gt; 1  POLYGON ((54911.05 2035815,...</span></span>
+<span><span class="co">#&gt; 2  POLYGON ((44591.28 2042209,...</span></span>
+<span><span class="co">#&gt; 3  POLYGON ((46491.11 2042467,...</span></span>
+<span><span class="co">#&gt; 4  POLYGON ((54944.49 2048163,...</span></span>
+<span><span class="co">#&gt; 5  POLYGON ((80094.28 2064140,...</span></span>
+<span><span class="co">#&gt; 6  POLYGON ((69205.24 2066394,...</span></span>
+<span><span class="co">#&gt; 7  POLYGON ((68554.2 2066632, ...</span></span>
+<span><span class="co">#&gt; 8  POLYGON ((69995.53 2066880,...</span></span>
+<span><span class="co">#&gt; 9  POLYGON ((79368.68 2067324,...</span></span>
+<span><span class="co">#&gt; 10 POLYGON ((23378.32 2067554,...</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $overall_d10000</span></span>
+<span><span class="co">#&gt;     Index        Value</span></span>
+<span><span class="co">#&gt; 1  IICnum 5.693868e+11</span></span>
+<span><span class="co">#&gt; 2 EC(IIC) 7.545772e+05</span></span>
+<span><span class="co">#&gt; 3     IIC 7.467188e-02</span></span></code></pre></div>
+</div>
+<div id="ejemplo-6.-distancia-euclidiana-fracciones-y-overall" class="section level2" number="5.9">
+<h2>
+<span class="header-section-number">5.9</span> Ejemplo 6. Distancia euclidiana: fracciones y overall<a class="anchor" aria-label="anchor" href="#ejemplo-6.-distancia-euclidiana-fracciones-y-overall"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li><strong>sin usar attribute</strong></li>
+<li><strong>10 km de mediana de dispersión</strong></li>
+<li><strong>Unidad de área en ha</strong></li>
+</ul>
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">area_paisaje</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_measures.html">st_area</a></span><span class="op">(</span><span class="va">paisaje</span><span class="op">)</span> </span>
+<span><span class="va">area_paisaje</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/unit_convert.html">unit_convert</a></span><span class="op">(</span><span class="va">area_paisaje</span>, <span class="st">"m2"</span>, <span class="st">"ha"</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="va">IIC</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_dPCIIC.html">MK_dPCIIC</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">habitat_nodes</span>,</span>
+<span>                attribute <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                area_unit <span class="op">=</span> <span class="st">"ha"</span>,</span>
+<span>                distance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"edge"</span>, keep <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>,</span>
+<span>                LA <span class="op">=</span> <span class="va">area_paisaje</span>,</span>
+<span>                overall <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                onlyoverall <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>                metric <span class="op">=</span> <span class="st">"IIC"</span>,</span>
+<span>                distance_thresholds <span class="op">=</span> <span class="fl">10000</span>,</span>
+<span>                intern <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co">#10 km</span></span>
+<span><span class="co">#&gt; Estimating IIC index. This may take several minutes depending on the number of nodes</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■■■■■■■■■        83% |  ETA:  1s</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Done!</span></span>
+<span><span class="va">IIC</span></span>
+<span><span class="co">#&gt; $node_importances_d10000</span></span>
+<span><span class="co">#&gt; Simple feature collection with 404 features and 5 fields</span></span>
+<span><span class="co">#&gt; Geometry type: POLYGON</span></span>
+<span><span class="co">#&gt; Dimension:     XY</span></span>
+<span><span class="co">#&gt; Bounding box:  xmin: -108954 ymin: 2025032 xmax: 202330.2 ymax: 2198936</span></span>
+<span><span class="co">#&gt; Projected CRS: NAD_1927_Albers</span></span>
+<span><span class="co">#&gt; First 10 features:</span></span>
+<span><span class="co">#&gt;    Id      dIIC dIICintra  dIICflux dIICconnector</span></span>
+<span><span class="co">#&gt; 1   1 0.0067065 0.0000013 0.0067052   0.000000000</span></span>
+<span><span class="co">#&gt; 2   2 0.0210320 0.0000085 0.0210235   0.000000000</span></span>
+<span><span class="co">#&gt; 3   3 1.0591462 0.0213281 1.0312790   0.006539041</span></span>
+<span><span class="co">#&gt; 4   4 0.0115557 0.0000026 0.0115531   0.000000000</span></span>
+<span><span class="co">#&gt; 5   5 0.0254291 0.0000060 0.0254231   0.000000000</span></span>
+<span><span class="co">#&gt; 6   6 0.0036214 0.0000001 0.0036212   0.000000000</span></span>
+<span><span class="co">#&gt; 7   7 0.0059875 0.0000003 0.0059872   0.000000000</span></span>
+<span><span class="co">#&gt; 8   8 0.0079222 0.0000006 0.0079216   0.000000000</span></span>
+<span><span class="co">#&gt; 9   9 0.0280103 0.0000073 0.0280030   0.000000000</span></span>
+<span><span class="co">#&gt; 10 10 4.5575494 0.1522233 3.3954709   1.009855242</span></span>
+<span><span class="co">#&gt;                          geometry</span></span>
+<span><span class="co">#&gt; 1  POLYGON ((54911.05 2035815,...</span></span>
+<span><span class="co">#&gt; 2  POLYGON ((44591.28 2042209,...</span></span>
+<span><span class="co">#&gt; 3  POLYGON ((46491.11 2042467,...</span></span>
+<span><span class="co">#&gt; 4  POLYGON ((54944.49 2048163,...</span></span>
+<span><span class="co">#&gt; 5  POLYGON ((80094.28 2064140,...</span></span>
+<span><span class="co">#&gt; 6  POLYGON ((69205.24 2066394,...</span></span>
+<span><span class="co">#&gt; 7  POLYGON ((68554.2 2066632, ...</span></span>
+<span><span class="co">#&gt; 8  POLYGON ((69995.53 2066880,...</span></span>
+<span><span class="co">#&gt; 9  POLYGON ((79368.68 2067324,...</span></span>
+<span><span class="co">#&gt; 10 POLYGON ((23378.32 2067554,...</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $overall_d10000</span></span>
+<span><span class="co">#&gt;     Index        Value</span></span>
+<span><span class="co">#&gt; 1  IICnum 5.693868e+11</span></span>
+<span><span class="co">#&gt; 2 EC(IIC) 7.545772e+05</span></span>
+<span><span class="co">#&gt; 3     IIC 7.467188e-02</span></span></code></pre></div>
+</div>
+<div id="ejemplo-7.-distancia-euclidiana-varios-umbrales-de-distancia" class="section level2" number="5.10">
+<h2>
+<span class="header-section-number">5.10</span> Ejemplo 7. Distancia euclidiana: varios umbrales de distancia<a class="anchor" aria-label="anchor" href="#ejemplo-7.-distancia-euclidiana-varios-umbrales-de-distancia"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li><strong>sin usar attribute</strong></li>
+<li><strong>2, 10 y 50 km de medianas de dispersión</strong></li>
+<li><strong>Unidad de área en ha</strong></li>
+</ul>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-1" tabindex="-1"></a>area_paisaje <span class="ot">&lt;-</span> <span class="fu">st_area</span>(paisaje) </span>
+<span id="cb68-2"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-2" tabindex="-1"></a>area_paisaje <span class="ot">&lt;-</span> <span class="fu">unit_convert</span>(area_paisaje, <span class="st">"m2"</span>, <span class="st">"ha"</span>) </span>
+<span id="cb68-3"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-3" tabindex="-1"></a></span>
+<span id="cb68-4"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-4" tabindex="-1"></a>IIC <span class="ot">&lt;-</span> <span class="fu">MK_dPCIIC</span>(<span class="at">nodes =</span> habitat_nodes,</span>
+<span id="cb68-5"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-5" tabindex="-1"></a>                <span class="at">attribute =</span> <span class="cn">NULL</span>,</span>
+<span id="cb68-6"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-6" tabindex="-1"></a>                <span class="at">area_unit =</span> <span class="st">"ha"</span>,</span>
+<span id="cb68-7"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-7" tabindex="-1"></a>                <span class="at">distance =</span> <span class="fu">list</span>(<span class="at">type =</span> <span class="st">"edge"</span>, <span class="at">keep =</span> <span class="fl">0.1</span>),</span>
+<span id="cb68-8"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-8" tabindex="-1"></a>                <span class="at">LA =</span> area_paisaje,</span>
+<span id="cb68-9"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-9" tabindex="-1"></a>                <span class="at">overall =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb68-10"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-10" tabindex="-1"></a>                <span class="at">onlyoverall =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb68-11"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-11" tabindex="-1"></a>                <span class="at">metric =</span> <span class="st">"IIC"</span>,</span>
+<span id="cb68-12"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-12" tabindex="-1"></a>                <span class="at">distance_thresholds =</span> <span class="fu">c</span>(<span class="dv">2000</span>, <span class="dv">10000</span>, <span class="dv">50000</span>),</span>
+<span id="cb68-13"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-13" tabindex="-1"></a>                <span class="at">intern =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb68-14"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-14" tabindex="-1"></a><span class="co">#&gt; Estimating IIC index. This may take several minutes depending on the number of nodes</span></span>
+<span id="cb68-15"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-15" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb68-16"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-16" tabindex="-1"></a>  <span class="sc">|</span>                                                        </span>
+<span id="cb68-17"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-17" tabindex="-1"></a>  <span class="er">|</span>                                                  <span class="er">|</span>   <span class="dv">0</span>%</span>
+<span id="cb68-18"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-18" tabindex="-1"></a><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■■■■■■■■■        83% |  ETA:  1s</span></span>
+<span id="cb68-19"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-19" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb68-20"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-20" tabindex="-1"></a>  <span class="sc">|</span>                                                        </span>
+<span id="cb68-21"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-21" tabindex="-1"></a>  <span class="er">|=================</span>                                 <span class="er">|</span>  <span class="dv">33</span>%</span>
+<span id="cb68-22"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-22" tabindex="-1"></a><span class="co">#&gt;  ■■■■■■■                           20% |  ETA:  4s</span></span>
+<span id="cb68-23"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-23" tabindex="-1"></a><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■■■■■            69% |  ETA:  2s</span></span>
+<span id="cb68-24"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-24" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb68-25"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-25" tabindex="-1"></a>  <span class="sc">|</span>                                                        </span>
+<span id="cb68-26"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-26" tabindex="-1"></a>  <span class="er">|=================================</span>                 <span class="er">|</span>  <span class="dv">67</span>%</span>
+<span id="cb68-27"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-27" tabindex="-1"></a><span class="co">#&gt;  ■■■■■■■                           21% |  ETA: 10s</span></span>
+<span id="cb68-28"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-28" tabindex="-1"></a><span class="co">#&gt;  ■■■■■■■■■■■■■                     39% |  ETA:  9s</span></span>
+<span id="cb68-29"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-29" tabindex="-1"></a><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■■               59% |  ETA:  6s</span></span>
+<span id="cb68-30"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-30" tabindex="-1"></a><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■■■■■■■          78% |  ETA:  3s</span></span>
+<span id="cb68-31"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-31" tabindex="-1"></a><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■     95% |  ETA:  1s</span></span>
+<span id="cb68-32"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-32" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb68-33"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-33" tabindex="-1"></a>  <span class="sc">|</span>                                                        </span>
+<span id="cb68-34"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-34" tabindex="-1"></a>  <span class="er">|==================================================|</span> <span class="dv">100</span>%</span>
+<span id="cb68-35"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-35" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb68-36"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-36" tabindex="-1"></a><span class="co">#&gt; Done!</span></span>
+<span id="cb68-37"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-37" tabindex="-1"></a>IIC</span>
+<span id="cb68-38"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-38" tabindex="-1"></a><span class="co">#&gt; $d2000</span></span>
+<span id="cb68-39"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-39" tabindex="-1"></a><span class="co">#&gt; $d2000$node_importances_d2000</span></span>
+<span id="cb68-40"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-40" tabindex="-1"></a><span class="co">#&gt; Simple feature collection with 404 features and 5 fields</span></span>
+<span id="cb68-41"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-41" tabindex="-1"></a><span class="co">#&gt; Geometry type: POLYGON</span></span>
+<span id="cb68-42"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-42" tabindex="-1"></a><span class="co">#&gt; Dimension:     XY</span></span>
+<span id="cb68-43"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-43" tabindex="-1"></a><span class="co">#&gt; Bounding box:  xmin: -108954 ymin: 2025032 xmax: 202330.2 ymax: 2198936</span></span>
+<span id="cb68-44"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-44" tabindex="-1"></a><span class="co">#&gt; Projected CRS: NAD_1927_Albers</span></span>
+<span id="cb68-45"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-45" tabindex="-1"></a><span class="co">#&gt; First 10 features:</span></span>
+<span id="cb68-46"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-46" tabindex="-1"></a><span class="co">#&gt;    Id      dIIC dIICintra  dIICflux dIICconnector</span></span>
+<span id="cb68-47"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-47" tabindex="-1"></a><span class="co">#&gt; 1   1 0.0069060 0.0000016 0.0069043  2.682750e-15</span></span>
+<span id="cb68-48"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-48" tabindex="-1"></a><span class="co">#&gt; 2   2 0.0211089 0.0000107 0.0210982  8.038710e-15</span></span>
+<span id="cb68-49"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-49" tabindex="-1"></a><span class="co">#&gt; 3   3 1.0630868 0.0268336 1.0295579  6.695335e-03</span></span>
+<span id="cb68-50"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-50" tabindex="-1"></a><span class="co">#&gt; 4   4 0.0114992 0.0000032 0.0114959  3.714040e-15</span></span>
+<span id="cb68-51"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-51" tabindex="-1"></a><span class="co">#&gt; 5   5 0.0208395 0.0000075 0.0208320  1.025569e-14</span></span>
+<span id="cb68-52"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-52" tabindex="-1"></a><span class="co">#&gt; 6   6 0.0029673 0.0000002 0.0029671  9.421720e-15</span></span>
+<span id="cb68-53"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-53" tabindex="-1"></a><span class="co">#&gt; 7   7 0.0049061 0.0000004 0.0049057  5.947500e-15</span></span>
+<span id="cb68-54"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-54" tabindex="-1"></a><span class="co">#&gt; 8   8 0.0088114 0.0000007 0.0088105  9.729792e-08</span></span>
+<span id="cb68-55"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-55" tabindex="-1"></a><span class="co">#&gt; 9   9 0.0519838 0.0000091 0.0311509  2.082369e-02</span></span>
+<span id="cb68-56"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-56" tabindex="-1"></a><span class="co">#&gt; 10 10 4.3995157 0.1915165 3.2149196  9.930796e-01</span></span>
+<span id="cb68-57"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-57" tabindex="-1"></a><span class="co">#&gt;                          geometry</span></span>
+<span id="cb68-58"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-58" tabindex="-1"></a><span class="co">#&gt; 1  POLYGON ((54911.05 2035815,...</span></span>
+<span id="cb68-59"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-59" tabindex="-1"></a><span class="co">#&gt; 2  POLYGON ((44591.28 2042209,...</span></span>
+<span id="cb68-60"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-60" tabindex="-1"></a><span class="co">#&gt; 3  POLYGON ((46491.11 2042467,...</span></span>
+<span id="cb68-61"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-61" tabindex="-1"></a><span class="co">#&gt; 4  POLYGON ((54944.49 2048163,...</span></span>
+<span id="cb68-62"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-62" tabindex="-1"></a><span class="co">#&gt; 5  POLYGON ((80094.28 2064140,...</span></span>
+<span id="cb68-63"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-63" tabindex="-1"></a><span class="co">#&gt; 6  POLYGON ((69205.24 2066394,...</span></span>
+<span id="cb68-64"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-64" tabindex="-1"></a><span class="co">#&gt; 7  POLYGON ((68554.2 2066632, ...</span></span>
+<span id="cb68-65"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-65" tabindex="-1"></a><span class="co">#&gt; 8  POLYGON ((69995.53 2066880,...</span></span>
+<span id="cb68-66"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-66" tabindex="-1"></a><span class="co">#&gt; 9  POLYGON ((79368.68 2067324,...</span></span>
+<span id="cb68-67"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-67" tabindex="-1"></a><span class="co">#&gt; 10 POLYGON ((23378.32 2067554,...</span></span>
+<span id="cb68-68"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-68" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb68-69"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-69" tabindex="-1"></a><span class="co">#&gt; $d2000$overall_d2000</span></span>
+<span id="cb68-70"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-70" tabindex="-1"></a><span class="co">#&gt;     Index        Value</span></span>
+<span id="cb68-71"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-71" tabindex="-1"></a><span class="co">#&gt; 1  IICnum 4.525664e+11</span></span>
+<span id="cb68-72"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-72" tabindex="-1"></a><span class="co">#&gt; 2 EC(IIC) 6.727305e+05</span></span>
+<span id="cb68-73"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-73" tabindex="-1"></a><span class="co">#&gt; 3     IIC 5.935154e-02</span></span>
+<span id="cb68-74"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-74" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb68-75"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-75" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb68-76"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-76" tabindex="-1"></a><span class="co">#&gt; $d10000</span></span>
+<span id="cb68-77"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-77" tabindex="-1"></a><span class="co">#&gt; $d10000$node_importances_d10000</span></span>
+<span id="cb68-78"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-78" tabindex="-1"></a><span class="co">#&gt; Simple feature collection with 404 features and 5 fields</span></span>
+<span id="cb68-79"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-79" tabindex="-1"></a><span class="co">#&gt; Geometry type: POLYGON</span></span>
+<span id="cb68-80"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-80" tabindex="-1"></a><span class="co">#&gt; Dimension:     XY</span></span>
+<span id="cb68-81"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-81" tabindex="-1"></a><span class="co">#&gt; Bounding box:  xmin: -108954 ymin: 2025032 xmax: 202330.2 ymax: 2198936</span></span>
+<span id="cb68-82"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-82" tabindex="-1"></a><span class="co">#&gt; Projected CRS: NAD_1927_Albers</span></span>
+<span id="cb68-83"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-83" tabindex="-1"></a><span class="co">#&gt; First 10 features:</span></span>
+<span id="cb68-84"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-84" tabindex="-1"></a><span class="co">#&gt;    Id      dIIC dIICintra  dIICflux dIICconnector</span></span>
+<span id="cb68-85"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-85" tabindex="-1"></a><span class="co">#&gt; 1   1 0.0067065 0.0000013 0.0067052   0.000000000</span></span>
+<span id="cb68-86"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-86" tabindex="-1"></a><span class="co">#&gt; 2   2 0.0210320 0.0000085 0.0210235   0.000000000</span></span>
+<span id="cb68-87"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-87" tabindex="-1"></a><span class="co">#&gt; 3   3 1.0591462 0.0213281 1.0312790   0.006539041</span></span>
+<span id="cb68-88"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-88" tabindex="-1"></a><span class="co">#&gt; 4   4 0.0115557 0.0000026 0.0115531   0.000000000</span></span>
+<span id="cb68-89"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-89" tabindex="-1"></a><span class="co">#&gt; 5   5 0.0254291 0.0000060 0.0254231   0.000000000</span></span>
+<span id="cb68-90"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-90" tabindex="-1"></a><span class="co">#&gt; 6   6 0.0036214 0.0000001 0.0036212   0.000000000</span></span>
+<span id="cb68-91"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-91" tabindex="-1"></a><span class="co">#&gt; 7   7 0.0059875 0.0000003 0.0059872   0.000000000</span></span>
+<span id="cb68-92"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-92" tabindex="-1"></a><span class="co">#&gt; 8   8 0.0079222 0.0000006 0.0079216   0.000000000</span></span>
+<span id="cb68-93"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-93" tabindex="-1"></a><span class="co">#&gt; 9   9 0.0280103 0.0000073 0.0280030   0.000000000</span></span>
+<span id="cb68-94"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-94" tabindex="-1"></a><span class="co">#&gt; 10 10 4.5575494 0.1522233 3.3954709   1.009855242</span></span>
+<span id="cb68-95"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-95" tabindex="-1"></a><span class="co">#&gt;                          geometry</span></span>
+<span id="cb68-96"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-96" tabindex="-1"></a><span class="co">#&gt; 1  POLYGON ((54911.05 2035815,...</span></span>
+<span id="cb68-97"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-97" tabindex="-1"></a><span class="co">#&gt; 2  POLYGON ((44591.28 2042209,...</span></span>
+<span id="cb68-98"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-98" tabindex="-1"></a><span class="co">#&gt; 3  POLYGON ((46491.11 2042467,...</span></span>
+<span id="cb68-99"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-99" tabindex="-1"></a><span class="co">#&gt; 4  POLYGON ((54944.49 2048163,...</span></span>
+<span id="cb68-100"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-100" tabindex="-1"></a><span class="co">#&gt; 5  POLYGON ((80094.28 2064140,...</span></span>
+<span id="cb68-101"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-101" tabindex="-1"></a><span class="co">#&gt; 6  POLYGON ((69205.24 2066394,...</span></span>
+<span id="cb68-102"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-102" tabindex="-1"></a><span class="co">#&gt; 7  POLYGON ((68554.2 2066632, ...</span></span>
+<span id="cb68-103"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-103" tabindex="-1"></a><span class="co">#&gt; 8  POLYGON ((69995.53 2066880,...</span></span>
+<span id="cb68-104"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-104" tabindex="-1"></a><span class="co">#&gt; 9  POLYGON ((79368.68 2067324,...</span></span>
+<span id="cb68-105"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-105" tabindex="-1"></a><span class="co">#&gt; 10 POLYGON ((23378.32 2067554,...</span></span>
+<span id="cb68-106"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-106" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb68-107"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-107" tabindex="-1"></a><span class="co">#&gt; $d10000$overall_d10000</span></span>
+<span id="cb68-108"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-108" tabindex="-1"></a><span class="co">#&gt;     Index        Value</span></span>
+<span id="cb68-109"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-109" tabindex="-1"></a><span class="co">#&gt; 1  IICnum 5.693868e+11</span></span>
+<span id="cb68-110"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-110" tabindex="-1"></a><span class="co">#&gt; 2 EC(IIC) 7.545772e+05</span></span>
+<span id="cb68-111"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-111" tabindex="-1"></a><span class="co">#&gt; 3     IIC 7.467188e-02</span></span>
+<span id="cb68-112"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-112" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb68-113"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-113" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb68-114"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-114" tabindex="-1"></a><span class="co">#&gt; $d50000</span></span>
+<span id="cb68-115"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-115" tabindex="-1"></a><span class="co">#&gt; $d50000$node_importances_d50000</span></span>
+<span id="cb68-116"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-116" tabindex="-1"></a><span class="co">#&gt; Simple feature collection with 404 features and 5 fields</span></span>
+<span id="cb68-117"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-117" tabindex="-1"></a><span class="co">#&gt; Geometry type: POLYGON</span></span>
+<span id="cb68-118"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-118" tabindex="-1"></a><span class="co">#&gt; Dimension:     XY</span></span>
+<span id="cb68-119"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-119" tabindex="-1"></a><span class="co">#&gt; Bounding box:  xmin: -108954 ymin: 2025032 xmax: 202330.2 ymax: 2198936</span></span>
+<span id="cb68-120"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-120" tabindex="-1"></a><span class="co">#&gt; Projected CRS: NAD_1927_Albers</span></span>
+<span id="cb68-121"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-121" tabindex="-1"></a><span class="co">#&gt; First 10 features:</span></span>
+<span id="cb68-122"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-122" tabindex="-1"></a><span class="co">#&gt;    Id      dIIC dIICintra  dIICflux dIICconnector</span></span>
+<span id="cb68-123"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-123" tabindex="-1"></a><span class="co">#&gt; 1   1 0.0108854 0.0000010 0.0108844  5.535500e-15</span></span>
+<span id="cb68-124"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-124" tabindex="-1"></a><span class="co">#&gt; 2   2 0.0280741 0.0000064 0.0280677  4.312520e-15</span></span>
+<span id="cb68-125"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-125" tabindex="-1"></a><span class="co">#&gt; 3   3 1.4048675 0.0159201 1.3889474  6.883380e-15</span></span>
+<span id="cb68-126"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-126" tabindex="-1"></a><span class="co">#&gt; 4   4 0.0154866 0.0000019 0.0154847  0.000000e+00</span></span>
+<span id="cb68-127"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-127" tabindex="-1"></a><span class="co">#&gt; 5   5 0.0241239 0.0000045 0.0241194  0.000000e+00</span></span>
+<span id="cb68-128"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-128" tabindex="-1"></a><span class="co">#&gt; 6   6 0.0034401 0.0000001 0.0034400  9.836320e-15</span></span>
+<span id="cb68-129"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-129" tabindex="-1"></a><span class="co">#&gt; 7   7 0.0056974 0.0000002 0.0056972  5.062790e-15</span></span>
+<span id="cb68-130"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-130" tabindex="-1"></a><span class="co">#&gt; 8   8 0.0075250 0.0000004 0.0075246  1.169117e-14</span></span>
+<span id="cb68-131"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-131" tabindex="-1"></a><span class="co">#&gt; 9   9 0.0265849 0.0000054 0.0265795  1.066508e-14</span></span>
+<span id="cb68-132"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-132" tabindex="-1"></a><span class="co">#&gt; 10 10 4.1637595 0.1136249 4.0497996  3.349366e-04</span></span>
+<span id="cb68-133"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-133" tabindex="-1"></a><span class="co">#&gt;                          geometry</span></span>
+<span id="cb68-134"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-134" tabindex="-1"></a><span class="co">#&gt; 1  POLYGON ((54911.05 2035815,...</span></span>
+<span id="cb68-135"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-135" tabindex="-1"></a><span class="co">#&gt; 2  POLYGON ((44591.28 2042209,...</span></span>
+<span id="cb68-136"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-136" tabindex="-1"></a><span class="co">#&gt; 3  POLYGON ((46491.11 2042467,...</span></span>
+<span id="cb68-137"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-137" tabindex="-1"></a><span class="co">#&gt; 4  POLYGON ((54944.49 2048163,...</span></span>
+<span id="cb68-138"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-138" tabindex="-1"></a><span class="co">#&gt; 5  POLYGON ((80094.28 2064140,...</span></span>
+<span id="cb68-139"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-139" tabindex="-1"></a><span class="co">#&gt; 6  POLYGON ((69205.24 2066394,...</span></span>
+<span id="cb68-140"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-140" tabindex="-1"></a><span class="co">#&gt; 7  POLYGON ((68554.2 2066632, ...</span></span>
+<span id="cb68-141"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-141" tabindex="-1"></a><span class="co">#&gt; 8  POLYGON ((69995.53 2066880,...</span></span>
+<span id="cb68-142"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-142" tabindex="-1"></a><span class="co">#&gt; 9  POLYGON ((79368.68 2067324,...</span></span>
+<span id="cb68-143"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-143" tabindex="-1"></a><span class="co">#&gt; 10 POLYGON ((23378.32 2067554,...</span></span>
+<span id="cb68-144"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-144" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb68-145"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-145" tabindex="-1"></a><span class="co">#&gt; $d50000$overall_d50000</span></span>
+<span id="cb68-146"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-146" tabindex="-1"></a><span class="co">#&gt;     Index        Value</span></span>
+<span id="cb68-147"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-147" tabindex="-1"></a><span class="co">#&gt; 1  IICnum 7.628072e+11</span></span>
+<span id="cb68-148"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-148" tabindex="-1"></a><span class="co">#&gt; 2 EC(IIC) 8.733883e+05</span></span>
+<span id="cb68-149"><a href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html#cb68-149" tabindex="-1"></a><span class="co">#&gt; 3     IIC 1.000379e-01</span></span></code></pre></div>
+</div>
+<div id="pc" class="section level2" number="5.11">
+<h2>
+<span class="header-section-number">5.11</span> PC<a class="anchor" aria-label="anchor" href="#pc"><i class="fas fa-link"></i></a>
+</h2>
+</div>
+<div id="ejemplo-1.-distancia-euclidiana-1" class="section level2" number="5.12">
+<h2>
+<span class="header-section-number">5.12</span> Ejemplo 1. Distancia euclidiana<a class="anchor" aria-label="anchor" href="#ejemplo-1.-distancia-euclidiana-1"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li><strong>Sin usar LA</strong></li>
+<li><strong>sin usar attribute</strong></li>
+<li><strong>10 km de mediana de dispersión con una probabilidad de 0.5</strong></li>
+<li><strong>Unidad de área en ha</strong></li>
+<li><strong>Solo índice para todo el paisaje</strong></li>
+</ul>
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">PC</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_dPCIIC.html">MK_dPCIIC</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">habitat_nodes</span>,</span>
+<span>                attribute <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                area_unit <span class="op">=</span> <span class="st">"ha"</span>,</span>
+<span>                distance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"edge"</span>, keep <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>,</span>
+<span>                LA <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                onlyoverall <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                metric <span class="op">=</span> <span class="st">"PC"</span>,</span>
+<span>                probability <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>                distance_thresholds <span class="op">=</span> <span class="fl">10000</span>,</span>
+<span>                intern <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co">#10 km</span></span>
+<span><span class="co">#&gt; Estimating PC index. This may take several minutes depending on the number of nodes</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Done!</span></span>
+<span><span class="va">PC</span></span>
+<span><span class="co">#&gt;    Index        Value</span></span>
+<span><span class="co">#&gt; 1  PCnum 1.301622e+12</span></span>
+<span><span class="co">#&gt; 2 EC(PC) 1.140887e+06</span></span></code></pre></div>
+</div>
+<div id="ejemplo-2.-distancia-euclidiana-1" class="section level2" number="5.13">
+<h2>
+<span class="header-section-number">5.13</span> Ejemplo 2. Distancia euclidiana<a class="anchor" aria-label="anchor" href="#ejemplo-2.-distancia-euclidiana-1"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li><strong>sin usar attribute</strong></li>
+<li><strong>10 km de mediana de dispersión con una probabilidad de 0.5</strong></li>
+<li><strong>Unidad de área en ha</strong></li>
+<li><strong>Solo índice para todo el paisaje</strong></li>
+</ul>
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">area_paisaje</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_measures.html">st_area</a></span><span class="op">(</span><span class="va">paisaje</span><span class="op">)</span> </span>
+<span><span class="va">area_paisaje</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/unit_convert.html">unit_convert</a></span><span class="op">(</span><span class="va">area_paisaje</span>, <span class="st">"m2"</span>, <span class="st">"ha"</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="va">PC</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_dPCIIC.html">MK_dPCIIC</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">habitat_nodes</span>,</span>
+<span>                attribute <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                area_unit <span class="op">=</span> <span class="st">"ha"</span>,</span>
+<span>                distance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"centroid"</span><span class="op">)</span>,</span>
+<span>                LA <span class="op">=</span> <span class="va">area_paisaje</span>,</span>
+<span>                onlyoverall <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                metric <span class="op">=</span> <span class="st">"PC"</span>,</span>
+<span>                probability <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>                distance_thresholds <span class="op">=</span> <span class="fl">10000</span>,</span>
+<span>                intern <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co">#10 km</span></span>
+<span><span class="co">#&gt; Estimating PC index. This may take several minutes depending on the number of nodes</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Done!</span></span>
+<span><span class="va">PC</span></span>
+<span><span class="co">#&gt;    Index        Value</span></span>
+<span><span class="co">#&gt; 1  PCnum 2.136028e+11</span></span>
+<span><span class="co">#&gt; 2 EC(PC) 4.621718e+05</span></span>
+<span><span class="co">#&gt; 3     PC 2.801281e-02</span></span></code></pre></div>
+</div>
+<div id="ejemplo-3.-distancia-euclidiana-fracciones-y-overall" class="section level2" number="5.14">
+<h2>
+<span class="header-section-number">5.14</span> Ejemplo 3. Distancia euclidiana: fracciones y overall<a class="anchor" aria-label="anchor" href="#ejemplo-3.-distancia-euclidiana-fracciones-y-overall"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li><strong>sin usar attribute</strong></li>
+<li><strong>10 km de mediana de dispersión con una probabilidad de 0.5</strong></li>
+<li><strong>Unidad de área en ha</strong></li>
+</ul>
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">area_paisaje</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_measures.html">st_area</a></span><span class="op">(</span><span class="va">paisaje</span><span class="op">)</span> </span>
+<span><span class="va">area_paisaje</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/unit_convert.html">unit_convert</a></span><span class="op">(</span><span class="va">area_paisaje</span>, <span class="st">"m2"</span>, <span class="st">"ha"</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="va">PC</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_dPCIIC.html">MK_dPCIIC</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">habitat_nodes</span>,</span>
+<span>                attribute <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                area_unit <span class="op">=</span> <span class="st">"ha"</span>,</span>
+<span>                distance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"edge"</span>, keep <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>,</span>
+<span>                LA <span class="op">=</span> <span class="va">area_paisaje</span>,</span>
+<span>                overall <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                onlyoverall <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>                metric <span class="op">=</span> <span class="st">"PC"</span>,</span>
+<span>                probability <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>                distance_thresholds <span class="op">=</span> <span class="fl">10000</span>,</span>
+<span>                intern <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co">#10 km</span></span>
+<span><span class="co">#&gt; Estimating PC index. This may take several minutes depending on the number of nodes</span></span>
+<span><span class="co">#&gt;  ■■■■                               9% |  ETA: 40s</span></span>
+<span><span class="co">#&gt;  ■■■■■                             14% |  ETA: 41s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■                           19% |  ETA: 41s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■                         25% |  ETA: 38s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■                        31% |  ETA: 36s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■                      36% |  ETA: 34s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■                     42% |  ETA: 31s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■                   48% |  ETA: 27s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■                 54% |  ETA: 24s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■■               59% |  ETA: 22s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■■■              64% |  ETA: 19s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■■■■■            71% |  ETA: 15s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■■■■■■■          76% |  ETA: 13s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■■■■■■■■         81% |  ETA: 10s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■■■■■■■■■■       87% |  ETA:  7s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■     93% |  ETA:  4s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   99% |  ETA:  1s</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Done!</span></span>
+<span><span class="va">PC</span></span>
+<span><span class="co">#&gt; $node_importances_d10000</span></span>
+<span><span class="co">#&gt; Simple feature collection with 404 features and 5 fields</span></span>
+<span><span class="co">#&gt; Geometry type: POLYGON</span></span>
+<span><span class="co">#&gt; Dimension:     XY</span></span>
+<span><span class="co">#&gt; Bounding box:  xmin: -108954 ymin: 2025032 xmax: 202330.2 ymax: 2198936</span></span>
+<span><span class="co">#&gt; Projected CRS: NAD_1927_Albers</span></span>
+<span><span class="co">#&gt; First 10 features:</span></span>
+<span><span class="co">#&gt;    Id       dPC  dPCintra   dPCflux dPCconnector</span></span>
+<span><span class="co">#&gt; 1   1 0.0128564 0.0000006 0.0128558 0.000000e+00</span></span>
+<span><span class="co">#&gt; 2   2 0.0332059 0.0000037 0.0332022 0.000000e+00</span></span>
+<span><span class="co">#&gt; 3   3 1.6831849 0.0093299 1.6665804 7.274621e-03</span></span>
+<span><span class="co">#&gt; 4   4 0.0184037 0.0000011 0.0184026 0.000000e+00</span></span>
+<span><span class="co">#&gt; 5   5 0.0285162 0.0000026 0.0285136 0.000000e+00</span></span>
+<span><span class="co">#&gt; 6   6 0.0040938 0.0000001 0.0040937 5.309968e-08</span></span>
+<span><span class="co">#&gt; 7   7 0.0069481 0.0000001 0.0068704 7.758334e-05</span></span>
+<span><span class="co">#&gt; 8   8 0.0088543 0.0000003 0.0088540 0.000000e+00</span></span>
+<span><span class="co">#&gt; 9   9 0.0369150 0.0000032 0.0331109 3.800919e-03</span></span>
+<span><span class="co">#&gt; 10 10 5.5556530 0.0665892 4.4246468 1.064417e+00</span></span>
+<span><span class="co">#&gt;                          geometry</span></span>
+<span><span class="co">#&gt; 1  POLYGON ((54911.05 2035815,...</span></span>
+<span><span class="co">#&gt; 2  POLYGON ((44591.28 2042209,...</span></span>
+<span><span class="co">#&gt; 3  POLYGON ((46491.11 2042467,...</span></span>
+<span><span class="co">#&gt; 4  POLYGON ((54944.49 2048163,...</span></span>
+<span><span class="co">#&gt; 5  POLYGON ((80094.28 2064140,...</span></span>
+<span><span class="co">#&gt; 6  POLYGON ((69205.24 2066394,...</span></span>
+<span><span class="co">#&gt; 7  POLYGON ((68554.2 2066632, ...</span></span>
+<span><span class="co">#&gt; 8  POLYGON ((69995.53 2066880,...</span></span>
+<span><span class="co">#&gt; 9  POLYGON ((79368.68 2067324,...</span></span>
+<span><span class="co">#&gt; 10 POLYGON ((23378.32 2067554,...</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $overall_d10000</span></span>
+<span><span class="co">#&gt;    Index        Value</span></span>
+<span><span class="co">#&gt; 1  PCnum 1.301622e+12</span></span>
+<span><span class="co">#&gt; 2 EC(PC) 1.140887e+06</span></span>
+<span><span class="co">#&gt; 3     PC 1.707004e-01</span></span></code></pre></div>
+</div>
+<div id="ejemplo-4.-distancia-euclidiana-fracciones-1" class="section level2" number="5.15">
+<h2>
+<span class="header-section-number">5.15</span> Ejemplo 4. Distancia euclidiana: fracciones<a class="anchor" aria-label="anchor" href="#ejemplo-4.-distancia-euclidiana-fracciones-1"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li><strong>sin usar attribute</strong></li>
+<li><strong>10 km de mediana de dispersión con una probabilidad de 0.5</strong></li>
+<li><strong>Unidad de área en ha</strong></li>
+</ul>
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">area_paisaje</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_measures.html">st_area</a></span><span class="op">(</span><span class="va">paisaje</span><span class="op">)</span> </span>
+<span><span class="va">area_paisaje</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/unit_convert.html">unit_convert</a></span><span class="op">(</span><span class="va">area_paisaje</span>, <span class="st">"m2"</span>, <span class="st">"ha"</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="va">PC</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_dPCIIC.html">MK_dPCIIC</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">habitat_nodes</span>,</span>
+<span>                attribute <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                area_unit <span class="op">=</span> <span class="st">"ha"</span>,</span>
+<span>                distance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"edge"</span>, keep <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>,</span>
+<span>                LA <span class="op">=</span> <span class="va">area_paisaje</span>,</span>
+<span>                onlyoverall <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>                metric <span class="op">=</span> <span class="st">"PC"</span>,</span>
+<span>                probability <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>                distance_thresholds <span class="op">=</span> <span class="fl">10000</span>,</span>
+<span>                intern <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co">#10 km</span></span>
+<span><span class="co">#&gt; Estimating PC index. This may take several minutes depending on the number of nodes</span></span>
+<span><span class="co">#&gt;  ■■                                 4% |  ETA: 41s</span></span>
+<span><span class="co">#&gt;  ■■■■                               9% |  ETA: 45s</span></span>
+<span><span class="co">#&gt;  ■■■■■                             15% |  ETA: 44s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■                          22% |  ETA: 38s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■                        31% |  ETA: 30s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■                    42% |  ETA: 23s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■                  50% |  ETA: 20s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■                57% |  ETA: 17s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■■■              63% |  ETA: 15s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■■■■■            69% |  ETA: 13s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■■■■■■           75% |  ETA: 11s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■■■■■■■■         81% |  ETA:  8s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■■■■■■■■■■       86% |  ETA:  6s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■      92% |  ETA:  4s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    98% |  ETA:  1s</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Done!</span></span>
+<span><span class="va">PC</span></span>
+<span><span class="co">#&gt; Simple feature collection with 404 features and 5 fields</span></span>
+<span><span class="co">#&gt; Geometry type: POLYGON</span></span>
+<span><span class="co">#&gt; Dimension:     XY</span></span>
+<span><span class="co">#&gt; Bounding box:  xmin: -108954 ymin: 2025032 xmax: 202330.2 ymax: 2198936</span></span>
+<span><span class="co">#&gt; Projected CRS: NAD_1927_Albers</span></span>
+<span><span class="co">#&gt; First 10 features:</span></span>
+<span><span class="co">#&gt;    Id       dPC  dPCintra   dPCflux dPCconnector</span></span>
+<span><span class="co">#&gt; 1   1 0.0128564 0.0000006 0.0128558 0.000000e+00</span></span>
+<span><span class="co">#&gt; 2   2 0.0332059 0.0000037 0.0332022 0.000000e+00</span></span>
+<span><span class="co">#&gt; 3   3 1.6831849 0.0093299 1.6665804 7.274621e-03</span></span>
+<span><span class="co">#&gt; 4   4 0.0184037 0.0000011 0.0184026 0.000000e+00</span></span>
+<span><span class="co">#&gt; 5   5 0.0285162 0.0000026 0.0285136 0.000000e+00</span></span>
+<span><span class="co">#&gt; 6   6 0.0040938 0.0000001 0.0040937 5.309968e-08</span></span>
+<span><span class="co">#&gt; 7   7 0.0069481 0.0000001 0.0068704 7.758334e-05</span></span>
+<span><span class="co">#&gt; 8   8 0.0088543 0.0000003 0.0088540 0.000000e+00</span></span>
+<span><span class="co">#&gt; 9   9 0.0369150 0.0000032 0.0331109 3.800919e-03</span></span>
+<span><span class="co">#&gt; 10 10 5.5556530 0.0665892 4.4246468 1.064417e+00</span></span>
+<span><span class="co">#&gt;                          geometry</span></span>
+<span><span class="co">#&gt; 1  POLYGON ((54911.05 2035815,...</span></span>
+<span><span class="co">#&gt; 2  POLYGON ((44591.28 2042209,...</span></span>
+<span><span class="co">#&gt; 3  POLYGON ((46491.11 2042467,...</span></span>
+<span><span class="co">#&gt; 4  POLYGON ((54944.49 2048163,...</span></span>
+<span><span class="co">#&gt; 5  POLYGON ((80094.28 2064140,...</span></span>
+<span><span class="co">#&gt; 6  POLYGON ((69205.24 2066394,...</span></span>
+<span><span class="co">#&gt; 7  POLYGON ((68554.2 2066632, ...</span></span>
+<span><span class="co">#&gt; 8  POLYGON ((69995.53 2066880,...</span></span>
+<span><span class="co">#&gt; 9  POLYGON ((79368.68 2067324,...</span></span>
+<span><span class="co">#&gt; 10 POLYGON ((23378.32 2067554,...</span></span></code></pre></div>
+<p>Exploremos un plot usando intervalos:</p>
+<ul>
+<li>dPC</li>
+</ul>
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/classInt/">classInt</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Calcular los intervalos de Jenks para strength</span></span>
+<span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu">classInt</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html">classIntervals</a></span><span class="op">(</span><span class="va">PC</span><span class="op">$</span><span class="va">dPC</span>, n <span class="op">=</span> <span class="fl">9</span>, style <span class="op">=</span> <span class="st">"jenks"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
+<span><span class="va">PC</span> <span class="op">&lt;-</span> <span class="va">PC</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>dPC_q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">dPC</span>,</span>
+<span>                          breaks <span class="op">=</span> <span class="va">breaks</span><span class="op">$</span><span class="va">brks</span>,</span>
+<span>                          include.lowest <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                          dig.lab <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span>  </span>
+<span></span>
+<span><span class="co"># Graficar en ggplot2 usando las clases Jenks</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paisaje</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">PC</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">dPC_q</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"RdYlGn"</span>, direction <span class="op">=</span> <span class="fl">1</span>, name <span class="op">=</span> <span class="st">"dPC (jenks)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"dPC"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"dPC"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="04-IIC_PC_files/figure-html/unnamed-chunk-24-1.png" width="672"></div>
+<ul>
+<li>dPCIntra</li>
+</ul>
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Calcular los intervalos de Jenks para strength</span></span>
+<span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu">classInt</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html">classIntervals</a></span><span class="op">(</span><span class="va">PC</span><span class="op">$</span><span class="va">dPCintra</span>, n <span class="op">=</span> <span class="fl">9</span>, style <span class="op">=</span> <span class="st">"jenks"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
+<span><span class="va">PC</span> <span class="op">&lt;-</span> <span class="va">PC</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>dPC_q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">dPCintra</span>,</span>
+<span>                      breaks <span class="op">=</span> <span class="va">breaks</span><span class="op">$</span><span class="va">brks</span>,</span>
+<span>                      include.lowest <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                      dig.lab <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span>  </span>
+<span></span>
+<span><span class="co"># Graficar en ggplot2 usando las clases Jenks</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paisaje</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">PC</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">dPC_q</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"RdYlGn"</span>, direction <span class="op">=</span> <span class="fl">1</span>, name <span class="op">=</span> <span class="st">"dPCIntra (jenks)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"dPCIntra"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"dPCIntra"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="04-IIC_PC_files/figure-html/unnamed-chunk-25-1.png" width="672"></div>
+<ul>
+<li>dPCflux</li>
+</ul>
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Calcular los intervalos de Jenks para strength</span></span>
+<span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu">classInt</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html">classIntervals</a></span><span class="op">(</span><span class="va">PC</span><span class="op">$</span><span class="va">dPCflux</span>, n <span class="op">=</span> <span class="fl">9</span>, style <span class="op">=</span> <span class="st">"jenks"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
+<span><span class="va">PC</span> <span class="op">&lt;-</span> <span class="va">PC</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>dPC_q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">dPCflux</span>,</span>
+<span>                      breaks <span class="op">=</span> <span class="va">breaks</span><span class="op">$</span><span class="va">brks</span>,</span>
+<span>                      include.lowest <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                      dig.lab <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span>  </span>
+<span></span>
+<span><span class="co"># Graficar en ggplot2 usando las clases Jenks</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paisaje</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">PC</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">dPC_q</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"RdYlGn"</span>, direction <span class="op">=</span> <span class="fl">1</span>, name <span class="op">=</span> <span class="st">"dPCFlux (jenks)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"dPCFlux"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"dPCFlux"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="04-IIC_PC_files/figure-html/unnamed-chunk-26-1.png" width="672"></div>
+<ul>
+<li>dPCconnector</li>
+</ul>
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Calcular los intervalos de Jenks para strength</span></span>
+<span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu">classInt</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html">classIntervals</a></span><span class="op">(</span><span class="va">PC</span><span class="op">$</span><span class="va">dPCconnector</span>, n <span class="op">=</span> <span class="fl">9</span>, style <span class="op">=</span> <span class="st">"jenks"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
+<span><span class="va">PC</span> <span class="op">&lt;-</span> <span class="va">PC</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>dPC_q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">dPCconnector</span>,</span>
+<span>                     breaks <span class="op">=</span> <span class="va">breaks</span><span class="op">$</span><span class="va">brks</span>,</span>
+<span>                     include.lowest <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                     dig.lab <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span>  </span>
+<span></span>
+<span><span class="co"># Graficar en ggplot2 usando las clases Jenks</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paisaje</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">PC</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">dPC_q</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"RdYlGn"</span>, direction <span class="op">=</span> <span class="fl">1</span>, name <span class="op">=</span> <span class="st">"dPCConnector (jenks)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"dPCConnector"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"dPCConnector"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="04-IIC_PC_files/figure-html/unnamed-chunk-27-1.png" width="672"></div>
+</div>
+<div id="ejemplo-5.-distancia-euclidiana-paralelizar" class="section level2" number="5.16">
+<h2>
+<span class="header-section-number">5.16</span> Ejemplo 5. Distancia euclidiana: paralelizar<a class="anchor" aria-label="anchor" href="#ejemplo-5.-distancia-euclidiana-paralelizar"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li><strong>sin usar attribute</strong></li>
+<li><strong>10 km de mediana de dispersión con una probabilidad de 0.5</strong></li>
+<li><strong>Unidad de área en ha</strong></li>
+</ul>
+<p>El argumento parallel solo se activa si tienes más de 2000 parches.</p>
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">PC</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_dPCIIC.html">MK_dPCIIC</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">habitat_nodes</span>,</span>
+<span>                attribute <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                area_unit <span class="op">=</span> <span class="st">"ha"</span>,</span>
+<span>                distance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"edge"</span>, keep <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>,</span>
+<span>                LA <span class="op">=</span> <span class="va">area_paisaje</span>,</span>
+<span>                onlyoverall <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>                metric <span class="op">=</span> <span class="st">"PC"</span>,</span>
+<span>                probability <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>                distance_thresholds <span class="op">=</span> <span class="fl">10000</span>,</span>
+<span>                parallel <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>                parallel_mode <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>                intern <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co">#10 km</span></span>
+<span><span class="va">PC</span></span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Conocer numero de nodos de tu maquina</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">parallel</span><span class="op">)</span></span>
+<span><span class="fu">parallel</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/parallel/detectCores.html">detectCores</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 22</span></span></code></pre></div>
+</div>
+<div id="ejemplo-6.-distancia-costo" class="section level2" number="5.17">
+<h2>
+<span class="header-section-number">5.17</span> Ejemplo 6. Distancia costo<a class="anchor" aria-label="anchor" href="#ejemplo-6.-distancia-costo"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li><strong>sin usar attribute</strong></li>
+<li><strong>10 km de mediana de dispersión con una probabilidad de 0.5</strong></li>
+<li><strong>Unidad de área en ha</strong></li>
+<li><strong>Usa un raster con valores de resistencia al movimiento</strong></li>
+</ul>
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/">terra</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; terra 1.8.29</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Adjuntando el paquete: 'terra'</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:igraph':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     blocks, compare</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"resistance_matrix"</span>, package <span class="op">=</span> <span class="st">"Makurhini"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">raster_map</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/methods/as.html">as</a></span><span class="op">(</span><span class="va">resistance_matrix</span>, <span class="st">"SpatialPixelsDataFrame"</span><span class="op">)</span></span>
+<span><span class="va">raster_map</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">raster_map</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">raster_map</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"value"</span>, <span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_tile.html">geom_tile</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">raster_map</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span>, y <span class="op">=</span> <span class="va">y</span>, fill <span class="op">=</span> <span class="va">value</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">0.8</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paisaje</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"Study area"</span><span class="op">)</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">habitat_nodes</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"Habitat nodes"</span><span class="op">)</span>, fill <span class="op">=</span> <span class="st">"forestgreen"</span>, linewidth <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">scale_fill_gradientn</a></span><span class="op">(</span>colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#000004FF"</span>, <span class="st">"#1B0C42FF"</span>, <span class="st">"#4B0C6BFF"</span>, <span class="st">"#781C6DFF"</span>,</span>
+<span>                                  <span class="st">"#A52C60FF"</span>, <span class="st">"#CF4446FF"</span>, <span class="st">"#ED6925FF"</span>, <span class="st">"#FB9A06FF"</span>,</span>
+<span>                                  <span class="st">"#F7D03CFF"</span>, <span class="st">"#FCFFA4FF"</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">""</span>, values <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.title.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>        axis.title.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="04-IIC_PC_files/figure-html/unnamed-chunk-30-1.png" width="672"></div>
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">PC</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_dPCIIC.html">MK_dPCIIC</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">habitat_nodes_raster</span>,</span>
+<span>                attribute <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                distance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"least-cost"</span>,</span>
+<span>                                resistance <span class="op">=</span> <span class="va">resistance_matrix</span><span class="op">)</span>,</span>
+<span>                metric <span class="op">=</span> <span class="st">"PC"</span>, probability <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>                overall <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                distance_thresholds <span class="op">=</span> <span class="fl">40000</span><span class="op">)</span> <span class="co"># 40 km</span></span>
+<span><span class="co">#&gt; Estimating distances. This may take several minutes depending on the number of nodes and raster resolution</span></span>
+<span><span class="co">#&gt; Estimating PC index. This may take several minutes depending on the number of nodes</span></span>
+<span><span class="co">#&gt;  ■■■■■                             12% |  ETA: 27s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■                           20% |  ETA: 26s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■                        29% |  ETA: 24s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■                      38% |  ETA: 21s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■                    43% |  ETA: 20s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■                 54% |  ETA: 16s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■■■              63% |  ETA: 13s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■■■■■■           73% |  ETA:  9s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■■■■■■■■         81% |  ETA:  6s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■      91% |  ETA:  3s</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Done!</span></span>
+<span><span class="va">PC</span><span class="op">$</span><span class="va">overall_d40000</span></span>
+<span><span class="co">#&gt;    Index        Value</span></span>
+<span><span class="co">#&gt; 1  PCnum 3.606425e+19</span></span>
+<span><span class="co">#&gt; 2 EC(PC) 6.005352e+09</span></span>
+<span><span class="va">PC</span><span class="op">$</span><span class="va">node_importances_d40000</span></span>
+<span><span class="co">#&gt; class      : RasterStack </span></span>
+<span><span class="co">#&gt; dimensions : 357, 624, 222768, 5  (nrow, ncol, ncell, nlayers)</span></span>
+<span><span class="co">#&gt; resolution : 500, 500  (x, y)</span></span>
+<span><span class="co">#&gt; extent     : -109586.4, 202413.6, 2024737, 2203237  (xmin, xmax, ymin, ymax)</span></span>
+<span><span class="co">#&gt; crs        : +proj=aea +lat_0=0 +lon_0=-102 +lat_1=17.5 +lat_2=29.5 +x_0=0 +y_0=0 +datum=NAD27 +units=m +no_defs </span></span>
+<span><span class="co">#&gt; names      :        Id,       dPC,  dPCintra,   dPCflux, dPCconnector </span></span>
+<span><span class="co">#&gt; min values : 1.0000000, 0.0007076, 0.0000002, 0.0007074,    0.0000000 </span></span>
+<span><span class="co">#&gt; max values : 404.00000,  68.33354,  46.45223,  21.88131,     22.76918</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">PC</span><span class="op">$</span><span class="va">node_importances_d40000</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="04-IIC_PC_files/figure-html/unnamed-chunk-31-1.png" width="672"></div>
+</div>
+<div id="ejemplo-7.-distancia-costo-en-java" class="section level2" number="5.18">
+<h2>
+<span class="header-section-number">5.18</span> Ejemplo 7. Distancia costo en Java<a class="anchor" aria-label="anchor" href="#ejemplo-7.-distancia-costo-en-java"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">resist2</span> <span class="op">&lt;-</span> <span class="va">resistance_matrix</span></span>
+<span><span class="va">resist2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/math-generics.html">round</a></span><span class="op">(</span><span class="va">resistance_matrix</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">PC</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_dPCIIC.html">MK_dPCIIC</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">habitat_nodes</span>,</span>
+<span>                attribute <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                distance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"least-cost"</span>,</span>
+<span>                                resistance <span class="op">=</span> <span class="va">resist2</span>,</span>
+<span>                                least_cost.java <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                                cores.java <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>                                ram.java <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>,</span>
+<span>                metric <span class="op">=</span> <span class="st">"PC"</span>, probability <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>                overall <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                distance_thresholds <span class="op">=</span> <span class="fl">40000</span><span class="op">)</span> <span class="co"># 40 km</span></span>
+<span><span class="va">PC</span><span class="op">$</span><span class="va">overall_d40000</span></span>
+<span><span class="va">PC</span><span class="op">$</span><span class="va">node_importances_d40000</span></span></code></pre></div>
+</div>
+<div id="ejemplo-7.-usando-nodos-en-formato-raster" class="section level2" number="5.19">
+<h2>
+<span class="header-section-number">5.19</span> Ejemplo 7. Usando nodos en formato raster<a class="anchor" aria-label="anchor" href="#ejemplo-7.-usando-nodos-en-formato-raster"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"habitat_nodes_raster"</span>, package <span class="op">=</span> <span class="st">"Makurhini"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">habitat_nodes_raster</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="04-IIC_PC_files/figure-html/unnamed-chunk-33-1.png" width="672"></div>
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">PC</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_dPCIIC.html">MK_dPCIIC</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">habitat_nodes_raster</span>,</span>
+<span>                attribute <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                distance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"centroid"</span><span class="op">)</span>,</span>
+<span>                metric <span class="op">=</span> <span class="st">"PC"</span>, probability <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>                overall <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                distance_thresholds <span class="op">=</span> <span class="fl">40000</span><span class="op">)</span> <span class="co"># 40 km</span></span>
+<span><span class="co">#&gt; Estimating PC index. This may take several minutes depending on the number of nodes</span></span>
+<span><span class="co">#&gt;  ■■                                 5% |  ETA: 27s</span></span>
+<span><span class="co">#&gt;  ■■■■■                             13% |  ETA: 29s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■                          22% |  ETA: 25s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■                        31% |  ETA: 23s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■                      37% |  ETA: 22s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■                   45% |  ETA: 20s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■                 53% |  ETA: 17s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■■               62% |  ETA: 14s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■■■■■            70% |  ETA: 11s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■■■■■■■■         79% |  ETA:  8s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■■■■■■■■■■       86% |  ETA:  5s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■     95% |  ETA:  2s</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Done!</span></span>
+<span><span class="va">PC</span><span class="op">$</span><span class="va">overall_d40000</span></span>
+<span><span class="co">#&gt;    Index        Value</span></span>
+<span><span class="co">#&gt; 1  PCnum 5.116326e+19</span></span>
+<span><span class="co">#&gt; 2 EC(PC) 7.152850e+09</span></span>
+<span><span class="va">PC</span><span class="op">$</span><span class="va">node_importances_d40000</span></span>
+<span><span class="co">#&gt; class      : RasterStack </span></span>
+<span><span class="co">#&gt; dimensions : 357, 624, 222768, 5  (nrow, ncol, ncell, nlayers)</span></span>
+<span><span class="co">#&gt; resolution : 500, 500  (x, y)</span></span>
+<span><span class="co">#&gt; extent     : -109586.4, 202413.6, 2024737, 2203237  (xmin, xmax, ymin, ymax)</span></span>
+<span><span class="co">#&gt; crs        : +proj=aea +lat_0=0 +lon_0=-102 +lat_1=17.5 +lat_2=29.5 +x_0=0 +y_0=0 +datum=NAD27 +units=m +no_defs </span></span>
+<span><span class="co">#&gt; names      :           Id,          dPC,     dPCintra,      dPCflux, dPCconnector </span></span>
+<span><span class="co">#&gt; min values :    1.0000000,    0.0020195,    0.0000001,    0.0020194,    0.0000000 </span></span>
+<span><span class="co">#&gt; max values : 4.040000e+02, 5.778878e+01, 3.274351e+01, 2.504527e+01, 9.513220e-15</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">PC</span><span class="op">$</span><span class="va">node_importances_d40000</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="04-IIC_PC_files/figure-html/unnamed-chunk-34-1.png" width="672"></div>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="kernel-de-dispersi%C3%B3n.html"><span class="header-section-number">4</span> Kernel de dispersión</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad"><span class="header-section-number">5</span> índice integral de conectividad y Probabilidad de conectividad</a></li>
+<li><a class="nav-link" href="#insumos-y-paquetes-1"><span class="header-section-number">5.1</span> Insumos y paquetes</a></li>
+<li>
+<a class="nav-link" href="#mk_dpciic"><span class="header-section-number">5.2</span> MK_dPCIIC()</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#la-funci%C3%B3n-no-correr-1"><span class="header-section-number">5.2.1</span> La función (no correr)</a></li>
+<li><a class="nav-link" href="#descripci%C3%B3n-de-los-argumentos-de-la-funci%C3%B3n-1"><span class="header-section-number">5.2.2</span> Descripción de los argumentos de la función</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#iic"><span class="header-section-number">5.3</span> IIC</a></li>
+<li><a class="nav-link" href="#ejemplo-1.-distancia-euclidiana"><span class="header-section-number">5.4</span> Ejemplo 1. Distancia euclidiana</a></li>
+<li><a class="nav-link" href="#ejemplo-2.-distancia-euclidiana"><span class="header-section-number">5.5</span> Ejemplo 2. Distancia euclidiana</a></li>
+<li><a class="nav-link" href="#ejemplo-3.-distancia-euclidiana"><span class="header-section-number">5.6</span> Ejemplo 3. Distancia euclidiana</a></li>
+<li><a class="nav-link" href="#ejemplo-4.-distancia-euclidiana-fracciones"><span class="header-section-number">5.7</span> Ejemplo 4. Distancia euclidiana: fracciones</a></li>
+<li><a class="nav-link" href="#ejemplo-5.-distancia-euclidiana-fracciones-y-overall"><span class="header-section-number">5.8</span> Ejemplo 5. Distancia euclidiana: fracciones y overall</a></li>
+<li><a class="nav-link" href="#ejemplo-6.-distancia-euclidiana-fracciones-y-overall"><span class="header-section-number">5.9</span> Ejemplo 6. Distancia euclidiana: fracciones y overall</a></li>
+<li><a class="nav-link" href="#ejemplo-7.-distancia-euclidiana-varios-umbrales-de-distancia"><span class="header-section-number">5.10</span> Ejemplo 7. Distancia euclidiana: varios umbrales de distancia</a></li>
+<li><a class="nav-link" href="#pc"><span class="header-section-number">5.11</span> PC</a></li>
+<li><a class="nav-link" href="#ejemplo-1.-distancia-euclidiana-1"><span class="header-section-number">5.12</span> Ejemplo 1. Distancia euclidiana</a></li>
+<li><a class="nav-link" href="#ejemplo-2.-distancia-euclidiana-1"><span class="header-section-number">5.13</span> Ejemplo 2. Distancia euclidiana</a></li>
+<li><a class="nav-link" href="#ejemplo-3.-distancia-euclidiana-fracciones-y-overall"><span class="header-section-number">5.14</span> Ejemplo 3. Distancia euclidiana: fracciones y overall</a></li>
+<li><a class="nav-link" href="#ejemplo-4.-distancia-euclidiana-fracciones-1"><span class="header-section-number">5.15</span> Ejemplo 4. Distancia euclidiana: fracciones</a></li>
+<li><a class="nav-link" href="#ejemplo-5.-distancia-euclidiana-paralelizar"><span class="header-section-number">5.16</span> Ejemplo 5. Distancia euclidiana: paralelizar</a></li>
+<li><a class="nav-link" href="#ejemplo-6.-distancia-costo"><span class="header-section-number">5.17</span> Ejemplo 6. Distancia costo</a></li>
+<li><a class="nav-link" href="#ejemplo-7.-distancia-costo-en-java"><span class="header-section-number">5.18</span> Ejemplo 7. Distancia costo en Java</a></li>
+<li><a class="nav-link" href="#ejemplo-7.-usando-nodos-en-formato-raster"><span class="header-section-number">5.19</span> Ejemplo 7. Usando nodos en formato raster</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/OscarGOGO/Makurhini_manual_esp/blob/master/04-IIC_PC.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/OscarGOGO/Makurhini_manual_esp/edit/master/04-IIC_PC.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Manual de uso de Makurhini</strong>" was written by Oscar Godínez Gómez. It was last built on 2025-07-23.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>
