@@ -47,3 +47,4 @@ ejemplo-5.-distancia-euclidiana-paralelizar
 ejemplo-6.-distancia-costo
 ejemplo-7.-distancia-costo-en-java
 ejemplo-8.-usando-nodos-en-formato-raster
+guardar-iic-o-pc

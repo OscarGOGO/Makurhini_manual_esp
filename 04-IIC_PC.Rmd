@@ -98,7 +98,7 @@ MK_dPCIIC(
 | `area_unit` | Unidad de área (opcional, por defecto `"m2"`). Puede ser `"m2"`, `"km2"`, `"cm2"` o `"ha"`. |
 | `restoration` | Vector o nombre de columna que indica si cada nodo es existente (1) o propuesto para restauración (0). Si es `NULL`, se considera que todos los nodos existen. |
 | `onlyrestor` | Lógico. Si `TRUE`, solo se calcularán métricas relacionadas con restauración. |
-| `distance` | Matriz o lista con parámetros para calcular distancia entre nodos. Puede ser matriz de distancias o una lista con parámetros como `type` (i.e., `"centroid"`, `"edge",``"least-cost",``"commute-time"`) y `resistance` (raster de resistencia). |
+| `distance` | Matriz o lista con parámetros para calcular distancia entre nodos. Puede ser matriz de distancias o una lista con parámetros como `type` (i.e., `"centroid"`, ``` "edge",``"least-cost",``"commute-time" ```) y `resistance` (raster de resistencia). |
 | `metric` | Métrica de conectividad a usar: `"PC"` (probabilidad de conectividad) o `"IIC"` (índice integral de conectividad). |
 | `probability` | Valor numérico que representa la probabilidad asociada a la distancia umbral (e.g., 0.5 si es la mediana de dispersión). Solo se usa con la métrica `"PC"`. |
 | `distance_thresholds` | Distancia(s) de dispersión en metros. Si es `NULL`, se estima como la mediana de dispersión entre nodos. Puede usarse la función `dispersal_distance`. |
@@ -868,4 +868,83 @@ PC <- MK_dPCIIC(nodes = habitat_nodes_raster,
 PC$overall_d40000
 PC$node_importances_d40000
 plot(PC$node_importances_d40000)
+```
+
+## Guardar IIC o PC
+
+Para guardar puedes usar el argumento `write` que necesita la ruta de la carpeta y un prefijo sin la extensión, e.g., `C:/Carpeta/nombreprefijo`
+
+```{r eval=FALSE}
+IIC <- MK_dPCIIC(nodes = habitat_nodes,
+                 attribute = NULL,
+                 area_unit = "ha",  
+                 distance = list(type = "edge", keep = 0.1),
+                 LA = area_paisaje, 
+                 overall = FALSE,  
+                 onlyoverall = FALSE,
+                 metric = "IIC",
+                 distance_thresholds = 10000,
+                 write = "C:/Users/tapir",
+                 intern = TRUE) #10 km}
+```
+
+Todos los resultados se guardaran en la carpeta **Users** y tendran el nombre **tapir**
+
+Otra forma de exportar los resultados es hacer uso de la función `write_sf()` del paquete `sf`
+
+```{r eval=FALSE}
+IIC <- MK_dPCIIC(nodes = habitat_nodes,
+                 attribute = NULL,
+                 area_unit = "ha",  
+                 distance = list(type = "edge", keep = 0.1),
+                 LA = area_paisaje, 
+                 overall = FALSE,  
+                 onlyoverall = FALSE,
+                 metric = "IIC",
+                 distance_thresholds = 10000,
+                 intern = TRUE) #10 km}
+
+write_sf(IIC, "C:/Users/tapir.shp")
+
+```
+
+Si estimas además el `overall` puedes usar la función `write.csv()` para exportar la tabla
+
+```{r eval=FALSE}
+IIC <- MK_dPCIIC(nodes = habitat_nodes,
+                 attribute = NULL,
+                 area_unit = "ha",  
+                 distance = list(type = "edge", keep = 0.1),
+                 LA = area_paisaje, 
+                 overall = TRUE,  
+                 onlyoverall = FALSE,
+                 metric = "IIC",
+                 distance_thresholds = 10000,
+                 intern = TRUE) #10 km}
+
+write_sf(IIC$node_importances_d10000, "C:/Users/tapir.shp")
+
+write.csv(IIC$overall_d10000, "C:/Users/tapir.csv")
+
+```
+
+Si estimas el índice con más de un umbral de distancia
+
+```{r eval=FALSE}
+IIC <- MK_dPCIIC(nodes = habitat_nodes,
+                 attribute = NULL,
+                 area_unit = "ha",  
+                 distance = list(type = "edge", keep = 0.1),
+                 LA = area_paisaje, 
+                 overall = TRUE,  
+                 onlyoverall = FALSE,
+                 metric = "IIC",
+                 distance_thresholds = c(10000, 20000),
+                 intern = TRUE) #10 km}
+
+write_sf(IIC$d10000$node_importances_d10000, "C:/Users/tapir10.shp")
+write_sf(IIC$d20000$node_importances_d20000, "C:/Users/tapir20.shp")
+
+write.csv(IIC$d10000$overall_d10000, "C:/Users/tapir10.csv")
+write.csv(IIC$d20000$overall_d20000, "C:/Users/tapir20.csv")
 ```

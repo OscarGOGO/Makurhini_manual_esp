@@ -122,7 +122,7 @@ MK_dPCIIC(
 | `area_unit` | Unidad de área (opcional, por defecto `"m2"`). Puede ser `"m2"`, `"km2"`, `"cm2"` o `"ha"`. |
 | `restoration` | Vector o nombre de columna que indica si cada nodo es existente (1) o propuesto para restauración (0). Si es `NULL`, se considera que todos los nodos existen. |
 | `onlyrestor` | Lógico. Si `TRUE`, solo se calcularán métricas relacionadas con restauración. |
-| `distance` | Matriz o lista con parámetros para calcular distancia entre nodos. Puede ser matriz de distancias o una lista con parámetros como `type` (i.e., `"centroid"`, `"edge",``"least-cost",``"commute-time"`) y `resistance` (raster de resistencia). |
+| `distance` | Matriz o lista con parámetros para calcular distancia entre nodos. Puede ser matriz de distancias o una lista con parámetros como `type` (i.e., `"centroid"`, ``` "edge",``"least-cost",``"commute-time" ```) y `resistance` (raster de resistencia). |
 | `metric` | Métrica de conectividad a usar: `"PC"` (probabilidad de conectividad) o `"IIC"` (índice integral de conectividad). |
 | `probability` | Valor numérico que representa la probabilidad asociada a la distancia umbral (e.g., 0.5 si es la mediana de dispersión). Solo se usa con la métrica `"PC"`. |
 | `distance_thresholds` | Distancia(s) de dispersión en metros. Si es `NULL`, se estima como la mediana de dispersión entre nodos. Puede usarse la función `dispersal_distance`. |
@@ -272,6 +272,7 @@ IIC <- MK_dPCIIC(nodes = habitat_nodes,
                 distance_thresholds = 10000,
                 intern = TRUE) #10 km
 #> Estimating IIC index. This may take several minutes depending on the number of nodes
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■      90% |  ETA:  0s
 #> 
 #> Done!
 IIC
@@ -471,7 +472,7 @@ IIC <- MK_dPCIIC(nodes = habitat_nodes,
                 distance_thresholds = 10000,
                 intern = TRUE) #10 km
 #> Estimating IIC index. This may take several minutes depending on the number of nodes
-#>  ■■■■■■■■■■■■■■■■                  50% |  ETA:  1s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■         79% |  ETA:  1s
 #> 
 #> Done!
 IIC
@@ -534,11 +535,14 @@ IIC <- MK_dPCIIC(nodes = habitat_nodes,
                 distance_thresholds = c(2000, 10000, 50000),
                 intern = TRUE)
 #> Estimating IIC index. This may take several minutes depending on the number of nodes
-#>   |                                                          |                                                  |   0%  |                                                          |=================                                 |  33%
-#>  ■■■■■■■■■■■■■■■■                  49% |  ETA:  2s
+#>   |                                                          |                                                  |   0%
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■        82% |  ETA:  1s
+#>   |                                                          |=================                                 |  33%
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■       86% |  ETA:  1s
 #>   |                                                          |=================================                 |  67%
-#>  ■■■■■■■■■■■■■■                    42% |  ETA:  4s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■           72% |  ETA:  2s
+#>  ■■■■■■■■■■■■                      38% |  ETA:  6s
+#>  ■■■■■■■■■■■■■■■■■■■               60% |  ETA:  4s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■       86% |  ETA:  2s
 #>   |                                                          |==================================================| 100%
 #> 
 #> Done!
@@ -742,14 +746,23 @@ PC <- MK_dPCIIC(nodes = habitat_nodes,
                 distance_thresholds = 10000,
                 intern = TRUE) #10 km
 #> Estimating PC index. This may take several minutes depending on the number of nodes
-#>  ■■■■■                             13% |  ETA: 20s
-#>  ■■■■■■■■                          23% |  ETA: 20s
-#>  ■■■■■■■■■■■                       34% |  ETA: 18s
-#>  ■■■■■■■■■■■■■■■                   46% |  ETA: 14s
-#>  ■■■■■■■■■■■■■■■■■■                56% |  ETA: 12s
-#>  ■■■■■■■■■■■■■■■■■■■■■             68% |  ETA:  9s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■         78% |  ETA:  6s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■      89% |  ETA:  3s
+#>  ■■■                                7% |  ETA: 39s
+#>  ■■■■■                             12% |  ETA: 44s
+#>  ■■■■■■                            17% |  ETA: 44s
+#>  ■■■■■■■■                          22% |  ETA: 42s
+#>  ■■■■■■■■■                         27% |  ETA: 40s
+#>  ■■■■■■■■■■■                       33% |  ETA: 36s
+#>  ■■■■■■■■■■■■                      38% |  ETA: 34s
+#>  ■■■■■■■■■■■■■■                    44% |  ETA: 31s
+#>  ■■■■■■■■■■■■■■■■                  50% |  ETA: 27s
+#>  ■■■■■■■■■■■■■■■■■                 54% |  ETA: 25s
+#>  ■■■■■■■■■■■■■■■■■■■               60% |  ETA: 22s
+#>  ■■■■■■■■■■■■■■■■■■■■■             66% |  ETA: 19s
+#>  ■■■■■■■■■■■■■■■■■■■■■■            71% |  ETA: 16s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■          77% |  ETA: 13s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■        84% |  ETA:  8s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■      91% |  ETA:  5s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    96% |  ETA:  2s
 #> 
 #> Done!
 PC
@@ -939,17 +952,26 @@ PC <- MK_dPCIIC(nodes = habitat_nodes,
                 distance_thresholds = 10000,
                 intern = TRUE) #10 km
 #> Estimating PC index. This may take several minutes depending on the number of nodes
-#>  ■■■■                               9% |  ETA: 19s
-#>  ■■■■■■■                           19% |  ETA: 21s
-#>  ■■■■■■■■■                         27% |  ETA: 22s
-#>  ■■■■■■■■■■■■                      36% |  ETA: 19s
-#>  ■■■■■■■■■■■■■■                    45% |  ETA: 17s
-#>  ■■■■■■■■■■■■■■■■■                 55% |  ETA: 14s
-#>  ■■■■■■■■■■■■■■■■■■■■              63% |  ETA: 12s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■           72% |  ETA:  9s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■         80% |  ETA:  6s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■      90% |  ETA:  3s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    98% |  ETA:  1s
+#>  ■■                                 5% |  ETA: 44s
+#>  ■■■■                               9% |  ETA:  1m
+#>  ■■■■■                             14% |  ETA:  1m
+#>  ■■■■■■■                           19% |  ETA: 48s
+#>  ■■■■■■■■                          24% |  ETA: 45s
+#>  ■■■■■■■■■■                        29% |  ETA: 43s
+#>  ■■■■■■■■■■■                       34% |  ETA: 40s
+#>  ■■■■■■■■■■■■■                     39% |  ETA: 36s
+#>  ■■■■■■■■■■■■■■                    44% |  ETA: 34s
+#>  ■■■■■■■■■■■■■■■■                  49% |  ETA: 31s
+#>  ■■■■■■■■■■■■■■■■■                 54% |  ETA: 28s
+#>  ■■■■■■■■■■■■■■■■■■■               59% |  ETA: 24s
+#>  ■■■■■■■■■■■■■■■■■■■■              64% |  ETA: 22s
+#>  ■■■■■■■■■■■■■■■■■■■■■             68% |  ETA: 19s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■           74% |  ETA: 16s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■         79% |  ETA: 13s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■        83% |  ETA: 10s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■      88% |  ETA:  7s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■     94% |  ETA:  4s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   99% |  ETA:  1s
 #> 
 #> Done!
 PC
@@ -1088,12 +1110,16 @@ PC <- MK_dPCIIC(nodes = habitat_nodes,
                 distance_thresholds = 10000) # 10 km
 #> Estimating distances. This may take several minutes depending on the number of nodes and raster resolution
 #> Estimating PC index. This may take several minutes depending on the number of nodes
-#>  ■■■■■■■                           20% |  ETA: 11s
-#>  ■■■■■■■■■■■                       35% |  ETA: 11s
-#>  ■■■■■■■■■■■■■■■■                  49% |  ETA:  9s
-#>  ■■■■■■■■■■■■■■■■■■■■■             66% |  ETA:  6s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■        83% |  ETA:  3s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  100% |  ETA:  0s
+#>  ■■■■                              11% |  ETA: 22s
+#>  ■■■■■■■                           19% |  ETA: 24s
+#>  ■■■■■■■■■■                        29% |  ETA: 22s
+#>  ■■■■■■■■■■■■■                     39% |  ETA: 19s
+#>  ■■■■■■■■■■■■■■■                   47% |  ETA: 17s
+#>  ■■■■■■■■■■■■■■■■■■                56% |  ETA: 14s
+#>  ■■■■■■■■■■■■■■■■■■■■■             66% |  ETA: 11s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■          75% |  ETA:  8s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■       86% |  ETA:  4s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    96% |  ETA:  1s
 #> 
 #> Done!
 PC
@@ -1311,12 +1337,15 @@ PC <- MK_dPCIIC(nodes = habitat_nodes_raster,
                 overall = TRUE,
                 distance_thresholds = 40000) # 40 km
 #> Estimating PC index. This may take several minutes depending on the number of nodes
-#>  ■■■■■■                            17% |  ETA: 10s
-#>  ■■■■■■■■■■                        30% |  ETA: 12s
-#>  ■■■■■■■■■■■■■■■                   47% |  ETA:  9s
-#>  ■■■■■■■■■■■■■■■■■■■■              65% |  ETA:  6s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■        82% |  ETA:  3s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    96% |  ETA:  1s
+#>  ■■■■                              10% |  ETA: 18s
+#>  ■■■■■■■                           20% |  ETA: 20s
+#>  ■■■■■■■■■■                        30% |  ETA: 19s
+#>  ■■■■■■■■■■■■■                     40% |  ETA: 16s
+#>  ■■■■■■■■■■■■■■■■                  51% |  ETA: 13s
+#>  ■■■■■■■■■■■■■■■■■■■■              63% |  ETA: 10s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■           74% |  ETA:  7s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■        84% |  ETA:  4s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■     94% |  ETA:  2s
 #> 
 #> Done!
 PC$overall_d40000
@@ -1336,3 +1365,86 @@ plot(PC$node_importances_d40000)
 ```
 
 ![](04-IIC_PC_files/figure-epub3/unnamed-chunk-39-1.png)<!-- -->
+
+## Guardar IIC o PC
+
+Para guardar puedes usar el argumento `write` que necesita la ruta de la carpeta y un prefijo sin la extensión, e.g., `C:/Carpeta/nombreprefijo`
+
+
+``` r
+IIC <- MK_dPCIIC(nodes = habitat_nodes,
+                 attribute = NULL,
+                 area_unit = "ha",  
+                 distance = list(type = "edge", keep = 0.1),
+                 LA = area_paisaje, 
+                 overall = FALSE,  
+                 onlyoverall = FALSE,
+                 metric = "IIC",
+                 distance_thresholds = 10000,
+                 write = "C:/Users/tapir",
+                 intern = TRUE) #10 km}
+```
+
+Todos los resultados se guardaran en la carpeta **Users** y tendran el nombre **tapir**
+
+Otra forma de exportar los resultados es hacer uso de la función `write_sf()` del paquete `sf`
+
+
+``` r
+IIC <- MK_dPCIIC(nodes = habitat_nodes,
+                 attribute = NULL,
+                 area_unit = "ha",  
+                 distance = list(type = "edge", keep = 0.1),
+                 LA = area_paisaje, 
+                 overall = FALSE,  
+                 onlyoverall = FALSE,
+                 metric = "IIC",
+                 distance_thresholds = 10000,
+                 intern = TRUE) #10 km}
+
+write_sf(IIC, "C:/Users/tapir.shp")
+
+```
+
+Si estimas además el `overall` puedes usar la función `write.csv()` para exportar la tabla
+
+
+``` r
+IIC <- MK_dPCIIC(nodes = habitat_nodes,
+                 attribute = NULL,
+                 area_unit = "ha",  
+                 distance = list(type = "edge", keep = 0.1),
+                 LA = area_paisaje, 
+                 overall = TRUE,  
+                 onlyoverall = FALSE,
+                 metric = "IIC",
+                 distance_thresholds = 10000,
+                 intern = TRUE) #10 km}
+
+write_sf(IIC$node_importances_d10000, "C:/Users/tapir.shp")
+
+write.csv(IIC$overall_d10000, "C:/Users/tapir.csv")
+
+```
+
+Si estimas el índice con más de un umbral de distancia
+
+
+``` r
+IIC <- MK_dPCIIC(nodes = habitat_nodes,
+                 attribute = NULL,
+                 area_unit = "ha",  
+                 distance = list(type = "edge", keep = 0.1),
+                 LA = area_paisaje, 
+                 overall = TRUE,  
+                 onlyoverall = FALSE,
+                 metric = "IIC",
+                 distance_thresholds = c(10000, 20000),
+                 intern = TRUE) #10 km}
+
+write_sf(IIC$d10000$node_importances_d10000, "C:/Users/tapir10.shp")
+write_sf(IIC$d20000$node_importances_d20000, "C:/Users/tapir20.shp")
+
+write.csv(IIC$d10000$overall_d10000, "C:/Users/tapir10.csv")
+write.csv(IIC$d20000$overall_d20000, "C:/Users/tapir20.csv")
+```
