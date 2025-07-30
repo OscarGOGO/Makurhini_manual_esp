@@ -48,3 +48,9 @@ ejemplo-6.-distancia-costo
 ejemplo-7.-distancia-costo-en-java
 ejemplo-8.-usando-nodos-en-formato-raster
 guardar-iic-o-pc
+prioridades-de-restauración-con-mk_dpciic
+prioridades-de-conservación-y-restauración-con-mk_focal_nodes
+prioridad-de-enlaces-con-mk_dpciic_links
+rutas-de-menor-costo-corredores-potenciales
+eliminación-de-enlaces-link-removal
+cambio-de-enlaces-link-change

@@ -157,12 +157,13 @@ IIC <- MK_dPCIIC(nodes = habitat_nodes,
                 distance_thresholds = 10000,
                 intern = TRUE) #10 km
 #> Estimating IIC index. This may take several minutes depending on the number of nodes
+#>   |                                                          |                                                  |   0%
 #> 
 #> Done!
 IIC
 #>     Index        Value
-#> 1  IICnum 2.041990e+11
-#> 2 EC(IIC) 4.518839e+05
+#> 1  IICnum 1.434310e+12
+#> 2 EC(IIC) 1.197627e+06
 ```
 
 ## Ejemplo 2. Distancia euclidiana
@@ -187,13 +188,14 @@ IIC <- MK_dPCIIC(nodes = habitat_nodes,
                 distance_thresholds = 10000,
                 intern = TRUE) #10 km
 #> Estimating IIC index. This may take several minutes depending on the number of nodes
+#>   |                                                          |                                                  |   0%
 #> 
 #> Done!
 IIC
 #>     Index        Value
-#> 1  IICnum 2.041990e+11
-#> 2 EC(IIC) 4.518839e+05
-#> 3     IIC 2.677956e-02
+#> 1  IICnum 1.434310e+12
+#> 2 EC(IIC) 1.197627e+06
+#> 3     IIC 1.881017e-01
 ```
 
 ## Ejemplo 3. Distancia euclidiana
@@ -218,6 +220,7 @@ IIC <- MK_dPCIIC(nodes = habitat_nodes,
                 distance_thresholds = 10000,
                 intern = TRUE) #10 km
 #> Estimating IIC index. This may take several minutes depending on the number of nodes
+#>   |                                                          |                                                  |   0%
 #> 
 #> Done!
 IIC
@@ -242,6 +245,7 @@ IIC <- MK_dPCIIC(nodes = habitat_nodes,
                 distance_thresholds = 10000,
                 intern = TRUE) #10 km
 #> Estimating IIC index. This may take several minutes depending on the number of nodes
+#>   |                                                          |                                                  |   0%
 #> 
 #> Done!
 IIC
@@ -272,7 +276,8 @@ IIC <- MK_dPCIIC(nodes = habitat_nodes,
                 distance_thresholds = 10000,
                 intern = TRUE) #10 km
 #> Estimating IIC index. This may take several minutes depending on the number of nodes
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■      90% |  ETA:  0s
+#>   |                                                          |                                                  |   0%
+#>  ■■■■■■■■■■■■■■■■■■■■■■            71% |  ETA:  1s
 #> 
 #> Done!
 IIC
@@ -472,7 +477,8 @@ IIC <- MK_dPCIIC(nodes = habitat_nodes,
                 distance_thresholds = 10000,
                 intern = TRUE) #10 km
 #> Estimating IIC index. This may take several minutes depending on the number of nodes
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■         79% |  ETA:  1s
+#>   |                                                          |                                                  |   0%
+#>  ■■■■■■■■■■■■■■■■■■■■■■            72% |  ETA:  1s
 #> 
 #> Done!
 IIC
@@ -535,14 +541,16 @@ IIC <- MK_dPCIIC(nodes = habitat_nodes,
                 distance_thresholds = c(2000, 10000, 50000),
                 intern = TRUE)
 #> Estimating IIC index. This may take several minutes depending on the number of nodes
-#>   |                                                          |                                                  |   0%
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■        82% |  ETA:  1s
-#>   |                                                          |=================                                 |  33%
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■       86% |  ETA:  1s
-#>   |                                                          |=================================                 |  67%
-#>  ■■■■■■■■■■■■                      38% |  ETA:  6s
-#>  ■■■■■■■■■■■■■■■■■■■               60% |  ETA:  4s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■       86% |  ETA:  2s
+#>   |                                                          |                                                  |   0%  |                                                          |                                                  |   0%
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■        85% |  ETA:  0s
+#>   |                                                          |=================                                 |  33%  |                                                          |                                                  |   0%
+#>  ■■■■■■■■■■                        30% |  ETA:  3s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■         80% |  ETA:  1s
+#>   |                                                          |=================================                 |  67%  |                                                          |                                                  |   0%
+#>  ■■■■                              11% |  ETA:  9s
+#>  ■■■■■■■■■■                        31% |  ETA:  9s
+#>  ■■■■■■■■■■■■■■■■■■■               60% |  ETA:  5s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■       87% |  ETA:  2s
 #>   |                                                          |==================================================| 100%
 #> 
 #> Done!
@@ -555,17 +563,17 @@ IIC
 #> Bounding box:  xmin: -108954 ymin: 2025032 xmax: 202330.2 ymax: 2198936
 #> Projected CRS: NAD_1927_Albers
 #> First 10 features:
-#>    Id      dIIC dIICintra  dIICflux dIICconnector
-#> 1   1 0.0069060 0.0000016 0.0069043  2.682750e-15
-#> 2   2 0.0211089 0.0000107 0.0210982  8.038710e-15
-#> 3   3 1.0630868 0.0268336 1.0295579  6.695335e-03
-#> 4   4 0.0114992 0.0000032 0.0114959  3.714040e-15
-#> 5   5 0.0208395 0.0000075 0.0208320  1.025569e-14
-#> 6   6 0.0029673 0.0000002 0.0029671  9.421720e-15
-#> 7   7 0.0049061 0.0000004 0.0049057  5.947500e-15
-#> 8   8 0.0088114 0.0000007 0.0088105  9.729792e-08
-#> 9   9 0.0519838 0.0000091 0.0311509  2.082369e-02
-#> 10 10 4.3995157 0.1915165 3.2149196  9.930796e-01
+#>    Id     dIIC dIICintra  dIICflux dIICconnector
+#> 1   1 17.28636 0.0000013 0.0068969      17.27946
+#> 2   2 17.29811 0.0000089 0.0204943      17.27760
+#> 3   3 18.16002 0.0221965 1.0038668      17.13396
+#> 4   4 17.29016 0.0000027 0.0111808      17.27897
+#> 5   5 17.29788 0.0000062 0.0197837      17.27809
+#> 6   6 17.28310 0.0000001 0.0028178      17.28028
+#> 7   7 17.28470 0.0000003 0.0046587      17.28004
+#> 8   8 17.28793 0.0000006 0.0080829      17.27985
+#> 9   9 17.32364 0.0000076 0.0285784      17.29506
+#> 10 10 20.91990 0.1584212 3.0660332      17.69544
 #>                          geometry
 #> 1  POLYGON ((54911.05 2035815,...
 #> 2  POLYGON ((44591.28 2042209,...
@@ -580,9 +588,9 @@ IIC
 #> 
 #> $d2000$overall_d2000
 #>     Index        Value
-#> 1  IICnum 4.525664e+11
-#> 2 EC(IIC) 6.727305e+05
-#> 3     IIC 5.935154e-02
+#> 1  IICnum 5.471106e+11
+#> 2 EC(IIC) 7.396693e+05
+#> 3     IIC 7.175048e-02
 #> 
 #> 
 #> $d10000
@@ -684,6 +692,7 @@ PC <- MK_dPCIIC(nodes = habitat_nodes,
                 distance_thresholds = 10000,
                 intern = TRUE) #10 km
 #> Estimating PC index. This may take several minutes depending on the number of nodes
+#>   |                                                          |                                                  |   0%  |                                                          |==================================================| 100%
 #> 
 #> Done!
 PC
@@ -715,6 +724,7 @@ PC <- MK_dPCIIC(nodes = habitat_nodes,
                 distance_thresholds = 10000,
                 intern = TRUE) #10 km
 #> Estimating PC index. This may take several minutes depending on the number of nodes
+#>   |                                                          |                                                  |   0%  |                                                          |==================================================| 100%
 #> 
 #> Done!
 PC
@@ -746,23 +756,25 @@ PC <- MK_dPCIIC(nodes = habitat_nodes,
                 distance_thresholds = 10000,
                 intern = TRUE) #10 km
 #> Estimating PC index. This may take several minutes depending on the number of nodes
-#>  ■■■                                7% |  ETA: 39s
-#>  ■■■■■                             12% |  ETA: 44s
-#>  ■■■■■■                            17% |  ETA: 44s
-#>  ■■■■■■■■                          22% |  ETA: 42s
-#>  ■■■■■■■■■                         27% |  ETA: 40s
-#>  ■■■■■■■■■■■                       33% |  ETA: 36s
-#>  ■■■■■■■■■■■■                      38% |  ETA: 34s
-#>  ■■■■■■■■■■■■■■                    44% |  ETA: 31s
-#>  ■■■■■■■■■■■■■■■■                  50% |  ETA: 27s
-#>  ■■■■■■■■■■■■■■■■■                 54% |  ETA: 25s
-#>  ■■■■■■■■■■■■■■■■■■■               60% |  ETA: 22s
-#>  ■■■■■■■■■■■■■■■■■■■■■             66% |  ETA: 19s
-#>  ■■■■■■■■■■■■■■■■■■■■■■            71% |  ETA: 16s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■          77% |  ETA: 13s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■        84% |  ETA:  8s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■      91% |  ETA:  5s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    96% |  ETA:  2s
+#>   |                                                          |                                                  |   0%  |                                                          |==================================================| 100%
+#>  ■■                                 3% |  ETA: 40s
+#>  ■■■                                8% |  ETA: 48s
+#>  ■■■■■                             14% |  ETA: 46s
+#>  ■■■■■■■                           20% |  ETA: 42s
+#>  ■■■■■■■■                          25% |  ETA: 40s
+#>  ■■■■■■■■■■                        31% |  ETA: 36s
+#>  ■■■■■■■■■■■■                      37% |  ETA: 33s
+#>  ■■■■■■■■■■■■■■                    43% |  ETA: 30s
+#>  ■■■■■■■■■■■■■■■■                  49% |  ETA: 27s
+#>  ■■■■■■■■■■■■■■■■■                 54% |  ETA: 24s
+#>  ■■■■■■■■■■■■■■■■■■■               59% |  ETA: 22s
+#>  ■■■■■■■■■■■■■■■■■■■               62% |  ETA: 21s
+#>  ■■■■■■■■■■■■■■■■■■■■■             67% |  ETA: 19s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■           73% |  ETA: 15s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■         78% |  ETA: 12s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■        84% |  ETA:  9s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■      90% |  ETA:  6s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    95% |  ETA:  3s
 #> 
 #> Done!
 PC
@@ -952,26 +964,24 @@ PC <- MK_dPCIIC(nodes = habitat_nodes,
                 distance_thresholds = 10000,
                 intern = TRUE) #10 km
 #> Estimating PC index. This may take several minutes depending on the number of nodes
-#>  ■■                                 5% |  ETA: 44s
-#>  ■■■■                               9% |  ETA:  1m
-#>  ■■■■■                             14% |  ETA:  1m
-#>  ■■■■■■■                           19% |  ETA: 48s
-#>  ■■■■■■■■                          24% |  ETA: 45s
-#>  ■■■■■■■■■■                        29% |  ETA: 43s
-#>  ■■■■■■■■■■■                       34% |  ETA: 40s
-#>  ■■■■■■■■■■■■■                     39% |  ETA: 36s
-#>  ■■■■■■■■■■■■■■                    44% |  ETA: 34s
-#>  ■■■■■■■■■■■■■■■■                  49% |  ETA: 31s
-#>  ■■■■■■■■■■■■■■■■■                 54% |  ETA: 28s
-#>  ■■■■■■■■■■■■■■■■■■■               59% |  ETA: 24s
-#>  ■■■■■■■■■■■■■■■■■■■■              64% |  ETA: 22s
-#>  ■■■■■■■■■■■■■■■■■■■■■             68% |  ETA: 19s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■           74% |  ETA: 16s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■         79% |  ETA: 13s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■        83% |  ETA: 10s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■      88% |  ETA:  7s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■     94% |  ETA:  4s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   99% |  ETA:  1s
+#>   |                                                          |                                                  |   0%  |                                                          |==================================================| 100%
+#>  ■■■                                7% |  ETA: 38s
+#>  ■■■■■                             13% |  ETA: 42s
+#>  ■■■■■■                            18% |  ETA: 40s
+#>  ■■■■■■■■                          24% |  ETA: 37s
+#>  ■■■■■■■■■■                        29% |  ETA: 36s
+#>  ■■■■■■■■■■■■                      35% |  ETA: 33s
+#>  ■■■■■■■■■■■■■                     41% |  ETA: 30s
+#>  ■■■■■■■■■■■■■■■                   47% |  ETA: 27s
+#>  ■■■■■■■■■■■■■■■■■                 52% |  ETA: 25s
+#>  ■■■■■■■■■■■■■■■■■■                58% |  ETA: 21s
+#>  ■■■■■■■■■■■■■■■■■■■■              64% |  ETA: 18s
+#>  ■■■■■■■■■■■■■■■■■■■■■■            70% |  ETA: 16s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■           74% |  ETA: 13s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■         80% |  ETA: 10s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■       86% |  ETA:  8s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■      91% |  ETA:  5s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    96% |  ETA:  2s
 #> 
 #> Done!
 PC
@@ -1110,16 +1120,19 @@ PC <- MK_dPCIIC(nodes = habitat_nodes,
                 distance_thresholds = 10000) # 10 km
 #> Estimating distances. This may take several minutes depending on the number of nodes and raster resolution
 #> Estimating PC index. This may take several minutes depending on the number of nodes
-#>  ■■■■                              11% |  ETA: 22s
-#>  ■■■■■■■                           19% |  ETA: 24s
-#>  ■■■■■■■■■■                        29% |  ETA: 22s
-#>  ■■■■■■■■■■■■■                     39% |  ETA: 19s
-#>  ■■■■■■■■■■■■■■■                   47% |  ETA: 17s
-#>  ■■■■■■■■■■■■■■■■■■                56% |  ETA: 14s
-#>  ■■■■■■■■■■■■■■■■■■■■■             66% |  ETA: 11s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■          75% |  ETA:  8s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■       86% |  ETA:  4s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    96% |  ETA:  1s
+#>   |                                                          |                                                  |   0%  |                                                          |==================================================| 100%
+#>  ■■■■                               9% |  ETA: 27s
+#>  ■■■■■■                            17% |  ETA: 28s
+#>  ■■■■■■■■■                         25% |  ETA: 26s
+#>  ■■■■■■■■■■■                       33% |  ETA: 23s
+#>  ■■■■■■■■■■■■■                     41% |  ETA: 21s
+#>  ■■■■■■■■■■■■■■■■                  51% |  ETA: 17s
+#>  ■■■■■■■■■■■■■■■■■■■               59% |  ETA: 15s
+#>  ■■■■■■■■■■■■■■■■■■■■■             67% |  ETA: 12s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■          76% |  ETA:  8s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■        83% |  ETA:  6s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■      91% |  ETA:  3s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   99% |  ETA:  0s
 #> 
 #> Done!
 PC
@@ -1337,15 +1350,19 @@ PC <- MK_dPCIIC(nodes = habitat_nodes_raster,
                 overall = TRUE,
                 distance_thresholds = 40000) # 40 km
 #> Estimating PC index. This may take several minutes depending on the number of nodes
-#>  ■■■■                              10% |  ETA: 18s
-#>  ■■■■■■■                           20% |  ETA: 20s
-#>  ■■■■■■■■■■                        30% |  ETA: 19s
-#>  ■■■■■■■■■■■■■                     40% |  ETA: 16s
-#>  ■■■■■■■■■■■■■■■■                  51% |  ETA: 13s
-#>  ■■■■■■■■■■■■■■■■■■■■              63% |  ETA: 10s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■           74% |  ETA:  7s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■        84% |  ETA:  4s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■     94% |  ETA:  2s
+#>   |                                                          |                                                  |   0%  |                                                          |==================================================| 100%
+#>  ■■■                                8% |  ETA: 27s
+#>  ■■■■■                             14% |  ETA: 32s
+#>  ■■■■■■■■                          22% |  ETA: 29s
+#>  ■■■■■■■■■■                        29% |  ETA: 27s
+#>  ■■■■■■■■■■■■                      38% |  ETA: 23s
+#>  ■■■■■■■■■■■■■■■                   46% |  ETA: 20s
+#>  ■■■■■■■■■■■■■■■■■                 55% |  ETA: 17s
+#>  ■■■■■■■■■■■■■■■■■■■■              63% |  ETA: 13s
+#>  ■■■■■■■■■■■■■■■■■■■■■■            72% |  ETA: 10s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■         80% |  ETA:  7s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■       87% |  ETA:  5s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    95% |  ETA:  2s
 #> 
 #> Done!
 PC$overall_d40000

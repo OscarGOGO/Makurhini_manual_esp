@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 5 dPC y dIIC de Restauración | Manual de uso de Makurhini</title>
+<meta name="author" content="Oscar Godínez Gómez">
+<meta name="description" content="Con la función MK_dPCIIC() podemos obtener la contribución potencial de un parche que será restaurado. Usaremos los argumentos: restoration = NULL. Vector o nombre de columna que indica si cada...">
+<meta name="generator" content="bookdown 0.43 with bs4_book()">
+<meta property="og:title" content="Chapter 5 dPC y dIIC de Restauración | Manual de uso de Makurhini">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://oscargogo.github.io/Makurhini_manual_esp/dpc-y-diic-de-restauración.html">
+<meta property="og:image" content="https://oscargogo.github.io/Makurhini_manual_esp/LOGO_MAKHURINI.png">
+<meta property="og:description" content="Con la función MK_dPCIIC() podemos obtener la contribución potencial de un parche que será restaurado. Usaremos los argumentos: restoration = NULL. Vector o nombre de columna que indica si cada...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 5 dPC y dIIC de Restauración | Manual de uso de Makurhini">
+<meta name="twitter:description" content="Con la función MK_dPCIIC() podemos obtener la contribución potencial de un parche que será restaurado. Usaremos los argumentos: restoration = NULL. Vector o nombre de columna que indica si cada...">
+<meta name="twitter:image" content="https://oscargogo.github.io/Makurhini_manual_esp/LOGO_MAKHURINI.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Manual de uso de Makurhini</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled"><li><a class="" href="index.html"><span class="header-section-number">Chapter 5</span> dPC y dIIC de Restauración</a></li></ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/OscarGOGO/Makurhini_manual_esp">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="dpc-y-diic-de-restauración" class="section level1" number="5">
+<h1>
+<span class="header-section-number">5</span> dPC y dIIC de Restauración<a class="anchor" aria-label="anchor" href="#dpc-y-diic-de-restauraci%C3%B3n"><i class="fas fa-link"></i></a>
+</h1>
+<p>Con la función MK_dPCIIC() podemos obtener la contribución potencial de un parche que será restaurado. Usaremos los argumentos:</p>
+<ul>
+<li>restoration = NULL. Vector o nombre de columna que indica si cada nodo es existente (1) o propuesto para restauración (0). Si es <code>NULL</code>, se considera que todos los nodos existen.</li>
+<li>onlyrestor = FALSE. Lógico. Si <code>TRUE</code>, solo se calcularán métricas relacionadas con restauración.</li>
+</ul>
+<p>Continuamos trabajando con el vector con 404 parches/nodos en el eje neovolcanico de México. Para generar un escenario hipotetico de restauración, seleccionaremos aleatoriamente 100 parches para restaurar.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/connectscape/Makurhini">Makurhini</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">RColorBrewer</span><span class="op">)</span></span></code></pre></div>
+<pre><code>#&gt; [1] 404</code></pre>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paisaje</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"Study area"</span><span class="op">)</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">habitat_nodes</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"Parches"</span><span class="op">)</span>, fill <span class="op">=</span> <span class="st">"forestgreen"</span>, linewidth <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">""</span>, values <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.title.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>        axis.title.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="05-Priorizacion_files/figure-html/unnamed-chunk-3-1.png" width="672"></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#Seleccionar de forma aleatoria a 100 de estos parches para restaurar</span></span>
+<span><span class="va">parches_restauracion</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">habitat_nodes</span><span class="op">)</span>, <span class="fl">100</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">parches_restauracion</span></span>
+<span><span class="co">#&gt;   [1] 137 330 368  72 211 344 271 143 403  24  13 351 392</span></span>
+<span><span class="co">#&gt;  [14] 110 263 231 155 342 338 285 385 377  92  50 365 154</span></span>
+<span><span class="co">#&gt;  [27] 101  33 135 379 158 324  93 114  88 307 182 242 288</span></span>
+<span><span class="co">#&gt;  [40] 267 335 382 347  42 334 394 217 200 144  26 345 209</span></span>
+<span><span class="co">#&gt;  [53]  48 151  15 395 317 132 227 270  35 266  74  58 167</span></span>
+<span><span class="co">#&gt;  [66] 398  31 378 337 109  39 118  89  18 361 254 192 249</span></span>
+<span><span class="co">#&gt;  [79]  90 234 251 328   4  63  20 321 224 241 176  94 148</span></span>
+<span><span class="co">#&gt;  [92] 402 346  27  80 404 207 298 119 401</span></span></code></pre></div>
+<p>Creamos un nuevo campo llamado <strong>restauracion</strong> (puede ser cualquier nombre) con valores de 1 que representan parches que existen en el paisaje</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">habitat_nodes</span><span class="op">$</span><span class="va">restauracion</span> <span class="op">&lt;-</span> <span class="fl">1</span></span></code></pre></div>
+<p>Asignamos un valor de 0 a los parches seleccionados para restaurar (no existen en el paisaje inicialmente y seran restaurados.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">habitat_nodes</span><span class="op">$</span><span class="va">restauracion</span><span class="op">[</span><span class="va">parches_restauracion</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">0</span></span></code></pre></div>
+<p>Aplicamos la función MK_dPCIIC(). EN este ejemplo usaremos el indice PC y una probabbilidad de 0.5 bajo un umbral de distancia de 10 km.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb8-1" tabindex="-1"></a>PCrestauracion <span class="ot">&lt;-</span> <span class="fu">MK_dPCIIC</span>(<span class="at">nodes =</span> habitat_nodes,</span>
+<span id="cb8-2"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb8-2" tabindex="-1"></a>                <span class="at">attribute =</span> <span class="cn">NULL</span>,</span>
+<span id="cb8-3"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb8-3" tabindex="-1"></a>                <span class="at">area_unit =</span> <span class="st">"ha"</span>,</span>
+<span id="cb8-4"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb8-4" tabindex="-1"></a>                <span class="at">distance =</span> <span class="fu">list</span>(<span class="at">type =</span> <span class="st">"edge"</span>, <span class="at">keep =</span> <span class="fl">0.1</span>),</span>
+<span id="cb8-5"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb8-5" tabindex="-1"></a>                <span class="at">LA =</span> <span class="cn">NULL</span>,</span>
+<span id="cb8-6"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb8-6" tabindex="-1"></a>                <span class="at">restoration =</span> <span class="st">"restauracion"</span>,</span>
+<span id="cb8-7"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb8-7" tabindex="-1"></a>                <span class="at">onlyrestor =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb8-8"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb8-8" tabindex="-1"></a>                <span class="at">metric =</span> <span class="st">"PC"</span>,</span>
+<span id="cb8-9"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb8-9" tabindex="-1"></a>                <span class="at">probability =</span> <span class="fl">0.5</span>,</span>
+<span id="cb8-10"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb8-10" tabindex="-1"></a>                <span class="at">distance_thresholds =</span> <span class="dv">10000</span>,</span>
+<span id="cb8-11"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb8-11" tabindex="-1"></a>                <span class="at">intern =</span> <span class="cn">TRUE</span>) <span class="co">#10 km</span></span>
+<span id="cb8-12"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb8-12" tabindex="-1"></a><span class="co">#&gt; Estimating PC index. This may take several minutes depending on the number of nodes</span></span>
+<span id="cb8-13"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb8-13" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb8-14"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb8-14" tabindex="-1"></a>  <span class="sc">|</span>                                                        </span>
+<span id="cb8-15"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb8-15" tabindex="-1"></a>  <span class="er">|</span>                                                  <span class="er">|</span>   <span class="dv">0</span>%</span>
+<span id="cb8-16"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb8-16" tabindex="-1"></a>  <span class="sc">|</span>                                                        </span>
+<span id="cb8-17"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb8-17" tabindex="-1"></a>  <span class="er">|==================================================|</span> <span class="dv">100</span>%</span>
+<span id="cb8-18"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb8-18" tabindex="-1"></a><span class="co">#&gt;  ■■■■■■■■■■■■■                     39% |  ETA:  3s</span></span>
+<span id="cb8-19"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb8-19" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb8-20"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb8-20" tabindex="-1"></a><span class="co">#&gt; Done!</span></span>
+<span id="cb8-21"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb8-21" tabindex="-1"></a>PCrestauracion</span>
+<span id="cb8-22"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb8-22" tabindex="-1"></a><span class="co">#&gt; Simple feature collection with 404 features and 3 fields</span></span>
+<span id="cb8-23"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb8-23" tabindex="-1"></a><span class="co">#&gt; Geometry type: POLYGON</span></span>
+<span id="cb8-24"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb8-24" tabindex="-1"></a><span class="co">#&gt; Dimension:     XY</span></span>
+<span id="cb8-25"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb8-25" tabindex="-1"></a><span class="co">#&gt; Bounding box:  xmin: -108954 ymin: 2025032 xmax: 202330.2 ymax: 2198936</span></span>
+<span id="cb8-26"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb8-26" tabindex="-1"></a><span class="co">#&gt; Projected CRS: NAD_1927_Albers</span></span>
+<span id="cb8-27"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb8-27" tabindex="-1"></a><span class="co">#&gt; First 10 features:</span></span>
+<span id="cb8-28"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb8-28" tabindex="-1"></a><span class="co">#&gt;    Id restauracion    dPCres                       geometry</span></span>
+<span id="cb8-29"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb8-29" tabindex="-1"></a><span class="co">#&gt; 1   1            1   0.00000 POLYGON ((54911.05 2035815,...</span></span>
+<span id="cb8-30"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb8-30" tabindex="-1"></a><span class="co">#&gt; 2   2            1   0.00000 POLYGON ((44591.28 2042209,...</span></span>
+<span id="cb8-31"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb8-31" tabindex="-1"></a><span class="co">#&gt; 3   3            1   0.00000 POLYGON ((46491.11 2042467,...</span></span>
+<span id="cb8-32"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb8-32" tabindex="-1"></a><span class="co">#&gt; 4   4            0 -36.02491 POLYGON ((54944.49 2048163,...</span></span>
+<span id="cb8-33"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb8-33" tabindex="-1"></a><span class="co">#&gt; 5   5            1   0.00000 POLYGON ((80094.28 2064140,...</span></span>
+<span id="cb8-34"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb8-34" tabindex="-1"></a><span class="co">#&gt; 6   6            1   0.00000 POLYGON ((69205.24 2066394,...</span></span>
+<span id="cb8-35"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb8-35" tabindex="-1"></a><span class="co">#&gt; 7   7            1   0.00000 POLYGON ((68554.2 2066632, ...</span></span>
+<span id="cb8-36"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb8-36" tabindex="-1"></a><span class="co">#&gt; 8   8            1   0.00000 POLYGON ((69995.53 2066880,...</span></span>
+<span id="cb8-37"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb8-37" tabindex="-1"></a><span class="co">#&gt; 9   9            1   0.00000 POLYGON ((79368.68 2067324,...</span></span>
+<span id="cb8-38"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb8-38" tabindex="-1"></a><span class="co">#&gt; 10 10            1   0.00000 POLYGON ((23378.32 2067554,...</span></span></code></pre></div>
+<p>Se crea la columna dPCres con la importancia relativa del parche para mejorar la conectividad del paisaje al aparecer cuando es restaurado. Los valores van de -100 a 100, debido a que su contribución puede incluso ser negativa, es decir, disminuye la conectividad global al restaurarlo.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paisaje</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"Study area"</span><span class="op">)</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">PCrestauracion</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">dPCres</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_distiller</a></span><span class="op">(</span></span>
+<span>    palette <span class="op">=</span> <span class="st">"RdYlGn"</span>,</span>
+<span>    direction <span class="op">=</span> <span class="fl">1</span>, </span>
+<span>    name <span class="op">=</span> <span class="st">"% dPCres"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Restauración"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"% dPCres"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="05-Priorizacion_files/figure-html/unnamed-chunk-9-1.png" width="672"></div>
+<p>Veamos los parches aislados</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">PCrestauracion2</span> <span class="op">&lt;-</span> <span class="va">PCrestauracion</span><span class="op">[</span><span class="va">PCrestauracion</span><span class="op">$</span><span class="va">restauracion</span> <span class="op">==</span> <span class="fl">0</span>,<span class="op">]</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paisaje</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"Study area"</span><span class="op">)</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">habitat_nodes</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"Patches"</span><span class="op">)</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">PCrestauracion2</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">dPCres</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_distiller</a></span><span class="op">(</span></span>
+<span>    palette <span class="op">=</span> <span class="st">"RdYlGn"</span>,</span>
+<span>    direction <span class="op">=</span> <span class="fl">1</span>, </span>
+<span>    name <span class="op">=</span> <span class="st">"% dPCres"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Restauración"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"% dPCres"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="05-Priorizacion_files/figure-html/unnamed-chunk-10-1.png" width="672"></div>
+<p>Si desactivamos onlyrestor entonces estima los otros valores delíndice de conectividad (i.e., dPC, intra, flux y connector).</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-1" tabindex="-1"></a>PCrestauracion <span class="ot">&lt;-</span> <span class="fu">MK_dPCIIC</span>(<span class="at">nodes =</span> habitat_nodes,</span>
+<span id="cb11-2"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-2" tabindex="-1"></a>                <span class="at">attribute =</span> <span class="cn">NULL</span>,</span>
+<span id="cb11-3"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-3" tabindex="-1"></a>                <span class="at">area_unit =</span> <span class="st">"ha"</span>,</span>
+<span id="cb11-4"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-4" tabindex="-1"></a>                <span class="at">distance =</span> <span class="fu">list</span>(<span class="at">type =</span> <span class="st">"edge"</span>, <span class="at">keep =</span> <span class="fl">0.1</span>),</span>
+<span id="cb11-5"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-5" tabindex="-1"></a>                <span class="at">LA =</span> <span class="cn">NULL</span>,</span>
+<span id="cb11-6"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-6" tabindex="-1"></a>                <span class="at">restoration =</span> <span class="st">"restauracion"</span>,</span>
+<span id="cb11-7"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-7" tabindex="-1"></a>                <span class="at">onlyrestor =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb11-8"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-8" tabindex="-1"></a>                <span class="at">metric =</span> <span class="st">"PC"</span>,</span>
+<span id="cb11-9"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-9" tabindex="-1"></a>                <span class="at">probability =</span> <span class="fl">0.5</span>,</span>
+<span id="cb11-10"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-10" tabindex="-1"></a>                <span class="at">distance_thresholds =</span> <span class="dv">10000</span>,</span>
+<span id="cb11-11"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-11" tabindex="-1"></a>                <span class="at">intern =</span> <span class="cn">TRUE</span>) <span class="co">#10 km</span></span>
+<span id="cb11-12"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-12" tabindex="-1"></a><span class="co">#&gt; Estimating PC index. This may take several minutes depending on the number of nodes</span></span>
+<span id="cb11-13"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-13" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb11-14"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-14" tabindex="-1"></a>  <span class="sc">|</span>                                                        </span>
+<span id="cb11-15"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-15" tabindex="-1"></a>  <span class="er">|</span>                                                  <span class="er">|</span>   <span class="dv">0</span>%</span>
+<span id="cb11-16"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-16" tabindex="-1"></a>  <span class="sc">|</span>                                                        </span>
+<span id="cb11-17"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-17" tabindex="-1"></a>  <span class="er">|==================================================|</span> <span class="dv">100</span>%</span>
+<span id="cb11-18"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-18" tabindex="-1"></a><span class="co">#&gt;  ■■■■■■                            16% |  ETA: 20s</span></span>
+<span id="cb11-19"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-19" tabindex="-1"></a><span class="co">#&gt;  ■■■■■■■■■                         27% |  ETA: 18s</span></span>
+<span id="cb11-20"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-20" tabindex="-1"></a><span class="co">#&gt;  ■■■■■■■■■■■■■                     39% |  ETA: 15s</span></span>
+<span id="cb11-21"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-21" tabindex="-1"></a><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■                 52% |  ETA: 11s</span></span>
+<span id="cb11-22"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-22" tabindex="-1"></a><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■■■              63% |  ETA:  9s</span></span>
+<span id="cb11-23"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-23" tabindex="-1"></a><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■■■■■■           73% |  ETA:  7s</span></span>
+<span id="cb11-24"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-24" tabindex="-1"></a><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■■■■■■■■■■       85% |  ETA:  4s</span></span>
+<span id="cb11-25"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-25" tabindex="-1"></a><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    97% |  ETA:  1s</span></span>
+<span id="cb11-26"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-26" tabindex="-1"></a><span class="co">#&gt;  ■■■■■■■■■■■■■■■                   48% |  ETA:  2s</span></span>
+<span id="cb11-27"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-27" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb11-28"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-28" tabindex="-1"></a><span class="co">#&gt; Done!</span></span>
+<span id="cb11-29"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-29" tabindex="-1"></a>PCrestauracion</span>
+<span id="cb11-30"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-30" tabindex="-1"></a><span class="co">#&gt; Simple feature collection with 404 features and 7 fields</span></span>
+<span id="cb11-31"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-31" tabindex="-1"></a><span class="co">#&gt; Geometry type: POLYGON</span></span>
+<span id="cb11-32"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-32" tabindex="-1"></a><span class="co">#&gt; Dimension:     XY</span></span>
+<span id="cb11-33"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-33" tabindex="-1"></a><span class="co">#&gt; Bounding box:  xmin: -108954 ymin: 2025032 xmax: 202330.2 ymax: 2198936</span></span>
+<span id="cb11-34"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-34" tabindex="-1"></a><span class="co">#&gt; Projected CRS: NAD_1927_Albers</span></span>
+<span id="cb11-35"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-35" tabindex="-1"></a><span class="co">#&gt; First 10 features:</span></span>
+<span id="cb11-36"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-36" tabindex="-1"></a><span class="co">#&gt;    Id restauracion       dPC  dPCintra   dPCflux</span></span>
+<span id="cb11-37"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-37" tabindex="-1"></a><span class="co">#&gt; 1   1            1 0.0128564 0.0000006 0.0128558</span></span>
+<span id="cb11-38"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-38" tabindex="-1"></a><span class="co">#&gt; 2   2            1 0.0332059 0.0000037 0.0332022</span></span>
+<span id="cb11-39"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-39" tabindex="-1"></a><span class="co">#&gt; 3   3            1 1.6831849 0.0093299 1.6665804</span></span>
+<span id="cb11-40"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-40" tabindex="-1"></a><span class="co">#&gt; 4   4            0 0.0184037 0.0000011 0.0184026</span></span>
+<span id="cb11-41"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-41" tabindex="-1"></a><span class="co">#&gt; 5   5            1 0.0285162 0.0000026 0.0285136</span></span>
+<span id="cb11-42"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-42" tabindex="-1"></a><span class="co">#&gt; 6   6            1 0.0040938 0.0000001 0.0040937</span></span>
+<span id="cb11-43"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-43" tabindex="-1"></a><span class="co">#&gt; 7   7            1 0.0069481 0.0000001 0.0068704</span></span>
+<span id="cb11-44"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-44" tabindex="-1"></a><span class="co">#&gt; 8   8            1 0.0088543 0.0000003 0.0088540</span></span>
+<span id="cb11-45"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-45" tabindex="-1"></a><span class="co">#&gt; 9   9            1 0.0369150 0.0000032 0.0331109</span></span>
+<span id="cb11-46"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-46" tabindex="-1"></a><span class="co">#&gt; 10 10            1 5.5556530 0.0665892 4.4246468</span></span>
+<span id="cb11-47"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-47" tabindex="-1"></a><span class="co">#&gt;    dPCconnector    dPCres                       geometry</span></span>
+<span id="cb11-48"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-48" tabindex="-1"></a><span class="co">#&gt; 1  0.000000e+00   0.00000 POLYGON ((54911.05 2035815,...</span></span>
+<span id="cb11-49"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-49" tabindex="-1"></a><span class="co">#&gt; 2  0.000000e+00   0.00000 POLYGON ((44591.28 2042209,...</span></span>
+<span id="cb11-50"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-50" tabindex="-1"></a><span class="co">#&gt; 3  7.274621e-03   0.00000 POLYGON ((46491.11 2042467,...</span></span>
+<span id="cb11-51"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-51" tabindex="-1"></a><span class="co">#&gt; 4  0.000000e+00 -36.02491 POLYGON ((54944.49 2048163,...</span></span>
+<span id="cb11-52"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-52" tabindex="-1"></a><span class="co">#&gt; 5  0.000000e+00   0.00000 POLYGON ((80094.28 2064140,...</span></span>
+<span id="cb11-53"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-53" tabindex="-1"></a><span class="co">#&gt; 6  5.309968e-08   0.00000 POLYGON ((69205.24 2066394,...</span></span>
+<span id="cb11-54"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-54" tabindex="-1"></a><span class="co">#&gt; 7  7.758334e-05   0.00000 POLYGON ((68554.2 2066632, ...</span></span>
+<span id="cb11-55"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-55" tabindex="-1"></a><span class="co">#&gt; 8  0.000000e+00   0.00000 POLYGON ((69995.53 2066880,...</span></span>
+<span id="cb11-56"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-56" tabindex="-1"></a><span class="co">#&gt; 9  3.800919e-03   0.00000 POLYGON ((79368.68 2067324,...</span></span>
+<span id="cb11-57"><a href="dpc-y-diic-de-restauraci%C3%B3n.html#cb11-57" tabindex="-1"></a><span class="co">#&gt; 10 1.064417e+00   0.00000 POLYGON ((23378.32 2067554,...</span></span></code></pre></div>
+
+</div>
+  <div class="chapter-nav">
+<div class="empty"></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <div id="book-on-this-page"></div>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Manual de uso de Makurhini</strong>" was written by Oscar Godínez Gómez. It was last built on 2025-07-24.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

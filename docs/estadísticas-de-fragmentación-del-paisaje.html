@@ -52,6 +52,9 @@
 <li><a class="" href="%C3%ADndices-de-centralidad.html"><span class="header-section-number">3</span> Índices de centralidad</a></li>
 <li><a class="" href="kernel-de-dispersi%C3%B3n.html"><span class="header-section-number">4</span> Kernel de dispersión</a></li>
 <li><a class="" href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html"><span class="header-section-number">5</span> índice integral de conectividad y Probabilidad de conectividad</a></li>
+<li><a class="" href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html"><span class="header-section-number">6</span> Prioridades de Restauración con MK_dPCIIC()</a></li>
+<li><a class="" href="prioridades-de-conservaci%C3%B3n-y-restauraci%C3%B3n-con-mk_focal_nodes.html"><span class="header-section-number">7</span> Prioridades de conservación y restauración con MK_Focal_nodes()</a></li>
+<li><a class="" href="prioridad-de-enlaces-con-mk_dpciic_links.html"><span class="header-section-number">8</span> Prioridad de enlaces con MK_dPCIIC_links()</a></li>
 </ul>
 
         <div class="book-extra">
@@ -63,7 +66,7 @@
 <h1>
 <span class="header-section-number">2</span> Estadísticas de fragmentación del paisaje<a class="anchor" aria-label="anchor" href="#estad%C3%ADsticas-de-fragmentaci%C3%B3n-del-paisaje"><i class="fas fa-link"></i></a>
 </h1>
-<p>Exploraremos la función <strong><code><a href="https://rdrr.io/pkg/Makurhini/man/MK_fragmentation.html">MK_Fragmentation()</a></code></strong> para caracterizar la composición y la configuración espacial de los parches en nuestro paisaje.</p>
+<p>Exploraremos la función <strong><code><a href="https://rdrr.io/pkg/Makurhini/man/MK_Fragmentation.html">MK_Fragmentation()</a></code></strong> para caracterizar la composición y la configuración espacial de los parches en nuestro paisaje.</p>
 <p>La función calcula <strong>ocho métricas a nivel de nodo</strong> (como el área de nodo, el porcentaje de borde y la dimensión fractal) y <strong>13 estadísticas de fragmentación a nivel de paisaje</strong> (como el número de nodos, el tamaño medio, la densidad de borde y el tamaño efectivo de la malla).</p>
 <p>Las entradas incluyen un <strong>objeto vectorial</strong> que representa los nodos del paisaje y un parámetro que define la distancia o profundidad de la influencia del borde (es decir, la distancia al borde del nodo).</p>
 <p>Los resultados consisten en un <strong>archivo vectorial tipo poligonal</strong> que contiene métricas a nivel de nodo y <strong>una tabla</strong> que detalla las métricas a nivel de paisaje.</p>
@@ -111,7 +114,7 @@
 <span class="header-section-number">2.2</span> Funcion<a class="anchor" aria-label="anchor" href="#funcion"><i class="fas fa-link"></i></a>
 </h2>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_fragmentation.html">MK_Fragmentation</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_Fragmentation.html">MK_Fragmentation</a></span><span class="op">(</span></span>
 <span>  nodes <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  edge_distance <span class="op">=</span> <span class="fl">500</span>,</span>
 <span>  min_node_area <span class="op">=</span> <span class="fl">100</span>,</span>
@@ -151,7 +154,7 @@
 <span><span class="va">area_paisaje</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/unit_convert.html">unit_convert</a></span><span class="op">(</span><span class="va">area_paisaje</span>, <span class="st">"m2"</span>, <span class="st">"ha"</span><span class="op">)</span> </span></code></pre></div>
 <p>Aplicamos la función.</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">Fragmentacion</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_fragmentation.html">MK_Fragmentation</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">habitat_nodes</span>, </span>
+<code class="sourceCode R"><span><span class="va">Fragmentacion</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_Fragmentation.html">MK_Fragmentation</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">habitat_nodes</span>, </span>
 <span>                                  edge_distance <span class="op">=</span> <span class="fl">500</span>,</span>
 <span>                                  min_node_area <span class="op">=</span> <span class="fl">100</span>,</span>
 <span>                                  landscape_area <span class="op">=</span> <span class="va">area_paisaje</span>,</span>
@@ -472,7 +475,7 @@ MESH (ha)
 <code class="sourceCode R"><span><span class="co">#Loop edge distance</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://purrr.tidyverse.org/">purrr</a></span><span class="op">)</span></span>
 <span><span class="va">Fragmentacion.2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map_dfr.html">map_dfr</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">1000</span>, <span class="fl">100</span><span class="op">)</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span></span>
-<span>  <span class="va">x.1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_fragmentation.html">MK_Fragmentation</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">habitat_nodes</span>, </span>
+<span>  <span class="va">x.1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_Fragmentation.html">MK_Fragmentation</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">habitat_nodes</span>, </span>
 <span>                          edge_distance <span class="op">=</span> <span class="va">x</span>, plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span></span>
 <span>  <span class="va">CA</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x.1</span><span class="op">$</span><span class="va">CAPercent</span><span class="op">)</span></span>
 <span>  <span class="va">Edge</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x.1</span><span class="op">$</span><span class="va">EdgePercent</span><span class="op">)</span></span>
@@ -562,7 +565,7 @@ MESH (ha)
 <span>  <span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">nodes.i</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span><span class="op">{</span></span>
 <span>    <span class="va">area_paisaje.i</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_measures.html">st_area</a></span><span class="op">(</span><span class="va">grid.i</span><span class="op">)</span></span>
 <span>    <span class="va">area_paisaje.i</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/unit_convert.html">unit_convert</a></span><span class="op">(</span><span class="va">area_paisaje.i</span>, <span class="st">"m2"</span>, <span class="st">"ha"</span><span class="op">)</span></span>
-<span>    <span class="va">Fragmentacion.i</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_fragmentation.html">MK_Fragmentation</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">nodes.i</span>, </span>
+<span>    <span class="va">Fragmentacion.i</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_Fragmentation.html">MK_Fragmentation</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">nodes.i</span>, </span>
 <span>                                      edge_distance <span class="op">=</span> <span class="fl">500</span>,</span>
 <span>                                      min_node_area <span class="op">=</span> <span class="fl">100</span>,</span>
 <span>                                      landscape_area <span class="op">=</span> <span class="va">area_paisaje.i</span>,</span>
@@ -634,7 +637,7 @@ MESH (ha)
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Manual de uso de Makurhini</strong>" was written by Oscar Godínez Gómez. It was last built on 2025-07-24.</p>
+    <p>"<strong>Manual de uso de Makurhini</strong>" was written by Oscar Godínez Gómez. It was last built on 2025-07-30.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
