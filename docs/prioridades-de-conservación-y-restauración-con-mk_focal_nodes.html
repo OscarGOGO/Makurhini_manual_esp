@@ -1,57 +1,36 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <title>Chapter 6 Prioridades de conservación y restauración con MK_Focal_nodes() | Manual de uso de Makurhini</title>
-
-    <meta name="author" content="Oscar Godínez Gómez" />
-  
-   <meta name="description" content="En este libro de prueba se documenta parte del backend de Biodiversidades" />
-   <meta name="generator" content="placeholder" />
-  <meta property="og:title" content="Chapter 6 Prioridades de conservación y restauración con MK_Focal_nodes() | Manual de uso de Makurhini" />
-  <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://oscargogo.github.io/Makurhini_manual_esp/" />
-  <meta property="og:image" content="https://oscargogo.github.io/Makurhini_manual_esp/LOGO_MAKHURINI.png" />
-  <meta property="og:description" content="En este libro de prueba se documenta parte del backend de Biodiversidades" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 Prioridades de conservación y restauración con MK_Focal_nodes() | Manual de uso de Makurhini" />
-  
-  <meta name="twitter:description" content="En este libro de prueba se documenta parte del backend de Biodiversidades" />
-  <meta name="twitter:image" content="https://oscargogo.github.io/Makurhini_manual_esp/LOGO_MAKHURINI.png" />
-  <!-- JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script>
-  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
-    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
-    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
-    <script src="libs/bs3compat-0.9.0/transition.js"></script>
-    <script src="libs/bs3compat-0.9.0/tabs.js"></script>
-    <script src="libs/bs3compat-0.9.0/bs3compat.js"></script>
-    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
-    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script>
-
-  <!-- CSS -->
-  <style type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 7 Prioridades de conservación y restauración con MK_Focal_nodes() | Manual de uso de Makurhini</title>
+<meta name="author" content="Oscar Godínez Gómez">
+<meta name="description" content="Esta función permite calcular el Índice Integral de Conectividad focal (IICf) o la Probabilidad de Conectividad focal (PCf) bajo uno o más umbrales de distancia. Además, esta función estima el...">
+<meta name="generator" content="bookdown 0.43 with bs4_book()">
+<meta property="og:title" content="Chapter 7 Prioridades de conservación y restauración con MK_Focal_nodes() | Manual de uso de Makurhini">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://oscargogo.github.io/Makurhini_manual_esp/prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html">
+<meta property="og:image" content="https://oscargogo.github.io/Makurhini_manual_esp/LOGO_MAKHURINI.png">
+<meta property="og:description" content="Esta función permite calcular el Índice Integral de Conectividad focal (IICf) o la Probabilidad de Conectividad focal (PCf) bajo uno o más umbrales de distancia. Además, esta función estima el...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 7 Prioridades de conservación y restauración con MK_Focal_nodes() | Manual de uso de Makurhini">
+<meta name="twitter:description" content="Esta función permite calcular el Índice Integral de Conectividad focal (IICf) o la Probabilidad de Conectividad focal (PCf) bajo uno o más umbrales de distancia. Además, esta función estima el...">
+<meta name="twitter:image" content="https://oscargogo.github.io/Makurhini_manual_esp/LOGO_MAKHURINI.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
-      <link rel="stylesheet" href="style.css" />
-  
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body data-spy="scroll" data-target="#toc">
 
 <div class="container-fluid">
 <div class="row">
-  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
-    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
@@ -63,34 +42,40 @@
     <div id="main-nav" class="collapse-lg">
       <form role="search">
         <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-      </form>
+</form>
 
-      <nav aria-label="Table of contents">
-        <h2>Table of contents</h2>
-        <div id="book-toc"></div>
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Makurhini</a></li>
+<li><a class="" href="instalaci%C3%B3n-del-paquete-makurhini.html"><span class="header-section-number">1</span> Instalación del paquete Makurhini</a></li>
+<li><a class="" href="estad%C3%ADsticas-de-fragmentaci%C3%B3n-del-paisaje.html"><span class="header-section-number">2</span> Estadísticas de fragmentación del paisaje</a></li>
+<li><a class="" href="%C3%ADndices-de-centralidad.html"><span class="header-section-number">3</span> Índices de centralidad</a></li>
+<li><a class="" href="kernel-de-dispersi%C3%B3n.html"><span class="header-section-number">4</span> Kernel de dispersión</a></li>
+<li><a class="" href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html"><span class="header-section-number">5</span> índice integral de conectividad y Probabilidad de conectividad</a></li>
+<li><a class="" href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html"><span class="header-section-number">6</span> Prioridades de Restauración con MK_dPCIIC()</a></li>
+<li><a class="active" href="prioridades-de-conservaci%C3%B3n-y-restauraci%C3%B3n-con-mk_focal_nodes.html"><span class="header-section-number">7</span> Prioridades de conservación y restauración con MK_Focal_nodes()</a></li>
+<li><a class="" href="prioridad-de-enlaces-con-mk_dpciic_links.html"><span class="header-section-number">8</span> Prioridad de enlaces con MK_dPCIIC_links()</a></li>
+</ul>
 
         <div class="book-extra">
-          <p><a id="book-repo" href="#">View book source <i class="fab fa-github"></i></a></li></p>
+          <p><a id="book-repo" href="https://github.com/OscarGOGO/Makurhini_manual_esp">View book source <i class="fab fa-github"></i></a></p>
         </div>
       </nav>
-    </div>
-  </header>
-
-  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
-<div id="prioridades-de-conservación-y-restauración-con-mk_focal_nodes" class="section level1" number="6">
-<h1><span class="header-section-number">Chapter 6</span> Prioridades de conservación y restauración con MK_Focal_nodes()</h1>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="prioridades-de-conservación-y-restauración-con-mk_focal_nodes" class="section level1" number="7">
+<h1>
+<span class="header-section-number">7</span> Prioridades de conservación y restauración con MK_Focal_nodes()<a class="anchor" aria-label="anchor" href="#prioridades-de-conservaci%C3%B3n-y-restauraci%C3%B3n-con-mk_focal_nodes"><i class="fas fa-link"></i></a>
+</h1>
 <p>Esta función permite calcular el Índice Integral de Conectividad focal (IIC<sub>f</sub>) o la Probabilidad de Conectividad focal (PC<sub>f</sub>) bajo uno o más umbrales de distancia. Además, esta función estima el Índice de Conectividad Compuesto (CCI<sub>f</sub>; para más detalles, véase Latorre-Cárdenas et al., 2023. Land 2023, 12(3), 631; <a href="https://doi.org/10.3390/land12030631" class="uri">https://doi.org/10.3390/land12030631</a>).</p>
-<table>
+<div class="inline-table"><table class="table table-sm">
 <colgroup>
-<col width="54%" />
-<col width="45%" />
+<col width="54%">
+<col width="45%">
 </colgroup>
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th><strong>Argumento</strong></th>
 <th><strong>Descripción</strong></th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td><code>nodes</code></td>
@@ -173,234 +158,246 @@
 <td>logical. Muestra el progreso del proceso. Por defecto <code>TRUE</code>. Puede no llegar al 100% si el proceso es muy rápido.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>Se ejecuta un ciclo en el que se selecciona cada uno de los nodos. En cada iteración, ocurre lo siguiente:</p>
 <ol style="list-style-type: decimal">
 <li><p>Cuando se selecciona el nodo <em>i</em>, este se convierte en el nodo focal (<em>f</em>).</p></li>
 <li><p>Luego, se genera un búfer con la distancia especificada en el parámetro <code>search_buffer</code>, por ejemplo, el doble de la distancia de dispersión especificada en el parámetro <code>distance_thresholds</code>. Este búfer se denomina <em>paisaje local</em> y se utiliza para identificar nodos vecinos, llamados <em>nodos transfronterizos</em> (<em>th</em>).</p></li>
 <li><p>A continuación, se estima el índice IIC o PC según la métrica seleccionada, utilizando el nodo focal y los nodos transfronterizos. Este resultado se denomina <em>IIC</em><sub>f</sub> o <em>PC</em><sub>f</sub>. El valor del índice varía entre 0 y 1, donde 1 representa la mayor conectividad posible dentro del paisaje local para el nodo focal.</p></li>
 <li><p>Posteriormente, se estima el delta <em>dIIC</em> o <em>dPC</em> para el nodo focal, junto con sus componentes <em>intra</em>, <em>flux</em> y <em>connector</em>.</p></li>
-<li><p>La función calcula el <em>Índice Compuesto de Conectividad</em> (<em>CCI</em><sub>f</sub>) como una herramienta de priorización de nodos focales. Este índice se basa en la contribución individual del nodo, ponderada por la conectividad de su paisaje local:</p>
+<li>
+<p>La función calcula el <em>Índice Compuesto de Conectividad</em> (<em>CCI</em><sub>f</sub>) como una herramienta de priorización de nodos focales. Este índice se basa en la contribución individual del nodo, ponderada por la conectividad de su paisaje local:</p>
 <ul>
-<li><em>CCI</em><sub>f</sub> = IIC<sub>f</sub> × dIIC<sub>f</sub></li>
-<li><em>CCI</em><sub>f</sub> = PC<sub>f</sub> × dPC<sub>f</sub></li>
+<li>
+<em>CCI</em><sub>f</sub> = IIC<sub>f</sub> × dIIC<sub>f</sub>
+</li>
+<li>
+<em>CCI</em><sub>f</sub> = PC<sub>f</sub> × dPC<sub>f</sub>
+</li>
 </ul>
-<p>Los nodos con valores más altos de <em>CCI</em><sub>f</sub> se encuentran en paisajes locales bien conectados, lo que los convierte en contribuyentes valiosos para la conectividad del paisaje inmediato. Esto los hace candidatos ideales para esfuerzos de conservación. Por el contrario, los valores bajos de <em>CCI</em><sub>f</sub> pueden indicar la necesidad de acciones de restauración y conservación.</p></li>
+<p>Los nodos con valores más altos de <em>CCI</em><sub>f</sub> se encuentran en paisajes locales bien conectados, lo que los convierte en contribuyentes valiosos para la conectividad del paisaje inmediato. Esto los hace candidatos ideales para esfuerzos de conservación. Por el contrario, los valores bajos de <em>CCI</em><sub>f</sub> pueden indicar la necesidad de acciones de restauración y conservación.</p>
+</li>
 <li><p>En el paso final, si el parámetro <code>fragmentation</code> está definido como <code>TRUE</code>, se estiman estadísticas de fragmentación para el paisaje local.</p></li>
 </ol>
 <p>Este proceso se repite para cada nodo y se almacena en un objeto de clase <code>sf</code>.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb12-1" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">MK_Focal_nodes</span>(<span class="at">nodes =</span> habitat_nodes,</span>
-<span id="cb12-2"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb12-2" tabindex="-1"></a>                       <span class="at">id =</span> <span class="st">&quot;Id&quot;</span>,</span>
-<span id="cb12-3"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb12-3" tabindex="-1"></a>                       <span class="at">attribute =</span> <span class="cn">NULL</span>,</span>
-<span id="cb12-4"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb12-4" tabindex="-1"></a>                       <span class="at">raster_attribute =</span> <span class="cn">NULL</span>,</span>
-<span id="cb12-5"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb12-5" tabindex="-1"></a>                       <span class="at">fun_attribute =</span> <span class="cn">NULL</span>,</span>
-<span id="cb12-6"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb12-6" tabindex="-1"></a>                       <span class="at">distance =</span> <span class="fu">list</span>(<span class="at">type =</span> <span class="st">&quot;edge&quot;</span>, <span class="at">keep =</span> <span class="fl">0.1</span>),</span>
-<span id="cb12-7"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb12-7" tabindex="-1"></a>                       <span class="at">metric =</span> <span class="st">&quot;PC&quot;</span>,</span>
-<span id="cb12-8"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb12-8" tabindex="-1"></a>                       <span class="at">probability =</span> <span class="fl">0.5</span>,</span>
-<span id="cb12-9"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb12-9" tabindex="-1"></a>                       <span class="at">distance_thresholds =</span> <span class="dv">10000</span>,</span>
-<span id="cb12-10"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb12-10" tabindex="-1"></a>                       <span class="at">search_buffer =</span> <span class="dv">20000</span>,</span>
-<span id="cb12-11"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb12-11" tabindex="-1"></a>                       <span class="at">fragmentation =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb12-12"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb12-12" tabindex="-1"></a>                       <span class="at">parallel =</span> <span class="dv">4</span>,</span>
-<span id="cb12-13"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb12-13" tabindex="-1"></a>                       <span class="at">intern =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_Focal_nodes.html">MK_Focal_nodes</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">habitat_nodes</span>,</span>
+<span>                       id <span class="op">=</span> <span class="st">"Id"</span>,</span>
+<span>                       attribute <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                       raster_attribute <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                       fun_attribute <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                       distance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"edge"</span>, keep <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>,</span>
+<span>                       metric <span class="op">=</span> <span class="st">"PC"</span>,</span>
+<span>                       probability <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>                       distance_thresholds <span class="op">=</span> <span class="fl">10000</span>,</span>
+<span>                       search_buffer <span class="op">=</span> <span class="fl">20000</span>,</span>
+<span>                       fragmentation <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>                       parallel <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>                       intern <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <p>Índice PC en paisajes focales:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-1" tabindex="-1"></a><span class="fu">library</span>(classInt)</span>
-<span id="cb13-2"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb13-3"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb13-4"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-4" tabindex="-1"></a><span class="co">#&gt; Adjuntando el paquete: &#39;dplyr&#39;</span></span>
-<span id="cb13-5"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-5" tabindex="-1"></a><span class="co">#&gt; The following objects are masked from &#39;package:igraph&#39;:</span></span>
-<span id="cb13-6"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-6" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb13-7"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-7" tabindex="-1"></a><span class="co">#&gt;     as_data_frame, groups, union</span></span>
-<span id="cb13-8"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-8" tabindex="-1"></a><span class="co">#&gt; The following objects are masked from &#39;package:raster&#39;:</span></span>
-<span id="cb13-9"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-9" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb13-10"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-10" tabindex="-1"></a><span class="co">#&gt;     intersect, select, union</span></span>
-<span id="cb13-11"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-11" tabindex="-1"></a><span class="co">#&gt; The following objects are masked from &#39;package:terra&#39;:</span></span>
-<span id="cb13-12"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-12" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb13-13"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-13" tabindex="-1"></a><span class="co">#&gt;     intersect, union</span></span>
-<span id="cb13-14"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-14" tabindex="-1"></a><span class="co">#&gt; The following objects are masked from &#39;package:stats&#39;:</span></span>
-<span id="cb13-15"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-15" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb13-16"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-16" tabindex="-1"></a><span class="co">#&gt;     filter, lag</span></span>
-<span id="cb13-17"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-17" tabindex="-1"></a><span class="co">#&gt; The following objects are masked from &#39;package:base&#39;:</span></span>
-<span id="cb13-18"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-18" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb13-19"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-19" tabindex="-1"></a><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
-<span id="cb13-20"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-20" tabindex="-1"></a></span>
-<span id="cb13-21"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-21" tabindex="-1"></a><span class="co"># Calcular los intervalos de Jenks para strength</span></span>
-<span id="cb13-22"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-22" tabindex="-1"></a>breaks <span class="ot">&lt;-</span> classInt<span class="sc">::</span><span class="fu">classIntervals</span>(test<span class="sc">$</span>PC, <span class="at">n =</span> <span class="dv">9</span>, <span class="at">style =</span> <span class="st">&quot;jenks&quot;</span>)</span>
-<span id="cb13-23"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-23" tabindex="-1"></a></span>
-<span id="cb13-24"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-24" tabindex="-1"></a><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
-<span id="cb13-25"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-25" tabindex="-1"></a>PC <span class="ot">&lt;-</span> test <span class="sc">%&gt;%</span></span>
-<span id="cb13-26"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-26" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dPC_q =</span> <span class="fu">cut</span>(PC,</span>
-<span id="cb13-27"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-27" tabindex="-1"></a>                     <span class="at">breaks =</span> breaks<span class="sc">$</span>brks,</span>
-<span id="cb13-28"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-28" tabindex="-1"></a>                     <span class="at">include.lowest =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb13-29"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-29" tabindex="-1"></a>                     <span class="at">dig.lab =</span> <span class="dv">5</span>))  </span>
-<span id="cb13-30"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-30" tabindex="-1"></a></span>
-<span id="cb13-31"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-31" tabindex="-1"></a><span class="co"># Graficar en ggplot2 usando las clases Jenks</span></span>
-<span id="cb13-32"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-32" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span>  </span>
-<span id="cb13-33"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-33" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> paisaje, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
-<span id="cb13-34"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-34" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> PC, <span class="fu">aes</span>(<span class="at">fill =</span> dPC_q), <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">size =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb13-35"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-35" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;RdYlGn&quot;</span>, <span class="at">direction =</span> <span class="dv">1</span>, <span class="at">name =</span> <span class="st">&quot;PC (jenks)&quot;</span>) <span class="sc">+</span></span>
-<span id="cb13-36"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-36" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb13-37"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-37" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb13-38"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-38" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;PC en paisajes focales&quot;</span>,</span>
-<span id="cb13-39"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-39" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">&quot;PC&quot;</span></span>
-<span id="cb13-40"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-40" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb13-41"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-41" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb13-42"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-42" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">&quot;right&quot;</span>,</span>
-<span id="cb13-43"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-43" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)</span>
-<span id="cb13-44"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb13-44" tabindex="-1"></a>  )</span></code></pre></div>
-<p><img src="05-Priorizacion_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/classInt/">classInt</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Adjuntando el paquete: 'dplyr'</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:igraph':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     as_data_frame, groups, union</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:raster':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     intersect, select, union</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:terra':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     intersect, union</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     filter, lag</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
+<span></span>
+<span><span class="co"># Calcular los intervalos de Jenks para strength</span></span>
+<span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu">classInt</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html">classIntervals</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">PC</span>, n <span class="op">=</span> <span class="fl">9</span>, style <span class="op">=</span> <span class="st">"jenks"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
+<span><span class="va">PC</span> <span class="op">&lt;-</span> <span class="va">test</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>dPC_q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/cut.html">cut</a></span><span class="op">(</span><span class="va">PC</span>,</span>
+<span>                     breaks <span class="op">=</span> <span class="va">breaks</span><span class="op">$</span><span class="va">brks</span>,</span>
+<span>                     include.lowest <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                     dig.lab <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span>  </span>
+<span></span>
+<span><span class="co"># Graficar en ggplot2 usando las clases Jenks</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paisaje</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">PC</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">dPC_q</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"RdYlGn"</span>, direction <span class="op">=</span> <span class="fl">1</span>, name <span class="op">=</span> <span class="st">"PC (jenks)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"PC en paisajes focales"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"PC"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="05-Priorizacion_files/figure-html/unnamed-chunk-14-1.png" width="672"></div>
 <p>Índice dPC focal:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb14-1" tabindex="-1"></a><span class="co"># Calcular los intervalos de Jenks para strength</span></span>
-<span id="cb14-2"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb14-2" tabindex="-1"></a>breaks <span class="ot">&lt;-</span> classInt<span class="sc">::</span><span class="fu">classIntervals</span>(test<span class="sc">$</span>dPC, <span class="at">n =</span> <span class="dv">9</span>, <span class="at">style =</span> <span class="st">&quot;jenks&quot;</span>)</span>
-<span id="cb14-3"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb14-3" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb14-4" tabindex="-1"></a><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
-<span id="cb14-5"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb14-5" tabindex="-1"></a>PC <span class="ot">&lt;-</span> test <span class="sc">%&gt;%</span></span>
-<span id="cb14-6"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb14-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dPC_q =</span> <span class="fu">cut</span>(dPC,</span>
-<span id="cb14-7"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb14-7" tabindex="-1"></a>                     <span class="at">breaks =</span> breaks<span class="sc">$</span>brks,</span>
-<span id="cb14-8"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb14-8" tabindex="-1"></a>                     <span class="at">include.lowest =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb14-9"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb14-9" tabindex="-1"></a>                     <span class="at">dig.lab =</span> <span class="dv">5</span>))  </span>
-<span id="cb14-10"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb14-10" tabindex="-1"></a></span>
-<span id="cb14-11"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb14-11" tabindex="-1"></a><span class="co"># Graficar en ggplot2 usando las clases Jenks</span></span>
-<span id="cb14-12"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb14-12" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span>  </span>
-<span id="cb14-13"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb14-13" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> paisaje, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
-<span id="cb14-14"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb14-14" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> PC, <span class="fu">aes</span>(<span class="at">fill =</span> dPC_q), <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">size =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb14-15"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb14-15" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;RdYlGn&quot;</span>, <span class="at">direction =</span> <span class="dv">1</span>, <span class="at">name =</span> <span class="st">&quot;dPC (jenks)&quot;</span>) <span class="sc">+</span></span>
-<span id="cb14-16"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb14-16" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb14-17"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb14-17" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb14-18"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb14-18" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;dPC&quot;</span>,</span>
-<span id="cb14-19"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb14-19" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">&quot;dPC&quot;</span></span>
-<span id="cb14-20"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb14-20" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb14-21"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb14-21" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb14-22"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb14-22" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">&quot;right&quot;</span>,</span>
-<span id="cb14-23"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb14-23" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)</span>
-<span id="cb14-24"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb14-24" tabindex="-1"></a>  )</span></code></pre></div>
-<p><img src="05-Priorizacion_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Calcular los intervalos de Jenks para strength</span></span>
+<span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu">classInt</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html">classIntervals</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">dPC</span>, n <span class="op">=</span> <span class="fl">9</span>, style <span class="op">=</span> <span class="st">"jenks"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
+<span><span class="va">PC</span> <span class="op">&lt;-</span> <span class="va">test</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>dPC_q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/cut.html">cut</a></span><span class="op">(</span><span class="va">dPC</span>,</span>
+<span>                     breaks <span class="op">=</span> <span class="va">breaks</span><span class="op">$</span><span class="va">brks</span>,</span>
+<span>                     include.lowest <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                     dig.lab <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span>  </span>
+<span></span>
+<span><span class="co"># Graficar en ggplot2 usando las clases Jenks</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paisaje</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">PC</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">dPC_q</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"RdYlGn"</span>, direction <span class="op">=</span> <span class="fl">1</span>, name <span class="op">=</span> <span class="st">"dPC (jenks)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"dPC"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"dPC"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="05-Priorizacion_files/figure-html/unnamed-chunk-15-1.png" width="672"></div>
 <p>Fracción intra:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb15-1" tabindex="-1"></a><span class="co"># Calcular los intervalos de Jenks para strength</span></span>
-<span id="cb15-2"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb15-2" tabindex="-1"></a>breaks <span class="ot">&lt;-</span> classInt<span class="sc">::</span><span class="fu">classIntervals</span>(test<span class="sc">$</span>dPCintra, <span class="at">n =</span> <span class="dv">9</span>, <span class="at">style =</span> <span class="st">&quot;jenks&quot;</span>)</span>
-<span id="cb15-3"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb15-3" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb15-4" tabindex="-1"></a><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
-<span id="cb15-5"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb15-5" tabindex="-1"></a>PC <span class="ot">&lt;-</span> test <span class="sc">%&gt;%</span></span>
-<span id="cb15-6"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb15-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dPC_q =</span> <span class="fu">cut</span>(dPCintra,</span>
-<span id="cb15-7"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb15-7" tabindex="-1"></a>                     <span class="at">breaks =</span> breaks<span class="sc">$</span>brks,</span>
-<span id="cb15-8"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb15-8" tabindex="-1"></a>                     <span class="at">include.lowest =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb15-9"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb15-9" tabindex="-1"></a>                     <span class="at">dig.lab =</span> <span class="dv">5</span>))  </span>
-<span id="cb15-10"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb15-10" tabindex="-1"></a></span>
-<span id="cb15-11"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb15-11" tabindex="-1"></a><span class="co"># Graficar en ggplot2 usando las clases Jenks</span></span>
-<span id="cb15-12"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb15-12" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span>  </span>
-<span id="cb15-13"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb15-13" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> paisaje, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
-<span id="cb15-14"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb15-14" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> PC, <span class="fu">aes</span>(<span class="at">fill =</span> dPC_q), <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">size =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb15-15"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb15-15" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;RdYlGn&quot;</span>, <span class="at">direction =</span> <span class="dv">1</span>, <span class="at">name =</span> <span class="st">&quot;dPCintra (jenks)&quot;</span>) <span class="sc">+</span></span>
-<span id="cb15-16"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb15-16" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb15-17"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb15-17" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb15-18"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb15-18" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;dPCintra&quot;</span>,</span>
-<span id="cb15-19"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb15-19" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">&quot;dPCintra&quot;</span></span>
-<span id="cb15-20"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb15-20" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb15-21"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb15-21" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb15-22"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb15-22" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">&quot;right&quot;</span>,</span>
-<span id="cb15-23"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb15-23" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)</span>
-<span id="cb15-24"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb15-24" tabindex="-1"></a>  )</span></code></pre></div>
-<p><img src="05-Priorizacion_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Calcular los intervalos de Jenks para strength</span></span>
+<span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu">classInt</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html">classIntervals</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">dPCintra</span>, n <span class="op">=</span> <span class="fl">9</span>, style <span class="op">=</span> <span class="st">"jenks"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
+<span><span class="va">PC</span> <span class="op">&lt;-</span> <span class="va">test</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>dPC_q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/cut.html">cut</a></span><span class="op">(</span><span class="va">dPCintra</span>,</span>
+<span>                     breaks <span class="op">=</span> <span class="va">breaks</span><span class="op">$</span><span class="va">brks</span>,</span>
+<span>                     include.lowest <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                     dig.lab <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span>  </span>
+<span></span>
+<span><span class="co"># Graficar en ggplot2 usando las clases Jenks</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paisaje</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">PC</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">dPC_q</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"RdYlGn"</span>, direction <span class="op">=</span> <span class="fl">1</span>, name <span class="op">=</span> <span class="st">"dPCintra (jenks)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"dPCintra"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"dPCintra"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="05-Priorizacion_files/figure-html/unnamed-chunk-16-1.png" width="672"></div>
 <p>Fracción flux:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb16-1" tabindex="-1"></a><span class="co"># Calcular los intervalos de Jenks para strength</span></span>
-<span id="cb16-2"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb16-2" tabindex="-1"></a>breaks <span class="ot">&lt;-</span> classInt<span class="sc">::</span><span class="fu">classIntervals</span>(test<span class="sc">$</span>dPCflux, <span class="at">n =</span> <span class="dv">9</span>, <span class="at">style =</span> <span class="st">&quot;jenks&quot;</span>)</span>
-<span id="cb16-3"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb16-3" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb16-4" tabindex="-1"></a><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
-<span id="cb16-5"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb16-5" tabindex="-1"></a>PC <span class="ot">&lt;-</span> test <span class="sc">%&gt;%</span></span>
-<span id="cb16-6"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb16-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dPC_q =</span> <span class="fu">cut</span>(dPCflux,</span>
-<span id="cb16-7"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb16-7" tabindex="-1"></a>                     <span class="at">breaks =</span> breaks<span class="sc">$</span>brks,</span>
-<span id="cb16-8"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb16-8" tabindex="-1"></a>                     <span class="at">include.lowest =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb16-9"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb16-9" tabindex="-1"></a>                     <span class="at">dig.lab =</span> <span class="dv">5</span>))  </span>
-<span id="cb16-10"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb16-10" tabindex="-1"></a></span>
-<span id="cb16-11"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb16-11" tabindex="-1"></a><span class="co"># Graficar en ggplot2 usando las clases Jenks</span></span>
-<span id="cb16-12"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb16-12" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span>  </span>
-<span id="cb16-13"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb16-13" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> paisaje, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
-<span id="cb16-14"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb16-14" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> PC, <span class="fu">aes</span>(<span class="at">fill =</span> dPC_q), <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">size =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb16-15"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb16-15" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;RdYlGn&quot;</span>, <span class="at">direction =</span> <span class="dv">1</span>, <span class="at">name =</span> <span class="st">&quot;dPCflux (jenks)&quot;</span>) <span class="sc">+</span></span>
-<span id="cb16-16"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb16-16" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb16-17"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb16-17" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb16-18"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb16-18" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;dPCflux&quot;</span>,</span>
-<span id="cb16-19"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb16-19" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">&quot;dPCflux&quot;</span></span>
-<span id="cb16-20"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb16-20" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb16-21"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb16-21" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb16-22"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb16-22" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">&quot;right&quot;</span>,</span>
-<span id="cb16-23"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb16-23" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)</span>
-<span id="cb16-24"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb16-24" tabindex="-1"></a>  )</span></code></pre></div>
-<p><img src="05-Priorizacion_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Calcular los intervalos de Jenks para strength</span></span>
+<span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu">classInt</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html">classIntervals</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">dPCflux</span>, n <span class="op">=</span> <span class="fl">9</span>, style <span class="op">=</span> <span class="st">"jenks"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
+<span><span class="va">PC</span> <span class="op">&lt;-</span> <span class="va">test</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>dPC_q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/cut.html">cut</a></span><span class="op">(</span><span class="va">dPCflux</span>,</span>
+<span>                     breaks <span class="op">=</span> <span class="va">breaks</span><span class="op">$</span><span class="va">brks</span>,</span>
+<span>                     include.lowest <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                     dig.lab <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span>  </span>
+<span></span>
+<span><span class="co"># Graficar en ggplot2 usando las clases Jenks</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paisaje</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">PC</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">dPC_q</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"RdYlGn"</span>, direction <span class="op">=</span> <span class="fl">1</span>, name <span class="op">=</span> <span class="st">"dPCflux (jenks)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"dPCflux"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"dPCflux"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="05-Priorizacion_files/figure-html/unnamed-chunk-17-1.png" width="672"></div>
 <p>Fracción connector:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb17-1" tabindex="-1"></a><span class="co"># Calcular los intervalos de Jenks para strength</span></span>
-<span id="cb17-2"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb17-2" tabindex="-1"></a>breaks <span class="ot">&lt;-</span> classInt<span class="sc">::</span><span class="fu">classIntervals</span>(test<span class="sc">$</span>dPCconnector, <span class="at">n =</span> <span class="dv">9</span>, <span class="at">style =</span> <span class="st">&quot;jenks&quot;</span>)</span>
-<span id="cb17-3"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb17-3" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb17-4" tabindex="-1"></a><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
-<span id="cb17-5"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb17-5" tabindex="-1"></a>PC <span class="ot">&lt;-</span> test <span class="sc">%&gt;%</span></span>
-<span id="cb17-6"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb17-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dPC_q =</span> <span class="fu">cut</span>(dPCconnector,</span>
-<span id="cb17-7"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb17-7" tabindex="-1"></a>                     <span class="at">breaks =</span> breaks<span class="sc">$</span>brks,</span>
-<span id="cb17-8"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb17-8" tabindex="-1"></a>                     <span class="at">include.lowest =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb17-9"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb17-9" tabindex="-1"></a>                     <span class="at">dig.lab =</span> <span class="dv">5</span>))  </span>
-<span id="cb17-10"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb17-10" tabindex="-1"></a></span>
-<span id="cb17-11"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb17-11" tabindex="-1"></a><span class="co"># Graficar en ggplot2 usando las clases Jenks</span></span>
-<span id="cb17-12"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb17-12" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span>  </span>
-<span id="cb17-13"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb17-13" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> paisaje, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
-<span id="cb17-14"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb17-14" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> PC, <span class="fu">aes</span>(<span class="at">fill =</span> dPC_q), <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">size =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb17-15"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb17-15" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;RdYlGn&quot;</span>, <span class="at">direction =</span> <span class="dv">1</span>, <span class="at">name =</span> <span class="st">&quot;dPCconnector (jenks)&quot;</span>) <span class="sc">+</span></span>
-<span id="cb17-16"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb17-16" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb17-17"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb17-17" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb17-18"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb17-18" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;dPCconnector&quot;</span>,</span>
-<span id="cb17-19"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb17-19" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">&quot;dPCconnector&quot;</span></span>
-<span id="cb17-20"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb17-20" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb17-21"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb17-21" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb17-22"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb17-22" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">&quot;right&quot;</span>,</span>
-<span id="cb17-23"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb17-23" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)</span>
-<span id="cb17-24"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb17-24" tabindex="-1"></a>  )</span></code></pre></div>
-<p><img src="05-Priorizacion_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Calcular los intervalos de Jenks para strength</span></span>
+<span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu">classInt</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html">classIntervals</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">dPCconnector</span>, n <span class="op">=</span> <span class="fl">9</span>, style <span class="op">=</span> <span class="st">"jenks"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
+<span><span class="va">PC</span> <span class="op">&lt;-</span> <span class="va">test</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>dPC_q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/cut.html">cut</a></span><span class="op">(</span><span class="va">dPCconnector</span>,</span>
+<span>                     breaks <span class="op">=</span> <span class="va">breaks</span><span class="op">$</span><span class="va">brks</span>,</span>
+<span>                     include.lowest <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                     dig.lab <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span>  </span>
+<span></span>
+<span><span class="co"># Graficar en ggplot2 usando las clases Jenks</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paisaje</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">PC</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">dPC_q</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"RdYlGn"</span>, direction <span class="op">=</span> <span class="fl">1</span>, name <span class="op">=</span> <span class="st">"dPCconnector (jenks)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"dPCconnector"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"dPCconnector"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="05-Priorizacion_files/figure-html/unnamed-chunk-18-1.png" width="672"></div>
 <p><strong>Índice de Conectividad Compuesto (CCI<sub>f</sub>).</strong></p>
 <p>No olvidemos que es una herramienta para priorizar cada parche focal en función de su contribución individual a la conectividad en la red de parches f y thp (dPC<sub>f</sub>) y la conectividad del paisaje de toda la red (PC<sub>f</sub>). En ese sentido, los parches con valores CCI más altos se encuentran en un paisaje bien conectado y su contribución a la conectividad se considera importante:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb18-1" tabindex="-1"></a><span class="co"># Calcular los intervalos de Jenks para strength</span></span>
-<span id="cb18-2"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb18-2" tabindex="-1"></a>breaks <span class="ot">&lt;-</span> classInt<span class="sc">::</span><span class="fu">classIntervals</span>(test<span class="sc">$</span>IComp, <span class="at">n =</span> <span class="dv">9</span>, <span class="at">style =</span> <span class="st">&quot;jenks&quot;</span>)</span>
-<span id="cb18-3"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb18-3" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb18-4" tabindex="-1"></a><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
-<span id="cb18-5"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb18-5" tabindex="-1"></a>PC <span class="ot">&lt;-</span> test <span class="sc">%&gt;%</span></span>
-<span id="cb18-6"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb18-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dPC_q =</span> <span class="fu">cut</span>(IComp,</span>
-<span id="cb18-7"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb18-7" tabindex="-1"></a>                     <span class="at">breaks =</span> breaks<span class="sc">$</span>brks,</span>
-<span id="cb18-8"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb18-8" tabindex="-1"></a>                     <span class="at">include.lowest =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb18-9"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb18-9" tabindex="-1"></a>                     <span class="at">dig.lab =</span> <span class="dv">5</span>))  </span>
-<span id="cb18-10"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb18-10" tabindex="-1"></a></span>
-<span id="cb18-11"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb18-11" tabindex="-1"></a><span class="co"># Graficar en ggplot2 usando las clases Jenks</span></span>
-<span id="cb18-12"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb18-12" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span>  </span>
-<span id="cb18-13"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb18-13" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> paisaje, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
-<span id="cb18-14"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb18-14" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> PC, <span class="fu">aes</span>(<span class="at">fill =</span> dPC_q), <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">size =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb18-15"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb18-15" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;RdYlGn&quot;</span>, <span class="at">direction =</span> <span class="dv">1</span>, <span class="at">name =</span> <span class="st">&quot;IComp (jenks)&quot;</span>) <span class="sc">+</span></span>
-<span id="cb18-16"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb18-16" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb18-17"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb18-17" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb18-18"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb18-18" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Índice de Conectividad Compuesto&quot;</span>,</span>
-<span id="cb18-19"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb18-19" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">&quot;IComp&quot;</span></span>
-<span id="cb18-20"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb18-20" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb18-21"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb18-21" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb18-22"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb18-22" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">&quot;right&quot;</span>,</span>
-<span id="cb18-23"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb18-23" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)</span>
-<span id="cb18-24"><a href="prioridades-de-conservación-y-restauración-con-mk_focal_nodes.html#cb18-24" tabindex="-1"></a>  )</span></code></pre></div>
-<p><img src="05-Priorizacion_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Calcular los intervalos de Jenks para strength</span></span>
+<span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu">classInt</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html">classIntervals</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">IComp</span>, n <span class="op">=</span> <span class="fl">9</span>, style <span class="op">=</span> <span class="st">"jenks"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
+<span><span class="va">PC</span> <span class="op">&lt;-</span> <span class="va">test</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>dPC_q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/cut.html">cut</a></span><span class="op">(</span><span class="va">IComp</span>,</span>
+<span>                     breaks <span class="op">=</span> <span class="va">breaks</span><span class="op">$</span><span class="va">brks</span>,</span>
+<span>                     include.lowest <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                     dig.lab <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span>  </span>
+<span></span>
+<span><span class="co"># Graficar en ggplot2 usando las clases Jenks</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paisaje</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">PC</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">dPC_q</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"RdYlGn"</span>, direction <span class="op">=</span> <span class="fl">1</span>, name <span class="op">=</span> <span class="st">"IComp (jenks)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Índice de Conectividad Compuesto"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"IComp"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="05-Priorizacion_files/figure-html/unnamed-chunk-19-1.png" width="672"></div>
 </div>
-  </main>
-
-  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="On this page">
-      <h2>On this page</h2>
-      <div id="book-on-this-page"></div>
+  <div class="chapter-nav">
+<div class="prev"><a href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html"><span class="header-section-number">6</span> Prioridades de Restauración con MK_dPCIIC()</a></div>
+<div class="next"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html"><span class="header-section-number">8</span> Prioridad de enlaces con MK_dPCIIC_links()</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#prioridades-de-conservaci%C3%B3n-y-restauraci%C3%B3n-con-mk_focal_nodes"><span class="header-section-number">7</span> Prioridades de conservación y restauración con MK_Focal_nodes()</a></li></ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-          <li><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="#">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/OscarGOGO/Makurhini_manual_esp/blob/master/05-Priorizacion.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/OscarGOGO/Makurhini_manual_esp/edit/master/05-Priorizacion.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
-      </div>
+</div>
     </nav>
-  </div>
+</div>
 
 </div>
 </div> <!-- .container -->
 
-<footer class="bg-primary text-light mt-5">
-  <div class="container"><div class="row">
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
     <p>"<strong>Manual de uso de Makurhini</strong>" was written by Oscar Godínez Gómez. It was last built on 2025-07-30.</p>
@@ -412,8 +409,5 @@
 
 </div></div>
 </footer>
-
-
 </body>
-
 </html>

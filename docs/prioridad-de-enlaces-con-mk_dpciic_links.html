@@ -1,57 +1,36 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <title>Chapter 7 Prioridad de enlaces con MK_dPCIIC_links() | Manual de uso de Makurhini</title>
-
-    <meta name="author" content="Oscar Godínez Gómez" />
-  
-   <meta name="description" content="En este libro de prueba se documenta parte del backend de Biodiversidades" />
-   <meta name="generator" content="placeholder" />
-  <meta property="og:title" content="Chapter 7 Prioridad de enlaces con MK_dPCIIC_links() | Manual de uso de Makurhini" />
-  <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://oscargogo.github.io/Makurhini_manual_esp/" />
-  <meta property="og:image" content="https://oscargogo.github.io/Makurhini_manual_esp/LOGO_MAKHURINI.png" />
-  <meta property="og:description" content="En este libro de prueba se documenta parte del backend de Biodiversidades" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 Prioridad de enlaces con MK_dPCIIC_links() | Manual de uso de Makurhini" />
-  
-  <meta name="twitter:description" content="En este libro de prueba se documenta parte del backend de Biodiversidades" />
-  <meta name="twitter:image" content="https://oscargogo.github.io/Makurhini_manual_esp/LOGO_MAKHURINI.png" />
-  <!-- JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script>
-  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
-    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
-    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
-    <script src="libs/bs3compat-0.9.0/transition.js"></script>
-    <script src="libs/bs3compat-0.9.0/tabs.js"></script>
-    <script src="libs/bs3compat-0.9.0/bs3compat.js"></script>
-    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
-    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script>
-
-  <!-- CSS -->
-  <style type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 8 Prioridad de enlaces con MK_dPCIIC_links() | Manual de uso de Makurhini</title>
+<meta name="author" content="Oscar Godínez Gómez">
+<meta name="description" content="Esta función calcula el índice dPC o dIIC para estimar la importancia de los enlaces para la conservación y la restauración. Calcula la contribución de cada enlace individual para mantener (modo:...">
+<meta name="generator" content="bookdown 0.43 with bs4_book()">
+<meta property="og:title" content="Chapter 8 Prioridad de enlaces con MK_dPCIIC_links() | Manual de uso de Makurhini">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://oscargogo.github.io/Makurhini_manual_esp/prioridad-de-enlaces-con-mk_dpciic_links.html">
+<meta property="og:image" content="https://oscargogo.github.io/Makurhini_manual_esp/LOGO_MAKHURINI.png">
+<meta property="og:description" content="Esta función calcula el índice dPC o dIIC para estimar la importancia de los enlaces para la conservación y la restauración. Calcula la contribución de cada enlace individual para mantener (modo:...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 8 Prioridad de enlaces con MK_dPCIIC_links() | Manual de uso de Makurhini">
+<meta name="twitter:description" content="Esta función calcula el índice dPC o dIIC para estimar la importancia de los enlaces para la conservación y la restauración. Calcula la contribución de cada enlace individual para mantener (modo:...">
+<meta name="twitter:image" content="https://oscargogo.github.io/Makurhini_manual_esp/LOGO_MAKHURINI.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
-      <link rel="stylesheet" href="style.css" />
-  
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body data-spy="scroll" data-target="#toc">
 
 <div class="container-fluid">
 <div class="row">
-  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
-    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
@@ -63,331 +42,364 @@
     <div id="main-nav" class="collapse-lg">
       <form role="search">
         <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-      </form>
+</form>
 
-      <nav aria-label="Table of contents">
-        <h2>Table of contents</h2>
-        <div id="book-toc"></div>
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Makurhini</a></li>
+<li><a class="" href="instalaci%C3%B3n-del-paquete-makurhini.html"><span class="header-section-number">1</span> Instalación del paquete Makurhini</a></li>
+<li><a class="" href="estad%C3%ADsticas-de-fragmentaci%C3%B3n-del-paisaje.html"><span class="header-section-number">2</span> Estadísticas de fragmentación del paisaje</a></li>
+<li><a class="" href="%C3%ADndices-de-centralidad.html"><span class="header-section-number">3</span> Índices de centralidad</a></li>
+<li><a class="" href="kernel-de-dispersi%C3%B3n.html"><span class="header-section-number">4</span> Kernel de dispersión</a></li>
+<li><a class="" href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html"><span class="header-section-number">5</span> índice integral de conectividad y Probabilidad de conectividad</a></li>
+<li><a class="" href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html"><span class="header-section-number">6</span> Prioridades de Restauración con MK_dPCIIC()</a></li>
+<li><a class="" href="prioridades-de-conservaci%C3%B3n-y-restauraci%C3%B3n-con-mk_focal_nodes.html"><span class="header-section-number">7</span> Prioridades de conservación y restauración con MK_Focal_nodes()</a></li>
+<li><a class="active" href="prioridad-de-enlaces-con-mk_dpciic_links.html"><span class="header-section-number">8</span> Prioridad de enlaces con MK_dPCIIC_links()</a></li>
+</ul>
 
         <div class="book-extra">
-          <p><a id="book-repo" href="#">View book source <i class="fab fa-github"></i></a></li></p>
+          <p><a id="book-repo" href="https://github.com/OscarGOGO/Makurhini_manual_esp">View book source <i class="fab fa-github"></i></a></p>
         </div>
       </nav>
-    </div>
-  </header>
-
-  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
-<div id="prioridad-de-enlaces-con-mk_dpciic_links" class="section level1" number="7">
-<h1><span class="header-section-number">Chapter 7</span> Prioridad de enlaces con MK_dPCIIC_links()</h1>
-<p>Esta función calcula el índice dPC o dIIC para estimar la importancia de los enlaces para la conservación y la restauración. Calcula la contribución de cada enlace individual para mantener (modo: eliminación de enlaces) o mejorar (modo: cambio de enlaces) la conectividad general bajo uno o varios umbrales de distancia.</p>
-<div id="rutas-de-menor-costo-corredores-potenciales" class="section level2" number="7.1">
-<h2><span class="header-section-number">7.1</span> Rutas de menor costo (corredores potenciales)</h2>
-<p>Para realizar un ejemplo, estimemos los corredores potenciales entre 20 de nuestros parches utilizando el raster de resistencia que usamos en ejemplos previos.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb19-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2</span>) <span class="co">#para seleccionar siempre los mismos de forma aleatoria</span></span>
-<span id="cb19-2"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb19-2" tabindex="-1"></a>parches_ejemplo <span class="ot">&lt;-</span> habitat_nodes[<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(habitat_nodes), <span class="dv">20</span>),]</span>
-<span id="cb19-3"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb19-3" tabindex="-1"></a>parches_ejemplo<span class="sc">$</span>Id <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span> <span class="co">#Asignamos un nuevo id</span></span></code></pre></div>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb20-1" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
-<span id="cb20-2"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb20-2" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;resistance_matrix&quot;</span>, <span class="at">package =</span> <span class="st">&quot;Makurhini&quot;</span>)</span>
-<span id="cb20-3"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb20-3" tabindex="-1"></a></span>
-<span id="cb20-4"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb20-4" tabindex="-1"></a>raster_map <span class="ot">&lt;-</span> <span class="fu">as</span>(resistance_matrix, <span class="st">&quot;SpatialPixelsDataFrame&quot;</span>)</span>
-<span id="cb20-5"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb20-5" tabindex="-1"></a>raster_map <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(raster_map)</span>
-<span id="cb20-6"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb20-6" tabindex="-1"></a><span class="fu">colnames</span>(raster_map) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;value&quot;</span>, <span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>)</span>
-<span id="cb20-7"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb20-7" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span>  </span>
-<span id="cb20-8"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb20-8" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">data =</span> raster_map, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">fill =</span> value), <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span> </span>
-<span id="cb20-9"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb20-9" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> paisaje, <span class="fu">aes</span>(<span class="at">color =</span> <span class="st">&quot;Study area&quot;</span>), <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
-<span id="cb20-10"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb20-10" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> parches_ejemplo, <span class="fu">aes</span>(<span class="at">color =</span> <span class="st">&quot;Habitat nodes&quot;</span>), <span class="at">fill =</span> <span class="st">&quot;forestgreen&quot;</span>, <span class="at">linewidth =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb20-11"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb20-11" tabindex="-1"></a>  <span class="fu">scale_fill_gradientn</span>(<span class="at">colors =</span> <span class="fu">c</span>(<span class="st">&quot;#000004FF&quot;</span>, <span class="st">&quot;#1B0C42FF&quot;</span>, <span class="st">&quot;#4B0C6BFF&quot;</span>, <span class="st">&quot;#781C6DFF&quot;</span>,</span>
-<span id="cb20-12"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb20-12" tabindex="-1"></a>                                  <span class="st">&quot;#A52C60FF&quot;</span>, <span class="st">&quot;#CF4446FF&quot;</span>, <span class="st">&quot;#ED6925FF&quot;</span>, <span class="st">&quot;#FB9A06FF&quot;</span>,</span>
-<span id="cb20-13"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb20-13" tabindex="-1"></a>                                  <span class="st">&quot;#F7D03CFF&quot;</span>, <span class="st">&quot;#FCFFA4FF&quot;</span>))<span class="sc">+</span></span>
-<span id="cb20-14"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb20-14" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">name =</span> <span class="st">&quot;&quot;</span>, <span class="at">values =</span> <span class="st">&quot;black&quot;</span>)<span class="sc">+</span></span>
-<span id="cb20-15"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb20-15" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb20-16"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb20-16" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb20-17"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb20-17" tabindex="-1"></a>        <span class="at">axis.title.y =</span> <span class="fu">element_blank</span>())</span></code></pre></div>
-<p><img src="05-Priorizacion_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
 </div>
-<div id="eliminación-de-enlaces-link-removal" class="section level2" number="7.2">
-<h2><span class="header-section-number">7.2</span> Eliminación de enlaces (Link removal)</h2>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="prioridad-de-enlaces-con-mk_dpciic_links" class="section level1" number="8">
+<h1>
+<span class="header-section-number">8</span> Prioridad de enlaces con MK_dPCIIC_links()<a class="anchor" aria-label="anchor" href="#prioridad-de-enlaces-con-mk_dpciic_links"><i class="fas fa-link"></i></a>
+</h1>
+<p>Esta función calcula el índice dPC o dIIC para estimar la importancia de los enlaces para la conservación y la restauración. Calcula la contribución de cada enlace individual para mantener (modo: eliminación de enlaces) o mejorar (modo: cambio de enlaces) la conectividad general bajo uno o varios umbrales de distancia.</p>
+<div id="rutas-de-menor-costo-corredores-potenciales" class="section level2" number="8.1">
+<h2>
+<span class="header-section-number">8.1</span> Rutas de menor costo (corredores potenciales)<a class="anchor" aria-label="anchor" href="#rutas-de-menor-costo-corredores-potenciales"><i class="fas fa-link"></i></a>
+</h2>
+<p>Para realizar un ejemplo, estimemos los corredores potenciales entre 20 de nuestros parches utilizando el raster de resistencia que usamos en ejemplos previos.</p>
+<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span> <span class="co">#para seleccionar siempre los mismos de forma aleatoria</span></span>
+<span><span class="va">parches_ejemplo</span> <span class="op">&lt;-</span> <span class="va">habitat_nodes</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/dimensions.html">nrow</a></span><span class="op">(</span><span class="va">habitat_nodes</span><span class="op">)</span>, <span class="fl">20</span><span class="op">)</span>,<span class="op">]</span></span>
+<span><span class="va">parches_ejemplo</span><span class="op">$</span><span class="va">Id</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">20</span> <span class="co">#Asignamos un nuevo id</span></span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/">terra</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"resistance_matrix"</span>, package <span class="op">=</span> <span class="st">"Makurhini"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">raster_map</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/methods/as.html">as</a></span><span class="op">(</span><span class="va">resistance_matrix</span>, <span class="st">"SpatialPixelsDataFrame"</span><span class="op">)</span></span>
+<span><span class="va">raster_map</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">raster_map</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">raster_map</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"value"</span>, <span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_tile.html">geom_tile</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">raster_map</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span>, y <span class="op">=</span> <span class="va">y</span>, fill <span class="op">=</span> <span class="va">value</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">0.8</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paisaje</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"Study area"</span><span class="op">)</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">parches_ejemplo</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"Habitat nodes"</span><span class="op">)</span>, fill <span class="op">=</span> <span class="st">"forestgreen"</span>, linewidth <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">scale_fill_gradientn</a></span><span class="op">(</span>colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#000004FF"</span>, <span class="st">"#1B0C42FF"</span>, <span class="st">"#4B0C6BFF"</span>, <span class="st">"#781C6DFF"</span>,</span>
+<span>                                  <span class="st">"#A52C60FF"</span>, <span class="st">"#CF4446FF"</span>, <span class="st">"#ED6925FF"</span>, <span class="st">"#FB9A06FF"</span>,</span>
+<span>                                  <span class="st">"#F7D03CFF"</span>, <span class="st">"#FCFFA4FF"</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">""</span>, values <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.title.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>        axis.title.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="05-Priorizacion_files/figure-html/unnamed-chunk-22-1.png" width="672"></div>
+</div>
+<div id="eliminación-de-enlaces-link-removal" class="section level2" number="8.2">
+<h2>
+<span class="header-section-number">8.2</span> Eliminación de enlaces (Link removal)<a class="anchor" aria-label="anchor" href="#eliminaci%C3%B3n-de-enlaces-link-removal"><i class="fas fa-link"></i></a>
+</h2>
 <p>Si <code>removal = TRUE</code>, la función elimina uno por uno cada uno de los enlaces existentes en la red del paisaje y calcula el impacto de esa pérdida de enlace en la conectividad del paisaje con las métricas dPC o dIIC. Este modo es útil para identificar los enlaces prioritarios que se deben conservar: aquellos con la mayor contribución a la conectividad general del paisaje (valor dPC o dIIC más alto).</p>
 <p>En este ejemplo, estimaremos algunas rutas de menor costo entre pares de parches, estas rutas representan corredores potenciales.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb21-1" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
-<span id="cb21-2"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb21-2" tabindex="-1"></a><span class="fu">library</span>(gdistance)</span>
-<span id="cb21-3"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb21-3" tabindex="-1"></a><span class="co">#A los valores NA les asignamos un alto valor para evitar que pasen por ahí</span></span>
-<span id="cb21-4"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb21-4" tabindex="-1"></a>resistance_matrix[<span class="fu">is.na</span>(resistance_matrix)] <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb21-5"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb21-5" tabindex="-1"></a></span>
-<span id="cb21-6"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb21-6" tabindex="-1"></a><span class="co">#Estimamos la matriz de transición</span></span>
-<span id="cb21-7"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb21-7" tabindex="-1"></a>tr <span class="ot">&lt;-</span> <span class="fu">transition</span>(resistance_matrix, <span class="cf">function</span>(x) <span class="dv">1</span><span class="sc">/</span><span class="fu">mean</span>(x), <span class="dv">8</span>)</span>
-<span id="cb21-8"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb21-8" tabindex="-1"></a><span class="co">#Hacemos una corrección para los movimientos en diagonal</span></span>
-<span id="cb21-9"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb21-9" tabindex="-1"></a>tr <span class="ot">&lt;-</span> <span class="fu">geoCorrection</span>(tr, <span class="at">type =</span> <span class="st">&quot;c&quot;</span>) </span>
-<span id="cb21-10"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb21-10" tabindex="-1"></a></span>
-<span id="cb21-11"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb21-11" tabindex="-1"></a><span class="co">#Estimamos el centroide de nuestros parches</span></span>
-<span id="cb21-12"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb21-12" tabindex="-1"></a>centroides <span class="ot">&lt;-</span> <span class="fu">st_centroid</span>(parches_ejemplo, <span class="at">of_largest_polygon =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb21-13"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb21-13" tabindex="-1"></a>centroides <span class="ot">&lt;-</span> <span class="fu">st_coordinates</span>(centroides)</span>
-<span id="cb21-14"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb21-14" tabindex="-1"></a></span>
-<span id="cb21-15"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb21-15" tabindex="-1"></a><span class="co">#Loop para estimar corredores entre parches</span></span>
-<span id="cb21-16"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb21-16" tabindex="-1"></a>rutas_list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb21-17"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb21-17" tabindex="-1"></a>counter <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb21-18"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb21-18" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>(<span class="fu">nrow</span>(centroides) <span class="sc">-</span> <span class="dv">1</span>)) {</span>
-<span id="cb21-19"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb21-19" tabindex="-1"></a>  <span class="co">#cat(paste0(i, &quot; de &quot;, nrow(centroides), &quot;\r&quot;))</span></span>
-<span id="cb21-20"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb21-20" tabindex="-1"></a>  counter <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb21-21"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb21-21" tabindex="-1"></a>  rutas <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>((i <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">:</span><span class="fu">nrow</span>(centroides), <span class="cf">function</span>(j){</span>
-<span id="cb21-22"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb21-22" tabindex="-1"></a>    <span class="cf">if</span>(counter <span class="sc">&lt;=</span> <span class="fu">nrow</span>(centroides)){</span>
-<span id="cb21-23"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb21-23" tabindex="-1"></a>      ruta <span class="ot">&lt;-</span> <span class="fu">shortestPath</span>(tr, centroides[i,], centroides[j,], <span class="at">output =</span> <span class="st">&quot;SpatialLines&quot;</span>)</span>
-<span id="cb21-24"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb21-24" tabindex="-1"></a>      ruta <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(ruta); <span class="fu">st_crs</span>(ruta) <span class="ot">&lt;-</span> <span class="fu">st_crs</span>(habitat_nodes)</span>
-<span id="cb21-25"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb21-25" tabindex="-1"></a>      ruta<span class="sc">$</span>from <span class="ot">&lt;-</span>i ; ruta<span class="sc">$</span>to <span class="ot">&lt;-</span> j</span>
-<span id="cb21-26"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb21-26" tabindex="-1"></a>      <span class="fu">return</span>(ruta)</span>
-<span id="cb21-27"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb21-27" tabindex="-1"></a>    }</span>
-<span id="cb21-28"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb21-28" tabindex="-1"></a>  })</span>
-<span id="cb21-29"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb21-29" tabindex="-1"></a>  rutas_list[[i]] <span class="ot">&lt;-</span> rutas</span>
-<span id="cb21-30"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb21-30" tabindex="-1"></a>}</span>
-<span id="cb21-31"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb21-31" tabindex="-1"></a></span>
-<span id="cb21-32"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb21-32" tabindex="-1"></a>rutas_mc <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, rutas_list)</span></code></pre></div>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb22-1" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span>  </span>
-<span id="cb22-2"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb22-2" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> paisaje, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
-<span id="cb22-3"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb22-3" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> rutas_mc, <span class="fu">aes</span>(<span class="at">color =</span> <span class="st">&quot;corredores&quot;</span>), <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">linewidth =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb22-4"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb22-4" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> parches_ejemplo, <span class="fu">aes</span>(<span class="at">color =</span> <span class="st">&quot;Habitat nodes&quot;</span>), </span>
-<span id="cb22-5"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb22-5" tabindex="-1"></a>          <span class="at">fill =</span> <span class="st">&quot;forestgreen&quot;</span>, <span class="at">color =</span> <span class="cn">NA</span>, <span class="at">linewidth =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb22-6"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb22-6" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb22-7"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb22-7" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb22-8"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb22-8" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Corredores potenciales&quot;</span></span>
-<span id="cb22-9"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb22-9" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb22-10"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb22-10" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb22-11"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb22-11" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)</span>
-<span id="cb22-12"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb22-12" tabindex="-1"></a>  )</span></code></pre></div>
-<p><img src="05-Priorizacion_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
-<p>Ahora aplicamos la función <code>MK_dPCIIC_links()</code>, pero antes exploremos una nueva variante de estimar el umbral de distancia cuando usamos una resistencia.</p>
+<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://purrr.tidyverse.org/">purrr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://AgrDataSci.github.io/gdistance/">gdistance</a></span><span class="op">)</span></span>
+<span><span class="co">#A los valores NA les asignamos un alto valor para evitar que pasen por ahí</span></span>
+<span><span class="va">resistance_matrix</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">resistance_matrix</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">1000</span></span>
+<span></span>
+<span><span class="co">#Estimamos la matriz de transición</span></span>
+<span><span class="va">tr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://AgrDataSci.github.io/gdistance/reference/transition.html">transition</a></span><span class="op">(</span><span class="va">resistance_matrix</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fl">1</span><span class="op">/</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/summarize-generics.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fl">8</span><span class="op">)</span></span>
+<span><span class="co">#Hacemos una corrección para los movimientos en diagonal</span></span>
+<span><span class="va">tr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://AgrDataSci.github.io/gdistance/reference/geoCorrection.html">geoCorrection</a></span><span class="op">(</span><span class="va">tr</span>, type <span class="op">=</span> <span class="st">"c"</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="co">#Estimamos el centroide de nuestros parches</span></span>
+<span><span class="va">centroides</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_unary.html">st_centroid</a></span><span class="op">(</span><span class="va">parches_ejemplo</span>, of_largest_polygon <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">centroides</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_coordinates.html">st_coordinates</a></span><span class="op">(</span><span class="va">centroides</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#Loop para estimar corredores entre parches</span></span>
+<span><span class="va">rutas_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">counter</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">centroides</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="co">#cat(paste0(i, " de ", nrow(centroides), "\r"))</span></span>
+<span>  <span class="va">counter</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
+<span>  <span class="va">rutas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map_dfr.html">map_dfr</a></span><span class="op">(</span><span class="op">(</span><span class="va">i</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">centroides</span><span class="op">)</span>, <span class="kw">function</span><span class="op">(</span><span class="va">j</span><span class="op">)</span><span class="op">{</span></span>
+<span>    <span class="kw">if</span><span class="op">(</span><span class="va">counter</span> <span class="op">&lt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">centroides</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
+<span>      <span class="va">ruta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://AgrDataSci.github.io/gdistance/reference/shortestPath.html">shortestPath</a></span><span class="op">(</span><span class="va">tr</span>, <span class="va">centroides</span><span class="op">[</span><span class="va">i</span>,<span class="op">]</span>, <span class="va">centroides</span><span class="op">[</span><span class="va">j</span>,<span class="op">]</span>, output <span class="op">=</span> <span class="st">"SpatialLines"</span><span class="op">)</span></span>
+<span>      <span class="va">ruta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html">st_as_sf</a></span><span class="op">(</span><span class="va">ruta</span><span class="op">)</span>; <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_crs.html">st_crs</a></span><span class="op">(</span><span class="va">ruta</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_crs.html">st_crs</a></span><span class="op">(</span><span class="va">habitat_nodes</span><span class="op">)</span></span>
+<span>      <span class="va">ruta</span><span class="op">$</span><span class="va">from</span> <span class="op">&lt;-</span><span class="va">i</span> ; <span class="va">ruta</span><span class="op">$</span><span class="va">to</span> <span class="op">&lt;-</span> <span class="va">j</span></span>
+<span>      <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">ruta</span><span class="op">)</span></span>
+<span>    <span class="op">}</span></span>
+<span>  <span class="op">}</span><span class="op">)</span></span>
+<span>  <span class="va">rutas_list</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">rutas</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">rutas_mc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/do.call.html">do.call</a></span><span class="op">(</span><span class="va">rbind</span>, <span class="va">rutas_list</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paisaje</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">rutas_mc</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"corredores"</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, linewidth <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">parches_ejemplo</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"Habitat nodes"</span><span class="op">)</span>, </span>
+<span>          fill <span class="op">=</span> <span class="st">"forestgreen"</span>, color <span class="op">=</span> <span class="cn">NA</span>, linewidth <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Corredores potenciales"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="05-Priorizacion_files/figure-html/unnamed-chunk-25-1.png" width="672"></div>
+<p>Ahora aplicamos la función <code><a href="https://rdrr.io/pkg/Makurhini/man/MK_dPCIIC_links.html">MK_dPCIIC_links()</a></code>, pero antes exploremos una nueva variante de estimar el umbral de distancia cuando usamos una resistencia.</p>
 <p>Estimaremos la distancia efectiva promedio: media de la resistencia x dispersión De esta forma obtenemos una distancia costo.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb23-1" tabindex="-1"></a><span class="co">#Distancia efectiva promedio como umbral de distancia</span></span>
-<span id="cb23-2"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb23-2" tabindex="-1"></a>Effec_mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(resistance_matrix[], <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">*</span> <span class="dv">10000</span> <span class="co"># 10km</span></span>
-<span id="cb23-3"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb23-3" tabindex="-1"></a></span>
-<span id="cb23-4"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb23-4" tabindex="-1"></a><span class="co">#Aplicamos la función</span></span>
-<span id="cb23-5"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb23-5" tabindex="-1"></a>delta <span class="ot">&lt;-</span> <span class="fu">MK_dPCIIC_links</span>(<span class="at">nodes =</span> parches_ejemplo,</span>
-<span id="cb23-6"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb23-6" tabindex="-1"></a>                         <span class="at">attribute =</span> <span class="cn">NULL</span>,</span>
-<span id="cb23-7"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb23-7" tabindex="-1"></a>                         <span class="at">area_unit =</span> <span class="st">&quot;ha&quot;</span>,</span>
-<span id="cb23-8"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb23-8" tabindex="-1"></a>                         <span class="at">distance =</span> <span class="fu">list</span>(<span class="at">type =</span> <span class="st">&quot;least-cost&quot;</span>, </span>
-<span id="cb23-9"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb23-9" tabindex="-1"></a>                                         <span class="at">resistance =</span> resistance_matrix),</span>
-<span id="cb23-10"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb23-10" tabindex="-1"></a>                         <span class="at">removal =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb23-11"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb23-11" tabindex="-1"></a>                         <span class="at">metric =</span> <span class="st">&quot;PC&quot;</span>,</span>
-<span id="cb23-12"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb23-12" tabindex="-1"></a>                         <span class="at">probability =</span> <span class="fl">0.5</span>,</span>
-<span id="cb23-13"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb23-13" tabindex="-1"></a>                         <span class="at">distance_thresholds =</span> <span class="fu">round</span>(Effec_mean),</span>
-<span id="cb23-14"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb23-14" tabindex="-1"></a>                         <span class="at">parallel =</span> <span class="cn">NULL</span>,</span>
-<span id="cb23-15"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb23-15" tabindex="-1"></a>                         <span class="at">parallel_mode =</span> <span class="dv">0</span>,</span>
-<span id="cb23-16"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb23-16" tabindex="-1"></a>                         <span class="at">intern =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb23-17"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb23-17" tabindex="-1"></a><span class="co">#&gt; Estimating distances. This may take several minutes depending on the number of nodes and raster resolution</span></span>
-<span id="cb23-18"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb23-18" tabindex="-1"></a><span class="co">#&gt; Estimating PC link index. This may take several minutes depending on the number of nodes</span></span>
-<span id="cb23-19"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb23-19" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb23-20"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb23-20" tabindex="-1"></a><span class="co">#&gt; Done!</span></span>
-<span id="cb23-21"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb23-21" tabindex="-1"></a><span class="fu">head</span>(delta)</span>
-<span id="cb23-22"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb23-22" tabindex="-1"></a><span class="co">#&gt;   Id Source Destination dPC_removal</span></span>
-<span id="cb23-23"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb23-23" tabindex="-1"></a><span class="co">#&gt; 1  1      2           1   0.0000075</span></span>
-<span id="cb23-24"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb23-24" tabindex="-1"></a><span class="co">#&gt; 2  2      3           1   0.0000014</span></span>
-<span id="cb23-25"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb23-25" tabindex="-1"></a><span class="co">#&gt; 3  3      4           1   0.0000002</span></span>
-<span id="cb23-26"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb23-26" tabindex="-1"></a><span class="co">#&gt; 4  4      5           1   0.0170323</span></span>
-<span id="cb23-27"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb23-27" tabindex="-1"></a><span class="co">#&gt; 5  5      6           1   0.0000000</span></span>
-<span id="cb23-28"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb23-28" tabindex="-1"></a><span class="co">#&gt; 6  6      7           1   0.0000053</span></span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#Distancia efectiva promedio como umbral de distancia</span></span>
+<span><span class="va">Effec_mean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/summarize-generics.html">mean</a></span><span class="op">(</span><span class="va">resistance_matrix</span><span class="op">[</span><span class="op">]</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">*</span> <span class="fl">10000</span> <span class="co"># 10km</span></span>
+<span></span>
+<span><span class="co">#Aplicamos la función</span></span>
+<span><span class="va">delta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_dPCIIC_links.html">MK_dPCIIC_links</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">parches_ejemplo</span>,</span>
+<span>                         attribute <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                         area_unit <span class="op">=</span> <span class="st">"ha"</span>,</span>
+<span>                         distance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"least-cost"</span>, </span>
+<span>                                         resistance <span class="op">=</span> <span class="va">resistance_matrix</span><span class="op">)</span>,</span>
+<span>                         removal <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                         metric <span class="op">=</span> <span class="st">"PC"</span>,</span>
+<span>                         probability <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>                         distance_thresholds <span class="op">=</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/math-generics.html">round</a></span><span class="op">(</span><span class="va">Effec_mean</span><span class="op">)</span>,</span>
+<span>                         parallel <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                         parallel_mode <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>                         intern <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Estimating distances. This may take several minutes depending on the number of nodes and raster resolution</span></span>
+<span><span class="co">#&gt; Estimating PC link index. This may take several minutes depending on the number of nodes</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Done!</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">delta</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   Id Source Destination dPC_removal</span></span>
+<span><span class="co">#&gt; 1  1      2           1   0.0000075</span></span>
+<span><span class="co">#&gt; 2  2      3           1   0.0000014</span></span>
+<span><span class="co">#&gt; 3  3      4           1   0.0000002</span></span>
+<span><span class="co">#&gt; 4  4      5           1   0.0170323</span></span>
+<span><span class="co">#&gt; 5  5      6           1   0.0000000</span></span>
+<span><span class="co">#&gt; 6  6      7           1   0.0000053</span></span></code></pre></div>
 <p>Unir valores con mis corredores de interes:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb24-1" tabindex="-1"></a><span class="co">#Existen otras formas, pero crearé un nuevo ID</span></span>
-<span id="cb24-2"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb24-2" tabindex="-1"></a>delta<span class="sc">$</span>ID_nuevo <span class="ot">&lt;-</span> <span class="fu">paste0</span>(delta<span class="sc">$</span>Destination, <span class="st">&quot;_&quot;</span>, delta<span class="sc">$</span>Source)</span>
-<span id="cb24-3"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb24-3" tabindex="-1"></a></span>
-<span id="cb24-4"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb24-4" tabindex="-1"></a>rutas_mc<span class="sc">$</span>ID_nuevo <span class="ot">&lt;-</span> <span class="fu">paste0</span>(rutas_mc<span class="sc">$</span>from, <span class="st">&quot;_&quot;</span>, rutas_mc<span class="sc">$</span>to)</span>
-<span id="cb24-5"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb24-5" tabindex="-1"></a></span>
-<span id="cb24-6"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb24-6" tabindex="-1"></a><span class="co">#Aplicar merge</span></span>
-<span id="cb24-7"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb24-7" tabindex="-1"></a>rutas_mc <span class="ot">&lt;-</span> <span class="fu">merge</span>(rutas_mc, delta, <span class="at">by =</span> <span class="st">&quot;ID_nuevo&quot;</span>)</span>
-<span id="cb24-8"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb24-8" tabindex="-1"></a></span>
-<span id="cb24-9"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb24-9" tabindex="-1"></a>rutas_mc</span>
-<span id="cb24-10"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb24-10" tabindex="-1"></a><span class="co">#&gt; Simple feature collection with 190 features and 7 fields</span></span>
-<span id="cb24-11"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb24-11" tabindex="-1"></a><span class="co">#&gt; Geometry type: LINESTRING</span></span>
-<span id="cb24-12"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb24-12" tabindex="-1"></a><span class="co">#&gt; Dimension:     XY</span></span>
-<span id="cb24-13"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb24-13" tabindex="-1"></a><span class="co">#&gt; Bounding box:  xmin: -107336.4 ymin: 2082987 xmax: 176163.6 ymax: 2187987</span></span>
-<span id="cb24-14"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb24-14" tabindex="-1"></a><span class="co">#&gt; Projected CRS: NAD_1927_Albers</span></span>
-<span id="cb24-15"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb24-15" tabindex="-1"></a><span class="co">#&gt; First 10 features:</span></span>
-<span id="cb24-16"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb24-16" tabindex="-1"></a><span class="co">#&gt;    ID_nuevo from to Id Source Destination dPC_removal</span></span>
-<span id="cb24-17"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb24-17" tabindex="-1"></a><span class="co">#&gt; 1      1_10    1 10  9     10           1   0.0000045</span></span>
-<span id="cb24-18"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb24-18" tabindex="-1"></a><span class="co">#&gt; 2      1_11    1 11 10     11           1   0.0000467</span></span>
-<span id="cb24-19"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb24-19" tabindex="-1"></a><span class="co">#&gt; 3      1_12    1 12 11     12           1   0.0042806</span></span>
-<span id="cb24-20"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb24-20" tabindex="-1"></a><span class="co">#&gt; 4      1_13    1 13 12     13           1   0.0000011</span></span>
-<span id="cb24-21"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb24-21" tabindex="-1"></a><span class="co">#&gt; 5      1_14    1 14 13     14           1   0.0000199</span></span>
-<span id="cb24-22"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb24-22" tabindex="-1"></a><span class="co">#&gt; 6      1_15    1 15 14     15           1   0.0025181</span></span>
-<span id="cb24-23"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb24-23" tabindex="-1"></a><span class="co">#&gt; 7      1_16    1 16 15     16           1   0.0000013</span></span>
-<span id="cb24-24"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb24-24" tabindex="-1"></a><span class="co">#&gt; 8      1_17    1 17 16     17           1   0.0000000</span></span>
-<span id="cb24-25"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb24-25" tabindex="-1"></a><span class="co">#&gt; 9      1_18    1 18 17     18           1   0.0000010</span></span>
-<span id="cb24-26"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb24-26" tabindex="-1"></a><span class="co">#&gt; 10     1_19    1 19 18     19           1   0.0000000</span></span>
-<span id="cb24-27"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb24-27" tabindex="-1"></a><span class="co">#&gt;                              geom</span></span>
-<span id="cb24-28"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb24-28" tabindex="-1"></a><span class="co">#&gt; 1  LINESTRING (-77336.39 21694...</span></span>
-<span id="cb24-29"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb24-29" tabindex="-1"></a><span class="co">#&gt; 2  LINESTRING (-77336.39 21694...</span></span>
-<span id="cb24-30"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb24-30" tabindex="-1"></a><span class="co">#&gt; 3  LINESTRING (-77336.39 21694...</span></span>
-<span id="cb24-31"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb24-31" tabindex="-1"></a><span class="co">#&gt; 4  LINESTRING (-77336.39 21694...</span></span>
-<span id="cb24-32"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb24-32" tabindex="-1"></a><span class="co">#&gt; 5  LINESTRING (-77336.39 21694...</span></span>
-<span id="cb24-33"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb24-33" tabindex="-1"></a><span class="co">#&gt; 6  LINESTRING (-77336.39 21694...</span></span>
-<span id="cb24-34"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb24-34" tabindex="-1"></a><span class="co">#&gt; 7  LINESTRING (-77336.39 21694...</span></span>
-<span id="cb24-35"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb24-35" tabindex="-1"></a><span class="co">#&gt; 8  LINESTRING (-77336.39 21694...</span></span>
-<span id="cb24-36"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb24-36" tabindex="-1"></a><span class="co">#&gt; 9  LINESTRING (-77336.39 21694...</span></span>
-<span id="cb24-37"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb24-37" tabindex="-1"></a><span class="co">#&gt; 10 LINESTRING (-77336.39 21694...</span></span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#Existen otras formas, pero crearé un nuevo ID</span></span>
+<span><span class="va">delta</span><span class="op">$</span><span class="va">ID_nuevo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">delta</span><span class="op">$</span><span class="va">Destination</span>, <span class="st">"_"</span>, <span class="va">delta</span><span class="op">$</span><span class="va">Source</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">rutas_mc</span><span class="op">$</span><span class="va">ID_nuevo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">rutas_mc</span><span class="op">$</span><span class="va">from</span>, <span class="st">"_"</span>, <span class="va">rutas_mc</span><span class="op">$</span><span class="va">to</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#Aplicar merge</span></span>
+<span><span class="va">rutas_mc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/merge.html">merge</a></span><span class="op">(</span><span class="va">rutas_mc</span>, <span class="va">delta</span>, by <span class="op">=</span> <span class="st">"ID_nuevo"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">rutas_mc</span></span>
+<span><span class="co">#&gt; Simple feature collection with 190 features and 7 fields</span></span>
+<span><span class="co">#&gt; Geometry type: LINESTRING</span></span>
+<span><span class="co">#&gt; Dimension:     XY</span></span>
+<span><span class="co">#&gt; Bounding box:  xmin: -107336.4 ymin: 2082987 xmax: 176163.6 ymax: 2187987</span></span>
+<span><span class="co">#&gt; Projected CRS: NAD_1927_Albers</span></span>
+<span><span class="co">#&gt; First 10 features:</span></span>
+<span><span class="co">#&gt;    ID_nuevo from to Id Source Destination dPC_removal</span></span>
+<span><span class="co">#&gt; 1      1_10    1 10  9     10           1   0.0000045</span></span>
+<span><span class="co">#&gt; 2      1_11    1 11 10     11           1   0.0000467</span></span>
+<span><span class="co">#&gt; 3      1_12    1 12 11     12           1   0.0042806</span></span>
+<span><span class="co">#&gt; 4      1_13    1 13 12     13           1   0.0000011</span></span>
+<span><span class="co">#&gt; 5      1_14    1 14 13     14           1   0.0000199</span></span>
+<span><span class="co">#&gt; 6      1_15    1 15 14     15           1   0.0025181</span></span>
+<span><span class="co">#&gt; 7      1_16    1 16 15     16           1   0.0000013</span></span>
+<span><span class="co">#&gt; 8      1_17    1 17 16     17           1   0.0000000</span></span>
+<span><span class="co">#&gt; 9      1_18    1 18 17     18           1   0.0000010</span></span>
+<span><span class="co">#&gt; 10     1_19    1 19 18     19           1   0.0000000</span></span>
+<span><span class="co">#&gt;                              geom</span></span>
+<span><span class="co">#&gt; 1  LINESTRING (-77336.39 21694...</span></span>
+<span><span class="co">#&gt; 2  LINESTRING (-77336.39 21694...</span></span>
+<span><span class="co">#&gt; 3  LINESTRING (-77336.39 21694...</span></span>
+<span><span class="co">#&gt; 4  LINESTRING (-77336.39 21694...</span></span>
+<span><span class="co">#&gt; 5  LINESTRING (-77336.39 21694...</span></span>
+<span><span class="co">#&gt; 6  LINESTRING (-77336.39 21694...</span></span>
+<span><span class="co">#&gt; 7  LINESTRING (-77336.39 21694...</span></span>
+<span><span class="co">#&gt; 8  LINESTRING (-77336.39 21694...</span></span>
+<span><span class="co">#&gt; 9  LINESTRING (-77336.39 21694...</span></span>
+<span><span class="co">#&gt; 10 LINESTRING (-77336.39 21694...</span></span></code></pre></div>
 <p>Ejemplo de visualización:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb25-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb25-2"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb25-2" tabindex="-1"></a><span class="fu">library</span>(classInt)</span>
-<span id="cb25-3"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb25-3" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb25-4"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb25-4" tabindex="-1"></a></span>
-<span id="cb25-5"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb25-5" tabindex="-1"></a><span class="co"># Calcular los intervalos de Jenks para strength</span></span>
-<span id="cb25-6"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb25-6" tabindex="-1"></a>breaks <span class="ot">&lt;-</span> classInt<span class="sc">::</span><span class="fu">classIntervals</span>(rutas_mc<span class="sc">$</span>dPC_removal, <span class="at">n =</span> <span class="dv">5</span>, <span class="at">style =</span> <span class="st">&quot;quantile&quot;</span>)</span>
-<span id="cb25-7"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb25-7" tabindex="-1"></a></span>
-<span id="cb25-8"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb25-8" tabindex="-1"></a><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
-<span id="cb25-9"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb25-9" tabindex="-1"></a>rutas_mc <span class="ot">&lt;-</span> rutas_mc <span class="sc">%&gt;%</span></span>
-<span id="cb25-10"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb25-10" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dPC_q =</span> <span class="fu">cut</span>(dPC_removal,</span>
-<span id="cb25-11"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb25-11" tabindex="-1"></a>                     <span class="at">breaks =</span> breaks<span class="sc">$</span>brks,</span>
-<span id="cb25-12"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb25-12" tabindex="-1"></a>                     <span class="at">include.lowest =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb25-13"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb25-13" tabindex="-1"></a>                     <span class="at">dig.lab =</span> <span class="dv">5</span>))  </span>
-<span id="cb25-14"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb25-14" tabindex="-1"></a></span>
-<span id="cb25-15"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb25-15" tabindex="-1"></a><span class="co"># Graficar usando ggplot2 y colores de ColorBrewer</span></span>
-<span id="cb25-16"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb25-16" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span>  </span>
-<span id="cb25-17"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb25-17" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> paisaje, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
-<span id="cb25-18"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb25-18" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> rutas_mc, <span class="fu">aes</span>(<span class="at">color =</span> dPC_q), <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb25-19"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb25-19" tabindex="-1"></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;RdYlBu&quot;</span>, <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">name =</span> <span class="st">&quot;dPC remove (Q)&quot;</span>) <span class="sc">+</span></span>
-<span id="cb25-20"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb25-20" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> parches_ejemplo, <span class="fu">aes</span>(<span class="at">color =</span> <span class="st">&quot;Habitat nodes&quot;</span>), </span>
-<span id="cb25-21"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb25-21" tabindex="-1"></a>          <span class="at">fill =</span> <span class="st">&quot;forestgreen&quot;</span>, <span class="at">color =</span> <span class="cn">NA</span>, <span class="at">linewidth =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb25-22"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb25-22" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb25-23"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb25-23" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb25-24"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb25-24" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Priorización de enlaces&quot;</span>,</span>
-<span id="cb25-25"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb25-25" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">&quot;dPC&quot;</span></span>
-<span id="cb25-26"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb25-26" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb25-27"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb25-27" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb25-28"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb25-28" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">&quot;right&quot;</span>,</span>
-<span id="cb25-29"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb25-29" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)</span>
-<span id="cb25-30"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb25-30" tabindex="-1"></a>  )</span></code></pre></div>
-<p><img src="05-Priorizacion_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/classInt/">classInt</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Calcular los intervalos de Jenks para strength</span></span>
+<span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu">classInt</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html">classIntervals</a></span><span class="op">(</span><span class="va">rutas_mc</span><span class="op">$</span><span class="va">dPC_removal</span>, n <span class="op">=</span> <span class="fl">5</span>, style <span class="op">=</span> <span class="st">"quantile"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
+<span><span class="va">rutas_mc</span> <span class="op">&lt;-</span> <span class="va">rutas_mc</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>dPC_q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/cut.html">cut</a></span><span class="op">(</span><span class="va">dPC_removal</span>,</span>
+<span>                     breaks <span class="op">=</span> <span class="va">breaks</span><span class="op">$</span><span class="va">brks</span>,</span>
+<span>                     include.lowest <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                     dig.lab <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span>  </span>
+<span></span>
+<span><span class="co"># Graficar usando ggplot2 y colores de ColorBrewer</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paisaje</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">rutas_mc</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">dPC_q</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">0.5</span>, linewidth <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_color_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"RdYlBu"</span>, direction <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, name <span class="op">=</span> <span class="st">"dPC remove (Q)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">parches_ejemplo</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"Habitat nodes"</span><span class="op">)</span>, </span>
+<span>          fill <span class="op">=</span> <span class="st">"forestgreen"</span>, color <span class="op">=</span> <span class="cn">NA</span>, linewidth <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Priorización de enlaces"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"dPC"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="05-Priorizacion_files/figure-html/unnamed-chunk-28-1.png" width="672"></div>
 </div>
-<div id="cambio-de-enlaces-link-change" class="section level2" number="7.3">
-<h2><span class="header-section-number">7.3</span> Cambio de enlaces (Link change)</h2>
+<div id="cambio-de-enlaces-link-change" class="section level2" number="8.3">
+<h2>
+<span class="header-section-number">8.3</span> Cambio de enlaces (Link change)<a class="anchor" aria-label="anchor" href="#cambio-de-enlaces-link-change"><i class="fas fa-link"></i></a>
+</h2>
 <p>Si <code>change != NULL</code>, la función sustituye uno por uno cada uno de los enlaces existentes en la red del paisaje y calcula el impacto de ese cambio de enlace en la conectividad del paisaje con las métricas dPC o dIIC. Este modo es útil para identificar los enlaces prioritarios tanto para conservar como para restaurar. Los valores positivos de dPC o dIIC corresponden a pérdidas o degradación de enlaces, y los enlaces prioritarios para conservar corresponden a aquellos con los valores positivos más altos. Los valores negativos de dPC o dIIC corresponden a mejoras en los enlaces, y los enlaces prioritarios para restaurar son aquellos con los valores negativos más pequeños.</p>
 <p>Este modo requiere información adicional, <strong>una matriz de distancias con los nuevos valores de distancia entre todos los pares de nodos.</strong> Estos nuevos valores de distancia serán, en general, diferentes a los del parámetro de distancia. Una distancia menor corresponde a un aumento en la calidad o la fuerza del enlace entre dos parches en un escenario de cambio o restauración determinado. Una distancia mayor significa que la conexión entre esos dos parches se debilita, lo que corresponde a un escenario de degradación. Son posibles todo tipo de combinaciones y diferentes tipos de cambios para cada uno de los enlaces. Por ejemplo, algunas conexiones pueden mejorar, otras pueden disminuir su calidad o incluso desaparecer por completo (es decir, nueva distancia = NA), y otros enlaces pueden no sufrir ningún cambio en el mismo análisis, dependiendo de los nuevos valores de distancia particulares para cada enlace.</p>
 <p>Para este ejemplo primero estimaremos las distancias de menor costo entre los parches.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb26-1" tabindex="-1"></a>distancias <span class="ot">&lt;-</span> <span class="fu">distancefile</span>(parches_ejemplo, </span>
-<span id="cb26-2"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb26-2" tabindex="-1"></a>                           <span class="at">id =</span> <span class="st">&quot;Id&quot;</span>, </span>
-<span id="cb26-3"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb26-3" tabindex="-1"></a>                           <span class="at">type =</span> <span class="st">&quot;least-cost&quot;</span>,</span>
-<span id="cb26-4"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb26-4" tabindex="-1"></a>                           <span class="at">resistance =</span> resistance_matrix,</span>
-<span id="cb26-5"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb26-5" tabindex="-1"></a>                           <span class="at">pairwise =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">distancias</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/distancefile.html">distancefile</a></span><span class="op">(</span><span class="va">parches_ejemplo</span>, </span>
+<span>                           id <span class="op">=</span> <span class="st">"Id"</span>, </span>
+<span>                           type <span class="op">=</span> <span class="st">"least-cost"</span>,</span>
+<span>                           resistance <span class="op">=</span> <span class="va">resistance_matrix</span>,</span>
+<span>                           pairwise <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <p>Enseguida imaginaremos el siguiente escenario donde despues de restaurar disminuyo un 40% la resistencia y aumento la permiabilidad en 30 enlaces que tomaremos de forma aleatoria.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb27-1" tabindex="-1"></a><span class="co">#No de enlaces</span></span>
-<span id="cb27-2"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb27-2" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">30</span></span>
-<span id="cb27-3"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb27-3" tabindex="-1"></a><span class="co"># Numero total de elementos</span></span>
-<span id="cb27-4"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb27-4" tabindex="-1"></a>total_elements <span class="ot">&lt;-</span> <span class="fu">length</span>(distancias)</span>
-<span id="cb27-5"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb27-5" tabindex="-1"></a></span>
-<span id="cb27-6"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb27-6" tabindex="-1"></a><span class="co"># seleccion aleatoria</span></span>
-<span id="cb27-7"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb27-7" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">4</span>)</span>
-<span id="cb27-8"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb27-8" tabindex="-1"></a>rand_idx <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>total_elements, n)</span>
-<span id="cb27-9"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb27-9" tabindex="-1"></a></span>
-<span id="cb27-10"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb27-10" tabindex="-1"></a><span class="co"># obtener posiciones en la matriz de distancias</span></span>
-<span id="cb27-11"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb27-11" tabindex="-1"></a>rand_positions <span class="ot">&lt;-</span> <span class="fu">arrayInd</span>(rand_idx, <span class="at">.dim =</span> <span class="fu">dim</span>(distancias))</span>
-<span id="cb27-12"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb27-12" tabindex="-1"></a></span>
-<span id="cb27-13"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb27-13" tabindex="-1"></a><span class="co"># A esos enlaces les reduciremos un 40% de su valor</span></span>
-<span id="cb27-14"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb27-14" tabindex="-1"></a>distancias_restauracion <span class="ot">&lt;-</span> distancias</span>
-<span id="cb27-15"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb27-15" tabindex="-1"></a>reduccion <span class="ot">&lt;-</span> (<span class="dv">40</span><span class="sc">*</span>distancias_restauracion[rand_positions])<span class="sc">/</span><span class="dv">100</span></span>
-<span id="cb27-16"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb27-16" tabindex="-1"></a>distancias_restauracion[rand_positions] <span class="ot">&lt;-</span> distancias_restauracion[rand_positions] <span class="sc">-</span> reduccion</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#No de enlaces</span></span>
+<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">30</span></span>
+<span><span class="co"># Numero total de elementos</span></span>
+<span><span class="va">total_elements</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">distancias</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># seleccion aleatoria</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></span>
+<span><span class="va">rand_idx</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">total_elements</span>, <span class="va">n</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># obtener posiciones en la matriz de distancias</span></span>
+<span><span class="va">rand_positions</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/which.html">arrayInd</a></span><span class="op">(</span><span class="va">rand_idx</span>, .dim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">distancias</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># A esos enlaces les reduciremos un 40% de su valor</span></span>
+<span><span class="va">distancias_restauracion</span> <span class="op">&lt;-</span> <span class="va">distancias</span></span>
+<span><span class="va">reduccion</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fl">40</span><span class="op">*</span><span class="va">distancias_restauracion</span><span class="op">[</span><span class="va">rand_positions</span><span class="op">]</span><span class="op">)</span><span class="op">/</span><span class="fl">100</span></span>
+<span><span class="va">distancias_restauracion</span><span class="op">[</span><span class="va">rand_positions</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">distancias_restauracion</span><span class="op">[</span><span class="va">rand_positions</span><span class="op">]</span> <span class="op">-</span> <span class="va">reduccion</span></span></code></pre></div>
 <p>Valor de distancia costo inicial:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb28-1" tabindex="-1"></a>distancias[rand_positions]</span>
-<span id="cb28-2"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb28-2" tabindex="-1"></a><span class="co">#&gt;  [1] 10529640  2318903  9008346  6086036  7415533  6186777</span></span>
-<span id="cb28-3"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb28-3" tabindex="-1"></a><span class="co">#&gt;  [7]  3782229  3633854  3943299  1997412  4520460  3027740</span></span>
-<span id="cb28-4"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb28-4" tabindex="-1"></a><span class="co">#&gt; [13]  1171964  5673392  9838126  6790792  7521077  5639993</span></span>
-<span id="cb28-5"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb28-5" tabindex="-1"></a><span class="co">#&gt; [19]  7644104 10060651  2760338  6173235  5595429  2857423</span></span>
-<span id="cb28-6"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb28-6" tabindex="-1"></a><span class="co">#&gt; [25] 13339827  6044401  4218765  6716738  9700048  5077371</span></span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">distancias</span><span class="op">[</span><span class="va">rand_positions</span><span class="op">]</span></span>
+<span><span class="co">#&gt;  [1] 10529640  2318903  9008346  6086036  7415533  6186777</span></span>
+<span><span class="co">#&gt;  [7]  3782229  3633854  3943299  1997412  4520460  3027740</span></span>
+<span><span class="co">#&gt; [13]  1171964  5673392  9838126  6790792  7521077  5639993</span></span>
+<span><span class="co">#&gt; [19]  7644104 10060651  2760338  6173235  5595429  2857423</span></span>
+<span><span class="co">#&gt; [25] 13339827  6044401  4218765  6716738  9700048  5077371</span></span></code></pre></div>
 <p>Valor de distancia costo después de reducir el valor de resistencia:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb29-1" tabindex="-1"></a>distancias_restauracion[rand_positions]</span>
-<span id="cb29-2"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb29-2" tabindex="-1"></a><span class="co">#&gt;  [1] 6317784.0 1391341.7 5405007.7 3651621.6 4449319.8</span></span>
-<span id="cb29-3"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb29-3" tabindex="-1"></a><span class="co">#&gt;  [6] 3712066.3 2269337.4 2180312.6 2365979.3 1198447.2</span></span>
-<span id="cb29-4"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb29-4" tabindex="-1"></a><span class="co">#&gt; [11] 2712276.3 1816644.0  703178.2 3404035.3 5902875.6</span></span>
-<span id="cb29-5"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb29-5" tabindex="-1"></a><span class="co">#&gt; [16] 4074475.0 4512646.4 3383995.9 4586462.4 6036390.6</span></span>
-<span id="cb29-6"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb29-6" tabindex="-1"></a><span class="co">#&gt; [21] 1656202.7 3703941.1 3357257.1 1714454.1 8003896.5</span></span>
-<span id="cb29-7"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb29-7" tabindex="-1"></a><span class="co">#&gt; [26] 3626640.4 2531258.9 4030042.6 5820028.6 3046422.5</span></span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">distancias_restauracion</span><span class="op">[</span><span class="va">rand_positions</span><span class="op">]</span></span>
+<span><span class="co">#&gt;  [1] 6317784.0 1391341.7 5405007.7 3651621.6 4449319.8</span></span>
+<span><span class="co">#&gt;  [6] 3712066.3 2269337.4 2180312.6 2365979.3 1198447.2</span></span>
+<span><span class="co">#&gt; [11] 2712276.3 1816644.0  703178.2 3404035.3 5902875.6</span></span>
+<span><span class="co">#&gt; [16] 4074475.0 4512646.4 3383995.9 4586462.4 6036390.6</span></span>
+<span><span class="co">#&gt; [21] 1656202.7 3703941.1 3357257.1 1714454.1 8003896.5</span></span>
+<span><span class="co">#&gt; [26] 3626640.4 2531258.9 4030042.6 5820028.6 3046422.5</span></span></code></pre></div>
 <p>Aplicamos la función:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb30-1" tabindex="-1"></a><span class="co">#Distancia efectiva promedio como umbral de distancia</span></span>
-<span id="cb30-2"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb30-2" tabindex="-1"></a>Effec_mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(resistance_matrix[], <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">*</span> <span class="dv">10000</span> <span class="co"># 10km</span></span>
-<span id="cb30-3"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb30-3" tabindex="-1"></a></span>
-<span id="cb30-4"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb30-4" tabindex="-1"></a><span class="co">#Aplicamos la función</span></span>
-<span id="cb30-5"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb30-5" tabindex="-1"></a>delta <span class="ot">&lt;-</span> <span class="fu">MK_dPCIIC_links</span>(<span class="at">nodes =</span> parches_ejemplo,</span>
-<span id="cb30-6"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb30-6" tabindex="-1"></a>                         <span class="at">attribute =</span> <span class="cn">NULL</span>,</span>
-<span id="cb30-7"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb30-7" tabindex="-1"></a>                         <span class="at">area_unit =</span> <span class="st">&quot;ha&quot;</span>,</span>
-<span id="cb30-8"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb30-8" tabindex="-1"></a>                         <span class="at">distance =</span> distancias,</span>
-<span id="cb30-9"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb30-9" tabindex="-1"></a>                         <span class="at">removal =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb30-10"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb30-10" tabindex="-1"></a>                         <span class="at">change =</span> distancias_restauracion,</span>
-<span id="cb30-11"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb30-11" tabindex="-1"></a>                         <span class="at">metric =</span> <span class="st">&quot;PC&quot;</span>,</span>
-<span id="cb30-12"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb30-12" tabindex="-1"></a>                         <span class="at">probability =</span> <span class="fl">0.5</span>,</span>
-<span id="cb30-13"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb30-13" tabindex="-1"></a>                         <span class="at">distance_thresholds =</span> <span class="fu">round</span>(Effec_mean),</span>
-<span id="cb30-14"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb30-14" tabindex="-1"></a>                         <span class="at">parallel =</span> <span class="cn">NULL</span>,</span>
-<span id="cb30-15"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb30-15" tabindex="-1"></a>                         <span class="at">parallel_mode =</span> <span class="dv">0</span>,</span>
-<span id="cb30-16"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb30-16" tabindex="-1"></a>                         <span class="at">intern =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb30-17"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb30-17" tabindex="-1"></a><span class="co">#&gt; Estimating PC link index. This may take several minutes depending on the number of nodes</span></span>
-<span id="cb30-18"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb30-18" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb30-19"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb30-19" tabindex="-1"></a><span class="co">#&gt; Done!</span></span>
-<span id="cb30-20"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb30-20" tabindex="-1"></a><span class="fu">names</span>(delta)</span>
-<span id="cb30-21"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb30-21" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Link_removal_importances_d624341&quot;</span></span>
-<span id="cb30-22"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb30-22" tabindex="-1"></a><span class="co">#&gt; [2] &quot;Link_change_importances_d624341&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#Distancia efectiva promedio como umbral de distancia</span></span>
+<span><span class="va">Effec_mean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/summarize-generics.html">mean</a></span><span class="op">(</span><span class="va">resistance_matrix</span><span class="op">[</span><span class="op">]</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">*</span> <span class="fl">10000</span> <span class="co"># 10km</span></span>
+<span></span>
+<span><span class="co">#Aplicamos la función</span></span>
+<span><span class="va">delta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_dPCIIC_links.html">MK_dPCIIC_links</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">parches_ejemplo</span>,</span>
+<span>                         attribute <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                         area_unit <span class="op">=</span> <span class="st">"ha"</span>,</span>
+<span>                         distance <span class="op">=</span> <span class="va">distancias</span>,</span>
+<span>                         removal <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                         change <span class="op">=</span> <span class="va">distancias_restauracion</span>,</span>
+<span>                         metric <span class="op">=</span> <span class="st">"PC"</span>,</span>
+<span>                         probability <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>                         distance_thresholds <span class="op">=</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/math-generics.html">round</a></span><span class="op">(</span><span class="va">Effec_mean</span><span class="op">)</span>,</span>
+<span>                         parallel <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                         parallel_mode <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>                         intern <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Estimating PC link index. This may take several minutes depending on the number of nodes</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Done!</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/names.html">names</a></span><span class="op">(</span><span class="va">delta</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Link_removal_importances_d624341"</span></span>
+<span><span class="co">#&gt; [2] "Link_change_importances_d624341"</span></span></code></pre></div>
 <p>Vemos el resultado:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb31-1" tabindex="-1"></a><span class="fu">head</span>(delta<span class="sc">$</span>Link_change_importances_d624341)</span>
-<span id="cb31-2"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb31-2" tabindex="-1"></a><span class="co">#&gt;   Id Source Destination dPC_change</span></span>
-<span id="cb31-3"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb31-3" tabindex="-1"></a><span class="co">#&gt; 1  1      2           1          0</span></span>
-<span id="cb31-4"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb31-4" tabindex="-1"></a><span class="co">#&gt; 2  2      3           1          0</span></span>
-<span id="cb31-5"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb31-5" tabindex="-1"></a><span class="co">#&gt; 3  3      4           1          0</span></span>
-<span id="cb31-6"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb31-6" tabindex="-1"></a><span class="co">#&gt; 4  4      5           1          0</span></span>
-<span id="cb31-7"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb31-7" tabindex="-1"></a><span class="co">#&gt; 5  5      6           1          0</span></span>
-<span id="cb31-8"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb31-8" tabindex="-1"></a><span class="co">#&gt; 6  6      7           1          0</span></span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">delta</span><span class="op">$</span><span class="va">Link_change_importances_d624341</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   Id Source Destination dPC_change</span></span>
+<span><span class="co">#&gt; 1  1      2           1          0</span></span>
+<span><span class="co">#&gt; 2  2      3           1          0</span></span>
+<span><span class="co">#&gt; 3  3      4           1          0</span></span>
+<span><span class="co">#&gt; 4  4      5           1          0</span></span>
+<span><span class="co">#&gt; 5  5      6           1          0</span></span>
+<span><span class="co">#&gt; 6  6      7           1          0</span></span></code></pre></div>
 <p>Lo unimos a nuestro vector con los corredores:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb32-1" tabindex="-1"></a>change_corr <span class="ot">&lt;-</span> delta<span class="sc">$</span>Link_change_importances_d624341</span>
-<span id="cb32-2"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb32-2" tabindex="-1"></a>change_corr<span class="sc">$</span>ID_nuevo <span class="ot">&lt;-</span> <span class="fu">paste0</span>(change_corr<span class="sc">$</span>Destination, <span class="st">&quot;_&quot;</span>, change_corr<span class="sc">$</span>Source)</span>
-<span id="cb32-3"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb32-3" tabindex="-1"></a>rutas_mc <span class="ot">&lt;-</span> <span class="fu">merge</span>(rutas_mc, change_corr, <span class="at">by =</span> <span class="st">&quot;ID_nuevo&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb33-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb33-2"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb33-2" tabindex="-1"></a><span class="fu">library</span>(classInt)</span>
-<span id="cb33-3"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb33-3" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb33-4"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb33-4" tabindex="-1"></a></span>
-<span id="cb33-5"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb33-5" tabindex="-1"></a><span class="co"># Calcular los intervalos de Jenks para strength</span></span>
-<span id="cb33-6"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb33-6" tabindex="-1"></a>breaks <span class="ot">&lt;-</span> classInt<span class="sc">::</span><span class="fu">classIntervals</span>(rutas_mc<span class="sc">$</span>dPC_change, <span class="at">n =</span> <span class="dv">4</span>, <span class="at">style =</span> <span class="st">&quot;jenks&quot;</span>)</span>
-<span id="cb33-7"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb33-7" tabindex="-1"></a></span>
-<span id="cb33-8"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb33-8" tabindex="-1"></a><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
-<span id="cb33-9"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb33-9" tabindex="-1"></a>rutas_mc <span class="ot">&lt;-</span> rutas_mc <span class="sc">%&gt;%</span></span>
-<span id="cb33-10"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb33-10" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dPC_q =</span> <span class="fu">cut</span>(dPC_change,</span>
-<span id="cb33-11"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb33-11" tabindex="-1"></a>                     <span class="at">breaks =</span> breaks<span class="sc">$</span>brks,</span>
-<span id="cb33-12"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb33-12" tabindex="-1"></a>                     <span class="at">include.lowest =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb33-13"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb33-13" tabindex="-1"></a>                     <span class="at">dig.lab =</span> <span class="dv">5</span>))  </span>
-<span id="cb33-14"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb33-14" tabindex="-1"></a></span>
-<span id="cb33-15"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb33-15" tabindex="-1"></a><span class="co"># Graficar usando ggplot2 y colores de ColorBrewer</span></span>
-<span id="cb33-16"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb33-16" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span>  </span>
-<span id="cb33-17"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb33-17" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> paisaje, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
-<span id="cb33-18"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb33-18" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> rutas_mc, <span class="fu">aes</span>(<span class="at">color =</span> dPC_q), <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb33-19"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb33-19" tabindex="-1"></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;RdYlBu&quot;</span>, <span class="at">direction =</span> <span class="dv">1</span>, <span class="at">name =</span> <span class="st">&quot;dPC change (Q)&quot;</span>) <span class="sc">+</span></span>
-<span id="cb33-20"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb33-20" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> parches_ejemplo, <span class="fu">aes</span>(<span class="at">color =</span> <span class="st">&quot;Habitat nodes&quot;</span>), </span>
-<span id="cb33-21"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb33-21" tabindex="-1"></a>          <span class="at">fill =</span> <span class="st">&quot;forestgreen&quot;</span>, <span class="at">color =</span> <span class="cn">NA</span>, <span class="at">linewidth =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb33-22"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb33-22" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb33-23"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb33-23" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb33-24"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb33-24" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Priorización de enlaces&quot;</span>,</span>
-<span id="cb33-25"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb33-25" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">&quot;dPC&quot;</span></span>
-<span id="cb33-26"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb33-26" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb33-27"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb33-27" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb33-28"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb33-28" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">&quot;right&quot;</span>,</span>
-<span id="cb33-29"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb33-29" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)</span>
-<span id="cb33-30"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html#cb33-30" tabindex="-1"></a>  )</span></code></pre></div>
-<p><img src="05-Priorizacion_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
+<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">change_corr</span> <span class="op">&lt;-</span> <span class="va">delta</span><span class="op">$</span><span class="va">Link_change_importances_d624341</span></span>
+<span><span class="va">change_corr</span><span class="op">$</span><span class="va">ID_nuevo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">change_corr</span><span class="op">$</span><span class="va">Destination</span>, <span class="st">"_"</span>, <span class="va">change_corr</span><span class="op">$</span><span class="va">Source</span><span class="op">)</span></span>
+<span><span class="va">rutas_mc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/merge.html">merge</a></span><span class="op">(</span><span class="va">rutas_mc</span>, <span class="va">change_corr</span>, by <span class="op">=</span> <span class="st">"ID_nuevo"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/classInt/">classInt</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Calcular los intervalos de Jenks para strength</span></span>
+<span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu">classInt</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html">classIntervals</a></span><span class="op">(</span><span class="va">rutas_mc</span><span class="op">$</span><span class="va">dPC_change</span>, n <span class="op">=</span> <span class="fl">4</span>, style <span class="op">=</span> <span class="st">"jenks"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
+<span><span class="va">rutas_mc</span> <span class="op">&lt;-</span> <span class="va">rutas_mc</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>dPC_q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/cut.html">cut</a></span><span class="op">(</span><span class="va">dPC_change</span>,</span>
+<span>                     breaks <span class="op">=</span> <span class="va">breaks</span><span class="op">$</span><span class="va">brks</span>,</span>
+<span>                     include.lowest <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                     dig.lab <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span>  </span>
+<span></span>
+<span><span class="co"># Graficar usando ggplot2 y colores de ColorBrewer</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paisaje</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">rutas_mc</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">dPC_q</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">0.5</span>, linewidth <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_color_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"RdYlBu"</span>, direction <span class="op">=</span> <span class="fl">1</span>, name <span class="op">=</span> <span class="st">"dPC change (Q)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">parches_ejemplo</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"Habitat nodes"</span><span class="op">)</span>, </span>
+<span>          fill <span class="op">=</span> <span class="st">"forestgreen"</span>, color <span class="op">=</span> <span class="cn">NA</span>, linewidth <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Priorización de enlaces"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"dPC"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="05-Priorizacion_files/figure-html/unnamed-chunk-36-1.png" width="672"></div>
 
 </div>
 </div>
-  </main>
-
-  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="On this page">
-      <h2>On this page</h2>
-      <div id="book-on-this-page"></div>
+  <div class="chapter-nav">
+<div class="prev"><a href="prioridades-de-conservaci%C3%B3n-y-restauraci%C3%B3n-con-mk_focal_nodes.html"><span class="header-section-number">7</span> Prioridades de conservación y restauración con MK_Focal_nodes()</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#prioridad-de-enlaces-con-mk_dpciic_links"><span class="header-section-number">8</span> Prioridad de enlaces con MK_dPCIIC_links()</a></li>
+<li><a class="nav-link" href="#rutas-de-menor-costo-corredores-potenciales"><span class="header-section-number">8.1</span> Rutas de menor costo (corredores potenciales)</a></li>
+<li><a class="nav-link" href="#eliminaci%C3%B3n-de-enlaces-link-removal"><span class="header-section-number">8.2</span> Eliminación de enlaces (Link removal)</a></li>
+<li><a class="nav-link" href="#cambio-de-enlaces-link-change"><span class="header-section-number">8.3</span> Cambio de enlaces (Link change)</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-          <li><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="#">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/OscarGOGO/Makurhini_manual_esp/blob/master/05-Priorizacion.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/OscarGOGO/Makurhini_manual_esp/edit/master/05-Priorizacion.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
-      </div>
+</div>
     </nav>
-  </div>
+</div>
 
 </div>
 </div> <!-- .container -->
 
-<footer class="bg-primary text-light mt-5">
-  <div class="container"><div class="row">
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
     <p>"<strong>Manual de uso de Makurhini</strong>" was written by Oscar Godínez Gómez. It was last built on 2025-07-30.</p>
@@ -399,8 +411,5 @@
 
 </div></div>
 </footer>
-
-
 </body>
-
 </html>
