@@ -39,7 +39,7 @@ ggplot() +
         axis.title.y = element_blank())
 ```
 
-![](05-Priorizacion_files/figure-epub3/unnamed-chunk-3-1.png)<!-- -->
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-3-1.png" width="672" />
 
 
 ``` r
@@ -93,8 +93,7 @@ PCrestauracion <- MK_dPCIIC(nodes = habitat_nodes,
                 intern = TRUE) #10 km
 #> Estimating PC index. This may take several minutes depending on the number of nodes
 #>   |                                                          |                                                  |   0%  |                                                          |==================================================| 100%
-#>  ■■■■■■■■■■■■■■                    44% |  ETA:  4s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■          76% |  ETA:  2s
+#>  ■■■■■■■■■■■■■■■                   45% |  ETA:  2s
 #> 
 #> Done!
 PCrestauracion
@@ -140,7 +139,7 @@ ggplot() +
   )
 ```
 
-![](05-Priorizacion_files/figure-epub3/unnamed-chunk-9-1.png)<!-- -->
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-9-1.png" width="672" />
 
 Veamos solo los parches de restauración
 
@@ -169,7 +168,7 @@ ggplot() +
   )
 ```
 
-![](05-Priorizacion_files/figure-epub3/unnamed-chunk-10-1.png)<!-- -->
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-10-1.png" width="672" />
 
 Si desactivamos `onlyrestor` entonces estima los otros valores delíndice de conectividad (i.e., dPC, intra, flux y connector).
 
@@ -257,7 +256,7 @@ Se ejecuta un ciclo en el que se selecciona cada uno de los nodos. En cada itera
 5.  La función calcula el *Índice Compuesto de Conectividad* (*CCI*<sub>f</sub>) como una herramienta de priorización de nodos focales. Este índice se basa en la contribución individual del nodo, ponderada por la conectividad de su paisaje local:
 
     -   *CCI*<sub>f</sub> = IIC<sub>f</sub> × dIIC<sub>f</sub>
-    -   o *CCI*<sub>f</sub> = PC<sub>f</sub> × dPC<sub>f</sub>
+    -   *CCI*<sub>f</sub> = PC<sub>f</sub> × dPC<sub>f</sub>
 
     Los nodos con valores más altos de *CCI*<sub>f</sub> se encuentran en paisajes locales bien conectados, lo que los convierte en contribuyentes valiosos para la conectividad del paisaje inmediato. Esto los hace candidatos ideales para esfuerzos de conservación. Por el contrario, los valores bajos de *CCI*<sub>f</sub> pueden indicar la necesidad de acciones de restauración y conservación.
 
@@ -335,7 +334,7 @@ ggplot() +
   )
 ```
 
-![](05-Priorizacion_files/figure-epub3/unnamed-chunk-14-1.png)<!-- -->
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-14-1.png" width="672" />
 
 Índice dPC focal:
 
@@ -367,7 +366,7 @@ ggplot() +
   )
 ```
 
-![](05-Priorizacion_files/figure-epub3/unnamed-chunk-15-1.png)<!-- -->
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-15-1.png" width="672" />
 
 Fracción intra:
 
@@ -399,7 +398,7 @@ ggplot() +
   )
 ```
 
-![](05-Priorizacion_files/figure-epub3/unnamed-chunk-16-1.png)<!-- -->
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-16-1.png" width="672" />
 
 Fracción flux:
 
@@ -431,7 +430,7 @@ ggplot() +
   )
 ```
 
-![](05-Priorizacion_files/figure-epub3/unnamed-chunk-17-1.png)<!-- -->
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-17-1.png" width="672" />
 
 Fracción connector:
 
@@ -463,7 +462,7 @@ ggplot() +
   )
 ```
 
-![](05-Priorizacion_files/figure-epub3/unnamed-chunk-18-1.png)<!-- -->
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-18-1.png" width="672" />
 
 **Índice de Conectividad Compuesto (CCI~f~).**
 
@@ -497,7 +496,7 @@ ggplot() +
   )
 ```
 
-![](05-Priorizacion_files/figure-epub3/unnamed-chunk-19-1.png)<!-- -->
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-19-1.png" width="672" />
 
 # Prioridad de enlaces con MK_dPCIIC_links()
 
@@ -537,7 +536,7 @@ ggplot() +
         axis.title.y = element_blank())
 ```
 
-![](05-Priorizacion_files/figure-epub3/unnamed-chunk-22-1.png)<!-- -->
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-22-1.png" width="672" />
 
 ## Eliminación de enlaces (Link removal)
 
@@ -600,7 +599,7 @@ ggplot() +
   )
 ```
 
-![](05-Priorizacion_files/figure-epub3/unnamed-chunk-25-1.png)<!-- -->
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-25-1.png" width="672" />
 
 Ahora aplicamos la función `MK_dPCIIC_links()`, pero antes exploremos una nueva variante de estimar el umbral de distancia cuando usamos una resistencia.
 
@@ -719,7 +718,7 @@ ggplot() +
   )
 ```
 
-![](05-Priorizacion_files/figure-epub3/unnamed-chunk-28-1.png)<!-- -->
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-28-1.png" width="672" />
 
 ## Cambio de enlaces (Link change)
 
@@ -872,4 +871,4 @@ ggplot() +
   )
 ```
 
-![](05-Priorizacion_files/figure-epub3/unnamed-chunk-36-1.png)<!-- -->
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-36-1.png" width="672" />

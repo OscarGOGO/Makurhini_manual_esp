@@ -194,7 +194,7 @@ Se ejecuta un ciclo en el que se selecciona cada uno de los nodos. En cada itera
 5.  La función calcula el *Índice Compuesto de Conectividad* (*CCI*<sub>f</sub>) como una herramienta de priorización de nodos focales. Este índice se basa en la contribución individual del nodo, ponderada por la conectividad de su paisaje local:
 
     -   *CCI*<sub>f</sub> = IIC<sub>f</sub> × dIIC<sub>f</sub>
-    -   o *CCI*<sub>f</sub> = PC<sub>f</sub> × dPC<sub>f</sub>
+    -   *CCI*<sub>f</sub> = PC<sub>f</sub> × dPC<sub>f</sub>
 
     Los nodos con valores más altos de *CCI*<sub>f</sub> se encuentran en paisajes locales bien conectados, lo que los convierte en contribuyentes valiosos para la conectividad del paisaje inmediato. Esto los hace candidatos ideales para esfuerzos de conservación. Por el contrario, los valores bajos de *CCI*<sub>f</sub> pueden indicar la necesidad de acciones de restauración y conservación.
 
