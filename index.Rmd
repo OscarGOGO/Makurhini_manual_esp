@@ -18,4 +18,24 @@ cover-image: LOGO_MAKHURINI.png
 
 ![](LOGO_MAKHURINI.png){width="200"}
 
-En este manual se documenta parte de las funciones del paquete Makurhini
+En este manual se documenta parte de las funciones del paquete **Makurhini**:
+
+**Makurhini** (que significa Conectar en lengua purépecha) es un paquete de R diseñado para calcular índices de fragmentación y conectividad del paisaje, útiles en la planificación de la conservación. Makurhini proporciona un conjunto de funciones para identificar la conectividad de redes de áreas protegidas y la importancia de los elementos del paisaje para mantener dicha conectividad. Este paquete permite evaluar escenarios de cambio en la conectividad del paisaje y presenta una mejora adicional: la inclusión de la heterogeneidad del paisaje como un factor limitante para la conectividad.
+
+Los índices de conectividad de redes calculados en el paquete Makurhini han sido previamente publicados, por ejemplo:
+
+-   Pascual-Hortal & Saura, 2006. Landscape Ecology, <https://doi.org/10.1007/s10980-006-0013-z>
+
+-   Saura & Pascual-Hortal, 2007. Landscape and Urban Planning, <https://doi.org/10.1016/j.landurbplan.2007.03.005>
+
+-   Saura & Rubio, 2010. Ecography, <https://doi.org/10.1111/j.1600-0587.2009.05760.x>
+
+-   Saura et al., 2011. Ecological Indicators, <https://doi.org/10.1016/j.ecolind.2010.06.011>
+
+-   Saura et al., 2017. Ecological Indicators, <http://dx.doi.org/10.1016/j.ecolind.2016.12.047>
+
+-   Saura et al., 2018. Biological Conservation, <https://doi.org/10.1016/j.biocon.2017.12.020>), y permite integrar flujos de trabajo eficientes y útiles para la gestión del paisaje y el monitoreo de metas globales de conservación.
+
+**Cómo citar el paquete Makurhini:** Pronto se publicará un artículo científico sobre este paquete. Hasta entonces, por favor utiliza uno de los siguientes preprints:
+
+Preprint: Godínez-Gómez, O., Correa-Ayram, C., Goicolea, T., & Saura, S. (2025). **Makurhini: An R package for comprehensive analysis of landscape fragmentation and connectivity**. Research Square. <https://doi.org/10.21203/rs.3.rs-6398746/v1>

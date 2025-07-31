@@ -158,28 +158,26 @@ PCrestauracion
 
 Esta función permite calcular el Índice Integral de Conectividad focal (IIC<sub>f</sub>) o la Probabilidad de Conectividad focal (PC<sub>f</sub>) bajo uno o más umbrales de distancia. Además, esta función estima el Índice de Conectividad Compuesto (CCI<sub>f</sub>; para más detalles, véase Latorre-Cárdenas et al., 2023. Land 2023, 12(3), 631; <https://doi.org/10.3390/land12030631>).
 
-| **Argumento** | **Descripción** |
-|---------------------------------------|---------------------------------|
-| `nodes` | sf, SpatVector o SpatialPolygonsDataFrame. Objeto que contiene los nodos (por ejemplo, fragmentos de hábitat) a analizar. Deben estar en un sistema de coordenadas proyectado. |
-| `id` | character. Nombre de la columna con el ID del nodo. |
-| `attribute` | character o vector. Si es NULL, se usará el área del nodo como atributo. Se puede definir la unidad con `area_unit`. Si se desea usar un atributo diferente, especificar el nombre de la columna correspondiente. |
-| `raster_attribute` | raster o rast. Objeto raster usado para asignar valores de atributo a cada nodo mediante la función definida en `fun_attribute`. |
-| `fun_attribute` | function. Función para calcular el atributo del nodo a partir del raster. Aplica la función (e.g., `mean`, `sum`, `modal`, `min`, `max`) a los valores extraídos. Valor por defecto: `mean`. |
-| `weighted` | logical. Si `raster_attribute` y `weighted` son TRUE, el valor del atributo raster para cada nodo se multiplica por su área. |
-| `area_unit` | character. (opcional, por defecto = `"m2"`). Indica la unidad del área cuando `attribute` es NULL. Opciones: "m2", "km2", "cm2", "ha". |
-| `distance` | Lista de parámetros para establecer la distancia entre pares de nodos. Puede ser distancia euclidiana o efectiva (costos). Debe incluir por lo menos `"type"` y `"resistance"` si es necesario. Ejemplo: `distance(type = "least-cost", resistance = raster_resistance)`. |
-| `metric` | character. Métrica de conectividad: `"PC"` (por defecto) o `"IIC"`. |
-| `probability` | numérico. Probabilidad asociada a `distance_threshold`. Por ejemplo, 0.5 si es distancia mediana de dispersión. Solo se usa si `metric = "PC"`. Si es NULL, se usa 0.5. |
-| `distance_thresholds` | numérico. Distancia(s) de dispersión en metros. Si es NULL, se estima como la mediana de dispersión entre nodos. Puede usarse la función `dispersal_distance`. |
-| `search_buffer` | numérico. Distancia para crear un buffer alrededor del nodo focal, usado para seleccionar nodos vecinos. Puede variar según el umbral de dispersión. |
-| `simplify_shape` | numérico. Simplifica la forma del nodo focal eliminando vértices antes de aplicar el buffer. Útil para nodos con geometrías complejas. Usa `st_simplify`. |
-| `fragmentation` | logical. Estima estadísticas de fragmentación usando `MK_Fragmentation`. Requiere `edge_distance` y `min_node_area`. |
-| `edge_distance` | numérico. Distancia al borde en metros. Por defecto 500 m. |
-| `min_node_area` | numérico. Área mínima (en unidades definidas por `area_unit`) usada para contar nodos con menor área. Por defecto 100 km². |
-| `parallel` | numérico (opcional). Número de núcleos para paralelizar el cálculo de PC o IIC y sus deltas. Útil para \>1000 nodos. Por defecto no se paraleliza. |
-| `write` | character. Ruta y prefijo inicial para guardar los objetos, por ejemplo: `"C:/ejemplo/test_focal_"`. Si no se especifica, no se guarda nada. |
-| `save_subfiles` | logical o character. Si es TRUE, guarda los resultados por nodo en formato .rds en la ruta de `write`. Si es un path, debe indicar la carpeta. Útil si hay errores topológicos. Permite reanudar el análisis después de corregir el error. |
-| `intern` | logical. Muestra el progreso del proceso. Por defecto `TRUE`. Puede no llegar al 100% si el proceso es muy rápido. |
+| **Argumento**        | **Descripción en español**                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+|----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `nodes`              | Objeto que contiene la información de los nodos (por ejemplo, fragmentos o parches de hábitat). Puede ser: <br> - `data.frame` con al menos dos columnas: la primera para los ID de los nodos y la segunda para los atributos. <br> - Datos espaciales vectoriales (`sf`, `SpatVector`, `SpatialPolygonsDataFrame`) en un sistema de coordenadas proyectado. <br> - Ráster (`RasterLayer`, `SpatRaster`) con valores enteros representando el ID de cada nodo y áreas no hábitat como `NA`. |
+| `attribute`          | Caracter o vector. Si es `NULL` (solo válido cuando `nodes` es espacial vectorial o ráster), se usará el área del nodo como atributo. Para usar otro atributo: <br> - Si `nodes` es vector espacial o `data.frame`, indicar el nombre de la columna. <br> - Si `nodes` es ráster, debe ser un vector numérico con el atributo por nodo. Si `weighted = TRUE`, se multiplica por el área de cada nodo para obtener un índice ponderado.                                              |
+| `LA`                 | Numérico. (opcional, por defecto = `NULL`). Valor máximo del atributo del paisaje. No afecta la importancia relativa de los nodos, solo se usa para calcular la conectividad total del paisaje. Si se omite y `overall = TRUE`, solo se calcula el numerador del índice global.                                                                                                                                        |
+| `area_unit`          | Caracter. Unidad del área cuando `attribute = NULL`. Opciones: `"m2"` (por defecto), `"km2"`, `"cm2"` o `"ha"`.                                                                                                                                                                                                                                                                                                                                               |
+| `distance`           | Matriz o lista que establece las distancias entre pares de nodos. Puede ser: <br> - Matriz cuadrada con distancias (euclidianas o efectivas). <br> - Lista de parámetros (por ejemplo: `type = "least-cost", resistance = raster_resistance`). Tipos posibles: `"centroid"`, `"edge"`, `"least-cost"`, `"commute-time"`.                                                                                                  |
+| `metric`             | Caracter indicando el índice de conectividad a usar: `"PC"` (por defecto y recomendado) o `"IIC"`.                                                                                                                                                                                                                                                                                                                                                            |
+| `probability`        | Valor numérico de la probabilidad asociada al umbral de distancia (`distance_thresholds`). Por ejemplo, si es distancia mediana de dispersión usar `0.5`. Para distancias máximas, usar `0.05` o `0.01`. Solo se usa si `metric = "PC"`. Si es `NULL`, se usa `0.5`.                                                                                                                                                                                           |
+| `distance_thresholds`| Valor numérico (o vector) que indica la(s) distancia(s) de dispersión en metros. Si es `NULL`, se estima como la mediana de las distancias entre nodos. Alternativamente, puede usarse la función `dispersal_distance`.                                                                                                                                                                                                                                       |
+| `threshold`          | Numérico. Se excluyen los pares de nodos con una distancia mayor al umbral, acelerando el procesamiento.                                                                                                                                                                                                                                                                                                                                                      |
+| `removal`            | Lógico. Si es `TRUE` (por defecto), se calcula la importancia de los enlaces usando el modo de eliminación de enlaces.                                                                                                                                                                                                                                                                                                                                       |
+| `change`             | (opcional, por defecto `NULL`). Numérico que indica las nuevas distancias para calcular la importancia de los enlaces bajo el modo de cambio de enlace.                                                                                                                                                                                                                                                                                                     |
+| `overall`            | Lógico. Si es `TRUE`, se añade el índice EC global al resultado, el cual se convierte en una lista. Por defecto es `FALSE`.                                                                                                                                                                                                                                                                                                                                  |
+| `parallel`           | (opcional, por defecto = `NULL`). Numérico que indica el número de núcleos para paralelizar el cálculo de los índices. Recomendado si se tienen más de 1000 nodos.                                                                                                                                                                                                                                                                                          |
+| `parallel_mode`      | (opcional, por defecto = `1`). Numérico que indica el modo de paralelización: <br> - Modo 1 (por defecto): paraleliza el cálculo de deltas de conectividad. <br> - Modo 2: paraleliza el cálculo de rutas de menor costo. Recomendado para >1000 nodos.                                                                                                                                                                                                     |
+| `write`              | Caracter que indica la ruta y prefijo para guardar los resultados, por ejemplo `"C:/ejemplo"`. Por defecto no se guarda nada. Los archivos generados incluyen: <br> - Importancia de cada enlace (formato CSV). <br> - Tabla de conectividad global del paisaje si `overall = TRUE` (formato CSV).                                                                                                                  |
+| `intern`             | Lógico. Si es `TRUE` (por defecto), muestra el progreso del proceso. Puede que no llegue a 100% si las operaciones son muy rápidas.                                                                                                                                                                                                                                                                                                                          |
+
+
 
 Se ejecuta un ciclo en el que se selecciona cada uno de los nodos. En cada iteración, ocurre lo siguiente:
 
@@ -404,13 +402,40 @@ ggplot() +
   )
 ```
 
+
+
 # Prioridad de enlaces con MK_dPCIIC_links()
 
 Esta función calcula el índice dPC o dIIC para estimar la importancia de los enlaces para la conservación y la restauración. Calcula la contribución de cada enlace individual para mantener (modo: eliminación de enlaces) o mejorar (modo: cambio de enlaces) la conectividad general bajo uno o varios umbrales de distancia.
 
+
+Estos son los argumentos:
+
+
+                                                                                     
+| **Argumento**        | **Descripción en español**                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+|----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `nodes`              | Objeto que contiene la información de los nodos (por ejemplo, fragmentos o parches de hábitat). Puede ser: <br> - `data.frame` con al menos dos columnas: la primera para los ID de los nodos y la segunda para los atributos. <br> - Datos espaciales vectoriales (`sf`, `SpatVector`, `SpatialPolygonsDataFrame`) en un sistema de coordenadas proyectado. <br> - Ráster (`RasterLayer`, `SpatRaster`) con valores enteros representando el ID de cada nodo y áreas no hábitat como `NA`. |
+| `attribute`          | Caracter o vector. Si es `NULL` (solo válido cuando `nodes` es espacial vectorial o ráster), se usará el área del nodo como atributo. Para usar otro atributo: <br> - Si `nodes` es vector espacial o `data.frame`, indicar el nombre de la columna. <br> - Si `nodes` es ráster, debe ser un vector numérico con el atributo por nodo. Si `weighted = TRUE`, se multiplica por el área de cada nodo para obtener un índice ponderado.                                              |
+| `LA`                 | Numérico. (opcional, por defecto = `NULL`). Valor máximo del atributo del paisaje. No afecta la importancia relativa de los nodos, solo se usa para calcular la conectividad total del paisaje. Si se omite y `overall = TRUE`, solo se calcula el numerador del índice global.                                                                                                                                        |
+| `area_unit`          | Caracter. Unidad del área cuando `attribute = NULL`. Opciones: `"m2"` (por defecto), `"km2"`, `"cm2"` o `"ha"`.                                                                                                                                                                                                                                                                                                                                               |
+| `distance`           | Matriz o lista que establece las distancias entre pares de nodos. Puede ser: <br> - Matriz cuadrada con distancias (euclidianas o efectivas). <br> - Lista de parámetros (por ejemplo: `type = "least-cost", resistance = raster_resistance`). Tipos posibles: `"centroid"`, `"edge"`, `"least-cost"`, `"commute-time"`.                                                                                                  |
+| `metric`             | Caracter indicando el índice de conectividad a usar: `"PC"` (por defecto y recomendado) o `"IIC"`.                                                                                                                                                                                                                                                                                                                                                            |
+| `probability`        | Valor numérico de la probabilidad asociada al umbral de distancia (`distance_thresholds`). Por ejemplo, si es distancia mediana de dispersión usar `0.5`. Para distancias máximas, usar `0.05` o `0.01`. Solo se usa si `metric = "PC"`. Si es `NULL`, se usa `0.5`.                                                                                                                                                                                           |
+| `distance_thresholds`| Valor numérico (o vector) que indica la(s) distancia(s) de dispersión en metros. Si es `NULL`, se estima como la mediana de las distancias entre nodos. Alternativamente, puede usarse la función `dispersal_distance`.                                                                                                                                                                                                                                       |
+| `threshold`          | Numérico. Se excluyen los pares de nodos con una distancia mayor al umbral, acelerando el procesamiento.                                                                                                                                                                                                                                                                                                                                                      |
+| `removal`            | Lógico. Si es `TRUE` (por defecto), se calcula la importancia de los enlaces usando el modo de eliminación de enlaces.                                                                                                                                                                                                                                                                                                                                       |
+| `change`             | (opcional, por defecto `NULL`). Numérico que indica las nuevas distancias para calcular la importancia de los enlaces bajo el modo de cambio de enlace.                                                                                                                                                                                                                                                                                                     |
+| `overall`            | Lógico. Si es `TRUE`, se añade el índice EC global al resultado, el cual se convierte en una lista. Por defecto es `FALSE`.                                                                                                                                                                                                                                                                                                                                  |
+| `parallel`           | (opcional, por defecto = `NULL`). Numérico que indica el número de núcleos para paralelizar el cálculo de los índices. Recomendado si se tienen más de 1000 nodos.                                                                                                                                                                                                                                                                                          |
+| `parallel_mode`      | (opcional, por defecto = `1`). Numérico que indica el modo de paralelización: <br> - Modo 1 (por defecto): paraleliza el cálculo de deltas de conectividad. <br> - Modo 2: paraleliza el cálculo de rutas de menor costo. Recomendado para >1000 nodos.                                                                                                                                                                                                     |
+| `write`              | Caracter que indica la ruta y prefijo para guardar los resultados, por ejemplo `"C:/ejemplo"`. Por defecto no se guarda nada. Los archivos generados incluyen: <br> - Importancia de cada enlace (formato CSV). <br> - Tabla de conectividad global del paisaje si `overall = TRUE` (formato CSV).                                                                                                                  |
+| `intern`             | Lógico. Si es `TRUE` (por defecto), muestra el progreso del proceso. Puede que no llegue a 100% si las operaciones son muy rápidas.                                                                                                                                                                                                                                                                                                                          |                                                                                     
+                                                                                     
+                                                                                                                                                  
 ## Rutas de menor costo (corredores potenciales)
 
-Para realizar un ejemplo, estimemos los corredores potenciales entre 20 de nuestros parches utilizando el raster de resistencia que usamos en ejemplos previos.
+Para realizar un ejemplo, estimaremos los corredores potenciales entre 20 de nuestros parches utilizando el raster de resistencia que usamos en ejemplos previos.
 
 ```{r}
 set.seed(2) #para seleccionar siempre los mismos de forma aleatoria
@@ -443,6 +468,19 @@ ggplot() +
 
 ```
 
+
+Estamos utilizando un raster de resistencia que esta incluido en el paquete Makurhini. Para cargar un raster de resistencia para tu estudio puedes utilizar la función `raster()` del paquete `raster` o la función `rast()` del paquete `terra`.
+
+```{r eval=FALSE}
+library(raster)
+resistance_matrix <- raster("direccion/nombre.tif") #puedes usar otras extensiones raster
+
+library(terra)
+resistance_matrix <- rast("direccion/nombre.tif") 
+```
+
+
+
 ## Eliminación de enlaces (Link removal)
 
 Si `removal = TRUE`, la función elimina uno por uno cada uno de los enlaces existentes en la red del paisaje y calcula el impacto de esa pérdida de enlace en la conectividad del paisaje con las métricas dPC o dIIC. Este modo es útil para identificar los enlaces prioritarios que se deben conservar: aquellos con la mayor contribución a la conectividad general del paisaje (valor dPC o dIIC más alto).
@@ -453,6 +491,7 @@ En este ejemplo, estimaremos algunas rutas de menor costo entre pares de parches
 library(purrr)
 library(gdistance)
 rutas_mc <- read_sf("C:/Users/oscta/OneDrive/Documents/RedBioma/Clase_3/ejemplo_insumos/LCP.gpkg")
+resistance_matrix[is.na(resistance_matrix)] <- 1000
 ```
 
 ```{r eval=FALSE}
@@ -509,7 +548,8 @@ ggplot() +
 
 Ahora aplicamos la función `MK_dPCIIC_links()`, pero antes exploremos una nueva variante de estimar el umbral de distancia cuando usamos una resistencia.
 
-Estimaremos la distancia efectiva promedio: media de la resistencia x dispersión De esta forma obtenemos una distancia costo.
+Estimaremos la distancia efectiva promedio: media de la resistencia x dispersión 
+De esta forma obtenemos una distancia costo.
 
 ```{r}
 #Distancia efectiva promedio como umbral de distancia
@@ -539,12 +579,14 @@ Unir valores con mis corredores de interes:
 #Existen otras formas, pero crearé un nuevo ID
 delta$ID_nuevo <- paste0(delta$Destination, "_", delta$Source)
 
-rutas_mc$ID_nuevo <- paste0(rutas_mc$from, "_", rutas_mc$to)
+#Guardo las rutas en un objeto nuevo para tener de respaldo mi vector original
+rutas_mc2 <- rutas_mc
+rutas_mc2$ID_nuevo <- paste0(rutas_mc2$from, "_", rutas_mc$to)
 
 #Aplicar merge
-rutas_mc <- merge(rutas_mc, delta, by = "ID_nuevo")
+rutas_mc2 <- merge(rutas_mc2, delta, by = "ID_nuevo")
 
-rutas_mc
+rutas_mc2
 ```
 
 Ejemplo de visualización:
@@ -555,10 +597,10 @@ library(classInt)
 library(dplyr)
 
 # Calcular los intervalos de Jenks para strength
-breaks <- classInt::classIntervals(rutas_mc$dPC_removal, n = 5, style = "quantile")
+breaks <- classInt::classIntervals(rutas_mc2$dPC_removal, n = 5, style = "quantile")
 
 # Crear una nueva variable categórica con los intervalos
-rutas_mc <- rutas_mc %>%
+rutas_mc2 <- rutas_mc2 %>%
   mutate(dPC_q = cut(dPC_removal,
                      breaks = breaks$brks,
                      include.lowest = TRUE,
@@ -567,13 +609,13 @@ rutas_mc <- rutas_mc %>%
 # Graficar usando ggplot2 y colores de ColorBrewer
 ggplot() +  
   geom_sf(data = paisaje, fill = NA, color = "black") +
-  geom_sf(data = rutas_mc, aes(color = dPC_q), size = 0.5, linewidth = 1) +
+  geom_sf(data = rutas_mc2, aes(color = dPC_q), size = 0.5, linewidth = 1) +
   scale_color_brewer(palette = "RdYlBu", direction = -1, name = "dPC remove (Q)") +
   geom_sf(data = parches_ejemplo, aes(color = "Habitat nodes"), 
           fill = "forestgreen", color = NA, linewidth = 0.5) +
   theme_minimal() +
   labs(
-    title = "Priorización de enlaces",
+    title = "Priorización de enlaces (remove)",
     fill = "dPC"
   ) +
   theme(
@@ -636,6 +678,7 @@ Aplicamos la función:
 ```{r}
 #Distancia efectiva promedio como umbral de distancia
 Effec_mean <- mean(resistance_matrix[], na.rm = TRUE) * 10000 # 10km
+#[1] 5229259
 
 #Aplicamos la función
 delta <- MK_dPCIIC_links(nodes = parches_ejemplo,
@@ -655,31 +698,35 @@ names(delta)
 ```
 
 
-Vemos el resultado:
+Vemos el resultado. Es importante recordar que los nombres de los elementos de las listas cambian dependiendo del umbral de distancia que uses (e.g., _d5229259, _d10000, _d200)
 
 ```{r}
-head(delta$Link_change_importances_d624341)
+head(delta$Link_change_importances_d5229259)
 ```
 
 Lo unimos a nuestro vector con los corredores:
 
 ```{r}
-change_corr <- delta$Link_change_importances_d624341
+change_corr <- delta$Link_change_importances_d5229259
 change_corr$ID_nuevo <- paste0(change_corr$Destination, "_", change_corr$Source)
-rutas_mc <- merge(rutas_mc, change_corr, by = "ID_nuevo")
 
+#Por precaución guardamos los corredores en otro objeto y generamos el ID
+rutas_mc3 <- rutas_mc
+rutas_mc3$ID_nuevo <- paste0(rutas_mc3$from, "_", rutas_mc3$to)
+#Unimos
+rutas_mc3 <- merge(rutas_mc3, change_corr, by = "ID_nuevo")
+rutas_mc3
 ```
 
-```{r}
-library(ggplot2)
-library(classInt)
-library(dplyr)
 
+Podemos viasualizar el resultado:
+
+```{r}
 # Calcular los intervalos de Jenks para strength
-breaks <- classInt::classIntervals(rutas_mc$dPC_change, n = 4, style = "jenks")
+breaks <- classInt::classIntervals(rutas_mc3$dPC_change, n = 5, style = "jenks")
 
 # Crear una nueva variable categórica con los intervalos
-rutas_mc <- rutas_mc %>%
+rutas_mc3 <- rutas_mc3 %>%
   mutate(dPC_q = cut(dPC_change,
                      breaks = breaks$brks,
                      include.lowest = TRUE,
@@ -688,13 +735,13 @@ rutas_mc <- rutas_mc %>%
 # Graficar usando ggplot2 y colores de ColorBrewer
 ggplot() +  
   geom_sf(data = paisaje, fill = NA, color = "black") +
-  geom_sf(data = rutas_mc, aes(color = dPC_q), size = 0.5, linewidth = 1) +
-  scale_color_brewer(palette = "RdYlBu", direction = 1, name = "dPC change (Q)") +
+  geom_sf(data = rutas_mc3, aes(color = dPC_q), size = 0.5, linewidth = 1) +
+  scale_color_brewer(palette = "RdYlBu", direction = 1, name = "dPC change (jenks)") +
   geom_sf(data = parches_ejemplo, aes(color = "Habitat nodes"), 
           fill = "forestgreen", color = NA, linewidth = 0.5) +
   theme_minimal() +
   labs(
-    title = "Priorización de enlaces",
+    title = "Priorización de enlaces (change)",
     fill = "dPC"
   ) +
   theme(
@@ -702,3 +749,39 @@ ggplot() +
     plot.title = element_text(hjust = 0.5)
   )
 ```
+
+Podemos visualizar solo los corredores que sufriedon cambio después de mejorar los corredores:
+
+```{r}
+rutas_mc4 <- rutas_mc3[rutas_mc3$dPC_change != 0, ] 
+# Calcular los intervalos de Jenks para strength
+breaks <- classInt::classIntervals(rutas_mc4$dPC_change, n = 5, style = "jenks")
+
+# Crear una nueva variable categórica con los intervalos
+rutas_mc4 <- rutas_mc4 %>%
+  mutate(dPC_q = cut(dPC_change,
+                     breaks = breaks$brks,
+                     include.lowest = TRUE,
+                     dig.lab = 5))  
+
+# Graficar usando ggplot2 y colores de ColorBrewer
+ggplot() +  
+  geom_sf(data = paisaje, fill = NA, color = "black") +
+  geom_sf(data = rutas_mc4, aes(color = dPC_q), size = 0.5, linewidth = 1) +
+  scale_color_brewer(palette = "RdYlBu", direction = 1, name = "dPC change (Jenks)") +
+  geom_sf(data = parches_ejemplo, aes(color = "Habitat nodes"), 
+          fill = "forestgreen", color = NA, linewidth = 0.5) +
+  theme_minimal() +
+  labs(
+    title = "Priorización de enlaces (change)",
+    fill = "dPC"
+  ) +
+  theme(
+    legend.position = "right",
+    plot.title = element_text(hjust = 0.5)
+  )
+```
+
+
+
+

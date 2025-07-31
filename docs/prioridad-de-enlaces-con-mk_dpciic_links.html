@@ -67,11 +67,88 @@
 <span class="header-section-number">8</span> Prioridad de enlaces con MK_dPCIIC_links()<a class="anchor" aria-label="anchor" href="#prioridad-de-enlaces-con-mk_dpciic_links"><i class="fas fa-link"></i></a>
 </h1>
 <p>Esta función calcula el índice dPC o dIIC para estimar la importancia de los enlaces para la conservación y la restauración. Calcula la contribución de cada enlace individual para mantener (modo: eliminación de enlaces) o mejorar (modo: cambio de enlaces) la conectividad general bajo uno o varios umbrales de distancia.</p>
+<p>Estos son los argumentos:</p>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="4%">
+<col width="95%">
+</colgroup>
+<thead><tr class="header">
+<th><strong>Argumento</strong></th>
+<th><strong>Descripción en español</strong></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code>nodes</code></td>
+<td>Objeto que contiene la información de los nodos (por ejemplo, fragmentos o parches de hábitat). Puede ser: <br> - <code>data.frame</code> con al menos dos columnas: la primera para los ID de los nodos y la segunda para los atributos. <br> - Datos espaciales vectoriales (<code>sf</code>, <code>SpatVector</code>, <code>SpatialPolygonsDataFrame</code>) en un sistema de coordenadas proyectado. <br> - Ráster (<code>RasterLayer</code>, <code>SpatRaster</code>) con valores enteros representando el ID de cada nodo y áreas no hábitat como <code>NA</code>.</td>
+</tr>
+<tr class="even">
+<td><code>attribute</code></td>
+<td>Caracter o vector. Si es <code>NULL</code> (solo válido cuando <code>nodes</code> es espacial vectorial o ráster), se usará el área del nodo como atributo. Para usar otro atributo: <br> - Si <code>nodes</code> es vector espacial o <code>data.frame</code>, indicar el nombre de la columna. <br> - Si <code>nodes</code> es ráster, debe ser un vector numérico con el atributo por nodo. Si <code>weighted = TRUE</code>, se multiplica por el área de cada nodo para obtener un índice ponderado.</td>
+</tr>
+<tr class="odd">
+<td><code>LA</code></td>
+<td>Numérico. (opcional, por defecto = <code>NULL</code>). Valor máximo del atributo del paisaje. No afecta la importancia relativa de los nodos, solo se usa para calcular la conectividad total del paisaje. Si se omite y <code>overall = TRUE</code>, solo se calcula el numerador del índice global.</td>
+</tr>
+<tr class="even">
+<td><code>area_unit</code></td>
+<td>Caracter. Unidad del área cuando <code>attribute = NULL</code>. Opciones: <code>"m2"</code> (por defecto), <code>"km2"</code>, <code>"cm2"</code> o <code>"ha"</code>.</td>
+</tr>
+<tr class="odd">
+<td><code>distance</code></td>
+<td>Matriz o lista que establece las distancias entre pares de nodos. Puede ser: <br> - Matriz cuadrada con distancias (euclidianas o efectivas). <br> - Lista de parámetros (por ejemplo: <code>type = "least-cost", resistance = raster_resistance</code>). Tipos posibles: <code>"centroid"</code>, <code>"edge"</code>, <code>"least-cost"</code>, <code>"commute-time"</code>.</td>
+</tr>
+<tr class="even">
+<td><code>metric</code></td>
+<td>Caracter indicando el índice de conectividad a usar: <code>"PC"</code> (por defecto y recomendado) o <code>"IIC"</code>.</td>
+</tr>
+<tr class="odd">
+<td><code>probability</code></td>
+<td>Valor numérico de la probabilidad asociada al umbral de distancia (<code>distance_thresholds</code>). Por ejemplo, si es distancia mediana de dispersión usar <code>0.5</code>. Para distancias máximas, usar <code>0.05</code> o <code>0.01</code>. Solo se usa si <code>metric = "PC"</code>. Si es <code>NULL</code>, se usa <code>0.5</code>.</td>
+</tr>
+<tr class="even">
+<td><code>distance_thresholds</code></td>
+<td>Valor numérico (o vector) que indica la(s) distancia(s) de dispersión en metros. Si es <code>NULL</code>, se estima como la mediana de las distancias entre nodos. Alternativamente, puede usarse la función <code>dispersal_distance</code>.</td>
+</tr>
+<tr class="odd">
+<td><code>threshold</code></td>
+<td>Numérico. Se excluyen los pares de nodos con una distancia mayor al umbral, acelerando el procesamiento.</td>
+</tr>
+<tr class="even">
+<td><code>removal</code></td>
+<td>Lógico. Si es <code>TRUE</code> (por defecto), se calcula la importancia de los enlaces usando el modo de eliminación de enlaces.</td>
+</tr>
+<tr class="odd">
+<td><code>change</code></td>
+<td>(opcional, por defecto <code>NULL</code>). Numérico que indica las nuevas distancias para calcular la importancia de los enlaces bajo el modo de cambio de enlace.</td>
+</tr>
+<tr class="even">
+<td><code>overall</code></td>
+<td>Lógico. Si es <code>TRUE</code>, se añade el índice EC global al resultado, el cual se convierte en una lista. Por defecto es <code>FALSE</code>.</td>
+</tr>
+<tr class="odd">
+<td><code>parallel</code></td>
+<td>(opcional, por defecto = <code>NULL</code>). Numérico que indica el número de núcleos para paralelizar el cálculo de los índices. Recomendado si se tienen más de 1000 nodos.</td>
+</tr>
+<tr class="even">
+<td><code>parallel_mode</code></td>
+<td>(opcional, por defecto = <code>1</code>). Numérico que indica el modo de paralelización: <br> - Modo 1 (por defecto): paraleliza el cálculo de deltas de conectividad. <br> - Modo 2: paraleliza el cálculo de rutas de menor costo. Recomendado para &gt;1000 nodos.</td>
+</tr>
+<tr class="odd">
+<td><code>write</code></td>
+<td>Caracter que indica la ruta y prefijo para guardar los resultados, por ejemplo <code>"C:/ejemplo"</code>. Por defecto no se guarda nada. Los archivos generados incluyen: <br> - Importancia de cada enlace (formato CSV). <br> - Tabla de conectividad global del paisaje si <code>overall = TRUE</code> (formato CSV).</td>
+</tr>
+<tr class="even">
+<td><code>intern</code></td>
+<td>Lógico. Si es <code>TRUE</code> (por defecto), muestra el progreso del proceso. Puede que no llegue a 100% si las operaciones son muy rápidas.</td>
+</tr>
+</tbody>
+</table></div>
 <div id="rutas-de-menor-costo-corredores-potenciales" class="section level2" number="8.1">
 <h2>
 <span class="header-section-number">8.1</span> Rutas de menor costo (corredores potenciales)<a class="anchor" aria-label="anchor" href="#rutas-de-menor-costo-corredores-potenciales"><i class="fas fa-link"></i></a>
 </h2>
-<p>Para realizar un ejemplo, estimemos los corredores potenciales entre 20 de nuestros parches utilizando el raster de resistencia que usamos en ejemplos previos.</p>
+<p>Para realizar un ejemplo, estimaremos los corredores potenciales entre 20 de nuestros parches utilizando el raster de resistencia que usamos en ejemplos previos.</p>
 <div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span> <span class="co">#para seleccionar siempre los mismos de forma aleatoria</span></span>
 <span><span class="va">parches_ejemplo</span> <span class="op">&lt;-</span> <span class="va">habitat_nodes</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/dimensions.html">nrow</a></span><span class="op">(</span><span class="va">habitat_nodes</span><span class="op">)</span>, <span class="fl">20</span><span class="op">)</span>,<span class="op">]</span></span>
@@ -95,6 +172,13 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.title.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>        axis.title.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="05-Priorizacion_files/figure-html/unnamed-chunk-22-1.png" width="672"></div>
+<p>Estamos utilizando un raster de resistencia que esta incluido en el paquete Makurhini. Para cargar un raster de resistencia para tu estudio puedes utilizar la función <code><a href="https://rdrr.io/pkg/raster/man/raster.html">raster()</a></code> del paquete <code>raster</code> o la función <code><a href="https://rspatial.github.io/terra/reference/rast.html">rast()</a></code> del paquete <code>terra</code>.</p>
+<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/raster">raster</a></span><span class="op">)</span></span>
+<span><span class="va">resistance_matrix</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/raster.html">raster</a></span><span class="op">(</span><span class="st">"direccion/nombre.tif"</span><span class="op">)</span> <span class="co">#puedes usar otras extensiones raster</span></span>
+<span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/">terra</a></span><span class="op">)</span></span>
+<span><span class="va">resistance_matrix</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/rast.html">rast</a></span><span class="op">(</span><span class="st">"direccion/nombre.tif"</span><span class="op">)</span> </span></code></pre></div>
 </div>
 <div id="eliminación-de-enlaces-link-removal" class="section level2" number="8.2">
 <h2>
@@ -102,7 +186,7 @@
 </h2>
 <p>Si <code>removal = TRUE</code>, la función elimina uno por uno cada uno de los enlaces existentes en la red del paisaje y calcula el impacto de esa pérdida de enlace en la conectividad del paisaje con las métricas dPC o dIIC. Este modo es útil para identificar los enlaces prioritarios que se deben conservar: aquellos con la mayor contribución a la conectividad general del paisaje (valor dPC o dIIC más alto).</p>
 <p>En este ejemplo, estimaremos algunas rutas de menor costo entre pares de parches, estas rutas representan corredores potenciales.</p>
-<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://purrr.tidyverse.org/">purrr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://AgrDataSci.github.io/gdistance/">gdistance</a></span><span class="op">)</span></span>
 <span><span class="co">#A los valores NA les asignamos un alto valor para evitar que pasen por ahí</span></span>
@@ -135,7 +219,7 @@
 <span><span class="op">}</span></span>
 <span></span>
 <span><span class="va">rutas_mc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/do.call.html">do.call</a></span><span class="op">(</span><span class="va">rbind</span>, <span class="va">rutas_list</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paisaje</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">rutas_mc</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"corredores"</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, linewidth <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
@@ -148,10 +232,11 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
 <span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="05-Priorizacion_files/figure-html/unnamed-chunk-25-1.png" width="672"></div>
+<div class="inline-figure"><img src="05-Priorizacion_files/figure-html/unnamed-chunk-26-1.png" width="672"></div>
 <p>Ahora aplicamos la función <code><a href="https://rdrr.io/pkg/Makurhini/man/MK_dPCIIC_links.html">MK_dPCIIC_links()</a></code>, pero antes exploremos una nueva variante de estimar el umbral de distancia cuando usamos una resistencia.</p>
-<p>Estimaremos la distancia efectiva promedio: media de la resistencia x dispersión De esta forma obtenemos una distancia costo.</p>
-<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
+<p>Estimaremos la distancia efectiva promedio: media de la resistencia x dispersión
+De esta forma obtenemos una distancia costo.</p>
+<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Distancia efectiva promedio como umbral de distancia</span></span>
 <span><span class="va">Effec_mean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/summarize-generics.html">mean</a></span><span class="op">(</span><span class="va">resistance_matrix</span><span class="op">[</span><span class="op">]</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">*</span> <span class="fl">10000</span> <span class="co"># 10km</span></span>
 <span></span>
@@ -174,23 +259,25 @@
 <span><span class="co">#&gt; Done!</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">delta</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   Id Source Destination dPC_removal</span></span>
-<span><span class="co">#&gt; 1  1      2           1   0.0000075</span></span>
-<span><span class="co">#&gt; 2  2      3           1   0.0000014</span></span>
-<span><span class="co">#&gt; 3  3      4           1   0.0000002</span></span>
-<span><span class="co">#&gt; 4  4      5           1   0.0170323</span></span>
-<span><span class="co">#&gt; 5  5      6           1   0.0000000</span></span>
-<span><span class="co">#&gt; 6  6      7           1   0.0000053</span></span></code></pre></div>
+<span><span class="co">#&gt; 1  1      2           1   0.0004151</span></span>
+<span><span class="co">#&gt; 2  2      3           1   0.0001186</span></span>
+<span><span class="co">#&gt; 3  3      4           1   0.0001053</span></span>
+<span><span class="co">#&gt; 4  4      5           1   0.0502042</span></span>
+<span><span class="co">#&gt; 5  5      6           1   0.0000061</span></span>
+<span><span class="co">#&gt; 6  6      7           1   0.0000350</span></span></code></pre></div>
 <p>Unir valores con mis corredores de interes:</p>
-<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Existen otras formas, pero crearé un nuevo ID</span></span>
 <span><span class="va">delta</span><span class="op">$</span><span class="va">ID_nuevo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">delta</span><span class="op">$</span><span class="va">Destination</span>, <span class="st">"_"</span>, <span class="va">delta</span><span class="op">$</span><span class="va">Source</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">rutas_mc</span><span class="op">$</span><span class="va">ID_nuevo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">rutas_mc</span><span class="op">$</span><span class="va">from</span>, <span class="st">"_"</span>, <span class="va">rutas_mc</span><span class="op">$</span><span class="va">to</span><span class="op">)</span></span>
+<span><span class="co">#Guardo las rutas en un objeto nuevo para tener de respaldo mi vector original</span></span>
+<span><span class="va">rutas_mc2</span> <span class="op">&lt;-</span> <span class="va">rutas_mc</span></span>
+<span><span class="va">rutas_mc2</span><span class="op">$</span><span class="va">ID_nuevo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">rutas_mc2</span><span class="op">$</span><span class="va">from</span>, <span class="st">"_"</span>, <span class="va">rutas_mc</span><span class="op">$</span><span class="va">to</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">#Aplicar merge</span></span>
-<span><span class="va">rutas_mc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/merge.html">merge</a></span><span class="op">(</span><span class="va">rutas_mc</span>, <span class="va">delta</span>, by <span class="op">=</span> <span class="st">"ID_nuevo"</span><span class="op">)</span></span>
+<span><span class="va">rutas_mc2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/merge.html">merge</a></span><span class="op">(</span><span class="va">rutas_mc2</span>, <span class="va">delta</span>, by <span class="op">=</span> <span class="st">"ID_nuevo"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">rutas_mc</span></span>
+<span><span class="va">rutas_mc2</span></span>
 <span><span class="co">#&gt; Simple feature collection with 190 features and 7 fields</span></span>
 <span><span class="co">#&gt; Geometry type: LINESTRING</span></span>
 <span><span class="co">#&gt; Dimension:     XY</span></span>
@@ -198,16 +285,16 @@
 <span><span class="co">#&gt; Projected CRS: NAD_1927_Albers</span></span>
 <span><span class="co">#&gt; First 10 features:</span></span>
 <span><span class="co">#&gt;    ID_nuevo from to Id Source Destination dPC_removal</span></span>
-<span><span class="co">#&gt; 1      1_10    1 10  9     10           1   0.0000045</span></span>
-<span><span class="co">#&gt; 2      1_11    1 11 10     11           1   0.0000467</span></span>
-<span><span class="co">#&gt; 3      1_12    1 12 11     12           1   0.0042806</span></span>
-<span><span class="co">#&gt; 4      1_13    1 13 12     13           1   0.0000011</span></span>
-<span><span class="co">#&gt; 5      1_14    1 14 13     14           1   0.0000199</span></span>
-<span><span class="co">#&gt; 6      1_15    1 15 14     15           1   0.0025181</span></span>
-<span><span class="co">#&gt; 7      1_16    1 16 15     16           1   0.0000013</span></span>
-<span><span class="co">#&gt; 8      1_17    1 17 16     17           1   0.0000000</span></span>
-<span><span class="co">#&gt; 9      1_18    1 18 17     18           1   0.0000010</span></span>
-<span><span class="co">#&gt; 10     1_19    1 19 18     19           1   0.0000000</span></span>
+<span><span class="co">#&gt; 1      1_10    1 10  9     10           1   0.0000827</span></span>
+<span><span class="co">#&gt; 2      1_11    1 11 10     11           1   0.0019437</span></span>
+<span><span class="co">#&gt; 3      1_12    1 12 11     12           1   0.0273787</span></span>
+<span><span class="co">#&gt; 4      1_13    1 13 12     13           1   0.0000367</span></span>
+<span><span class="co">#&gt; 5      1_14    1 14 13     14           1   0.0003651</span></span>
+<span><span class="co">#&gt; 6      1_15    1 15 14     15           1   0.0061334</span></span>
+<span><span class="co">#&gt; 7      1_16    1 16 15     16           1   0.0000411</span></span>
+<span><span class="co">#&gt; 8      1_17    1 17 16     17           1   0.0000410</span></span>
+<span><span class="co">#&gt; 9      1_18    1 18 17     18           1   0.0000514</span></span>
+<span><span class="co">#&gt; 10     1_19    1 19 18     19           1   0.0002504</span></span>
 <span><span class="co">#&gt;                              geom</span></span>
 <span><span class="co">#&gt; 1  LINESTRING (-77336.39 21694...</span></span>
 <span><span class="co">#&gt; 2  LINESTRING (-77336.39 21694...</span></span>
@@ -220,16 +307,16 @@
 <span><span class="co">#&gt; 9  LINESTRING (-77336.39 21694...</span></span>
 <span><span class="co">#&gt; 10 LINESTRING (-77336.39 21694...</span></span></code></pre></div>
 <p>Ejemplo de visualización:</p>
-<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/classInt/">classInt</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Calcular los intervalos de Jenks para strength</span></span>
-<span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu">classInt</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html">classIntervals</a></span><span class="op">(</span><span class="va">rutas_mc</span><span class="op">$</span><span class="va">dPC_removal</span>, n <span class="op">=</span> <span class="fl">5</span>, style <span class="op">=</span> <span class="st">"quantile"</span><span class="op">)</span></span>
+<span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu">classInt</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html">classIntervals</a></span><span class="op">(</span><span class="va">rutas_mc2</span><span class="op">$</span><span class="va">dPC_removal</span>, n <span class="op">=</span> <span class="fl">5</span>, style <span class="op">=</span> <span class="st">"quantile"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
-<span><span class="va">rutas_mc</span> <span class="op">&lt;-</span> <span class="va">rutas_mc</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="va">rutas_mc2</span> <span class="op">&lt;-</span> <span class="va">rutas_mc2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>dPC_q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/cut.html">cut</a></span><span class="op">(</span><span class="va">dPC_removal</span>,</span>
 <span>                     breaks <span class="op">=</span> <span class="va">breaks</span><span class="op">$</span><span class="va">brks</span>,</span>
 <span>                     include.lowest <span class="op">=</span> <span class="cn">TRUE</span>,</span>
@@ -238,20 +325,20 @@
 <span><span class="co"># Graficar usando ggplot2 y colores de ColorBrewer</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paisaje</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">rutas_mc</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">dPC_q</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">0.5</span>, linewidth <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">rutas_mc2</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">dPC_q</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">0.5</span>, linewidth <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_color_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"RdYlBu"</span>, direction <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, name <span class="op">=</span> <span class="st">"dPC remove (Q)"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">parches_ejemplo</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"Habitat nodes"</span><span class="op">)</span>, </span>
 <span>          fill <span class="op">=</span> <span class="st">"forestgreen"</span>, color <span class="op">=</span> <span class="cn">NA</span>, linewidth <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
-<span>    title <span class="op">=</span> <span class="st">"Priorización de enlaces"</span>,</span>
+<span>    title <span class="op">=</span> <span class="st">"Priorización de enlaces (remove)"</span>,</span>
 <span>    fill <span class="op">=</span> <span class="st">"dPC"</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
 <span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="05-Priorizacion_files/figure-html/unnamed-chunk-28-1.png" width="672"></div>
+<div class="inline-figure"><img src="05-Priorizacion_files/figure-html/unnamed-chunk-29-1.png" width="672"></div>
 </div>
 <div id="cambio-de-enlaces-link-change" class="section level2" number="8.3">
 <h2>
@@ -260,14 +347,14 @@
 <p>Si <code>change != NULL</code>, la función sustituye uno por uno cada uno de los enlaces existentes en la red del paisaje y calcula el impacto de ese cambio de enlace en la conectividad del paisaje con las métricas dPC o dIIC. Este modo es útil para identificar los enlaces prioritarios tanto para conservar como para restaurar. Los valores positivos de dPC o dIIC corresponden a pérdidas o degradación de enlaces, y los enlaces prioritarios para conservar corresponden a aquellos con los valores positivos más altos. Los valores negativos de dPC o dIIC corresponden a mejoras en los enlaces, y los enlaces prioritarios para restaurar son aquellos con los valores negativos más pequeños.</p>
 <p>Este modo requiere información adicional, <strong>una matriz de distancias con los nuevos valores de distancia entre todos los pares de nodos.</strong> Estos nuevos valores de distancia serán, en general, diferentes a los del parámetro de distancia. Una distancia menor corresponde a un aumento en la calidad o la fuerza del enlace entre dos parches en un escenario de cambio o restauración determinado. Una distancia mayor significa que la conexión entre esos dos parches se debilita, lo que corresponde a un escenario de degradación. Son posibles todo tipo de combinaciones y diferentes tipos de cambios para cada uno de los enlaces. Por ejemplo, algunas conexiones pueden mejorar, otras pueden disminuir su calidad o incluso desaparecer por completo (es decir, nueva distancia = NA), y otros enlaces pueden no sufrir ningún cambio en el mismo análisis, dependiendo de los nuevos valores de distancia particulares para cada enlace.</p>
 <p>Para este ejemplo primero estimaremos las distancias de menor costo entre los parches.</p>
-<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">distancias</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/distancefile.html">distancefile</a></span><span class="op">(</span><span class="va">parches_ejemplo</span>, </span>
 <span>                           id <span class="op">=</span> <span class="st">"Id"</span>, </span>
 <span>                           type <span class="op">=</span> <span class="st">"least-cost"</span>,</span>
 <span>                           resistance <span class="op">=</span> <span class="va">resistance_matrix</span>,</span>
 <span>                           pairwise <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <p>Enseguida imaginaremos el siguiente escenario donde despues de restaurar disminuyo un 40% la resistencia y aumento la permiabilidad en 30 enlaces que tomaremos de forma aleatoria.</p>
-<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#No de enlaces</span></span>
 <span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">30</span></span>
 <span><span class="co"># Numero total de elementos</span></span>
@@ -285,7 +372,7 @@
 <span><span class="va">reduccion</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fl">40</span><span class="op">*</span><span class="va">distancias_restauracion</span><span class="op">[</span><span class="va">rand_positions</span><span class="op">]</span><span class="op">)</span><span class="op">/</span><span class="fl">100</span></span>
 <span><span class="va">distancias_restauracion</span><span class="op">[</span><span class="va">rand_positions</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">distancias_restauracion</span><span class="op">[</span><span class="va">rand_positions</span><span class="op">]</span> <span class="op">-</span> <span class="va">reduccion</span></span></code></pre></div>
 <p>Valor de distancia costo inicial:</p>
-<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">distancias</span><span class="op">[</span><span class="va">rand_positions</span><span class="op">]</span></span>
 <span><span class="co">#&gt;  [1] 10529640  2318903  9008346  6086036  7415533  6186777</span></span>
 <span><span class="co">#&gt;  [7]  3782229  3633854  3943299  1997412  4520460  3027740</span></span>
@@ -293,7 +380,7 @@
 <span><span class="co">#&gt; [19]  7644104 10060651  2760338  6173235  5595429  2857423</span></span>
 <span><span class="co">#&gt; [25] 13339827  6044401  4218765  6716738  9700048  5077371</span></span></code></pre></div>
 <p>Valor de distancia costo después de reducir el valor de resistencia:</p>
-<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">distancias_restauracion</span><span class="op">[</span><span class="va">rand_positions</span><span class="op">]</span></span>
 <span><span class="co">#&gt;  [1] 6317784.0 1391341.7 5405007.7 3651621.6 4449319.8</span></span>
 <span><span class="co">#&gt;  [6] 3712066.3 2269337.4 2180312.6 2365979.3 1198447.2</span></span>
@@ -302,9 +389,10 @@
 <span><span class="co">#&gt; [21] 1656202.7 3703941.1 3357257.1 1714454.1 8003896.5</span></span>
 <span><span class="co">#&gt; [26] 3626640.4 2531258.9 4030042.6 5820028.6 3046422.5</span></span></code></pre></div>
 <p>Aplicamos la función:</p>
-<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Distancia efectiva promedio como umbral de distancia</span></span>
 <span><span class="va">Effec_mean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/summarize-generics.html">mean</a></span><span class="op">(</span><span class="va">resistance_matrix</span><span class="op">[</span><span class="op">]</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">*</span> <span class="fl">10000</span> <span class="co"># 10km</span></span>
+<span><span class="co">#[1] 5229259</span></span>
 <span></span>
 <span><span class="co">#Aplicamos la función</span></span>
 <span><span class="va">delta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_dPCIIC_links.html">MK_dPCIIC_links</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">parches_ejemplo</span>,</span>
@@ -323,11 +411,11 @@
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Done!</span></span>
 <span><span class="fu"><a href="https://rspatial.github.io/terra/reference/names.html">names</a></span><span class="op">(</span><span class="va">delta</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "Link_removal_importances_d624341"</span></span>
-<span><span class="co">#&gt; [2] "Link_change_importances_d624341"</span></span></code></pre></div>
-<p>Vemos el resultado:</p>
-<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">delta</span><span class="op">$</span><span class="va">Link_change_importances_d624341</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Link_removal_importances_d5229259"</span></span>
+<span><span class="co">#&gt; [2] "Link_change_importances_d5229259"</span></span></code></pre></div>
+<p>Vemos el resultado. Es importante recordar que los nombres de los elementos de las listas cambian dependiendo del umbral de distancia que uses (e.g., _d5229259, _d10000, _d200)</p>
+<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">delta</span><span class="op">$</span><span class="va">Link_change_importances_d5229259</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   Id Source Destination dPC_change</span></span>
 <span><span class="co">#&gt; 1  1      2           1          0</span></span>
 <span><span class="co">#&gt; 2  2      3           1          0</span></span>
@@ -336,20 +424,51 @@
 <span><span class="co">#&gt; 5  5      6           1          0</span></span>
 <span><span class="co">#&gt; 6  6      7           1          0</span></span></code></pre></div>
 <p>Lo unimos a nuestro vector con los corredores:</p>
-<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">change_corr</span> <span class="op">&lt;-</span> <span class="va">delta</span><span class="op">$</span><span class="va">Link_change_importances_d624341</span></span>
-<span><span class="va">change_corr</span><span class="op">$</span><span class="va">ID_nuevo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">change_corr</span><span class="op">$</span><span class="va">Destination</span>, <span class="st">"_"</span>, <span class="va">change_corr</span><span class="op">$</span><span class="va">Source</span><span class="op">)</span></span>
-<span><span class="va">rutas_mc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/merge.html">merge</a></span><span class="op">(</span><span class="va">rutas_mc</span>, <span class="va">change_corr</span>, by <span class="op">=</span> <span class="st">"ID_nuevo"</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/classInt/">classInt</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">change_corr</span> <span class="op">&lt;-</span> <span class="va">delta</span><span class="op">$</span><span class="va">Link_change_importances_d5229259</span></span>
+<span><span class="va">change_corr</span><span class="op">$</span><span class="va">ID_nuevo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">change_corr</span><span class="op">$</span><span class="va">Destination</span>, <span class="st">"_"</span>, <span class="va">change_corr</span><span class="op">$</span><span class="va">Source</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Calcular los intervalos de Jenks para strength</span></span>
-<span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu">classInt</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html">classIntervals</a></span><span class="op">(</span><span class="va">rutas_mc</span><span class="op">$</span><span class="va">dPC_change</span>, n <span class="op">=</span> <span class="fl">4</span>, style <span class="op">=</span> <span class="st">"jenks"</span><span class="op">)</span></span>
+<span><span class="co">#Por precaución guardamos los corredores en otro objeto y generamos el ID</span></span>
+<span><span class="va">rutas_mc3</span> <span class="op">&lt;-</span> <span class="va">rutas_mc</span></span>
+<span><span class="va">rutas_mc3</span><span class="op">$</span><span class="va">ID_nuevo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">rutas_mc3</span><span class="op">$</span><span class="va">from</span>, <span class="st">"_"</span>, <span class="va">rutas_mc3</span><span class="op">$</span><span class="va">to</span><span class="op">)</span></span>
+<span><span class="co">#Unimos</span></span>
+<span><span class="va">rutas_mc3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/merge.html">merge</a></span><span class="op">(</span><span class="va">rutas_mc3</span>, <span class="va">change_corr</span>, by <span class="op">=</span> <span class="st">"ID_nuevo"</span><span class="op">)</span></span>
+<span><span class="va">rutas_mc3</span></span>
+<span><span class="co">#&gt; Simple feature collection with 190 features and 7 fields</span></span>
+<span><span class="co">#&gt; Geometry type: LINESTRING</span></span>
+<span><span class="co">#&gt; Dimension:     XY</span></span>
+<span><span class="co">#&gt; Bounding box:  xmin: -107336.4 ymin: 2082987 xmax: 176163.6 ymax: 2187987</span></span>
+<span><span class="co">#&gt; Projected CRS: NAD_1927_Albers</span></span>
+<span><span class="co">#&gt; First 10 features:</span></span>
+<span><span class="co">#&gt;    ID_nuevo from to Id Source Destination dPC_change</span></span>
+<span><span class="co">#&gt; 1      1_10    1 10  9     10           1          0</span></span>
+<span><span class="co">#&gt; 2      1_11    1 11 10     11           1          0</span></span>
+<span><span class="co">#&gt; 3      1_12    1 12 11     12           1          0</span></span>
+<span><span class="co">#&gt; 4      1_13    1 13 12     13           1          0</span></span>
+<span><span class="co">#&gt; 5      1_14    1 14 13     14           1          0</span></span>
+<span><span class="co">#&gt; 6      1_15    1 15 14     15           1          0</span></span>
+<span><span class="co">#&gt; 7      1_16    1 16 15     16           1          0</span></span>
+<span><span class="co">#&gt; 8      1_17    1 17 16     17           1          0</span></span>
+<span><span class="co">#&gt; 9      1_18    1 18 17     18           1          0</span></span>
+<span><span class="co">#&gt; 10     1_19    1 19 18     19           1          0</span></span>
+<span><span class="co">#&gt;                              geom</span></span>
+<span><span class="co">#&gt; 1  LINESTRING (-77336.39 21694...</span></span>
+<span><span class="co">#&gt; 2  LINESTRING (-77336.39 21694...</span></span>
+<span><span class="co">#&gt; 3  LINESTRING (-77336.39 21694...</span></span>
+<span><span class="co">#&gt; 4  LINESTRING (-77336.39 21694...</span></span>
+<span><span class="co">#&gt; 5  LINESTRING (-77336.39 21694...</span></span>
+<span><span class="co">#&gt; 6  LINESTRING (-77336.39 21694...</span></span>
+<span><span class="co">#&gt; 7  LINESTRING (-77336.39 21694...</span></span>
+<span><span class="co">#&gt; 8  LINESTRING (-77336.39 21694...</span></span>
+<span><span class="co">#&gt; 9  LINESTRING (-77336.39 21694...</span></span>
+<span><span class="co">#&gt; 10 LINESTRING (-77336.39 21694...</span></span></code></pre></div>
+<p>Podemos viasualizar el resultado:</p>
+<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Calcular los intervalos de Jenks para strength</span></span>
+<span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu">classInt</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html">classIntervals</a></span><span class="op">(</span><span class="va">rutas_mc3</span><span class="op">$</span><span class="va">dPC_change</span>, n <span class="op">=</span> <span class="fl">5</span>, style <span class="op">=</span> <span class="st">"jenks"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
-<span><span class="va">rutas_mc</span> <span class="op">&lt;-</span> <span class="va">rutas_mc</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="va">rutas_mc3</span> <span class="op">&lt;-</span> <span class="va">rutas_mc3</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>dPC_q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/cut.html">cut</a></span><span class="op">(</span><span class="va">dPC_change</span>,</span>
 <span>                     breaks <span class="op">=</span> <span class="va">breaks</span><span class="op">$</span><span class="va">brks</span>,</span>
 <span>                     include.lowest <span class="op">=</span> <span class="cn">TRUE</span>,</span>
@@ -358,20 +477,50 @@
 <span><span class="co"># Graficar usando ggplot2 y colores de ColorBrewer</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paisaje</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">rutas_mc</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">dPC_q</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">0.5</span>, linewidth <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_color_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"RdYlBu"</span>, direction <span class="op">=</span> <span class="fl">1</span>, name <span class="op">=</span> <span class="st">"dPC change (Q)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">rutas_mc3</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">dPC_q</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">0.5</span>, linewidth <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_color_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"RdYlBu"</span>, direction <span class="op">=</span> <span class="fl">1</span>, name <span class="op">=</span> <span class="st">"dPC change (jenks)"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">parches_ejemplo</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"Habitat nodes"</span><span class="op">)</span>, </span>
 <span>          fill <span class="op">=</span> <span class="st">"forestgreen"</span>, color <span class="op">=</span> <span class="cn">NA</span>, linewidth <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
-<span>    title <span class="op">=</span> <span class="st">"Priorización de enlaces"</span>,</span>
+<span>    title <span class="op">=</span> <span class="st">"Priorización de enlaces (change)"</span>,</span>
 <span>    fill <span class="op">=</span> <span class="st">"dPC"</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
 <span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="05-Priorizacion_files/figure-html/unnamed-chunk-36-1.png" width="672"></div>
+<div class="inline-figure"><img src="05-Priorizacion_files/figure-html/unnamed-chunk-37-1.png" width="672"></div>
+<p>Podemos visualizar solo los corredores que sufriedon cambio después de mejorar los corredores:</p>
+<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">rutas_mc4</span> <span class="op">&lt;-</span> <span class="va">rutas_mc3</span><span class="op">[</span><span class="va">rutas_mc3</span><span class="op">$</span><span class="va">dPC_change</span> <span class="op">!=</span> <span class="fl">0</span>, <span class="op">]</span> </span>
+<span><span class="co"># Calcular los intervalos de Jenks para strength</span></span>
+<span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu">classInt</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html">classIntervals</a></span><span class="op">(</span><span class="va">rutas_mc4</span><span class="op">$</span><span class="va">dPC_change</span>, n <span class="op">=</span> <span class="fl">5</span>, style <span class="op">=</span> <span class="st">"jenks"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
+<span><span class="va">rutas_mc4</span> <span class="op">&lt;-</span> <span class="va">rutas_mc4</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>dPC_q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/cut.html">cut</a></span><span class="op">(</span><span class="va">dPC_change</span>,</span>
+<span>                     breaks <span class="op">=</span> <span class="va">breaks</span><span class="op">$</span><span class="va">brks</span>,</span>
+<span>                     include.lowest <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                     dig.lab <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span>  </span>
+<span></span>
+<span><span class="co"># Graficar usando ggplot2 y colores de ColorBrewer</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paisaje</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">rutas_mc4</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">dPC_q</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">0.5</span>, linewidth <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_color_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"RdYlBu"</span>, direction <span class="op">=</span> <span class="fl">1</span>, name <span class="op">=</span> <span class="st">"dPC change (Jenks)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">parches_ejemplo</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"Habitat nodes"</span><span class="op">)</span>, </span>
+<span>          fill <span class="op">=</span> <span class="st">"forestgreen"</span>, color <span class="op">=</span> <span class="cn">NA</span>, linewidth <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Priorización de enlaces (change)"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"dPC"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="05-Priorizacion_files/figure-html/unnamed-chunk-38-1.png" width="672"></div>
 
 </div>
 </div>
@@ -402,7 +551,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Manual de uso de Makurhini</strong>" was written by Oscar Godínez Gómez. It was last built on 2025-07-30.</p>
+    <p>"<strong>Manual de uso de Makurhini</strong>" was written by Oscar Godínez Gómez. It was last built on 2025-07-31.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

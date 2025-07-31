@@ -69,93 +69,77 @@
 <p>Esta función permite calcular el Índice Integral de Conectividad focal (IIC<sub>f</sub>) o la Probabilidad de Conectividad focal (PC<sub>f</sub>) bajo uno o más umbrales de distancia. Además, esta función estima el Índice de Conectividad Compuesto (CCI<sub>f</sub>; para más detalles, véase Latorre-Cárdenas et al., 2023. Land 2023, 12(3), 631; <a href="https://doi.org/10.3390/land12030631" class="uri">https://doi.org/10.3390/land12030631</a>).</p>
 <div class="inline-table"><table class="table table-sm">
 <colgroup>
-<col width="54%">
-<col width="45%">
+<col width="4%">
+<col width="95%">
 </colgroup>
 <thead><tr class="header">
 <th><strong>Argumento</strong></th>
-<th><strong>Descripción</strong></th>
+<th><strong>Descripción en español</strong></th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td><code>nodes</code></td>
-<td>sf, SpatVector o SpatialPolygonsDataFrame. Objeto que contiene los nodos (por ejemplo, fragmentos de hábitat) a analizar. Deben estar en un sistema de coordenadas proyectado.</td>
+<td>Objeto que contiene la información de los nodos (por ejemplo, fragmentos o parches de hábitat). Puede ser: <br> - <code>data.frame</code> con al menos dos columnas: la primera para los ID de los nodos y la segunda para los atributos. <br> - Datos espaciales vectoriales (<code>sf</code>, <code>SpatVector</code>, <code>SpatialPolygonsDataFrame</code>) en un sistema de coordenadas proyectado. <br> - Ráster (<code>RasterLayer</code>, <code>SpatRaster</code>) con valores enteros representando el ID de cada nodo y áreas no hábitat como <code>NA</code>.</td>
 </tr>
 <tr class="even">
-<td><code>id</code></td>
-<td>character. Nombre de la columna con el ID del nodo.</td>
-</tr>
-<tr class="odd">
 <td><code>attribute</code></td>
-<td>character o vector. Si es NULL, se usará el área del nodo como atributo. Se puede definir la unidad con <code>area_unit</code>. Si se desea usar un atributo diferente, especificar el nombre de la columna correspondiente.</td>
-</tr>
-<tr class="even">
-<td><code>raster_attribute</code></td>
-<td>raster o rast. Objeto raster usado para asignar valores de atributo a cada nodo mediante la función definida en <code>fun_attribute</code>.</td>
+<td>Caracter o vector. Si es <code>NULL</code> (solo válido cuando <code>nodes</code> es espacial vectorial o ráster), se usará el área del nodo como atributo. Para usar otro atributo: <br> - Si <code>nodes</code> es vector espacial o <code>data.frame</code>, indicar el nombre de la columna. <br> - Si <code>nodes</code> es ráster, debe ser un vector numérico con el atributo por nodo. Si <code>weighted = TRUE</code>, se multiplica por el área de cada nodo para obtener un índice ponderado.</td>
 </tr>
 <tr class="odd">
-<td><code>fun_attribute</code></td>
-<td>function. Función para calcular el atributo del nodo a partir del raster. Aplica la función (e.g., <code>mean</code>, <code>sum</code>, <code>modal</code>, <code>min</code>, <code>max</code>) a los valores extraídos. Valor por defecto: <code>mean</code>.</td>
+<td><code>LA</code></td>
+<td>Numérico. (opcional, por defecto = <code>NULL</code>). Valor máximo del atributo del paisaje. No afecta la importancia relativa de los nodos, solo se usa para calcular la conectividad total del paisaje. Si se omite y <code>overall = TRUE</code>, solo se calcula el numerador del índice global.</td>
 </tr>
 <tr class="even">
-<td><code>weighted</code></td>
-<td>logical. Si <code>raster_attribute</code> y <code>weighted</code> son TRUE, el valor del atributo raster para cada nodo se multiplica por su área.</td>
-</tr>
-<tr class="odd">
 <td><code>area_unit</code></td>
-<td>character. (opcional, por defecto = <code>"m2"</code>). Indica la unidad del área cuando <code>attribute</code> es NULL. Opciones: “m2”, “km2”, “cm2”, “ha”.</td>
+<td>Caracter. Unidad del área cuando <code>attribute = NULL</code>. Opciones: <code>"m2"</code> (por defecto), <code>"km2"</code>, <code>"cm2"</code> o <code>"ha"</code>.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>distance</code></td>
-<td>Lista de parámetros para establecer la distancia entre pares de nodos. Puede ser distancia euclidiana o efectiva (costos). Debe incluir por lo menos <code>"type"</code> y <code>"resistance"</code> si es necesario. Ejemplo: <code>distance(type = "least-cost", resistance = raster_resistance)</code>.</td>
+<td>Matriz o lista que establece las distancias entre pares de nodos. Puede ser: <br> - Matriz cuadrada con distancias (euclidianas o efectivas). <br> - Lista de parámetros (por ejemplo: <code>type = "least-cost", resistance = raster_resistance</code>). Tipos posibles: <code>"centroid"</code>, <code>"edge"</code>, <code>"least-cost"</code>, <code>"commute-time"</code>.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>metric</code></td>
-<td>character. Métrica de conectividad: <code>"PC"</code> (por defecto) o <code>"IIC"</code>.</td>
+<td>Caracter indicando el índice de conectividad a usar: <code>"PC"</code> (por defecto y recomendado) o <code>"IIC"</code>.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>probability</code></td>
-<td>numérico. Probabilidad asociada a <code>distance_threshold</code>. Por ejemplo, 0.5 si es distancia mediana de dispersión. Solo se usa si <code>metric = "PC"</code>. Si es NULL, se usa 0.5.</td>
+<td>Valor numérico de la probabilidad asociada al umbral de distancia (<code>distance_thresholds</code>). Por ejemplo, si es distancia mediana de dispersión usar <code>0.5</code>. Para distancias máximas, usar <code>0.05</code> o <code>0.01</code>. Solo se usa si <code>metric = "PC"</code>. Si es <code>NULL</code>, se usa <code>0.5</code>.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>distance_thresholds</code></td>
-<td>numérico. Distancia(s) de dispersión en metros. Si es NULL, se estima como la mediana de dispersión entre nodos. Puede usarse la función <code>dispersal_distance</code>.</td>
-</tr>
-<tr class="even">
-<td><code>search_buffer</code></td>
-<td>numérico. Distancia para crear un buffer alrededor del nodo focal, usado para seleccionar nodos vecinos. Puede variar según el umbral de dispersión.</td>
+<td>Valor numérico (o vector) que indica la(s) distancia(s) de dispersión en metros. Si es <code>NULL</code>, se estima como la mediana de las distancias entre nodos. Alternativamente, puede usarse la función <code>dispersal_distance</code>.</td>
 </tr>
 <tr class="odd">
-<td><code>simplify_shape</code></td>
-<td>numérico. Simplifica la forma del nodo focal eliminando vértices antes de aplicar el buffer. Útil para nodos con geometrías complejas. Usa <code>st_simplify</code>.</td>
+<td><code>threshold</code></td>
+<td>Numérico. Se excluyen los pares de nodos con una distancia mayor al umbral, acelerando el procesamiento.</td>
 </tr>
 <tr class="even">
-<td><code>fragmentation</code></td>
-<td>logical. Estima estadísticas de fragmentación usando <code>MK_Fragmentation</code>. Requiere <code>edge_distance</code> y <code>min_node_area</code>.</td>
+<td><code>removal</code></td>
+<td>Lógico. Si es <code>TRUE</code> (por defecto), se calcula la importancia de los enlaces usando el modo de eliminación de enlaces.</td>
 </tr>
 <tr class="odd">
-<td><code>edge_distance</code></td>
-<td>numérico. Distancia al borde en metros. Por defecto 500 m.</td>
+<td><code>change</code></td>
+<td>(opcional, por defecto <code>NULL</code>). Numérico que indica las nuevas distancias para calcular la importancia de los enlaces bajo el modo de cambio de enlace.</td>
 </tr>
 <tr class="even">
-<td><code>min_node_area</code></td>
-<td>numérico. Área mínima (en unidades definidas por <code>area_unit</code>) usada para contar nodos con menor área. Por defecto 100 km².</td>
+<td><code>overall</code></td>
+<td>Lógico. Si es <code>TRUE</code>, se añade el índice EC global al resultado, el cual se convierte en una lista. Por defecto es <code>FALSE</code>.</td>
 </tr>
 <tr class="odd">
 <td><code>parallel</code></td>
-<td>numérico (opcional). Número de núcleos para paralelizar el cálculo de PC o IIC y sus deltas. Útil para &gt;1000 nodos. Por defecto no se paraleliza.</td>
+<td>(opcional, por defecto = <code>NULL</code>). Numérico que indica el número de núcleos para paralelizar el cálculo de los índices. Recomendado si se tienen más de 1000 nodos.</td>
 </tr>
 <tr class="even">
-<td><code>write</code></td>
-<td>character. Ruta y prefijo inicial para guardar los objetos, por ejemplo: <code>"C:/ejemplo/test_focal_"</code>. Si no se especifica, no se guarda nada.</td>
+<td><code>parallel_mode</code></td>
+<td>(opcional, por defecto = <code>1</code>). Numérico que indica el modo de paralelización: <br> - Modo 1 (por defecto): paraleliza el cálculo de deltas de conectividad. <br> - Modo 2: paraleliza el cálculo de rutas de menor costo. Recomendado para &gt;1000 nodos.</td>
 </tr>
 <tr class="odd">
-<td><code>save_subfiles</code></td>
-<td>logical o character. Si es TRUE, guarda los resultados por nodo en formato .rds en la ruta de <code>write</code>. Si es un path, debe indicar la carpeta. Útil si hay errores topológicos. Permite reanudar el análisis después de corregir el error.</td>
+<td><code>write</code></td>
+<td>Caracter que indica la ruta y prefijo para guardar los resultados, por ejemplo <code>"C:/ejemplo"</code>. Por defecto no se guarda nada. Los archivos generados incluyen: <br> - Importancia de cada enlace (formato CSV). <br> - Tabla de conectividad global del paisaje si <code>overall = TRUE</code> (formato CSV).</td>
 </tr>
 <tr class="even">
 <td><code>intern</code></td>
-<td>logical. Muestra el progreso del proceso. Por defecto <code>TRUE</code>. Puede no llegar al 100% si el proceso es muy rápido.</td>
+<td>Lógico. Si es <code>TRUE</code> (por defecto), muestra el progreso del proceso. Puede que no llegue a 100% si las operaciones son muy rápidas.</td>
 </tr>
 </tbody>
 </table></div>
@@ -400,7 +384,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Manual de uso de Makurhini</strong>" was written by Oscar Godínez Gómez. It was last built on 2025-07-30.</p>
+    <p>"<strong>Manual de uso de Makurhini</strong>" was written by Oscar Godínez Gómez. It was last built on 2025-07-31.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

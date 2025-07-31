@@ -119,7 +119,7 @@
 
 \title{Manual de uso de Makurhini}
 \author{Oscar Godínez Gómez}
-\date{2025-07-30}
+\date{2025-07-31}
 
 \begin{document}
 \maketitle
@@ -133,7 +133,30 @@
 
 \includegraphics[width=2.08333in,height=\textheight,keepaspectratio]{LOGO_MAKHURINI.png}
 
-En este manual se documenta parte de las funciones del paquete Makurhini
+En este manual se documenta parte de las funciones del paquete \textbf{Makurhini}:
+
+\textbf{Makurhini} (que significa Conectar en lengua purépecha) es un paquete de R diseñado para calcular índices de fragmentación y conectividad del paisaje, útiles en la planificación de la conservación. Makurhini proporciona un conjunto de funciones para identificar la conectividad de redes de áreas protegidas y la importancia de los elementos del paisaje para mantener dicha conectividad. Este paquete permite evaluar escenarios de cambio en la conectividad del paisaje y presenta una mejora adicional: la inclusión de la heterogeneidad del paisaje como un factor limitante para la conectividad.
+
+Los índices de conectividad de redes calculados en el paquete Makurhini han sido previamente publicados, por ejemplo:
+
+\begin{itemize}
+\item
+  Pascual-Hortal \& Saura, 2006. Landscape Ecology, \url{https://doi.org/10.1007/s10980-006-0013-z}
+\item
+  Saura \& Pascual-Hortal, 2007. Landscape and Urban Planning, \url{https://doi.org/10.1016/j.landurbplan.2007.03.005}
+\item
+  Saura \& Rubio, 2010. Ecography, \url{https://doi.org/10.1111/j.1600-0587.2009.05760.x}
+\item
+  Saura et al., 2011. Ecological Indicators, \url{https://doi.org/10.1016/j.ecolind.2010.06.011}
+\item
+  Saura et al., 2017. Ecological Indicators, \url{http://dx.doi.org/10.1016/j.ecolind.2016.12.047}
+\item
+  Saura et al., 2018. Biological Conservation, \url{https://doi.org/10.1016/j.biocon.2017.12.020}), y permite integrar flujos de trabajo eficientes y útiles para la gestión del paisaje y el monitoreo de metas globales de conservación.
+\end{itemize}
+
+\textbf{Cómo citar el paquete Makurhini:} Pronto se publicará un artículo científico sobre este paquete. Hasta entonces, por favor utiliza uno de los siguientes preprints:
+
+Preprint: Godínez-Gómez, O., Correa-Ayram, C., Goicolea, T., \& Saura, S. (2025). \textbf{Makurhini: An R package for comprehensive analysis of landscape fragmentation and connectivity}. Research Square. \url{https://doi.org/10.21203/rs.3.rs-6398746/v1}
 
 \chapter{Instalación del paquete Makurhini}\label{instalaciuxf3n-del-paquete-makurhini}
 
@@ -1120,15 +1143,15 @@ Descripción
 \CommentTok{\#\textgreater{} 10 10 12804425 0.0004306005 0.04405417 1063       1       6}
 \CommentTok{\#\textgreater{}    memb.louvain                       geometry}
 \CommentTok{\#\textgreater{} 1             1 POLYGON ((54911.05 2035815,...}
-\CommentTok{\#\textgreater{} 2             1 POLYGON ((44591.28 2042209,...}
-\CommentTok{\#\textgreater{} 3             1 POLYGON ((46491.11 2042467,...}
-\CommentTok{\#\textgreater{} 4             1 POLYGON ((54944.49 2048163,...}
-\CommentTok{\#\textgreater{} 5             2 POLYGON ((80094.28 2064140,...}
-\CommentTok{\#\textgreater{} 6             2 POLYGON ((69205.24 2066394,...}
-\CommentTok{\#\textgreater{} 7             2 POLYGON ((68554.2 2066632, ...}
-\CommentTok{\#\textgreater{} 8             2 POLYGON ((69995.53 2066880,...}
-\CommentTok{\#\textgreater{} 9             2 POLYGON ((79368.68 2067324,...}
-\CommentTok{\#\textgreater{} 10            1 POLYGON ((23378.32 2067554,...}
+\CommentTok{\#\textgreater{} 2             2 POLYGON ((44591.28 2042209,...}
+\CommentTok{\#\textgreater{} 3             2 POLYGON ((46491.11 2042467,...}
+\CommentTok{\#\textgreater{} 4             2 POLYGON ((54944.49 2048163,...}
+\CommentTok{\#\textgreater{} 5             1 POLYGON ((80094.28 2064140,...}
+\CommentTok{\#\textgreater{} 6             1 POLYGON ((69205.24 2066394,...}
+\CommentTok{\#\textgreater{} 7             1 POLYGON ((68554.2 2066632, ...}
+\CommentTok{\#\textgreater{} 8             1 POLYGON ((69995.53 2066880,...}
+\CommentTok{\#\textgreater{} 9             1 POLYGON ((79368.68 2067324,...}
+\CommentTok{\#\textgreater{} 10            2 POLYGON ((23378.32 2067554,...}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1293,7 +1316,6 @@ Usando más de un umbral de distancia
                                  \AttributeTok{distance\_thresholds =} \FunctionTok{c}\NormalTok{(}\DecValTok{10000}\NormalTok{, }\DecValTok{100000}\NormalTok{),}
                                  \AttributeTok{probability =} \FloatTok{0.5}\NormalTok{,}
                                  \AttributeTok{write =} \ConstantTok{NULL}\NormalTok{)}
-\CommentTok{\#\textgreater{}  ===============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   50\% |  ETA:  2s}
 \CommentTok{\#\textgreater{} Done!}
 \NormalTok{centrality\_test}
 \CommentTok{\#\textgreater{} $d10000}
@@ -1318,7 +1340,7 @@ Usando más de un umbral de distancia
 \CommentTok{\#\textgreater{} 1             1 POLYGON ((54911.05 2035815,...}
 \CommentTok{\#\textgreater{} 2             2 POLYGON ((44591.28 2042209,...}
 \CommentTok{\#\textgreater{} 3             2 POLYGON ((46491.11 2042467,...}
-\CommentTok{\#\textgreater{} 4             1 POLYGON ((54944.49 2048163,...}
+\CommentTok{\#\textgreater{} 4             2 POLYGON ((54944.49 2048163,...}
 \CommentTok{\#\textgreater{} 5             1 POLYGON ((80094.28 2064140,...}
 \CommentTok{\#\textgreater{} 6             1 POLYGON ((69205.24 2066394,...}
 \CommentTok{\#\textgreater{} 7             1 POLYGON ((68554.2 2066632, ...}
@@ -1722,7 +1744,7 @@ Descripción
 \CommentTok{\#\textgreater{} }
   \SpecialCharTok{|}                                                        
   \ErrorTok{|}                                                  \ErrorTok{|}   \DecValTok{0}\NormalTok{\%}
-\CommentTok{\#\textgreater{}  =====================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}   70\% |  ETA:  1s}
+\CommentTok{\#\textgreater{}  ==============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   45\% |  ETA:  1s}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} Done!}
 \NormalTok{IIC}
@@ -1952,6 +1974,7 @@ Exploremos un plot usando intervalos:
 \CommentTok{\#\textgreater{} }
   \SpecialCharTok{|}                                                        
   \ErrorTok{|}                                                  \ErrorTok{|}   \DecValTok{0}\NormalTok{\%}
+\CommentTok{\#\textgreater{}  ======================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}   73\% |  ETA:  1s}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} Done!}
 \NormalTok{IIC}
@@ -2026,6 +2049,8 @@ Exploremos un plot usando intervalos:
   \ErrorTok{|}                                                  \ErrorTok{|}   \DecValTok{0}\NormalTok{\%}
   \SpecialCharTok{|}                                                        
   \ErrorTok{|}                                                  \ErrorTok{|}   \DecValTok{0}\NormalTok{\%}
+\CommentTok{\#\textgreater{}  ===============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   49\% |  ETA:  1s}
+\CommentTok{\#\textgreater{} }
   \SpecialCharTok{|}                                                        
   \ErrorTok{|=================}                                 \ErrorTok{|}  \DecValTok{33}\NormalTok{\%}
   \SpecialCharTok{|}                                                        
@@ -2034,9 +2059,8 @@ Exploremos un plot usando intervalos:
   \ErrorTok{|=================================}                 \ErrorTok{|}  \DecValTok{67}\NormalTok{\%}
   \SpecialCharTok{|}                                                        
   \ErrorTok{|}                                                  \ErrorTok{|}   \DecValTok{0}\NormalTok{\%}
-\CommentTok{\#\textgreater{}  ============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   40\% |  ETA:  5s}
-\CommentTok{\#\textgreater{}  ===================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   62\% |  ETA:  4s}
-\CommentTok{\#\textgreater{}  ========================\textgreater{}{-}{-}{-}{-}{-}{-}   80\% |  ETA:  2s}
+\CommentTok{\#\textgreater{}  ============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   39\% |  ETA:  5s}
+\CommentTok{\#\textgreater{}  =====================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}   69\% |  ETA:  3s}
 \CommentTok{\#\textgreater{} }
   \SpecialCharTok{|}                                                        
   \ErrorTok{|==================================================|} \DecValTok{100}\NormalTok{\%}
@@ -2281,22 +2305,17 @@ Exploremos un plot usando intervalos:
   \ErrorTok{|}                                                  \ErrorTok{|}   \DecValTok{0}\NormalTok{\%}
   \SpecialCharTok{|}                                                        
   \ErrorTok{|==================================================|} \DecValTok{100}\NormalTok{\%}
-\CommentTok{\#\textgreater{}  =\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}    4\% |  ETA: 48s}
-\CommentTok{\#\textgreater{}  ===\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   10\% |  ETA: 45s}
-\CommentTok{\#\textgreater{}  =====\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   17\% |  ETA: 40s}
-\CommentTok{\#\textgreater{}  =======\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   22\% |  ETA: 39s}
-\CommentTok{\#\textgreater{}  ========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   26\% |  ETA: 38s}
-\CommentTok{\#\textgreater{}  ==========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   32\% |  ETA: 36s}
-\CommentTok{\#\textgreater{}  ============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   38\% |  ETA: 32s}
-\CommentTok{\#\textgreater{}  =============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   43\% |  ETA: 31s}
-\CommentTok{\#\textgreater{}  ==============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   48\% |  ETA: 29s}
-\CommentTok{\#\textgreater{}  ================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   53\% |  ETA: 25s}
-\CommentTok{\#\textgreater{}  ==================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   60\% |  ETA: 21s}
-\CommentTok{\#\textgreater{}  ====================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   67\% |  ETA: 17s}
-\CommentTok{\#\textgreater{}  =======================\textgreater{}{-}{-}{-}{-}{-}{-}{-}   75\% |  ETA: 12s}
-\CommentTok{\#\textgreater{}  =========================\textgreater{}{-}{-}{-}{-}{-}   82\% |  ETA:  9s}
-\CommentTok{\#\textgreater{}  ===========================\textgreater{}{-}{-}{-}   90\% |  ETA:  5s}
-\CommentTok{\#\textgreater{}  =============================\textgreater{}{-}   98\% |  ETA:  1s}
+\CommentTok{\#\textgreater{}  ====\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   13\% |  ETA: 26s}
+\CommentTok{\#\textgreater{}  ======\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   21\% |  ETA: 26s}
+\CommentTok{\#\textgreater{}  =========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   29\% |  ETA: 25s}
+\CommentTok{\#\textgreater{}  ===========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   37\% |  ETA: 22s}
+\CommentTok{\#\textgreater{}  ==============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   46\% |  ETA: 19s}
+\CommentTok{\#\textgreater{}  ================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   55\% |  ETA: 15s}
+\CommentTok{\#\textgreater{}  ===================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   63\% |  ETA: 13s}
+\CommentTok{\#\textgreater{}  =====================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}   71\% |  ETA: 10s}
+\CommentTok{\#\textgreater{}  ========================\textgreater{}{-}{-}{-}{-}{-}{-}   80\% |  ETA:  7s}
+\CommentTok{\#\textgreater{}  ==========================\textgreater{}{-}{-}{-}{-}   87\% |  ETA:  4s}
+\CommentTok{\#\textgreater{}  =============================\textgreater{}{-}   95\% |  ETA:  2s}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} Done!}
 \NormalTok{PC}
@@ -2518,23 +2537,18 @@ Exploremos un plot usando intervalos:
   \ErrorTok{|}                                                  \ErrorTok{|}   \DecValTok{0}\NormalTok{\%}
   \SpecialCharTok{|}                                                        
   \ErrorTok{|==================================================|} \DecValTok{100}\NormalTok{\%}
-\CommentTok{\#\textgreater{}  ===\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}    8\% |  ETA: 38s}
-\CommentTok{\#\textgreater{}  ====\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   13\% |  ETA: 43s}
-\CommentTok{\#\textgreater{}  ======\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   20\% |  ETA: 39s}
-\CommentTok{\#\textgreater{}  ========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   26\% |  ETA: 35s}
-\CommentTok{\#\textgreater{}  ==========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   32\% |  ETA: 33s}
-\CommentTok{\#\textgreater{}  ===========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   36\% |  ETA: 33s}
-\CommentTok{\#\textgreater{}  =============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   42\% |  ETA: 30s}
-\CommentTok{\#\textgreater{}  ==============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   47\% |  ETA: 27s}
-\CommentTok{\#\textgreater{}  ===============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   51\% |  ETA: 26s}
-\CommentTok{\#\textgreater{}  =================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   57\% |  ETA: 23s}
-\CommentTok{\#\textgreater{}  ===================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   62\% |  ETA: 20s}
-\CommentTok{\#\textgreater{}  =====================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}   69\% |  ETA: 17s}
-\CommentTok{\#\textgreater{}  ======================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}   75\% |  ETA: 14s}
-\CommentTok{\#\textgreater{}  ========================\textgreater{}{-}{-}{-}{-}{-}{-}   80\% |  ETA: 11s}
-\CommentTok{\#\textgreater{}  ==========================\textgreater{}{-}{-}{-}{-}   85\% |  ETA:  8s}
-\CommentTok{\#\textgreater{}  ===========================\textgreater{}{-}{-}{-}   90\% |  ETA:  5s}
-\CommentTok{\#\textgreater{}  =============================\textgreater{}{-}   97\% |  ETA:  2s}
+\CommentTok{\#\textgreater{}  ===\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}    9\% |  ETA: 25s}
+\CommentTok{\#\textgreater{}  =====\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   16\% |  ETA: 30s}
+\CommentTok{\#\textgreater{}  =======\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   24\% |  ETA: 27s}
+\CommentTok{\#\textgreater{}  ==========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   33\% |  ETA: 24s}
+\CommentTok{\#\textgreater{}  ============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   40\% |  ETA: 22s}
+\CommentTok{\#\textgreater{}  ==============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   48\% |  ETA: 19s}
+\CommentTok{\#\textgreater{}  =================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   56\% |  ETA: 16s}
+\CommentTok{\#\textgreater{}  ===================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   64\% |  ETA: 13s}
+\CommentTok{\#\textgreater{}  ======================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}   72\% |  ETA: 10s}
+\CommentTok{\#\textgreater{}  ========================\textgreater{}{-}{-}{-}{-}{-}{-}   80\% |  ETA:  8s}
+\CommentTok{\#\textgreater{}  ==========================\textgreater{}{-}{-}{-}{-}   88\% |  ETA:  4s}
+\CommentTok{\#\textgreater{}  =============================\textgreater{}{-}   95\% |  ETA:  2s}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} Done!}
 \NormalTok{PC}
@@ -2697,13 +2711,14 @@ Se utiliza el tipo de distancia de menor costo \texttt{type\ =\ "least-cost"} y 
   \ErrorTok{|}                                                  \ErrorTok{|}   \DecValTok{0}\NormalTok{\%}
   \SpecialCharTok{|}                                                        
   \ErrorTok{|==================================================|} \DecValTok{100}\NormalTok{\%}
-\CommentTok{\#\textgreater{}  ====\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   13\% |  ETA: 15s}
-\CommentTok{\#\textgreater{}  ========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   25\% |  ETA: 16s}
-\CommentTok{\#\textgreater{}  ===========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   38\% |  ETA: 14s}
-\CommentTok{\#\textgreater{}  ================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   54\% |  ETA: 10s}
-\CommentTok{\#\textgreater{}  ====================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   68\% |  ETA:  7s}
-\CommentTok{\#\textgreater{}  ========================\textgreater{}{-}{-}{-}{-}{-}{-}   79\% |  ETA:  4s}
-\CommentTok{\#\textgreater{}  =============================\textgreater{}{-}   96\% |  ETA:  1s}
+\CommentTok{\#\textgreater{}  ==\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}    7\% |  ETA: 16s}
+\CommentTok{\#\textgreater{}  ======\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   20\% |  ETA: 17s}
+\CommentTok{\#\textgreater{}  ==========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   32\% |  ETA: 15s}
+\CommentTok{\#\textgreater{}  =============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   44\% |  ETA: 13s}
+\CommentTok{\#\textgreater{}  =================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   56\% |  ETA: 10s}
+\CommentTok{\#\textgreater{}  =====================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}   70\% |  ETA:  7s}
+\CommentTok{\#\textgreater{}  =========================\textgreater{}{-}{-}{-}{-}{-}   85\% |  ETA:  3s}
+\CommentTok{\#\textgreater{}  =============================\textgreater{}{-}   97\% |  ETA:  1s}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} Done!}
 \NormalTok{PC}
@@ -2945,10 +2960,14 @@ Estamos utilizando un raster de nodos que esta incluido en el paquete Makurhini.
   \ErrorTok{|}                                                  \ErrorTok{|}   \DecValTok{0}\NormalTok{\%}
   \SpecialCharTok{|}                                                        
   \ErrorTok{|==================================================|} \DecValTok{100}\NormalTok{\%}
-\CommentTok{\#\textgreater{}  =====\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   18\% |  ETA: 12s}
-\CommentTok{\#\textgreater{}  ===========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   37\% |  ETA:  9s}
-\CommentTok{\#\textgreater{}  =================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   58\% |  ETA:  6s}
-\CommentTok{\#\textgreater{}  =======================\textgreater{}{-}{-}{-}{-}{-}{-}{-}   78\% |  ETA:  3s}
+\CommentTok{\#\textgreater{}  ===\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   10\% |  ETA: 14s}
+\CommentTok{\#\textgreater{}  =======\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   24\% |  ETA: 14s}
+\CommentTok{\#\textgreater{}  ============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   41\% |  ETA: 11s}
+\CommentTok{\#\textgreater{}  ================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   55\% |  ETA:  9s}
+\CommentTok{\#\textgreater{}  ====================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   65\% |  ETA:  7s}
+\CommentTok{\#\textgreater{}  =====================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}   71\% |  ETA:  7s}
+\CommentTok{\#\textgreater{}  ========================\textgreater{}{-}{-}{-}{-}{-}{-}   79\% |  ETA:  5s}
+\CommentTok{\#\textgreater{}  ==========================\textgreater{}{-}{-}{-}{-}   86\% |  ETA:  4s}
 \CommentTok{\#\textgreater{}  ============================\textgreater{}{-}{-}   95\% |  ETA:  1s}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} Done!}
@@ -3164,8 +3183,9 @@ Aplicamos la función \texttt{MK\_dPCIIC()}. En este ejemplo usaremos el índice
   \ErrorTok{|}                                                  \ErrorTok{|}   \DecValTok{0}\NormalTok{\%}
   \SpecialCharTok{|}                                                        
   \ErrorTok{|==================================================|} \DecValTok{100}\NormalTok{\%}
-\CommentTok{\#\textgreater{}  ==========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   34\% |  ETA:  2s}
-\CommentTok{\#\textgreater{}  ===========================\textgreater{}{-}{-}{-}   89\% |  ETA:  1s}
+\CommentTok{\#\textgreater{}  =======\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   24\% |  ETA:  6s}
+\CommentTok{\#\textgreater{}  ==============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   46\% |  ETA:  6s}
+\CommentTok{\#\textgreater{}  =======================\textgreater{}{-}{-}{-}{-}{-}{-}{-}   76\% |  ETA:  3s}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} Done!}
 \NormalTok{PCrestauracion}
@@ -3297,38 +3317,34 @@ Si desactivamos \texttt{onlyrestor} entonces estima los otros valores delíndice
 Esta función permite calcular el Índice Integral de Conectividad focal (IICf) o la Probabilidad de Conectividad focal (PCf) bajo uno o más umbrales de distancia. Además, esta función estima el Índice de Conectividad Compuesto (CCIf; para más detalles, véase Latorre-Cárdenas et al., 2023. Land 2023, 12(3), 631; \url{https://doi.org/10.3390/land12030631}).
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5417}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.4583}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.0469}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.9531}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 \textbf{Argumento}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Descripción}
+\textbf{Descripción en español}
 \end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\texttt{nodes} & sf, SpatVector o SpatialPolygonsDataFrame. Objeto que contiene los nodos (por ejemplo, fragmentos de hábitat) a analizar. Deben estar en un sistema de coordenadas proyectado. \\
-\texttt{id} & character. Nombre de la columna con el ID del nodo. \\
-\texttt{attribute} & character o vector. Si es NULL, se usará el área del nodo como atributo. Se puede definir la unidad con \texttt{area\_unit}. Si se desea usar un atributo diferente, especificar el nombre de la columna correspondiente. \\
-\texttt{raster\_attribute} & raster o rast. Objeto raster usado para asignar valores de atributo a cada nodo mediante la función definida en \texttt{fun\_attribute}. \\
-\texttt{fun\_attribute} & function. Función para calcular el atributo del nodo a partir del raster. Aplica la función (e.g., \texttt{mean}, \texttt{sum}, \texttt{modal}, \texttt{min}, \texttt{max}) a los valores extraídos. Valor por defecto: \texttt{mean}. \\
-\texttt{weighted} & logical. Si \texttt{raster\_attribute} y \texttt{weighted} son TRUE, el valor del atributo raster para cada nodo se multiplica por su área. \\
-\texttt{area\_unit} & character. (opcional, por defecto = \texttt{"m2"}). Indica la unidad del área cuando \texttt{attribute} es NULL. Opciones: ``m2'', ``km2'', ``cm2'', ``ha''. \\
-\texttt{distance} & Lista de parámetros para establecer la distancia entre pares de nodos. Puede ser distancia euclidiana o efectiva (costos). Debe incluir por lo menos \texttt{"type"} y \texttt{"resistance"} si es necesario. Ejemplo: \texttt{distance(type\ =\ "least-cost",\ resistance\ =\ raster\_resistance)}. \\
-\texttt{metric} & character. Métrica de conectividad: \texttt{"PC"} (por defecto) o \texttt{"IIC"}. \\
-\texttt{probability} & numérico. Probabilidad asociada a \texttt{distance\_threshold}. Por ejemplo, 0.5 si es distancia mediana de dispersión. Solo se usa si \texttt{metric\ =\ "PC"}. Si es NULL, se usa 0.5. \\
-\texttt{distance\_thresholds} & numérico. Distancia(s) de dispersión en metros. Si es NULL, se estima como la mediana de dispersión entre nodos. Puede usarse la función \texttt{dispersal\_distance}. \\
-\texttt{search\_buffer} & numérico. Distancia para crear un buffer alrededor del nodo focal, usado para seleccionar nodos vecinos. Puede variar según el umbral de dispersión. \\
-\texttt{simplify\_shape} & numérico. Simplifica la forma del nodo focal eliminando vértices antes de aplicar el buffer. Útil para nodos con geometrías complejas. Usa \texttt{st\_simplify}. \\
-\texttt{fragmentation} & logical. Estima estadísticas de fragmentación usando \texttt{MK\_Fragmentation}. Requiere \texttt{edge\_distance} y \texttt{min\_node\_area}. \\
-\texttt{edge\_distance} & numérico. Distancia al borde en metros. Por defecto 500 m. \\
-\texttt{min\_node\_area} & numérico. Área mínima (en unidades definidas por \texttt{area\_unit}) usada para contar nodos con menor área. Por defecto 100 km². \\
-\texttt{parallel} & numérico (opcional). Número de núcleos para paralelizar el cálculo de PC o IIC y sus deltas. Útil para \textgreater1000 nodos. Por defecto no se paraleliza. \\
-\texttt{write} & character. Ruta y prefijo inicial para guardar los objetos, por ejemplo: \texttt{"C:/ejemplo/test\_focal\_"}. Si no se especifica, no se guarda nada. \\
-\texttt{save\_subfiles} & logical o character. Si es TRUE, guarda los resultados por nodo en formato .rds en la ruta de \texttt{write}. Si es un path, debe indicar la carpeta. Útil si hay errores topológicos. Permite reanudar el análisis después de corregir el error. \\
-\texttt{intern} & logical. Muestra el progreso del proceso. Por defecto \texttt{TRUE}. Puede no llegar al 100\% si el proceso es muy rápido. \\
+\texttt{nodes} & Objeto que contiene la información de los nodos (por ejemplo, fragmentos o parches de hábitat). Puede ser: - \texttt{data.frame} con al menos dos columnas: la primera para los ID de los nodos y la segunda para los atributos. - Datos espaciales vectoriales (\texttt{sf}, \texttt{SpatVector}, \texttt{SpatialPolygonsDataFrame}) en un sistema de coordenadas proyectado. - Ráster (\texttt{RasterLayer}, \texttt{SpatRaster}) con valores enteros representando el ID de cada nodo y áreas no hábitat como \texttt{NA}. \\
+\texttt{attribute} & Caracter o vector. Si es \texttt{NULL} (solo válido cuando \texttt{nodes} es espacial vectorial o ráster), se usará el área del nodo como atributo. Para usar otro atributo: - Si \texttt{nodes} es vector espacial o \texttt{data.frame}, indicar el nombre de la columna. - Si \texttt{nodes} es ráster, debe ser un vector numérico con el atributo por nodo. Si \texttt{weighted\ =\ TRUE}, se multiplica por el área de cada nodo para obtener un índice ponderado. \\
+\texttt{LA} & Numérico. (opcional, por defecto = \texttt{NULL}). Valor máximo del atributo del paisaje. No afecta la importancia relativa de los nodos, solo se usa para calcular la conectividad total del paisaje. Si se omite y \texttt{overall\ =\ TRUE}, solo se calcula el numerador del índice global. \\
+\texttt{area\_unit} & Caracter. Unidad del área cuando \texttt{attribute\ =\ NULL}. Opciones: \texttt{"m2"} (por defecto), \texttt{"km2"}, \texttt{"cm2"} o \texttt{"ha"}. \\
+\texttt{distance} & Matriz o lista que establece las distancias entre pares de nodos. Puede ser: - Matriz cuadrada con distancias (euclidianas o efectivas). - Lista de parámetros (por ejemplo: \texttt{type\ =\ "least-cost",\ resistance\ =\ raster\_resistance}). Tipos posibles: \texttt{"centroid"}, \texttt{"edge"}, \texttt{"least-cost"}, \texttt{"commute-time"}. \\
+\texttt{metric} & Caracter indicando el índice de conectividad a usar: \texttt{"PC"} (por defecto y recomendado) o \texttt{"IIC"}. \\
+\texttt{probability} & Valor numérico de la probabilidad asociada al umbral de distancia (\texttt{distance\_thresholds}). Por ejemplo, si es distancia mediana de dispersión usar \texttt{0.5}. Para distancias máximas, usar \texttt{0.05} o \texttt{0.01}. Solo se usa si \texttt{metric\ =\ "PC"}. Si es \texttt{NULL}, se usa \texttt{0.5}. \\
+\texttt{distance\_thresholds} & Valor numérico (o vector) que indica la(s) distancia(s) de dispersión en metros. Si es \texttt{NULL}, se estima como la mediana de las distancias entre nodos. Alternativamente, puede usarse la función \texttt{dispersal\_distance}. \\
+\texttt{threshold} & Numérico. Se excluyen los pares de nodos con una distancia mayor al umbral, acelerando el procesamiento. \\
+\texttt{removal} & Lógico. Si es \texttt{TRUE} (por defecto), se calcula la importancia de los enlaces usando el modo de eliminación de enlaces. \\
+\texttt{change} & (opcional, por defecto \texttt{NULL}). Numérico que indica las nuevas distancias para calcular la importancia de los enlaces bajo el modo de cambio de enlace. \\
+\texttt{overall} & Lógico. Si es \texttt{TRUE}, se añade el índice EC global al resultado, el cual se convierte en una lista. Por defecto es \texttt{FALSE}. \\
+\texttt{parallel} & (opcional, por defecto = \texttt{NULL}). Numérico que indica el número de núcleos para paralelizar el cálculo de los índices. Recomendado si se tienen más de 1000 nodos. \\
+\texttt{parallel\_mode} & (opcional, por defecto = \texttt{1}). Numérico que indica el modo de paralelización: - Modo 1 (por defecto): paraleliza el cálculo de deltas de conectividad. - Modo 2: paraleliza el cálculo de rutas de menor costo. Recomendado para \textgreater1000 nodos. \\
+\texttt{write} & Caracter que indica la ruta y prefijo para guardar los resultados, por ejemplo \texttt{"C:/ejemplo"}. Por defecto no se guarda nada. Los archivos generados incluyen: - Importancia de cada enlace (formato CSV). - Tabla de conectividad global del paisaje si \texttt{overall\ =\ TRUE} (formato CSV). \\
+\texttt{intern} & Lógico. Si es \texttt{TRUE} (por defecto), muestra el progreso del proceso. Puede que no llegue a 100\% si las operaciones son muy rápidas. \\
 \end{longtable}
 
 Se ejecuta un ciclo en el que se selecciona cada uno de los nodos. En cada iteración, ocurre lo siguiente:
@@ -3603,9 +3619,42 @@ No olvidemos que es una herramienta para priorizar cada parche focal en función
 
 Esta función calcula el índice dPC o dIIC para estimar la importancia de los enlaces para la conservación y la restauración. Calcula la contribución de cada enlace individual para mantener (modo: eliminación de enlaces) o mejorar (modo: cambio de enlaces) la conectividad general bajo uno o varios umbrales de distancia.
 
+Estos son los argumentos:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.0469}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.9531}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Argumento}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Descripción en español}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{nodes} & Objeto que contiene la información de los nodos (por ejemplo, fragmentos o parches de hábitat). Puede ser: - \texttt{data.frame} con al menos dos columnas: la primera para los ID de los nodos y la segunda para los atributos. - Datos espaciales vectoriales (\texttt{sf}, \texttt{SpatVector}, \texttt{SpatialPolygonsDataFrame}) en un sistema de coordenadas proyectado. - Ráster (\texttt{RasterLayer}, \texttt{SpatRaster}) con valores enteros representando el ID de cada nodo y áreas no hábitat como \texttt{NA}. \\
+\texttt{attribute} & Caracter o vector. Si es \texttt{NULL} (solo válido cuando \texttt{nodes} es espacial vectorial o ráster), se usará el área del nodo como atributo. Para usar otro atributo: - Si \texttt{nodes} es vector espacial o \texttt{data.frame}, indicar el nombre de la columna. - Si \texttt{nodes} es ráster, debe ser un vector numérico con el atributo por nodo. Si \texttt{weighted\ =\ TRUE}, se multiplica por el área de cada nodo para obtener un índice ponderado. \\
+\texttt{LA} & Numérico. (opcional, por defecto = \texttt{NULL}). Valor máximo del atributo del paisaje. No afecta la importancia relativa de los nodos, solo se usa para calcular la conectividad total del paisaje. Si se omite y \texttt{overall\ =\ TRUE}, solo se calcula el numerador del índice global. \\
+\texttt{area\_unit} & Caracter. Unidad del área cuando \texttt{attribute\ =\ NULL}. Opciones: \texttt{"m2"} (por defecto), \texttt{"km2"}, \texttt{"cm2"} o \texttt{"ha"}. \\
+\texttt{distance} & Matriz o lista que establece las distancias entre pares de nodos. Puede ser: - Matriz cuadrada con distancias (euclidianas o efectivas). - Lista de parámetros (por ejemplo: \texttt{type\ =\ "least-cost",\ resistance\ =\ raster\_resistance}). Tipos posibles: \texttt{"centroid"}, \texttt{"edge"}, \texttt{"least-cost"}, \texttt{"commute-time"}. \\
+\texttt{metric} & Caracter indicando el índice de conectividad a usar: \texttt{"PC"} (por defecto y recomendado) o \texttt{"IIC"}. \\
+\texttt{probability} & Valor numérico de la probabilidad asociada al umbral de distancia (\texttt{distance\_thresholds}). Por ejemplo, si es distancia mediana de dispersión usar \texttt{0.5}. Para distancias máximas, usar \texttt{0.05} o \texttt{0.01}. Solo se usa si \texttt{metric\ =\ "PC"}. Si es \texttt{NULL}, se usa \texttt{0.5}. \\
+\texttt{distance\_thresholds} & Valor numérico (o vector) que indica la(s) distancia(s) de dispersión en metros. Si es \texttt{NULL}, se estima como la mediana de las distancias entre nodos. Alternativamente, puede usarse la función \texttt{dispersal\_distance}. \\
+\texttt{threshold} & Numérico. Se excluyen los pares de nodos con una distancia mayor al umbral, acelerando el procesamiento. \\
+\texttt{removal} & Lógico. Si es \texttt{TRUE} (por defecto), se calcula la importancia de los enlaces usando el modo de eliminación de enlaces. \\
+\texttt{change} & (opcional, por defecto \texttt{NULL}). Numérico que indica las nuevas distancias para calcular la importancia de los enlaces bajo el modo de cambio de enlace. \\
+\texttt{overall} & Lógico. Si es \texttt{TRUE}, se añade el índice EC global al resultado, el cual se convierte en una lista. Por defecto es \texttt{FALSE}. \\
+\texttt{parallel} & (opcional, por defecto = \texttt{NULL}). Numérico que indica el número de núcleos para paralelizar el cálculo de los índices. Recomendado si se tienen más de 1000 nodos. \\
+\texttt{parallel\_mode} & (opcional, por defecto = \texttt{1}). Numérico que indica el modo de paralelización: - Modo 1 (por defecto): paraleliza el cálculo de deltas de conectividad. - Modo 2: paraleliza el cálculo de rutas de menor costo. Recomendado para \textgreater1000 nodos. \\
+\texttt{write} & Caracter que indica la ruta y prefijo para guardar los resultados, por ejemplo \texttt{"C:/ejemplo"}. Por defecto no se guarda nada. Los archivos generados incluyen: - Importancia de cada enlace (formato CSV). - Tabla de conectividad global del paisaje si \texttt{overall\ =\ TRUE} (formato CSV). \\
+\texttt{intern} & Lógico. Si es \texttt{TRUE} (por defecto), muestra el progreso del proceso. Puede que no llegue a 100\% si las operaciones son muy rápidas. \\
+\end{longtable}
+
 \section{Rutas de menor costo (corredores potenciales)}\label{rutas-de-menor-costo-corredores-potenciales}
 
-Para realizar un ejemplo, estimemos los corredores potenciales entre 20 de nuestros parches utilizando el raster de resistencia que usamos en ejemplos previos.
+Para realizar un ejemplo, estimaremos los corredores potenciales entre 20 de nuestros parches utilizando el raster de resistencia que usamos en ejemplos previos.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3638,6 +3687,18 @@ Para realizar un ejemplo, estimemos los corredores potenciales entre 20 de nuest
 \end{Shaded}
 
 \pandocbounded{\includegraphics[keepaspectratio]{05-Priorizacion_files/figure-latex/unnamed-chunk-22-1.pdf}}
+
+Estamos utilizando un raster de resistencia que esta incluido en el paquete Makurhini. Para cargar un raster de resistencia para tu estudio puedes utilizar la función \texttt{raster()} del paquete \texttt{raster} o la función \texttt{rast()} del paquete \texttt{terra}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(raster)}
+\NormalTok{resistance\_matrix }\OtherTok{\textless{}{-}} \FunctionTok{raster}\NormalTok{(}\StringTok{"direccion/nombre.tif"}\NormalTok{) }\CommentTok{\#puedes usar otras extensiones raster}
+
+\FunctionTok{library}\NormalTok{(terra)}
+\NormalTok{resistance\_matrix }\OtherTok{\textless{}{-}} \FunctionTok{rast}\NormalTok{(}\StringTok{"direccion/nombre.tif"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
 
 \section{Eliminación de enlaces (Link removal)}\label{eliminaciuxf3n-de-enlaces-link-removal}
 
@@ -3699,11 +3760,12 @@ En este ejemplo, estimaremos algunas rutas de menor costo entre pares de parches
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{05-Priorizacion_files/figure-latex/unnamed-chunk-25-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{05-Priorizacion_files/figure-latex/unnamed-chunk-26-1.pdf}}
 
 Ahora aplicamos la función \texttt{MK\_dPCIIC\_links()}, pero antes exploremos una nueva variante de estimar el umbral de distancia cuando usamos una resistencia.
 
-Estimaremos la distancia efectiva promedio: media de la resistencia x dispersión De esta forma obtenemos una distancia costo.
+Estimaremos la distancia efectiva promedio: media de la resistencia x dispersión
+De esta forma obtenemos una distancia costo.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3729,12 +3791,12 @@ Estimaremos la distancia efectiva promedio: media de la resistencia x dispersió
 \CommentTok{\#\textgreater{} Done!}
 \FunctionTok{head}\NormalTok{(delta)}
 \CommentTok{\#\textgreater{}   Id Source Destination dPC\_removal}
-\CommentTok{\#\textgreater{} 1  1      2           1   0.0000075}
-\CommentTok{\#\textgreater{} 2  2      3           1   0.0000014}
-\CommentTok{\#\textgreater{} 3  3      4           1   0.0000002}
-\CommentTok{\#\textgreater{} 4  4      5           1   0.0170323}
-\CommentTok{\#\textgreater{} 5  5      6           1   0.0000000}
-\CommentTok{\#\textgreater{} 6  6      7           1   0.0000053}
+\CommentTok{\#\textgreater{} 1  1      2           1   0.0004151}
+\CommentTok{\#\textgreater{} 2  2      3           1   0.0001186}
+\CommentTok{\#\textgreater{} 3  3      4           1   0.0001053}
+\CommentTok{\#\textgreater{} 4  4      5           1   0.0502042}
+\CommentTok{\#\textgreater{} 5  5      6           1   0.0000061}
+\CommentTok{\#\textgreater{} 6  6      7           1   0.0000350}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3745,12 +3807,14 @@ Unir valores con mis corredores de interes:
 \CommentTok{\#Existen otras formas, pero crearé un nuevo ID}
 \NormalTok{delta}\SpecialCharTok{$}\NormalTok{ID\_nuevo }\OtherTok{\textless{}{-}} \FunctionTok{paste0}\NormalTok{(delta}\SpecialCharTok{$}\NormalTok{Destination, }\StringTok{"\_"}\NormalTok{, delta}\SpecialCharTok{$}\NormalTok{Source)}
 
-\NormalTok{rutas\_mc}\SpecialCharTok{$}\NormalTok{ID\_nuevo }\OtherTok{\textless{}{-}} \FunctionTok{paste0}\NormalTok{(rutas\_mc}\SpecialCharTok{$}\NormalTok{from, }\StringTok{"\_"}\NormalTok{, rutas\_mc}\SpecialCharTok{$}\NormalTok{to)}
+\CommentTok{\#Guardo las rutas en un objeto nuevo para tener de respaldo mi vector original}
+\NormalTok{rutas\_mc2 }\OtherTok{\textless{}{-}}\NormalTok{ rutas\_mc}
+\NormalTok{rutas\_mc2}\SpecialCharTok{$}\NormalTok{ID\_nuevo }\OtherTok{\textless{}{-}} \FunctionTok{paste0}\NormalTok{(rutas\_mc2}\SpecialCharTok{$}\NormalTok{from, }\StringTok{"\_"}\NormalTok{, rutas\_mc}\SpecialCharTok{$}\NormalTok{to)}
 
 \CommentTok{\#Aplicar merge}
-\NormalTok{rutas\_mc }\OtherTok{\textless{}{-}} \FunctionTok{merge}\NormalTok{(rutas\_mc, delta, }\AttributeTok{by =} \StringTok{"ID\_nuevo"}\NormalTok{)}
+\NormalTok{rutas\_mc2 }\OtherTok{\textless{}{-}} \FunctionTok{merge}\NormalTok{(rutas\_mc2, delta, }\AttributeTok{by =} \StringTok{"ID\_nuevo"}\NormalTok{)}
 
-\NormalTok{rutas\_mc}
+\NormalTok{rutas\_mc2}
 \CommentTok{\#\textgreater{} Simple feature collection with 190 features and 7 fields}
 \CommentTok{\#\textgreater{} Geometry type: LINESTRING}
 \CommentTok{\#\textgreater{} Dimension:     XY}
@@ -3758,16 +3822,16 @@ Unir valores con mis corredores de interes:
 \CommentTok{\#\textgreater{} Projected CRS: NAD\_1927\_Albers}
 \CommentTok{\#\textgreater{} First 10 features:}
 \CommentTok{\#\textgreater{}    ID\_nuevo from to Id Source Destination dPC\_removal}
-\CommentTok{\#\textgreater{} 1      1\_10    1 10  9     10           1   0.0000045}
-\CommentTok{\#\textgreater{} 2      1\_11    1 11 10     11           1   0.0000467}
-\CommentTok{\#\textgreater{} 3      1\_12    1 12 11     12           1   0.0042806}
-\CommentTok{\#\textgreater{} 4      1\_13    1 13 12     13           1   0.0000011}
-\CommentTok{\#\textgreater{} 5      1\_14    1 14 13     14           1   0.0000199}
-\CommentTok{\#\textgreater{} 6      1\_15    1 15 14     15           1   0.0025181}
-\CommentTok{\#\textgreater{} 7      1\_16    1 16 15     16           1   0.0000013}
-\CommentTok{\#\textgreater{} 8      1\_17    1 17 16     17           1   0.0000000}
-\CommentTok{\#\textgreater{} 9      1\_18    1 18 17     18           1   0.0000010}
-\CommentTok{\#\textgreater{} 10     1\_19    1 19 18     19           1   0.0000000}
+\CommentTok{\#\textgreater{} 1      1\_10    1 10  9     10           1   0.0000827}
+\CommentTok{\#\textgreater{} 2      1\_11    1 11 10     11           1   0.0019437}
+\CommentTok{\#\textgreater{} 3      1\_12    1 12 11     12           1   0.0273787}
+\CommentTok{\#\textgreater{} 4      1\_13    1 13 12     13           1   0.0000367}
+\CommentTok{\#\textgreater{} 5      1\_14    1 14 13     14           1   0.0003651}
+\CommentTok{\#\textgreater{} 6      1\_15    1 15 14     15           1   0.0061334}
+\CommentTok{\#\textgreater{} 7      1\_16    1 16 15     16           1   0.0000411}
+\CommentTok{\#\textgreater{} 8      1\_17    1 17 16     17           1   0.0000410}
+\CommentTok{\#\textgreater{} 9      1\_18    1 18 17     18           1   0.0000514}
+\CommentTok{\#\textgreater{} 10     1\_19    1 19 18     19           1   0.0002504}
 \CommentTok{\#\textgreater{}                              geom}
 \CommentTok{\#\textgreater{} 1  LINESTRING ({-}77336.39 21694...}
 \CommentTok{\#\textgreater{} 2  LINESTRING ({-}77336.39 21694...}
@@ -3791,10 +3855,10 @@ Ejemplo de visualización:
 \FunctionTok{library}\NormalTok{(dplyr)}
 
 \CommentTok{\# Calcular los intervalos de Jenks para strength}
-\NormalTok{breaks }\OtherTok{\textless{}{-}}\NormalTok{ classInt}\SpecialCharTok{::}\FunctionTok{classIntervals}\NormalTok{(rutas\_mc}\SpecialCharTok{$}\NormalTok{dPC\_removal, }\AttributeTok{n =} \DecValTok{5}\NormalTok{, }\AttributeTok{style =} \StringTok{"quantile"}\NormalTok{)}
+\NormalTok{breaks }\OtherTok{\textless{}{-}}\NormalTok{ classInt}\SpecialCharTok{::}\FunctionTok{classIntervals}\NormalTok{(rutas\_mc2}\SpecialCharTok{$}\NormalTok{dPC\_removal, }\AttributeTok{n =} \DecValTok{5}\NormalTok{, }\AttributeTok{style =} \StringTok{"quantile"}\NormalTok{)}
 
 \CommentTok{\# Crear una nueva variable categórica con los intervalos}
-\NormalTok{rutas\_mc }\OtherTok{\textless{}{-}}\NormalTok{ rutas\_mc }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{rutas\_mc2 }\OtherTok{\textless{}{-}}\NormalTok{ rutas\_mc2 }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{mutate}\NormalTok{(}\AttributeTok{dPC\_q =} \FunctionTok{cut}\NormalTok{(dPC\_removal,}
                      \AttributeTok{breaks =}\NormalTok{ breaks}\SpecialCharTok{$}\NormalTok{brks,}
                      \AttributeTok{include.lowest =} \ConstantTok{TRUE}\NormalTok{,}
@@ -3803,13 +3867,13 @@ Ejemplo de visualización:
 \CommentTok{\# Graficar usando ggplot2 y colores de ColorBrewer}
 \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}  
   \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ paisaje, }\AttributeTok{fill =} \ConstantTok{NA}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ rutas\_mc, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =}\NormalTok{ dPC\_q), }\AttributeTok{size =} \FloatTok{0.5}\NormalTok{, }\AttributeTok{linewidth =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ rutas\_mc2, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =}\NormalTok{ dPC\_q), }\AttributeTok{size =} \FloatTok{0.5}\NormalTok{, }\AttributeTok{linewidth =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{scale\_color\_brewer}\NormalTok{(}\AttributeTok{palette =} \StringTok{"RdYlBu"}\NormalTok{, }\AttributeTok{direction =} \SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, }\AttributeTok{name =} \StringTok{"dPC remove (Q)"}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ parches\_ejemplo, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =} \StringTok{"Habitat nodes"}\NormalTok{), }
           \AttributeTok{fill =} \StringTok{"forestgreen"}\NormalTok{, }\AttributeTok{color =} \ConstantTok{NA}\NormalTok{, }\AttributeTok{linewidth =} \FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
   \FunctionTok{labs}\NormalTok{(}
-    \AttributeTok{title =} \StringTok{"Priorización de enlaces"}\NormalTok{,}
+    \AttributeTok{title =} \StringTok{"Priorización de enlaces (remove)"}\NormalTok{,}
     \AttributeTok{fill =} \StringTok{"dPC"}
 \NormalTok{  ) }\SpecialCharTok{+}
   \FunctionTok{theme}\NormalTok{(}
@@ -3819,7 +3883,7 @@ Ejemplo de visualización:
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{05-Priorizacion_files/figure-latex/unnamed-chunk-28-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{05-Priorizacion_files/figure-latex/unnamed-chunk-29-1.pdf}}
 
 \section{Cambio de enlaces (Link change)}\label{cambio-de-enlaces-link-change}
 
@@ -3895,6 +3959,7 @@ Aplicamos la función:
 \begin{Highlighting}[]
 \CommentTok{\#Distancia efectiva promedio como umbral de distancia}
 \NormalTok{Effec\_mean }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(resistance\_matrix[], }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{*} \DecValTok{10000} \CommentTok{\# 10km}
+\CommentTok{\#[1] 5229259}
 
 \CommentTok{\#Aplicamos la función}
 \NormalTok{delta }\OtherTok{\textless{}{-}} \FunctionTok{MK\_dPCIIC\_links}\NormalTok{(}\AttributeTok{nodes =}\NormalTok{ parches\_ejemplo,}
@@ -3913,16 +3978,16 @@ Aplicamos la función:
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} Done!}
 \FunctionTok{names}\NormalTok{(delta)}
-\CommentTok{\#\textgreater{} [1] "Link\_removal\_importances\_d624341"}
-\CommentTok{\#\textgreater{} [2] "Link\_change\_importances\_d624341"}
+\CommentTok{\#\textgreater{} [1] "Link\_removal\_importances\_d5229259"}
+\CommentTok{\#\textgreater{} [2] "Link\_change\_importances\_d5229259"}
 \end{Highlighting}
 \end{Shaded}
 
-Vemos el resultado:
+Vemos el resultado. Es importante recordar que los nombres de los elementos de las listas cambian dependiendo del umbral de distancia que uses (e.g., \_d5229259, \_d10000, \_d200)
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{head}\NormalTok{(delta}\SpecialCharTok{$}\NormalTok{Link\_change\_importances\_d624341)}
+\FunctionTok{head}\NormalTok{(delta}\SpecialCharTok{$}\NormalTok{Link\_change\_importances\_d5229259)}
 \CommentTok{\#\textgreater{}   Id Source Destination dPC\_change}
 \CommentTok{\#\textgreater{} 1  1      2           1          0}
 \CommentTok{\#\textgreater{} 2  2      3           1          0}
@@ -3937,23 +4002,55 @@ Lo unimos a nuestro vector con los corredores:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{change\_corr }\OtherTok{\textless{}{-}}\NormalTok{ delta}\SpecialCharTok{$}\NormalTok{Link\_change\_importances\_d624341}
+\NormalTok{change\_corr }\OtherTok{\textless{}{-}}\NormalTok{ delta}\SpecialCharTok{$}\NormalTok{Link\_change\_importances\_d5229259}
 \NormalTok{change\_corr}\SpecialCharTok{$}\NormalTok{ID\_nuevo }\OtherTok{\textless{}{-}} \FunctionTok{paste0}\NormalTok{(change\_corr}\SpecialCharTok{$}\NormalTok{Destination, }\StringTok{"\_"}\NormalTok{, change\_corr}\SpecialCharTok{$}\NormalTok{Source)}
-\NormalTok{rutas\_mc }\OtherTok{\textless{}{-}} \FunctionTok{merge}\NormalTok{(rutas\_mc, change\_corr, }\AttributeTok{by =} \StringTok{"ID\_nuevo"}\NormalTok{)}
+
+\CommentTok{\#Por precaución guardamos los corredores en otro objeto y generamos el ID}
+\NormalTok{rutas\_mc3 }\OtherTok{\textless{}{-}}\NormalTok{ rutas\_mc}
+\NormalTok{rutas\_mc3}\SpecialCharTok{$}\NormalTok{ID\_nuevo }\OtherTok{\textless{}{-}} \FunctionTok{paste0}\NormalTok{(rutas\_mc3}\SpecialCharTok{$}\NormalTok{from, }\StringTok{"\_"}\NormalTok{, rutas\_mc3}\SpecialCharTok{$}\NormalTok{to)}
+\CommentTok{\#Unimos}
+\NormalTok{rutas\_mc3 }\OtherTok{\textless{}{-}} \FunctionTok{merge}\NormalTok{(rutas\_mc3, change\_corr, }\AttributeTok{by =} \StringTok{"ID\_nuevo"}\NormalTok{)}
+\NormalTok{rutas\_mc3}
+\CommentTok{\#\textgreater{} Simple feature collection with 190 features and 7 fields}
+\CommentTok{\#\textgreater{} Geometry type: LINESTRING}
+\CommentTok{\#\textgreater{} Dimension:     XY}
+\CommentTok{\#\textgreater{} Bounding box:  xmin: {-}107336.4 ymin: 2082987 xmax: 176163.6 ymax: 2187987}
+\CommentTok{\#\textgreater{} Projected CRS: NAD\_1927\_Albers}
+\CommentTok{\#\textgreater{} First 10 features:}
+\CommentTok{\#\textgreater{}    ID\_nuevo from to Id Source Destination dPC\_change}
+\CommentTok{\#\textgreater{} 1      1\_10    1 10  9     10           1          0}
+\CommentTok{\#\textgreater{} 2      1\_11    1 11 10     11           1          0}
+\CommentTok{\#\textgreater{} 3      1\_12    1 12 11     12           1          0}
+\CommentTok{\#\textgreater{} 4      1\_13    1 13 12     13           1          0}
+\CommentTok{\#\textgreater{} 5      1\_14    1 14 13     14           1          0}
+\CommentTok{\#\textgreater{} 6      1\_15    1 15 14     15           1          0}
+\CommentTok{\#\textgreater{} 7      1\_16    1 16 15     16           1          0}
+\CommentTok{\#\textgreater{} 8      1\_17    1 17 16     17           1          0}
+\CommentTok{\#\textgreater{} 9      1\_18    1 18 17     18           1          0}
+\CommentTok{\#\textgreater{} 10     1\_19    1 19 18     19           1          0}
+\CommentTok{\#\textgreater{}                              geom}
+\CommentTok{\#\textgreater{} 1  LINESTRING ({-}77336.39 21694...}
+\CommentTok{\#\textgreater{} 2  LINESTRING ({-}77336.39 21694...}
+\CommentTok{\#\textgreater{} 3  LINESTRING ({-}77336.39 21694...}
+\CommentTok{\#\textgreater{} 4  LINESTRING ({-}77336.39 21694...}
+\CommentTok{\#\textgreater{} 5  LINESTRING ({-}77336.39 21694...}
+\CommentTok{\#\textgreater{} 6  LINESTRING ({-}77336.39 21694...}
+\CommentTok{\#\textgreater{} 7  LINESTRING ({-}77336.39 21694...}
+\CommentTok{\#\textgreater{} 8  LINESTRING ({-}77336.39 21694...}
+\CommentTok{\#\textgreater{} 9  LINESTRING ({-}77336.39 21694...}
+\CommentTok{\#\textgreater{} 10 LINESTRING ({-}77336.39 21694...}
 \end{Highlighting}
 \end{Shaded}
 
+Podemos viasualizar el resultado:
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(ggplot2)}
-\FunctionTok{library}\NormalTok{(classInt)}
-\FunctionTok{library}\NormalTok{(dplyr)}
-
 \CommentTok{\# Calcular los intervalos de Jenks para strength}
-\NormalTok{breaks }\OtherTok{\textless{}{-}}\NormalTok{ classInt}\SpecialCharTok{::}\FunctionTok{classIntervals}\NormalTok{(rutas\_mc}\SpecialCharTok{$}\NormalTok{dPC\_change, }\AttributeTok{n =} \DecValTok{4}\NormalTok{, }\AttributeTok{style =} \StringTok{"jenks"}\NormalTok{)}
+\NormalTok{breaks }\OtherTok{\textless{}{-}}\NormalTok{ classInt}\SpecialCharTok{::}\FunctionTok{classIntervals}\NormalTok{(rutas\_mc3}\SpecialCharTok{$}\NormalTok{dPC\_change, }\AttributeTok{n =} \DecValTok{5}\NormalTok{, }\AttributeTok{style =} \StringTok{"jenks"}\NormalTok{)}
 
 \CommentTok{\# Crear una nueva variable categórica con los intervalos}
-\NormalTok{rutas\_mc }\OtherTok{\textless{}{-}}\NormalTok{ rutas\_mc }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{rutas\_mc3 }\OtherTok{\textless{}{-}}\NormalTok{ rutas\_mc3 }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{mutate}\NormalTok{(}\AttributeTok{dPC\_q =} \FunctionTok{cut}\NormalTok{(dPC\_change,}
                      \AttributeTok{breaks =}\NormalTok{ breaks}\SpecialCharTok{$}\NormalTok{brks,}
                      \AttributeTok{include.lowest =} \ConstantTok{TRUE}\NormalTok{,}
@@ -3962,13 +4059,13 @@ Lo unimos a nuestro vector con los corredores:
 \CommentTok{\# Graficar usando ggplot2 y colores de ColorBrewer}
 \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}  
   \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ paisaje, }\AttributeTok{fill =} \ConstantTok{NA}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ rutas\_mc, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =}\NormalTok{ dPC\_q), }\AttributeTok{size =} \FloatTok{0.5}\NormalTok{, }\AttributeTok{linewidth =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{scale\_color\_brewer}\NormalTok{(}\AttributeTok{palette =} \StringTok{"RdYlBu"}\NormalTok{, }\AttributeTok{direction =} \DecValTok{1}\NormalTok{, }\AttributeTok{name =} \StringTok{"dPC change (Q)"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ rutas\_mc3, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =}\NormalTok{ dPC\_q), }\AttributeTok{size =} \FloatTok{0.5}\NormalTok{, }\AttributeTok{linewidth =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_color\_brewer}\NormalTok{(}\AttributeTok{palette =} \StringTok{"RdYlBu"}\NormalTok{, }\AttributeTok{direction =} \DecValTok{1}\NormalTok{, }\AttributeTok{name =} \StringTok{"dPC change (jenks)"}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ parches\_ejemplo, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =} \StringTok{"Habitat nodes"}\NormalTok{), }
           \AttributeTok{fill =} \StringTok{"forestgreen"}\NormalTok{, }\AttributeTok{color =} \ConstantTok{NA}\NormalTok{, }\AttributeTok{linewidth =} \FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
   \FunctionTok{labs}\NormalTok{(}
-    \AttributeTok{title =} \StringTok{"Priorización de enlaces"}\NormalTok{,}
+    \AttributeTok{title =} \StringTok{"Priorización de enlaces (change)"}\NormalTok{,}
     \AttributeTok{fill =} \StringTok{"dPC"}
 \NormalTok{  ) }\SpecialCharTok{+}
   \FunctionTok{theme}\NormalTok{(}
@@ -3978,7 +4075,43 @@ Lo unimos a nuestro vector con los corredores:
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{05-Priorizacion_files/figure-latex/unnamed-chunk-36-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{05-Priorizacion_files/figure-latex/unnamed-chunk-37-1.pdf}}
+
+Podemos visualizar solo los corredores que sufriedon cambio después de mejorar los corredores:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rutas\_mc4 }\OtherTok{\textless{}{-}}\NormalTok{ rutas\_mc3[rutas\_mc3}\SpecialCharTok{$}\NormalTok{dPC\_change }\SpecialCharTok{!=} \DecValTok{0}\NormalTok{, ] }
+\CommentTok{\# Calcular los intervalos de Jenks para strength}
+\NormalTok{breaks }\OtherTok{\textless{}{-}}\NormalTok{ classInt}\SpecialCharTok{::}\FunctionTok{classIntervals}\NormalTok{(rutas\_mc4}\SpecialCharTok{$}\NormalTok{dPC\_change, }\AttributeTok{n =} \DecValTok{5}\NormalTok{, }\AttributeTok{style =} \StringTok{"jenks"}\NormalTok{)}
+
+\CommentTok{\# Crear una nueva variable categórica con los intervalos}
+\NormalTok{rutas\_mc4 }\OtherTok{\textless{}{-}}\NormalTok{ rutas\_mc4 }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{dPC\_q =} \FunctionTok{cut}\NormalTok{(dPC\_change,}
+                     \AttributeTok{breaks =}\NormalTok{ breaks}\SpecialCharTok{$}\NormalTok{brks,}
+                     \AttributeTok{include.lowest =} \ConstantTok{TRUE}\NormalTok{,}
+                     \AttributeTok{dig.lab =} \DecValTok{5}\NormalTok{))  }
+
+\CommentTok{\# Graficar usando ggplot2 y colores de ColorBrewer}
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}  
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ paisaje, }\AttributeTok{fill =} \ConstantTok{NA}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ rutas\_mc4, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =}\NormalTok{ dPC\_q), }\AttributeTok{size =} \FloatTok{0.5}\NormalTok{, }\AttributeTok{linewidth =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_color\_brewer}\NormalTok{(}\AttributeTok{palette =} \StringTok{"RdYlBu"}\NormalTok{, }\AttributeTok{direction =} \DecValTok{1}\NormalTok{, }\AttributeTok{name =} \StringTok{"dPC change (Jenks)"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ parches\_ejemplo, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =} \StringTok{"Habitat nodes"}\NormalTok{), }
+          \AttributeTok{fill =} \StringTok{"forestgreen"}\NormalTok{, }\AttributeTok{color =} \ConstantTok{NA}\NormalTok{, }\AttributeTok{linewidth =} \FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \StringTok{"Priorización de enlaces (change)"}\NormalTok{,}
+    \AttributeTok{fill =} \StringTok{"dPC"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}
+    \AttributeTok{legend.position =} \StringTok{"right"}\NormalTok{,}
+    \AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{05-Priorizacion_files/figure-latex/unnamed-chunk-38-1.pdf}}
 
   \bibliography{book.bib,packages.bib}
 
