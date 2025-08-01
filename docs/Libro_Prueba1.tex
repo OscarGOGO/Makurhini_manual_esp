@@ -119,7 +119,7 @@
 
 \title{Manual de uso de Makurhini}
 \author{Oscar Godínez Gómez}
-\date{2025-07-31}
+\date{2025-08-01}
 
 \begin{document}
 \maketitle
@@ -135,7 +135,7 @@
 
 En este manual se documenta parte de las funciones del paquete \textbf{Makurhini}:
 
-\textbf{Makurhini} (que significa Conectar en lengua purépecha) es un paquete de R diseñado para calcular índices de fragmentación y conectividad del paisaje, útiles en la planificación de la conservación. Makurhini proporciona un conjunto de funciones para identificar la conectividad de redes de áreas protegidas y la importancia de los elementos del paisaje para mantener dicha conectividad. Este paquete permite evaluar escenarios de cambio en la conectividad del paisaje y presenta una mejora adicional: la inclusión de la heterogeneidad del paisaje como un factor limitante para la conectividad.
+\textbf{Makurhini} (que significa Conectar en lengua purépecha) es un paquete de R diseñado para calcular índices de fragmentación y conectividad del paisaje, útiles en la planificación de la conservación. Makurhini proporciona un conjunto de funciones para identificar la conectividad de redes de áreas protegidas y la importancia de los elementos del paisaje para mantener dicha conectividad. Este paquete permite evaluar escenarios de cambio en la conectividad del paisaje y presenta una mejora adicional: la inclusión de la heterogeneidad del paisaje como un factor limitante para la conectividad. Makurhini permite integrar flujos de trabajo eficientes y útiles para la gestión del paisaje y el monitoreo de metas globales de conservación.
 
 Los índices de conectividad de redes calculados en el paquete Makurhini han sido previamente publicados, por ejemplo:
 
@@ -151,12 +151,12 @@ Los índices de conectividad de redes calculados en el paquete Makurhini han sid
 \item
   Saura et al., 2017. Ecological Indicators, \url{http://dx.doi.org/10.1016/j.ecolind.2016.12.047}
 \item
-  Saura et al., 2018. Biological Conservation, \url{https://doi.org/10.1016/j.biocon.2017.12.020}), y permite integrar flujos de trabajo eficientes y útiles para la gestión del paisaje y el monitoreo de metas globales de conservación.
+  Saura et al., 2018. Biological Conservation, \url{https://doi.org/10.1016/j.biocon.2017.12.020}),
 \end{itemize}
 
-\textbf{Cómo citar el paquete Makurhini:} Pronto se publicará un artículo científico sobre este paquete. Hasta entonces, por favor utiliza uno de los siguientes preprints:
+\textbf{Cómo citar el paquete Makurhini:} Pronto se publicará un artículo científico sobre este paquete. Hasta entonces, por favor utiliza el siguiente preprint:
 
-Preprint: Godínez-Gómez, O., Correa-Ayram, C., Goicolea, T., \& Saura, S. (2025). \textbf{Makurhini: An R package for comprehensive analysis of landscape fragmentation and connectivity}. Research Square. \url{https://doi.org/10.21203/rs.3.rs-6398746/v1}
+Godínez-Gómez, O., Correa-Ayram, C., Goicolea, T., \& Saura, S. (2025). \textbf{Makurhini: An R package for comprehensive analysis of landscape fragmentation and connectivity}. Research Square. \url{https://doi.org/10.21203/rs.3.rs-6398746/v1}
 
 \chapter{Instalación del paquete Makurhini}\label{instalaciuxf3n-del-paquete-makurhini}
 
@@ -1316,6 +1316,7 @@ Usando más de un umbral de distancia
                                  \AttributeTok{distance\_thresholds =} \FunctionTok{c}\NormalTok{(}\DecValTok{10000}\NormalTok{, }\DecValTok{100000}\NormalTok{),}
                                  \AttributeTok{probability =} \FloatTok{0.5}\NormalTok{,}
                                  \AttributeTok{write =} \ConstantTok{NULL}\NormalTok{)}
+\CommentTok{\#\textgreater{}  ===============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   50\% |  ETA:  3s}
 \CommentTok{\#\textgreater{} Done!}
 \NormalTok{centrality\_test}
 \CommentTok{\#\textgreater{} $d10000}
@@ -1744,7 +1745,11 @@ Descripción
 \CommentTok{\#\textgreater{} }
   \SpecialCharTok{|}                                                        
   \ErrorTok{|}                                                  \ErrorTok{|}   \DecValTok{0}\NormalTok{\%}
-\CommentTok{\#\textgreater{}  ==============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   45\% |  ETA:  1s}
+\CommentTok{\#\textgreater{}  ==========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   34\% |  ETA:  5s}
+\CommentTok{\#\textgreater{}  ==============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   45\% |  ETA:  7s}
+\CommentTok{\#\textgreater{}  ===================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   63\% |  ETA:  5s}
+\CommentTok{\#\textgreater{}  =======================\textgreater{}{-}{-}{-}{-}{-}{-}{-}   75\% |  ETA:  4s}
+\CommentTok{\#\textgreater{}  =============================\textgreater{}{-}   96\% |  ETA:  1s}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} Done!}
 \NormalTok{IIC}
@@ -1974,7 +1979,10 @@ Exploremos un plot usando intervalos:
 \CommentTok{\#\textgreater{} }
   \SpecialCharTok{|}                                                        
   \ErrorTok{|}                                                  \ErrorTok{|}   \DecValTok{0}\NormalTok{\%}
-\CommentTok{\#\textgreater{}  ======================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}   73\% |  ETA:  1s}
+\CommentTok{\#\textgreater{}  =========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   31\% |  ETA:  7s}
+\CommentTok{\#\textgreater{}  ===============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   50\% |  ETA:  6s}
+\CommentTok{\#\textgreater{}  ======================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}   74\% |  ETA:  3s}
+\CommentTok{\#\textgreater{}  =============================\textgreater{}{-}   97\% |  ETA:  0s}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} Done!}
 \NormalTok{IIC}
@@ -2049,18 +2057,33 @@ Exploremos un plot usando intervalos:
   \ErrorTok{|}                                                  \ErrorTok{|}   \DecValTok{0}\NormalTok{\%}
   \SpecialCharTok{|}                                                        
   \ErrorTok{|}                                                  \ErrorTok{|}   \DecValTok{0}\NormalTok{\%}
-\CommentTok{\#\textgreater{}  ===============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   49\% |  ETA:  1s}
+\CommentTok{\#\textgreater{}  ==========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   33\% |  ETA:  4s}
+\CommentTok{\#\textgreater{}  =================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   56\% |  ETA:  4s}
+\CommentTok{\#\textgreater{}  ==========================\textgreater{}{-}{-}{-}{-}   88\% |  ETA:  1s}
 \CommentTok{\#\textgreater{} }
   \SpecialCharTok{|}                                                        
   \ErrorTok{|=================}                                 \ErrorTok{|}  \DecValTok{33}\NormalTok{\%}
   \SpecialCharTok{|}                                                        
   \ErrorTok{|}                                                  \ErrorTok{|}   \DecValTok{0}\NormalTok{\%}
+\CommentTok{\#\textgreater{}  ==========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   33\% |  ETA:  5s}
+\CommentTok{\#\textgreater{}  ===============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   51\% |  ETA:  5s}
+\CommentTok{\#\textgreater{}  ======================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}   75\% |  ETA:  3s}
+\CommentTok{\#\textgreater{}  ===========================\textgreater{}{-}{-}{-}   90\% |  ETA:  1s}
+\CommentTok{\#\textgreater{} }
   \SpecialCharTok{|}                                                        
   \ErrorTok{|=================================}                 \ErrorTok{|}  \DecValTok{67}\NormalTok{\%}
   \SpecialCharTok{|}                                                        
   \ErrorTok{|}                                                  \ErrorTok{|}   \DecValTok{0}\NormalTok{\%}
-\CommentTok{\#\textgreater{}  ============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   39\% |  ETA:  5s}
-\CommentTok{\#\textgreater{}  =====================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}   69\% |  ETA:  3s}
+\CommentTok{\#\textgreater{}  ====\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   12\% |  ETA: 16s}
+\CommentTok{\#\textgreater{}  ======\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   20\% |  ETA: 21s}
+\CommentTok{\#\textgreater{}  =========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   30\% |  ETA: 19s}
+\CommentTok{\#\textgreater{}  ============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   40\% |  ETA: 17s}
+\CommentTok{\#\textgreater{}  ===============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   51\% |  ETA: 14s}
+\CommentTok{\#\textgreater{}  ==================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   61\% |  ETA: 11s}
+\CommentTok{\#\textgreater{}  =====================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}   71\% |  ETA:  8s}
+\CommentTok{\#\textgreater{}  ========================\textgreater{}{-}{-}{-}{-}{-}{-}   81\% |  ETA:  5s}
+\CommentTok{\#\textgreater{}  ===========================\textgreater{}{-}{-}{-}   89\% |  ETA:  3s}
+\CommentTok{\#\textgreater{}  =============================\textgreater{}{-}   98\% |  ETA:  1s}
 \CommentTok{\#\textgreater{} }
   \SpecialCharTok{|}                                                        
   \ErrorTok{|==================================================|} \DecValTok{100}\NormalTok{\%}
@@ -2305,17 +2328,50 @@ Exploremos un plot usando intervalos:
   \ErrorTok{|}                                                  \ErrorTok{|}   \DecValTok{0}\NormalTok{\%}
   \SpecialCharTok{|}                                                        
   \ErrorTok{|==================================================|} \DecValTok{100}\NormalTok{\%}
-\CommentTok{\#\textgreater{}  ====\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   13\% |  ETA: 26s}
-\CommentTok{\#\textgreater{}  ======\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   21\% |  ETA: 26s}
-\CommentTok{\#\textgreater{}  =========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   29\% |  ETA: 25s}
-\CommentTok{\#\textgreater{}  ===========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   37\% |  ETA: 22s}
-\CommentTok{\#\textgreater{}  ==============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   46\% |  ETA: 19s}
-\CommentTok{\#\textgreater{}  ================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   55\% |  ETA: 15s}
-\CommentTok{\#\textgreater{}  ===================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   63\% |  ETA: 13s}
-\CommentTok{\#\textgreater{}  =====================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}   71\% |  ETA: 10s}
-\CommentTok{\#\textgreater{}  ========================\textgreater{}{-}{-}{-}{-}{-}{-}   80\% |  ETA:  7s}
-\CommentTok{\#\textgreater{}  ==========================\textgreater{}{-}{-}{-}{-}   87\% |  ETA:  4s}
-\CommentTok{\#\textgreater{}  =============================\textgreater{}{-}   95\% |  ETA:  2s}
+\CommentTok{\#\textgreater{}  =\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}    2\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  =\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}    4\% |  ETA:  2m}
+\CommentTok{\#\textgreater{}  ==\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}    6\% |  ETA:  2m}
+\CommentTok{\#\textgreater{}  ==\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}    8\% |  ETA:  2m}
+\CommentTok{\#\textgreater{}  ===\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   11\% |  ETA:  2m}
+\CommentTok{\#\textgreater{}  ====\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   13\% |  ETA:  2m}
+\CommentTok{\#\textgreater{}  ====\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   15\% |  ETA:  2m}
+\CommentTok{\#\textgreater{}  =====\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   17\% |  ETA:  2m}
+\CommentTok{\#\textgreater{}  ======\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   20\% |  ETA:  2m}
+\CommentTok{\#\textgreater{}  =======\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   22\% |  ETA:  2m}
+\CommentTok{\#\textgreater{}  =======\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   24\% |  ETA:  2m}
+\CommentTok{\#\textgreater{}  ========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   26\% |  ETA:  2m}
+\CommentTok{\#\textgreater{}  ========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   28\% |  ETA:  2m}
+\CommentTok{\#\textgreater{}  =========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   31\% |  ETA:  2m}
+\CommentTok{\#\textgreater{}  ==========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   32\% |  ETA:  2m}
+\CommentTok{\#\textgreater{}  ==========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   35\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ===========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   37\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   39\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  =============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   42\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  =============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   44\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ==============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   46\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ==============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   48\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ===============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   50\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   53\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  =================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   55\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  =================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   57\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ==================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   60\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ===================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   62\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ===================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   64\% |  ETA: 48s}
+\CommentTok{\#\textgreater{}  ====================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   67\% |  ETA: 45s}
+\CommentTok{\#\textgreater{}  ====================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   68\% |  ETA: 43s}
+\CommentTok{\#\textgreater{}  =====================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}   71\% |  ETA: 39s}
+\CommentTok{\#\textgreater{}  ======================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}   73\% |  ETA: 36s}
+\CommentTok{\#\textgreater{}  =======================\textgreater{}{-}{-}{-}{-}{-}{-}{-}   75\% |  ETA: 33s}
+\CommentTok{\#\textgreater{}  =======================\textgreater{}{-}{-}{-}{-}{-}{-}{-}   78\% |  ETA: 29s}
+\CommentTok{\#\textgreater{}  ========================\textgreater{}{-}{-}{-}{-}{-}{-}   80\% |  ETA: 26s}
+\CommentTok{\#\textgreater{}  =========================\textgreater{}{-}{-}{-}{-}{-}   83\% |  ETA: 23s}
+\CommentTok{\#\textgreater{}  =========================\textgreater{}{-}{-}{-}{-}{-}   85\% |  ETA: 20s}
+\CommentTok{\#\textgreater{}  ==========================\textgreater{}{-}{-}{-}{-}   87\% |  ETA: 17s}
+\CommentTok{\#\textgreater{}  ===========================\textgreater{}{-}{-}{-}   90\% |  ETA: 14s}
+\CommentTok{\#\textgreater{}  ===========================\textgreater{}{-}{-}{-}   91\% |  ETA: 12s}
+\CommentTok{\#\textgreater{}  ============================\textgreater{}{-}{-}   94\% |  ETA:  8s}
+\CommentTok{\#\textgreater{}  =============================\textgreater{}{-}   96\% |  ETA:  6s}
+\CommentTok{\#\textgreater{}  =============================\textgreater{}{-}   98\% |  ETA:  3s}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} Done!}
 \NormalTok{PC}
@@ -2537,18 +2593,50 @@ Exploremos un plot usando intervalos:
   \ErrorTok{|}                                                  \ErrorTok{|}   \DecValTok{0}\NormalTok{\%}
   \SpecialCharTok{|}                                                        
   \ErrorTok{|==================================================|} \DecValTok{100}\NormalTok{\%}
-\CommentTok{\#\textgreater{}  ===\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}    9\% |  ETA: 25s}
-\CommentTok{\#\textgreater{}  =====\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   16\% |  ETA: 30s}
-\CommentTok{\#\textgreater{}  =======\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   24\% |  ETA: 27s}
-\CommentTok{\#\textgreater{}  ==========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   33\% |  ETA: 24s}
-\CommentTok{\#\textgreater{}  ============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   40\% |  ETA: 22s}
-\CommentTok{\#\textgreater{}  ==============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   48\% |  ETA: 19s}
-\CommentTok{\#\textgreater{}  =================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   56\% |  ETA: 16s}
-\CommentTok{\#\textgreater{}  ===================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   64\% |  ETA: 13s}
-\CommentTok{\#\textgreater{}  ======================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}   72\% |  ETA: 10s}
-\CommentTok{\#\textgreater{}  ========================\textgreater{}{-}{-}{-}{-}{-}{-}   80\% |  ETA:  8s}
-\CommentTok{\#\textgreater{}  ==========================\textgreater{}{-}{-}{-}{-}   88\% |  ETA:  4s}
-\CommentTok{\#\textgreater{}  =============================\textgreater{}{-}   95\% |  ETA:  2s}
+\CommentTok{\#\textgreater{}  =\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}    4\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  =\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}    5\% |  ETA:  2m}
+\CommentTok{\#\textgreater{}  ==\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}    7\% |  ETA:  2m}
+\CommentTok{\#\textgreater{}  ===\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}    9\% |  ETA:  2m}
+\CommentTok{\#\textgreater{}  ====\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   12\% |  ETA:  2m}
+\CommentTok{\#\textgreater{}  ====\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   14\% |  ETA:  2m}
+\CommentTok{\#\textgreater{}  =====\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   16\% |  ETA:  2m}
+\CommentTok{\#\textgreater{}  ======\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   19\% |  ETA:  2m}
+\CommentTok{\#\textgreater{}  ======\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   21\% |  ETA:  2m}
+\CommentTok{\#\textgreater{}  =======\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   24\% |  ETA:  2m}
+\CommentTok{\#\textgreater{}  ========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   25\% |  ETA:  2m}
+\CommentTok{\#\textgreater{}  ========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   27\% |  ETA:  2m}
+\CommentTok{\#\textgreater{}  =========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   30\% |  ETA:  2m}
+\CommentTok{\#\textgreater{}  ==========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   32\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ==========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   34\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ===========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   37\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   39\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   41\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  =============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   44\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ==============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   46\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ==============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   48\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ===============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   50\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   52\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   54\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  =================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   56\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ==================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   59\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ==================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   61\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ===================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   63\% |  ETA: 49s}
+\CommentTok{\#\textgreater{}  ====================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   65\% |  ETA: 46s}
+\CommentTok{\#\textgreater{}  ====================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   67\% |  ETA: 44s}
+\CommentTok{\#\textgreater{}  =====================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}   70\% |  ETA: 41s}
+\CommentTok{\#\textgreater{}  ======================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}   72\% |  ETA: 38s}
+\CommentTok{\#\textgreater{}  ======================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}   74\% |  ETA: 34s}
+\CommentTok{\#\textgreater{}  =======================\textgreater{}{-}{-}{-}{-}{-}{-}{-}   76\% |  ETA: 31s}
+\CommentTok{\#\textgreater{}  ========================\textgreater{}{-}{-}{-}{-}{-}{-}   79\% |  ETA: 28s}
+\CommentTok{\#\textgreater{}  ========================\textgreater{}{-}{-}{-}{-}{-}{-}   81\% |  ETA: 25s}
+\CommentTok{\#\textgreater{}  =========================\textgreater{}{-}{-}{-}{-}{-}   83\% |  ETA: 22s}
+\CommentTok{\#\textgreater{}  ==========================\textgreater{}{-}{-}{-}{-}   86\% |  ETA: 19s}
+\CommentTok{\#\textgreater{}  ==========================\textgreater{}{-}{-}{-}{-}   87\% |  ETA: 17s}
+\CommentTok{\#\textgreater{}  ===========================\textgreater{}{-}{-}{-}   90\% |  ETA: 14s}
+\CommentTok{\#\textgreater{}  ============================\textgreater{}{-}{-}   92\% |  ETA: 11s}
+\CommentTok{\#\textgreater{}  ============================\textgreater{}{-}{-}   94\% |  ETA:  8s}
+\CommentTok{\#\textgreater{}  =============================\textgreater{}{-}   97\% |  ETA:  4s}
+\CommentTok{\#\textgreater{}  ==============================\textgreater{}   99\% |  ETA:  1s}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} Done!}
 \NormalTok{PC}
@@ -2711,14 +2799,38 @@ Se utiliza el tipo de distancia de menor costo \texttt{type\ =\ "least-cost"} y 
   \ErrorTok{|}                                                  \ErrorTok{|}   \DecValTok{0}\NormalTok{\%}
   \SpecialCharTok{|}                                                        
   \ErrorTok{|==================================================|} \DecValTok{100}\NormalTok{\%}
-\CommentTok{\#\textgreater{}  ==\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}    7\% |  ETA: 16s}
-\CommentTok{\#\textgreater{}  ======\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   20\% |  ETA: 17s}
-\CommentTok{\#\textgreater{}  ==========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   32\% |  ETA: 15s}
-\CommentTok{\#\textgreater{}  =============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   44\% |  ETA: 13s}
-\CommentTok{\#\textgreater{}  =================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   56\% |  ETA: 10s}
-\CommentTok{\#\textgreater{}  =====================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}   70\% |  ETA:  7s}
-\CommentTok{\#\textgreater{}  =========================\textgreater{}{-}{-}{-}{-}{-}   85\% |  ETA:  3s}
-\CommentTok{\#\textgreater{}  =============================\textgreater{}{-}   97\% |  ETA:  1s}
+\CommentTok{\#\textgreater{}  =\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}    2\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  =\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}    4\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ==\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}    8\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ===\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   11\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ====\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   14\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  =====\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   16\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ======\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   20\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  =======\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   23\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   26\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  =========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   30\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ==========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   33\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ===========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   36\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   39\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  =============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   42\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ==============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   46\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ===============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   49\% |  ETA: 49s}
+\CommentTok{\#\textgreater{}  ================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   52\% |  ETA: 46s}
+\CommentTok{\#\textgreater{}  =================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   55\% |  ETA: 42s}
+\CommentTok{\#\textgreater{}  ==================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   58\% |  ETA: 39s}
+\CommentTok{\#\textgreater{}  ==================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   61\% |  ETA: 37s}
+\CommentTok{\#\textgreater{}  ===================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   65\% |  ETA: 34s}
+\CommentTok{\#\textgreater{}  ====================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   68\% |  ETA: 30s}
+\CommentTok{\#\textgreater{}  =====================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}   71\% |  ETA: 27s}
+\CommentTok{\#\textgreater{}  ======================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}   74\% |  ETA: 24s}
+\CommentTok{\#\textgreater{}  =======================\textgreater{}{-}{-}{-}{-}{-}{-}{-}   77\% |  ETA: 21s}
+\CommentTok{\#\textgreater{}  ========================\textgreater{}{-}{-}{-}{-}{-}{-}   81\% |  ETA: 18s}
+\CommentTok{\#\textgreater{}  =========================\textgreater{}{-}{-}{-}{-}{-}   84\% |  ETA: 15s}
+\CommentTok{\#\textgreater{}  ==========================\textgreater{}{-}{-}{-}{-}   87\% |  ETA: 12s}
+\CommentTok{\#\textgreater{}  ===========================\textgreater{}{-}{-}{-}   90\% |  ETA: 10s}
+\CommentTok{\#\textgreater{}  ============================\textgreater{}{-}{-}   92\% |  ETA:  8s}
+\CommentTok{\#\textgreater{}  =============================\textgreater{}{-}   96\% |  ETA:  4s}
+\CommentTok{\#\textgreater{}  ==============================\textgreater{}   99\% |  ETA:  1s}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} Done!}
 \NormalTok{PC}
@@ -2960,15 +3072,34 @@ Estamos utilizando un raster de nodos que esta incluido en el paquete Makurhini.
   \ErrorTok{|}                                                  \ErrorTok{|}   \DecValTok{0}\NormalTok{\%}
   \SpecialCharTok{|}                                                        
   \ErrorTok{|==================================================|} \DecValTok{100}\NormalTok{\%}
-\CommentTok{\#\textgreater{}  ===\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   10\% |  ETA: 14s}
-\CommentTok{\#\textgreater{}  =======\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   24\% |  ETA: 14s}
-\CommentTok{\#\textgreater{}  ============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   41\% |  ETA: 11s}
-\CommentTok{\#\textgreater{}  ================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   55\% |  ETA:  9s}
-\CommentTok{\#\textgreater{}  ====================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   65\% |  ETA:  7s}
-\CommentTok{\#\textgreater{}  =====================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}   71\% |  ETA:  7s}
-\CommentTok{\#\textgreater{}  ========================\textgreater{}{-}{-}{-}{-}{-}{-}   79\% |  ETA:  5s}
-\CommentTok{\#\textgreater{}  ==========================\textgreater{}{-}{-}{-}{-}   86\% |  ETA:  4s}
-\CommentTok{\#\textgreater{}  ============================\textgreater{}{-}{-}   95\% |  ETA:  1s}
+\CommentTok{\#\textgreater{}  ==\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}    8\% |  ETA: 44s}
+\CommentTok{\#\textgreater{}  ===\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   11\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ====\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   14\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  =====\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   18\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ======\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   21\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  =======\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   24\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   28\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  =========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   31\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ==========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   34\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ===========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   37\% |  ETA:  1m}
+\CommentTok{\#\textgreater{}  ============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   41\% |  ETA: 49s}
+\CommentTok{\#\textgreater{}  =============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   44\% |  ETA: 46s}
+\CommentTok{\#\textgreater{}  ==============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   48\% |  ETA: 43s}
+\CommentTok{\#\textgreater{}  ================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   52\% |  ETA: 40s}
+\CommentTok{\#\textgreater{}  =================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   55\% |  ETA: 37s}
+\CommentTok{\#\textgreater{}  =================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   58\% |  ETA: 35s}
+\CommentTok{\#\textgreater{}  ===================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   62\% |  ETA: 32s}
+\CommentTok{\#\textgreater{}  ====================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   65\% |  ETA: 29s}
+\CommentTok{\#\textgreater{}  =====================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}   69\% |  ETA: 26s}
+\CommentTok{\#\textgreater{}  ======================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}   72\% |  ETA: 24s}
+\CommentTok{\#\textgreater{}  =======================\textgreater{}{-}{-}{-}{-}{-}{-}{-}   76\% |  ETA: 21s}
+\CommentTok{\#\textgreater{}  ========================\textgreater{}{-}{-}{-}{-}{-}{-}   79\% |  ETA: 17s}
+\CommentTok{\#\textgreater{}  =========================\textgreater{}{-}{-}{-}{-}{-}   83\% |  ETA: 15s}
+\CommentTok{\#\textgreater{}  ==========================\textgreater{}{-}{-}{-}{-}   86\% |  ETA: 12s}
+\CommentTok{\#\textgreater{}  ===========================\textgreater{}{-}{-}{-}   89\% |  ETA:  9s}
+\CommentTok{\#\textgreater{}  ============================\textgreater{}{-}{-}   93\% |  ETA:  6s}
+\CommentTok{\#\textgreater{}  =============================\textgreater{}{-}   95\% |  ETA:  4s}
+\CommentTok{\#\textgreater{}  ==============================\textgreater{}   99\% |  ETA:  1s}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} Done!}
 \NormalTok{PC}\SpecialCharTok{$}\NormalTok{overall\_d40000}
@@ -3183,9 +3314,12 @@ Aplicamos la función \texttt{MK\_dPCIIC()}. En este ejemplo usaremos el índice
   \ErrorTok{|}                                                  \ErrorTok{|}   \DecValTok{0}\NormalTok{\%}
   \SpecialCharTok{|}                                                        
   \ErrorTok{|==================================================|} \DecValTok{100}\NormalTok{\%}
-\CommentTok{\#\textgreater{}  =======\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   24\% |  ETA:  6s}
-\CommentTok{\#\textgreater{}  ==============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   46\% |  ETA:  6s}
-\CommentTok{\#\textgreater{}  =======================\textgreater{}{-}{-}{-}{-}{-}{-}{-}   76\% |  ETA:  3s}
+\CommentTok{\#\textgreater{}  ========\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   27\% |  ETA:  9s}
+\CommentTok{\#\textgreater{}  ============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   39\% |  ETA: 10s}
+\CommentTok{\#\textgreater{}  ===============\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   49\% |  ETA: 10s}
+\CommentTok{\#\textgreater{}  ===================\textgreater{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}   64\% |  ETA:  7s}
+\CommentTok{\#\textgreater{}  =======================\textgreater{}{-}{-}{-}{-}{-}{-}{-}   78\% |  ETA:  4s}
+\CommentTok{\#\textgreater{}  ============================\textgreater{}{-}{-}   92\% |  ETA:  2s}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} Done!}
 \NormalTok{PCrestauracion}
@@ -3317,34 +3451,38 @@ Si desactivamos \texttt{onlyrestor} entonces estima los otros valores delíndice
 Esta función permite calcular el Índice Integral de Conectividad focal (IICf) o la Probabilidad de Conectividad focal (PCf) bajo uno o más umbrales de distancia. Además, esta función estima el Índice de Conectividad Compuesto (CCIf; para más detalles, véase Latorre-Cárdenas et al., 2023. Land 2023, 12(3), 631; \url{https://doi.org/10.3390/land12030631}).
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.0469}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.9531}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.4423}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5577}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 \textbf{Argumento}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Descripción en español}
+\textbf{Descripción}
 \end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\texttt{nodes} & Objeto que contiene la información de los nodos (por ejemplo, fragmentos o parches de hábitat). Puede ser: - \texttt{data.frame} con al menos dos columnas: la primera para los ID de los nodos y la segunda para los atributos. - Datos espaciales vectoriales (\texttt{sf}, \texttt{SpatVector}, \texttt{SpatialPolygonsDataFrame}) en un sistema de coordenadas proyectado. - Ráster (\texttt{RasterLayer}, \texttt{SpatRaster}) con valores enteros representando el ID de cada nodo y áreas no hábitat como \texttt{NA}. \\
-\texttt{attribute} & Caracter o vector. Si es \texttt{NULL} (solo válido cuando \texttt{nodes} es espacial vectorial o ráster), se usará el área del nodo como atributo. Para usar otro atributo: - Si \texttt{nodes} es vector espacial o \texttt{data.frame}, indicar el nombre de la columna. - Si \texttt{nodes} es ráster, debe ser un vector numérico con el atributo por nodo. Si \texttt{weighted\ =\ TRUE}, se multiplica por el área de cada nodo para obtener un índice ponderado. \\
-\texttt{LA} & Numérico. (opcional, por defecto = \texttt{NULL}). Valor máximo del atributo del paisaje. No afecta la importancia relativa de los nodos, solo se usa para calcular la conectividad total del paisaje. Si se omite y \texttt{overall\ =\ TRUE}, solo se calcula el numerador del índice global. \\
-\texttt{area\_unit} & Caracter. Unidad del área cuando \texttt{attribute\ =\ NULL}. Opciones: \texttt{"m2"} (por defecto), \texttt{"km2"}, \texttt{"cm2"} o \texttt{"ha"}. \\
-\texttt{distance} & Matriz o lista que establece las distancias entre pares de nodos. Puede ser: - Matriz cuadrada con distancias (euclidianas o efectivas). - Lista de parámetros (por ejemplo: \texttt{type\ =\ "least-cost",\ resistance\ =\ raster\_resistance}). Tipos posibles: \texttt{"centroid"}, \texttt{"edge"}, \texttt{"least-cost"}, \texttt{"commute-time"}. \\
-\texttt{metric} & Caracter indicando el índice de conectividad a usar: \texttt{"PC"} (por defecto y recomendado) o \texttt{"IIC"}. \\
-\texttt{probability} & Valor numérico de la probabilidad asociada al umbral de distancia (\texttt{distance\_thresholds}). Por ejemplo, si es distancia mediana de dispersión usar \texttt{0.5}. Para distancias máximas, usar \texttt{0.05} o \texttt{0.01}. Solo se usa si \texttt{metric\ =\ "PC"}. Si es \texttt{NULL}, se usa \texttt{0.5}. \\
-\texttt{distance\_thresholds} & Valor numérico (o vector) que indica la(s) distancia(s) de dispersión en metros. Si es \texttt{NULL}, se estima como la mediana de las distancias entre nodos. Alternativamente, puede usarse la función \texttt{dispersal\_distance}. \\
-\texttt{threshold} & Numérico. Se excluyen los pares de nodos con una distancia mayor al umbral, acelerando el procesamiento. \\
-\texttt{removal} & Lógico. Si es \texttt{TRUE} (por defecto), se calcula la importancia de los enlaces usando el modo de eliminación de enlaces. \\
-\texttt{change} & (opcional, por defecto \texttt{NULL}). Numérico que indica las nuevas distancias para calcular la importancia de los enlaces bajo el modo de cambio de enlace. \\
-\texttt{overall} & Lógico. Si es \texttt{TRUE}, se añade el índice EC global al resultado, el cual se convierte en una lista. Por defecto es \texttt{FALSE}. \\
-\texttt{parallel} & (opcional, por defecto = \texttt{NULL}). Numérico que indica el número de núcleos para paralelizar el cálculo de los índices. Recomendado si se tienen más de 1000 nodos. \\
-\texttt{parallel\_mode} & (opcional, por defecto = \texttt{1}). Numérico que indica el modo de paralelización: - Modo 1 (por defecto): paraleliza el cálculo de deltas de conectividad. - Modo 2: paraleliza el cálculo de rutas de menor costo. Recomendado para \textgreater1000 nodos. \\
-\texttt{write} & Caracter que indica la ruta y prefijo para guardar los resultados, por ejemplo \texttt{"C:/ejemplo"}. Por defecto no se guarda nada. Los archivos generados incluyen: - Importancia de cada enlace (formato CSV). - Tabla de conectividad global del paisaje si \texttt{overall\ =\ TRUE} (formato CSV). \\
-\texttt{intern} & Lógico. Si es \texttt{TRUE} (por defecto), muestra el progreso del proceso. Puede que no llegue a 100\% si las operaciones son muy rápidas. \\
+\texttt{nodes} & Objeto espacial (\texttt{sf}, \texttt{SpatVector}, \texttt{SpatialPolygonsDataFrame}) que contiene los nodos (por ejemplo, fragmentos o hábitats) a analizar. Debe estar en un sistema de coordenadas proyectado. \\
+\texttt{id} & Nombre de la columna con el ID de los nodos. \\
+\texttt{attribute} & Nombre de la columna o vector. Si es \texttt{NULL}, se usará el área del nodo como atributo. Se puede definir la unidad del área con \texttt{area\_unit}. Para usar un atributo alternativo, considera el tipo de clase del objeto en \texttt{nodes}. \\
+\texttt{raster\_attribute} & Objeto raster usado para asignar valores de atributo a cada nodo, usando la función definida en \texttt{fun\_attribute}. \\
+\texttt{fun\_attribute} & Función usada para extraer los valores del raster por nodo (ej. \texttt{mean}, \texttt{sum}, \texttt{modal}, \texttt{min}, \texttt{max}). Por defecto = \texttt{mean}. \\
+\texttt{weighted} & Lógico. Si es \texttt{TRUE} junto con \texttt{raster\_attribute}, se multiplica el valor del atributo por el área del nodo, obteniendo un índice ponderado. \\
+\texttt{area\_unit} & Unidad del área cuando \texttt{attribute\ =\ NULL}. Puede ser \texttt{"m2"} (por defecto), \texttt{"km2"}, \texttt{"cm2"} o \texttt{"ha"}. \\
+\texttt{distance} & Lista de parámetros para calcular la distancia entre pares de nodos. Puede ser distancia euclidiana o efectiva (por resistencia). Debe incluir al menos \texttt{type} (ej. \texttt{"centroid"}, \texttt{"edge"}, \texttt{"least-cost"}, \texttt{"commute-time"}) y, si aplica, \texttt{resistance}. \\
+\texttt{metric} & Métrica de conectividad a usar: \texttt{"PC"} (por defecto y recomendada) o \texttt{"IIC"}. \\
+\texttt{probability} & Valor numérico de la probabilidad asociada a la \texttt{distance\_threshold}. Por ejemplo, 0.5 si es una distancia mediana de dispersión. Por defecto = 0.5. Solo para \texttt{metric\ =\ "PC"}. \\
+\texttt{distance\_thresholds} & Distancia(s) de dispersión (en metros). Si es \texttt{NULL}, se estima como la distancia mediana entre nodos. Puede usarse \texttt{dispersal\_distance}. \\
+\texttt{search\_buffer} & Distancia(s) en metros para generar un buffer alrededor del nodo focal y seleccionar nodos vecinos. Puede variar según cada distancia de dispersión. \\
+\texttt{simplify\_shape} & Valor numérico para simplificar la geometría del nodo focal y facilitar el análisis espacial (ver \texttt{st\_simplify}). \\
+\texttt{fragmentation} & Lógico. Si es \texttt{TRUE}, estima estadísticos de fragmentación con \texttt{MK\_Fragmentation}. Requiere \texttt{edge\_distance} y \texttt{min\_node\_area}. \\
+\texttt{edge\_distance} & Distancia al borde (en metros). Por defecto = 500 m. Se usa en \texttt{MK\_Fragmentation}. \\
+\texttt{min\_node\_area} & Área mínima del nodo (ej. 100 km² por defecto). Se usa para calcular cuántos nodos tienen menor área. Depende de \texttt{area\_unit}. \\
+\texttt{parallel} & Número de núcleos para paralelizar el análisis de índices. Útil con \textgreater1000 nodos. Por defecto no se paraleliza. \\
+\texttt{write} & Ruta y prefijo del archivo a guardar, por ejemplo \texttt{"C:/ejemplo/test\_focal\_"}. Por defecto no se guarda nada. El archivo guardado es un geopackage. \\
+\texttt{save\_subfiles} & Lógico o carácter. Si \texttt{TRUE}, guarda resultados por nodo en una carpeta en formato \texttt{.rds}. Útil para reanudar análisis en caso de error. Si es carácter, especifica la ruta de la carpeta. \\
+\texttt{intern} & Lógico. Muestra el progreso del proceso (\texttt{TRUE} por defecto). El avance puede no alcanzar el 100\% si la operación es muy rápida. \\
 \end{longtable}
 
 Se ejecuta un ciclo en el que se selecciona cada uno de los nodos. En cada iteración, ocurre lo siguiente:
@@ -3628,7 +3766,7 @@ Estos son los argumentos:
 \begin{minipage}[b]{\linewidth}\raggedright
 \textbf{Argumento}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Descripción en español}
+\textbf{Descripción}
 \end{minipage} \\
 \midrule\noalign{}
 \endhead

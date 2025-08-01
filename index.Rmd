@@ -20,7 +20,7 @@ cover-image: LOGO_MAKHURINI.png
 
 En este manual se documenta parte de las funciones del paquete **Makurhini**:
 
-**Makurhini** (que significa Conectar en lengua purépecha) es un paquete de R diseñado para calcular índices de fragmentación y conectividad del paisaje, útiles en la planificación de la conservación. Makurhini proporciona un conjunto de funciones para identificar la conectividad de redes de áreas protegidas y la importancia de los elementos del paisaje para mantener dicha conectividad. Este paquete permite evaluar escenarios de cambio en la conectividad del paisaje y presenta una mejora adicional: la inclusión de la heterogeneidad del paisaje como un factor limitante para la conectividad.
+**Makurhini** (que significa Conectar en lengua purépecha) es un paquete de R diseñado para calcular índices de fragmentación y conectividad del paisaje, útiles en la planificación de la conservación. Makurhini proporciona un conjunto de funciones para identificar la conectividad de redes de áreas protegidas y la importancia de los elementos del paisaje para mantener dicha conectividad. Este paquete permite evaluar escenarios de cambio en la conectividad del paisaje y presenta una mejora adicional: la inclusión de la heterogeneidad del paisaje como un factor limitante para la conectividad. Makurhini permite integrar flujos de trabajo eficientes y útiles para la gestión del paisaje y el monitoreo de metas globales de conservación.
 
 Los índices de conectividad de redes calculados en el paquete Makurhini han sido previamente publicados, por ejemplo:
 
@@ -34,8 +34,9 @@ Los índices de conectividad de redes calculados en el paquete Makurhini han sid
 
 -   Saura et al., 2017. Ecological Indicators, <http://dx.doi.org/10.1016/j.ecolind.2016.12.047>
 
--   Saura et al., 2018. Biological Conservation, <https://doi.org/10.1016/j.biocon.2017.12.020>), y permite integrar flujos de trabajo eficientes y útiles para la gestión del paisaje y el monitoreo de metas globales de conservación.
+-   Saura et al., 2018. Biological Conservation, <https://doi.org/10.1016/j.biocon.2017.12.020>),
 
-**Cómo citar el paquete Makurhini:** Pronto se publicará un artículo científico sobre este paquete. Hasta entonces, por favor utiliza uno de los siguientes preprints:
 
-Preprint: Godínez-Gómez, O., Correa-Ayram, C., Goicolea, T., & Saura, S. (2025). **Makurhini: An R package for comprehensive analysis of landscape fragmentation and connectivity**. Research Square. <https://doi.org/10.21203/rs.3.rs-6398746/v1>
+**Cómo citar el paquete Makurhini:** Pronto se publicará un artículo científico sobre este paquete. Hasta entonces, por favor utiliza el siguiente preprint:
+
+Godínez-Gómez, O., Correa-Ayram, C., Goicolea, T., & Saura, S. (2025). **Makurhini: An R package for comprehensive analysis of landscape fragmentation and connectivity**. Research Square. <https://doi.org/10.21203/rs.3.rs-6398746/v1>
