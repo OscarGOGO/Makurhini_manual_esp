@@ -54,3 +54,9 @@ prioridad-de-enlaces-con-mk_dpciic_links
 rutas-de-menor-costo-corredores-potenciales
 eliminación-de-enlaces-link-removal
 cambio-de-enlaces-link-change
+conectividad-dinámica-con-mk_deca
+índice-eca-con-mk_dpciic
+función-mk_deca
+ejemplo.-cambios-en-la-conectividad-del-paisaje-en-la-reserva-de-la-biosfera-mariposa-monarca.
+eca-y-deca-sobre-un-grid
+referencias

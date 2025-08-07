@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 9 Conectividad dinámica con MK_dECA() | Manual de uso de Makurhini</title>
+<meta name="author" content="Oscar Godínez Gómez">
+<meta name="description" content="9.1 Índice ECA con MK_dPCIIC() Continuamos trabajando con el vector con 404 parches/nodos en el eje Neovolcánico de México. library(ggplot2) library(sf) library(terra) library(raster)...">
+<meta name="generator" content="bookdown 0.43 with bs4_book()">
+<meta property="og:title" content="Chapter 9 Conectividad dinámica con MK_dECA() | Manual de uso de Makurhini">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://oscargogo.github.io/Makurhini_manual_esp/conectividad-dinámica-con-mk_deca.html">
+<meta property="og:image" content="https://oscargogo.github.io/Makurhini_manual_esp/LOGO_MAKHURINI.png">
+<meta property="og:description" content="9.1 Índice ECA con MK_dPCIIC() Continuamos trabajando con el vector con 404 parches/nodos en el eje Neovolcánico de México. library(ggplot2) library(sf) library(terra) library(raster)...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 9 Conectividad dinámica con MK_dECA() | Manual de uso de Makurhini">
+<meta name="twitter:description" content="9.1 Índice ECA con MK_dPCIIC() Continuamos trabajando con el vector con 404 parches/nodos en el eje Neovolcánico de México. library(ggplot2) library(sf) library(terra) library(raster)...">
+<meta name="twitter:image" content="https://oscargogo.github.io/Makurhini_manual_esp/LOGO_MAKHURINI.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Manual de uso de Makurhini</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Makurhini</a></li>
+<li><a class="" href="instalaci%C3%B3n-del-paquete-makurhini.html"><span class="header-section-number">1</span> Instalación del paquete Makurhini</a></li>
+<li><a class="" href="estad%C3%ADsticas-de-fragmentaci%C3%B3n-del-paisaje.html"><span class="header-section-number">2</span> Estadísticas de fragmentación del paisaje</a></li>
+<li><a class="" href="%C3%ADndices-de-centralidad.html"><span class="header-section-number">3</span> Índices de centralidad</a></li>
+<li><a class="" href="kernel-de-dispersi%C3%B3n.html"><span class="header-section-number">4</span> Kernel de dispersión</a></li>
+<li><a class="" href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html"><span class="header-section-number">5</span> índice integral de conectividad y Probabilidad de conectividad</a></li>
+<li><a class="" href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html"><span class="header-section-number">6</span> Prioridades de Restauración con MK_dPCIIC()</a></li>
+<li><a class="" href="prioridades-de-conservaci%C3%B3n-y-restauraci%C3%B3n-con-mk_focal_nodes.html"><span class="header-section-number">7</span> Prioridades de conservación y restauración con MK_Focal_nodes()</a></li>
+<li><a class="" href="prioridad-de-enlaces-con-mk_dpciic_links.html"><span class="header-section-number">8</span> Prioridad de enlaces con MK_dPCIIC_links()</a></li>
+<li><a class="active" href="conectividad-din%C3%A1mica-con-mk_deca.html"><span class="header-section-number">9</span> Conectividad dinámica con MK_dECA()</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/OscarGOGO/Makurhini_manual_esp">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="conectividad-dinámica-con-mk_deca" class="section level1" number="9">
+<h1>
+<span class="header-section-number">9</span> Conectividad dinámica con MK_dECA()<a class="anchor" aria-label="anchor" href="#conectividad-din%C3%A1mica-con-mk_deca"><i class="fas fa-link"></i></a>
+</h1>
+<div id="índice-eca-con-mk_dpciic" class="section level2" number="9.1">
+<h2>
+<span class="header-section-number">9.1</span> Índice ECA con MK_dPCIIC()<a class="anchor" aria-label="anchor" href="#%C3%ADndice-eca-con-mk_dpciic"><i class="fas fa-link"></i></a>
+</h2>
+<p>Continuamos trabajando con el vector con 404 parches/nodos en el eje Neovolcánico de México.</p>
+<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/">terra</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/raster">raster</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/connectscape/Makurhini">Makurhini</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">RColorBrewer</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="va">habitat_nodes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"C:/.../habitat_nodes.shp"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/dimensions.html">nrow</a></span><span class="op">(</span><span class="va">habitat_nodes</span><span class="op">)</span></span>
+<span><span class="va">paisaje</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"C:/.../paisaje.shp"</span><span class="op">)</span></span></code></pre></div>
+<pre><code>#&gt; [1] 404</code></pre>
+<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paisaje</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"Study area"</span><span class="op">)</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">habitat_nodes</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"Parches"</span><span class="op">)</span>, fill <span class="op">=</span> <span class="st">"forestgreen"</span>, linewidth <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">""</span>, values <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.title.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>        axis.title.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="06-ECA_dECA_files/figure-html/unnamed-chunk-3-1.png" width="672"></div>
+<p>Estimaremos el índice ECA usando el argumento overall o onlyoverall de la función MK_dPCIIC:</p>
+<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ECA1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_dPCIIC.html">MK_dPCIIC</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">habitat_nodes</span>,</span>
+<span>                attribute <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                area_unit <span class="op">=</span> <span class="st">"ha"</span>,</span>
+<span>                distance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"edge"</span>, keep <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>,</span>
+<span>                LA <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                metric <span class="op">=</span> <span class="st">"PC"</span>,</span>
+<span>                probability <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>                onlyoverall <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                distance_thresholds <span class="op">=</span> <span class="fl">10000</span>,</span>
+<span>                intern <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="co">#10 km</span></span>
+<span><span class="va">ECA1</span></span>
+<span><span class="co">#&gt;    Index        Value</span></span>
+<span><span class="co">#&gt; 1  PCnum 1.301622e+12</span></span>
+<span><span class="co">#&gt; 2 EC(PC) 1.140887e+06</span></span>
+<span></span>
+<span><span class="co">#Valor del ECA</span></span>
+<span><span class="va">ECA1</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">]</span></span>
+<span><span class="co">#&gt; [1] 1140887</span></span></code></pre></div>
+<p>Lo que obtenemos es el índice ECA o EC el cual tiene unidades de área. En nuestro ejemplo estamos trabajando con hectareas, es decir: <strong>1,140,887 ha</strong> <strong>de bosque potencialmente conectado bajo una mediana de dispersión de 10 km</strong>.</p>
+<p>Podemos expresarlo en porcentage ya que conocemos el área del paisaje y el área de bosque, a esto se le llama ECA relativo o ECA Normalizado:</p>
+<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ECA2</span> <span class="op">&lt;-</span> <span class="va">ECA1</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">]</span></span>
+<span></span>
+<span><span class="va">paisaje_area</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_measures.html">st_area</a></span><span class="op">(</span><span class="va">paisaje</span><span class="op">)</span></span>
+<span><span class="va">paisaje_area</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/unit_convert.html">unit_convert</a></span><span class="op">(</span><span class="va">paisaje_area</span>, <span class="st">"m2"</span>, <span class="st">"ha"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#ECA normalizado respecto al área del paisaje</span></span>
+<span><span class="op">(</span><span class="va">ECA2</span><span class="op">*</span><span class="fl">100</span><span class="op">)</span><span class="op">/</span><span class="va">paisaje_area</span></span>
+<span><span class="co">#&gt; [1] 41.31591</span></span></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">bosque_area</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_measures.html">st_area</a></span><span class="op">(</span><span class="va">habitat_nodes</span><span class="op">)</span></span>
+<span><span class="va">bosque_area</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/unit_convert.html">unit_convert</a></span><span class="op">(</span><span class="va">bosque_area</span>,  <span class="st">"m2"</span>, <span class="st">"ha"</span><span class="op">)</span></span>
+<span><span class="va">bosque_area</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">bosque_area</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#ECA normalizado respecto al área del bosque</span></span>
+<span><span class="op">(</span><span class="va">ECA2</span><span class="op">*</span><span class="fl">100</span><span class="op">)</span><span class="op">/</span><span class="va">bosque_area</span></span>
+<span><span class="co">#&gt; [1] 89.58149</span></span></code></pre></div>
+</div>
+<div id="función-mk_deca" class="section level2" number="9.2">
+<h2>
+<span class="header-section-number">9.2</span> Función MK_dECA()<a class="anchor" aria-label="anchor" href="#funci%C3%B3n-mk_deca"><i class="fas fa-link"></i></a>
+</h2>
+<p>La función sirve para calcular la conectividad total de un paisaje, ya sea en distintos momentos o bajo diferentes configuraciones espaciales, usando el <strong>índice de Área de Conectividad Equivalente</strong> (<strong>ECA</strong>, por sus siglas en inglés; Saura et al., 2011). Este índice se puede calcular a partir de los valores de IIC o PC.</p>
+<p>Para usar <code><a href="https://rdrr.io/pkg/Makurhini/man/MK_dECA.html">MK_dECA()</a></code>, necesitas darle una lista en la que cada elemento representa un conjunto de nodos para distintos escenarios del paisaje. La función calcula el valor de ECA para cada escenario y después compara los escenarios entre sí mediante el cambio en el índice ECA (es decir, el delta de ECA o dECA) (Herrera et al., 2017; Saura et al., 2011).</p>
+<p>Además, la función también genera otras medidas de conectividad, como el <strong>ECA relativizado (rECA)</strong>, que muestra cómo cambia la conectividad en relación con los cambios en el área de hábitat disponible (Dilts et al., 2016; Liang et al., 2021). Si el valor de rECA es mayor que 1, eso quiere decir que los cambios en el hábitat afectaron fuertemente la conectividad, impactando zonas clave para mantenerla. Si el valor es menor que 1, significa que los cambios afectaron sobre todo zonas periféricas, aisladas o con poca importancia para la conectividad (Saura et al., 2011; Liang et al., 2021).</p>
+</div>
+<div id="ejemplo.-cambios-en-la-conectividad-del-paisaje-en-la-reserva-de-la-biosfera-mariposa-monarca." class="section level2" number="9.3">
+<h2>
+<span class="header-section-number">9.3</span> Ejemplo. Cambios en la conectividad del paisaje en la Reserva de la Biosfera Mariposa Monarca.<a class="anchor" aria-label="anchor" href="#ejemplo.-cambios-en-la-conectividad-del-paisaje-en-la-reserva-de-la-biosfera-mariposa-monarca."><i class="fas fa-link"></i></a>
+</h2>
+<p>La Reserva de la Biosfera Mariposa Monarca es mundialmente conocida por ser cada otoño una zona de migración, invernada y reproducción para millones de mariposas monarca (<em>Danaus plexippus</em>). Sin embargo, la reserva ha sufrido una gran pérdida de cobertura forestal (López-García y Alcántara-Ayala, 2012). En este ejemplo, analizamos los cambios en la conectividad del bosque templado entre los años 1993, 2002, 2007 y 2011 en la reserva y una zona de influencia de 10 km aplicando la función <code><a href="https://rdrr.io/pkg/Makurhini/man/MK_dECA.html">MK_dECA()</a></code>. Como distancia de dispersión utilizamos la estimada para <em>Pinus pseudostrobus</em> y <em>P. montezumae</em> de 5 km (Molina et al. 2019). Los parches de bosque se obtuvieron de las coberturas de uso del suelo del Instituto Nacional de Estadística y Geografía (INEGI 2001, 2003, 2007, 2014). Los parches son fragmentos de bosque templado primario (pino y encino). El INEGI define la vegetación primaria como aquella en la que la vegetación no presenta alteraciones significativas o la degradación no es tan manifiesta.</p>
+<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="co">#Sustituir ruta de los .shp</span></span>
+<span><span class="va">T_1993</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"G:/Mi unidad/RedBioma/Clase3/Clase_insumos/dECA/parches_T1.shp"</span><span class="op">)</span></span>
+<span><span class="va">T_2003</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"G:/Mi unidad/RedBioma/Clase3/Clase_insumos/dECA/parches_T2.shp"</span><span class="op">)</span></span>
+<span><span class="va">T_2007</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"G:/Mi unidad/RedBioma/Clase3/Clase_insumos/dECA/parches_T3.shp"</span><span class="op">)</span></span>
+<span><span class="va">T_2011</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"G:/Mi unidad/RedBioma/Clase3/Clase_insumos/dECA/parches_T4.shp"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#Creamos una lista, puedes cambiar los nombres, etc.</span></span>
+<span><span class="va">lista_parches</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"1993"</span> <span class="op">=</span> <span class="va">T_1993</span>, </span>
+<span>                      <span class="st">"2003"</span> <span class="op">=</span> <span class="va">T_2003</span>, </span>
+<span>                      <span class="st">"2007"</span> <span class="op">=</span> <span class="va">T_2007</span>, </span>
+<span>                      <span class="st">"2011"</span> <span class="op">=</span> <span class="va">T_2011</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">lista_parches</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 4</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/names.html">names</a></span><span class="op">(</span><span class="va">lista_parches</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "1993" "2003" "2007" "2011"</span></span></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>     </span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://patchwork.data-imaginist.com">patchwork</a></span><span class="op">)</span>   </span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Adjuntando el paquete: 'patchwork'</span></span>
+<span><span class="co">#&gt; The following object is masked from 'package:raster':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     area</span></span>
+<span><span class="co">#&gt; The following object is masked from 'package:terra':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     area</span></span>
+<span></span>
+<span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">T_1993</span>, fill <span class="op">=</span> <span class="st">"forestgreen"</span>, color <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"1993"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,  <span class="co"># Ocultar etiquetas del eje X</span></span>
+<span>        axis.ticks.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="co"># Ocultar marcas del eje X</span></span>
+<span></span>
+<span><span class="va">p2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">T_2003</span>, fill <span class="op">=</span> <span class="st">"forestgreen"</span>, color <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"2003"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,  <span class="co"># Ocultar etiquetas del eje X</span></span>
+<span>        axis.ticks.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="co"># Ocultar marcas del eje X</span></span>
+<span></span>
+<span><span class="va">p3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">T_2007</span>, fill <span class="op">=</span> <span class="st">"forestgreen"</span>, color <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"2007"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">p4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">T_2011</span>, fill <span class="op">=</span> <span class="st">"forestgreen"</span>, color <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"2011"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Combinar los gráficos en una cuadrícula 2x2 usando patchwork</span></span>
+<span><span class="op">(</span><span class="va">p1</span> <span class="op">+</span> <span class="va">p2</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="va">p3</span> <span class="op">+</span> <span class="va">p4</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="06-ECA_dECA_files/figure-html/unnamed-chunk-8-1.png" width="672"></div>
+<p>Ahora obtendremos <strong>el valor máximo que puede alcanzar el atributo (conectividad intra parche) de los parches en todo el paisaje</strong>, en este ejemplo, el atributo que usaremos para los parches será el área (mientras más grande sea el parche mayor será su conectividad intra parche) por lo que el valor del atributo máximo en el paisaje será el área de toda el área de estudio.</p>
+<div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">area_estudio</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"G:/Mi unidad/RedBioma/Clase3/Clase_insumos/dECA/area_estudio.shp"</span><span class="op">)</span></span>
+<span><span class="co">#Atributo máximo </span></span>
+<span><span class="va">Max_atributo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_measures.html">st_area</a></span><span class="op">(</span><span class="va">area_estudio</span><span class="op">)</span><span class="op">)</span> <span class="op">*</span> <span class="fl">0.0001</span> <span class="co"># Hectáreas</span></span>
+<span><span class="va">Max_atributo</span></span>
+<span><span class="co">#&gt; [1] 279164.3</span></span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="18%">
+<col width="18%">
+<col width="63%">
+</colgroup>
+<thead><tr class="header">
+<th><strong>Argumento</strong></th>
+<th><strong>Tipo</strong></th>
+<th><strong>Descripción</strong></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code>nodes</code></td>
+<td><code>list</code></td>
+<td>Lista de objetos que contienen los nodos (por ejemplo, fragmentos de hábitat) para cada periodo de análisis. Puede incluir: <br> - <code>data.frame</code> con al menos dos columnas: una para el ID y otra para el atributo. <br> - Datos vectoriales (<code>sf</code>, <code>SpatVector</code>, <code>SpatialPolygonsDataFrame</code>) en coordenadas proyectadas. <br> - Ráster (<code>RasterLayer</code>, <code>SpatRaster</code>) con valores enteros como ID de fragmentos, y <code>NA</code> para áreas no hábitat.</td>
+</tr>
+<tr class="even">
+<td><code>attribute</code></td>
+<td>
+<code>character</code> o <code>list</code>
+</td>
+<td>Atributo de los nodos. Si es <code>NULL</code> y los nodos son espaciales, se usará el área del nodo. Para usar otro atributo: <br> - Si los nodos son <code>data.frame</code> o vectores, indica el nombre de la columna con el atributo. <br> - Si son rásters, proporciona una lista de vectores numéricos (uno por cada periodo) con los atributos de los nodos. Si <code>weighted = TRUE</code>, se multiplicará por el área del nodo.</td>
+</tr>
+<tr class="odd">
+<td><code>area_unit</code></td>
+<td><code>character</code></td>
+<td>Unidad del área usada si <code>attribute = NULL</code>. Por ejemplo: <code>"m2"</code> (por defecto), <code>"km2"</code>, <code>"cm2"</code>, <code>"ha"</code>.</td>
+</tr>
+<tr class="even">
+<td><code>weighted</code></td>
+<td><code>logical</code></td>
+<td>Si los nodos son rásters, permite ponderar el área estimada del nodo por su atributo. Útil si el atributo tiene valores entre 0 y 1.</td>
+</tr>
+<tr class="odd">
+<td><code>distance</code></td>
+<td>
+<code>matrix</code> o <code>list</code>
+</td>
+<td>Distancia entre pares de nodos. <br> - Si es <code>matrix</code>, debe tener tantas filas/columnas como nodos. Puede obtenerse con <code><a href="https://rdrr.io/pkg/Makurhini/man/distancefile.html">distancefile()</a></code>. <br> - Si es <code>list</code>, debe contener los parámetros para calcular la distancia. Por ejemplo: <code>type = "least-cost"</code>, <code>resistance = capa_resistencia</code>. <br> También puedes poner una lista de resistencias (una por cada tiempo de <code>nodes</code>).</td>
+</tr>
+<tr class="even">
+<td><code>threshold</code></td>
+<td><code>numeric</code></td>
+<td>Umbral máximo de distancia. Las parejas de nodos con distancias mayores serán descartadas (acelera el cálculo).</td>
+</tr>
+<tr class="odd">
+<td><code>metric</code></td>
+<td><code>character</code></td>
+<td>Índice de conectividad a usar: <code>"PC"</code> (por defecto y recomendado) o <code>"IIC"</code>.</td>
+</tr>
+<tr class="even">
+<td><code>probability</code></td>
+<td><code>numeric</code></td>
+<td>Probabilidad asociada a la <code>distance_threshold</code>. Por ejemplo, si la distancia es la mediana de dispersión, usa <code>0.5</code>. Si es la distancia máxima, puedes usar <code>0.05</code> o <code>0.01</code>. Solo se usa si <code>metric = "PC"</code>. Si es <code>NULL</code>, se usa <code>0.5</code> por defecto.</td>
+</tr>
+<tr class="odd">
+<td><code>distance_thresholds</code></td>
+<td><code>numeric</code></td>
+<td>Distancia(s) de dispersión de la especie (en metros). Si es <code>NULL</code>, se estima automáticamente como la mediana entre nodos. También puedes usar <code><a href="https://rdrr.io/pkg/Makurhini/man/dispersal_distance.html">dispersal_distance()</a></code> si tienes el home range de la especie.</td>
+</tr>
+<tr class="even">
+<td><code>LA</code></td>
+<td><code>numeric</code></td>
+<td>Atributo máximo del paisaje (opcional). Solo afecta el valor global del índice, no la importancia de nodos. Si no se indica y <code>overall = TRUE</code>, se calculará solo el numerador del índice global.</td>
+</tr>
+<tr class="odd">
+<td><code>plot</code></td>
+<td>
+<code>logical</code> o <code>character</code>
+</td>
+<td>Si es <code>TRUE</code>, genera una gráfica. También puedes dar los años correspondientes de los periodos analizados, por ejemplo: <code>c("2011", "2014", "2017")</code>.</td>
+</tr>
+<tr class="even">
+<td><code>parallel</code></td>
+<td>
+<code>numeric</code> (opcional)</td>
+<td>Número de núcleos a usar para paralelizar el cálculo del índice y sus deltas. Recomendado si hay más de 1000 nodos. Por defecto no se paraleliza.</td>
+</tr>
+<tr class="odd">
+<td><code>parallel_mode</code></td>
+<td>
+<code>numeric</code> (opcional)</td>
+<td>Modo de paralelización: <br> - <code>1</code> (por defecto): paraleliza la estimación del delta de conectividad. <br> - <code>2</code>: paraleliza el cálculo de caminos más cortos. Recomendado si tienes más de 1000 nodos.</td>
+</tr>
+<tr class="even">
+<td><code>write</code></td>
+<td><code>character</code></td>
+<td>Ruta y nombre del archivo <code>.csv</code> de salida.</td>
+</tr>
+<tr class="odd">
+<td><code>intern</code></td>
+<td><code>logical</code></td>
+<td>Muestra el avance del proceso (por defecto = <code>TRUE</code>). Puede no llegar al 100% si las operaciones son muy rápidas.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Se obtiene una tabla con:</p>
+<ul>
+<li><p><strong>Tiempo</strong>: nombre de los periodos de tiempo, nombre del modelo o escenario (se toman del nombre de los elementos de la lista de nodos o del argumento plot).</p></li>
+<li><p><strong>Atributo máximo del paisaje</strong>: valor máximo del atributo del paisaje.</p></li>
+<li><p><strong>Área de hábitat</strong>.</p></li>
+<li><p><strong>Umbral de distancia</strong>: usualmente corresponde al umbral de dispersión asociado a una o varias especies, y es definido por el usuario.</p></li>
+<li><p><strong>ECA:</strong> Área de Conectividad Equivalente o Conectividad Equivalente.</p></li>
+<li><p><strong>ECA normalizado</strong>: valor de ECA expresado en relación con el atributo máximo del paisaje y área del hábitat.</p></li>
+<li><p><strong>dA</strong>: delta de área (cambio porcentual del área de hábitat entre tiempos).</p></li>
+<li><p><strong>dECA</strong>: delta de ECA (cambio porcentual en conectividad entre tiempos).</p></li>
+<li><p><strong>rECA</strong>: ECA relativizada (dECA/dA). Según Liang et al. (2021), “un valor de rECA mayor a 1 indica que los cambios en el hábitat resultan en un cambio desproporcionadamente alto en la conectividad del hábitat, mientras que un valor menor a 1 indica que los cambios en conectividad se deben a cambios aleatorios en el hábitat” (Saura et al. 2011; Dilts et al. 2016).</p></li>
+<li><p><strong>Comparación dA/dECA</strong>: comparación entre los valores de dA y dECA.</p></li>
+</ul>
+<p>Apliquemos la función:</p>
+<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dECA_test</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_dECA.html">MK_dECA</a></span><span class="op">(</span>nodes<span class="op">=</span> <span class="va">lista_parches</span>, </span>
+<span>                     attribute <span class="op">=</span> <span class="cn">NULL</span>, </span>
+<span>                     area_unit <span class="op">=</span> <span class="st">"ha"</span>,</span>
+<span>                     distance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>type<span class="op">=</span> <span class="st">"edge"</span>, keep <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>, </span>
+<span>                     metric <span class="op">=</span> <span class="st">"PC"</span>,</span>
+<span>                     probability <span class="op">=</span> <span class="fl">0.05</span>, </span>
+<span>                     distance_thresholds <span class="op">=</span> <span class="fl">5000</span>,</span>
+<span>                     LA <span class="op">=</span> <span class="va">Max_atributo</span>, </span>
+<span>                     plot<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"1993"</span>, <span class="st">"2003"</span>, <span class="st">"2007"</span>, <span class="st">"2011"</span><span class="op">)</span>,</span>
+<span>                     intern <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="co">#Puedes cambiar a TRUE para ver el avance</span></span></code></pre></div>
+<div class="inline-figure"><img src="06-ECA_dECA_files/figure-html/unnamed-chunk-10-1.png" width="672"></div>
+<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">dECA_test</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "list"</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/names.html">names</a></span><span class="op">(</span><span class="va">dECA_test</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "dECA_table" "dECA_plot"</span></span></code></pre></div>
+<p>Tabla:</p>
+<div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dECA_test</span><span class="op">$</span><span class="va">dECA_table</span></span></code></pre></div>
+<div class="inline-table"><table class="table table-condensed">
+<thead><tr>
+<th style="text-align:left;">
+Time
+</th>
+<th style="text-align:right;">
+Max. Landscape attribute (ha)
+</th>
+<th style="text-align:right;">
+Habitat area (ha)
+</th>
+<th style="text-align:right;">
+Distance threshold
+</th>
+<th style="text-align:right;">
+ECA (ha)
+</th>
+<th style="text-align:right;">
+Normalized ECA (% of LA)
+</th>
+<th style="text-align:right;">
+Normalized ECA (% of habitat area)
+</th>
+<th style="text-align:right;">
+dA
+</th>
+<th style="text-align:right;">
+dECA
+</th>
+<th style="text-align:right;">
+rECA
+</th>
+<th style="text-align:right;">
+dA/dECA comparisons
+</th>
+<th style="text-align:right;">
+Type of change
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1993
+</td>
+<td style="text-align:right;">
+279164.3
+</td>
+<td style="text-align:right;">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: #94D8B1; width: 98.07%">91438.11</span>
+</td>
+<td style="text-align:right;">
+5000
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ea9396">69182.45</span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffae1a">24.78199</span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffaa10">75.66041</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">-67.2457675</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">-75.218012</span>
+</td>
+<td style="text-align:right;">
+<span style="color: #404040">1.118554</span>
+</td>
+<td style="text-align:right;">
+dECA &lt; dA &lt; 0
+</td>
+<td style="text-align:right;">
+<ul><li>Connectivity loss
+</li></ul>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2003
+</td>
+<td style="text-align:right;">
+279164.3
+</td>
+<td style="text-align:right;">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: #94D8B1; width: 100.00%">93238.91</span>
+</td>
+<td style="text-align:right;">
+5000
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #e8878a">71423.71</span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffa500">25.58483</span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffa500">76.60289</span>
+</td>
+<td style="text-align:right;">
+<span style="color: forestgreen">1.9694217</span>
+</td>
+<td style="text-align:right;">
+<span style="color: forestgreen">3.239623</span>
+</td>
+<td style="text-align:right;">
+<span style="color: #404040">1.644961</span>
+</td>
+<td style="text-align:right;">
+dECA or dA gain
+</td>
+<td style="text-align:right;">
+Habitat or connectivity gain
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2007
+</td>
+<td style="text-align:right;">
+279164.3
+</td>
+<td style="text-align:right;">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: #94D8B1; width: 89.57%">83517.49</span>
+</td>
+<td style="text-align:right;">
+5000
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fae9ea">54325.56</span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffedcc">19.46007</span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffedcc">65.04692</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">-10.4263650</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red">-23.939041</span>
+</td>
+<td style="text-align:right;">
+<span style="color: #404040">2.296010</span>
+</td>
+<td style="text-align:right;">
+dECA &lt; dA &lt; 0
+</td>
+<td style="text-align:right;">
+<ul><li>Connectivity loss
+</li></ul>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2011
+</td>
+<td style="text-align:right;">
+279164.3
+</td>
+<td style="text-align:right;">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: #94D8B1; width: 89.94%">83859.71</span>
+</td>
+<td style="text-align:right;">
+5000
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f9e4e6">55031.81</span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffeac3">19.71306</span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffe9c1">65.62366</span>
+</td>
+<td style="text-align:right;">
+<span style="color: forestgreen">0.4097637</span>
+</td>
+<td style="text-align:right;">
+<span style="color: forestgreen">1.300045</span>
+</td>
+<td style="text-align:right;">
+<span style="color: #404040">3.172671</span>
+</td>
+<td style="text-align:right;">
+dECA or dA gain
+</td>
+<td style="text-align:right;">
+Habitat or connectivity gain
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div id="eca-y-deca-sobre-un-grid" class="section level2" number="9.4">
+<h2>
+<span class="header-section-number">9.4</span> ECA y dECA sobre un grid<a class="anchor" aria-label="anchor" href="#eca-y-deca-sobre-un-grid"><i class="fas fa-link"></i></a>
+</h2>
+<p>La función <code><a href="https://rdrr.io/pkg/Makurhini/man/MK_dECA_grid.html">MK_dECA_grid()</a></code> ayuda a estimar el ECA y dECA sobre un grid de hexagonos o cuadrados. Los argumentos distintos son:</p>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="45%">
+<col width="54%">
+</colgroup>
+<thead><tr class="header">
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><strong>region</strong></td>
+<td>Objeto de clase <code>sf</code> o <code>SpatialPolygonsDataFrame</code>. Polígono que delimita la región o área de estudio. Debe estar en un sistema de coordenadas proyectado.</td>
+</tr>
+<tr class="even">
+<td><strong>grid</strong></td>
+<td>Lista u objeto de clase <code>sf</code> o <code>SpatialPolygonsDataFrame</code>. Utiliza este parámetro para generar una cuadrícula indicando sus características en una lista (ver <code>get_grid</code>) o introduce el nombre de un objeto de clase <code>sf</code> o <code>SpatialPolygonsDataFrame</code> con la cuadrícula, cuyo sistema de coordenadas debe ser el mismo que el de los nodos. Ejemplo para generar hexágonos de 100 km²:_</td>
+</tr>
+</tbody>
+</table></div>
+<p>Regresa una lista con objetos <code>sf</code> correspondientes a los hexágonos y cada transición entre escenarios o tiempos de nodos, con los siguientes campos:</p>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="62%">
+<col width="37%">
+</colgroup>
+<thead><tr class="header">
+<th>Campo</th>
+<th>Descripción</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><strong>Time</strong></td>
+<td>Nombre de los periodos de tiempo, modelo o escenario (se toma del nombre de los elementos de la lista de nodos o del argumento <code>plot</code>).</td>
+</tr>
+<tr class="even">
+<td><strong>ECA.i</strong></td>
+<td>Área Equivalente Conectada (ECA) o Conectividad Equivalente para el tiempo <em>i</em> (primer escenario en la comparación).</td>
+</tr>
+<tr class="odd">
+<td><strong>ECA.j</strong></td>
+<td>Área Equivalente Conectada (ECA) o Conectividad Equivalente para el tiempo <em>j</em> (segundo escenario en la comparación).</td>
+</tr>
+<tr class="even">
+<td><strong>ECA.i (normalizada)</strong></td>
+<td>ECA normalizada para el tiempo <em>i</em>.</td>
+</tr>
+<tr class="odd">
+<td><strong>ECA.j (normalizada)</strong></td>
+<td>ECA normalizada para el tiempo <em>j</em>.</td>
+</tr>
+<tr class="even">
+<td><strong>dA</strong></td>
+<td>Cambio porcentual del área de hábitat entre los tiempos comparados (<em>delta Area</em>).</td>
+</tr>
+<tr class="odd">
+<td><strong>dECA</strong></td>
+<td>Cambio porcentual de la ECA entre los tiempos comparados (<em>delta ECA</em>).</td>
+</tr>
+<tr class="even">
+<td><strong>rECA</strong></td>
+<td>ECA relativizada (<em>dECA/dA</em>). Según Liang et al. (2021): “un valor de rECA mayor que 1 indica que los cambios en el hábitat resultan en un cambio desproporcionadamente grande en la conectividad del hábitat, mientras que un valor menor que 1 indica cambios en la conectividad debidos a cambios aleatorios en el hábitat (Saura et al. 2011; Dilts et al. 2016)”.</td>
+</tr>
+<tr class="odd">
+<td><strong>Comparación dA/dECA</strong></td>
+<td>Comparación entre los valores de <em>dA</em> y <em>dECA</em>.</td>
+</tr>
+<tr class="even">
+<td><strong>Tipo de cambio</strong></td>
+<td>Tipo de cambio determinado mediante <code>dECAfun()</code> y la diferencia entre <em>dA</em> y <em>dECA</em>.</td>
+</tr>
+</tbody>
+</table></div>
+<p>La función devuelve una lista con elementos correspondientes a los periodos de transición. Por ejemplo, si la lista de nodos contiene tres escenarios o tiempos, la función devolverá una lista con dos elementos:</p>
+<ul>
+<li>El primer elemento corresponde a la transición entre los escenarios 1 y 2, e incluirá el valor de <em>dECA</em> para ese periodo.</li>
+<li>El segundo elemento corresponde a la transición entre los escenarios 2 y 3, e incluirá el valor de <em>dECA</em> para ese periodo.</li>
+</ul>
+<div class="sourceCode" id="cb140"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">hexagons_dECA</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_dECA_grid.html">MK_dECA_grid</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">lista_parches</span>,</span>
+<span>                              nodes_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"1993"</span>, <span class="st">"2003"</span>, <span class="st">"2007"</span>, <span class="st">"2011"</span><span class="op">)</span>,</span>
+<span>                              region <span class="op">=</span> <span class="va">area_estudio</span>,</span>
+<span>                              area_unit <span class="op">=</span> <span class="st">"ha"</span>,</span>
+<span>                              metric <span class="op">=</span> <span class="st">"PC"</span>,</span>
+<span>                              distance_threshold <span class="op">=</span> <span class="fl">5000</span>,</span>
+<span>                              probability <span class="op">=</span> <span class="fl">0.05</span>,</span>
+<span>                              distance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"edge"</span>, keep <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>,</span>
+<span>                              grid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>hexagonal <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                                          cellsize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/unit_convert.html">unit_convert</a></span><span class="op">(</span><span class="fl">10</span>, <span class="st">"km2"</span>, <span class="st">"m2"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>                              parallel <span class="op">=</span> <span class="fl">6</span>,</span>
+<span>                              intern <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="co">#Puedes cambiar a TRUE para ver el avance</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/names.html">names</a></span><span class="op">(</span><span class="va">hexagons_dECA</span><span class="op">)</span></span></code></pre></div>
+<p><strong>dECA 1993-2003:</strong></p>
+<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/classInt/">classInt</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Calcular los intervalos</span></span>
+<span><span class="va">dECA_plot</span> <span class="op">&lt;-</span> <span class="va">hexagons_dECA</span><span class="op">$</span><span class="va">result_1993.2003</span></span>
+<span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu">classInt</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html">classIntervals</a></span><span class="op">(</span><span class="va">dECA_plot</span><span class="op">$</span><span class="va">dECA</span>, n <span class="op">=</span> <span class="fl">9</span>, style <span class="op">=</span> <span class="st">"quantile"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
+<span><span class="va">dECA_plot</span> <span class="op">&lt;-</span> <span class="va">dECA_plot</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>dECA_q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/cut.html">cut</a></span><span class="op">(</span><span class="va">dECA</span>,</span>
+<span>                     breaks <span class="op">=</span> <span class="va">breaks</span><span class="op">$</span><span class="va">brks</span>,</span>
+<span>                     include.lowest <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                     dig.lab <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span>  </span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">dECA_plot</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">dECA_q</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span></span>
+<span>    palette <span class="op">=</span> <span class="st">"RdYlGn"</span>,</span>
+<span>    direction <span class="op">=</span> <span class="fl">1</span>, </span>
+<span>    name <span class="op">=</span> <span class="st">"% dECA"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"GRID dECA 1993-2003"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"% dECA"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="06-ECA_dECA_files/figure-html/unnamed-chunk-14-1.png" width="672"></div>
+<p><strong>dECA 2003-2007</strong></p>
+<div class="sourceCode" id="cb142"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Calcular los intervalos </span></span>
+<span><span class="va">dECA_plot</span> <span class="op">&lt;-</span> <span class="va">hexagons_dECA</span><span class="op">$</span><span class="va">result_2003.2007</span></span>
+<span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu">classInt</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html">classIntervals</a></span><span class="op">(</span><span class="va">dECA_plot</span><span class="op">$</span><span class="va">dECA</span>, n <span class="op">=</span> <span class="fl">9</span>, style <span class="op">=</span> <span class="st">"quantile"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
+<span><span class="va">dECA_plot</span> <span class="op">&lt;-</span> <span class="va">dECA_plot</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>dECA_q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/cut.html">cut</a></span><span class="op">(</span><span class="va">dECA</span>,</span>
+<span>                     breaks <span class="op">=</span> <span class="va">breaks</span><span class="op">$</span><span class="va">brks</span>,</span>
+<span>                     include.lowest <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                     dig.lab <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span>  </span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">dECA_plot</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">dECA_q</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span></span>
+<span>    palette <span class="op">=</span> <span class="st">"RdYlGn"</span>,</span>
+<span>    direction <span class="op">=</span> <span class="fl">1</span>, </span>
+<span>    name <span class="op">=</span> <span class="st">"% dECA"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"GRID dECA 2003-2007"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"% dECA"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="06-ECA_dECA_files/figure-html/unnamed-chunk-15-1.png" width="672"></div>
+<p><strong>dECA 2007-2011</strong></p>
+<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Calcular los intervalos</span></span>
+<span><span class="va">dECA_plot</span> <span class="op">&lt;-</span> <span class="va">hexagons_dECA</span><span class="op">$</span><span class="va">result_2007.2011</span></span>
+<span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu">classInt</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html">classIntervals</a></span><span class="op">(</span><span class="va">dECA_plot</span><span class="op">$</span><span class="va">dECA</span>, n <span class="op">=</span> <span class="fl">9</span>, style <span class="op">=</span> <span class="st">"quantile"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
+<span><span class="va">dECA_plot</span> <span class="op">&lt;-</span> <span class="va">dECA_plot</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>dECA_q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/cut.html">cut</a></span><span class="op">(</span><span class="va">dECA</span>,</span>
+<span>                     breaks <span class="op">=</span> <span class="va">breaks</span><span class="op">$</span><span class="va">brks</span>,</span>
+<span>                     include.lowest <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                     dig.lab <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span>  </span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">dECA_plot</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">dECA_q</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span></span>
+<span>    palette <span class="op">=</span> <span class="st">"RdYlGn"</span>,</span>
+<span>    direction <span class="op">=</span> <span class="fl">1</span>, </span>
+<span>    name <span class="op">=</span> <span class="st">"% dECA"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"GRID dECA 2007-2011"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"% dECA"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="06-ECA_dECA_files/figure-html/unnamed-chunk-16-1.png" width="672"></div>
+<p><strong>rECA 2007-2011</strong></p>
+<div class="sourceCode" id="cb144"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Calcular los intervalos de Jenks</span></span>
+<span><span class="va">dECA_plot</span> <span class="op">&lt;-</span> <span class="va">hexagons_dECA</span><span class="op">$</span><span class="va">result_2007.2011</span></span>
+<span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu">classInt</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html">classIntervals</a></span><span class="op">(</span><span class="va">dECA_plot</span><span class="op">$</span><span class="va">rECA</span>, n <span class="op">=</span> <span class="fl">5</span>, style <span class="op">=</span> <span class="st">"jenks"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
+<span><span class="va">dECA_plot</span> <span class="op">&lt;-</span> <span class="va">dECA_plot</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>rECA_q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/cut.html">cut</a></span><span class="op">(</span><span class="va">rECA</span>,</span>
+<span>                     breaks <span class="op">=</span> <span class="va">breaks</span><span class="op">$</span><span class="va">brks</span>,</span>
+<span>                     include.lowest <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                     dig.lab <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span>  </span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">dECA_plot</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">rECA_q</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span></span>
+<span>    palette <span class="op">=</span> <span class="st">"RdYlGn"</span>,</span>
+<span>    direction <span class="op">=</span> <span class="fl">1</span>, </span>
+<span>    name <span class="op">=</span> <span class="st">"rECA"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"GRID rECA 2007-2011"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"rECA"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="06-ECA_dECA_files/figure-html/unnamed-chunk-17-1.png" width="672"></div>
+<p><strong>Tipo de cambio entre 2003-2007</strong></p>
+<div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">area_estudio</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"Study area"</span><span class="op">)</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">hexagons_dECA</span><span class="op">$</span><span class="va">result_2003.2007</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">Type.Change</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span></span>
+<span>    palette <span class="op">=</span> <span class="st">"Set1"</span>,</span>
+<span>    name <span class="op">=</span> <span class="st">"Tipo de cambio"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"GRID dECA, Tipo de cambio 2003-2007"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="06-ECA_dECA_files/figure-html/unnamed-chunk-18-1.png" width="672"></div>
+</div>
+<div id="referencias" class="section level2" number="9.5">
+<h2>
+<span class="header-section-number">9.5</span> Referencias<a class="anchor" aria-label="anchor" href="#referencias"><i class="fas fa-link"></i></a>
+</h2>
+<p>Dilts, T.E., Weisberg, P.J., Leitner, P., Matocq, M.D., Inman, R.D., Nussear, K.E., &amp; Esque, T.C., 2016. Multiscale connectivity and graph theory highlight critical areas for conservation under climate change. Ecological Applications, 26(4), 1223-1237. <a href="https://doi.org/10.1890/15-0925" class="uri">https://doi.org/10.1890/15-0925</a></p>
+<p>Herrera, L.P., Sabatino, M.C., Jaimes, F.R., &amp; Saura, S., 2017. Landscape connectivity and the role of small habitat patches as stepping stones: An assessment of the grassland biome in South America. Biodiversity and Conservation, 26(14), 3465-3479. <a href="https://doi.org/10.1007/s10531-017-1416-7" class="uri">https://doi.org/10.1007/s10531-017-1416-7</a></p>
+<p>Liang, J., Ding, Z., Jiang, Z., Yang, X., Xiao, R., Singh, P. B., Hu, Y., Guo, K., Zhang, Z., &amp; Hu, H., 2021. Climate change, habitat connectivity, and conservation gaps: A case study of four ungulate species endemic to the Tibetan Plateau. Landscape Ecology, 36(4), 1071-1087. <a href="https://doi.org/10.1007/s10980-021-01202-0" class="uri">https://doi.org/10.1007/s10980-021-01202-0</a></p>
+<p>Saura, S., Estreguil, C., Mouton, C., &amp; Rodríguez-Freire, M., 2011. Network analysis to assess landscape connectivity trends: Application to European forests (1990–2000). Ecological Indicators, 11(2), 407-416. <a href="https://doi.org/10.1016/j.ecolind.2010.06.011" class="uri">https://doi.org/10.1016/j.ecolind.2010.06.011</a></p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="prioridad-de-enlaces-con-mk_dpciic_links.html"><span class="header-section-number">8</span> Prioridad de enlaces con MK_dPCIIC_links()</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#conectividad-din%C3%A1mica-con-mk_deca"><span class="header-section-number">9</span> Conectividad dinámica con MK_dECA()</a></li>
+<li><a class="nav-link" href="#%C3%ADndice-eca-con-mk_dpciic"><span class="header-section-number">9.1</span> Índice ECA con MK_dPCIIC()</a></li>
+<li><a class="nav-link" href="#funci%C3%B3n-mk_deca"><span class="header-section-number">9.2</span> Función MK_dECA()</a></li>
+<li><a class="nav-link" href="#ejemplo.-cambios-en-la-conectividad-del-paisaje-en-la-reserva-de-la-biosfera-mariposa-monarca."><span class="header-section-number">9.3</span> Ejemplo. Cambios en la conectividad del paisaje en la Reserva de la Biosfera Mariposa Monarca.</a></li>
+<li><a class="nav-link" href="#eca-y-deca-sobre-un-grid"><span class="header-section-number">9.4</span> ECA y dECA sobre un grid</a></li>
+<li><a class="nav-link" href="#referencias"><span class="header-section-number">9.5</span> Referencias</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/OscarGOGO/Makurhini_manual_esp/blob/master/06-ECA_dECA.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/OscarGOGO/Makurhini_manual_esp/edit/master/06-ECA_dECA.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Manual de uso de Makurhini</strong>" was written by Oscar Godínez Gómez. It was last built on 2025-08-07.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

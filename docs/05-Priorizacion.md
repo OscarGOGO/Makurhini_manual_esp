@@ -39,7 +39,7 @@ ggplot() +
         axis.title.y = element_blank())
 ```
 
-![](05-Priorizacion_files/figure-epub3/unnamed-chunk-3-1.png)<!-- -->
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-3-1.png" width="672" />
 
 
 ``` r
@@ -94,8 +94,7 @@ PCrestauracion <- MK_dPCIIC(nodes = habitat_nodes,
 #> Estimating PC index. This may take several minutes depending on the number of nodes
 #>   |                                                          |                                                  |   0%  |                                                          |==================================================| 100%
 #>  ■■■■■■■■■■■■■■                    42% |  ETA:  5s
-#>  ■■■■■■■■■■■■■■■■                  50% |  ETA:  6s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■          76% |  ETA:  3s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■         81% |  ETA:  2s
 #> 
 #> Done!
 PCrestauracion
@@ -141,7 +140,7 @@ ggplot() +
   )
 ```
 
-![](05-Priorizacion_files/figure-epub3/unnamed-chunk-9-1.png)<!-- -->
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-9-1.png" width="672" />
 
 Veamos solo los parches de restauración
 
@@ -170,7 +169,7 @@ ggplot() +
   )
 ```
 
-![](05-Priorizacion_files/figure-epub3/unnamed-chunk-10-1.png)<!-- -->
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-10-1.png" width="672" />
 
 Si desactivamos `onlyrestor` entonces estima los otros valores delíndice de conectividad (i.e., dPC, intra, flux y connector).
 
@@ -339,7 +338,7 @@ ggplot() +
   )
 ```
 
-![](05-Priorizacion_files/figure-epub3/unnamed-chunk-14-1.png)<!-- -->
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-14-1.png" width="672" />
 
 Índice dPC focal:
 
@@ -371,7 +370,7 @@ ggplot() +
   )
 ```
 
-![](05-Priorizacion_files/figure-epub3/unnamed-chunk-15-1.png)<!-- -->
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-15-1.png" width="672" />
 
 Fracción intra:
 
@@ -403,7 +402,7 @@ ggplot() +
   )
 ```
 
-![](05-Priorizacion_files/figure-epub3/unnamed-chunk-16-1.png)<!-- -->
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-16-1.png" width="672" />
 
 Fracción flux:
 
@@ -435,7 +434,7 @@ ggplot() +
   )
 ```
 
-![](05-Priorizacion_files/figure-epub3/unnamed-chunk-17-1.png)<!-- -->
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-17-1.png" width="672" />
 
 Fracción connector:
 
@@ -467,7 +466,7 @@ ggplot() +
   )
 ```
 
-![](05-Priorizacion_files/figure-epub3/unnamed-chunk-18-1.png)<!-- -->
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-18-1.png" width="672" />
 
 **Índice de Conectividad Compuesto (CCI~f~).**
 
@@ -501,7 +500,7 @@ ggplot() +
   )
 ```
 
-![](05-Priorizacion_files/figure-epub3/unnamed-chunk-19-1.png)<!-- -->
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-19-1.png" width="672" />
 
 
 
@@ -568,7 +567,7 @@ ggplot() +
         axis.title.y = element_blank())
 ```
 
-![](05-Priorizacion_files/figure-epub3/unnamed-chunk-22-1.png)<!-- -->
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-22-1.png" width="672" />
 
 
 Estamos utilizando un raster de resistencia que esta incluido en el paquete Makurhini. Para cargar un raster de resistencia para tu estudio puedes utilizar la función `raster()` del paquete `raster` o la función `rast()` del paquete `terra`.
@@ -645,7 +644,7 @@ ggplot() +
   )
 ```
 
-![](05-Priorizacion_files/figure-epub3/unnamed-chunk-26-1.png)<!-- -->
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-26-1.png" width="672" />
 
 Ahora aplicamos la función `MK_dPCIIC_links()`, pero antes exploremos una nueva variante de estimar el umbral de distancia cuando usamos una resistencia.
 
@@ -767,7 +766,7 @@ ggplot() +
   )
 ```
 
-![](05-Priorizacion_files/figure-epub3/unnamed-chunk-29-1.png)<!-- -->
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-29-1.png" width="672" />
 
 ## Cambio de enlaces (Link change)
 
@@ -953,7 +952,7 @@ ggplot() +
   )
 ```
 
-![](05-Priorizacion_files/figure-epub3/unnamed-chunk-37-1.png)<!-- -->
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-37-1.png" width="672" />
 
 Podemos visualizar solo los corredores que sufriedon cambio después de mejorar los corredores:
 
@@ -988,7 +987,7 @@ ggplot() +
   )
 ```
 
-![](05-Priorizacion_files/figure-epub3/unnamed-chunk-38-1.png)<!-- -->
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-38-1.png" width="672" />
 
 
 

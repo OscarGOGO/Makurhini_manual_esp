@@ -40,7 +40,7 @@ ggplot() +
         axis.title.y = element_blank())
 ```
 
-![](03-Centralidad_files/figure-epub3/unnamed-chunk-3-1.png)<!-- -->
+<img src="03-Centralidad_files/figure-html/unnamed-chunk-3-1.png" width="672" />
 
 En caso de necesitar abrir otro vector (e.g., .shp, .gpkg) necesitan usar la fución `read_sf()` del paquete `sf`, la función `shapefile()` del paquete `raster`, o la funcion `vect()` del paquete `terra`.
 
@@ -182,15 +182,15 @@ centrality_test
 #> 10 10 12804425 0.0004306005 0.04405417 1063       1       6
 #>    memb.louvain                       geometry
 #> 1             1 POLYGON ((54911.05 2035815,...
-#> 2             1 POLYGON ((44591.28 2042209,...
-#> 3             1 POLYGON ((46491.11 2042467,...
-#> 4             1 POLYGON ((54944.49 2048163,...
-#> 5             2 POLYGON ((80094.28 2064140,...
-#> 6             2 POLYGON ((69205.24 2066394,...
-#> 7             2 POLYGON ((68554.2 2066632, ...
-#> 8             2 POLYGON ((69995.53 2066880,...
-#> 9             2 POLYGON ((79368.68 2067324,...
-#> 10            1 POLYGON ((23378.32 2067554,...
+#> 2             2 POLYGON ((44591.28 2042209,...
+#> 3             2 POLYGON ((46491.11 2042467,...
+#> 4             2 POLYGON ((54944.49 2048163,...
+#> 5             1 POLYGON ((80094.28 2064140,...
+#> 6             1 POLYGON ((69205.24 2066394,...
+#> 7             1 POLYGON ((68554.2 2066632, ...
+#> 8             1 POLYGON ((69995.53 2066880,...
+#> 9             1 POLYGON ((79368.68 2067324,...
+#> 10            2 POLYGON ((23378.32 2067554,...
 ```
 
 
@@ -249,7 +249,7 @@ ggplot() +
   )
 ```
 
-![](03-Centralidad_files/figure-epub3/unnamed-chunk-7-1.png)<!-- -->
+<img src="03-Centralidad_files/figure-html/unnamed-chunk-7-1.png" width="672" />
 
 
 
@@ -279,7 +279,7 @@ ggplot() +
   )
 ```
 
-![](03-Centralidad_files/figure-epub3/unnamed-chunk-8-1.png)<!-- -->
+<img src="03-Centralidad_files/figure-html/unnamed-chunk-8-1.png" width="672" />
 
 
 
@@ -305,7 +305,7 @@ ggplot() +
   )
 ```
 
-![](03-Centralidad_files/figure-epub3/unnamed-chunk-9-1.png)<!-- -->
+<img src="03-Centralidad_files/figure-html/unnamed-chunk-9-1.png" width="672" />
 
 
 
@@ -331,7 +331,7 @@ ggplot() +
   )
 ```
 
-![](03-Centralidad_files/figure-epub3/unnamed-chunk-10-1.png)<!-- -->
+<img src="03-Centralidad_files/figure-html/unnamed-chunk-10-1.png" width="672" />
 
 
 
@@ -347,6 +347,7 @@ centrality_test <- MK_RMCentrality(nodes = habitat_nodes,
                                  distance_thresholds = c(10000, 100000),
                                  probability = 0.5,
                                  write = NULL)
+#>  ■■■■■■■■■■■■■■■■                  50% |  ETA:  3s
 #> Done!
 centrality_test
 #> $d10000
@@ -371,7 +372,7 @@ centrality_test
 #> 1             1 POLYGON ((54911.05 2035815,...
 #> 2             2 POLYGON ((44591.28 2042209,...
 #> 3             2 POLYGON ((46491.11 2042467,...
-#> 4             2 POLYGON ((54944.49 2048163,...
+#> 4             1 POLYGON ((54944.49 2048163,...
 #> 5             1 POLYGON ((80094.28 2064140,...
 #> 6             1 POLYGON ((69205.24 2066394,...
 #> 7             1 POLYGON ((68554.2 2066632, ...
@@ -418,7 +419,7 @@ centrality_test
 plot(centrality_test$d10000["BWC"], breaks = "quantile")
 ```
 
-![](03-Centralidad_files/figure-epub3/unnamed-chunk-12-1.png)<!-- -->
+<img src="03-Centralidad_files/figure-html/unnamed-chunk-12-1.png" width="672" />
 
 100 km:
 
@@ -428,7 +429,7 @@ plot(centrality_test$d10000["BWC"], breaks = "quantile")
 plot(centrality_test$`d1e+05`["BWC"], breaks = "quantile")
 ```
 
-![](03-Centralidad_files/figure-epub3/unnamed-chunk-13-1.png)<!-- -->
+<img src="03-Centralidad_files/figure-html/unnamed-chunk-13-1.png" width="672" />
 
 
 
