@@ -60,3 +60,9 @@ función-mk_deca
 ejemplo.-cambios-en-la-conectividad-del-paisaje-en-la-reserva-de-la-biosfera-mariposa-monarca.
 eca-y-deca-sobre-un-grid
 referencias
+protected-connected-indicator-protconn
+ejemplo
+función-mk_protconn
+función-mk_protconnmult
+función-mk_protconn_raster
+referencias-1

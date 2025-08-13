@@ -1,0 +1,1902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 10 Protected Connected indicator (ProtConn) | Manual de uso de Makurhini</title>
+<meta name="author" content="Oscar Godínez Gómez">
+<meta name="description" content="ProtConn es un índice que ayuda a medir qué tan bien conectadas están las áreas protegidas, como parques nacionales o reservas, a nivel local, regional o mundial. Este indicador, creado por Saura...">
+<meta name="generator" content="bookdown 0.43 with bs4_book()">
+<meta property="og:title" content="Chapter 10 Protected Connected indicator (ProtConn) | Manual de uso de Makurhini">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://oscargogo.github.io/Makurhini_manual_esp/protected-connected-indicator-protconn.html">
+<meta property="og:image" content="https://oscargogo.github.io/Makurhini_manual_esp/LOGO_MAKHURINI.png">
+<meta property="og:description" content="ProtConn es un índice que ayuda a medir qué tan bien conectadas están las áreas protegidas, como parques nacionales o reservas, a nivel local, regional o mundial. Este indicador, creado por Saura...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 10 Protected Connected indicator (ProtConn) | Manual de uso de Makurhini">
+<meta name="twitter:description" content="ProtConn es un índice que ayuda a medir qué tan bien conectadas están las áreas protegidas, como parques nacionales o reservas, a nivel local, regional o mundial. Este indicador, creado por Saura...">
+<meta name="twitter:image" content="https://oscargogo.github.io/Makurhini_manual_esp/LOGO_MAKHURINI.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Manual de uso de Makurhini</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Makurhini</a></li>
+<li><a class="" href="instalaci%C3%B3n-del-paquete-makurhini.html"><span class="header-section-number">1</span> Instalación del paquete Makurhini</a></li>
+<li><a class="" href="estad%C3%ADsticas-de-fragmentaci%C3%B3n-del-paisaje.html"><span class="header-section-number">2</span> Estadísticas de fragmentación del paisaje</a></li>
+<li><a class="" href="%C3%ADndices-de-centralidad.html"><span class="header-section-number">3</span> Índices de centralidad</a></li>
+<li><a class="" href="kernel-de-dispersi%C3%B3n.html"><span class="header-section-number">4</span> Kernel de dispersión</a></li>
+<li><a class="" href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html"><span class="header-section-number">5</span> índice integral de conectividad y Probabilidad de conectividad</a></li>
+<li><a class="" href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html"><span class="header-section-number">6</span> Prioridades de Restauración con MK_dPCIIC()</a></li>
+<li><a class="" href="prioridades-de-conservaci%C3%B3n-y-restauraci%C3%B3n-con-mk_focal_nodes.html"><span class="header-section-number">7</span> Prioridades de conservación y restauración con MK_Focal_nodes()</a></li>
+<li><a class="" href="prioridad-de-enlaces-con-mk_dpciic_links.html"><span class="header-section-number">8</span> Prioridad de enlaces con MK_dPCIIC_links()</a></li>
+<li><a class="" href="conectividad-din%C3%A1mica-con-mk_deca.html"><span class="header-section-number">9</span> Conectividad dinámica con MK_dECA()</a></li>
+<li><a class="active" href="protected-connected-indicator-protconn.html"><span class="header-section-number">10</span> Protected Connected indicator (ProtConn)</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/OscarGOGO/Makurhini_manual_esp">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="protected-connected-indicator-protconn" class="section level1" number="10">
+<h1>
+<span class="header-section-number">10</span> Protected Connected indicator (ProtConn)<a class="anchor" aria-label="anchor" href="#protected-connected-indicator-protconn"><i class="fas fa-link"></i></a>
+</h1>
+<p>ProtConn es un índice que ayuda a medir qué tan bien conectadas están las áreas protegidas, como parques nacionales o reservas, a nivel local, regional o mundial. Este indicador, creado por Saura y otros (2017, 2018), se usa mucho para evaluar el progreso en metas globales, como la del Marco Mundial de Biodiversidad de Kunming-Montreal (objetivo 3). Este objetivo dice que para 2030, al menos el 30 % de las tierras y mares deben estar protegidos y gestionados de manera efectiva, con áreas que representen bien los ecosistemas, estén bien conectadas entre sí y se manejen de forma justa.</p>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="58%">
+<col width="41%">
+</colgroup>
+<thead><tr class="header">
+<th>Índice / Fracción</th>
+<th>Descripción</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><strong>ECA</strong></td>
+<td>
+<em>Equivalent Connected Area</em>. Área equivalente de hábitat que estaría disponible si el paisaje fuera completamente contiguo, manteniendo el mismo nivel de conectividad observado. Expresado en unidades de superficie.</td>
+</tr>
+<tr class="even">
+<td><strong>Prot</strong></td>
+<td>Porcentaje de la superficie de la región que está cubierta por áreas protegidas, sin considerar conectividad.</td>
+</tr>
+<tr class="odd">
+<td><strong>ProtConn</strong></td>
+<td>Porcentaje del paisaje que está protegido <strong>y conectado</strong> dentro de la región de estudio.</td>
+</tr>
+<tr class="even">
+<td><strong>ProtUnconn</strong></td>
+<td>Porcentaje del paisaje que está protegido pero <strong>aislado</strong> (sin conectividad funcional con otras áreas protegidas).</td>
+</tr>
+<tr class="odd">
+<td><strong>RelConn</strong></td>
+<td>Conectividad relativa: relación entre <strong>ProtConn</strong> y <strong>Prot</strong>. Indica la proporción de la superficie protegida que está funcionalmente conectada.</td>
+</tr>
+<tr class="even">
+<td><strong>ProtUnConn[design]</strong></td>
+<td>Porción de la superficie protegida que permanece desconectada debido al diseño y localización de las áreas protegidas (dentro de la región).</td>
+</tr>
+<tr class="odd">
+<td><strong>ProtConn[bound]</strong></td>
+<td>Versión corregida del indicador ProtConn que se centra en la parte de la conectividad sobre la que un país o una región puede influir directamente, excluyendo el aislamiento causado por barreras naturales como mares o territorios extranjeros.</td>
+</tr>
+<tr class="even">
+<td><strong>ProtConn[Prot]</strong></td>
+<td>Fracción de ProtConn derivada del área <strong>protegida interna</strong> en sí misma (Within + Contig).</td>
+</tr>
+<tr class="odd">
+<td><strong>ProtConn[Within]</strong></td>
+<td>Fracción de ProtConn aportada por conexiones <strong>entre áreas protegidas dentro de la región</strong>.</td>
+</tr>
+<tr class="even">
+<td><strong>ProtConn[Contig]</strong></td>
+<td>Fracción de ProtConn derivada de áreas protegidas <strong>contiguas</strong> (adyacentes sin distancia entre ellas).</td>
+</tr>
+<tr class="odd">
+<td><strong>ProtConn[Trans]</strong></td>
+<td>Fracción de ProtConn aportada por conexiones <strong>transfronterizas</strong> con áreas protegidas fuera de la región.</td>
+</tr>
+<tr class="even">
+<td><strong>ProtConn[Unprot]</strong></td>
+<td>Fracción de ProtConn derivada de conexiones que incluyen <strong>áreas no protegidas</strong> como corredores funcionales.</td>
+</tr>
+<tr class="odd">
+<td><strong>ProtConn[Within][land]</strong></td>
+<td>Igual que ProtConn[Within] pero considerando solo la parte terrestre de la región.</td>
+</tr>
+<tr class="even">
+<td><strong>ProtConn[Contig][land]</strong></td>
+<td>Igual que ProtConn[Contig] pero considerando únicamente territorio terrestre.</td>
+</tr>
+<tr class="odd">
+<td><strong>ProtConn[Unprot][land]</strong></td>
+<td>Igual que ProtConn[Unprot] pero restringido a conexiones por tierra.</td>
+</tr>
+<tr class="even">
+<td><strong>ProtConn[Trans][land]</strong></td>
+<td>Igual que ProtConn[Trans] pero considerando únicamente conexiones transfronterizas terrestres.</td>
+</tr>
+</tbody>
+</table></div>
+<div id="ejemplo" class="section level3" number="10.0.1">
+<h3>
+<span class="header-section-number">10.0.1</span> Ejemplo<a class="anchor" aria-label="anchor" href="#ejemplo"><i class="fas fa-link"></i></a>
+</h3>
+<p>En Colombia, las áreas protegidas (AP) son clave para cuidar la increíble biodiversidad del país. Hay unas 1,733 AP, que incluyen AP nacionales y subnacionales, cubriendo cerca del 17% del territorio (unos 195,000 km²). Pero, aunque hay muchas, el cambio rápido en el uso de la tierra está complicando las cosas. Muchas AP están rodeadas de paisajes alterados, lo que dificulta que las especies se muevan y afecta procesos ecológicos.</p>
+<p>En este ejemplo, se analiza cómo están conectadas las AP nacionales y subnacionales en las ecorregiones de Colombia. También consideramos AP fuera de Colombia que pueden ayudar como áreas transfronterizas. La info espacial viene de un estudio sobre la conectividad en la región Andes-Amazonas realizado por Castillo et al., (2020). Usamos una distancia de dispersión de 10 km para los organismos (con una probabilidad de 0.5) y un radio de 50 km para buscar AP transfronterizas. En total, hay 33 ecorregiones y 1,530 polígonos de AP en Colombia. Para conectar las AP, usamos distancias euclidianas, especialmente entre los bordes de las áreas.</p>
+<ol style="list-style-type: decimal">
+<li><p>Descarga los siguientes datos: <a href="https://drive.google.com/drive/folders/1yBMXd7beA8VOl5KUkdEGUetlWyhDqeL0?usp=sharing" class="uri">https://drive.google.com/drive/folders/1yBMXd7beA8VOl5KUkdEGUetlWyhDqeL0?usp=sharing</a></p></li>
+<li><p>Carga las paqueterias y los shapefiles <em>Areas_protegidas.shp</em> y <em>Ecorregiones.shp</em></p></li>
+</ol>
+<div class="sourceCode" id="cb146"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/">terra</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/raster">raster</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/connectscape/Makurhini">Makurhini</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">RColorBrewer</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="va">APs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"C:/.../Areas_protegidas.shp"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/dimensions.html">nrow</a></span><span class="op">(</span><span class="va">APs</span><span class="op">)</span></span>
+<span><span class="va">Ecorreg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"C:/.../Ecorregiones.shp"</span><span class="op">)</span></span></code></pre></div>
+<pre><code>#&gt; [1] 1530</code></pre>
+<p>Seleccionar solo algunas columnas:</p>
+<div class="sourceCode" id="cb148"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">APs</span> <span class="op">&lt;-</span> <span class="va">APs</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"NAME"</span>, <span class="st">"DESIGNACIO"</span>, <span class="st">"ESCALA_2"</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="va">Ecorreg</span> <span class="op">&lt;-</span> <span class="va">Ecorreg</span><span class="op">[</span>,<span class="st">"ECO_NAME"</span><span class="op">]</span></span></code></pre></div>
+<p>Lo podemos visualizar:</p>
+<div class="sourceCode" id="cb149"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ateucher/rmapshaper">rmapshaper</a></span><span class="op">)</span></span>
+<span><span class="va">mask_ecorreg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rmapshaper/man/ms_dissolve.html">ms_dissolve</a></span><span class="op">(</span><span class="va">Ecorreg</span><span class="op">)</span></span>
+<span><span class="va">APs_nacionales</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rmapshaper/man/ms_clip.html">ms_clip</a></span><span class="op">(</span><span class="va">APs</span>, <span class="va">mask_ecorreg</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">APs_transnacionales</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rmapshaper/man/ms_erase.html">ms_erase</a></span><span class="op">(</span><span class="va">APs</span>, <span class="va">mask_ecorreg</span><span class="op">)</span></span>
+<span><span class="va">APs_transnacionales</span><span class="op">$</span><span class="va">Tipo</span> <span class="op">&lt;-</span> <span class="st">"APs en paises vecinos"</span></span>
+<span></span>
+<span><span class="va">APs_subnacionales</span> <span class="op">&lt;-</span> <span class="va">APs_nacionales</span><span class="op">[</span><span class="va">APs_nacionales</span><span class="op">$</span><span class="va">ESCALA_2</span> <span class="op">==</span> <span class="st">"Subnacional"</span>,<span class="op">]</span></span>
+<span><span class="va">APs_subnacionales</span><span class="op">$</span><span class="va">Tipo</span> <span class="op">&lt;-</span> <span class="st">"APs Subnacionales"</span></span>
+<span></span>
+<span><span class="va">APs_nacionales</span> <span class="op">&lt;-</span> <span class="va">APs_nacionales</span><span class="op">[</span><span class="va">APs_nacionales</span><span class="op">$</span><span class="va">ESCALA_2</span> <span class="op">==</span> <span class="st">"Nacional"</span>,<span class="op">]</span></span>
+<span><span class="va">APs_nacionales</span><span class="op">$</span><span class="va">Tipo</span> <span class="op">&lt;-</span> <span class="st">"APs Nacionales"</span></span>
+<span><span class="va">APs_vis</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">APs_nacionales</span>, <span class="va">APs_subnacionales</span>, <span class="va">APs_transnacionales</span><span class="op">)</span></span>
+<span><span class="va">APs_vis</span><span class="op">$</span><span class="va">Tipo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">APs_vis</span><span class="op">$</span><span class="va">Tipo</span>, levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"APs Nacionales"</span>, <span class="st">"APs Subnacionales"</span>, <span class="st">"APs en paises vecinos"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">Ecorreg</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"Ecorregiones"</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">APs_vis</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill<span class="op">=</span><span class="va">Tipo</span><span class="op">)</span>, color <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Tipo"</span>, values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#1DAB80"</span>, <span class="st">"#FF00C5"</span>, <span class="st">"#E06936"</span>, <span class="st">"#8D8BBE"</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> </span></code></pre></div>
+<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-4-1.png" width="672"></div>
+</div>
+<div id="función-mk_protconn" class="section level3" number="10.0.2">
+<h3>
+<span class="header-section-number">10.0.2</span> Función MK_ProtConn()<a class="anchor" aria-label="anchor" href="#funci%C3%B3n-mk_protconn"><i class="fas fa-link"></i></a>
+</h3>
+<p>Esta función calcula el indicador de área protegida y conectada (ProtConn) para una región, sus fracciones y la importancia o contribución de cada área protegida (dProtConn) para mantener la conectividad en la región bajo uno o más umbrales de distancia. Algo muy importante es que el poarametro nodes solo acepta archivos vectoriales.</p>
+<p>La función tiene los siguientes argumentos:</p>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="62%">
+<col width="37%">
+</colgroup>
+<thead><tr class="header">
+<th>Argumento</th>
+<th>Descripción</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><strong>nodes</strong></td>
+<td>
+<code>raster</code>. El archivo debe tener un sistema de coordenadas proyectado.</td>
+</tr>
+<tr class="even">
+<td><strong>region</strong></td>
+<td>Objeto de clase <code>raster</code>, <code>rast</code>, <code>sf</code>, <code>sfc</code>, <code>sfg</code> o <code>spatialPolygonsDataFrame</code>. Polígono que delimita la región o área de estudio. Debe estar en un sistema de coordenadas proyectado.</td>
+</tr>
+<tr class="odd">
+<td><strong>area_unit</strong></td>
+<td>
+<code>character</code> (opcional, por defecto <code>"m2"</code>). Unidades de área cuando <code>attribute = NULL</code>. Ejemplos: <code>"m2"</code>, <code>"km2"</code>, <code>"cm2"</code>, <code>"ha"</code>. Ver <code>unit_convert</code> para más detalles.</td>
+</tr>
+<tr class="even">
+<td><strong>distance</strong></td>
+<td>Matriz o lista que define la distancia entre cada par de nodos. Puede ser distancia euclidiana o efectiva (costos de movimiento). <br> - Si es matriz: número de filas y columnas igual al número de nodos (puede generarse con <code>distancefile</code>). <br> - Si es lista: debe incluir parámetros como <code>"type"</code> (<code>"centroid"</code>, <code>"edge"</code>, <code>"least-cost"</code>, <code>"commute-time"</code>) y, en su caso, <code>"resistance"</code>. Para más detalles ver <code>distancefile</code>.</td>
+</tr>
+<tr class="odd">
+<td><strong>distance_thresholds</strong></td>
+<td>
+<code>numeric</code>. Distancia(s) de dispersión de la especie en metros. Si es <code>NULL</code>, se estima como la distancia de dispersión mediana entre nodos. También se puede calcular con <code>dispersal_distance</code>.</td>
+</tr>
+<tr class="even">
+<td><strong>probability</strong></td>
+<td>
+<code>numeric</code>. Probabilidad asociada a la distancia en <code>distance_threshold</code>. Ej.: mediana de dispersión → <code>0.5</code>; máxima dispersión → <code>0.05</code> o <code>0.01</code>. Usar solo con la métrica <code>"PC"</code>. Por defecto = <code>0.5</code>.</td>
+</tr>
+<tr class="odd">
+<td><strong>transboundary</strong></td>
+<td>
+<code>numeric</code>. Búfer para seleccionar polígonos en una segunda ronda (atributo = 0, actuando como stepping stones según Saura et al. 2017). Puede ser un valor único o uno por cada distancia umbral.</td>
+</tr>
+<tr class="even">
+<td><strong>transboundary_type</strong></td>
+<td>
+<code>character</code>. Opciones: <code>"nodes"</code> (por defecto, límites de los nodos en la región) o <code>"region"</code> (límites de la región).</td>
+</tr>
+<tr class="odd">
+<td><strong>protconn_bound</strong></td>
+<td>
+<code>logical</code>. Si es <code>TRUE</code>, estima las fracciones <code>ProtUnConn[design]</code> y <code>ProtConn[bound]</code>.</td>
+</tr>
+<tr class="even">
+<td><strong>delta</strong></td>
+<td>
+<code>logical</code>. Si es <code>TRUE</code>, estima la contribución de cada nodo al valor de <code>ProtConn</code> en la región.</td>
+</tr>
+<tr class="odd">
+<td><strong>plot</strong></td>
+<td>
+<code>logical</code>. Si es <code>TRUE</code>, grafica los indicadores y fracciones principales de <code>ProtConn</code>. Por defecto = <code>FALSE</code>.</td>
+</tr>
+<tr class="even">
+<td><strong>resample_raster</strong></td>
+<td>
+<code>numeric</code>. Úsalo con rásters pequeños y alta resolución (&lt;150 m) o regiones muy grandes. Define el valor para remuestrear y acelerar el proceso de selección de nodos transfronterizos.</td>
+</tr>
+<tr class="odd">
+<td><strong>write</strong></td>
+<td>
+<code>character</code>. Carpeta de salida con nombre de archivo sin extensión. Ej.: <code>"C:/ProtConn/Protfiles"</code>.</td>
+</tr>
+<tr class="even">
+<td><strong>parallel</strong></td>
+<td>
+<code>numeric</code>. Número de núcleos para procesamiento en paralelo (usando <code>furrr</code> y <code>multiprocess</code>). Por defecto = <code>NULL</code>.</td>
+</tr>
+<tr class="odd">
+<td><strong>intern</strong></td>
+<td>
+<code>logical</code>. Si es <code>TRUE</code>, muestra el progreso. Puede no llegar al 100% si el proceso es muy rápido.</td>
+</tr>
+</tbody>
+</table></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Estimaremos el índice Protconn solo en una ecorregión:</li>
+</ol>
+<div class="sourceCode" id="cb150"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">Ecorreg_1</span> <span class="op">&lt;-</span> <span class="va">Ecorreg</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span> <span class="co">#Selecciono la primera fila o primera ecorregion</span></span>
+<span></span>
+<span><span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_ProtConn.html">MK_ProtConn</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">APs</span>, </span>
+<span>                    region <span class="op">=</span> <span class="va">Ecorreg_1</span>,</span>
+<span>                    area_unit <span class="op">=</span> <span class="st">"ha"</span>,</span>
+<span>                    distance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>type<span class="op">=</span> <span class="st">"edge"</span>, keep <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>,</span>
+<span>                    distance_thresholds <span class="op">=</span> <span class="fl">10000</span>,</span>
+<span>                    probability <span class="op">=</span> <span class="fl">0.5</span>, </span>
+<span>                    transboundary <span class="op">=</span> <span class="fl">50000</span>,</span>
+<span>                    plot <span class="op">=</span> <span class="cn">TRUE</span>, </span>
+<span>                    parallel <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                    protconn_bound <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>                    delta <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>                    write <span class="op">=</span> <span class="cn">NULL</span>, </span>
+<span>                    intern <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Step 1. Reviewing parameters</span></span>
+<span><span class="co">#&gt; Step 2. Processing ProtConn metric</span></span>
+<span><span class="co">#&gt; Done!</span></span></code></pre></div>
+<p>Revisamos nuestra tabla:</p>
+<div class="sourceCode" id="cb151"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">test</span><span class="op">$</span><span class="va">`Protected Connected (Viewer Panel`</span></span></code></pre></div>
+<div class="inline-table"><table class="table table-condensed">
+<thead><tr>
+<th style="text-align:left;">
+Index
+</th>
+<th style="text-align:center;">
+Value
+</th>
+<th style="text-align:left;">
+ProtConn indicator
+</th>
+<th style="text-align:center;">
+Percentage
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">EC(PC) </span>
+</td>
+<td style="text-align:center;">
+4404760.07
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">Prot </span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffd17f">36.7627</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">PC </span>
+</td>
+<td style="text-align:center;">
+6.5600e-02
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">Unprotected </span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffb93a">63.2373</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">Maximum landscape attribute</span>
+</td>
+<td style="text-align:center;">
+17196418.45
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">ProtConn </span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffdc9b">25.6144</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">Protected surface </span>
+</td>
+<td style="text-align:center;">
+6321860.45
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">ProtUnconn </span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffe9c1">11.1483</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold"> </span>
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">RelConn </span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffb329">69.6751</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold"> </span>
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">ProtConn_Prot </span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffa500">85.8463</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold"> </span>
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">ProtConn_Trans </span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fff1d9">1.8374</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold"> </span>
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">ProtConn_Unprot </span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffe8be">12.3163</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold"> </span>
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">ProtConn_Within </span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffa500">85.7769</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold"> </span>
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">ProtConn_Contig </span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffe6b9">14.2231</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold"> </span>
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">ProtConn_Within_land</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffdfa5">21.9712</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold"> </span>
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">ProtConn_Contig_land</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fff0d4">3.6432</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold"> </span>
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">ProtConn_Unprot_land</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fff0d6">3.1548</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold"> </span>
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">ProtConn_Trans_land </span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fff3dd">0.4706</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+<div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#Alternativa: test[[1]]</span></span></code></pre></div>
+<p>Ahora nuestro plot:</p>
+<div class="sourceCode" id="cb153"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">test</span><span class="op">$</span><span class="va">`ProtConn Plot`</span></span></code></pre></div>
+<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-7-1.png" width="672"></div>
+<div class="sourceCode" id="cb154"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#Alternativa: test[[2]]</span></span></code></pre></div>
+<p>Podemos estimar la versión corregida o ProtConn bound:</p>
+<div class="sourceCode" id="cb155"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">test2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_ProtConn.html">MK_ProtConn</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">APs</span>, </span>
+<span>                    region <span class="op">=</span> <span class="va">Ecorreg_1</span>,</span>
+<span>                    area_unit <span class="op">=</span> <span class="st">"ha"</span>,</span>
+<span>                    distance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>type<span class="op">=</span> <span class="st">"edge"</span>, keep <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>,</span>
+<span>                    distance_thresholds <span class="op">=</span> <span class="fl">10000</span>,</span>
+<span>                    probability <span class="op">=</span> <span class="fl">0.5</span>, </span>
+<span>                    transboundary <span class="op">=</span> <span class="fl">50000</span>,</span>
+<span>                    plot <span class="op">=</span> <span class="cn">TRUE</span>, </span>
+<span>                    parallel <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                    protconn_bound <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                    delta <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>                    write <span class="op">=</span> <span class="cn">NULL</span>, </span>
+<span>                    intern <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Step 1. Reviewing parameters</span></span>
+<span><span class="co">#&gt; Step 2. Processing ProtConn metric</span></span>
+<span><span class="co">#&gt; Done!</span></span></code></pre></div>
+<p>Tabla:</p>
+<div class="sourceCode" id="cb156"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">test2</span><span class="op">$</span><span class="va">`Protected Connected (Viewer Panel`</span></span></code></pre></div>
+<div class="inline-table"><table class="table table-condensed">
+<thead><tr>
+<th style="text-align:left;">
+Index
+</th>
+<th style="text-align:center;">
+Value
+</th>
+<th style="text-align:left;">
+ProtConn indicator
+</th>
+<th style="text-align:center;">
+Percentage
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">EC(PC) </span>
+</td>
+<td style="text-align:center;">
+4404647.33
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">Prot </span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffd17f">36.7627</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">PC </span>
+</td>
+<td style="text-align:center;">
+6.5600e-02
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">Unprotected </span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffb93a">63.2373</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">Maximum landscape attribute</span>
+</td>
+<td style="text-align:center;">
+17196418.45
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">ProtConn </span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffdc9b">25.6137</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">Protected surface </span>
+</td>
+<td style="text-align:center;">
+6321860.45
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">ProtUnconn </span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffe9c1">11.1489</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold"> </span>
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">ProtUnconn_Design </span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffe9c1">11.1489</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold"> </span>
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">ProtConn_Bound </span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffdc9b">25.6137</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold"> </span>
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">RelConn </span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffb329">69.6733</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold"> </span>
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">ProtConn_Prot </span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffa500">85.8485</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold"> </span>
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">ProtConn_Trans </span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fff1d9">1.8410</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold"> </span>
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">ProtConn_Unprot </span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffe8be">12.3105</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold"> </span>
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">ProtConn_Within </span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffa500">85.7791</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold"> </span>
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">ProtConn_Contig </span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffe6b9">14.2209</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold"> </span>
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">ProtConn_Within_land</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffdfa5">21.9712</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold"> </span>
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">ProtConn_Contig_land</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fff0d4">3.6425</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold"> </span>
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">ProtConn_Unprot_land</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fff0d6">3.1532</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold"> </span>
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">ProtConn_Trans_land </span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fff3dd">0.4716</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p>Podemos estimar la contribución individial de cada AP en la ecorregión:</p>
+<div class="sourceCode" id="cb157"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">test3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_ProtConn.html">MK_ProtConn</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">APs</span>, </span>
+<span>                    region <span class="op">=</span> <span class="va">Ecorreg_1</span>,</span>
+<span>                    area_unit <span class="op">=</span> <span class="st">"ha"</span>,</span>
+<span>                    distance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>type<span class="op">=</span> <span class="st">"edge"</span>, keep <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>,</span>
+<span>                    distance_thresholds <span class="op">=</span> <span class="fl">10000</span>,</span>
+<span>                    probability <span class="op">=</span> <span class="fl">0.5</span>, </span>
+<span>                    transboundary <span class="op">=</span> <span class="fl">50000</span>,</span>
+<span>                    plot <span class="op">=</span> <span class="cn">TRUE</span>, </span>
+<span>                    parallel <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                    protconn_bound <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>                    delta <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                    write <span class="op">=</span> <span class="cn">NULL</span>, </span>
+<span>                    intern <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Step 1. Reviewing parameters</span></span>
+<span><span class="co">#&gt; Step 2. Processing ProtConn metric</span></span>
+<span><span class="co">#&gt; Step 3. Processing Delta ProtConn</span></span>
+<span><span class="co">#&gt; Done!</span></span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">test3</span><span class="op">$</span><span class="va">ProtConn_Delta</span></span>
+<span><span class="co">#&gt; Simple feature collection with 12 features and 6 fields</span></span>
+<span><span class="co">#&gt; Geometry type: POLYGON</span></span>
+<span><span class="co">#&gt; Dimension:     XY</span></span>
+<span><span class="co">#&gt; Bounding box:  xmin: -7507429 ymin: -219677.7 xmax: -6716030 ymax: 414710.1</span></span>
+<span><span class="co">#&gt; Projected CRS: World_Mollweide</span></span>
+<span><span class="co">#&gt; First 10 features:</span></span>
+<span><span class="co">#&gt;                                 NAME</span></span>
+<span><span class="co">#&gt; 1                       Rio Apaporis</span></span>
+<span><span class="co">#&gt; 3                     Alto Rio Negro</span></span>
+<span><span class="co">#&gt; 5                   Yaigoje Apaporis</span></span>
+<span><span class="co">#&gt; 6                           Puinawai</span></span>
+<span><span class="co">#&gt; 8              Sierra de la Macarena</span></span>
+<span><span class="co">#&gt; 9                            Tinigua</span></span>
+<span><span class="co">#&gt; 10        Cordillera de los Picachos</span></span>
+<span><span class="co">#&gt; 11                         Cahuinari</span></span>
+<span><span class="co">#&gt; 13  Jardin Botanico de la Macarena I</span></span>
+<span><span class="co">#&gt; 14 Jardin Botanico de la Macarena II</span></span>
+<span><span class="co">#&gt;                              DESIGNACIO      ESCALA_2</span></span>
+<span><span class="co">#&gt; 1                                  &lt;NA&gt; Transboundary</span></span>
+<span><span class="co">#&gt; 3                                  &lt;NA&gt; Transboundary</span></span>
+<span><span class="co">#&gt; 5               Parque Nacional Natural      Nacional</span></span>
+<span><span class="co">#&gt; 6                       Reserva Natural      Nacional</span></span>
+<span><span class="co">#&gt; 8               Parque Nacional Natural      Nacional</span></span>
+<span><span class="co">#&gt; 9               Parque Nacional Natural      Nacional</span></span>
+<span><span class="co">#&gt; 10              Parque Nacional Natural      Nacional</span></span>
+<span><span class="co">#&gt; 11              Parque Nacional Natural      Nacional</span></span>
+<span><span class="co">#&gt; 13 Reserva Natural de la Sociedad Civil   Subnacional</span></span>
+<span><span class="co">#&gt; 14 Reserva Natural de la Sociedad Civil   Subnacional</span></span>
+<span><span class="co">#&gt;           dProt    dProtConn  varProtConn</span></span>
+<span><span class="co">#&gt; 1  9.172455e-08 3.074408e-08 7.874913e-09</span></span>
+<span><span class="co">#&gt; 3  2.261837e-05 8.382440e-06 2.147112e-06</span></span>
+<span><span class="co">#&gt; 5  1.517942e+01 3.328922e+00 8.526837e-01</span></span>
+<span><span class="co">#&gt; 6  4.013589e-01 1.472522e-01 3.771777e-02</span></span>
+<span><span class="co">#&gt; 8  5.732189e+00 5.863921e+00 1.502009e+00</span></span>
+<span><span class="co">#&gt; 9  3.105072e+00 2.331058e+00 5.970867e-01</span></span>
+<span><span class="co">#&gt; 10 5.654031e-01 4.216302e-01 1.079981e-01</span></span>
+<span><span class="co">#&gt; 11 6.261682e-02 1.460151e-03 3.740089e-04</span></span>
+<span><span class="co">#&gt; 13 8.278110e-04 1.574435e-04 4.032822e-05</span></span>
+<span><span class="co">#&gt; 14 1.156824e-03 2.296548e-04 5.882471e-05</span></span>
+<span><span class="co">#&gt;                          geometry</span></span>
+<span><span class="co">#&gt; 1  POLYGON ((-6928552 -125522....</span></span>
+<span><span class="co">#&gt; 3  POLYGON ((-6893113 -93721.5...</span></span>
+<span><span class="co">#&gt; 5  POLYGON ((-7113144 -809.770...</span></span>
+<span><span class="co">#&gt; 6  POLYGON ((-6882762 368339.5...</span></span>
+<span><span class="co">#&gt; 8  POLYGON ((-7400800 283634.2...</span></span>
+<span><span class="co">#&gt; 9  POLYGON ((-7419123 338904.9...</span></span>
+<span><span class="co">#&gt; 10 POLYGON ((-7440367 333009.1...</span></span>
+<span><span class="co">#&gt; 11 POLYGON ((-7052835 -187080....</span></span>
+<span><span class="co">#&gt; 13 POLYGON ((-7399114 254319, ...</span></span>
+<span><span class="co">#&gt; 14 POLYGON ((-7399114 254319, ...</span></span></code></pre></div>
+<p>Delta protegido:</p>
+<div class="sourceCode" id="cb159"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/classInt/">classInt</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Adjuntando el paquete: 'dplyr'</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:igraph':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     as_data_frame, groups, union</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:raster':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     intersect, select, union</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:terra':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     intersect, union</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     filter, lag</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
+<span></span>
+<span><span class="va">dProtConn</span> <span class="op">&lt;-</span> <span class="va">test3</span><span class="op">$</span><span class="va">ProtConn_Delta</span></span>
+<span><span class="co"># Calcular los intervalos de Jenks para strength</span></span>
+<span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu">classInt</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html">classIntervals</a></span><span class="op">(</span><span class="va">dProtConn</span><span class="op">$</span><span class="va">dProt</span>, n <span class="op">=</span> <span class="fl">5</span>, style <span class="op">=</span> <span class="st">"jenks"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
+<span><span class="va">dProtConn2</span> <span class="op">&lt;-</span> <span class="va">dProtConn</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>dProt_q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/cut.html">cut</a></span><span class="op">(</span><span class="va">dProt</span>,</span>
+<span>                     breaks <span class="op">=</span> <span class="va">breaks</span><span class="op">$</span><span class="va">brks</span>,</span>
+<span>                     include.lowest <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                     dig.lab <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span>  </span>
+<span></span>
+<span><span class="co"># Graficar en ggplot2 usando las clases Jenks</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">Ecorreg_1</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">dProtConn2</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">dProt_q</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"RdYlBu"</span>, direction <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, name <span class="op">=</span> <span class="st">"Delta Protegido(jenks)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Delta Prot"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"Delta Prot"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-12-1.png" width="672"></div>
+<p>Delta ProtConn:</p>
+<div class="sourceCode" id="cb160"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dProtConn</span> <span class="op">&lt;-</span> <span class="va">test3</span><span class="op">$</span><span class="va">ProtConn_Delta</span></span>
+<span><span class="co"># Calcular los intervalos de Jenks para strength</span></span>
+<span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu">classInt</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html">classIntervals</a></span><span class="op">(</span><span class="va">dProtConn</span><span class="op">$</span><span class="va">dProtConn</span>, n <span class="op">=</span> <span class="fl">5</span>, style <span class="op">=</span> <span class="st">"jenks"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
+<span><span class="va">dProtConn2</span> <span class="op">&lt;-</span> <span class="va">dProtConn</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>dProtConn_q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/cut.html">cut</a></span><span class="op">(</span><span class="va">dProtConn</span>,</span>
+<span>                     breaks <span class="op">=</span> <span class="va">breaks</span><span class="op">$</span><span class="va">brks</span>,</span>
+<span>                     include.lowest <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                     dig.lab <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span>  </span>
+<span></span>
+<span><span class="co"># Graficar en ggplot2 usando las clases Jenks</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">Ecorreg_1</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">dProtConn2</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">dProtConn_q</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"RdYlBu"</span>, direction <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, name <span class="op">=</span> <span class="st">"Delta ProtConn (jenks)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Delta ProtConn"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"Delta ProtConn"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-13-1.png" width="672"></div>
+<p>Variación absoluta del ProtConn:</p>
+<div class="sourceCode" id="cb161"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dProtConn</span> <span class="op">&lt;-</span> <span class="va">test3</span><span class="op">$</span><span class="va">ProtConn_Delta</span></span>
+<span><span class="co"># Calcular los intervalos de Jenks para strength</span></span>
+<span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu">classInt</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html">classIntervals</a></span><span class="op">(</span><span class="va">dProtConn</span><span class="op">$</span><span class="va">varProtConn</span>, n <span class="op">=</span> <span class="fl">5</span>, style <span class="op">=</span> <span class="st">"jenks"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
+<span><span class="va">dProtConn2</span> <span class="op">&lt;-</span> <span class="va">dProtConn</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>varProtConn_q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/cut.html">cut</a></span><span class="op">(</span><span class="va">varProtConn</span>,</span>
+<span>                     breaks <span class="op">=</span> <span class="va">breaks</span><span class="op">$</span><span class="va">brks</span>,</span>
+<span>                     include.lowest <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                     dig.lab <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span>  </span>
+<span></span>
+<span><span class="co"># Graficar en ggplot2 usando las clases Jenks</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">Ecorreg_1</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">dProtConn2</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">varProtConn_q</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"PuOr"</span>, direction <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, name <span class="op">=</span> <span class="st">"varProtConn (jenks)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"varProtConn"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"varProtConn"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-14-1.png" width="672"></div>
+</div>
+<div id="función-mk_protconnmult" class="section level3" number="10.0.3">
+<h3>
+<span class="header-section-number">10.0.3</span> Función MK_ProtConnMult()<a class="anchor" aria-label="anchor" href="#funci%C3%B3n-mk_protconnmult"><i class="fas fa-link"></i></a>
+</h3>
+<p>La función estima el índice ProtConn para multiples regiones. El argumento <code>region</code> pasa a <code>regions</code> y se puede acceder al argumento <code>CI</code> para estimar intervalos de confianza.</p>
+<div class="sourceCode" id="cb162"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_ProtConnMult.html">MK_ProtConnMult</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">APs</span>, </span>
+<span>                        regions <span class="op">=</span> <span class="va">Ecorreg</span>,</span>
+<span>                        area_unit <span class="op">=</span> <span class="st">"ha"</span>,</span>
+<span>                        distance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>type<span class="op">=</span> <span class="st">"edge"</span>, keep <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>,</span>
+<span>                        distance_thresholds <span class="op">=</span> <span class="fl">10000</span>,</span>
+<span>                        probability <span class="op">=</span> <span class="fl">0.5</span>, </span>
+<span>                        transboundary <span class="op">=</span> <span class="fl">50000</span>,</span>
+<span>                        plot <span class="op">=</span> <span class="cn">TRUE</span>, </span>
+<span>                        parallel <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>                        protconn_bound <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>                        delta <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>                        CI <span class="op">=</span> <span class="st">"all"</span>,</span>
+<span>                        write <span class="op">=</span> <span class="cn">NULL</span>, </span>
+<span>                        intern <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<p>Tabla:</p>
+<div class="sourceCode" id="cb163"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">test</span><span class="op">$</span><span class="va">ProtConn_10000</span><span class="op">$</span><span class="va">ProtConn_overall10000</span></span></code></pre></div>
+<div class="inline-table"><table class="table table-condensed">
+<thead><tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+ProtConn indicator
+</th>
+<th style="text-align:right;">
+Values (%)
+</th>
+<th style="text-align:right;">
+SD
+</th>
+<th style="text-align:right;">
+SEM
+</th>
+<th style="text-align:right;">
+normal.lower
+</th>
+<th style="text-align:right;">
+normal.upper
+</th>
+<th style="text-align:right;">
+basic.lower
+</th>
+<th style="text-align:right;">
+basic.upper
+</th>
+<th style="text-align:right;">
+percent.lower
+</th>
+<th style="text-align:right;">
+percent.upper
+</th>
+<th style="text-align:right;">
+bca.lower
+</th>
+<th style="text-align:right;">
+bca.upper
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">Prot </span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fde7d0">16.849</span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #e3a3c6">20.205</span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #faeff5">3.517</span>
+</td>
+<td style="text-align:right;">
+10.450
+</td>
+<td style="text-align:right;">
+23.564
+</td>
+<td style="text-align:right;">
+10.143
+</td>
+<td style="text-align:right;">
+23.012
+</td>
+<td style="text-align:right;">
+10.687
+</td>
+<td style="text-align:right;">
+23.555
+</td>
+<td style="text-align:right;">
+11.993
+</td>
+<td style="text-align:right;">
+26.502
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">Unprotected </span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f88b13">83.151</span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #e3a3c6">20.205</span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #faeff5">3.517</span>
+</td>
+<td style="text-align:right;">
+76.436
+</td>
+<td style="text-align:right;">
+89.550
+</td>
+<td style="text-align:right;">
+76.988
+</td>
+<td style="text-align:right;">
+89.857
+</td>
+<td style="text-align:right;">
+76.445
+</td>
+<td style="text-align:right;">
+89.313
+</td>
+<td style="text-align:right;">
+73.498
+</td>
+<td style="text-align:right;">
+88.007
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">ProtConn </span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fdeddb">12.783</span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #e5a9ca">18.950</span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #faf0f6">3.299</span>
+</td>
+<td style="text-align:right;">
+6.855
+</td>
+<td style="text-align:right;">
+19.055
+</td>
+<td style="text-align:right;">
+6.558
+</td>
+<td style="text-align:right;">
+18.098
+</td>
+<td style="text-align:right;">
+7.468
+</td>
+<td style="text-align:right;">
+19.008
+</td>
+<td style="text-align:right;">
+8.480
+</td>
+<td style="text-align:right;">
+22.415
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">ProtUnconn </span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fef9f4">4.066</span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f6e2ed">6.353</span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fdfafc">1.106</span>
+</td>
+<td style="text-align:right;">
+1.918
+</td>
+<td style="text-align:right;">
+6.186
+</td>
+<td style="text-align:right;">
+1.762
+</td>
+<td style="text-align:right;">
+5.953
+</td>
+<td style="text-align:right;">
+2.180
+</td>
+<td style="text-align:right;">
+6.371
+</td>
+<td style="text-align:right;">
+2.441
+</td>
+<td style="text-align:right;">
+6.940
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">RelConn </span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fab160">56.029</span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ce5d9b">35.611</span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f6e3ee">6.199</span>
+</td>
+<td style="text-align:right;">
+43.969
+</td>
+<td style="text-align:right;">
+67.949
+</td>
+<td style="text-align:right;">
+43.112
+</td>
+<td style="text-align:right;">
+68.040
+</td>
+<td style="text-align:right;">
+44.018
+</td>
+<td style="text-align:right;">
+68.947
+</td>
+<td style="text-align:right;">
+43.586
+</td>
+<td style="text-align:right;">
+68.558
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">ProtConn_Prot </span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f8972c">74.147</span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #d370a6">31.392</span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f7e6f0">5.465</span>
+</td>
+<td style="text-align:right;">
+63.505
+</td>
+<td style="text-align:right;">
+85.288
+</td>
+<td style="text-align:right;">
+63.883
+</td>
+<td style="text-align:right;">
+86.362
+</td>
+<td style="text-align:right;">
+61.931
+</td>
+<td style="text-align:right;">
+84.411
+</td>
+<td style="text-align:right;">
+59.951
+</td>
+<td style="text-align:right;">
+83.857
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">ProtConn_Trans </span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fef9f3">4.431</span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f3d9e7">8.443</span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fdf9fb">1.470</span>
+</td>
+<td style="text-align:right;">
+1.592
+</td>
+<td style="text-align:right;">
+7.198
+</td>
+<td style="text-align:right;">
+1.364
+</td>
+<td style="text-align:right;">
+6.973
+</td>
+<td style="text-align:right;">
+1.889
+</td>
+<td style="text-align:right;">
+7.498
+</td>
+<td style="text-align:right;">
+2.280
+</td>
+<td style="text-align:right;">
+8.234
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">ProtConn_Unprot </span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fef2e5">9.301</span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f2d4e4">9.507</span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fcf8fa">1.655</span>
+</td>
+<td style="text-align:right;">
+6.129
+</td>
+<td style="text-align:right;">
+12.391
+</td>
+<td style="text-align:right;">
+5.988
+</td>
+<td style="text-align:right;">
+12.248
+</td>
+<td style="text-align:right;">
+6.354
+</td>
+<td style="text-align:right;">
+12.614
+</td>
+<td style="text-align:right;">
+6.478
+</td>
+<td style="text-align:right;">
+12.710
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">ProtConn_Within </span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f99b35">71.120</span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #d36ea5">31.781</span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f7e6ef">5.532</span>
+</td>
+<td style="text-align:right;">
+60.446
+</td>
+<td style="text-align:right;">
+82.360
+</td>
+<td style="text-align:right;">
+60.953
+</td>
+<td style="text-align:right;">
+83.745
+</td>
+<td style="text-align:right;">
+58.495
+</td>
+<td style="text-align:right;">
+81.286
+</td>
+<td style="text-align:right;">
+57.486
+</td>
+<td style="text-align:right;">
+80.924
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">ProtConn_Contig </span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fde8d0">16.759</span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #e6accc">18.181</span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #faf1f6">3.165</span>
+</td>
+<td style="text-align:right;">
+10.523
+</td>
+<td style="text-align:right;">
+22.774
+</td>
+<td style="text-align:right;">
+10.187
+</td>
+<td style="text-align:right;">
+22.546
+</td>
+<td style="text-align:right;">
+10.972
+</td>
+<td style="text-align:right;">
+23.331
+</td>
+<td style="text-align:right;">
+10.944
+</td>
+<td style="text-align:right;">
+23.292
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">ProtConn_Within_land</span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fef4e9">7.954</span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f0cee0">10.850</span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fcf7fa">1.889</span>
+</td>
+<td style="text-align:right;">
+4.231
+</td>
+<td style="text-align:right;">
+11.549
+</td>
+<td style="text-align:right;">
+3.801
+</td>
+<td style="text-align:right;">
+11.277
+</td>
+<td style="text-align:right;">
+4.630
+</td>
+<td style="text-align:right;">
+12.106
+</td>
+<td style="text-align:right;">
+4.939
+</td>
+<td style="text-align:right;">
+12.968
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+14
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">ProtConn_Contig_land</span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fefdfb">1.607</span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fcf5f9">2.254</span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fefefe">0.392</span>
+</td>
+<td style="text-align:right;">
+0.854
+</td>
+<td style="text-align:right;">
+2.347
+</td>
+<td style="text-align:right;">
+0.788
+</td>
+<td style="text-align:right;">
+2.327
+</td>
+<td style="text-align:right;">
+0.887
+</td>
+<td style="text-align:right;">
+2.426
+</td>
+<td style="text-align:right;">
+0.983
+</td>
+<td style="text-align:right;">
+2.531
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+15
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">ProtConn_Unprot_land</span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fefefd">0.868</span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fdfafc">1.144</span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fefefe">0.199</span>
+</td>
+<td style="text-align:right;">
+0.483
+</td>
+<td style="text-align:right;">
+1.247
+</td>
+<td style="text-align:right;">
+0.486
+</td>
+<td style="text-align:right;">
+1.219
+</td>
+<td style="text-align:right;">
+0.518
+</td>
+<td style="text-align:right;">
+1.250
+</td>
+<td style="text-align:right;">
+0.534
+</td>
+<td style="text-align:right;">
+1.307
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+16
+</td>
+<td style="text-align:left;">
+<span style="color: #636363; font-weight: bold">ProtConn_Trans_land </span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff">0.437</span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fdfafc">1.093</span>
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff">0.190</span>
+</td>
+<td style="text-align:right;">
+0.069
+</td>
+<td style="text-align:right;">
+0.800
+</td>
+<td style="text-align:right;">
+0.009
+</td>
+<td style="text-align:right;">
+0.722
+</td>
+<td style="text-align:right;">
+0.152
+</td>
+<td style="text-align:right;">
+0.865
+</td>
+<td style="text-align:right;">
+0.197
+</td>
+<td style="text-align:right;">
+1.081
+</td>
+</tr>
+</tbody>
+</table></div>
+<p>Plot:</p>
+<div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">test</span><span class="op">$</span><span class="va">ProtConn_10000</span><span class="op">$</span><span class="va">`ProtConn Plot`</span></span></code></pre></div>
+<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-18-1.png" width="672"></div>
+<p>Vector con valores para cada ecorregión:</p>
+<div class="sourceCode" id="cb165"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">test</span><span class="op">$</span><span class="va">ProtConn_10000</span><span class="op">$</span><span class="va">ProtConn_10000</span></span>
+<span><span class="co">#&gt; Simple feature collection with 33 features and 17 fields</span></span>
+<span><span class="co">#&gt; Geometry type: GEOMETRY</span></span>
+<span><span class="co">#&gt; Dimension:     XY</span></span>
+<span><span class="co">#&gt; Bounding box:  xmin: -7920394 ymin: -522895.5 xmax: -6700933 ymax: 1536361</span></span>
+<span><span class="co">#&gt; Projected CRS: World_Mollweide</span></span>
+<span><span class="co">#&gt; First 10 features:</span></span>
+<span><span class="co">#&gt;                                      ECO_NAME     EC(PC)</span></span>
+<span><span class="co">#&gt; 1                       Caqueta Moist Forests 4404760.07</span></span>
+<span><span class="co">#&gt; 2                     Catatumbo Moist Forests   68241.38</span></span>
+<span><span class="co">#&gt; 3                Cauca Valley Montane Forests  186461.48</span></span>
+<span><span class="co">#&gt; 4                  Chocó-Darién Moist Forests  220010.01</span></span>
+<span><span class="co">#&gt; 5         Cordillera Oriental Montane Forests  632277.37</span></span>
+<span><span class="co">#&gt; 6     Eastern Cordillera Real Montane Forests  180347.50</span></span>
+<span><span class="co">#&gt; 7          Eastern Panamanian Montane Forests   34719.54</span></span>
+<span><span class="co">#&gt; 8  Guianan Piedmont And Lowland Moist Forests         NA</span></span>
+<span><span class="co">#&gt; 9                              Iquitos Varzeá    2183.64</span></span>
+<span><span class="co">#&gt; 10        Japurá-Solimoes-Negro Moist Forests  794642.03</span></span>
+<span><span class="co">#&gt;            PC    Prot Unprotected ProtConn ProtUnconn</span></span>
+<span><span class="co">#&gt; 1  6.5600e-02 36.7627     63.2373  25.6144    11.1483</span></span>
+<span><span class="co">#&gt; 2  1.0300e-02 10.1265     89.8735  10.1251     0.0013</span></span>
+<span><span class="co">#&gt; 3  3.4000e-03 14.0241     85.9759   5.8035     8.2207</span></span>
+<span><span class="co">#&gt; 4  1.3000e-03  7.0813     92.9187   3.6612     3.4200</span></span>
+<span><span class="co">#&gt; 5  1.1400e-02 22.8190     77.1810  10.6790    12.1400</span></span>
+<span><span class="co">#&gt; 6  2.7300e-02 23.1044     76.8956  16.5348     6.5696</span></span>
+<span><span class="co">#&gt; 7  1.7520e-01 41.8584     58.1416  41.8584     0.0000</span></span>
+<span><span class="co">#&gt; 8          NA  0.0000    100.0000       NA         NA</span></span>
+<span><span class="co">#&gt; 9  3.3280e-06  8.5248     91.4752   8.5248     0.0000</span></span>
+<span><span class="co">#&gt; 10 5.1900e-02 22.7864     77.2136  22.7864     0.0000</span></span>
+<span><span class="co">#&gt;     RelConn ProtConn_Prot ProtConn_Trans ProtConn_Unprot</span></span>
+<span><span class="co">#&gt; 1   69.6751       85.8463         1.8374         12.3163</span></span>
+<span><span class="co">#&gt; 2   99.9868       91.1014         1.0211          7.8776</span></span>
+<span><span class="co">#&gt; 3   41.3819       63.8517         4.5578         31.5904</span></span>
+<span><span class="co">#&gt; 4   51.7031       79.8607         5.7964         14.3428</span></span>
+<span><span class="co">#&gt; 5   46.7986       63.4544        22.4407         14.1050</span></span>
+<span><span class="co">#&gt; 6   71.5656       78.4244         3.3319         18.2437</span></span>
+<span><span class="co">#&gt; 7  100.0000       99.9998         0.0002          0.0000</span></span>
+<span><span class="co">#&gt; 8        NA            NA             NA              NA</span></span>
+<span><span class="co">#&gt; 9        NA      100.0000             NA              NA</span></span>
+<span><span class="co">#&gt; 10 100.0000      100.0000         0.0000          0.0000</span></span>
+<span><span class="co">#&gt;    ProtConn_Within ProtConn_Contig ProtConn_Within_land</span></span>
+<span><span class="co">#&gt; 1          85.7769         14.2231              21.9712</span></span>
+<span><span class="co">#&gt; 2          90.7351          9.2649               9.1871</span></span>
+<span><span class="co">#&gt; 3          43.1852         56.8148               2.5062</span></span>
+<span><span class="co">#&gt; 4          64.1952         35.8048               2.3503</span></span>
+<span><span class="co">#&gt; 5          61.4646         38.5354               6.5638</span></span>
+<span><span class="co">#&gt; 6          61.9677         38.0323              10.2463</span></span>
+<span><span class="co">#&gt; 7          99.9998          0.0002              41.8583</span></span>
+<span><span class="co">#&gt; 8               NA              NA                   NA</span></span>
+<span><span class="co">#&gt; 9         100.0000              NA                   NA</span></span>
+<span><span class="co">#&gt; 10        100.0000          0.0000              22.7864</span></span>
+<span><span class="co">#&gt;    ProtConn_Contig_land ProtConn_Unprot_land</span></span>
+<span><span class="co">#&gt; 1                3.6432               3.1548</span></span>
+<span><span class="co">#&gt; 2                0.9381               0.7976</span></span>
+<span><span class="co">#&gt; 3                3.2972               1.8333</span></span>
+<span><span class="co">#&gt; 4                1.3109               0.5251</span></span>
+<span><span class="co">#&gt; 5                4.1152               1.5063</span></span>
+<span><span class="co">#&gt; 6                6.2886               3.0166</span></span>
+<span><span class="co">#&gt; 7                0.0001               0.0000</span></span>
+<span><span class="co">#&gt; 8                    NA                   NA</span></span>
+<span><span class="co">#&gt; 9                    NA                   NA</span></span>
+<span><span class="co">#&gt; 10               0.0000               0.0000</span></span>
+<span><span class="co">#&gt;    ProtConn_Trans_land                       geometry</span></span>
+<span><span class="co">#&gt; 1               0.4706 MULTIPOLYGON (((-7354073 34...</span></span>
+<span><span class="co">#&gt; 2               0.1034 POLYGON ((-7208574 1001585,...</span></span>
+<span><span class="co">#&gt; 3               0.2645 MULTIPOLYGON (((-7480526 88...</span></span>
+<span><span class="co">#&gt; 4               0.2122 MULTIPOLYGON (((-7692447 10...</span></span>
+<span><span class="co">#&gt; 5               2.3964 POLYGON ((-7154131 1377384,...</span></span>
+<span><span class="co">#&gt; 6               0.5509 POLYGON ((-7676692 240705.2...</span></span>
+<span><span class="co">#&gt; 7               0.0001 MULTIPOLYGON (((-7705753 10...</span></span>
+<span><span class="co">#&gt; 8                   NA MULTIPOLYGON (((-6777542 50...</span></span>
+<span><span class="co">#&gt; 9                   NA MULTIPOLYGON (((-7008087 -5...</span></span>
+<span><span class="co">#&gt; 10              0.0000 MULTIPOLYGON (((-6812922 35...</span></span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dProtConn</span> <span class="op">&lt;-</span> <span class="va">test</span><span class="op">$</span><span class="va">ProtConn_10000</span><span class="op">$</span><span class="va">ProtConn_10000</span></span>
+<span><span class="co"># Calcular los intervalos</span></span>
+<span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu">classInt</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html">classIntervals</a></span><span class="op">(</span><span class="va">dProtConn</span><span class="op">$</span><span class="va">ProtConn</span>, n <span class="op">=</span> <span class="fl">5</span>, style <span class="op">=</span> <span class="st">"quantile"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
+<span><span class="va">dProtConn2</span> <span class="op">&lt;-</span> <span class="va">dProtConn</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>dProtConn_q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/cut.html">cut</a></span><span class="op">(</span><span class="va">ProtConn</span>,</span>
+<span>                     breaks <span class="op">=</span> <span class="va">breaks</span><span class="op">$</span><span class="va">brks</span>,</span>
+<span>                     include.lowest <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                     dig.lab <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span>  </span>
+<span></span>
+<span><span class="co"># Graficar en ggplot2 usando las clases Jenks</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">dProtConn2</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">dProtConn_q</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"RdYlGn"</span>, direction <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, name <span class="op">=</span> <span class="st">"ProtConn"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"ProtConn"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"ProtConn"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-20-1.png" width="672"></div>
+<p>ProtConn_Trans:</p>
+<div class="sourceCode" id="cb167"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dProtConn</span> <span class="op">&lt;-</span> <span class="va">test</span><span class="op">$</span><span class="va">ProtConn_10000</span><span class="op">$</span><span class="va">ProtConn_10000</span></span>
+<span><span class="co"># Calcular los intervalos</span></span>
+<span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu">classInt</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html">classIntervals</a></span><span class="op">(</span><span class="va">dProtConn</span><span class="op">$</span><span class="va">ProtConn_Trans</span>, n <span class="op">=</span> <span class="fl">5</span>, style <span class="op">=</span> <span class="st">"quantile"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
+<span><span class="va">dProtConn2</span> <span class="op">&lt;-</span> <span class="va">dProtConn</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>dProtConn_q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/cut.html">cut</a></span><span class="op">(</span><span class="va">ProtConn_Trans</span>,</span>
+<span>                     breaks <span class="op">=</span> <span class="va">breaks</span><span class="op">$</span><span class="va">brks</span>,</span>
+<span>                     include.lowest <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                     dig.lab <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span>  </span>
+<span></span>
+<span><span class="co"># Graficar en ggplot2 usando las clases Jenks</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">dProtConn2</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">dProtConn_q</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"RdYlGn"</span>, direction <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, name <span class="op">=</span> <span class="st">"ProtConn_Trans"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"ProtConn_Trans"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"ProtConn_Trans"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-21-1.png" width="672"></div>
+<p>ProtConn_Unprot:</p>
+<div class="sourceCode" id="cb168"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dProtConn</span> <span class="op">&lt;-</span> <span class="va">test</span><span class="op">$</span><span class="va">ProtConn_10000</span><span class="op">$</span><span class="va">ProtConn_10000</span></span>
+<span><span class="co"># Calcular los intervalos</span></span>
+<span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu">classInt</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html">classIntervals</a></span><span class="op">(</span><span class="va">dProtConn</span><span class="op">$</span><span class="va">ProtConn_Unprot</span>, n <span class="op">=</span> <span class="fl">5</span>, style <span class="op">=</span> <span class="st">"quantile"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
+<span><span class="va">dProtConn2</span> <span class="op">&lt;-</span> <span class="va">dProtConn</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>dProtConn_q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/cut.html">cut</a></span><span class="op">(</span><span class="va">ProtConn_Unprot</span>,</span>
+<span>                     breaks <span class="op">=</span> <span class="va">breaks</span><span class="op">$</span><span class="va">brks</span>,</span>
+<span>                     include.lowest <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                     dig.lab <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span>  </span>
+<span></span>
+<span><span class="co"># Graficar en ggplot2 usando las clases Jenks</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">dProtConn2</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">dProtConn_q</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"RdYlGn"</span>, direction <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, name <span class="op">=</span> <span class="st">"ProtConn_Unprot"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"ProtConn_Unprot"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"ProtConn_Unprot"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-22-1.png" width="672"></div>
+<p>ProtConn_Within:</p>
+<div class="sourceCode" id="cb169"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dProtConn</span> <span class="op">&lt;-</span> <span class="va">test</span><span class="op">$</span><span class="va">ProtConn_10000</span><span class="op">$</span><span class="va">ProtConn_10000</span></span>
+<span><span class="co"># Calcular los intervalos</span></span>
+<span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu">classInt</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html">classIntervals</a></span><span class="op">(</span><span class="va">dProtConn</span><span class="op">$</span><span class="va">ProtConn_Within</span>, n <span class="op">=</span> <span class="fl">5</span>, style <span class="op">=</span> <span class="st">"quantile"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
+<span><span class="va">dProtConn2</span> <span class="op">&lt;-</span> <span class="va">dProtConn</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>dProtConn_q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/cut.html">cut</a></span><span class="op">(</span><span class="va">ProtConn_Within</span>,</span>
+<span>                     breaks <span class="op">=</span> <span class="va">breaks</span><span class="op">$</span><span class="va">brks</span>,</span>
+<span>                     include.lowest <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                     dig.lab <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span>  </span>
+<span></span>
+<span><span class="co"># Graficar en ggplot2 usando las clases Jenks</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">dProtConn2</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">dProtConn_q</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"RdYlGn"</span>, direction <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, name <span class="op">=</span> <span class="st">"ProtConn_Within"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"ProtConn_Within"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"ProtConn_Within"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-23-1.png" width="672"></div>
+<p>ProtConn_Contig:</p>
+<div class="sourceCode" id="cb170"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dProtConn</span> <span class="op">&lt;-</span> <span class="va">test</span><span class="op">$</span><span class="va">ProtConn_10000</span><span class="op">$</span><span class="va">ProtConn_10000</span></span>
+<span><span class="co"># Calcular los intervalos</span></span>
+<span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu">classInt</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html">classIntervals</a></span><span class="op">(</span><span class="va">dProtConn</span><span class="op">$</span><span class="va">ProtConn_Contig</span>, n <span class="op">=</span> <span class="fl">5</span>, style <span class="op">=</span> <span class="st">"quantile"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Crear una nueva variable categórica con los intervalos</span></span>
+<span><span class="va">dProtConn2</span> <span class="op">&lt;-</span> <span class="va">dProtConn</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>dProtConn_q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/cut.html">cut</a></span><span class="op">(</span><span class="va">ProtConn_Contig</span>,</span>
+<span>                     breaks <span class="op">=</span> <span class="va">breaks</span><span class="op">$</span><span class="va">brks</span>,</span>
+<span>                     include.lowest <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                     dig.lab <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span>  </span>
+<span></span>
+<span><span class="co"># Graficar en ggplot2 usando las clases Jenks</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">dProtConn2</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">dProtConn_q</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"RdYlGn"</span>, direction <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, name <span class="op">=</span> <span class="st">"ProtConn_Contig"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"ProtConn_Contig"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"ProtConn_Contig"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-24-1.png" width="672"></div>
+</div>
+<div id="función-mk_protconn_raster" class="section level3" number="10.0.4">
+<h3>
+<span class="header-section-number">10.0.4</span> Función MK_ProtConn_raster()<a class="anchor" aria-label="anchor" href="#funci%C3%B3n-mk_protconn_raster"><i class="fas fa-link"></i></a>
+</h3>
+<p>Estima el índice ProtConn con un raster de nodos. Cada Área Protegida debe tener un id unico (grupos de pixeles con id de cada AP).</p>
+<div class="sourceCode" id="cb171"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">APs_raster</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/raster.html">raster</a></span><span class="op">(</span><span class="st">"C:/Users/oscta/OneDrive/Documents/RedBioma/Clase 6/Areas_protegidas_raster.tif"</span><span class="op">)</span></span>
+<span><span class="va">APs_raster</span></span>
+<span><span class="co">#&gt; class      : RasterLayer </span></span>
+<span><span class="co">#&gt; dimensions : 2536, 2027, 5140472  (nrow, ncol, ncell)</span></span>
+<span><span class="co">#&gt; resolution : 1000, 1000  (x, y)</span></span>
+<span><span class="co">#&gt; extent     : -8227460, -6200460, -1021404, 1514596  (xmin, xmax, ymin, ymax)</span></span>
+<span><span class="co">#&gt; crs        : +proj=moll +lon_0=0 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs </span></span>
+<span><span class="co">#&gt; source     : Areas_protegidas_raster.tif </span></span>
+<span><span class="co">#&gt; names      : Areas_protegidas_raster </span></span>
+<span><span class="co">#&gt; values     : 1, 1530  (min, max)</span></span></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html">st_geometry</a></span><span class="op">(</span><span class="va">Ecorreg</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">APs_raster</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-26-1.png" width="672"></div>
+<div class="sourceCode" id="cb173"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">Ecorreg_prueba</span> <span class="op">&lt;-</span> <span class="va">Ecorreg</span><span class="op">[</span><span class="fl">2</span>,<span class="op">]</span></span>
+<span><span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_ProtConn_raster.html">MK_ProtConn_raster</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">APs_raster</span>,</span>
+<span>                           region <span class="op">=</span> <span class="va">Ecorreg_prueba</span>,</span>
+<span>                           area_unit <span class="op">=</span> <span class="st">"ha"</span>,</span>
+<span>                           distance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>type<span class="op">=</span> <span class="st">"edge"</span>, keep <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>,</span>
+<span>                           distance_thresholds <span class="op">=</span> <span class="fl">10000</span>,</span>
+<span>                           probability <span class="op">=</span> <span class="fl">0.5</span>, </span>
+<span>                           transboundary <span class="op">=</span> <span class="fl">50000</span>,</span>
+<span>                           plot <span class="op">=</span> <span class="cn">TRUE</span>, </span>
+<span>                           parallel <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                           write <span class="op">=</span> <span class="cn">NULL</span>, </span>
+<span>                           intern <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="va">test</span></span>
+<span><span class="co">#&gt; $`Protected Connected (Viewer Panel)`</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $`ProtConn Plot`</span></span></code></pre></div>
+<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-27-1.png" width="672"></div>
+</div>
+<div id="referencias-1" class="section level2" number="10.1">
+<h2>
+<span class="header-section-number">10.1</span> Referencias<a class="anchor" aria-label="anchor" href="#referencias-1"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li><p>Castillo, L. S., Correa Ayram, C. A., Matallana Tobón, C. L., Corzo, G., Areiza, A., González-M., R., Serrano, F., Chalán Briceño, L., Sánchez Puertas, F., More, A., Franco, O., Bloomfield, H., Aguilera Orrury, V. L., Rivadeneira Canedo, C., Morón-Zambrano, V., Yerena, E., Papadakis, J., Cárdenas, J. J., Golden Kroner, R. E., &amp; Godínez-Gómez, O. (2020). Connectivity of Protected Areas: Effect of Human Pressure and Subnational Contributions in the Ecoregions of Tropical Andean Countries. Land, 9(8), Article 8. <a href="https://doi.org/10.3390/land9080239" class="uri">https://doi.org/10.3390/land9080239</a></p></li>
+<li><p>Saura, S., Bastin, L., Battistella, L., Mandrici, A., &amp; Dubois, G. (2017). Protected areas in the world’s ecoregions: How well connected are they? Ecological Indicators, 76, 144-158. <a href="https://doi.org/10.1016/j.ecolind.2016.12.047" class="uri">https://doi.org/10.1016/j.ecolind.2016.12.047</a></p></li>
+<li><p>Saura, S., Bertzky, B., Bastin, L., Battistella, L., Mandrici, A., &amp; Dubois, G. (2018). Protected area connectivity: Shortfalls in global targets and country-level priorities. Biological Conservation, 219, 53-67. <a href="https://doi.org/10.1016/j.biocon.2017.12.020" class="uri">https://doi.org/10.1016/j.biocon.2017.12.020</a></p></li>
+</ul>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="conectividad-din%C3%A1mica-con-mk_deca.html"><span class="header-section-number">9</span> Conectividad dinámica con MK_dECA()</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li>
+<a class="nav-link" href="#protected-connected-indicator-protconn"><span class="header-section-number">10</span> Protected Connected indicator (ProtConn)</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#ejemplo"><span class="header-section-number">10.0.1</span> Ejemplo</a></li>
+<li><a class="nav-link" href="#funci%C3%B3n-mk_protconn"><span class="header-section-number">10.0.2</span> Función MK_ProtConn()</a></li>
+<li><a class="nav-link" href="#funci%C3%B3n-mk_protconnmult"><span class="header-section-number">10.0.3</span> Función MK_ProtConnMult()</a></li>
+<li><a class="nav-link" href="#funci%C3%B3n-mk_protconn_raster"><span class="header-section-number">10.0.4</span> Función MK_ProtConn_raster()</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#referencias-1"><span class="header-section-number">10.1</span> Referencias</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/OscarGOGO/Makurhini_manual_esp/blob/master/07-ProtConn.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/OscarGOGO/Makurhini_manual_esp/edit/master/07-ProtConn.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Manual de uso de Makurhini</strong>" was written by Oscar Godínez Gómez. It was last built on 2025-08-13.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>
