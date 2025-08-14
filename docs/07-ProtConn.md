@@ -549,7 +549,7 @@ dProtConn2 <- dProtConn %>%
 ggplot() +  
   geom_sf(data = Ecorreg_1, fill = NA, color = "black") +
   geom_sf(data = dProtConn2, aes(fill = dProtConn_q), color = "black", size = 0.1) +
-  scale_fill_brewer(palette = "RdYlBu", direction = -1, name = "Delta ProtConn (jenks)") +
+  scale_fill_brewer(palette = "RdYlBu", direction = 1, name = "Delta ProtConn (jenks)") +
   theme_minimal() +
   labs(
     title = "Delta ProtConn",
@@ -965,7 +965,7 @@ dProtConn2 <- dProtConn %>%
 # Graficar en ggplot2 usando las clases Jenks
 ggplot() +  
   geom_sf(data = dProtConn2, aes(fill = dProtConn_q), color = "black", size = 0.1) +
-  scale_fill_brewer(palette = "RdYlGn", direction = -1, name = "ProtConn") +
+  scale_fill_brewer(palette = "RdYlGn", direction = 1, name = "ProtConn") +
   theme_minimal() +
   labs(
     title = "ProtConn",
@@ -979,37 +979,6 @@ ggplot() +
 
 <img src="07-ProtConn_files/figure-html/unnamed-chunk-20-1.png" width="672" />
 
-ProtConn_Trans:
-
-
-``` r
-dProtConn <- test$ProtConn_10000$ProtConn_10000
-# Calcular los intervalos
-breaks <- classInt::classIntervals(dProtConn$ProtConn_Trans, n = 5, style = "quantile")
-
-# Crear una nueva variable categórica con los intervalos
-dProtConn2 <- dProtConn %>%
-  mutate(dProtConn_q = cut(ProtConn_Trans,
-                     breaks = breaks$brks,
-                     include.lowest = TRUE,
-                     dig.lab = 5))  
-
-# Graficar en ggplot2 usando las clases Jenks
-ggplot() +  
-  geom_sf(data = dProtConn2, aes(fill = dProtConn_q), color = "black", size = 0.1) +
-  scale_fill_brewer(palette = "RdYlGn", direction = -1, name = "ProtConn_Trans") +
-  theme_minimal() +
-  labs(
-    title = "ProtConn_Trans",
-    fill = "ProtConn_Trans"
-  ) +
-  theme(
-    legend.position = "right",
-    plot.title = element_text(hjust = 0.5)
-  )
-```
-
-<img src="07-ProtConn_files/figure-html/unnamed-chunk-21-1.png" width="672" />
 
 ProtConn_Unprot:
 
@@ -1029,7 +998,7 @@ dProtConn2 <- dProtConn %>%
 # Graficar en ggplot2 usando las clases Jenks
 ggplot() +  
   geom_sf(data = dProtConn2, aes(fill = dProtConn_q), color = "black", size = 0.1) +
-  scale_fill_brewer(palette = "RdYlGn", direction = -1, name = "ProtConn_Unprot") +
+  scale_fill_brewer(palette = "RdYlGn", direction = 1, name = "ProtConn_Unprot") +
   theme_minimal() +
   labs(
     title = "ProtConn_Unprot",
@@ -1041,7 +1010,7 @@ ggplot() +
   )
 ```
 
-<img src="07-ProtConn_files/figure-html/unnamed-chunk-22-1.png" width="672" />
+<img src="07-ProtConn_files/figure-html/unnamed-chunk-21-1.png" width="672" />
 
 ProtConn_Within:
 
@@ -1061,7 +1030,7 @@ dProtConn2 <- dProtConn %>%
 # Graficar en ggplot2 usando las clases Jenks
 ggplot() +  
   geom_sf(data = dProtConn2, aes(fill = dProtConn_q), color = "black", size = 0.1) +
-  scale_fill_brewer(palette = "RdYlGn", direction = -1, name = "ProtConn_Within") +
+  scale_fill_brewer(palette = "RdYlGn", direction = 1, name = "ProtConn_Within") +
   theme_minimal() +
   labs(
     title = "ProtConn_Within",
@@ -1073,7 +1042,7 @@ ggplot() +
   )
 ```
 
-<img src="07-ProtConn_files/figure-html/unnamed-chunk-23-1.png" width="672" />
+<img src="07-ProtConn_files/figure-html/unnamed-chunk-22-1.png" width="672" />
 
 ProtConn_Contig:
 
@@ -1093,11 +1062,44 @@ dProtConn2 <- dProtConn %>%
 # Graficar en ggplot2 usando las clases Jenks
 ggplot() +  
   geom_sf(data = dProtConn2, aes(fill = dProtConn_q), color = "black", size = 0.1) +
-  scale_fill_brewer(palette = "RdYlGn", direction = -1, name = "ProtConn_Contig") +
+  scale_fill_brewer(palette = "RdYlGn", direction = 1, name = "ProtConn_Contig") +
   theme_minimal() +
   labs(
     title = "ProtConn_Contig",
     fill = "ProtConn_Contig"
+  ) +
+  theme(
+    legend.position = "right",
+    plot.title = element_text(hjust = 0.5)
+  )
+```
+
+<img src="07-ProtConn_files/figure-html/unnamed-chunk-23-1.png" width="672" />
+
+
+ProtConn_Trans:
+
+
+``` r
+dProtConn <- test$ProtConn_10000$ProtConn_10000
+# Calcular los intervalos
+breaks <- classInt::classIntervals(dProtConn$ProtConn_Trans, n = 5, style = "quantile")
+
+# Crear una nueva variable categórica con los intervalos
+dProtConn2 <- dProtConn %>%
+  mutate(dProtConn_q = cut(ProtConn_Trans,
+                     breaks = breaks$brks,
+                     include.lowest = TRUE,
+                     dig.lab = 5))  
+
+# Graficar en ggplot2 usando las clases Jenks
+ggplot() +  
+  geom_sf(data = dProtConn2, aes(fill = dProtConn_q), color = "black", size = 0.1) +
+  scale_fill_brewer(palette = "RdYlGn", direction = 1, name = "ProtConn_Trans") +
+  theme_minimal() +
+  labs(
+    title = "ProtConn_Trans",
+    fill = "ProtConn_Trans"
   ) +
   theme(
     legend.position = "right",
@@ -1161,6 +1163,105 @@ test
 
 
 
+## Función MK_Connect_grid()
+
+Use esta función para estimar los índices ProtConn, EC o ECA, PC e IIC sobre una malla regular de hexágonos o cuadros.
+
+Disolveré las geometrías de las ecorregiones para obtener un único polígono:
+
+
+``` r
+Regiones <- st_union(Ecorreg) |> st_as_sf()
+plot(Regiones)
+```
+
+<img src="07-ProtConn_files/figure-html/unnamed-chunk-28-1.png" width="672" />
+
+
+Ahora aplicaré la función MK_Connect_grid()
+
+
+``` r
+hexagons_priority <- MK_Connect_grid(nodes = APs,
+                                     region = Regiones,
+                                     area_unit = "ha",
+                                     grid = list(hexagonal = FALSE,
+                                                 cellsize = unit_convert(4000, "km2", "m2"), clip = TRUE),
+                                     protconn = TRUE,
+                                     distance_threshold = 3000,
+                                     probability = 0.5,
+                                     transboundary = 6000,
+                                     distance = list(type = "edge", keep = 0.1),
+                                     intern = TRUE,
+                                     parallel = 6)
+```
+
+
+
+
+
+ProtConn:
+
+
+``` r
+# Calcular los intervalos
+breaks <- classInt::classIntervals(hexagons_priority$ProtConn, n = 5, style = "quantile")
+
+# Crear una nueva variable categórica con los intervalos
+hexagons_priority <- hexagons_priority %>%
+  mutate(ProtConn_q = cut(ProtConn,
+                           breaks = breaks$brks,
+                           include.lowest = TRUE,
+                           dig.lab = 5))  
+
+# Graficar en ggplot2 usando las clases Jenks
+ggplot() +  
+  geom_sf(data = hexagons_priority, aes(fill = ProtConn_q), color = "black", size = 0.1) +
+  scale_fill_brewer(palette = "RdYlGn", direction = 1, name = "ProtConn") +
+  theme_minimal() +
+  labs(
+    title = "ProtConn",
+    fill = "ProtConn"
+  ) +
+  theme(
+    legend.position = "right",
+    plot.title = element_text(hjust = 0.5)
+  )
+```
+
+<img src="07-ProtConn_files/figure-html/unnamed-chunk-31-1.png" width="672" />
+
+
+ProtConn[Unprot]:
+
+
+``` r
+# Calcular los intervalos
+breaks <- classInt::classIntervals(hexagons_priority$ProtConn_Unprot, n = 5, style = "quantile")
+
+# Crear una nueva variable categórica con los intervalos
+hexagons_priority <- hexagons_priority %>%
+  mutate(ProtConn_Unprot_q = cut(ProtConn_Unprot,
+                           breaks = breaks$brks,
+                           include.lowest = TRUE,
+                           dig.lab = 5))  
+
+# Graficar en ggplot2 usando las clases Jenks
+ggplot() +  
+  geom_sf(data = hexagons_priority, aes(fill = ProtConn_Unprot_q), color = "black", size = 0.1) +
+  scale_fill_brewer(palette = "RdYlGn", direction = 1, name = "ECA") +
+  theme_minimal() +
+  labs(
+    title = "ProtConn[Unprot]",
+    fill = "ProtConn[Unprot]"
+  ) +
+  theme(
+    legend.position = "right",
+    plot.title = element_text(hjust = 0.5)
+  )
+```
+
+<img src="07-ProtConn_files/figure-html/unnamed-chunk-32-1.png" width="672" />
 
 ## Referencias
 

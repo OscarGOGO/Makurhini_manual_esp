@@ -93,8 +93,8 @@ PCrestauracion <- MK_dPCIIC(nodes = habitat_nodes,
                 intern = TRUE) #10 km
 #> Estimating PC index. This may take several minutes depending on the number of nodes
 #>   |                                                          |                                                  |   0%  |                                                          |==================================================| 100%
-#>  ■■■■■■■■■■■■■                     39% |  ETA:  5s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■           74% |  ETA:  2s
+#>  ■■■■■■■■■■■                       35% |  ETA:  3s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    97% |  ETA:  0s
 #> 
 #> Done!
 PCrestauracion

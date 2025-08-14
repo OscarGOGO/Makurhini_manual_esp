@@ -65,4 +65,5 @@ ejemplo
 función-mk_protconn
 función-mk_protconnmult
 función-mk_protconn_raster
+función-mk_connect_grid
 referencias-1
