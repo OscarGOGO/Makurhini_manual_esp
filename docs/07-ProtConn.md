@@ -96,7 +96,7 @@ La función tiene los siguientes argumentos:
 
 | Argumento | Descripción |
 |---------------------------------------------|---------------------------|
-| **nodes** | `raster`. El archivo debe tener un sistema de coordenadas proyectado. |
+| **nodes** | `sf, sfc, sfg, SpatVect, spatialPolygonsDataFrame`. El archivo debe tener un sistema de coordenadas proyectado. |
 | **region** | Objeto de clase `raster`, `rast`, `sf`, `sfc`, `sfg` o `spatialPolygonsDataFrame`. Polígono que delimita la región o área de estudio. Debe estar en un sistema de coordenadas proyectado. |
 | **area_unit** | `character` (opcional, por defecto `"m2"`). Unidades de área cuando `attribute = NULL`. Ejemplos: `"m2"`, `"km2"`, `"cm2"`, `"ha"`. Ver `unit_convert` para más detalles. |
 | **distance** | Matriz o lista que define la distancia entre cada par de nodos. Puede ser distancia euclidiana o efectiva (costos de movimiento). <br> - Si es matriz: número de filas y columnas igual al número de nodos (puede generarse con `distancefile`). <br> - Si es lista: debe incluir parámetros como `"type"` (`"centroid"`, `"edge"`, `"least-cost"`, `"commute-time"`) y, en su caso, `"resistance"`. Para más detalles ver `distancefile`. |
