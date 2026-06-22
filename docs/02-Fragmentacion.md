@@ -54,7 +54,7 @@ ggplot() +
         axis.title.y = element_blank())
 ```
 
-<img src="02-Fragmentacion_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+<img src="02-Fragmentacion_files/figure-html/unnamed-chunk-4-1.png" alt="" width="672" />
 
 En caso de necesitar abrir otro vector (e.g., .shp, .gpkg) necesitan usar la fución `read_sf()` del paquete `sf`, la función `shapefile()` del paquete `raster`, o la funcion `vect()` del paquete `terra`.
 
@@ -123,7 +123,7 @@ Fragmentacion <- MK_Fragmentation(nodes = habitat_nodes,
                                   plot = TRUE)
 ```
 
-<img src="02-Fragmentacion_files/figure-html/unnamed-chunk-7-1.png" width="672" /><img src="02-Fragmentacion_files/figure-html/unnamed-chunk-7-2.png" width="672" />
+<img src="02-Fragmentacion_files/figure-html/unnamed-chunk-7-1.png" alt="" width="672" /><img src="02-Fragmentacion_files/figure-html/unnamed-chunk-7-2.png" alt="" width="672" />
 
 ### Estadisticos a nivel de parche
 
@@ -187,7 +187,7 @@ ggplot() +
   )
 ```
 
-<img src="02-Fragmentacion_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+<img src="02-Fragmentacion_files/figure-html/unnamed-chunk-9-1.png" alt="" width="672" />
 
 -   \% de borde
 
@@ -212,7 +212,7 @@ ggplot() +
   )
 ```
 
-<img src="02-Fragmentacion_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+<img src="02-Fragmentacion_files/figure-html/unnamed-chunk-10-1.png" alt="" width="672" />
 
 -   Perimeter
 
@@ -237,7 +237,7 @@ ggplot() +
   )
 ```
 
-<img src="02-Fragmentacion_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+<img src="02-Fragmentacion_files/figure-html/unnamed-chunk-11-1.png" alt="" width="672" />
 
 -   Perimeter-Area Ratio
 
@@ -262,7 +262,7 @@ ggplot() +
   )
 ```
 
-<img src="02-Fragmentacion_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+<img src="02-Fragmentacion_files/figure-html/unnamed-chunk-12-1.png" alt="" width="672" />
 
 -   Shape Index
 
@@ -287,7 +287,7 @@ ggplot() +
   )
 ```
 
-<img src="02-Fragmentacion_files/figure-html/unnamed-chunk-13-1.png" width="672" />
+<img src="02-Fragmentacion_files/figure-html/unnamed-chunk-13-1.png" alt="" width="672" />
 
 -   Fractal Dimension Index
 
@@ -312,7 +312,7 @@ ggplot() +
   )
 ```
 
-<img src="02-Fragmentacion_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+<img src="02-Fragmentacion_files/figure-html/unnamed-chunk-14-1.png" alt="" width="672" />
 
 ### Estadísticos a nivel de paisaje
 
@@ -368,7 +368,7 @@ Fragmentacion$`Summary landscape metrics (Viewer Panel)`
   </tr>
   <tr>
    <td style="text-align:left;"> Total Core Area (ha) </td>
-   <td style="text-align:center;"> 631595.3522 </td>
+   <td style="text-align:center;"> 631595.3523 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Cority </td>
@@ -471,7 +471,7 @@ ggplot(Fragmentacion.2, aes(x=Edge.distance, y=Percentage, group=Type)) +
   theme_classic()
 ```
 
-<img src="02-Fragmentacion_files/figure-html/unnamed-chunk-19-1.png" width="672" />
+<img src="02-Fragmentacion_files/figure-html/unnamed-chunk-19-1.png" alt="" width="672" />
 
 ## Ejercicio 3
 
@@ -487,7 +487,7 @@ Grid_test <- make_grid(x = paisaje, hexagonal = FALSE,
 plot(Grid_test)
 ```
 
-<img src="02-Fragmentacion_files/figure-html/unnamed-chunk-20-1.png" width="672" />
+<img src="02-Fragmentacion_files/figure-html/unnamed-chunk-20-1.png" alt="" width="672" />
 
 Estimar MESH usando un loop sencillo tipo `for()`
 
@@ -552,4 +552,4 @@ ggplot() +
   )
 ```
 
-<img src="02-Fragmentacion_files/figure-html/unnamed-chunk-24-1.png" width="672" />
+<img src="02-Fragmentacion_files/figure-html/unnamed-chunk-24-1.png" alt="" width="672" />

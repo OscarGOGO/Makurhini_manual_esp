@@ -39,7 +39,7 @@ ggplot() +
         axis.title.y = element_blank())
 ```
 
-<img src="05-Priorizacion_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-3-1.png" alt="" width="672" />
 
 
 ``` r
@@ -90,12 +90,7 @@ PCrestauracion <- MK_dPCIIC(nodes = habitat_nodes,
                 metric = "PC",
                 probability = 0.5,
                 distance_thresholds = 10000,
-                intern = TRUE) #10 km
-#> Estimating PC index. This may take several minutes depending on the number of nodes
-#>   |                                                          |                                                  |   0%  |                                                          |==================================================| 100%
-#>  ■■■■■■■■■■■                       35% |  ETA:  3s
-#> 
-#> Done!
+                intern = FALSE) #10 km
 PCrestauracion
 #> Simple feature collection with 404 features and 3 fields
 #> Geometry type: POLYGON
@@ -139,7 +134,7 @@ ggplot() +
   )
 ```
 
-<img src="05-Priorizacion_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-9-1.png" alt="" width="672" />
 
 Veamos solo los parches de restauración
 
@@ -168,7 +163,7 @@ ggplot() +
   )
 ```
 
-<img src="05-Priorizacion_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-10-1.png" alt="" width="672" />
 
 Si desactivamos `onlyrestor` entonces estima los otros valores delíndice de conectividad (i.e., dPC, intra, flux y connector).
 
@@ -337,7 +332,7 @@ ggplot() +
   )
 ```
 
-<img src="05-Priorizacion_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-14-1.png" alt="" width="672" />
 
 Índice dPC focal:
 
@@ -369,7 +364,7 @@ ggplot() +
   )
 ```
 
-<img src="05-Priorizacion_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-15-1.png" alt="" width="672" />
 
 Fracción intra:
 
@@ -401,7 +396,7 @@ ggplot() +
   )
 ```
 
-<img src="05-Priorizacion_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-16-1.png" alt="" width="672" />
 
 Fracción flux:
 
@@ -433,7 +428,7 @@ ggplot() +
   )
 ```
 
-<img src="05-Priorizacion_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-17-1.png" alt="" width="672" />
 
 Fracción connector:
 
@@ -465,7 +460,7 @@ ggplot() +
   )
 ```
 
-<img src="05-Priorizacion_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-18-1.png" alt="" width="672" />
 
 **Índice de Conectividad Compuesto (CCI~f~).**
 
@@ -499,7 +494,7 @@ ggplot() +
   )
 ```
 
-<img src="05-Priorizacion_files/figure-html/unnamed-chunk-19-1.png" width="672" />
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-19-1.png" alt="" width="672" />
 
 
 
@@ -566,7 +561,7 @@ ggplot() +
         axis.title.y = element_blank())
 ```
 
-<img src="05-Priorizacion_files/figure-html/unnamed-chunk-22-1.png" width="672" />
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-22-1.png" alt="" width="672" />
 
 
 Estamos utilizando un raster de resistencia que esta incluido en el paquete Makurhini. Para cargar un raster de resistencia para tu estudio puedes utilizar la función `raster()` del paquete `raster` o la función `rast()` del paquete `terra`.
@@ -643,7 +638,7 @@ ggplot() +
   )
 ```
 
-<img src="05-Priorizacion_files/figure-html/unnamed-chunk-26-1.png" width="672" />
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-26-1.png" alt="" width="672" />
 
 Ahora aplicamos la función `MK_dPCIIC_links()`, pero antes exploremos una nueva variante de estimar el umbral de distancia cuando usamos una resistencia.
 
@@ -667,17 +662,13 @@ delta <- MK_dPCIIC_links(nodes = parches_ejemplo,
                          distance_thresholds = round(Effec_mean),
                          parallel = NULL,
                          parallel_mode = 0,
-                         intern = TRUE)
-#> Estimating distances. This may take several minutes depending on the number of nodes and raster resolution
-#> Estimating PC link index. This may take several minutes depending on the number of nodes
-#> 
-#> Done!
+                         intern = FALSE)
 head(delta)
 #>   Id Source Destination dPC_removal
 #> 1  1      2           1   0.0004151
 #> 2  2      3           1   0.0001186
 #> 3  3      4           1   0.0001053
-#> 4  4      5           1   0.0502042
+#> 4  4      5           1   0.0502020
 #> 5  5      6           1   0.0000061
 #> 6  6      7           1   0.0000350
 ```
@@ -707,11 +698,11 @@ rutas_mc2
 #> First 10 features:
 #>    ID_nuevo from to Id Source Destination dPC_removal
 #> 1      1_10    1 10  9     10           1   0.0000827
-#> 2      1_11    1 11 10     11           1   0.0019437
-#> 3      1_12    1 12 11     12           1   0.0273787
+#> 2      1_11    1 11 10     11           1   0.0019436
+#> 3      1_12    1 12 11     12           1   0.0273775
 #> 4      1_13    1 13 12     13           1   0.0000367
 #> 5      1_14    1 14 13     14           1   0.0003651
-#> 6      1_15    1 15 14     15           1   0.0061334
+#> 6      1_15    1 15 14     15           1   0.0061331
 #> 7      1_16    1 16 15     16           1   0.0000411
 #> 8      1_17    1 17 16     17           1   0.0000410
 #> 9      1_18    1 18 17     18           1   0.0000514
@@ -763,9 +754,11 @@ ggplot() +
     legend.position = "right",
     plot.title = element_text(hjust = 0.5)
   )
+#> Ignoring unknown labels:
+#> • fill : "dPC"
 ```
 
-<img src="05-Priorizacion_files/figure-html/unnamed-chunk-29-1.png" width="672" />
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-29-1.png" alt="" width="672" />
 
 ## Cambio de enlaces (Link change)
 
@@ -837,7 +830,7 @@ Aplicamos la función:
 ``` r
 #Distancia efectiva promedio como umbral de distancia
 Effec_mean <- mean(resistance_matrix[], na.rm = TRUE) * 10000 # 10km
-#[1] 5229259
+#[1] 5229623
 
 #Aplicamos la función
 delta <- MK_dPCIIC_links(nodes = parches_ejemplo,
@@ -851,13 +844,10 @@ delta <- MK_dPCIIC_links(nodes = parches_ejemplo,
                          distance_thresholds = round(Effec_mean),
                          parallel = NULL,
                          parallel_mode = 0,
-                         intern = TRUE)
-#> Estimating PC link index. This may take several minutes depending on the number of nodes
-#> 
-#> Done!
+                         intern = FALSE)
 names(delta)
-#> [1] "Link_removal_importances_d5229259"
-#> [2] "Link_change_importances_d5229259"
+#> [1] "Link_removal_importances_d5229623"
+#> [2] "Link_change_importances_d5229623"
 ```
 
 
@@ -865,7 +855,7 @@ Vemos el resultado. Es importante recordar que los nombres de los elementos de l
 
 
 ``` r
-head(delta$Link_change_importances_d5229259)
+head(delta$Link_change_importances_d5229623)
 #>   Id Source Destination dPC_change
 #> 1  1      2           1          0
 #> 2  2      3           1          0
@@ -879,7 +869,7 @@ Lo unimos a nuestro vector con los corredores:
 
 
 ``` r
-change_corr <- delta$Link_change_importances_d5229259
+change_corr <- delta$Link_change_importances_d5229623
 change_corr$ID_nuevo <- paste0(change_corr$Destination, "_", change_corr$Source)
 
 #Por precaución guardamos los corredores en otro objeto y generamos el ID
@@ -949,9 +939,11 @@ ggplot() +
     legend.position = "right",
     plot.title = element_text(hjust = 0.5)
   )
+#> Ignoring unknown labels:
+#> • fill : "dPC"
 ```
 
-<img src="05-Priorizacion_files/figure-html/unnamed-chunk-37-1.png" width="672" />
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-37-1.png" alt="" width="672" />
 
 Podemos visualizar solo los corredores que sufriedon cambio después de mejorar los corredores:
 
@@ -984,9 +976,11 @@ ggplot() +
     legend.position = "right",
     plot.title = element_text(hjust = 0.5)
   )
+#> Ignoring unknown labels:
+#> • fill : "dPC"
 ```
 
-<img src="05-Priorizacion_files/figure-html/unnamed-chunk-38-1.png" width="672" />
+<img src="05-Priorizacion_files/figure-html/unnamed-chunk-38-1.png" alt="" width="672" />
 
 
 

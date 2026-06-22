@@ -36,7 +36,7 @@ ggplot() +
         axis.title.y = element_blank())
 ```
 
-<img src="06-ECA_dECA_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+<img src="06-ECA_dECA_files/figure-html/unnamed-chunk-3-1.png" alt="" width="672" />
 
 Estimaremos el índice ECA usando el argumento overall o onlyoverall de la función MK_dPCIIC:
 
@@ -53,9 +53,12 @@ ECA1 <- MK_dPCIIC(nodes = habitat_nodes,
                 distance_thresholds = 10000,
                 intern = FALSE) #10 km
 ECA1
-#>    Index        Value
-#> 1  PCnum 1.301622e+12
-#> 2 EC(PC) 1.140887e+06
+#>         Index        Value
+#> 1       PCnum 1.301622e+12
+#> 2      EC(PC) 1.140887e+06
+#> 3  PCintra(%) 1.412328e+01
+#> 4 PCdirect(%) 1.991759e+01
+#> 5   PCstep(%) 6.595913e+01
 
 #Valor del ECA
 ECA1[2,2]
@@ -162,7 +165,7 @@ p4 <- ggplot() +
 (p1 + p2) / (p3 + p4)
 ```
 
-<img src="06-ECA_dECA_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+<img src="06-ECA_dECA_files/figure-html/unnamed-chunk-8-1.png" alt="" width="672" />
 
 Ahora obtendremos **el valor máximo que puede alcanzar el atributo (conectividad intra parche) de los parches en todo el paisaje**, en este ejemplo, el atributo que usaremos para los parches será el área (mientras más grande sea el parche mayor será su conectividad intra parche) por lo que el valor del atributo máximo en el paisaje será el área de toda el área de estudio.
 
@@ -231,7 +234,7 @@ dECA_test <- MK_dECA(nodes= lista_parches,
                      intern = FALSE)#Puedes cambiar a TRUE para ver el avance
 ```
 
-<img src="06-ECA_dECA_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+<img src="06-ECA_dECA_files/figure-html/unnamed-chunk-10-1.png" alt="" width="672" />
 
 ``` r
 class(dECA_test)
@@ -271,12 +274,12 @@ dECA_test$dECA_table
    <td style="text-align:right;"> 279164.3 </td>
    <td style="text-align:right;"> <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: #94D8B1; width: 98.07%">91438.11</span> </td>
    <td style="text-align:right;"> 5000 </td>
-   <td style="text-align:right;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ea9396">69182.45</span> </td>
-   <td style="text-align:right;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffae1a">24.78199</span> </td>
-   <td style="text-align:right;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffaa10">75.66041</span> </td>
+   <td style="text-align:right;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ea9396">69182.12</span> </td>
+   <td style="text-align:right;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffae1a">24.78187</span> </td>
+   <td style="text-align:right;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffaa10">75.66005</span> </td>
    <td style="text-align:right;"> <span style="color: red">-67.2457675</span> </td>
-   <td style="text-align:right;"> <span style="color: red">-75.218012</span> </td>
-   <td style="text-align:right;"> <span style="color: #404040">1.118554</span> </td>
+   <td style="text-align:right;"> <span style="color: red">-75.218130</span> </td>
+   <td style="text-align:right;"> <span style="color: #404040">1.118556</span> </td>
    <td style="text-align:right;"> dECA < dA < 0 </td>
    <td style="text-align:right;"> + Connectivity loss </td>
   </tr>
@@ -285,12 +288,12 @@ dECA_test$dECA_table
    <td style="text-align:right;"> 279164.3 </td>
    <td style="text-align:right;"> <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: #94D8B1; width: 100.00%">93238.91</span> </td>
    <td style="text-align:right;"> 5000 </td>
-   <td style="text-align:right;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #e8878a">71423.71</span> </td>
-   <td style="text-align:right;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffa500">25.58483</span> </td>
-   <td style="text-align:right;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffa500">76.60289</span> </td>
+   <td style="text-align:right;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #e8878a">71423.29</span> </td>
+   <td style="text-align:right;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffa500">25.58468</span> </td>
+   <td style="text-align:right;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffa500">76.60244</span> </td>
    <td style="text-align:right;"> <span style="color: forestgreen">1.9694217</span> </td>
-   <td style="text-align:right;"> <span style="color: forestgreen">3.239623</span> </td>
-   <td style="text-align:right;"> <span style="color: #404040">1.644961</span> </td>
+   <td style="text-align:right;"> <span style="color: forestgreen">3.239508</span> </td>
+   <td style="text-align:right;"> <span style="color: #404040">1.644903</span> </td>
    <td style="text-align:right;"> dECA or dA gain </td>
    <td style="text-align:right;"> Habitat or connectivity gain </td>
   </tr>
@@ -299,12 +302,12 @@ dECA_test$dECA_table
    <td style="text-align:right;"> 279164.3 </td>
    <td style="text-align:right;"> <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: #94D8B1; width: 89.57%">83517.49</span> </td>
    <td style="text-align:right;"> 5000 </td>
-   <td style="text-align:right;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fae9ea">54325.56</span> </td>
-   <td style="text-align:right;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffedcc">19.46007</span> </td>
-   <td style="text-align:right;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffedcc">65.04692</span> </td>
+   <td style="text-align:right;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fae9ea">54325.33</span> </td>
+   <td style="text-align:right;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffedcc">19.45999</span> </td>
+   <td style="text-align:right;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffedcc">65.04666</span> </td>
    <td style="text-align:right;"> <span style="color: red">-10.4263650</span> </td>
-   <td style="text-align:right;"> <span style="color: red">-23.939041</span> </td>
-   <td style="text-align:right;"> <span style="color: #404040">2.296010</span> </td>
+   <td style="text-align:right;"> <span style="color: red">-23.938907</span> </td>
+   <td style="text-align:right;"> <span style="color: #404040">2.295997</span> </td>
    <td style="text-align:right;"> dECA < dA < 0 </td>
    <td style="text-align:right;"> + Connectivity loss </td>
   </tr>
@@ -313,12 +316,12 @@ dECA_test$dECA_table
    <td style="text-align:right;"> 279164.3 </td>
    <td style="text-align:right;"> <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: #94D8B1; width: 89.94%">83859.71</span> </td>
    <td style="text-align:right;"> 5000 </td>
-   <td style="text-align:right;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f9e4e6">55031.81</span> </td>
-   <td style="text-align:right;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffeac3">19.71306</span> </td>
-   <td style="text-align:right;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffe9c1">65.62366</span> </td>
+   <td style="text-align:right;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f9e4e6">55031.59</span> </td>
+   <td style="text-align:right;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffeac3">19.71298</span> </td>
+   <td style="text-align:right;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffe9c1">65.62340</span> </td>
    <td style="text-align:right;"> <span style="color: forestgreen">0.4097637</span> </td>
-   <td style="text-align:right;"> <span style="color: forestgreen">1.300045</span> </td>
-   <td style="text-align:right;"> <span style="color: #404040">3.172671</span> </td>
+   <td style="text-align:right;"> <span style="color: forestgreen">1.300059</span> </td>
+   <td style="text-align:right;"> <span style="color: #404040">3.172705</span> </td>
    <td style="text-align:right;"> dECA or dA gain </td>
    <td style="text-align:right;"> Habitat or connectivity gain </td>
   </tr>
@@ -410,7 +413,7 @@ ggplot() +
   )
 ```
 
-<img src="06-ECA_dECA_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+<img src="06-ECA_dECA_files/figure-html/unnamed-chunk-14-1.png" alt="" width="672" />
 
 **dECA 2003-2007**
 
@@ -444,7 +447,7 @@ ggplot() +
   )
 ```
 
-<img src="06-ECA_dECA_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+<img src="06-ECA_dECA_files/figure-html/unnamed-chunk-15-1.png" alt="" width="672" />
 
 **dECA 2007-2011**
 
@@ -478,7 +481,7 @@ ggplot() +
   )
 ```
 
-<img src="06-ECA_dECA_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+<img src="06-ECA_dECA_files/figure-html/unnamed-chunk-16-1.png" alt="" width="672" />
 
 **rECA 2007-2011**
 
@@ -512,7 +515,7 @@ ggplot() +
   )
 ```
 
-<img src="06-ECA_dECA_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+<img src="06-ECA_dECA_files/figure-html/unnamed-chunk-17-1.png" alt="" width="672" />
 
 **Tipo de cambio entre 2003-2007**
 
@@ -535,7 +538,7 @@ ggplot() +
   )
 ```
 
-<img src="06-ECA_dECA_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+<img src="06-ECA_dECA_files/figure-html/unnamed-chunk-18-1.png" alt="" width="672" />
 
 ## Referencias
 

@@ -86,7 +86,7 @@ ggplot() +
   theme_minimal() 
 ```
 
-<img src="07-ProtConn_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+<img src="07-ProtConn_files/figure-html/unnamed-chunk-4-1.png" alt="" width="672" />
 
 ### Función MK_ProtConn()
 
@@ -132,6 +132,8 @@ test <- MK_ProtConn(nodes = APs,
                     write = NULL, 
                     intern = TRUE)
 #> Step 1. Reviewing parameters
+#> Topology errors detected. Makurhini will try to fix them, but it may take time. You can cancel and repair them in a GIS instead.
+#>   |                                                          |                                                  |   0%  |                                                          |==================================================| 100%
 #> Step 2. Processing ProtConn metric
 #> Done!
 ```
@@ -253,7 +255,7 @@ Ahora nuestro plot:
 test$`ProtConn Plot`
 ```
 
-<img src="07-ProtConn_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+<img src="07-ProtConn_files/figure-html/unnamed-chunk-7-1.png" alt="" width="672" />
 
 ``` r
 #Alternativa: test[[2]]
@@ -277,6 +279,8 @@ test2 <- MK_ProtConn(nodes = APs,
                     write = NULL, 
                     intern = TRUE)
 #> Step 1. Reviewing parameters
+#> Topology errors detected. Makurhini will try to fix them, but it may take time. You can cancel and repair them in a GIS instead.
+#>   |                                                          |                                                  |   0%  |                                                          |==================================================| 100%
 #> Step 2. Processing ProtConn metric
 #> Done!
 ```
@@ -417,6 +421,8 @@ test3 <- MK_ProtConn(nodes = APs,
                     write = NULL, 
                     intern = TRUE)
 #> Step 1. Reviewing parameters
+#> Topology errors detected. Makurhini will try to fix them, but it may take time. You can cancel and repair them in a GIS instead.
+#>   |                                                          |                                                  |   0%  |                                                          |==================================================| 100%
 #> Step 2. Processing ProtConn metric
 #> Step 3. Processing Delta ProtConn
 #> Done!
@@ -454,9 +460,9 @@ test3$ProtConn_Delta
 #> 13 Reserva Natural de la Sociedad Civil   Subnacional
 #> 14 Reserva Natural de la Sociedad Civil   Subnacional
 #>           dProt    dProtConn  varProtConn
-#> 1  9.172455e-08 3.074408e-08 7.874913e-09
+#> 1  9.172455e-08 3.074350e-08 7.874764e-09
 #> 3  2.261837e-05 8.382440e-06 2.147112e-06
-#> 5  1.517942e+01 3.328922e+00 8.526837e-01
+#> 5  1.517942e+01 3.328953e+00 8.526916e-01
 #> 6  4.013589e-01 1.472522e-01 3.771777e-02
 #> 8  5.732189e+00 5.863921e+00 1.502009e+00
 #> 9  3.105072e+00 2.331058e+00 5.970867e-01
@@ -528,7 +534,7 @@ ggplot() +
   )
 ```
 
-<img src="07-ProtConn_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+<img src="07-ProtConn_files/figure-html/unnamed-chunk-12-1.png" alt="" width="672" />
 
 Delta ProtConn:
 
@@ -561,7 +567,7 @@ ggplot() +
   )
 ```
 
-<img src="07-ProtConn_files/figure-html/unnamed-chunk-13-1.png" width="672" />
+<img src="07-ProtConn_files/figure-html/unnamed-chunk-13-1.png" alt="" width="672" />
 
 Variación absoluta del ProtConn:
 
@@ -594,7 +600,7 @@ ggplot() +
   )
 ```
 
-<img src="07-ProtConn_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+<img src="07-ProtConn_files/figure-html/unnamed-chunk-14-1.png" alt="" width="672" />
 
 ### Función MK_ProtConnMult()
 
@@ -866,9 +872,822 @@ Plot:
 
 ``` r
 test$ProtConn_10000$`ProtConn Plot`
+#> $data
+#> list()
+#> attr(,"class")
+#> [1] "waiver"
+#> 
+#> $layers
+#> $layers[[1]]
+#> geom_draw_grob: grob = list(grobs = list(list(x = 0.5, y = 0.5, width = 1, height = 1, just = "centre", hjust = NULL, vjust = NULL, name = "plot.background..rect.2076", gp = list(lwd = 1.42263779527559, col = "white", fill = "white", lty = 1), vp = NULL), list(name = "NULL", gp = NULL, vp = NULL), list(width = list(list(1, list(list(0, NULL, 1), list(0.724597823439877, NULL, 1), list(1, list(list(0, NULL, 8), list(-0.0966514459665145, NULL, 1)), 203), list(0.0966514459665145, NULL, 1)), 201)), height = 1, xmin = NULL, 
+#>     ymin = NULL, name = "GRID.absoluteGrob.2050", gp = NULL, vp = list(x = 1, y = 0.5, width = list(list(1, list(list(0, NULL, 1), list(0.724597823439877, NULL, 1), list(1, list(list(0, NULL, 8), list(-0.0966514459665145, NULL, 1)), 203), list(0.0966514459665145, NULL, 1)), 201)), height = 1, justification = c(1, 0.5), gp = list(), clip = FALSE, xscale = c(0, 1), yscale = c(0, 1), angle = 0, layout = NULL, layout.pos.row = NULL, layout.pos.col = NULL, valid.just = c(1, 0.5), valid.pos.row = NULL, 
+#>         valid.pos.col = NULL, name = "GRID.VP.150", parentgpar = NULL, gpar = NULL, trans = NULL, widths = NULL, heights = NULL, width.cm = NULL, height.cm = NULL, rotation = NULL, cliprect = NULL, parent = NULL, children = NULL, devwidth = NULL, devheight = NULL, clippath = NULL, mask = TRUE, resolvedmask = NULL), children = list(`NULL` = list(name = "NULL", gp = NULL, vp = NULL), axis = list(grobs = list(list(x = list(list(1, list(list(1, NULL, 0), list(-2.75, NULL, 8)), 201), list(1, list(list(
+#>         1, NULL, 0), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.75, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.75, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.75, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.75, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(0, NULL, 8)), 
+#>         201)), y = c(0.0454545454545455, 0.0454545454545455, 0.272727272727273, 0.272727272727273, 0.5, 0.5, 0.727272727272727, 0.727272727272727, 0.954545454545455, 0.954545454545455), id = NULL, id.lengths = c(2, 2, 2, 2, 2), arrow = NULL, name = "GRID.polyline.2047", gp = list(col = "grey20", fill = "grey20", lwd = 1.42263779527559, lty = 1, lineend = "butt"), vp = NULL), list(widths = list(list(0, NULL, 8), list(1, list(list(1, list(label = c("0", "25", "50", "75", "100"), x = c(1, 1, 1, 1, 1
+#>     ), y = c(0.0454545454545455, 0.272727272727273, 0.5, 0.727272727272727, 0.954545454545455), just = "centre", hjust = 1, vjust = 0.5, rot = 0, check.overlap = FALSE, name = "GRID.text.2048", gp = list(fontsize = 11, col = "#525252", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL), 21), list(0, NULL, 2)), 201), list(2.2, NULL, 8)), heights = 1, name = "GRID.titleGrob.2049", gp = NULL, vp = NULL, children = list(GRID.text.2048 = list(label = c("0", "25", "50", "75", "100"), x = list(
+#>         list(1, list(list(1, NULL, 0), list(-2.2, NULL, 8), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.2, NULL, 8), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.2, NULL, 8), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.2, NULL, 8), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.2, NULL, 8), list(0, NULL, 8)), 201)), y = c(0.0454545454545455, 0.272727272727273, 0.5, 0.727272727272727, 0.954545454545455), just = "centre", hjust = 1, 
+#>         vjust = 0.5, rot = 0, check.overlap = FALSE, name = "GRID.text.2048", gp = list(fontsize = 11, col = "#525252", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL)), childrenOrder = "GRID.text.2048"), list(name = "NULL", gp = NULL, vp = NULL)), layout = list(t = c(1, 1, 1), l = c(4, 2, 1), b = c(1, 1, 1), r = c(4, 2, 1), z = c(2, 1, 3), clip = c("off", "off", "off"), name = c("axis", "axis", "axis")), widths = list(list(0, NULL, 1), list(0.724597823439877, NULL, 1), list(1, 
+#>         list(list(0, NULL, 8), list(-0.0966514459665145, NULL, 1)), 203), list(0.0966514459665145, NULL, 1)), heights = 1, respect = FALSE, rownames = NULL, colnames = NULL, name = "axis", gp = NULL, vp = NULL, children = list(), childrenOrder = character(0))), childrenOrder = c("NULL", "axis")), list(name = "NULL", gp = NULL, vp = NULL), list(name = "NULL", gp = NULL, vp = NULL), list(name = "panel-1.gTree.2042", gp = NULL, vp = NULL, children = list(grill.gTree.2040 = list(name = "grill.gTree.2040", 
+#>     gp = NULL, vp = NULL, children = list(panel.background..rect.2033 = list(x = 0.5, y = 0.5, width = 1, height = 1, just = "centre", hjust = NULL, vjust = NULL, name = "panel.background..rect.2033", gp = list(lwd = 1.42263779527559, col = NA, fill = "white", lty = 1), vp = NULL), panel.grid.minor.y..polyline.2035 = list(x = c(0, 1, 0, 1, 0, 1, 0, 1), y = c(0.159090909090909, 0.159090909090909, 0.386363636363636, 0.386363636363636, 0.613636363636364, 0.613636363636364, 0.840909090909091, 0.840909090909091
+#>     ), id = NULL, id.lengths = c(2, 2, 2, 2), arrow = NULL, name = "panel.grid.minor.y..polyline.2035", gp = list(col = "grey92", fill = "grey92", lwd = 0.711318897637795, lty = 1, lineend = "butt"), vp = NULL), panel.grid.major.y..polyline.2037 = list(x = c(0, 1, 0, 1, 0, 1, 0, 1, 0, 1), y = c(0.0454545454545455, 0.0454545454545455, 0.272727272727273, 0.272727272727273, 0.5, 0.5, 0.727272727272727, 0.727272727272727, 0.954545454545455, 0.954545454545455), id = NULL, id.lengths = c(2, 2, 2, 2, 2), 
+#>         arrow = NULL, name = "panel.grid.major.y..polyline.2037", gp = list(col = "grey92", fill = "grey92", lwd = 1.42263779527559, lty = 1, lineend = "butt"), vp = NULL), panel.grid.major.x..polyline.2039 = list(x = c(0.1875, 0.1875, 0.5, 0.5, 0.8125, 0.8125), y = c(0, 1, 0, 1, 0, 1), id = NULL, id.lengths = c(2, 2, 2), arrow = NULL, name = "panel.grid.major.x..polyline.2039", gp = list(col = "grey92", fill = "grey92", lwd = 1.42263779527559, lty = 1, lineend = "butt"), vp = NULL)), childrenOrder = c("panel.background..rect.2033", 
+#>     "panel.grid.minor.y..polyline.2035", "panel.grid.major.y..polyline.2037", "panel.grid.major.x..polyline.2039")), `NULL` = list(name = "NULL", gp = NULL, vp = NULL), geom_rect.rect.2025 = list(x = c(0.046875, 0.359375, 0.671875), y = c(0.801372727272727, 0.198627272727273, 0.161663636363636), width = c(0.28125, 0.28125, 0.28125), height = c(0.755918181818182, 0.153172727272727, 0.116209090909091), just = c("left", "top"), hjust = NULL, vjust = NULL, name = "geom_rect.rect.2025", gp = list(col = c("black", 
+#> "black", "black"), fill = c("#FC8D62", "#66C2A5", "#8DA0CB"), lwd = c(0.569055118110236, 0.569055118110236, 0.569055118110236), lty = c(1, 1, 1), linejoin = "mitre", lineend = "butt"), vp = NULL), GRID.polyline.2026 = list(x = c(0.15625, 0.21875, NA, 0.1875, 0.1875, NA, 0.15625, 0.21875, 0.46875, 0.53125, NA, 0.5, 0.5, NA, 0.46875, 0.53125, 0.78125, 0.84375, NA, 0.8125, 0.8125, NA, 0.78125, 0.84375), y = c(0.954545454545455, 0.954545454545455, NA, 0.954545454545455, 0.617690909090909, NA, 0.617690909090909, 
+#> 0.617690909090909, 0.382309090909091, 0.382309090909091, NA, 0.382309090909091, 0.0454545454545455, NA, 0.0454545454545455, 0.0454545454545455, 0.333936363636364, 0.333936363636364, NA, 0.333936363636364, 0.0454545454545455, NA, 0.0454545454545455, 0.0454545454545455), id = c(1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3), id.lengths = NULL, arrow = NULL, name = "GRID.polyline.2026", gp = list(col = c("#000000", "#000000", "#000000"), fill = c("#000000", "#000000", "#000000"
+#> ), lwd = c(1.42263779527559, 1.42263779527559, 1.42263779527559), lty = c(1, 1, 1), lineend = "butt", linejoin = "round", linemitre = 10), vp = NULL), GRID.segments.2027 = list(x0 = 0, y0 = 0.2, x1 = 1, y1 = 0.2, arrow = NULL, name = "GRID.segments.2027", gp = list(col = "#000000FF", fill = "#000000FF", lwd = 3.41433070866142, lty = 2, lineend = "butt", linejoin = "round"), vp = NULL), GRID.segments.2028 = list(x0 = 0, y0 = 0.318181818181818, x1 = 1, y1 = 0.318181818181818, arrow = NULL, name = "GRID.segments.2028", 
+#>     gp = list(col = "#FF0000FF", fill = "#FF0000FF", lwd = 3.41433070866142, lty = 2, lineend = "butt", linejoin = "round"), vp = NULL), `NULL` = list(name = "NULL", gp = NULL, vp = NULL), panel.border..rect.2030 = list(x = 0.5, y = 0.5, width = 1, height = 1, just = "centre", hjust = NULL, vjust = NULL, name = "panel.border..rect.2030", gp = list(lwd = 1.42263779527559, col = "grey20", fill = NA, lty = 1), vp = NULL)), childrenOrder = c("grill.gTree.2040", "NULL", "geom_rect.rect.2025", "GRID.polyline.2026", 
+#> "GRID.segments.2027", "GRID.segments.2028", "NULL", "panel.border..rect.2030")), list(width = 1, height = list(list(1, list(list(0.0966514459665145, NULL, 1), list(1, list(list(0, NULL, 8), list(-0.0966514459665145, NULL, 1)), 203), list(0.441317267884322, NULL, 1), list(0, NULL, 1)), 201)), xmin = NULL, ymin = NULL, name = "GRID.absoluteGrob.2046", gp = NULL, vp = list(x = 0.5, y = 1, width = 1, height = list(list(1, list(list(0.0966514459665145, NULL, 1), list(1, list(list(0, NULL, 8), list(-0.0966514459665145, 
+#>     NULL, 1)), 203), list(0.441317267884322, NULL, 1), list(0, NULL, 1)), 201)), justification = c(0.5, 1), gp = list(), clip = FALSE, xscale = c(0, 1), yscale = c(0, 1), angle = 0, layout = NULL, layout.pos.row = NULL, layout.pos.col = NULL, valid.just = c(0.5, 1), valid.pos.row = NULL, valid.pos.col = NULL, name = "GRID.VP.149", parentgpar = NULL, gpar = NULL, trans = NULL, widths = NULL, heights = NULL, width.cm = NULL, height.cm = NULL, rotation = NULL, cliprect = NULL, parent = NULL, children = NULL, 
+#>     devwidth = NULL, devheight = NULL, clippath = NULL, mask = TRUE, resolvedmask = NULL), children = list(`NULL` = list(name = "NULL", gp = NULL, vp = NULL), axis = list(grobs = list(list(x = c(0.1875, 0.1875, 0.5, 0.5, 0.8125, 0.8125), y = list(list(1, list(list(1, NULL, 0), list(-2.75, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.75, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 
+#>     0), list(-2.75, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(0, NULL, 8)), 201)), id = NULL, id.lengths = c(2, 2, 2), arrow = NULL, name = "GRID.polyline.2043", gp = list(col = "grey20", fill = "grey20", lwd = 1.42263779527559, lty = 1, lineend = "butt"), vp = NULL), list(widths = 1, heights = list(list(2.2, NULL, 8), list(1, list(list(1, list(label = c("Unprotected", "Protected", "Protected connected"), x = c(0.1875, 0.5, 0.8125), y = c(1, 1, 1), just = "centre", hjust = 0.5, vjust = 1, 
+#>     rot = 0, check.overlap = FALSE, name = "GRID.text.2044", gp = list(fontsize = 11, col = "#525252", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL), 22), list(0.0336111111111111, NULL, 2)), 201), list(0, NULL, 8)), name = "GRID.titleGrob.2045", gp = NULL, vp = NULL, children = list(GRID.text.2044 = list(label = c("Unprotected", "Protected", "Protected connected"), x = c(0.1875, 0.5, 0.8125), y = list(list(1, list(list(1, NULL, 0), list(-2.2, NULL, 8), list(0, NULL, 8)), 201), 
+#>     list(1, list(list(1, NULL, 0), list(-2.2, NULL, 8), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.2, NULL, 8), list(0, NULL, 8)), 201)), just = "centre", hjust = 0.5, vjust = 1, rot = 0, check.overlap = FALSE, name = "GRID.text.2044", gp = list(fontsize = 11, col = "#525252", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL)), childrenOrder = "GRID.text.2044"), list(name = "NULL", gp = NULL, vp = NULL)), layout = list(t = c(1, 3, 4), l = c(1, 1, 1), b = c(1, 
+#> 3, 4), r = c(1, 1, 1), z = c(1, 2, 3), clip = c("off", "off", "off"), name = c("axis", "axis", "axis")), widths = 1, heights = list(list(0.0966514459665145, NULL, 1), list(1, list(list(0, NULL, 8), list(-0.0966514459665145, NULL, 1)), 203), list(0.441317267884322, NULL, 1), list(0, NULL, 1)), respect = FALSE, rownames = NULL, colnames = NULL, name = "axis", gp = NULL, vp = NULL, children = list(), childrenOrder = character(0))), childrenOrder = c("NULL", "axis")), list(name = "NULL", gp = NULL, vp = NULL), 
+#>     list(name = "NULL", gp = NULL, vp = NULL), list(name = "NULL", gp = NULL, vp = NULL), list(name = "NULL", gp = NULL, vp = NULL), list(widths = 1, heights = list(list(2.75, NULL, 8), list(1, list(list(1, list(label = "", x = 0.5, y = 1, just = "centre", hjust = 0.5, vjust = 1, rot = 0, check.overlap = FALSE, name = "GRID.text.2051", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL), 22), list(0.0397222222222222, NULL, 2)), 201), list(
+#>         0, NULL, 8)), name = "axis.title.x.bottom..titleGrob.2053", gp = NULL, vp = NULL, children = list(GRID.text.2051 = list(label = "", x = 0.5, y = list(list(1, list(list(1, NULL, 0), list(-2.75, NULL, 8), list(0, NULL, 8)), 201)), just = "centre", hjust = 0.5, vjust = 1, rot = 0, check.overlap = FALSE, name = "GRID.text.2051", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL)), childrenOrder = "GRID.text.2051"), list(widths = list(
+#>         list(0, NULL, 8), list(1, list(list(1, list(label = "Percentage (%)", x = 0, y = 0.5, just = "centre", hjust = 0.5, vjust = 1, rot = 90, check.overlap = FALSE, name = "GRID.text.2054", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL), 21), list(0.0397222222222222, NULL, 2)), 201), list(2.75, NULL, 8)), heights = 1, name = "axis.title.y.left..titleGrob.2056", gp = NULL, vp = NULL, children = list(GRID.text.2054 = list(label = "Percentage (%)", 
+#>         x = list(list(1, list(list(0, NULL, 0), list(0, NULL, 8), list(0, NULL, 8)), 201)), y = 0.5, just = "centre", hjust = 0.5, vjust = 1, rot = 90, check.overlap = FALSE, name = "GRID.text.2054", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL)), childrenOrder = "GRID.text.2054"), list(name = "NULL", gp = NULL, vp = NULL), list(grobs = list(list(grobs = list(list(x = 0.5, y = 0.5, width = 1, height = 1, just = "centre", hjust = NULL, 
+#>         vjust = NULL, name = "legend.key.rect.2060", gp = list(lwd = 1.42263779527559, col = NA, fill = "white", lty = 1), vp = NULL), list(x0 = 0.1, y0 = 0.5, x1 = 0.9, y1 = 0.5, arrow = NULL, name = "GRID.segments.2068", gp = list(col = "#000000FF", fill = "#000000FF", lwd = 3.41433070866142, lty = 2, lineend = "butt"), vp = NULL), list(name = "NULL", gp = NULL, vp = NULL), list(x = 0.5, y = 0.5, width = 1, height = 1, just = "centre", hjust = NULL, vjust = NULL, name = "legend.key.rect.2060", 
+#>         gp = list(lwd = 1.42263779527559, col = NA, fill = "white", lty = 1), vp = NULL), list(name = "NULL", gp = NULL, vp = NULL), list(x0 = 0.1, y0 = 0.5, x1 = 0.9, y1 = 0.5, arrow = NULL, name = "GRID.segments.2069", gp = list(col = "#FF0000FF", fill = "#FF0000FF", lwd = 3.41433070866142, lty = 2, lineend = "butt"), vp = NULL), list(widths = list(list(5.5, NULL, 8), list(1, list(list(1, list(label = "Aichi Target (17%)", x = 0, y = 0.5, just = "centre", hjust = 0, vjust = 0.5, rot = 0, check.overlap = FALSE, 
+#>         name = "GRID.text.2062", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL), 21), list(0, NULL, 2)), 201), list(0, NULL, 8)), heights = list(list(0, NULL, 8), list(1, list(list(1, list(label = "Aichi Target (17%)", x = 0, y = 0.5, just = "centre", hjust = 0, vjust = 0.5, rot = 0, check.overlap = FALSE, name = "GRID.text.2062", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL), 
+#>         22), list(0.0397222222222222, NULL, 2)), 201), list(0, NULL, 8)), name = "guide.label.titleGrob.2064", gp = NULL, vp = NULL, children = list(GRID.text.2062 = list(label = "Aichi Target (17%)", x = list(list(1, list(list(0, NULL, 0), list(0, NULL, 8), list(5.5, NULL, 8)), 201)), y = list(list(1, list(list(0.5, NULL, 0), list(0, NULL, 8), list(0, NULL, 8)), 201)), just = "centre", hjust = 0, vjust = 0.5, rot = 0, check.overlap = FALSE, name = "GRID.text.2062", gp = list(fontsize = 13.2, col = "#252525", 
+#>         fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL)), childrenOrder = "GRID.text.2062"), list(widths = list(list(5.5, NULL, 8), list(1, list(list(1, list(label = "Kunming-Montreal (30%)", x = 0, y = 0.5, just = "centre", hjust = 0, vjust = 0.5, rot = 0, check.overlap = FALSE, name = "GRID.text.2065", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL), 21), list(0, NULL, 2)), 201), list(0, NULL, 8)), heights = list(
+#>         list(0, NULL, 8), list(1, list(list(1, list(label = "Kunming-Montreal (30%)", x = 0, y = 0.5, just = "centre", hjust = 0, vjust = 0.5, rot = 0, check.overlap = FALSE, name = "GRID.text.2065", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL), 22), list(0.0397222222222222, NULL, 2)), 201), list(0, NULL, 8)), name = "guide.label.titleGrob.2067", gp = NULL, vp = NULL, children = list(GRID.text.2065 = list(label = "Kunming-Montreal (30%)", 
+#>         x = list(list(1, list(list(0, NULL, 0), list(0, NULL, 8), list(5.5, NULL, 8)), 201)), y = list(list(1, list(list(0.5, NULL, 0), list(0, NULL, 8), list(0, NULL, 8)), 201)), just = "centre", hjust = 0, vjust = 0.5, rot = 0, check.overlap = FALSE, name = "GRID.text.2065", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL)), childrenOrder = "GRID.text.2065"), list(x = 0.5, y = 0.5, width = 1, height = 1, just = "centre", hjust = NULL, 
+#>         vjust = NULL, name = "legend.background.rect.2058", gp = list(lwd = 1.42263779527559, col = NA, fill = "white", lty = 1), vp = NULL)), layout = list(t = c(2, 2, 2, 4, 4, 4, 2, 4, 1), l = c(2, 2, 2, 2, 2, 2, 3, 3, 1), b = c(2, 2, 2, 4, 4, 4, 2, 4, 5), r = c(2, 2, 2, 2, 2, 2, 3, 3, 4), z = c(1, 2, 3, 4, 5, 6, 7, 8, 0), clip = c("off", "off", "off", "off", "off", "off", "off", "off", "off"), name = c("key-1-1-bg", "key-1-1-1", "key-1-1-2", "key-3-1-bg", "key-3-1-1", "key-3-1-2", "label-1-2", 
+#>     "label-3-2", "background")), widths = c(0.193302891933029, 0.6096, 5.39165983637747, 0.193302891933029), heights = c(0.193302891933029, 0.6096, 0, 0.6096, 0.193302891933029), respect = FALSE, rownames = NULL, colnames = NULL, name = "layout", gp = NULL, vp = list(x = 0, y = 1, width = 6.38786562024353, height = 1, justification = c(0, 1), gp = list(), clip = FALSE, xscale = c(0, 1), yscale = c(0, 1), angle = 0, layout = NULL, layout.pos.row = NULL, layout.pos.col = NULL, valid.just = c(0, 1), 
+#>         valid.pos.row = NULL, valid.pos.col = NULL, name = "GRID.VP.151", parentgpar = NULL, gpar = NULL, trans = NULL, widths = NULL, heights = NULL, width.cm = NULL, height.cm = NULL, rotation = NULL, cliprect = NULL, parent = NULL, children = NULL, devwidth = NULL, devheight = NULL, clippath = NULL, mask = TRUE, resolvedmask = NULL), children = list(), childrenOrder = character(0)), list(name = "NULL", gp = NULL, vp = NULL)), layout = list(t = c(3, 2), l = c(3, 2), b = c(3, 4), r = c(3, 4), z = c(1, 
+#>     0), clip = c("inherit", "off"), name = c("guides", "legend.box.background")), widths = list(list(0.5, NULL, 5), list(0, NULL, 1), list(6.38786562024353, NULL, 1), list(0, NULL, 1), list(0.5, NULL, 5)), heights = list(list(0.5, NULL, 5), list(0, NULL, 1), list(1.60580578386606, NULL, 1), list(0, NULL, 1), list(0.5, NULL, 5)), respect = FALSE, rownames = NULL, colnames = NULL, name = "guide-box", gp = NULL, vp = list(x = 0.5, y = 0.5, width = 6.38786562024353, height = 1.60580578386606, justification = c(0.5, 
+#>     0.5), gp = list(), clip = FALSE, xscale = c(0, 1), yscale = c(0, 1), angle = 0, layout = NULL, layout.pos.row = NULL, layout.pos.col = NULL, valid.just = c(0.5, 0.5), valid.pos.row = NULL, valid.pos.col = NULL, name = "guides", parentgpar = NULL, gpar = NULL, trans = NULL, widths = NULL, heights = NULL, width.cm = NULL, height.cm = NULL, rotation = NULL, cliprect = NULL, parent = NULL, children = NULL, devwidth = NULL, devheight = NULL, clippath = NULL, mask = TRUE, resolvedmask = NULL), children = list(), 
+#>         childrenOrder = character(0)), list(name = "NULL", gp = NULL, vp = NULL), list(name = "NULL", gp = NULL, vp = NULL), list(name = "NULL", gp = NULL, vp = NULL), list(name = "NULL", gp = NULL, vp = NULL), list(name = "plot.subtitle..zeroGrob.2073", gp = NULL, vp = NULL), list(widths = list(list(0, NULL, 8), list(1, list(list(1, list(label = "ProtConn Indicators: 10000", x = 0.5, y = 1, just = "centre", hjust = 0.5, vjust = 1, rot = 0, check.overlap = FALSE, name = "GRID.text.2070", gp = list(
+#>         fontsize = 15.4, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(bold = 2)), vp = NULL), 21), list(0, NULL, 2)), 201), list(0, NULL, 8)), heights = list(list(0, NULL, 8), list(1, list(list(1, list(label = "ProtConn Indicators: 10000", x = 0.5, y = 1, just = "centre", hjust = 0.5, vjust = 1, rot = 0, check.overlap = FALSE, name = "GRID.text.2070", gp = list(fontsize = 15.4, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(bold = 2)), vp = NULL), 22), list(0.0458333333333333, 
+#>         NULL, 2)), 201), list(5.5, NULL, 8)), name = "plot.title..titleGrob.2072", gp = NULL, vp = NULL, children = list(GRID.text.2070 = list(label = "ProtConn Indicators: 10000", x = list(list(1, list(list(0.5, NULL, 0), list(0, NULL, 8), list(0, NULL, 8)), 201)), y = list(list(1, list(list(1, NULL, 0), list(0, NULL, 8), list(0, NULL, 8)), 201)), just = "centre", hjust = 0.5, vjust = 1, rot = 0, check.overlap = FALSE, name = "GRID.text.2070", gp = list(fontsize = 15.4, col = "#252525", fontfamily = "", 
+#>         lineheight = 0.9, font = c(bold = 2)), vp = NULL)), childrenOrder = "GRID.text.2070"), list(name = "plot.caption..zeroGrob.2074", gp = NULL, vp = NULL)), layout = list(t = c(1, 8, 9, 10, 8, 9, 10, 8, 9, 10, 7, 11, 9, 9, 9, 9, 13, 5, 9, 4, 3, 14), l = c(1, 6, 6, 6, 7, 7, 7, 8, 8, 8, 7, 7, 5, 9, 11, 3, 7, 7, 7, 7, 7, 7), b = c(16, 8, 9, 10, 8, 9, 10, 8, 9, 10, 7, 11, 9, 9, 9, 9, 13, 5, 9, 4, 3, 14), r = c(13, 6, 6, 6, 7, 7, 7, 8, 8, 8, 7, 7, 5, 9, 11, 3, 7, 7, 7, 7, 7, 7), z = c(0, 5, 7, 3, 
+#> 6, 1, 9, 4, 8, 2, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21), clip = c("on", "off", "off", "off", "off", "on", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off"), name = c("background", "spacer", "axis-l", "spacer", "axis-t", "panel", "axis-b", "spacer", "axis-r", "spacer", "xlab-t", "xlab-b", "ylab-l", "ylab-r", "guide-box-right", "guide-box-left", "guide-box-bottom", "guide-box-top", "guide-box-inside", "subtitle", "title", "caption"
+#> )), widths = list(list(5.5, NULL, 8), list(0, NULL, 8), list(0, NULL, 1), list(0, NULL, 8), list(1, list(widths = list(list(0, NULL, 8), list(1, list(list(1, list(label = "Percentage (%)", x = 0, y = 0.5, just = "centre", hjust = 0.5, vjust = 1, rot = 90, check.overlap = FALSE, name = "GRID.text.2054", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL), 21), list(0.0397222222222222, NULL, 2)), 201), list(2.75, NULL, 8)), heights = 1, name = "axis.title.y.left..titleGrob.2056", 
+#>     gp = NULL, vp = NULL, children = list(GRID.text.2054 = list(label = "Percentage (%)", x = list(list(1, list(list(0, NULL, 0), list(0, NULL, 8), list(0, NULL, 8)), 201)), y = 0.5, just = "centre", hjust = 0.5, vjust = 1, rot = 90, check.overlap = FALSE, name = "GRID.text.2054", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL)), childrenOrder = "GRID.text.2054"), 21), list(1, list(list(0, NULL, 1), list(0.724597823439877, NULL, 1), 
+#>     list(1, list(list(0, NULL, 8), list(-0.0966514459665145, NULL, 1)), 203), list(0.0966514459665145, NULL, 1)), 201), list(1, NULL, 5), list(0, NULL, 1), list(0, NULL, 1), list(11, NULL, 8), list(1, list(list(0.5, NULL, 5), list(0, NULL, 1), list(6.38786562024353, NULL, 1), list(0, NULL, 1), list(0.5, NULL, 5)), 201), list(0, NULL, 8), list(5.5, NULL, 8)), heights = list(list(5.5, NULL, 8), list(0, NULL, 8), list(1, list(widths = list(list(0, NULL, 8), list(1, list(list(1, list(label = "ProtConn Indicators: 10000", 
+#>     x = 0.5, y = 1, just = "centre", hjust = 0.5, vjust = 1, rot = 0, check.overlap = FALSE, name = "GRID.text.2070", gp = list(fontsize = 15.4, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(bold = 2)), vp = NULL), 21), list(0, NULL, 2)), 201), list(0, NULL, 8)), heights = list(list(0, NULL, 8), list(1, list(list(1, list(label = "ProtConn Indicators: 10000", x = 0.5, y = 1, just = "centre", hjust = 0.5, vjust = 1, rot = 0, check.overlap = FALSE, name = "GRID.text.2070", gp = list(fontsize = 15.4, 
+#>     col = "#252525", fontfamily = "", lineheight = 0.9, font = c(bold = 2)), vp = NULL), 22), list(0.0458333333333333, NULL, 2)), 201), list(5.5, NULL, 8)), name = "plot.title..titleGrob.2072", gp = NULL, vp = NULL, children = list(GRID.text.2070 = list(label = "ProtConn Indicators: 10000", x = list(list(1, list(list(0.5, NULL, 0), list(0, NULL, 8), list(0, NULL, 8)), 201)), y = list(list(1, list(list(1, NULL, 0), list(0, NULL, 8), list(0, NULL, 8)), 201)), just = "centre", hjust = 0.5, vjust = 1, 
+#>     rot = 0, check.overlap = FALSE, name = "GRID.text.2070", gp = list(fontsize = 15.4, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(bold = 2)), vp = NULL)), childrenOrder = "GRID.text.2070"), 22), list(0, NULL, 1), list(0, NULL, 1), list(0, NULL, 8), list(0, NULL, 1), list(0, NULL, 1), list(1, NULL, 5), list(1, list(list(0.0966514459665145, NULL, 1), list(1, list(list(0, NULL, 8), list(-0.0966514459665145, NULL, 1)), 203), list(0.441317267884322, NULL, 1), list(0, NULL, 1)), 201), 
+#>     list(1, list(widths = 1, heights = list(list(2.75, NULL, 8), list(1, list(list(1, list(label = "", x = 0.5, y = 1, just = "centre", hjust = 0.5, vjust = 1, rot = 0, check.overlap = FALSE, name = "GRID.text.2051", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL), 22), list(0.0397222222222222, NULL, 2)), 201), list(0, NULL, 8)), name = "axis.title.x.bottom..titleGrob.2053", gp = NULL, vp = NULL, children = list(GRID.text.2051 = list(
+#>         label = "", x = 0.5, y = list(list(1, list(list(1, NULL, 0), list(-2.75, NULL, 8), list(0, NULL, 8)), 201)), just = "centre", hjust = 0.5, vjust = 1, rot = 0, check.overlap = FALSE, name = "GRID.text.2051", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL)), childrenOrder = "GRID.text.2051"), 22), list(0, NULL, 8), list(0, NULL, 1), list(0, NULL, 1), list(0, NULL, 8), list(5.5, NULL, 8)), respect = FALSE, rownames = NULL, colnames = NULL, 
+#>     name = "layout", gp = NULL, vp = NULL, children = list(), childrenOrder = character(0)), xmin = 0, xmax = 1, ymin = 0.5, ymax = 1, scale = 1, clip = inherit, halign = 0.5, valign = 0.5
+#> stat_identity: na.rm = FALSE
+#> position_identity 
+#> 
+#> $layers[[2]]
+#> geom_draw_grob: grob = list(grobs = list(list(x = 0.5, y = 0.5, width = 1, height = 1, just = "centre", hjust = NULL, vjust = NULL, name = "plot.background..rect.2114", gp = list(lwd = 1.42263779527559, col = "white", fill = "white", lty = 1), vp = NULL), list(name = "NULL", gp = NULL, vp = NULL), list(width = list(list(1, list(list(0, NULL, 1), list(0.724597823439877, NULL, 1), list(1, list(list(0, NULL, 8), list(-0.0966514459665145, NULL, 1)), 203), list(0.0966514459665145, NULL, 1)), 201)), height = 1, xmin = NULL, 
+#>     ymin = NULL, name = "GRID.absoluteGrob.2101", gp = NULL, vp = list(x = 1, y = 0.5, width = list(list(1, list(list(0, NULL, 1), list(0.724597823439877, NULL, 1), list(1, list(list(0, NULL, 8), list(-0.0966514459665145, NULL, 1)), 203), list(0.0966514459665145, NULL, 1)), 201)), height = 1, justification = c(1, 0.5), gp = list(), clip = FALSE, xscale = c(0, 1), yscale = c(0, 1), angle = 0, layout = NULL, layout.pos.row = NULL, layout.pos.col = NULL, valid.just = c(1, 0.5), valid.pos.row = NULL, 
+#>         valid.pos.col = NULL, name = "GRID.VP.154", parentgpar = NULL, gpar = NULL, trans = NULL, widths = NULL, heights = NULL, width.cm = NULL, height.cm = NULL, rotation = NULL, cliprect = NULL, parent = NULL, children = NULL, devwidth = NULL, devheight = NULL, clippath = NULL, mask = TRUE, resolvedmask = NULL), children = list(`NULL` = list(name = "NULL", gp = NULL, vp = NULL), axis = list(grobs = list(list(x = list(list(1, list(list(1, NULL, 0), list(-2.75, NULL, 8)), 201), list(1, list(list(
+#>         1, NULL, 0), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.75, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.75, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.75, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.75, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(0, NULL, 8)), 
+#>         201)), y = c(0.0454545454545455, 0.0454545454545455, 0.272727272727273, 0.272727272727273, 0.5, 0.5, 0.727272727272727, 0.727272727272727, 0.954545454545455, 0.954545454545455), id = NULL, id.lengths = c(2, 2, 2, 2, 2), arrow = NULL, name = "GRID.polyline.2098", gp = list(col = "grey20", fill = "grey20", lwd = 1.42263779527559, lty = 1, lineend = "butt"), vp = NULL), list(widths = list(list(0, NULL, 8), list(1, list(list(1, list(label = c("0", "25", "50", "75", "100"), x = c(1, 1, 1, 1, 1
+#>     ), y = c(0.0454545454545455, 0.272727272727273, 0.5, 0.727272727272727, 0.954545454545455), just = "centre", hjust = 1, vjust = 0.5, rot = 0, check.overlap = FALSE, name = "GRID.text.2099", gp = list(fontsize = 11, col = "#525252", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL), 21), list(0, NULL, 2)), 201), list(2.2, NULL, 8)), heights = 1, name = "GRID.titleGrob.2100", gp = NULL, vp = NULL, children = list(GRID.text.2099 = list(label = c("0", "25", "50", "75", "100"), x = list(
+#>         list(1, list(list(1, NULL, 0), list(-2.2, NULL, 8), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.2, NULL, 8), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.2, NULL, 8), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.2, NULL, 8), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.2, NULL, 8), list(0, NULL, 8)), 201)), y = c(0.0454545454545455, 0.272727272727273, 0.5, 0.727272727272727, 0.954545454545455), just = "centre", hjust = 1, 
+#>         vjust = 0.5, rot = 0, check.overlap = FALSE, name = "GRID.text.2099", gp = list(fontsize = 11, col = "#525252", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL)), childrenOrder = "GRID.text.2099"), list(name = "NULL", gp = NULL, vp = NULL)), layout = list(t = c(1, 1, 1), l = c(4, 2, 1), b = c(1, 1, 1), r = c(4, 2, 1), z = c(2, 1, 3), clip = c("off", "off", "off"), name = c("axis", "axis", "axis")), widths = list(list(0, NULL, 1), list(0.724597823439877, NULL, 1), list(1, 
+#>         list(list(0, NULL, 8), list(-0.0966514459665145, NULL, 1)), 203), list(0.0966514459665145, NULL, 1)), heights = 1, respect = FALSE, rownames = NULL, colnames = NULL, name = "axis", gp = NULL, vp = NULL, children = list(), childrenOrder = character(0))), childrenOrder = c("NULL", "axis")), list(name = "NULL", gp = NULL, vp = NULL), list(name = "NULL", gp = NULL, vp = NULL), list(name = "panel-1.gTree.2093", gp = NULL, vp = NULL, children = list(grill.gTree.2091 = list(name = "grill.gTree.2091", 
+#>     gp = NULL, vp = NULL, children = list(panel.background..rect.2084 = list(x = 0.5, y = 0.5, width = 1, height = 1, just = "centre", hjust = NULL, vjust = NULL, name = "panel.background..rect.2084", gp = list(lwd = 1.42263779527559, col = NA, fill = "white", lty = 1), vp = NULL), panel.grid.minor.y..polyline.2086 = list(x = c(0, 1, 0, 1, 0, 1, 0, 1), y = c(0.159090909090909, 0.159090909090909, 0.386363636363636, 0.386363636363636, 0.613636363636364, 0.613636363636364, 0.840909090909091, 0.840909090909091
+#>     ), id = NULL, id.lengths = c(2, 2, 2, 2), arrow = NULL, name = "panel.grid.minor.y..polyline.2086", gp = list(col = "grey92", fill = "grey92", lwd = 0.711318897637795, lty = 1, lineend = "butt"), vp = NULL), panel.grid.major.y..polyline.2088 = list(x = c(0, 1, 0, 1, 0, 1, 0, 1, 0, 1), y = c(0.0454545454545455, 0.0454545454545455, 0.272727272727273, 0.272727272727273, 0.5, 0.5, 0.727272727272727, 0.727272727272727, 0.954545454545455, 0.954545454545455), id = NULL, id.lengths = c(2, 2, 2, 2, 2), 
+#>         arrow = NULL, name = "panel.grid.major.y..polyline.2088", gp = list(col = "grey92", fill = "grey92", lwd = 1.42263779527559, lty = 1, lineend = "butt"), vp = NULL), panel.grid.major.x..polyline.2090 = list(x = c(0.142857142857143, 0.142857142857143, 0.380952380952381, 0.380952380952381, 0.619047619047619, 0.619047619047619, 0.857142857142857, 0.857142857142857), y = c(0, 1, 0, 1, 0, 1, 0, 1), id = NULL, id.lengths = c(2, 2, 2, 2), arrow = NULL, name = "panel.grid.major.x..polyline.2090", 
+#>         gp = list(col = "grey92", fill = "grey92", lwd = 1.42263779527559, lty = 1, lineend = "butt"), vp = NULL)), childrenOrder = c("panel.background..rect.2084", "panel.grid.minor.y..polyline.2086", "panel.grid.major.y..polyline.2088", "panel.grid.major.x..polyline.2090")), `NULL` = list(name = "NULL", gp = NULL, vp = NULL), geom_rect.rect.2078 = list(x = c(0.75, 0.511904761904762, 0.0357142857142857, 0.273809523809524), y = c(0.0857363636363636, 0.130009090909091, 0.692, 0.197809090909091), width = c(0.214285714285714, 
+#> 0.214285714285714, 0.214285714285714, 0.214285714285714), height = c(0.0402818181818182, 0.0845545454545455, 0.646545454545455, 0.152354545454545), just = c("left", "top"), hjust = NULL, vjust = NULL, name = "geom_rect.rect.2078", gp = list(col = c("black", "black", "black", "black"), fill = c("#7FCDBB", "#41B6C4", "#253494", "#2C7FB8"), lwd = c(0.569055118110236, 0.569055118110236, 0.569055118110236, 0.569055118110236), lty = c(1, 1, 1, 1), linejoin = "mitre", lineend = "butt"), vp = NULL), GRID.polyline.2079 = list(
+#>     x = c(0.833333333333333, 0.880952380952381, NA, 0.857142857142857, 0.857142857142857, NA, 0.833333333333333, 0.880952380952381, 0.595238095238095, 0.642857142857143, NA, 0.619047619047619, 0.619047619047619, NA, 0.595238095238095, 0.642857142857143, 0.119047619047619, 0.166666666666667, NA, 0.142857142857143, 0.142857142857143, NA, 0.119047619047619, 0.166666666666667, 0.357142857142857, 0.404761904761905, NA, 0.380952380952381, 0.380952380952381, NA, 0.357142857142857, 0.404761904761905), y = c(0.162490909090909, 
+#>     0.162490909090909, NA, 0.162490909090909, 0.0454545454545455, NA, 0.0454545454545455, 0.0454545454545455, 0.216436363636364, 0.216436363636364, NA, 0.216436363636364, 0.0454545454545455, NA, 0.0454545454545455, 0.0454545454545455, 0.954545454545455, 0.954545454545455, NA, 0.954545454545455, 0.403081818181818, NA, 0.403081818181818, 0.403081818181818, 0.363090909090909, 0.363090909090909, NA, 0.363090909090909, 0.0454545454545455, NA, 0.0454545454545455, 0.0454545454545455), id = c(1, 1, 1, 1, 
+#>     1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4), id.lengths = NULL, arrow = NULL, name = "GRID.polyline.2079", gp = list(col = c("#000000", "#000000", "#000000", "#000000"), fill = c("#000000", "#000000", "#000000", "#000000"), lwd = c(1.42263779527559, 1.42263779527559, 1.42263779527559, 1.42263779527559), lty = c(1, 1, 1, 1), lineend = "butt", linejoin = "round", linemitre = 10), vp = NULL), `NULL` = list(name = "NULL", gp = NULL, vp = NULL), panel.border..rect.2081 = list(
+#>     x = 0.5, y = 0.5, width = 1, height = 1, just = "centre", hjust = NULL, vjust = NULL, name = "panel.border..rect.2081", gp = list(lwd = 1.42263779527559, col = "grey20", fill = NA, lty = 1), vp = NULL)), childrenOrder = c("grill.gTree.2091", "NULL", "geom_rect.rect.2078", "GRID.polyline.2079", "NULL", "panel.border..rect.2081")), list(width = 1, height = list(list(1, list(list(0.0966514459665145, NULL, 1), list(1, list(list(0, NULL, 8), list(-0.0966514459665145, NULL, 1)), 203), list(0.441317267884322, 
+#>     NULL, 1), list(0, NULL, 1)), 201)), xmin = NULL, ymin = NULL, name = "GRID.absoluteGrob.2097", gp = NULL, vp = list(x = 0.5, y = 1, width = 1, height = list(list(1, list(list(0.0966514459665145, NULL, 1), list(1, list(list(0, NULL, 8), list(-0.0966514459665145, NULL, 1)), 203), list(0.441317267884322, NULL, 1), list(0, NULL, 1)), 201)), justification = c(0.5, 1), gp = list(), clip = FALSE, xscale = c(0, 1), yscale = c(0, 1), angle = 0, layout = NULL, layout.pos.row = NULL, layout.pos.col = NULL, 
+#>     valid.just = c(0.5, 1), valid.pos.row = NULL, valid.pos.col = NULL, name = "GRID.VP.153", parentgpar = NULL, gpar = NULL, trans = NULL, widths = NULL, heights = NULL, width.cm = NULL, height.cm = NULL, rotation = NULL, cliprect = NULL, parent = NULL, children = NULL, devwidth = NULL, devheight = NULL, clippath = NULL, mask = TRUE, resolvedmask = NULL), children = list(`NULL` = list(name = "NULL", gp = NULL, vp = NULL), axis = list(grobs = list(list(x = c(0.142857142857143, 0.142857142857143, 
+#> 0.380952380952381, 0.380952380952381, 0.619047619047619, 0.619047619047619, 0.857142857142857, 0.857142857142857), y = list(list(1, list(list(1, NULL, 0), list(-2.75, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.75, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.75, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), 
+#>     list(-2.75, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(0, NULL, 8)), 201)), id = NULL, id.lengths = c(2, 2, 2, 2), arrow = NULL, name = "GRID.polyline.2094", gp = list(col = "grey20", fill = "grey20", lwd = 1.42263779527559, lty = 1, lineend = "butt"), vp = NULL), list(widths = 1, heights = list(list(2.2, NULL, 8), list(1, list(list(1, list(label = c("ProtConn[Within]", "ProtConn[Contig]", "ProtConn[Unprot]", "ProtConn[Trans]"), x = c(0.142857142857143, 0.380952380952381, 0.619047619047619, 
+#> 0.857142857142857), y = c(1, 1, 1, 1), just = "centre", hjust = 0.5, vjust = 1, rot = 0, check.overlap = FALSE, name = "GRID.text.2095", gp = list(fontsize = 11, col = "#525252", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL), 22), list(0.0336111111111111, NULL, 2)), 201), list(0, NULL, 8)), name = "GRID.titleGrob.2096", gp = NULL, vp = NULL, children = list(GRID.text.2095 = list(label = c("ProtConn[Within]", "ProtConn[Contig]", "ProtConn[Unprot]", "ProtConn[Trans]"), x = c(0.142857142857143, 
+#> 0.380952380952381, 0.619047619047619, 0.857142857142857), y = list(list(1, list(list(1, NULL, 0), list(-2.2, NULL, 8), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.2, NULL, 8), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.2, NULL, 8), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.2, NULL, 8), list(0, NULL, 8)), 201)), just = "centre", hjust = 0.5, vjust = 1, rot = 0, check.overlap = FALSE, name = "GRID.text.2095", gp = list(fontsize = 11, col = "#525252", 
+#>     fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL)), childrenOrder = "GRID.text.2095"), list(name = "NULL", gp = NULL, vp = NULL)), layout = list(t = c(1, 3, 4), l = c(1, 1, 1), b = c(1, 3, 4), r = c(1, 1, 1), z = c(1, 2, 3), clip = c("off", "off", "off"), name = c("axis", "axis", "axis")), widths = 1, heights = list(list(0.0966514459665145, NULL, 1), list(1, list(list(0, NULL, 8), list(-0.0966514459665145, NULL, 1)), 203), list(0.441317267884322, NULL, 1), list(0, NULL, 1)), 
+#>     respect = FALSE, rownames = NULL, colnames = NULL, name = "axis", gp = NULL, vp = NULL, children = list(), childrenOrder = character(0))), childrenOrder = c("NULL", "axis")), list(name = "NULL", gp = NULL, vp = NULL), list(name = "NULL", gp = NULL, vp = NULL), list(name = "NULL", gp = NULL, vp = NULL), list(name = "NULL", gp = NULL, vp = NULL), list(widths = 1, heights = list(list(2.75, NULL, 8), list(1, list(list(1, list(label = "", x = 0.5, y = 1, just = "centre", hjust = 0.5, vjust = 1, rot = 0, 
+#>     check.overlap = FALSE, name = "GRID.text.2102", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL), 22), list(0.0397222222222222, NULL, 2)), 201), list(0, NULL, 8)), name = "axis.title.x.bottom..titleGrob.2104", gp = NULL, vp = NULL, children = list(GRID.text.2102 = list(label = "", x = 0.5, y = list(list(1, list(list(1, NULL, 0), list(-2.75, NULL, 8), list(0, NULL, 8)), 201)), just = "centre", hjust = 0.5, vjust = 1, rot = 0, check.overlap = FALSE, 
+#>     name = "GRID.text.2102", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL)), childrenOrder = "GRID.text.2102"), list(widths = list(list(0, NULL, 8), list(1, list(list(1, list(label = "Percentage (%)", x = 0, y = 0.5, just = "centre", hjust = 0.5, vjust = 1, rot = 90, check.overlap = FALSE, name = "GRID.text.2105", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL), 21), list(
+#>     0.0397222222222222, NULL, 2)), 201), list(2.75, NULL, 8)), heights = 1, name = "axis.title.y.left..titleGrob.2107", gp = NULL, vp = NULL, children = list(GRID.text.2105 = list(label = "Percentage (%)", x = list(list(1, list(list(0, NULL, 0), list(0, NULL, 8), list(0, NULL, 8)), 201)), y = 0.5, just = "centre", hjust = 0.5, vjust = 1, rot = 90, check.overlap = FALSE, name = "GRID.text.2105", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL)), 
+#>     childrenOrder = "GRID.text.2105"), list(name = "NULL", gp = NULL, vp = NULL), list(name = "NULL", gp = NULL, vp = NULL), list(name = "NULL", gp = NULL, vp = NULL), list(name = "NULL", gp = NULL, vp = NULL), list(name = "NULL", gp = NULL, vp = NULL), list(name = "NULL", gp = NULL, vp = NULL), list(name = "plot.subtitle..zeroGrob.2111", gp = NULL, vp = NULL), list(widths = list(list(0, NULL, 8), list(1, list(list(1, list(label = "Protected connected fractions", x = 0.45, y = 1, just = "centre", 
+#>     hjust = 0.45, vjust = 1, rot = 0, check.overlap = FALSE, name = "GRID.text.2108", gp = list(fontsize = 15.4, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(bold = 2)), vp = NULL), 21), list(0, NULL, 2)), 201), list(0, NULL, 8)), heights = list(list(0, NULL, 8), list(1, list(list(1, list(label = "Protected connected fractions", x = 0.45, y = 1, just = "centre", hjust = 0.45, vjust = 1, rot = 0, check.overlap = FALSE, name = "GRID.text.2108", gp = list(fontsize = 15.4, col = "#252525", 
+#>     fontfamily = "", lineheight = 0.9, font = c(bold = 2)), vp = NULL), 22), list(0.0458333333333333, NULL, 2)), 201), list(5.5, NULL, 8)), name = "plot.title..titleGrob.2110", gp = NULL, vp = NULL, children = list(GRID.text.2108 = list(label = "Protected connected fractions", x = list(list(1, list(list(0.45, NULL, 0), list(0, NULL, 8), list(0, NULL, 8)), 201)), y = list(list(1, list(list(1, NULL, 0), list(0, NULL, 8), list(0, NULL, 8)), 201)), just = "centre", hjust = 0.45, vjust = 1, rot = 0, check.overlap = FALSE, 
+#>     name = "GRID.text.2108", gp = list(fontsize = 15.4, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(bold = 2)), vp = NULL)), childrenOrder = "GRID.text.2108"), list(name = "plot.caption..zeroGrob.2112", gp = NULL, vp = NULL)), layout = list(t = c(1, 8, 9, 10, 8, 9, 10, 8, 9, 10, 7, 11, 9, 9, 9, 9, 13, 5, 9, 4, 3, 14), l = c(1, 6, 6, 6, 7, 7, 7, 8, 8, 8, 7, 7, 5, 9, 11, 3, 7, 7, 7, 7, 7, 7), b = c(16, 8, 9, 10, 8, 9, 10, 8, 9, 10, 7, 11, 9, 9, 9, 9, 13, 5, 9, 4, 3, 14), r = c(13, 
+#> 6, 6, 6, 7, 7, 7, 8, 8, 8, 7, 7, 5, 9, 11, 3, 7, 7, 7, 7, 7, 7), z = c(0, 5, 7, 3, 6, 1, 9, 4, 8, 2, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21), clip = c("on", "off", "off", "off", "off", "on", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off"), name = c("background", "spacer", "axis-l", "spacer", "axis-t", "panel", "axis-b", "spacer", "axis-r", "spacer", "xlab-t", "xlab-b", "ylab-l", "ylab-r", "guide-box-right", "guide-box-left", 
+#> "guide-box-bottom", "guide-box-top", "guide-box-inside", "subtitle", "title", "caption")), widths = list(list(0.3, NULL, 1), list(0, NULL, 8), list(0, NULL, 1), list(0, NULL, 8), list(1, list(widths = list(list(0, NULL, 8), list(1, list(list(1, list(label = "Percentage (%)", x = 0, y = 0.5, just = "centre", hjust = 0.5, vjust = 1, rot = 90, check.overlap = FALSE, name = "GRID.text.2105", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL), 
+#>     21), list(0.0397222222222222, NULL, 2)), 201), list(2.75, NULL, 8)), heights = 1, name = "axis.title.y.left..titleGrob.2107", gp = NULL, vp = NULL, children = list(GRID.text.2105 = list(label = "Percentage (%)", x = list(list(1, list(list(0, NULL, 0), list(0, NULL, 8), list(0, NULL, 8)), 201)), y = 0.5, just = "centre", hjust = 0.5, vjust = 1, rot = 90, check.overlap = FALSE, name = "GRID.text.2105", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), 
+#>     vp = NULL)), childrenOrder = "GRID.text.2105"), 21), list(1, list(list(0, NULL, 1), list(0.724597823439877, NULL, 1), list(1, list(list(0, NULL, 8), list(-0.0966514459665145, NULL, 1)), 203), list(0.0966514459665145, NULL, 1)), 201), list(1, NULL, 5), list(0, NULL, 1), list(0, NULL, 1), list(0, NULL, 8), list(0, NULL, 1), list(0, NULL, 8), list(5.3, NULL, 1)), heights = list(list(0, NULL, 1), list(0, NULL, 8), list(1, list(widths = list(list(0, NULL, 8), list(1, list(list(1, list(label = "Protected connected fractions", 
+#>     x = 0.45, y = 1, just = "centre", hjust = 0.45, vjust = 1, rot = 0, check.overlap = FALSE, name = "GRID.text.2108", gp = list(fontsize = 15.4, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(bold = 2)), vp = NULL), 21), list(0, NULL, 2)), 201), list(0, NULL, 8)), heights = list(list(0, NULL, 8), list(1, list(list(1, list(label = "Protected connected fractions", x = 0.45, y = 1, just = "centre", hjust = 0.45, vjust = 1, rot = 0, check.overlap = FALSE, name = "GRID.text.2108", gp = list(
+#>     fontsize = 15.4, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(bold = 2)), vp = NULL), 22), list(0.0458333333333333, NULL, 2)), 201), list(5.5, NULL, 8)), name = "plot.title..titleGrob.2110", gp = NULL, vp = NULL, children = list(GRID.text.2108 = list(label = "Protected connected fractions", x = list(list(1, list(list(0.45, NULL, 0), list(0, NULL, 8), list(0, NULL, 8)), 201)), y = list(list(1, list(list(1, NULL, 0), list(0, NULL, 8), list(0, NULL, 8)), 201)), just = "centre", hjust = 0.45, 
+#>     vjust = 1, rot = 0, check.overlap = FALSE, name = "GRID.text.2108", gp = list(fontsize = 15.4, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(bold = 2)), vp = NULL)), childrenOrder = "GRID.text.2108"), 22), list(0, NULL, 1), list(0, NULL, 1), list(0, NULL, 8), list(0, NULL, 1), list(0, NULL, 1), list(1, NULL, 5), list(1, list(list(0.0966514459665145, NULL, 1), list(1, list(list(0, NULL, 8), list(-0.0966514459665145, NULL, 1)), 203), list(0.441317267884322, NULL, 1), list(0, NULL, 
+#>     1)), 201), list(1, list(widths = 1, heights = list(list(2.75, NULL, 8), list(1, list(list(1, list(label = "", x = 0.5, y = 1, just = "centre", hjust = 0.5, vjust = 1, rot = 0, check.overlap = FALSE, name = "GRID.text.2102", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL), 22), list(0.0397222222222222, NULL, 2)), 201), list(0, NULL, 8)), name = "axis.title.x.bottom..titleGrob.2104", gp = NULL, vp = NULL, children = list(GRID.text.2102 = list(
+#>     label = "", x = 0.5, y = list(list(1, list(list(1, NULL, 0), list(-2.75, NULL, 8), list(0, NULL, 8)), 201)), just = "centre", hjust = 0.5, vjust = 1, rot = 0, check.overlap = FALSE, name = "GRID.text.2102", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL)), childrenOrder = "GRID.text.2102"), 22), list(0, NULL, 8), list(0, NULL, 1), list(0, NULL, 1), list(0, NULL, 8), list(0, NULL, 1)), respect = FALSE, rownames = NULL, colnames = NULL, 
+#>     name = "layout", gp = NULL, vp = NULL, children = list(), childrenOrder = character(0)), xmin = 0, xmax = 1, ymin = 0, ymax = 0.5, scale = 1, clip = inherit, halign = 0.5, valign = 0.5
+#> stat_identity: na.rm = FALSE
+#> position_identity 
+#> 
+#> 
+#> $scales
+#> <ggproto object: Class ScalesList, gg>
+#>     add: function
+#>     add_defaults: function
+#>     add_missing: function
+#>     backtransform_df: function
+#>     clone: function
+#>     find: function
+#>     get_scales: function
+#>     has_scale: function
+#>     input: function
+#>     map_df: function
+#>     n: function
+#>     non_position_scales: function
+#>     scales: list
+#>     set_palettes: function
+#>     train_df: function
+#>     transform_df: function
+#>     super:  <ggproto object: Class ScalesList, gg>
+#> 
+#> $guides
+#> <Guides[0] ggproto object>
+#> 
+#> <empty>
+#> 
+#> $mapping
+#> named list()
+#> attr(,"class")
+#> [1] "uneval"
+#> 
+#> $theme
+#> $line
+#> list()
+#> attr(,"class")
+#> [1] "element_blank" "element"      
+#> 
+#> $rect
+#> list()
+#> attr(,"class")
+#> [1] "element_blank" "element"      
+#> 
+#> $text
+#> $family
+#> [1] ""
+#> 
+#> $face
+#> [1] "plain"
+#> 
+#> $colour
+#> [1] "black"
+#> 
+#> $size
+#> [1] 14
+#> 
+#> $hjust
+#> [1] 0.5
+#> 
+#> $vjust
+#> [1] 0.5
+#> 
+#> $angle
+#> [1] 0
+#> 
+#> $lineheight
+#> [1] 0.9
+#> 
+#> $margin
+#> [1] 0points 0points 0points 0points
+#> 
+#> $debug
+#> [1] FALSE
+#> 
+#> $inherit.blank
+#> [1] TRUE
+#> 
+#> attr(,"class")
+#> [1] "element_text" "element"     
+#> 
+#> $title
+#> NULL
+#> 
+#> $aspect.ratio
+#> NULL
+#> 
+#> $axis.title
+#> list()
+#> attr(,"class")
+#> [1] "element_blank" "element"      
+#> 
+#> $axis.title.x
+#> NULL
+#> 
+#> $axis.title.x.top
+#> NULL
+#> 
+#> $axis.title.x.bottom
+#> NULL
+#> 
+#> $axis.title.y
+#> NULL
+#> 
+#> $axis.title.y.left
+#> NULL
+#> 
+#> $axis.title.y.right
+#> NULL
+#> 
+#> $axis.text
+#> list()
+#> attr(,"class")
+#> [1] "element_blank" "element"      
+#> 
+#> $axis.text.x
+#> NULL
+#> 
+#> $axis.text.x.top
+#> NULL
+#> 
+#> $axis.text.x.bottom
+#> NULL
+#> 
+#> $axis.text.y
+#> NULL
+#> 
+#> $axis.text.y.left
+#> NULL
+#> 
+#> $axis.text.y.right
+#> NULL
+#> 
+#> $axis.text.theta
+#> NULL
+#> 
+#> $axis.text.r
+#> NULL
+#> 
+#> $axis.ticks
+#> list()
+#> attr(,"class")
+#> [1] "element_blank" "element"      
+#> 
+#> $axis.ticks.x
+#> NULL
+#> 
+#> $axis.ticks.x.top
+#> NULL
+#> 
+#> $axis.ticks.x.bottom
+#> NULL
+#> 
+#> $axis.ticks.y
+#> NULL
+#> 
+#> $axis.ticks.y.left
+#> NULL
+#> 
+#> $axis.ticks.y.right
+#> NULL
+#> 
+#> $axis.ticks.theta
+#> NULL
+#> 
+#> $axis.ticks.r
+#> NULL
+#> 
+#> $axis.minor.ticks.x.top
+#> NULL
+#> 
+#> $axis.minor.ticks.x.bottom
+#> NULL
+#> 
+#> $axis.minor.ticks.y.left
+#> NULL
+#> 
+#> $axis.minor.ticks.y.right
+#> NULL
+#> 
+#> $axis.minor.ticks.theta
+#> NULL
+#> 
+#> $axis.minor.ticks.r
+#> NULL
+#> 
+#> $axis.ticks.length
+#> [1] 0points
+#> 
+#> $axis.ticks.length.x
+#> NULL
+#> 
+#> $axis.ticks.length.x.top
+#> NULL
+#> 
+#> $axis.ticks.length.x.bottom
+#> NULL
+#> 
+#> $axis.ticks.length.y
+#> NULL
+#> 
+#> $axis.ticks.length.y.left
+#> NULL
+#> 
+#> $axis.ticks.length.y.right
+#> NULL
+#> 
+#> $axis.ticks.length.theta
+#> NULL
+#> 
+#> $axis.ticks.length.r
+#> NULL
+#> 
+#> $axis.minor.ticks.length
+#> [1] 0points
+#> 
+#> $axis.minor.ticks.length.x
+#> NULL
+#> 
+#> $axis.minor.ticks.length.x.top
+#> NULL
+#> 
+#> $axis.minor.ticks.length.x.bottom
+#> NULL
+#> 
+#> $axis.minor.ticks.length.y
+#> NULL
+#> 
+#> $axis.minor.ticks.length.y.left
+#> NULL
+#> 
+#> $axis.minor.ticks.length.y.right
+#> NULL
+#> 
+#> $axis.minor.ticks.length.theta
+#> NULL
+#> 
+#> $axis.minor.ticks.length.r
+#> NULL
+#> 
+#> $axis.line
+#> list()
+#> attr(,"class")
+#> [1] "element_blank" "element"      
+#> 
+#> $axis.line.x
+#> NULL
+#> 
+#> $axis.line.x.top
+#> NULL
+#> 
+#> $axis.line.x.bottom
+#> NULL
+#> 
+#> $axis.line.y
+#> NULL
+#> 
+#> $axis.line.y.left
+#> NULL
+#> 
+#> $axis.line.y.right
+#> NULL
+#> 
+#> $axis.line.theta
+#> NULL
+#> 
+#> $axis.line.r
+#> NULL
+#> 
+#> $legend.background
+#> list()
+#> attr(,"class")
+#> [1] "element_blank" "element"      
+#> 
+#> $legend.margin
+#> [1] 0points 0points 0points 0points
+#> 
+#> $legend.spacing
+#> [1] 14points
+#> 
+#> $legend.spacing.x
+#> NULL
+#> 
+#> $legend.spacing.y
+#> NULL
+#> 
+#> $legend.key
+#> list()
+#> attr(,"class")
+#> [1] "element_blank" "element"      
+#> 
+#> $legend.key.size
+#> [1] 15.4points
+#> 
+#> $legend.key.height
+#> NULL
+#> 
+#> $legend.key.width
+#> NULL
+#> 
+#> $legend.key.spacing
+#> [1] 7points
+#> 
+#> $legend.key.spacing.x
+#> NULL
+#> 
+#> $legend.key.spacing.y
+#> NULL
+#> 
+#> $legend.frame
+#> NULL
+#> 
+#> $legend.ticks
+#> NULL
+#> 
+#> $legend.ticks.length
+#> [1] 0.2 *
+#> 
+#> $legend.axis.line
+#> NULL
+#> 
+#> $legend.text
+#> $family
+#> NULL
+#> 
+#> $face
+#> NULL
+#> 
+#> $colour
+#> NULL
+#> 
+#> $size
+#> [1] 0.857142857142857 *
+#> 
+#> $hjust
+#> NULL
+#> 
+#> $vjust
+#> NULL
+#> 
+#> $angle
+#> NULL
+#> 
+#> $lineheight
+#> NULL
+#> 
+#> $margin
+#> NULL
+#> 
+#> $debug
+#> NULL
+#> 
+#> $inherit.blank
+#> [1] TRUE
+#> 
+#> attr(,"class")
+#> [1] "element_text" "element"     
+#> 
+#> $legend.text.position
+#> NULL
+#> 
+#> $legend.title
+#> $family
+#> NULL
+#> 
+#> $face
+#> NULL
+#> 
+#> $colour
+#> NULL
+#> 
+#> $size
+#> NULL
+#> 
+#> $hjust
+#> [1] 0
+#> 
+#> $vjust
+#> NULL
+#> 
+#> $angle
+#> NULL
+#> 
+#> $lineheight
+#> NULL
+#> 
+#> $margin
+#> NULL
+#> 
+#> $debug
+#> NULL
+#> 
+#> $inherit.blank
+#> [1] TRUE
+#> 
+#> attr(,"class")
+#> [1] "element_text" "element"     
+#> 
+#> $legend.title.position
+#> NULL
+#> 
+#> $legend.position
+#> [1] "none"
+#> 
+#> $legend.position.inside
+#> NULL
+#> 
+#> $legend.direction
+#> NULL
+#> 
+#> $legend.byrow
+#> NULL
+#> 
+#> $legend.justification
+#> [1] "center"
+#> 
+#> $legend.justification.top
+#> NULL
+#> 
+#> $legend.justification.bottom
+#> NULL
+#> 
+#> $legend.justification.left
+#> NULL
+#> 
+#> $legend.justification.right
+#> NULL
+#> 
+#> $legend.justification.inside
+#> NULL
+#> 
+#> $legend.location
+#> NULL
+#> 
+#> $legend.box
+#> NULL
+#> 
+#> $legend.box.just
+#> NULL
+#> 
+#> $legend.box.margin
+#> [1] 0points 0points 0points 0points
+#> 
+#> $legend.box.background
+#> list()
+#> attr(,"class")
+#> [1] "element_blank" "element"      
+#> 
+#> $legend.box.spacing
+#> [1] 14points
+#> 
+#> $panel.background
+#> list()
+#> attr(,"class")
+#> [1] "element_blank" "element"      
+#> 
+#> $panel.border
+#> list()
+#> attr(,"class")
+#> [1] "element_blank" "element"      
+#> 
+#> $panel.spacing
+#> [1] 7points
+#> 
+#> $panel.spacing.x
+#> NULL
+#> 
+#> $panel.spacing.y
+#> NULL
+#> 
+#> $panel.grid
+#> list()
+#> attr(,"class")
+#> [1] "element_blank" "element"      
+#> 
+#> $panel.grid.major
+#> NULL
+#> 
+#> $panel.grid.minor
+#> NULL
+#> 
+#> $panel.grid.major.x
+#> NULL
+#> 
+#> $panel.grid.major.y
+#> NULL
+#> 
+#> $panel.grid.minor.x
+#> NULL
+#> 
+#> $panel.grid.minor.y
+#> NULL
+#> 
+#> $panel.ontop
+#> [1] FALSE
+#> 
+#> $plot.background
+#> list()
+#> attr(,"class")
+#> [1] "element_blank" "element"      
+#> 
+#> $plot.title
+#> list()
+#> attr(,"class")
+#> [1] "element_blank" "element"      
+#> 
+#> $plot.title.position
+#> [1] "panel"
+#> 
+#> $plot.subtitle
+#> list()
+#> attr(,"class")
+#> [1] "element_blank" "element"      
+#> 
+#> $plot.caption
+#> list()
+#> attr(,"class")
+#> [1] "element_blank" "element"      
+#> 
+#> $plot.caption.position
+#> [1] "panel"
+#> 
+#> $plot.tag
+#> $family
+#> NULL
+#> 
+#> $face
+#> [1] "bold"
+#> 
+#> $colour
+#> NULL
+#> 
+#> $size
+#> NULL
+#> 
+#> $hjust
+#> [1] 0
+#> 
+#> $vjust
+#> [1] 0.7
+#> 
+#> $angle
+#> NULL
+#> 
+#> $lineheight
+#> NULL
+#> 
+#> $margin
+#> NULL
+#> 
+#> $debug
+#> NULL
+#> 
+#> $inherit.blank
+#> [1] TRUE
+#> 
+#> attr(,"class")
+#> [1] "element_text" "element"     
+#> 
+#> $plot.tag.position
+#> [1] 0 1
+#> 
+#> $plot.tag.location
+#> NULL
+#> 
+#> $plot.margin
+#> [1] 0points 0points 0points 0points
+#> 
+#> $strip.background
+#> list()
+#> attr(,"class")
+#> [1] "element_blank" "element"      
+#> 
+#> $strip.background.x
+#> NULL
+#> 
+#> $strip.background.y
+#> NULL
+#> 
+#> $strip.clip
+#> [1] "inherit"
+#> 
+#> $strip.placement
+#> [1] "inside"
+#> 
+#> $strip.text
+#> list()
+#> attr(,"class")
+#> [1] "element_blank" "element"      
+#> 
+#> $strip.text.x
+#> NULL
+#> 
+#> $strip.text.x.bottom
+#> NULL
+#> 
+#> $strip.text.x.top
+#> NULL
+#> 
+#> $strip.text.y
+#> NULL
+#> 
+#> $strip.text.y.left
+#> NULL
+#> 
+#> $strip.text.y.right
+#> NULL
+#> 
+#> $strip.switch.pad.grid
+#> [1] 0cm
+#> 
+#> $strip.switch.pad.wrap
+#> [1] 0cm
+#> 
+#> attr(,"class")
+#> [1] "theme" "gg"   
+#> attr(,"complete")
+#> [1] TRUE
+#> attr(,"validate")
+#> [1] TRUE
+#> 
+#> $coordinates
+#> <ggproto object: Class CoordCartesian, Coord, gg>
+#>     aspect: function
+#>     backtransform_range: function
+#>     clip: off
+#>     default: FALSE
+#>     distance: function
+#>     draw_panel: function
+#>     expand: FALSE
+#>     is_free: function
+#>     is_linear: function
+#>     labels: function
+#>     limits: list
+#>     modify_scales: function
+#>     range: function
+#>     render_axis_h: function
+#>     render_axis_v: function
+#>     render_bg: function
+#>     render_fg: function
+#>     reverse: none
+#>     setup_data: function
+#>     setup_layout: function
+#>     setup_panel_guides: function
+#>     setup_panel_params: function
+#>     setup_params: function
+#>     train_panel_guides: function
+#>     transform: function
+#>     super:  <ggproto object: Class CoordCartesian, Coord, gg>
+#> 
+#> $facet
+#> <ggproto object: Class FacetNull, Facet, gg>
+#>     attach_axes: function
+#>     attach_strips: function
+#>     compute_layout: function
+#>     draw_back: function
+#>     draw_front: function
+#>     draw_labels: function
+#>     draw_panel_content: function
+#>     draw_panels: function
+#>     finish_data: function
+#>     format_strip_labels: function
+#>     init_gtable: function
+#>     init_scales: function
+#>     map_data: function
+#>     params: list
+#>     set_panel_size: function
+#>     setup_data: function
+#>     setup_panel_params: function
+#>     setup_params: function
+#>     shrink: TRUE
+#>     train_scales: function
+#>     vars: function
+#>     super:  <ggproto object: Class FacetNull, Facet, gg>
+#> 
+#> $plot_env
+#> <environment: 0x0000020facfaae08>
+#> 
+#> $layout
+#> <ggproto object: Class Layout, gg>
+#>     coord: NULL
+#>     coord_params: list
+#>     facet: NULL
+#>     facet_params: list
+#>     finish_data: function
+#>     get_scales: function
+#>     layout: NULL
+#>     map_position: function
+#>     panel_params: NULL
+#>     panel_scales_x: NULL
+#>     panel_scales_y: NULL
+#>     render: function
+#>     render_labels: function
+#>     reset_scales: function
+#>     resolve_label: function
+#>     setup: function
+#>     setup_panel_guides: function
+#>     setup_panel_params: function
+#>     train_position: function
+#>     super:  <ggproto object: Class Layout, gg>
+#> 
+#> $labels
+#> list()
+#> 
+#> attr(,"class")
+#> [1] "gg"        "ggplot"    "ggarrange"
 ```
-
-<img src="07-ProtConn_files/figure-html/unnamed-chunk-18-1.png" width="672" />
 
 Vector con valores para cada ecorregión:
 
@@ -977,7 +1796,7 @@ ggplot() +
   )
 ```
 
-<img src="07-ProtConn_files/figure-html/unnamed-chunk-20-1.png" width="672" />
+<img src="07-ProtConn_files/figure-html/unnamed-chunk-20-1.png" alt="" width="672" />
 
 
 ProtConn_Unprot:
@@ -1010,7 +1829,7 @@ ggplot() +
   )
 ```
 
-<img src="07-ProtConn_files/figure-html/unnamed-chunk-21-1.png" width="672" />
+<img src="07-ProtConn_files/figure-html/unnamed-chunk-21-1.png" alt="" width="672" />
 
 ProtConn_Within:
 
@@ -1042,7 +1861,7 @@ ggplot() +
   )
 ```
 
-<img src="07-ProtConn_files/figure-html/unnamed-chunk-22-1.png" width="672" />
+<img src="07-ProtConn_files/figure-html/unnamed-chunk-22-1.png" alt="" width="672" />
 
 ProtConn_Contig:
 
@@ -1074,7 +1893,7 @@ ggplot() +
   )
 ```
 
-<img src="07-ProtConn_files/figure-html/unnamed-chunk-23-1.png" width="672" />
+<img src="07-ProtConn_files/figure-html/unnamed-chunk-23-1.png" alt="" width="672" />
 
 
 ProtConn_Trans:
@@ -1107,7 +1926,7 @@ ggplot() +
   )
 ```
 
-<img src="07-ProtConn_files/figure-html/unnamed-chunk-24-1.png" width="672" />
+<img src="07-ProtConn_files/figure-html/unnamed-chunk-24-1.png" alt="" width="672" />
 
 
 ### Función MK_ProtConn_raster()
@@ -1135,7 +1954,7 @@ plot(st_geometry(Ecorreg))
 plot(APs_raster, add = TRUE)
 ```
 
-<img src="07-ProtConn_files/figure-html/unnamed-chunk-26-1.png" width="672" />
+<img src="07-ProtConn_files/figure-html/unnamed-chunk-26-1.png" alt="" width="672" />
 
 
 
@@ -1158,7 +1977,7 @@ test
 #> $`ProtConn Plot`
 ```
 
-<img src="07-ProtConn_files/figure-html/unnamed-chunk-27-1.png" width="672" />
+<img src="07-ProtConn_files/figure-html/unnamed-chunk-27-1.png" alt="" width="672" />
 
 
 
@@ -1175,7 +1994,7 @@ Regiones <- st_union(Ecorreg) |> st_as_sf()
 plot(Regiones)
 ```
 
-<img src="07-ProtConn_files/figure-html/unnamed-chunk-28-1.png" width="672" />
+<img src="07-ProtConn_files/figure-html/unnamed-chunk-28-1.png" alt="" width="672" />
 
 
 Ahora aplicaré la función MK_Connect_grid()
@@ -1229,7 +2048,7 @@ ggplot() +
   )
 ```
 
-<img src="07-ProtConn_files/figure-html/unnamed-chunk-31-1.png" width="672" />
+<img src="07-ProtConn_files/figure-html/unnamed-chunk-31-1.png" alt="" width="672" />
 
 
 ProtConn[Unprot]:
@@ -1261,7 +2080,7 @@ ggplot() +
   )
 ```
 
-<img src="07-ProtConn_files/figure-html/unnamed-chunk-32-1.png" width="672" />
+<img src="07-ProtConn_files/figure-html/unnamed-chunk-32-1.png" alt="" width="672" />
 
 ## Referencias
 

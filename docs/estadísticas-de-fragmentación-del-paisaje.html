@@ -7,7 +7,7 @@
 <title>Chapter 2 Estadísticas de fragmentación del paisaje | Manual de uso de Makurhini</title>
 <meta name="author" content="Oscar Godínez Gómez">
 <meta name="description" content="Exploraremos la función MK_Fragmentation() para caracterizar la composición y la configuración espacial de los parches en nuestro paisaje. La función calcula ocho métricas a nivel de nodo (como el...">
-<meta name="generator" content="bookdown 0.43 with bs4_book()">
+<meta name="generator" content="bookdown 0.47 with bs4_book()">
 <meta property="og:title" content="Chapter 2 Estadísticas de fragmentación del paisaje | Manual de uso de Makurhini">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://oscargogo.github.io/Makurhini_manual_esp/estadísticas-de-fragmentación-del-paisaje.html">
@@ -19,7 +19,7 @@
 <meta name="twitter:image" content="https://oscargogo.github.io/Makurhini_manual_esp/LOGO_MAKHURINI.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -57,6 +57,7 @@
 <li><a class="" href="prioridad-de-enlaces-con-mk_dpciic_links.html"><span class="header-section-number">8</span> Prioridad de enlaces con MK_dPCIIC_links()</a></li>
 <li><a class="" href="conectividad-din%C3%A1mica-con-mk_deca.html"><span class="header-section-number">9</span> Conectividad dinámica con MK_dECA()</a></li>
 <li><a class="" href="protected-connected-indicator-protconn.html"><span class="header-section-number">10</span> Protected Connected indicator (ProtConn)</a></li>
+<li><a class="" href="resistencia.html"><span class="header-section-number">11</span> Resistencia</a></li>
 </ul>
 
         <div class="book-extra">
@@ -100,7 +101,7 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.title.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>        axis.title.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="02-Fragmentacion_files/figure-html/unnamed-chunk-4-1.png" width="672"></div>
+<div class="inline-figure"><img src="02-Fragmentacion_files/figure-html/unnamed-chunk-4-1.png" alt="" width="672"></div>
 <p>En caso de necesitar abrir otro vector (e.g., .shp, .gpkg) necesitan usar la fución <code><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf()</a></code> del paquete <code>sf</code>, la función <code>shapefile()</code> del paquete <code>raster</code>, o la funcion <code>vect()</code> del paquete <code>terra</code>.</p>
 <p>Para abrirlo solo necesitan colocar la dirección de su archivo, el nombre y la extensión, ejemplo:</p>
 <ul>
@@ -163,7 +164,7 @@
 <span>                                  area_unit <span class="op">=</span> <span class="st">"ha"</span>,</span>
 <span>                                  perimeter_unit <span class="op">=</span> <span class="st">"km"</span>,</span>
 <span>                                  plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="02-Fragmentacion_files/figure-html/unnamed-chunk-7-1.png" width="672"><img src="02-Fragmentacion_files/figure-html/unnamed-chunk-7-2.png" width="672"></p>
+<p><img src="02-Fragmentacion_files/figure-html/unnamed-chunk-7-1.png" alt="" width="672"><img src="02-Fragmentacion_files/figure-html/unnamed-chunk-7-2.png" alt="" width="672"></p>
 <div id="estadisticos-a-nivel-de-parche" class="section level3" number="2.3.1">
 <h3>
 <span class="header-section-number">2.3.1</span> Estadisticos a nivel de parche<a class="anchor" aria-label="anchor" href="#estadisticos-a-nivel-de-parche"><i class="fas fa-link"></i></a>
@@ -221,7 +222,7 @@
 <span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="02-Fragmentacion_files/figure-html/unnamed-chunk-9-1.png" width="672"></div>
+<div class="inline-figure"><img src="02-Fragmentacion_files/figure-html/unnamed-chunk-9-1.png" alt="" width="672"></div>
 <ul>
 <li>% de borde</li>
 </ul>
@@ -243,7 +244,7 @@
 <span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="02-Fragmentacion_files/figure-html/unnamed-chunk-10-1.png" width="672"></div>
+<div class="inline-figure"><img src="02-Fragmentacion_files/figure-html/unnamed-chunk-10-1.png" alt="" width="672"></div>
 <ul>
 <li>Perimeter</li>
 </ul>
@@ -265,7 +266,7 @@
 <span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="02-Fragmentacion_files/figure-html/unnamed-chunk-11-1.png" width="672"></div>
+<div class="inline-figure"><img src="02-Fragmentacion_files/figure-html/unnamed-chunk-11-1.png" alt="" width="672"></div>
 <ul>
 <li>Perimeter-Area Ratio</li>
 </ul>
@@ -287,7 +288,7 @@
 <span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="02-Fragmentacion_files/figure-html/unnamed-chunk-12-1.png" width="672"></div>
+<div class="inline-figure"><img src="02-Fragmentacion_files/figure-html/unnamed-chunk-12-1.png" alt="" width="672"></div>
 <ul>
 <li>Shape Index</li>
 </ul>
@@ -309,7 +310,7 @@
 <span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="02-Fragmentacion_files/figure-html/unnamed-chunk-13-1.png" width="672"></div>
+<div class="inline-figure"><img src="02-Fragmentacion_files/figure-html/unnamed-chunk-13-1.png" alt="" width="672"></div>
 <ul>
 <li>Fractal Dimension Index</li>
 </ul>
@@ -331,7 +332,7 @@
 <span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="02-Fragmentacion_files/figure-html/unnamed-chunk-14-1.png" width="672"></div>
+<div class="inline-figure"><img src="02-Fragmentacion_files/figure-html/unnamed-chunk-14-1.png" alt="" width="672"></div>
 </div>
 <div id="estadísticos-a-nivel-de-paisaje" class="section level3" number="2.3.2">
 <h3>
@@ -421,7 +422,7 @@ Patch density
 Total Core Area (ha)
 </td>
 <td style="text-align:center;">
-631595.3522
+631595.3523
 </td>
 </tr>
 <tr>
@@ -539,7 +540,7 @@ MESH (ha)
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span><span class="st">"Distancia"</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="va">Fragmentacion.2</span><span class="op">$</span><span class="va">Edge.distance</span><span class="op">)</span>, breaks <span class="op">=</span> <span class="va">Fragmentacion.2</span><span class="op">$</span><span class="va">Edge.distance</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_color_brewer</a></span><span class="op">(</span>palette<span class="op">=</span><span class="st">"Dark2"</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="02-Fragmentacion_files/figure-html/unnamed-chunk-19-1.png" width="672"></div>
+<div class="inline-figure"><img src="02-Fragmentacion_files/figure-html/unnamed-chunk-19-1.png" alt="" width="672"></div>
 </div>
 <div id="ejercicio-3" class="section level2" number="2.5">
 <h2>
@@ -552,7 +553,7 @@ MESH (ha)
 <span>                  cell_area <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/unit_convert.html">unit_convert</a></span><span class="op">(</span><span class="fl">40</span>, <span class="st">"km2"</span>, <span class="st">"m2"</span><span class="op">)</span>,</span>
 <span>                  clip <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">Grid_test</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="02-Fragmentacion_files/figure-html/unnamed-chunk-20-1.png" width="672"></div>
+<div class="inline-figure"><img src="02-Fragmentacion_files/figure-html/unnamed-chunk-20-1.png" alt="" width="672"></div>
 <p>Estimar MESH usando un loop sencillo tipo <code>for()</code></p>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Variable dummy</span></span>
@@ -601,7 +602,7 @@ MESH (ha)
 <span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="02-Fragmentacion_files/figure-html/unnamed-chunk-24-1.png" width="672"></div>
+<div class="inline-figure"><img src="02-Fragmentacion_files/figure-html/unnamed-chunk-24-1.png" alt="" width="672"></div>
 
 </div>
 </div>
@@ -639,7 +640,7 @@ MESH (ha)
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Manual de uso de Makurhini</strong>" was written by Oscar Godínez Gómez. It was last built on 2025-08-15.</p>
+    <p>"<strong>Manual de uso de Makurhini</strong>" was written by Oscar Godínez Gómez. It was last built on 2026-06-22.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -647,6 +648,34 @@ MESH (ha)
   </div>
 
 </div></div>
-</footer>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
 </body>
 </html>

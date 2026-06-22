@@ -7,7 +7,7 @@
 <title>Chapter 10 Protected Connected indicator (ProtConn) | Manual de uso de Makurhini</title>
 <meta name="author" content="Oscar Godínez Gómez">
 <meta name="description" content="ProtConn es un índice que ayuda a medir qué tan bien conectadas están las áreas protegidas, como parques nacionales o reservas, a nivel local, regional o mundial. Este indicador, creado por Saura...">
-<meta name="generator" content="bookdown 0.43 with bs4_book()">
+<meta name="generator" content="bookdown 0.47 with bs4_book()">
 <meta property="og:title" content="Chapter 10 Protected Connected indicator (ProtConn) | Manual de uso de Makurhini">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://oscargogo.github.io/Makurhini_manual_esp/protected-connected-indicator-protconn.html">
@@ -19,7 +19,7 @@
 <meta name="twitter:image" content="https://oscargogo.github.io/Makurhini_manual_esp/LOGO_MAKHURINI.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -57,6 +57,7 @@
 <li><a class="" href="prioridad-de-enlaces-con-mk_dpciic_links.html"><span class="header-section-number">8</span> Prioridad de enlaces con MK_dPCIIC_links()</a></li>
 <li><a class="" href="conectividad-din%C3%A1mica-con-mk_deca.html"><span class="header-section-number">9</span> Conectividad dinámica con MK_dECA()</a></li>
 <li><a class="active" href="protected-connected-indicator-protconn.html"><span class="header-section-number">10</span> Protected Connected indicator (ProtConn)</a></li>
+<li><a class="" href="resistencia.html"><span class="header-section-number">11</span> Resistencia</a></li>
 </ul>
 
         <div class="book-extra">
@@ -176,10 +177,10 @@
 <p>Lo podemos visualizar:</p>
 <div class="sourceCode" id="cb149"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ateucher/rmapshaper">rmapshaper</a></span><span class="op">)</span></span>
-<span><span class="va">mask_ecorreg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rmapshaper/man/ms_dissolve.html">ms_dissolve</a></span><span class="op">(</span><span class="va">Ecorreg</span><span class="op">)</span></span>
-<span><span class="va">APs_nacionales</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rmapshaper/man/ms_clip.html">ms_clip</a></span><span class="op">(</span><span class="va">APs</span>, <span class="va">mask_ecorreg</span><span class="op">)</span></span>
+<span><span class="va">mask_ecorreg</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://andyteucher.ca/rmapshaper/reference/ms_dissolve.html">ms_dissolve</a></span><span class="op">(</span><span class="va">Ecorreg</span><span class="op">)</span></span>
+<span><span class="va">APs_nacionales</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://andyteucher.ca/rmapshaper/reference/ms_clip.html">ms_clip</a></span><span class="op">(</span><span class="va">APs</span>, <span class="va">mask_ecorreg</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">APs_transnacionales</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rmapshaper/man/ms_erase.html">ms_erase</a></span><span class="op">(</span><span class="va">APs</span>, <span class="va">mask_ecorreg</span><span class="op">)</span></span>
+<span><span class="va">APs_transnacionales</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://andyteucher.ca/rmapshaper/reference/ms_erase.html">ms_erase</a></span><span class="op">(</span><span class="va">APs</span>, <span class="va">mask_ecorreg</span><span class="op">)</span></span>
 <span><span class="va">APs_transnacionales</span><span class="op">$</span><span class="va">Tipo</span> <span class="op">&lt;-</span> <span class="st">"APs en paises vecinos"</span></span>
 <span></span>
 <span><span class="va">APs_subnacionales</span> <span class="op">&lt;-</span> <span class="va">APs_nacionales</span><span class="op">[</span><span class="va">APs_nacionales</span><span class="op">$</span><span class="va">ESCALA_2</span> <span class="op">==</span> <span class="st">"Subnacional"</span>,<span class="op">]</span></span>
@@ -195,7 +196,7 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">APs_vis</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill<span class="op">=</span><span class="va">Tipo</span><span class="op">)</span>, color <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Tipo"</span>, values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#1DAB80"</span>, <span class="st">"#FF00C5"</span>, <span class="st">"#E06936"</span>, <span class="st">"#8D8BBE"</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> </span></code></pre></div>
-<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-4-1.png" width="672"></div>
+<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-4-1.png" alt="" width="672"></div>
 </div>
 <div id="función-mk_protconn" class="section level3" number="10.0.2">
 <h3>
@@ -291,25 +292,30 @@
 <ol start="3" style="list-style-type: decimal">
 <li>Estimaremos el índice Protconn solo en una ecorregión:</li>
 </ol>
-<div class="sourceCode" id="cb150"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">Ecorreg_1</span> <span class="op">&lt;-</span> <span class="va">Ecorreg</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span> <span class="co">#Selecciono la primera fila o primera ecorregion</span></span>
-<span></span>
-<span><span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_ProtConn.html">MK_ProtConn</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">APs</span>, </span>
-<span>                    region <span class="op">=</span> <span class="va">Ecorreg_1</span>,</span>
-<span>                    area_unit <span class="op">=</span> <span class="st">"ha"</span>,</span>
-<span>                    distance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>type<span class="op">=</span> <span class="st">"edge"</span>, keep <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>,</span>
-<span>                    distance_thresholds <span class="op">=</span> <span class="fl">10000</span>,</span>
-<span>                    probability <span class="op">=</span> <span class="fl">0.5</span>, </span>
-<span>                    transboundary <span class="op">=</span> <span class="fl">50000</span>,</span>
-<span>                    plot <span class="op">=</span> <span class="cn">TRUE</span>, </span>
-<span>                    parallel <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>                    protconn_bound <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>                    delta <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>                    write <span class="op">=</span> <span class="cn">NULL</span>, </span>
-<span>                    intern <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Step 1. Reviewing parameters</span></span>
-<span><span class="co">#&gt; Step 2. Processing ProtConn metric</span></span>
-<span><span class="co">#&gt; Done!</span></span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="protected-connected-indicator-protconn.html#cb150-1" tabindex="-1"></a>Ecorreg_1 <span class="ot">&lt;-</span> Ecorreg[<span class="dv">1</span>,] <span class="co">#Selecciono la primera fila o primera ecorregion</span></span>
+<span id="cb150-2"><a href="protected-connected-indicator-protconn.html#cb150-2" tabindex="-1"></a></span>
+<span id="cb150-3"><a href="protected-connected-indicator-protconn.html#cb150-3" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">MK_ProtConn</span>(<span class="at">nodes =</span> APs, </span>
+<span id="cb150-4"><a href="protected-connected-indicator-protconn.html#cb150-4" tabindex="-1"></a>                    <span class="at">region =</span> Ecorreg_1,</span>
+<span id="cb150-5"><a href="protected-connected-indicator-protconn.html#cb150-5" tabindex="-1"></a>                    <span class="at">area_unit =</span> <span class="st">"ha"</span>,</span>
+<span id="cb150-6"><a href="protected-connected-indicator-protconn.html#cb150-6" tabindex="-1"></a>                    <span class="at">distance =</span> <span class="fu">list</span>(<span class="at">type=</span> <span class="st">"edge"</span>, <span class="at">keep =</span> <span class="fl">0.1</span>),</span>
+<span id="cb150-7"><a href="protected-connected-indicator-protconn.html#cb150-7" tabindex="-1"></a>                    <span class="at">distance_thresholds =</span> <span class="dv">10000</span>,</span>
+<span id="cb150-8"><a href="protected-connected-indicator-protconn.html#cb150-8" tabindex="-1"></a>                    <span class="at">probability =</span> <span class="fl">0.5</span>, </span>
+<span id="cb150-9"><a href="protected-connected-indicator-protconn.html#cb150-9" tabindex="-1"></a>                    <span class="at">transboundary =</span> <span class="dv">50000</span>,</span>
+<span id="cb150-10"><a href="protected-connected-indicator-protconn.html#cb150-10" tabindex="-1"></a>                    <span class="at">plot =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb150-11"><a href="protected-connected-indicator-protconn.html#cb150-11" tabindex="-1"></a>                    <span class="at">parallel =</span> <span class="cn">NULL</span>,</span>
+<span id="cb150-12"><a href="protected-connected-indicator-protconn.html#cb150-12" tabindex="-1"></a>                    <span class="at">protconn_bound =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb150-13"><a href="protected-connected-indicator-protconn.html#cb150-13" tabindex="-1"></a>                    <span class="at">delta =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb150-14"><a href="protected-connected-indicator-protconn.html#cb150-14" tabindex="-1"></a>                    <span class="at">write =</span> <span class="cn">NULL</span>, </span>
+<span id="cb150-15"><a href="protected-connected-indicator-protconn.html#cb150-15" tabindex="-1"></a>                    <span class="at">intern =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb150-16"><a href="protected-connected-indicator-protconn.html#cb150-16" tabindex="-1"></a><span class="co">#&gt; Step 1. Reviewing parameters</span></span>
+<span id="cb150-17"><a href="protected-connected-indicator-protconn.html#cb150-17" tabindex="-1"></a><span class="co">#&gt; Topology errors detected. Makurhini will try to fix them, but it may take time. You can cancel and repair them in a GIS instead.</span></span>
+<span id="cb150-18"><a href="protected-connected-indicator-protconn.html#cb150-18" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb150-19"><a href="protected-connected-indicator-protconn.html#cb150-19" tabindex="-1"></a>  <span class="sc">|</span>                                                        </span>
+<span id="cb150-20"><a href="protected-connected-indicator-protconn.html#cb150-20" tabindex="-1"></a>  <span class="er">|</span>                                                  <span class="er">|</span>   <span class="dv">0</span>%</span>
+<span id="cb150-21"><a href="protected-connected-indicator-protconn.html#cb150-21" tabindex="-1"></a>  <span class="sc">|</span>                                                        </span>
+<span id="cb150-22"><a href="protected-connected-indicator-protconn.html#cb150-22" tabindex="-1"></a>  <span class="er">|==================================================|</span> <span class="dv">100</span>%</span>
+<span id="cb150-23"><a href="protected-connected-indicator-protconn.html#cb150-23" tabindex="-1"></a><span class="co">#&gt; Step 2. Processing ProtConn metric</span></span>
+<span id="cb150-24"><a href="protected-connected-indicator-protconn.html#cb150-24" tabindex="-1"></a><span class="co">#&gt; Done!</span></span></code></pre></div>
 <p>Revisamos nuestra tabla:</p>
 <div class="sourceCode" id="cb151"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">test</span><span class="op">$</span><span class="va">`Protected Connected (Viewer Panel`</span></span></code></pre></div>
@@ -522,27 +528,32 @@ Percentage
 <p>Ahora nuestro plot:</p>
 <div class="sourceCode" id="cb153"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">test</span><span class="op">$</span><span class="va">`ProtConn Plot`</span></span></code></pre></div>
-<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-7-1.png" width="672"></div>
+<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-7-1.png" alt="" width="672"></div>
 <div class="sourceCode" id="cb154"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Alternativa: test[[2]]</span></span></code></pre></div>
 <p>Podemos estimar la versión corregida o ProtConn bound:</p>
-<div class="sourceCode" id="cb155"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">test2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_ProtConn.html">MK_ProtConn</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">APs</span>, </span>
-<span>                    region <span class="op">=</span> <span class="va">Ecorreg_1</span>,</span>
-<span>                    area_unit <span class="op">=</span> <span class="st">"ha"</span>,</span>
-<span>                    distance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>type<span class="op">=</span> <span class="st">"edge"</span>, keep <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>,</span>
-<span>                    distance_thresholds <span class="op">=</span> <span class="fl">10000</span>,</span>
-<span>                    probability <span class="op">=</span> <span class="fl">0.5</span>, </span>
-<span>                    transboundary <span class="op">=</span> <span class="fl">50000</span>,</span>
-<span>                    plot <span class="op">=</span> <span class="cn">TRUE</span>, </span>
-<span>                    parallel <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>                    protconn_bound <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>                    delta <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>                    write <span class="op">=</span> <span class="cn">NULL</span>, </span>
-<span>                    intern <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Step 1. Reviewing parameters</span></span>
-<span><span class="co">#&gt; Step 2. Processing ProtConn metric</span></span>
-<span><span class="co">#&gt; Done!</span></span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="protected-connected-indicator-protconn.html#cb155-1" tabindex="-1"></a>test2 <span class="ot">&lt;-</span> <span class="fu">MK_ProtConn</span>(<span class="at">nodes =</span> APs, </span>
+<span id="cb155-2"><a href="protected-connected-indicator-protconn.html#cb155-2" tabindex="-1"></a>                    <span class="at">region =</span> Ecorreg_1,</span>
+<span id="cb155-3"><a href="protected-connected-indicator-protconn.html#cb155-3" tabindex="-1"></a>                    <span class="at">area_unit =</span> <span class="st">"ha"</span>,</span>
+<span id="cb155-4"><a href="protected-connected-indicator-protconn.html#cb155-4" tabindex="-1"></a>                    <span class="at">distance =</span> <span class="fu">list</span>(<span class="at">type=</span> <span class="st">"edge"</span>, <span class="at">keep =</span> <span class="fl">0.1</span>),</span>
+<span id="cb155-5"><a href="protected-connected-indicator-protconn.html#cb155-5" tabindex="-1"></a>                    <span class="at">distance_thresholds =</span> <span class="dv">10000</span>,</span>
+<span id="cb155-6"><a href="protected-connected-indicator-protconn.html#cb155-6" tabindex="-1"></a>                    <span class="at">probability =</span> <span class="fl">0.5</span>, </span>
+<span id="cb155-7"><a href="protected-connected-indicator-protconn.html#cb155-7" tabindex="-1"></a>                    <span class="at">transboundary =</span> <span class="dv">50000</span>,</span>
+<span id="cb155-8"><a href="protected-connected-indicator-protconn.html#cb155-8" tabindex="-1"></a>                    <span class="at">plot =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb155-9"><a href="protected-connected-indicator-protconn.html#cb155-9" tabindex="-1"></a>                    <span class="at">parallel =</span> <span class="cn">NULL</span>,</span>
+<span id="cb155-10"><a href="protected-connected-indicator-protconn.html#cb155-10" tabindex="-1"></a>                    <span class="at">protconn_bound =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb155-11"><a href="protected-connected-indicator-protconn.html#cb155-11" tabindex="-1"></a>                    <span class="at">delta =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb155-12"><a href="protected-connected-indicator-protconn.html#cb155-12" tabindex="-1"></a>                    <span class="at">write =</span> <span class="cn">NULL</span>, </span>
+<span id="cb155-13"><a href="protected-connected-indicator-protconn.html#cb155-13" tabindex="-1"></a>                    <span class="at">intern =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb155-14"><a href="protected-connected-indicator-protconn.html#cb155-14" tabindex="-1"></a><span class="co">#&gt; Step 1. Reviewing parameters</span></span>
+<span id="cb155-15"><a href="protected-connected-indicator-protconn.html#cb155-15" tabindex="-1"></a><span class="co">#&gt; Topology errors detected. Makurhini will try to fix them, but it may take time. You can cancel and repair them in a GIS instead.</span></span>
+<span id="cb155-16"><a href="protected-connected-indicator-protconn.html#cb155-16" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb155-17"><a href="protected-connected-indicator-protconn.html#cb155-17" tabindex="-1"></a>  <span class="sc">|</span>                                                        </span>
+<span id="cb155-18"><a href="protected-connected-indicator-protconn.html#cb155-18" tabindex="-1"></a>  <span class="er">|</span>                                                  <span class="er">|</span>   <span class="dv">0</span>%</span>
+<span id="cb155-19"><a href="protected-connected-indicator-protconn.html#cb155-19" tabindex="-1"></a>  <span class="sc">|</span>                                                        </span>
+<span id="cb155-20"><a href="protected-connected-indicator-protconn.html#cb155-20" tabindex="-1"></a>  <span class="er">|==================================================|</span> <span class="dv">100</span>%</span>
+<span id="cb155-21"><a href="protected-connected-indicator-protconn.html#cb155-21" tabindex="-1"></a><span class="co">#&gt; Step 2. Processing ProtConn metric</span></span>
+<span id="cb155-22"><a href="protected-connected-indicator-protconn.html#cb155-22" tabindex="-1"></a><span class="co">#&gt; Done!</span></span></code></pre></div>
 <p>Tabla:</p>
 <div class="sourceCode" id="cb156"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">test2</span><span class="op">$</span><span class="va">`Protected Connected (Viewer Panel`</span></span></code></pre></div>
@@ -777,24 +788,29 @@ Percentage
 </tbody>
 </table></div>
 <p>Podemos estimar la contribución individial de cada AP en la ecorregión:</p>
-<div class="sourceCode" id="cb157"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">test3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_ProtConn.html">MK_ProtConn</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">APs</span>, </span>
-<span>                    region <span class="op">=</span> <span class="va">Ecorreg_1</span>,</span>
-<span>                    area_unit <span class="op">=</span> <span class="st">"ha"</span>,</span>
-<span>                    distance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>type<span class="op">=</span> <span class="st">"edge"</span>, keep <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>,</span>
-<span>                    distance_thresholds <span class="op">=</span> <span class="fl">10000</span>,</span>
-<span>                    probability <span class="op">=</span> <span class="fl">0.5</span>, </span>
-<span>                    transboundary <span class="op">=</span> <span class="fl">50000</span>,</span>
-<span>                    plot <span class="op">=</span> <span class="cn">TRUE</span>, </span>
-<span>                    parallel <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>                    protconn_bound <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>                    delta <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>                    write <span class="op">=</span> <span class="cn">NULL</span>, </span>
-<span>                    intern <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Step 1. Reviewing parameters</span></span>
-<span><span class="co">#&gt; Step 2. Processing ProtConn metric</span></span>
-<span><span class="co">#&gt; Step 3. Processing Delta ProtConn</span></span>
-<span><span class="co">#&gt; Done!</span></span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="protected-connected-indicator-protconn.html#cb157-1" tabindex="-1"></a>test3 <span class="ot">&lt;-</span> <span class="fu">MK_ProtConn</span>(<span class="at">nodes =</span> APs, </span>
+<span id="cb157-2"><a href="protected-connected-indicator-protconn.html#cb157-2" tabindex="-1"></a>                    <span class="at">region =</span> Ecorreg_1,</span>
+<span id="cb157-3"><a href="protected-connected-indicator-protconn.html#cb157-3" tabindex="-1"></a>                    <span class="at">area_unit =</span> <span class="st">"ha"</span>,</span>
+<span id="cb157-4"><a href="protected-connected-indicator-protconn.html#cb157-4" tabindex="-1"></a>                    <span class="at">distance =</span> <span class="fu">list</span>(<span class="at">type=</span> <span class="st">"edge"</span>, <span class="at">keep =</span> <span class="fl">0.1</span>),</span>
+<span id="cb157-5"><a href="protected-connected-indicator-protconn.html#cb157-5" tabindex="-1"></a>                    <span class="at">distance_thresholds =</span> <span class="dv">10000</span>,</span>
+<span id="cb157-6"><a href="protected-connected-indicator-protconn.html#cb157-6" tabindex="-1"></a>                    <span class="at">probability =</span> <span class="fl">0.5</span>, </span>
+<span id="cb157-7"><a href="protected-connected-indicator-protconn.html#cb157-7" tabindex="-1"></a>                    <span class="at">transboundary =</span> <span class="dv">50000</span>,</span>
+<span id="cb157-8"><a href="protected-connected-indicator-protconn.html#cb157-8" tabindex="-1"></a>                    <span class="at">plot =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb157-9"><a href="protected-connected-indicator-protconn.html#cb157-9" tabindex="-1"></a>                    <span class="at">parallel =</span> <span class="cn">NULL</span>,</span>
+<span id="cb157-10"><a href="protected-connected-indicator-protconn.html#cb157-10" tabindex="-1"></a>                    <span class="at">protconn_bound =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb157-11"><a href="protected-connected-indicator-protconn.html#cb157-11" tabindex="-1"></a>                    <span class="at">delta =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb157-12"><a href="protected-connected-indicator-protconn.html#cb157-12" tabindex="-1"></a>                    <span class="at">write =</span> <span class="cn">NULL</span>, </span>
+<span id="cb157-13"><a href="protected-connected-indicator-protconn.html#cb157-13" tabindex="-1"></a>                    <span class="at">intern =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb157-14"><a href="protected-connected-indicator-protconn.html#cb157-14" tabindex="-1"></a><span class="co">#&gt; Step 1. Reviewing parameters</span></span>
+<span id="cb157-15"><a href="protected-connected-indicator-protconn.html#cb157-15" tabindex="-1"></a><span class="co">#&gt; Topology errors detected. Makurhini will try to fix them, but it may take time. You can cancel and repair them in a GIS instead.</span></span>
+<span id="cb157-16"><a href="protected-connected-indicator-protconn.html#cb157-16" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb157-17"><a href="protected-connected-indicator-protconn.html#cb157-17" tabindex="-1"></a>  <span class="sc">|</span>                                                        </span>
+<span id="cb157-18"><a href="protected-connected-indicator-protconn.html#cb157-18" tabindex="-1"></a>  <span class="er">|</span>                                                  <span class="er">|</span>   <span class="dv">0</span>%</span>
+<span id="cb157-19"><a href="protected-connected-indicator-protconn.html#cb157-19" tabindex="-1"></a>  <span class="sc">|</span>                                                        </span>
+<span id="cb157-20"><a href="protected-connected-indicator-protconn.html#cb157-20" tabindex="-1"></a>  <span class="er">|==================================================|</span> <span class="dv">100</span>%</span>
+<span id="cb157-21"><a href="protected-connected-indicator-protconn.html#cb157-21" tabindex="-1"></a><span class="co">#&gt; Step 2. Processing ProtConn metric</span></span>
+<span id="cb157-22"><a href="protected-connected-indicator-protconn.html#cb157-22" tabindex="-1"></a><span class="co">#&gt; Step 3. Processing Delta ProtConn</span></span>
+<span id="cb157-23"><a href="protected-connected-indicator-protconn.html#cb157-23" tabindex="-1"></a><span class="co">#&gt; Done!</span></span></code></pre></div>
 <div class="sourceCode" id="cb158"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">test3</span><span class="op">$</span><span class="va">ProtConn_Delta</span></span>
 <span><span class="co">#&gt; Simple feature collection with 12 features and 6 fields</span></span>
@@ -826,9 +842,9 @@ Percentage
 <span><span class="co">#&gt; 13 Reserva Natural de la Sociedad Civil   Subnacional</span></span>
 <span><span class="co">#&gt; 14 Reserva Natural de la Sociedad Civil   Subnacional</span></span>
 <span><span class="co">#&gt;           dProt    dProtConn  varProtConn</span></span>
-<span><span class="co">#&gt; 1  9.172455e-08 3.074408e-08 7.874913e-09</span></span>
+<span><span class="co">#&gt; 1  9.172455e-08 3.074350e-08 7.874764e-09</span></span>
 <span><span class="co">#&gt; 3  2.261837e-05 8.382440e-06 2.147112e-06</span></span>
-<span><span class="co">#&gt; 5  1.517942e+01 3.328922e+00 8.526837e-01</span></span>
+<span><span class="co">#&gt; 5  1.517942e+01 3.328953e+00 8.526916e-01</span></span>
 <span><span class="co">#&gt; 6  4.013589e-01 1.472522e-01 3.771777e-02</span></span>
 <span><span class="co">#&gt; 8  5.732189e+00 5.863921e+00 1.502009e+00</span></span>
 <span><span class="co">#&gt; 9  3.105072e+00 2.331058e+00 5.970867e-01</span></span>
@@ -894,7 +910,7 @@ Percentage
 <span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-12-1.png" width="672"></div>
+<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-12-1.png" alt="" width="672"></div>
 <p>Delta ProtConn:</p>
 <div class="sourceCode" id="cb160"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dProtConn</span> <span class="op">&lt;-</span> <span class="va">test3</span><span class="op">$</span><span class="va">ProtConn_Delta</span></span>
@@ -922,7 +938,7 @@ Percentage
 <span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-13-1.png" width="672"></div>
+<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-13-1.png" alt="" width="672"></div>
 <p>Variación absoluta del ProtConn:</p>
 <div class="sourceCode" id="cb161"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dProtConn</span> <span class="op">&lt;-</span> <span class="va">test3</span><span class="op">$</span><span class="va">ProtConn_Delta</span></span>
@@ -950,7 +966,7 @@ Percentage
 <span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-14-1.png" width="672"></div>
+<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-14-1.png" alt="" width="672"></div>
 </div>
 <div id="función-mk_protconnmult" class="section level3" number="10.0.3">
 <h3>
@@ -1595,8 +1611,822 @@ bca.upper
 </table></div>
 <p>Plot:</p>
 <div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">test</span><span class="op">$</span><span class="va">ProtConn_10000</span><span class="op">$</span><span class="va">`ProtConn Plot`</span></span></code></pre></div>
-<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-18-1.png" width="672"></div>
+<code class="sourceCode R"><span><span class="va">test</span><span class="op">$</span><span class="va">ProtConn_10000</span><span class="op">$</span><span class="va">`ProtConn Plot`</span></span>
+<span><span class="co">#&gt; $data</span></span>
+<span><span class="co">#&gt; list()</span></span>
+<span><span class="co">#&gt; attr(,"class")</span></span>
+<span><span class="co">#&gt; [1] "waiver"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $layers</span></span>
+<span><span class="co">#&gt; $layers[[1]]</span></span>
+<span><span class="co">#&gt; geom_draw_grob: grob = list(grobs = list(list(x = 0.5, y = 0.5, width = 1, height = 1, just = "centre", hjust = NULL, vjust = NULL, name = "plot.background..rect.2076", gp = list(lwd = 1.42263779527559, col = "white", fill = "white", lty = 1), vp = NULL), list(name = "NULL", gp = NULL, vp = NULL), list(width = list(list(1, list(list(0, NULL, 1), list(0.724597823439877, NULL, 1), list(1, list(list(0, NULL, 8), list(-0.0966514459665145, NULL, 1)), 203), list(0.0966514459665145, NULL, 1)), 201)), height = 1, xmin = NULL, </span></span>
+<span><span class="co">#&gt;     ymin = NULL, name = "GRID.absoluteGrob.2050", gp = NULL, vp = list(x = 1, y = 0.5, width = list(list(1, list(list(0, NULL, 1), list(0.724597823439877, NULL, 1), list(1, list(list(0, NULL, 8), list(-0.0966514459665145, NULL, 1)), 203), list(0.0966514459665145, NULL, 1)), 201)), height = 1, justification = c(1, 0.5), gp = list(), clip = FALSE, xscale = c(0, 1), yscale = c(0, 1), angle = 0, layout = NULL, layout.pos.row = NULL, layout.pos.col = NULL, valid.just = c(1, 0.5), valid.pos.row = NULL, </span></span>
+<span><span class="co">#&gt;         valid.pos.col = NULL, name = "GRID.VP.150", parentgpar = NULL, gpar = NULL, trans = NULL, widths = NULL, heights = NULL, width.cm = NULL, height.cm = NULL, rotation = NULL, cliprect = NULL, parent = NULL, children = NULL, devwidth = NULL, devheight = NULL, clippath = NULL, mask = TRUE, resolvedmask = NULL), children = list(`NULL` = list(name = "NULL", gp = NULL, vp = NULL), axis = list(grobs = list(list(x = list(list(1, list(list(1, NULL, 0), list(-2.75, NULL, 8)), 201), list(1, list(list(</span></span>
+<span><span class="co">#&gt;         1, NULL, 0), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.75, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.75, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.75, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.75, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(0, NULL, 8)), </span></span>
+<span><span class="co">#&gt;         201)), y = c(0.0454545454545455, 0.0454545454545455, 0.272727272727273, 0.272727272727273, 0.5, 0.5, 0.727272727272727, 0.727272727272727, 0.954545454545455, 0.954545454545455), id = NULL, id.lengths = c(2, 2, 2, 2, 2), arrow = NULL, name = "GRID.polyline.2047", gp = list(col = "grey20", fill = "grey20", lwd = 1.42263779527559, lty = 1, lineend = "butt"), vp = NULL), list(widths = list(list(0, NULL, 8), list(1, list(list(1, list(label = c("0", "25", "50", "75", "100"), x = c(1, 1, 1, 1, 1</span></span>
+<span><span class="co">#&gt;     ), y = c(0.0454545454545455, 0.272727272727273, 0.5, 0.727272727272727, 0.954545454545455), just = "centre", hjust = 1, vjust = 0.5, rot = 0, check.overlap = FALSE, name = "GRID.text.2048", gp = list(fontsize = 11, col = "#525252", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL), 21), list(0, NULL, 2)), 201), list(2.2, NULL, 8)), heights = 1, name = "GRID.titleGrob.2049", gp = NULL, vp = NULL, children = list(GRID.text.2048 = list(label = c("0", "25", "50", "75", "100"), x = list(</span></span>
+<span><span class="co">#&gt;         list(1, list(list(1, NULL, 0), list(-2.2, NULL, 8), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.2, NULL, 8), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.2, NULL, 8), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.2, NULL, 8), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.2, NULL, 8), list(0, NULL, 8)), 201)), y = c(0.0454545454545455, 0.272727272727273, 0.5, 0.727272727272727, 0.954545454545455), just = "centre", hjust = 1, </span></span>
+<span><span class="co">#&gt;         vjust = 0.5, rot = 0, check.overlap = FALSE, name = "GRID.text.2048", gp = list(fontsize = 11, col = "#525252", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL)), childrenOrder = "GRID.text.2048"), list(name = "NULL", gp = NULL, vp = NULL)), layout = list(t = c(1, 1, 1), l = c(4, 2, 1), b = c(1, 1, 1), r = c(4, 2, 1), z = c(2, 1, 3), clip = c("off", "off", "off"), name = c("axis", "axis", "axis")), widths = list(list(0, NULL, 1), list(0.724597823439877, NULL, 1), list(1, </span></span>
+<span><span class="co">#&gt;         list(list(0, NULL, 8), list(-0.0966514459665145, NULL, 1)), 203), list(0.0966514459665145, NULL, 1)), heights = 1, respect = FALSE, rownames = NULL, colnames = NULL, name = "axis", gp = NULL, vp = NULL, children = list(), childrenOrder = character(0))), childrenOrder = c("NULL", "axis")), list(name = "NULL", gp = NULL, vp = NULL), list(name = "NULL", gp = NULL, vp = NULL), list(name = "panel-1.gTree.2042", gp = NULL, vp = NULL, children = list(grill.gTree.2040 = list(name = "grill.gTree.2040", </span></span>
+<span><span class="co">#&gt;     gp = NULL, vp = NULL, children = list(panel.background..rect.2033 = list(x = 0.5, y = 0.5, width = 1, height = 1, just = "centre", hjust = NULL, vjust = NULL, name = "panel.background..rect.2033", gp = list(lwd = 1.42263779527559, col = NA, fill = "white", lty = 1), vp = NULL), panel.grid.minor.y..polyline.2035 = list(x = c(0, 1, 0, 1, 0, 1, 0, 1), y = c(0.159090909090909, 0.159090909090909, 0.386363636363636, 0.386363636363636, 0.613636363636364, 0.613636363636364, 0.840909090909091, 0.840909090909091</span></span>
+<span><span class="co">#&gt;     ), id = NULL, id.lengths = c(2, 2, 2, 2), arrow = NULL, name = "panel.grid.minor.y..polyline.2035", gp = list(col = "grey92", fill = "grey92", lwd = 0.711318897637795, lty = 1, lineend = "butt"), vp = NULL), panel.grid.major.y..polyline.2037 = list(x = c(0, 1, 0, 1, 0, 1, 0, 1, 0, 1), y = c(0.0454545454545455, 0.0454545454545455, 0.272727272727273, 0.272727272727273, 0.5, 0.5, 0.727272727272727, 0.727272727272727, 0.954545454545455, 0.954545454545455), id = NULL, id.lengths = c(2, 2, 2, 2, 2), </span></span>
+<span><span class="co">#&gt;         arrow = NULL, name = "panel.grid.major.y..polyline.2037", gp = list(col = "grey92", fill = "grey92", lwd = 1.42263779527559, lty = 1, lineend = "butt"), vp = NULL), panel.grid.major.x..polyline.2039 = list(x = c(0.1875, 0.1875, 0.5, 0.5, 0.8125, 0.8125), y = c(0, 1, 0, 1, 0, 1), id = NULL, id.lengths = c(2, 2, 2), arrow = NULL, name = "panel.grid.major.x..polyline.2039", gp = list(col = "grey92", fill = "grey92", lwd = 1.42263779527559, lty = 1, lineend = "butt"), vp = NULL)), childrenOrder = c("panel.background..rect.2033", </span></span>
+<span><span class="co">#&gt;     "panel.grid.minor.y..polyline.2035", "panel.grid.major.y..polyline.2037", "panel.grid.major.x..polyline.2039")), `NULL` = list(name = "NULL", gp = NULL, vp = NULL), geom_rect.rect.2025 = list(x = c(0.046875, 0.359375, 0.671875), y = c(0.801372727272727, 0.198627272727273, 0.161663636363636), width = c(0.28125, 0.28125, 0.28125), height = c(0.755918181818182, 0.153172727272727, 0.116209090909091), just = c("left", "top"), hjust = NULL, vjust = NULL, name = "geom_rect.rect.2025", gp = list(col = c("black", </span></span>
+<span><span class="co">#&gt; "black", "black"), fill = c("#FC8D62", "#66C2A5", "#8DA0CB"), lwd = c(0.569055118110236, 0.569055118110236, 0.569055118110236), lty = c(1, 1, 1), linejoin = "mitre", lineend = "butt"), vp = NULL), GRID.polyline.2026 = list(x = c(0.15625, 0.21875, NA, 0.1875, 0.1875, NA, 0.15625, 0.21875, 0.46875, 0.53125, NA, 0.5, 0.5, NA, 0.46875, 0.53125, 0.78125, 0.84375, NA, 0.8125, 0.8125, NA, 0.78125, 0.84375), y = c(0.954545454545455, 0.954545454545455, NA, 0.954545454545455, 0.617690909090909, NA, 0.617690909090909, </span></span>
+<span><span class="co">#&gt; 0.617690909090909, 0.382309090909091, 0.382309090909091, NA, 0.382309090909091, 0.0454545454545455, NA, 0.0454545454545455, 0.0454545454545455, 0.333936363636364, 0.333936363636364, NA, 0.333936363636364, 0.0454545454545455, NA, 0.0454545454545455, 0.0454545454545455), id = c(1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3), id.lengths = NULL, arrow = NULL, name = "GRID.polyline.2026", gp = list(col = c("#000000", "#000000", "#000000"), fill = c("#000000", "#000000", "#000000"</span></span>
+<span><span class="co">#&gt; ), lwd = c(1.42263779527559, 1.42263779527559, 1.42263779527559), lty = c(1, 1, 1), lineend = "butt", linejoin = "round", linemitre = 10), vp = NULL), GRID.segments.2027 = list(x0 = 0, y0 = 0.2, x1 = 1, y1 = 0.2, arrow = NULL, name = "GRID.segments.2027", gp = list(col = "#000000FF", fill = "#000000FF", lwd = 3.41433070866142, lty = 2, lineend = "butt", linejoin = "round"), vp = NULL), GRID.segments.2028 = list(x0 = 0, y0 = 0.318181818181818, x1 = 1, y1 = 0.318181818181818, arrow = NULL, name = "GRID.segments.2028", </span></span>
+<span><span class="co">#&gt;     gp = list(col = "#FF0000FF", fill = "#FF0000FF", lwd = 3.41433070866142, lty = 2, lineend = "butt", linejoin = "round"), vp = NULL), `NULL` = list(name = "NULL", gp = NULL, vp = NULL), panel.border..rect.2030 = list(x = 0.5, y = 0.5, width = 1, height = 1, just = "centre", hjust = NULL, vjust = NULL, name = "panel.border..rect.2030", gp = list(lwd = 1.42263779527559, col = "grey20", fill = NA, lty = 1), vp = NULL)), childrenOrder = c("grill.gTree.2040", "NULL", "geom_rect.rect.2025", "GRID.polyline.2026", </span></span>
+<span><span class="co">#&gt; "GRID.segments.2027", "GRID.segments.2028", "NULL", "panel.border..rect.2030")), list(width = 1, height = list(list(1, list(list(0.0966514459665145, NULL, 1), list(1, list(list(0, NULL, 8), list(-0.0966514459665145, NULL, 1)), 203), list(0.441317267884322, NULL, 1), list(0, NULL, 1)), 201)), xmin = NULL, ymin = NULL, name = "GRID.absoluteGrob.2046", gp = NULL, vp = list(x = 0.5, y = 1, width = 1, height = list(list(1, list(list(0.0966514459665145, NULL, 1), list(1, list(list(0, NULL, 8), list(-0.0966514459665145, </span></span>
+<span><span class="co">#&gt;     NULL, 1)), 203), list(0.441317267884322, NULL, 1), list(0, NULL, 1)), 201)), justification = c(0.5, 1), gp = list(), clip = FALSE, xscale = c(0, 1), yscale = c(0, 1), angle = 0, layout = NULL, layout.pos.row = NULL, layout.pos.col = NULL, valid.just = c(0.5, 1), valid.pos.row = NULL, valid.pos.col = NULL, name = "GRID.VP.149", parentgpar = NULL, gpar = NULL, trans = NULL, widths = NULL, heights = NULL, width.cm = NULL, height.cm = NULL, rotation = NULL, cliprect = NULL, parent = NULL, children = NULL, </span></span>
+<span><span class="co">#&gt;     devwidth = NULL, devheight = NULL, clippath = NULL, mask = TRUE, resolvedmask = NULL), children = list(`NULL` = list(name = "NULL", gp = NULL, vp = NULL), axis = list(grobs = list(list(x = c(0.1875, 0.1875, 0.5, 0.5, 0.8125, 0.8125), y = list(list(1, list(list(1, NULL, 0), list(-2.75, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.75, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, </span></span>
+<span><span class="co">#&gt;     0), list(-2.75, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(0, NULL, 8)), 201)), id = NULL, id.lengths = c(2, 2, 2), arrow = NULL, name = "GRID.polyline.2043", gp = list(col = "grey20", fill = "grey20", lwd = 1.42263779527559, lty = 1, lineend = "butt"), vp = NULL), list(widths = 1, heights = list(list(2.2, NULL, 8), list(1, list(list(1, list(label = c("Unprotected", "Protected", "Protected connected"), x = c(0.1875, 0.5, 0.8125), y = c(1, 1, 1), just = "centre", hjust = 0.5, vjust = 1, </span></span>
+<span><span class="co">#&gt;     rot = 0, check.overlap = FALSE, name = "GRID.text.2044", gp = list(fontsize = 11, col = "#525252", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL), 22), list(0.0336111111111111, NULL, 2)), 201), list(0, NULL, 8)), name = "GRID.titleGrob.2045", gp = NULL, vp = NULL, children = list(GRID.text.2044 = list(label = c("Unprotected", "Protected", "Protected connected"), x = c(0.1875, 0.5, 0.8125), y = list(list(1, list(list(1, NULL, 0), list(-2.2, NULL, 8), list(0, NULL, 8)), 201), </span></span>
+<span><span class="co">#&gt;     list(1, list(list(1, NULL, 0), list(-2.2, NULL, 8), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.2, NULL, 8), list(0, NULL, 8)), 201)), just = "centre", hjust = 0.5, vjust = 1, rot = 0, check.overlap = FALSE, name = "GRID.text.2044", gp = list(fontsize = 11, col = "#525252", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL)), childrenOrder = "GRID.text.2044"), list(name = "NULL", gp = NULL, vp = NULL)), layout = list(t = c(1, 3, 4), l = c(1, 1, 1), b = c(1, </span></span>
+<span><span class="co">#&gt; 3, 4), r = c(1, 1, 1), z = c(1, 2, 3), clip = c("off", "off", "off"), name = c("axis", "axis", "axis")), widths = 1, heights = list(list(0.0966514459665145, NULL, 1), list(1, list(list(0, NULL, 8), list(-0.0966514459665145, NULL, 1)), 203), list(0.441317267884322, NULL, 1), list(0, NULL, 1)), respect = FALSE, rownames = NULL, colnames = NULL, name = "axis", gp = NULL, vp = NULL, children = list(), childrenOrder = character(0))), childrenOrder = c("NULL", "axis")), list(name = "NULL", gp = NULL, vp = NULL), </span></span>
+<span><span class="co">#&gt;     list(name = "NULL", gp = NULL, vp = NULL), list(name = "NULL", gp = NULL, vp = NULL), list(name = "NULL", gp = NULL, vp = NULL), list(widths = 1, heights = list(list(2.75, NULL, 8), list(1, list(list(1, list(label = "", x = 0.5, y = 1, just = "centre", hjust = 0.5, vjust = 1, rot = 0, check.overlap = FALSE, name = "GRID.text.2051", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL), 22), list(0.0397222222222222, NULL, 2)), 201), list(</span></span>
+<span><span class="co">#&gt;         0, NULL, 8)), name = "axis.title.x.bottom..titleGrob.2053", gp = NULL, vp = NULL, children = list(GRID.text.2051 = list(label = "", x = 0.5, y = list(list(1, list(list(1, NULL, 0), list(-2.75, NULL, 8), list(0, NULL, 8)), 201)), just = "centre", hjust = 0.5, vjust = 1, rot = 0, check.overlap = FALSE, name = "GRID.text.2051", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL)), childrenOrder = "GRID.text.2051"), list(widths = list(</span></span>
+<span><span class="co">#&gt;         list(0, NULL, 8), list(1, list(list(1, list(label = "Percentage (%)", x = 0, y = 0.5, just = "centre", hjust = 0.5, vjust = 1, rot = 90, check.overlap = FALSE, name = "GRID.text.2054", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL), 21), list(0.0397222222222222, NULL, 2)), 201), list(2.75, NULL, 8)), heights = 1, name = "axis.title.y.left..titleGrob.2056", gp = NULL, vp = NULL, children = list(GRID.text.2054 = list(label = "Percentage (%)", </span></span>
+<span><span class="co">#&gt;         x = list(list(1, list(list(0, NULL, 0), list(0, NULL, 8), list(0, NULL, 8)), 201)), y = 0.5, just = "centre", hjust = 0.5, vjust = 1, rot = 90, check.overlap = FALSE, name = "GRID.text.2054", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL)), childrenOrder = "GRID.text.2054"), list(name = "NULL", gp = NULL, vp = NULL), list(grobs = list(list(grobs = list(list(x = 0.5, y = 0.5, width = 1, height = 1, just = "centre", hjust = NULL, </span></span>
+<span><span class="co">#&gt;         vjust = NULL, name = "legend.key.rect.2060", gp = list(lwd = 1.42263779527559, col = NA, fill = "white", lty = 1), vp = NULL), list(x0 = 0.1, y0 = 0.5, x1 = 0.9, y1 = 0.5, arrow = NULL, name = "GRID.segments.2068", gp = list(col = "#000000FF", fill = "#000000FF", lwd = 3.41433070866142, lty = 2, lineend = "butt"), vp = NULL), list(name = "NULL", gp = NULL, vp = NULL), list(x = 0.5, y = 0.5, width = 1, height = 1, just = "centre", hjust = NULL, vjust = NULL, name = "legend.key.rect.2060", </span></span>
+<span><span class="co">#&gt;         gp = list(lwd = 1.42263779527559, col = NA, fill = "white", lty = 1), vp = NULL), list(name = "NULL", gp = NULL, vp = NULL), list(x0 = 0.1, y0 = 0.5, x1 = 0.9, y1 = 0.5, arrow = NULL, name = "GRID.segments.2069", gp = list(col = "#FF0000FF", fill = "#FF0000FF", lwd = 3.41433070866142, lty = 2, lineend = "butt"), vp = NULL), list(widths = list(list(5.5, NULL, 8), list(1, list(list(1, list(label = "Aichi Target (17%)", x = 0, y = 0.5, just = "centre", hjust = 0, vjust = 0.5, rot = 0, check.overlap = FALSE, </span></span>
+<span><span class="co">#&gt;         name = "GRID.text.2062", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL), 21), list(0, NULL, 2)), 201), list(0, NULL, 8)), heights = list(list(0, NULL, 8), list(1, list(list(1, list(label = "Aichi Target (17%)", x = 0, y = 0.5, just = "centre", hjust = 0, vjust = 0.5, rot = 0, check.overlap = FALSE, name = "GRID.text.2062", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL), </span></span>
+<span><span class="co">#&gt;         22), list(0.0397222222222222, NULL, 2)), 201), list(0, NULL, 8)), name = "guide.label.titleGrob.2064", gp = NULL, vp = NULL, children = list(GRID.text.2062 = list(label = "Aichi Target (17%)", x = list(list(1, list(list(0, NULL, 0), list(0, NULL, 8), list(5.5, NULL, 8)), 201)), y = list(list(1, list(list(0.5, NULL, 0), list(0, NULL, 8), list(0, NULL, 8)), 201)), just = "centre", hjust = 0, vjust = 0.5, rot = 0, check.overlap = FALSE, name = "GRID.text.2062", gp = list(fontsize = 13.2, col = "#252525", </span></span>
+<span><span class="co">#&gt;         fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL)), childrenOrder = "GRID.text.2062"), list(widths = list(list(5.5, NULL, 8), list(1, list(list(1, list(label = "Kunming-Montreal (30%)", x = 0, y = 0.5, just = "centre", hjust = 0, vjust = 0.5, rot = 0, check.overlap = FALSE, name = "GRID.text.2065", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL), 21), list(0, NULL, 2)), 201), list(0, NULL, 8)), heights = list(</span></span>
+<span><span class="co">#&gt;         list(0, NULL, 8), list(1, list(list(1, list(label = "Kunming-Montreal (30%)", x = 0, y = 0.5, just = "centre", hjust = 0, vjust = 0.5, rot = 0, check.overlap = FALSE, name = "GRID.text.2065", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL), 22), list(0.0397222222222222, NULL, 2)), 201), list(0, NULL, 8)), name = "guide.label.titleGrob.2067", gp = NULL, vp = NULL, children = list(GRID.text.2065 = list(label = "Kunming-Montreal (30%)", </span></span>
+<span><span class="co">#&gt;         x = list(list(1, list(list(0, NULL, 0), list(0, NULL, 8), list(5.5, NULL, 8)), 201)), y = list(list(1, list(list(0.5, NULL, 0), list(0, NULL, 8), list(0, NULL, 8)), 201)), just = "centre", hjust = 0, vjust = 0.5, rot = 0, check.overlap = FALSE, name = "GRID.text.2065", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL)), childrenOrder = "GRID.text.2065"), list(x = 0.5, y = 0.5, width = 1, height = 1, just = "centre", hjust = NULL, </span></span>
+<span><span class="co">#&gt;         vjust = NULL, name = "legend.background.rect.2058", gp = list(lwd = 1.42263779527559, col = NA, fill = "white", lty = 1), vp = NULL)), layout = list(t = c(2, 2, 2, 4, 4, 4, 2, 4, 1), l = c(2, 2, 2, 2, 2, 2, 3, 3, 1), b = c(2, 2, 2, 4, 4, 4, 2, 4, 5), r = c(2, 2, 2, 2, 2, 2, 3, 3, 4), z = c(1, 2, 3, 4, 5, 6, 7, 8, 0), clip = c("off", "off", "off", "off", "off", "off", "off", "off", "off"), name = c("key-1-1-bg", "key-1-1-1", "key-1-1-2", "key-3-1-bg", "key-3-1-1", "key-3-1-2", "label-1-2", </span></span>
+<span><span class="co">#&gt;     "label-3-2", "background")), widths = c(0.193302891933029, 0.6096, 5.39165983637747, 0.193302891933029), heights = c(0.193302891933029, 0.6096, 0, 0.6096, 0.193302891933029), respect = FALSE, rownames = NULL, colnames = NULL, name = "layout", gp = NULL, vp = list(x = 0, y = 1, width = 6.38786562024353, height = 1, justification = c(0, 1), gp = list(), clip = FALSE, xscale = c(0, 1), yscale = c(0, 1), angle = 0, layout = NULL, layout.pos.row = NULL, layout.pos.col = NULL, valid.just = c(0, 1), </span></span>
+<span><span class="co">#&gt;         valid.pos.row = NULL, valid.pos.col = NULL, name = "GRID.VP.151", parentgpar = NULL, gpar = NULL, trans = NULL, widths = NULL, heights = NULL, width.cm = NULL, height.cm = NULL, rotation = NULL, cliprect = NULL, parent = NULL, children = NULL, devwidth = NULL, devheight = NULL, clippath = NULL, mask = TRUE, resolvedmask = NULL), children = list(), childrenOrder = character(0)), list(name = "NULL", gp = NULL, vp = NULL)), layout = list(t = c(3, 2), l = c(3, 2), b = c(3, 4), r = c(3, 4), z = c(1, </span></span>
+<span><span class="co">#&gt;     0), clip = c("inherit", "off"), name = c("guides", "legend.box.background")), widths = list(list(0.5, NULL, 5), list(0, NULL, 1), list(6.38786562024353, NULL, 1), list(0, NULL, 1), list(0.5, NULL, 5)), heights = list(list(0.5, NULL, 5), list(0, NULL, 1), list(1.60580578386606, NULL, 1), list(0, NULL, 1), list(0.5, NULL, 5)), respect = FALSE, rownames = NULL, colnames = NULL, name = "guide-box", gp = NULL, vp = list(x = 0.5, y = 0.5, width = 6.38786562024353, height = 1.60580578386606, justification = c(0.5, </span></span>
+<span><span class="co">#&gt;     0.5), gp = list(), clip = FALSE, xscale = c(0, 1), yscale = c(0, 1), angle = 0, layout = NULL, layout.pos.row = NULL, layout.pos.col = NULL, valid.just = c(0.5, 0.5), valid.pos.row = NULL, valid.pos.col = NULL, name = "guides", parentgpar = NULL, gpar = NULL, trans = NULL, widths = NULL, heights = NULL, width.cm = NULL, height.cm = NULL, rotation = NULL, cliprect = NULL, parent = NULL, children = NULL, devwidth = NULL, devheight = NULL, clippath = NULL, mask = TRUE, resolvedmask = NULL), children = list(), </span></span>
+<span><span class="co">#&gt;         childrenOrder = character(0)), list(name = "NULL", gp = NULL, vp = NULL), list(name = "NULL", gp = NULL, vp = NULL), list(name = "NULL", gp = NULL, vp = NULL), list(name = "NULL", gp = NULL, vp = NULL), list(name = "plot.subtitle..zeroGrob.2073", gp = NULL, vp = NULL), list(widths = list(list(0, NULL, 8), list(1, list(list(1, list(label = "ProtConn Indicators: 10000", x = 0.5, y = 1, just = "centre", hjust = 0.5, vjust = 1, rot = 0, check.overlap = FALSE, name = "GRID.text.2070", gp = list(</span></span>
+<span><span class="co">#&gt;         fontsize = 15.4, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(bold = 2)), vp = NULL), 21), list(0, NULL, 2)), 201), list(0, NULL, 8)), heights = list(list(0, NULL, 8), list(1, list(list(1, list(label = "ProtConn Indicators: 10000", x = 0.5, y = 1, just = "centre", hjust = 0.5, vjust = 1, rot = 0, check.overlap = FALSE, name = "GRID.text.2070", gp = list(fontsize = 15.4, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(bold = 2)), vp = NULL), 22), list(0.0458333333333333, </span></span>
+<span><span class="co">#&gt;         NULL, 2)), 201), list(5.5, NULL, 8)), name = "plot.title..titleGrob.2072", gp = NULL, vp = NULL, children = list(GRID.text.2070 = list(label = "ProtConn Indicators: 10000", x = list(list(1, list(list(0.5, NULL, 0), list(0, NULL, 8), list(0, NULL, 8)), 201)), y = list(list(1, list(list(1, NULL, 0), list(0, NULL, 8), list(0, NULL, 8)), 201)), just = "centre", hjust = 0.5, vjust = 1, rot = 0, check.overlap = FALSE, name = "GRID.text.2070", gp = list(fontsize = 15.4, col = "#252525", fontfamily = "", </span></span>
+<span><span class="co">#&gt;         lineheight = 0.9, font = c(bold = 2)), vp = NULL)), childrenOrder = "GRID.text.2070"), list(name = "plot.caption..zeroGrob.2074", gp = NULL, vp = NULL)), layout = list(t = c(1, 8, 9, 10, 8, 9, 10, 8, 9, 10, 7, 11, 9, 9, 9, 9, 13, 5, 9, 4, 3, 14), l = c(1, 6, 6, 6, 7, 7, 7, 8, 8, 8, 7, 7, 5, 9, 11, 3, 7, 7, 7, 7, 7, 7), b = c(16, 8, 9, 10, 8, 9, 10, 8, 9, 10, 7, 11, 9, 9, 9, 9, 13, 5, 9, 4, 3, 14), r = c(13, 6, 6, 6, 7, 7, 7, 8, 8, 8, 7, 7, 5, 9, 11, 3, 7, 7, 7, 7, 7, 7), z = c(0, 5, 7, 3, </span></span>
+<span><span class="co">#&gt; 6, 1, 9, 4, 8, 2, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21), clip = c("on", "off", "off", "off", "off", "on", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off"), name = c("background", "spacer", "axis-l", "spacer", "axis-t", "panel", "axis-b", "spacer", "axis-r", "spacer", "xlab-t", "xlab-b", "ylab-l", "ylab-r", "guide-box-right", "guide-box-left", "guide-box-bottom", "guide-box-top", "guide-box-inside", "subtitle", "title", "caption"</span></span>
+<span><span class="co">#&gt; )), widths = list(list(5.5, NULL, 8), list(0, NULL, 8), list(0, NULL, 1), list(0, NULL, 8), list(1, list(widths = list(list(0, NULL, 8), list(1, list(list(1, list(label = "Percentage (%)", x = 0, y = 0.5, just = "centre", hjust = 0.5, vjust = 1, rot = 90, check.overlap = FALSE, name = "GRID.text.2054", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL), 21), list(0.0397222222222222, NULL, 2)), 201), list(2.75, NULL, 8)), heights = 1, name = "axis.title.y.left..titleGrob.2056", </span></span>
+<span><span class="co">#&gt;     gp = NULL, vp = NULL, children = list(GRID.text.2054 = list(label = "Percentage (%)", x = list(list(1, list(list(0, NULL, 0), list(0, NULL, 8), list(0, NULL, 8)), 201)), y = 0.5, just = "centre", hjust = 0.5, vjust = 1, rot = 90, check.overlap = FALSE, name = "GRID.text.2054", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL)), childrenOrder = "GRID.text.2054"), 21), list(1, list(list(0, NULL, 1), list(0.724597823439877, NULL, 1), </span></span>
+<span><span class="co">#&gt;     list(1, list(list(0, NULL, 8), list(-0.0966514459665145, NULL, 1)), 203), list(0.0966514459665145, NULL, 1)), 201), list(1, NULL, 5), list(0, NULL, 1), list(0, NULL, 1), list(11, NULL, 8), list(1, list(list(0.5, NULL, 5), list(0, NULL, 1), list(6.38786562024353, NULL, 1), list(0, NULL, 1), list(0.5, NULL, 5)), 201), list(0, NULL, 8), list(5.5, NULL, 8)), heights = list(list(5.5, NULL, 8), list(0, NULL, 8), list(1, list(widths = list(list(0, NULL, 8), list(1, list(list(1, list(label = "ProtConn Indicators: 10000", </span></span>
+<span><span class="co">#&gt;     x = 0.5, y = 1, just = "centre", hjust = 0.5, vjust = 1, rot = 0, check.overlap = FALSE, name = "GRID.text.2070", gp = list(fontsize = 15.4, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(bold = 2)), vp = NULL), 21), list(0, NULL, 2)), 201), list(0, NULL, 8)), heights = list(list(0, NULL, 8), list(1, list(list(1, list(label = "ProtConn Indicators: 10000", x = 0.5, y = 1, just = "centre", hjust = 0.5, vjust = 1, rot = 0, check.overlap = FALSE, name = "GRID.text.2070", gp = list(fontsize = 15.4, </span></span>
+<span><span class="co">#&gt;     col = "#252525", fontfamily = "", lineheight = 0.9, font = c(bold = 2)), vp = NULL), 22), list(0.0458333333333333, NULL, 2)), 201), list(5.5, NULL, 8)), name = "plot.title..titleGrob.2072", gp = NULL, vp = NULL, children = list(GRID.text.2070 = list(label = "ProtConn Indicators: 10000", x = list(list(1, list(list(0.5, NULL, 0), list(0, NULL, 8), list(0, NULL, 8)), 201)), y = list(list(1, list(list(1, NULL, 0), list(0, NULL, 8), list(0, NULL, 8)), 201)), just = "centre", hjust = 0.5, vjust = 1, </span></span>
+<span><span class="co">#&gt;     rot = 0, check.overlap = FALSE, name = "GRID.text.2070", gp = list(fontsize = 15.4, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(bold = 2)), vp = NULL)), childrenOrder = "GRID.text.2070"), 22), list(0, NULL, 1), list(0, NULL, 1), list(0, NULL, 8), list(0, NULL, 1), list(0, NULL, 1), list(1, NULL, 5), list(1, list(list(0.0966514459665145, NULL, 1), list(1, list(list(0, NULL, 8), list(-0.0966514459665145, NULL, 1)), 203), list(0.441317267884322, NULL, 1), list(0, NULL, 1)), 201), </span></span>
+<span><span class="co">#&gt;     list(1, list(widths = 1, heights = list(list(2.75, NULL, 8), list(1, list(list(1, list(label = "", x = 0.5, y = 1, just = "centre", hjust = 0.5, vjust = 1, rot = 0, check.overlap = FALSE, name = "GRID.text.2051", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL), 22), list(0.0397222222222222, NULL, 2)), 201), list(0, NULL, 8)), name = "axis.title.x.bottom..titleGrob.2053", gp = NULL, vp = NULL, children = list(GRID.text.2051 = list(</span></span>
+<span><span class="co">#&gt;         label = "", x = 0.5, y = list(list(1, list(list(1, NULL, 0), list(-2.75, NULL, 8), list(0, NULL, 8)), 201)), just = "centre", hjust = 0.5, vjust = 1, rot = 0, check.overlap = FALSE, name = "GRID.text.2051", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL)), childrenOrder = "GRID.text.2051"), 22), list(0, NULL, 8), list(0, NULL, 1), list(0, NULL, 1), list(0, NULL, 8), list(5.5, NULL, 8)), respect = FALSE, rownames = NULL, colnames = NULL, </span></span>
+<span><span class="co">#&gt;     name = "layout", gp = NULL, vp = NULL, children = list(), childrenOrder = character(0)), xmin = 0, xmax = 1, ymin = 0.5, ymax = 1, scale = 1, clip = inherit, halign = 0.5, valign = 0.5</span></span>
+<span><span class="co">#&gt; stat_identity: na.rm = FALSE</span></span>
+<span><span class="co">#&gt; position_identity </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $layers[[2]]</span></span>
+<span><span class="co">#&gt; geom_draw_grob: grob = list(grobs = list(list(x = 0.5, y = 0.5, width = 1, height = 1, just = "centre", hjust = NULL, vjust = NULL, name = "plot.background..rect.2114", gp = list(lwd = 1.42263779527559, col = "white", fill = "white", lty = 1), vp = NULL), list(name = "NULL", gp = NULL, vp = NULL), list(width = list(list(1, list(list(0, NULL, 1), list(0.724597823439877, NULL, 1), list(1, list(list(0, NULL, 8), list(-0.0966514459665145, NULL, 1)), 203), list(0.0966514459665145, NULL, 1)), 201)), height = 1, xmin = NULL, </span></span>
+<span><span class="co">#&gt;     ymin = NULL, name = "GRID.absoluteGrob.2101", gp = NULL, vp = list(x = 1, y = 0.5, width = list(list(1, list(list(0, NULL, 1), list(0.724597823439877, NULL, 1), list(1, list(list(0, NULL, 8), list(-0.0966514459665145, NULL, 1)), 203), list(0.0966514459665145, NULL, 1)), 201)), height = 1, justification = c(1, 0.5), gp = list(), clip = FALSE, xscale = c(0, 1), yscale = c(0, 1), angle = 0, layout = NULL, layout.pos.row = NULL, layout.pos.col = NULL, valid.just = c(1, 0.5), valid.pos.row = NULL, </span></span>
+<span><span class="co">#&gt;         valid.pos.col = NULL, name = "GRID.VP.154", parentgpar = NULL, gpar = NULL, trans = NULL, widths = NULL, heights = NULL, width.cm = NULL, height.cm = NULL, rotation = NULL, cliprect = NULL, parent = NULL, children = NULL, devwidth = NULL, devheight = NULL, clippath = NULL, mask = TRUE, resolvedmask = NULL), children = list(`NULL` = list(name = "NULL", gp = NULL, vp = NULL), axis = list(grobs = list(list(x = list(list(1, list(list(1, NULL, 0), list(-2.75, NULL, 8)), 201), list(1, list(list(</span></span>
+<span><span class="co">#&gt;         1, NULL, 0), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.75, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.75, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.75, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.75, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(0, NULL, 8)), </span></span>
+<span><span class="co">#&gt;         201)), y = c(0.0454545454545455, 0.0454545454545455, 0.272727272727273, 0.272727272727273, 0.5, 0.5, 0.727272727272727, 0.727272727272727, 0.954545454545455, 0.954545454545455), id = NULL, id.lengths = c(2, 2, 2, 2, 2), arrow = NULL, name = "GRID.polyline.2098", gp = list(col = "grey20", fill = "grey20", lwd = 1.42263779527559, lty = 1, lineend = "butt"), vp = NULL), list(widths = list(list(0, NULL, 8), list(1, list(list(1, list(label = c("0", "25", "50", "75", "100"), x = c(1, 1, 1, 1, 1</span></span>
+<span><span class="co">#&gt;     ), y = c(0.0454545454545455, 0.272727272727273, 0.5, 0.727272727272727, 0.954545454545455), just = "centre", hjust = 1, vjust = 0.5, rot = 0, check.overlap = FALSE, name = "GRID.text.2099", gp = list(fontsize = 11, col = "#525252", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL), 21), list(0, NULL, 2)), 201), list(2.2, NULL, 8)), heights = 1, name = "GRID.titleGrob.2100", gp = NULL, vp = NULL, children = list(GRID.text.2099 = list(label = c("0", "25", "50", "75", "100"), x = list(</span></span>
+<span><span class="co">#&gt;         list(1, list(list(1, NULL, 0), list(-2.2, NULL, 8), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.2, NULL, 8), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.2, NULL, 8), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.2, NULL, 8), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.2, NULL, 8), list(0, NULL, 8)), 201)), y = c(0.0454545454545455, 0.272727272727273, 0.5, 0.727272727272727, 0.954545454545455), just = "centre", hjust = 1, </span></span>
+<span><span class="co">#&gt;         vjust = 0.5, rot = 0, check.overlap = FALSE, name = "GRID.text.2099", gp = list(fontsize = 11, col = "#525252", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL)), childrenOrder = "GRID.text.2099"), list(name = "NULL", gp = NULL, vp = NULL)), layout = list(t = c(1, 1, 1), l = c(4, 2, 1), b = c(1, 1, 1), r = c(4, 2, 1), z = c(2, 1, 3), clip = c("off", "off", "off"), name = c("axis", "axis", "axis")), widths = list(list(0, NULL, 1), list(0.724597823439877, NULL, 1), list(1, </span></span>
+<span><span class="co">#&gt;         list(list(0, NULL, 8), list(-0.0966514459665145, NULL, 1)), 203), list(0.0966514459665145, NULL, 1)), heights = 1, respect = FALSE, rownames = NULL, colnames = NULL, name = "axis", gp = NULL, vp = NULL, children = list(), childrenOrder = character(0))), childrenOrder = c("NULL", "axis")), list(name = "NULL", gp = NULL, vp = NULL), list(name = "NULL", gp = NULL, vp = NULL), list(name = "panel-1.gTree.2093", gp = NULL, vp = NULL, children = list(grill.gTree.2091 = list(name = "grill.gTree.2091", </span></span>
+<span><span class="co">#&gt;     gp = NULL, vp = NULL, children = list(panel.background..rect.2084 = list(x = 0.5, y = 0.5, width = 1, height = 1, just = "centre", hjust = NULL, vjust = NULL, name = "panel.background..rect.2084", gp = list(lwd = 1.42263779527559, col = NA, fill = "white", lty = 1), vp = NULL), panel.grid.minor.y..polyline.2086 = list(x = c(0, 1, 0, 1, 0, 1, 0, 1), y = c(0.159090909090909, 0.159090909090909, 0.386363636363636, 0.386363636363636, 0.613636363636364, 0.613636363636364, 0.840909090909091, 0.840909090909091</span></span>
+<span><span class="co">#&gt;     ), id = NULL, id.lengths = c(2, 2, 2, 2), arrow = NULL, name = "panel.grid.minor.y..polyline.2086", gp = list(col = "grey92", fill = "grey92", lwd = 0.711318897637795, lty = 1, lineend = "butt"), vp = NULL), panel.grid.major.y..polyline.2088 = list(x = c(0, 1, 0, 1, 0, 1, 0, 1, 0, 1), y = c(0.0454545454545455, 0.0454545454545455, 0.272727272727273, 0.272727272727273, 0.5, 0.5, 0.727272727272727, 0.727272727272727, 0.954545454545455, 0.954545454545455), id = NULL, id.lengths = c(2, 2, 2, 2, 2), </span></span>
+<span><span class="co">#&gt;         arrow = NULL, name = "panel.grid.major.y..polyline.2088", gp = list(col = "grey92", fill = "grey92", lwd = 1.42263779527559, lty = 1, lineend = "butt"), vp = NULL), panel.grid.major.x..polyline.2090 = list(x = c(0.142857142857143, 0.142857142857143, 0.380952380952381, 0.380952380952381, 0.619047619047619, 0.619047619047619, 0.857142857142857, 0.857142857142857), y = c(0, 1, 0, 1, 0, 1, 0, 1), id = NULL, id.lengths = c(2, 2, 2, 2), arrow = NULL, name = "panel.grid.major.x..polyline.2090", </span></span>
+<span><span class="co">#&gt;         gp = list(col = "grey92", fill = "grey92", lwd = 1.42263779527559, lty = 1, lineend = "butt"), vp = NULL)), childrenOrder = c("panel.background..rect.2084", "panel.grid.minor.y..polyline.2086", "panel.grid.major.y..polyline.2088", "panel.grid.major.x..polyline.2090")), `NULL` = list(name = "NULL", gp = NULL, vp = NULL), geom_rect.rect.2078 = list(x = c(0.75, 0.511904761904762, 0.0357142857142857, 0.273809523809524), y = c(0.0857363636363636, 0.130009090909091, 0.692, 0.197809090909091), width = c(0.214285714285714, </span></span>
+<span><span class="co">#&gt; 0.214285714285714, 0.214285714285714, 0.214285714285714), height = c(0.0402818181818182, 0.0845545454545455, 0.646545454545455, 0.152354545454545), just = c("left", "top"), hjust = NULL, vjust = NULL, name = "geom_rect.rect.2078", gp = list(col = c("black", "black", "black", "black"), fill = c("#7FCDBB", "#41B6C4", "#253494", "#2C7FB8"), lwd = c(0.569055118110236, 0.569055118110236, 0.569055118110236, 0.569055118110236), lty = c(1, 1, 1, 1), linejoin = "mitre", lineend = "butt"), vp = NULL), GRID.polyline.2079 = list(</span></span>
+<span><span class="co">#&gt;     x = c(0.833333333333333, 0.880952380952381, NA, 0.857142857142857, 0.857142857142857, NA, 0.833333333333333, 0.880952380952381, 0.595238095238095, 0.642857142857143, NA, 0.619047619047619, 0.619047619047619, NA, 0.595238095238095, 0.642857142857143, 0.119047619047619, 0.166666666666667, NA, 0.142857142857143, 0.142857142857143, NA, 0.119047619047619, 0.166666666666667, 0.357142857142857, 0.404761904761905, NA, 0.380952380952381, 0.380952380952381, NA, 0.357142857142857, 0.404761904761905), y = c(0.162490909090909, </span></span>
+<span><span class="co">#&gt;     0.162490909090909, NA, 0.162490909090909, 0.0454545454545455, NA, 0.0454545454545455, 0.0454545454545455, 0.216436363636364, 0.216436363636364, NA, 0.216436363636364, 0.0454545454545455, NA, 0.0454545454545455, 0.0454545454545455, 0.954545454545455, 0.954545454545455, NA, 0.954545454545455, 0.403081818181818, NA, 0.403081818181818, 0.403081818181818, 0.363090909090909, 0.363090909090909, NA, 0.363090909090909, 0.0454545454545455, NA, 0.0454545454545455, 0.0454545454545455), id = c(1, 1, 1, 1, </span></span>
+<span><span class="co">#&gt;     1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4), id.lengths = NULL, arrow = NULL, name = "GRID.polyline.2079", gp = list(col = c("#000000", "#000000", "#000000", "#000000"), fill = c("#000000", "#000000", "#000000", "#000000"), lwd = c(1.42263779527559, 1.42263779527559, 1.42263779527559, 1.42263779527559), lty = c(1, 1, 1, 1), lineend = "butt", linejoin = "round", linemitre = 10), vp = NULL), `NULL` = list(name = "NULL", gp = NULL, vp = NULL), panel.border..rect.2081 = list(</span></span>
+<span><span class="co">#&gt;     x = 0.5, y = 0.5, width = 1, height = 1, just = "centre", hjust = NULL, vjust = NULL, name = "panel.border..rect.2081", gp = list(lwd = 1.42263779527559, col = "grey20", fill = NA, lty = 1), vp = NULL)), childrenOrder = c("grill.gTree.2091", "NULL", "geom_rect.rect.2078", "GRID.polyline.2079", "NULL", "panel.border..rect.2081")), list(width = 1, height = list(list(1, list(list(0.0966514459665145, NULL, 1), list(1, list(list(0, NULL, 8), list(-0.0966514459665145, NULL, 1)), 203), list(0.441317267884322, </span></span>
+<span><span class="co">#&gt;     NULL, 1), list(0, NULL, 1)), 201)), xmin = NULL, ymin = NULL, name = "GRID.absoluteGrob.2097", gp = NULL, vp = list(x = 0.5, y = 1, width = 1, height = list(list(1, list(list(0.0966514459665145, NULL, 1), list(1, list(list(0, NULL, 8), list(-0.0966514459665145, NULL, 1)), 203), list(0.441317267884322, NULL, 1), list(0, NULL, 1)), 201)), justification = c(0.5, 1), gp = list(), clip = FALSE, xscale = c(0, 1), yscale = c(0, 1), angle = 0, layout = NULL, layout.pos.row = NULL, layout.pos.col = NULL, </span></span>
+<span><span class="co">#&gt;     valid.just = c(0.5, 1), valid.pos.row = NULL, valid.pos.col = NULL, name = "GRID.VP.153", parentgpar = NULL, gpar = NULL, trans = NULL, widths = NULL, heights = NULL, width.cm = NULL, height.cm = NULL, rotation = NULL, cliprect = NULL, parent = NULL, children = NULL, devwidth = NULL, devheight = NULL, clippath = NULL, mask = TRUE, resolvedmask = NULL), children = list(`NULL` = list(name = "NULL", gp = NULL, vp = NULL), axis = list(grobs = list(list(x = c(0.142857142857143, 0.142857142857143, </span></span>
+<span><span class="co">#&gt; 0.380952380952381, 0.380952380952381, 0.619047619047619, 0.619047619047619, 0.857142857142857, 0.857142857142857), y = list(list(1, list(list(1, NULL, 0), list(-2.75, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.75, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.75, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), </span></span>
+<span><span class="co">#&gt;     list(-2.75, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(0, NULL, 8)), 201)), id = NULL, id.lengths = c(2, 2, 2, 2), arrow = NULL, name = "GRID.polyline.2094", gp = list(col = "grey20", fill = "grey20", lwd = 1.42263779527559, lty = 1, lineend = "butt"), vp = NULL), list(widths = 1, heights = list(list(2.2, NULL, 8), list(1, list(list(1, list(label = c("ProtConn[Within]", "ProtConn[Contig]", "ProtConn[Unprot]", "ProtConn[Trans]"), x = c(0.142857142857143, 0.380952380952381, 0.619047619047619, </span></span>
+<span><span class="co">#&gt; 0.857142857142857), y = c(1, 1, 1, 1), just = "centre", hjust = 0.5, vjust = 1, rot = 0, check.overlap = FALSE, name = "GRID.text.2095", gp = list(fontsize = 11, col = "#525252", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL), 22), list(0.0336111111111111, NULL, 2)), 201), list(0, NULL, 8)), name = "GRID.titleGrob.2096", gp = NULL, vp = NULL, children = list(GRID.text.2095 = list(label = c("ProtConn[Within]", "ProtConn[Contig]", "ProtConn[Unprot]", "ProtConn[Trans]"), x = c(0.142857142857143, </span></span>
+<span><span class="co">#&gt; 0.380952380952381, 0.619047619047619, 0.857142857142857), y = list(list(1, list(list(1, NULL, 0), list(-2.2, NULL, 8), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.2, NULL, 8), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.2, NULL, 8), list(0, NULL, 8)), 201), list(1, list(list(1, NULL, 0), list(-2.2, NULL, 8), list(0, NULL, 8)), 201)), just = "centre", hjust = 0.5, vjust = 1, rot = 0, check.overlap = FALSE, name = "GRID.text.2095", gp = list(fontsize = 11, col = "#525252", </span></span>
+<span><span class="co">#&gt;     fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL)), childrenOrder = "GRID.text.2095"), list(name = "NULL", gp = NULL, vp = NULL)), layout = list(t = c(1, 3, 4), l = c(1, 1, 1), b = c(1, 3, 4), r = c(1, 1, 1), z = c(1, 2, 3), clip = c("off", "off", "off"), name = c("axis", "axis", "axis")), widths = 1, heights = list(list(0.0966514459665145, NULL, 1), list(1, list(list(0, NULL, 8), list(-0.0966514459665145, NULL, 1)), 203), list(0.441317267884322, NULL, 1), list(0, NULL, 1)), </span></span>
+<span><span class="co">#&gt;     respect = FALSE, rownames = NULL, colnames = NULL, name = "axis", gp = NULL, vp = NULL, children = list(), childrenOrder = character(0))), childrenOrder = c("NULL", "axis")), list(name = "NULL", gp = NULL, vp = NULL), list(name = "NULL", gp = NULL, vp = NULL), list(name = "NULL", gp = NULL, vp = NULL), list(name = "NULL", gp = NULL, vp = NULL), list(widths = 1, heights = list(list(2.75, NULL, 8), list(1, list(list(1, list(label = "", x = 0.5, y = 1, just = "centre", hjust = 0.5, vjust = 1, rot = 0, </span></span>
+<span><span class="co">#&gt;     check.overlap = FALSE, name = "GRID.text.2102", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL), 22), list(0.0397222222222222, NULL, 2)), 201), list(0, NULL, 8)), name = "axis.title.x.bottom..titleGrob.2104", gp = NULL, vp = NULL, children = list(GRID.text.2102 = list(label = "", x = 0.5, y = list(list(1, list(list(1, NULL, 0), list(-2.75, NULL, 8), list(0, NULL, 8)), 201)), just = "centre", hjust = 0.5, vjust = 1, rot = 0, check.overlap = FALSE, </span></span>
+<span><span class="co">#&gt;     name = "GRID.text.2102", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL)), childrenOrder = "GRID.text.2102"), list(widths = list(list(0, NULL, 8), list(1, list(list(1, list(label = "Percentage (%)", x = 0, y = 0.5, just = "centre", hjust = 0.5, vjust = 1, rot = 90, check.overlap = FALSE, name = "GRID.text.2105", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL), 21), list(</span></span>
+<span><span class="co">#&gt;     0.0397222222222222, NULL, 2)), 201), list(2.75, NULL, 8)), heights = 1, name = "axis.title.y.left..titleGrob.2107", gp = NULL, vp = NULL, children = list(GRID.text.2105 = list(label = "Percentage (%)", x = list(list(1, list(list(0, NULL, 0), list(0, NULL, 8), list(0, NULL, 8)), 201)), y = 0.5, just = "centre", hjust = 0.5, vjust = 1, rot = 90, check.overlap = FALSE, name = "GRID.text.2105", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL)), </span></span>
+<span><span class="co">#&gt;     childrenOrder = "GRID.text.2105"), list(name = "NULL", gp = NULL, vp = NULL), list(name = "NULL", gp = NULL, vp = NULL), list(name = "NULL", gp = NULL, vp = NULL), list(name = "NULL", gp = NULL, vp = NULL), list(name = "NULL", gp = NULL, vp = NULL), list(name = "NULL", gp = NULL, vp = NULL), list(name = "plot.subtitle..zeroGrob.2111", gp = NULL, vp = NULL), list(widths = list(list(0, NULL, 8), list(1, list(list(1, list(label = "Protected connected fractions", x = 0.45, y = 1, just = "centre", </span></span>
+<span><span class="co">#&gt;     hjust = 0.45, vjust = 1, rot = 0, check.overlap = FALSE, name = "GRID.text.2108", gp = list(fontsize = 15.4, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(bold = 2)), vp = NULL), 21), list(0, NULL, 2)), 201), list(0, NULL, 8)), heights = list(list(0, NULL, 8), list(1, list(list(1, list(label = "Protected connected fractions", x = 0.45, y = 1, just = "centre", hjust = 0.45, vjust = 1, rot = 0, check.overlap = FALSE, name = "GRID.text.2108", gp = list(fontsize = 15.4, col = "#252525", </span></span>
+<span><span class="co">#&gt;     fontfamily = "", lineheight = 0.9, font = c(bold = 2)), vp = NULL), 22), list(0.0458333333333333, NULL, 2)), 201), list(5.5, NULL, 8)), name = "plot.title..titleGrob.2110", gp = NULL, vp = NULL, children = list(GRID.text.2108 = list(label = "Protected connected fractions", x = list(list(1, list(list(0.45, NULL, 0), list(0, NULL, 8), list(0, NULL, 8)), 201)), y = list(list(1, list(list(1, NULL, 0), list(0, NULL, 8), list(0, NULL, 8)), 201)), just = "centre", hjust = 0.45, vjust = 1, rot = 0, check.overlap = FALSE, </span></span>
+<span><span class="co">#&gt;     name = "GRID.text.2108", gp = list(fontsize = 15.4, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(bold = 2)), vp = NULL)), childrenOrder = "GRID.text.2108"), list(name = "plot.caption..zeroGrob.2112", gp = NULL, vp = NULL)), layout = list(t = c(1, 8, 9, 10, 8, 9, 10, 8, 9, 10, 7, 11, 9, 9, 9, 9, 13, 5, 9, 4, 3, 14), l = c(1, 6, 6, 6, 7, 7, 7, 8, 8, 8, 7, 7, 5, 9, 11, 3, 7, 7, 7, 7, 7, 7), b = c(16, 8, 9, 10, 8, 9, 10, 8, 9, 10, 7, 11, 9, 9, 9, 9, 13, 5, 9, 4, 3, 14), r = c(13, </span></span>
+<span><span class="co">#&gt; 6, 6, 6, 7, 7, 7, 8, 8, 8, 7, 7, 5, 9, 11, 3, 7, 7, 7, 7, 7, 7), z = c(0, 5, 7, 3, 6, 1, 9, 4, 8, 2, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21), clip = c("on", "off", "off", "off", "off", "on", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off"), name = c("background", "spacer", "axis-l", "spacer", "axis-t", "panel", "axis-b", "spacer", "axis-r", "spacer", "xlab-t", "xlab-b", "ylab-l", "ylab-r", "guide-box-right", "guide-box-left", </span></span>
+<span><span class="co">#&gt; "guide-box-bottom", "guide-box-top", "guide-box-inside", "subtitle", "title", "caption")), widths = list(list(0.3, NULL, 1), list(0, NULL, 8), list(0, NULL, 1), list(0, NULL, 8), list(1, list(widths = list(list(0, NULL, 8), list(1, list(list(1, list(label = "Percentage (%)", x = 0, y = 0.5, just = "centre", hjust = 0.5, vjust = 1, rot = 90, check.overlap = FALSE, name = "GRID.text.2105", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL), </span></span>
+<span><span class="co">#&gt;     21), list(0.0397222222222222, NULL, 2)), 201), list(2.75, NULL, 8)), heights = 1, name = "axis.title.y.left..titleGrob.2107", gp = NULL, vp = NULL, children = list(GRID.text.2105 = list(label = "Percentage (%)", x = list(list(1, list(list(0, NULL, 0), list(0, NULL, 8), list(0, NULL, 8)), 201)), y = 0.5, just = "centre", hjust = 0.5, vjust = 1, rot = 90, check.overlap = FALSE, name = "GRID.text.2105", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), </span></span>
+<span><span class="co">#&gt;     vp = NULL)), childrenOrder = "GRID.text.2105"), 21), list(1, list(list(0, NULL, 1), list(0.724597823439877, NULL, 1), list(1, list(list(0, NULL, 8), list(-0.0966514459665145, NULL, 1)), 203), list(0.0966514459665145, NULL, 1)), 201), list(1, NULL, 5), list(0, NULL, 1), list(0, NULL, 1), list(0, NULL, 8), list(0, NULL, 1), list(0, NULL, 8), list(5.3, NULL, 1)), heights = list(list(0, NULL, 1), list(0, NULL, 8), list(1, list(widths = list(list(0, NULL, 8), list(1, list(list(1, list(label = "Protected connected fractions", </span></span>
+<span><span class="co">#&gt;     x = 0.45, y = 1, just = "centre", hjust = 0.45, vjust = 1, rot = 0, check.overlap = FALSE, name = "GRID.text.2108", gp = list(fontsize = 15.4, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(bold = 2)), vp = NULL), 21), list(0, NULL, 2)), 201), list(0, NULL, 8)), heights = list(list(0, NULL, 8), list(1, list(list(1, list(label = "Protected connected fractions", x = 0.45, y = 1, just = "centre", hjust = 0.45, vjust = 1, rot = 0, check.overlap = FALSE, name = "GRID.text.2108", gp = list(</span></span>
+<span><span class="co">#&gt;     fontsize = 15.4, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(bold = 2)), vp = NULL), 22), list(0.0458333333333333, NULL, 2)), 201), list(5.5, NULL, 8)), name = "plot.title..titleGrob.2110", gp = NULL, vp = NULL, children = list(GRID.text.2108 = list(label = "Protected connected fractions", x = list(list(1, list(list(0.45, NULL, 0), list(0, NULL, 8), list(0, NULL, 8)), 201)), y = list(list(1, list(list(1, NULL, 0), list(0, NULL, 8), list(0, NULL, 8)), 201)), just = "centre", hjust = 0.45, </span></span>
+<span><span class="co">#&gt;     vjust = 1, rot = 0, check.overlap = FALSE, name = "GRID.text.2108", gp = list(fontsize = 15.4, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(bold = 2)), vp = NULL)), childrenOrder = "GRID.text.2108"), 22), list(0, NULL, 1), list(0, NULL, 1), list(0, NULL, 8), list(0, NULL, 1), list(0, NULL, 1), list(1, NULL, 5), list(1, list(list(0.0966514459665145, NULL, 1), list(1, list(list(0, NULL, 8), list(-0.0966514459665145, NULL, 1)), 203), list(0.441317267884322, NULL, 1), list(0, NULL, </span></span>
+<span><span class="co">#&gt;     1)), 201), list(1, list(widths = 1, heights = list(list(2.75, NULL, 8), list(1, list(list(1, list(label = "", x = 0.5, y = 1, just = "centre", hjust = 0.5, vjust = 1, rot = 0, check.overlap = FALSE, name = "GRID.text.2102", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL), 22), list(0.0397222222222222, NULL, 2)), 201), list(0, NULL, 8)), name = "axis.title.x.bottom..titleGrob.2104", gp = NULL, vp = NULL, children = list(GRID.text.2102 = list(</span></span>
+<span><span class="co">#&gt;     label = "", x = 0.5, y = list(list(1, list(list(1, NULL, 0), list(-2.75, NULL, 8), list(0, NULL, 8)), 201)), just = "centre", hjust = 0.5, vjust = 1, rot = 0, check.overlap = FALSE, name = "GRID.text.2102", gp = list(fontsize = 13.2, col = "#252525", fontfamily = "", lineheight = 0.9, font = c(plain = 1)), vp = NULL)), childrenOrder = "GRID.text.2102"), 22), list(0, NULL, 8), list(0, NULL, 1), list(0, NULL, 1), list(0, NULL, 8), list(0, NULL, 1)), respect = FALSE, rownames = NULL, colnames = NULL, </span></span>
+<span><span class="co">#&gt;     name = "layout", gp = NULL, vp = NULL, children = list(), childrenOrder = character(0)), xmin = 0, xmax = 1, ymin = 0, ymax = 0.5, scale = 1, clip = inherit, halign = 0.5, valign = 0.5</span></span>
+<span><span class="co">#&gt; stat_identity: na.rm = FALSE</span></span>
+<span><span class="co">#&gt; position_identity </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $scales</span></span>
+<span><span class="co">#&gt; &lt;ggproto object: Class ScalesList, gg&gt;</span></span>
+<span><span class="co">#&gt;     add: function</span></span>
+<span><span class="co">#&gt;     add_defaults: function</span></span>
+<span><span class="co">#&gt;     add_missing: function</span></span>
+<span><span class="co">#&gt;     backtransform_df: function</span></span>
+<span><span class="co">#&gt;     clone: function</span></span>
+<span><span class="co">#&gt;     find: function</span></span>
+<span><span class="co">#&gt;     get_scales: function</span></span>
+<span><span class="co">#&gt;     has_scale: function</span></span>
+<span><span class="co">#&gt;     input: function</span></span>
+<span><span class="co">#&gt;     map_df: function</span></span>
+<span><span class="co">#&gt;     n: function</span></span>
+<span><span class="co">#&gt;     non_position_scales: function</span></span>
+<span><span class="co">#&gt;     scales: list</span></span>
+<span><span class="co">#&gt;     set_palettes: function</span></span>
+<span><span class="co">#&gt;     train_df: function</span></span>
+<span><span class="co">#&gt;     transform_df: function</span></span>
+<span><span class="co">#&gt;     super:  &lt;ggproto object: Class ScalesList, gg&gt;</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $guides</span></span>
+<span><span class="co">#&gt; &lt;Guides[0] ggproto object&gt;</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; &lt;empty&gt;</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $mapping</span></span>
+<span><span class="co">#&gt; named list()</span></span>
+<span><span class="co">#&gt; attr(,"class")</span></span>
+<span><span class="co">#&gt; [1] "uneval"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $theme</span></span>
+<span><span class="co">#&gt; $line</span></span>
+<span><span class="co">#&gt; list()</span></span>
+<span><span class="co">#&gt; attr(,"class")</span></span>
+<span><span class="co">#&gt; [1] "element_blank" "element"      </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $rect</span></span>
+<span><span class="co">#&gt; list()</span></span>
+<span><span class="co">#&gt; attr(,"class")</span></span>
+<span><span class="co">#&gt; [1] "element_blank" "element"      </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $text</span></span>
+<span><span class="co">#&gt; $family</span></span>
+<span><span class="co">#&gt; [1] ""</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $face</span></span>
+<span><span class="co">#&gt; [1] "plain"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $colour</span></span>
+<span><span class="co">#&gt; [1] "black"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $size</span></span>
+<span><span class="co">#&gt; [1] 14</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $hjust</span></span>
+<span><span class="co">#&gt; [1] 0.5</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $vjust</span></span>
+<span><span class="co">#&gt; [1] 0.5</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $angle</span></span>
+<span><span class="co">#&gt; [1] 0</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $lineheight</span></span>
+<span><span class="co">#&gt; [1] 0.9</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $margin</span></span>
+<span><span class="co">#&gt; [1] 0points 0points 0points 0points</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $debug</span></span>
+<span><span class="co">#&gt; [1] FALSE</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $inherit.blank</span></span>
+<span><span class="co">#&gt; [1] TRUE</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; attr(,"class")</span></span>
+<span><span class="co">#&gt; [1] "element_text" "element"     </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $title</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $aspect.ratio</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.title</span></span>
+<span><span class="co">#&gt; list()</span></span>
+<span><span class="co">#&gt; attr(,"class")</span></span>
+<span><span class="co">#&gt; [1] "element_blank" "element"      </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.title.x</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.title.x.top</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.title.x.bottom</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.title.y</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.title.y.left</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.title.y.right</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.text</span></span>
+<span><span class="co">#&gt; list()</span></span>
+<span><span class="co">#&gt; attr(,"class")</span></span>
+<span><span class="co">#&gt; [1] "element_blank" "element"      </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.text.x</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.text.x.top</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.text.x.bottom</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.text.y</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.text.y.left</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.text.y.right</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.text.theta</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.text.r</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.ticks</span></span>
+<span><span class="co">#&gt; list()</span></span>
+<span><span class="co">#&gt; attr(,"class")</span></span>
+<span><span class="co">#&gt; [1] "element_blank" "element"      </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.ticks.x</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.ticks.x.top</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.ticks.x.bottom</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.ticks.y</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.ticks.y.left</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.ticks.y.right</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.ticks.theta</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.ticks.r</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.minor.ticks.x.top</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.minor.ticks.x.bottom</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.minor.ticks.y.left</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.minor.ticks.y.right</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.minor.ticks.theta</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.minor.ticks.r</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.ticks.length</span></span>
+<span><span class="co">#&gt; [1] 0points</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.ticks.length.x</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.ticks.length.x.top</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.ticks.length.x.bottom</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.ticks.length.y</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.ticks.length.y.left</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.ticks.length.y.right</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.ticks.length.theta</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.ticks.length.r</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.minor.ticks.length</span></span>
+<span><span class="co">#&gt; [1] 0points</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.minor.ticks.length.x</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.minor.ticks.length.x.top</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.minor.ticks.length.x.bottom</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.minor.ticks.length.y</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.minor.ticks.length.y.left</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.minor.ticks.length.y.right</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.minor.ticks.length.theta</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.minor.ticks.length.r</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.line</span></span>
+<span><span class="co">#&gt; list()</span></span>
+<span><span class="co">#&gt; attr(,"class")</span></span>
+<span><span class="co">#&gt; [1] "element_blank" "element"      </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.line.x</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.line.x.top</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.line.x.bottom</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.line.y</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.line.y.left</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.line.y.right</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.line.theta</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $axis.line.r</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $legend.background</span></span>
+<span><span class="co">#&gt; list()</span></span>
+<span><span class="co">#&gt; attr(,"class")</span></span>
+<span><span class="co">#&gt; [1] "element_blank" "element"      </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $legend.margin</span></span>
+<span><span class="co">#&gt; [1] 0points 0points 0points 0points</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $legend.spacing</span></span>
+<span><span class="co">#&gt; [1] 14points</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $legend.spacing.x</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $legend.spacing.y</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $legend.key</span></span>
+<span><span class="co">#&gt; list()</span></span>
+<span><span class="co">#&gt; attr(,"class")</span></span>
+<span><span class="co">#&gt; [1] "element_blank" "element"      </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $legend.key.size</span></span>
+<span><span class="co">#&gt; [1] 15.4points</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $legend.key.height</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $legend.key.width</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $legend.key.spacing</span></span>
+<span><span class="co">#&gt; [1] 7points</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $legend.key.spacing.x</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $legend.key.spacing.y</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $legend.frame</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $legend.ticks</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $legend.ticks.length</span></span>
+<span><span class="co">#&gt; [1] 0.2 *</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $legend.axis.line</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $legend.text</span></span>
+<span><span class="co">#&gt; $family</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $face</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $colour</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $size</span></span>
+<span><span class="co">#&gt; [1] 0.857142857142857 *</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $hjust</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $vjust</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $angle</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $lineheight</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $margin</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $debug</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $inherit.blank</span></span>
+<span><span class="co">#&gt; [1] TRUE</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; attr(,"class")</span></span>
+<span><span class="co">#&gt; [1] "element_text" "element"     </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $legend.text.position</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $legend.title</span></span>
+<span><span class="co">#&gt; $family</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $face</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $colour</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $size</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $hjust</span></span>
+<span><span class="co">#&gt; [1] 0</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $vjust</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $angle</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $lineheight</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $margin</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $debug</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $inherit.blank</span></span>
+<span><span class="co">#&gt; [1] TRUE</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; attr(,"class")</span></span>
+<span><span class="co">#&gt; [1] "element_text" "element"     </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $legend.title.position</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $legend.position</span></span>
+<span><span class="co">#&gt; [1] "none"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $legend.position.inside</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $legend.direction</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $legend.byrow</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $legend.justification</span></span>
+<span><span class="co">#&gt; [1] "center"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $legend.justification.top</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $legend.justification.bottom</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $legend.justification.left</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $legend.justification.right</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $legend.justification.inside</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $legend.location</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $legend.box</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $legend.box.just</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $legend.box.margin</span></span>
+<span><span class="co">#&gt; [1] 0points 0points 0points 0points</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $legend.box.background</span></span>
+<span><span class="co">#&gt; list()</span></span>
+<span><span class="co">#&gt; attr(,"class")</span></span>
+<span><span class="co">#&gt; [1] "element_blank" "element"      </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $legend.box.spacing</span></span>
+<span><span class="co">#&gt; [1] 14points</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $panel.background</span></span>
+<span><span class="co">#&gt; list()</span></span>
+<span><span class="co">#&gt; attr(,"class")</span></span>
+<span><span class="co">#&gt; [1] "element_blank" "element"      </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $panel.border</span></span>
+<span><span class="co">#&gt; list()</span></span>
+<span><span class="co">#&gt; attr(,"class")</span></span>
+<span><span class="co">#&gt; [1] "element_blank" "element"      </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $panel.spacing</span></span>
+<span><span class="co">#&gt; [1] 7points</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $panel.spacing.x</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $panel.spacing.y</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $panel.grid</span></span>
+<span><span class="co">#&gt; list()</span></span>
+<span><span class="co">#&gt; attr(,"class")</span></span>
+<span><span class="co">#&gt; [1] "element_blank" "element"      </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $panel.grid.major</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $panel.grid.minor</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $panel.grid.major.x</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $panel.grid.major.y</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $panel.grid.minor.x</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $panel.grid.minor.y</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $panel.ontop</span></span>
+<span><span class="co">#&gt; [1] FALSE</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $plot.background</span></span>
+<span><span class="co">#&gt; list()</span></span>
+<span><span class="co">#&gt; attr(,"class")</span></span>
+<span><span class="co">#&gt; [1] "element_blank" "element"      </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $plot.title</span></span>
+<span><span class="co">#&gt; list()</span></span>
+<span><span class="co">#&gt; attr(,"class")</span></span>
+<span><span class="co">#&gt; [1] "element_blank" "element"      </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $plot.title.position</span></span>
+<span><span class="co">#&gt; [1] "panel"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $plot.subtitle</span></span>
+<span><span class="co">#&gt; list()</span></span>
+<span><span class="co">#&gt; attr(,"class")</span></span>
+<span><span class="co">#&gt; [1] "element_blank" "element"      </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $plot.caption</span></span>
+<span><span class="co">#&gt; list()</span></span>
+<span><span class="co">#&gt; attr(,"class")</span></span>
+<span><span class="co">#&gt; [1] "element_blank" "element"      </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $plot.caption.position</span></span>
+<span><span class="co">#&gt; [1] "panel"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $plot.tag</span></span>
+<span><span class="co">#&gt; $family</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $face</span></span>
+<span><span class="co">#&gt; [1] "bold"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $colour</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $size</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $hjust</span></span>
+<span><span class="co">#&gt; [1] 0</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $vjust</span></span>
+<span><span class="co">#&gt; [1] 0.7</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $angle</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $lineheight</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $margin</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $debug</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $inherit.blank</span></span>
+<span><span class="co">#&gt; [1] TRUE</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; attr(,"class")</span></span>
+<span><span class="co">#&gt; [1] "element_text" "element"     </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $plot.tag.position</span></span>
+<span><span class="co">#&gt; [1] 0 1</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $plot.tag.location</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $plot.margin</span></span>
+<span><span class="co">#&gt; [1] 0points 0points 0points 0points</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $strip.background</span></span>
+<span><span class="co">#&gt; list()</span></span>
+<span><span class="co">#&gt; attr(,"class")</span></span>
+<span><span class="co">#&gt; [1] "element_blank" "element"      </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $strip.background.x</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $strip.background.y</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $strip.clip</span></span>
+<span><span class="co">#&gt; [1] "inherit"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $strip.placement</span></span>
+<span><span class="co">#&gt; [1] "inside"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $strip.text</span></span>
+<span><span class="co">#&gt; list()</span></span>
+<span><span class="co">#&gt; attr(,"class")</span></span>
+<span><span class="co">#&gt; [1] "element_blank" "element"      </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $strip.text.x</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $strip.text.x.bottom</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $strip.text.x.top</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $strip.text.y</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $strip.text.y.left</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $strip.text.y.right</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $strip.switch.pad.grid</span></span>
+<span><span class="co">#&gt; [1] 0cm</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $strip.switch.pad.wrap</span></span>
+<span><span class="co">#&gt; [1] 0cm</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; attr(,"class")</span></span>
+<span><span class="co">#&gt; [1] "theme" "gg"   </span></span>
+<span><span class="co">#&gt; attr(,"complete")</span></span>
+<span><span class="co">#&gt; [1] TRUE</span></span>
+<span><span class="co">#&gt; attr(,"validate")</span></span>
+<span><span class="co">#&gt; [1] TRUE</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $coordinates</span></span>
+<span><span class="co">#&gt; &lt;ggproto object: Class CoordCartesian, Coord, gg&gt;</span></span>
+<span><span class="co">#&gt;     aspect: function</span></span>
+<span><span class="co">#&gt;     backtransform_range: function</span></span>
+<span><span class="co">#&gt;     clip: off</span></span>
+<span><span class="co">#&gt;     default: FALSE</span></span>
+<span><span class="co">#&gt;     distance: function</span></span>
+<span><span class="co">#&gt;     draw_panel: function</span></span>
+<span><span class="co">#&gt;     expand: FALSE</span></span>
+<span><span class="co">#&gt;     is_free: function</span></span>
+<span><span class="co">#&gt;     is_linear: function</span></span>
+<span><span class="co">#&gt;     labels: function</span></span>
+<span><span class="co">#&gt;     limits: list</span></span>
+<span><span class="co">#&gt;     modify_scales: function</span></span>
+<span><span class="co">#&gt;     range: function</span></span>
+<span><span class="co">#&gt;     render_axis_h: function</span></span>
+<span><span class="co">#&gt;     render_axis_v: function</span></span>
+<span><span class="co">#&gt;     render_bg: function</span></span>
+<span><span class="co">#&gt;     render_fg: function</span></span>
+<span><span class="co">#&gt;     reverse: none</span></span>
+<span><span class="co">#&gt;     setup_data: function</span></span>
+<span><span class="co">#&gt;     setup_layout: function</span></span>
+<span><span class="co">#&gt;     setup_panel_guides: function</span></span>
+<span><span class="co">#&gt;     setup_panel_params: function</span></span>
+<span><span class="co">#&gt;     setup_params: function</span></span>
+<span><span class="co">#&gt;     train_panel_guides: function</span></span>
+<span><span class="co">#&gt;     transform: function</span></span>
+<span><span class="co">#&gt;     super:  &lt;ggproto object: Class CoordCartesian, Coord, gg&gt;</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $facet</span></span>
+<span><span class="co">#&gt; &lt;ggproto object: Class FacetNull, Facet, gg&gt;</span></span>
+<span><span class="co">#&gt;     attach_axes: function</span></span>
+<span><span class="co">#&gt;     attach_strips: function</span></span>
+<span><span class="co">#&gt;     compute_layout: function</span></span>
+<span><span class="co">#&gt;     draw_back: function</span></span>
+<span><span class="co">#&gt;     draw_front: function</span></span>
+<span><span class="co">#&gt;     draw_labels: function</span></span>
+<span><span class="co">#&gt;     draw_panel_content: function</span></span>
+<span><span class="co">#&gt;     draw_panels: function</span></span>
+<span><span class="co">#&gt;     finish_data: function</span></span>
+<span><span class="co">#&gt;     format_strip_labels: function</span></span>
+<span><span class="co">#&gt;     init_gtable: function</span></span>
+<span><span class="co">#&gt;     init_scales: function</span></span>
+<span><span class="co">#&gt;     map_data: function</span></span>
+<span><span class="co">#&gt;     params: list</span></span>
+<span><span class="co">#&gt;     set_panel_size: function</span></span>
+<span><span class="co">#&gt;     setup_data: function</span></span>
+<span><span class="co">#&gt;     setup_panel_params: function</span></span>
+<span><span class="co">#&gt;     setup_params: function</span></span>
+<span><span class="co">#&gt;     shrink: TRUE</span></span>
+<span><span class="co">#&gt;     train_scales: function</span></span>
+<span><span class="co">#&gt;     vars: function</span></span>
+<span><span class="co">#&gt;     super:  &lt;ggproto object: Class FacetNull, Facet, gg&gt;</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $plot_env</span></span>
+<span><span class="co">#&gt; &lt;environment: 0x0000020facfaae08&gt;</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $layout</span></span>
+<span><span class="co">#&gt; &lt;ggproto object: Class Layout, gg&gt;</span></span>
+<span><span class="co">#&gt;     coord: NULL</span></span>
+<span><span class="co">#&gt;     coord_params: list</span></span>
+<span><span class="co">#&gt;     facet: NULL</span></span>
+<span><span class="co">#&gt;     facet_params: list</span></span>
+<span><span class="co">#&gt;     finish_data: function</span></span>
+<span><span class="co">#&gt;     get_scales: function</span></span>
+<span><span class="co">#&gt;     layout: NULL</span></span>
+<span><span class="co">#&gt;     map_position: function</span></span>
+<span><span class="co">#&gt;     panel_params: NULL</span></span>
+<span><span class="co">#&gt;     panel_scales_x: NULL</span></span>
+<span><span class="co">#&gt;     panel_scales_y: NULL</span></span>
+<span><span class="co">#&gt;     render: function</span></span>
+<span><span class="co">#&gt;     render_labels: function</span></span>
+<span><span class="co">#&gt;     reset_scales: function</span></span>
+<span><span class="co">#&gt;     resolve_label: function</span></span>
+<span><span class="co">#&gt;     setup: function</span></span>
+<span><span class="co">#&gt;     setup_panel_guides: function</span></span>
+<span><span class="co">#&gt;     setup_panel_params: function</span></span>
+<span><span class="co">#&gt;     train_position: function</span></span>
+<span><span class="co">#&gt;     super:  &lt;ggproto object: Class Layout, gg&gt;</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $labels</span></span>
+<span><span class="co">#&gt; list()</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; attr(,"class")</span></span>
+<span><span class="co">#&gt; [1] "gg"        "ggplot"    "ggarrange"</span></span></code></pre></div>
 <p>Vector con valores para cada ecorregión:</p>
 <div class="sourceCode" id="cb165"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">test</span><span class="op">$</span><span class="va">ProtConn_10000</span><span class="op">$</span><span class="va">ProtConn_10000</span></span>
@@ -1697,7 +2527,7 @@ bca.upper
 <span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-20-1.png" width="672"></div>
+<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-20-1.png" alt="" width="672"></div>
 <p>ProtConn_Unprot:</p>
 <div class="sourceCode" id="cb167"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dProtConn</span> <span class="op">&lt;-</span> <span class="va">test</span><span class="op">$</span><span class="va">ProtConn_10000</span><span class="op">$</span><span class="va">ProtConn_10000</span></span>
@@ -1724,7 +2554,7 @@ bca.upper
 <span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-21-1.png" width="672"></div>
+<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-21-1.png" alt="" width="672"></div>
 <p>ProtConn_Within:</p>
 <div class="sourceCode" id="cb168"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dProtConn</span> <span class="op">&lt;-</span> <span class="va">test</span><span class="op">$</span><span class="va">ProtConn_10000</span><span class="op">$</span><span class="va">ProtConn_10000</span></span>
@@ -1751,7 +2581,7 @@ bca.upper
 <span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-22-1.png" width="672"></div>
+<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-22-1.png" alt="" width="672"></div>
 <p>ProtConn_Contig:</p>
 <div class="sourceCode" id="cb169"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dProtConn</span> <span class="op">&lt;-</span> <span class="va">test</span><span class="op">$</span><span class="va">ProtConn_10000</span><span class="op">$</span><span class="va">ProtConn_10000</span></span>
@@ -1778,7 +2608,7 @@ bca.upper
 <span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-23-1.png" width="672"></div>
+<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-23-1.png" alt="" width="672"></div>
 <p>ProtConn_Trans:</p>
 <div class="sourceCode" id="cb170"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dProtConn</span> <span class="op">&lt;-</span> <span class="va">test</span><span class="op">$</span><span class="va">ProtConn_10000</span><span class="op">$</span><span class="va">ProtConn_10000</span></span>
@@ -1805,7 +2635,7 @@ bca.upper
 <span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-24-1.png" width="672"></div>
+<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-24-1.png" alt="" width="672"></div>
 </div>
 <div id="función-mk_protconn_raster" class="section level3" number="10.0.4">
 <h3>
@@ -1826,7 +2656,7 @@ bca.upper
 <div class="sourceCode" id="cb172"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html">st_geometry</a></span><span class="op">(</span><span class="va">Ecorreg</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">APs_raster</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-26-1.png" width="672"></div>
+<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-26-1.png" alt="" width="672"></div>
 <div class="sourceCode" id="cb173"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Ecorreg_prueba</span> <span class="op">&lt;-</span> <span class="va">Ecorreg</span><span class="op">[</span><span class="fl">2</span>,<span class="op">]</span></span>
 <span><span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_ProtConn_raster.html">MK_ProtConn_raster</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">APs_raster</span>,</span>
@@ -1844,7 +2674,7 @@ bca.upper
 <span><span class="co">#&gt; $`Protected Connected (Viewer Panel)`</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`ProtConn Plot`</span></span></code></pre></div>
-<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-27-1.png" width="672"></div>
+<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-27-1.png" alt="" width="672"></div>
 </div>
 <div id="función-mk_connect_grid" class="section level2" number="10.1">
 <h2>
@@ -1855,7 +2685,7 @@ bca.upper
 <div class="sourceCode" id="cb174"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Regiones</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_combine.html">st_union</a></span><span class="op">(</span><span class="va">Ecorreg</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html">st_as_sf</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">Regiones</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-28-1.png" width="672"></div>
+<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-28-1.png" alt="" width="672"></div>
 <p>Ahora aplicaré la función MK_Connect_grid()</p>
 <div class="sourceCode" id="cb175"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">hexagons_priority</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_Connect_grid.html">MK_Connect_grid</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">APs</span>,</span>
@@ -1895,7 +2725,7 @@ bca.upper
 <span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-31-1.png" width="672"></div>
+<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-31-1.png" alt="" width="672"></div>
 <p>ProtConn[Unprot]:</p>
 <div class="sourceCode" id="cb177"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Calcular los intervalos</span></span>
@@ -1921,7 +2751,7 @@ bca.upper
 <span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-32-1.png" width="672"></div>
+<div class="inline-figure"><img src="07-ProtConn_files/figure-html/unnamed-chunk-32-1.png" alt="" width="672"></div>
 </div>
 <div id="referencias-1" class="section level2" number="10.2">
 <h2>
@@ -1936,7 +2766,7 @@ bca.upper
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="conectividad-din%C3%A1mica-con-mk_deca.html"><span class="header-section-number">9</span> Conectividad dinámica con MK_dECA()</a></div>
-<div class="empty"></div>
+<div class="next"><a href="resistencia.html"><span class="header-section-number">11</span> Resistencia</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -1967,7 +2797,7 @@ bca.upper
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Manual de uso de Makurhini</strong>" was written by Oscar Godínez Gómez. It was last built on 2025-08-15.</p>
+    <p>"<strong>Manual de uso de Makurhini</strong>" was written by Oscar Godínez Gómez. It was last built on 2026-06-22.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -1975,6 +2805,34 @@ bca.upper
   </div>
 
 </div></div>
-</footer>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
 </body>
 </html>

@@ -22,14 +22,14 @@ library(Makurhini)
 probability_distance(probability= 0.5, median_distance = c(1, 10, 30, 100))
 ```
 
-<img src="04-IIC_PC_files/figure-html/unnamed-chunk-1-1.png" width="672" />
+<img src="04-IIC_PC_files/figure-html/unnamed-chunk-1-1.png" alt="" width="672" />
 
 
 ``` r
 probability_distance(probability= 0.5, median_distance = 100, eval_distance = 100)
 ```
 
-<img src="04-IIC_PC_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+<img src="04-IIC_PC_files/figure-html/unnamed-chunk-2-1.png" alt="" width="672" />
 
 ```
 #> [1] 0.5
@@ -40,7 +40,7 @@ probability_distance(probability= 0.5, median_distance = 100, eval_distance = 10
 probability_distance(probability= 0.5, median_distance = 50, eval_distance = 25)
 ```
 
-<img src="04-IIC_PC_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+<img src="04-IIC_PC_files/figure-html/unnamed-chunk-3-1.png" alt="" width="672" />
 
 ```
 #> [1] 0.7071068
@@ -62,7 +62,7 @@ library(RColorBrewer)
 
 
 ```
-#> Linking to GEOS 3.13.0, GDAL 3.10.1, PROJ 9.5.1;
+#> Linking to GEOS 3.14.1, GDAL 3.12.1, PROJ 9.7.1;
 #> sf_use_s2() is TRUE
 #> [1] 404
 ```
@@ -78,7 +78,7 @@ ggplot() +
         axis.title.y = element_blank())
 ```
 
-<img src="04-IIC_PC_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+<img src="04-IIC_PC_files/figure-html/unnamed-chunk-6-1.png" alt="" width="672" />
 
 ## MK_dPCIIC()
 
@@ -157,13 +157,15 @@ IIC <- MK_dPCIIC(nodes = habitat_nodes,
                 distance_thresholds = 10000,
                 intern = TRUE) #10 km
 #> Estimating IIC index. This may take several minutes depending on the number of nodes
-#>   |                                                          |                                                  |   0%
 #> 
 #> Done!
 IIC
-#>     Index        Value
-#> 1  IICnum 1.434310e+12
-#> 2 EC(IIC) 1.197627e+06
+#>          Index        Value
+#> 1       IICnum 2.041991e+11
+#> 2      EC(IIC) 4.518840e+05
+#> 3  IICintra(%) 9.002574e+01
+#> 4 IICdirect(%) 5.828033e-01
+#> 5   IICstep(%) 9.391453e+00
 ```
 
 ## Ejemplo 2. Distancia euclidiana
@@ -188,14 +190,16 @@ IIC <- MK_dPCIIC(nodes = habitat_nodes,
                 distance_thresholds = 10000,
                 intern = TRUE) #10 km
 #> Estimating IIC index. This may take several minutes depending on the number of nodes
-#>   |                                                          |                                                  |   0%
 #> 
 #> Done!
 IIC
-#>     Index        Value
-#> 1  IICnum 1.434310e+12
-#> 2 EC(IIC) 1.197627e+06
-#> 3     IIC 1.881017e-01
+#>          Index        Value
+#> 1       IICnum 2.041991e+11
+#> 2      EC(IIC) 4.518840e+05
+#> 3          IIC 2.677957e-02
+#> 4  IICintra(%) 9.002574e+01
+#> 5 IICdirect(%) 5.828033e-01
+#> 6   IICstep(%) 9.391453e+00
 ```
 
 ## Ejemplo 3. Distancia euclidiana
@@ -220,14 +224,16 @@ IIC <- MK_dPCIIC(nodes = habitat_nodes,
                 distance_thresholds = 10000,
                 intern = TRUE) #10 km
 #> Estimating IIC index. This may take several minutes depending on the number of nodes
-#>   |                                                          |                                                  |   0%
 #> 
 #> Done!
 IIC
-#>     Index        Value
-#> 1  IICnum 5.700691e+11
-#> 2 EC(IIC) 7.550292e+05
-#> 3     IIC 7.476136e-02
+#>          Index        Value
+#> 1       IICnum 5.700691e+11
+#> 2      EC(IIC) 7.550292e+05
+#> 3          IIC 7.476136e-02
+#> 4  IICintra(%) 3.224727e+01
+#> 5 IICdirect(%) 1.741295e+01
+#> 6   IICstep(%) 5.033977e+01
 ```
 
 
@@ -245,14 +251,16 @@ IIC <- MK_dPCIIC(nodes = habitat_nodes,
                 distance_thresholds = 10000,
                 intern = TRUE) #10 km
 #> Estimating IIC index. This may take several minutes depending on the number of nodes
-#>   |                                                          |                                                  |   0%
 #> 
 #> Done!
 IIC
-#>     Index        Value
-#> 1  IICnum 5.693868e+11
-#> 2 EC(IIC) 7.545772e+05
-#> 3     IIC 7.467188e-02
+#>          Index        Value
+#> 1       IICnum 5.693868e+11
+#> 2      EC(IIC) 7.545772e+05
+#> 3          IIC 7.467188e-02
+#> 4  IICintra(%) 3.228592e+01
+#> 5 IICdirect(%) 1.729524e+01
+#> 6   IICstep(%) 5.041884e+01
 ```
 
 ## Ejemplo 4. Distancia euclidiana: fracciones
@@ -276,8 +284,11 @@ IIC <- MK_dPCIIC(nodes = habitat_nodes,
                 distance_thresholds = 10000,
                 intern = TRUE) #10 km
 #> Estimating IIC index. This may take several minutes depending on the number of nodes
-#>   |                                                          |                                                  |   0%
-#>  ■■■■■■■■■■■■■                     39% |  ETA:  3s
+#>  ■■■■                              11% |  ETA:  9s
+#>  ■■■■■■■■■■■                       33% |  ETA:  8s
+#>  ■■■■■■■■■■■■■■■■■■                58% |  ETA:  5s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■        82% |  ETA:  2s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    98% |  ETA:  0s
 #> 
 #> Done!
 IIC
@@ -357,7 +368,7 @@ ggplot() +
   )
 ```
 
-<img src="04-IIC_PC_files/figure-html/unnamed-chunk-13-1.png" width="672" />
+<img src="04-IIC_PC_files/figure-html/unnamed-chunk-13-1.png" alt="" width="672" />
 
 -   dIICIntra
 
@@ -389,7 +400,7 @@ ggplot() +
   )
 ```
 
-<img src="04-IIC_PC_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+<img src="04-IIC_PC_files/figure-html/unnamed-chunk-14-1.png" alt="" width="672" />
 
 -   dIICflux
 
@@ -421,7 +432,7 @@ ggplot() +
   )
 ```
 
-<img src="04-IIC_PC_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+<img src="04-IIC_PC_files/figure-html/unnamed-chunk-15-1.png" alt="" width="672" />
 
 -   dIICconnector
 
@@ -453,7 +464,7 @@ ggplot() +
   )
 ```
 
-<img src="04-IIC_PC_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+<img src="04-IIC_PC_files/figure-html/unnamed-chunk-16-1.png" alt="" width="672" />
 
 ## Ejemplo 5. Distancia euclidiana: fracciones y overall
 
@@ -477,8 +488,9 @@ IIC <- MK_dPCIIC(nodes = habitat_nodes,
                 distance_thresholds = 10000,
                 intern = TRUE) #10 km
 #> Estimating IIC index. This may take several minutes depending on the number of nodes
-#>   |                                                          |                                                  |   0%
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■       85% |  ETA:  1s
+#>  ■■■■■■■■■                         28% |  ETA:  7s
+#>  ■■■■■■■■■■■■■■■■■                 52% |  ETA:  5s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■          77% |  ETA:  3s
 #> 
 #> Done!
 IIC
@@ -513,10 +525,13 @@ IIC
 #> 10 POLYGON ((23378.32 2067554,...
 #> 
 #> $overall_d10000
-#>     Index        Value
-#> 1  IICnum 5.693868e+11
-#> 2 EC(IIC) 7.545772e+05
-#> 3     IIC 7.467188e-02
+#>          Index        Value
+#> 1       IICnum 5.693868e+11
+#> 2      EC(IIC) 7.545772e+05
+#> 3          IIC 7.467188e-02
+#> 4  IICintra(%) 3.228592e+01
+#> 5 IICdirect(%) 1.729524e+01
+#> 6   IICstep(%) 5.041884e+01
 ```
 
 ## Ejemplo 6. Distancia euclidiana: varios umbrales de distancia
@@ -541,14 +556,23 @@ IIC <- MK_dPCIIC(nodes = habitat_nodes,
                 distance_thresholds = c(2000, 10000, 50000),
                 intern = TRUE)
 #> Estimating IIC index. This may take several minutes depending on the number of nodes
-#>   |                                                          |                                                  |   0%  |                                                          |                                                  |   0%
-#>  ■■■■■■■■■■■■■                     38% |  ETA:  2s
-#>   |                                                          |=================                                 |  33%  |                                                          |                                                  |   0%
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■       87% |  ETA:  1s
-#>   |                                                          |=================================                 |  67%  |                                                          |                                                  |   0%
-#>  ■■■■■■■                           20% |  ETA:  8s
-#>  ■■■■■■■■■■■■■■■■■                 54% |  ETA:  4s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■      91% |  ETA:  1s
+#>   |                                                          |                                                  |   0%
+#>  ■■■■■■■■                          22% |  ETA:  6s
+#>  ■■■■■■■■■■■■■■■■■                 52% |  ETA:  4s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■           74% |  ETA:  3s
+#>   |                                                          |=================                                 |  33%
+#>  ■■■■■■■■■                         27% |  ETA:  7s
+#>  ■■■■■■■■■■■■■■■■                  51% |  ETA:  6s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■          77% |  ETA:  3s
+#>   |                                                          |=================================                 |  67%
+#>  ■■■■■                             12% |  ETA: 18s
+#>  ■■■■■■■■                          23% |  ETA: 18s
+#>  ■■■■■■■■■■                        30% |  ETA: 20s
+#>  ■■■■■■■■■■■■■                     42% |  ETA: 16s
+#>  ■■■■■■■■■■■■■■■■■                 53% |  ETA: 13s
+#>  ■■■■■■■■■■■■■■■■■■■■■             65% |  ETA:  9s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■          76% |  ETA:  6s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■      89% |  ETA:  3s
 #>   |                                                          |==================================================| 100%
 #> 
 #> Done!
@@ -561,17 +585,17 @@ IIC
 #> Bounding box:  xmin: -108954 ymin: 2025032 xmax: 202330.2 ymax: 2198936
 #> Projected CRS: NAD_1927_Albers
 #> First 10 features:
-#>    Id     dIIC dIICintra  dIICflux dIICconnector
-#> 1   1 17.28636 0.0000013 0.0068969      17.27946
-#> 2   2 17.29811 0.0000089 0.0204943      17.27760
-#> 3   3 18.16002 0.0221965 1.0038668      17.13396
-#> 4   4 17.29016 0.0000027 0.0111808      17.27897
-#> 5   5 17.29788 0.0000062 0.0197837      17.27809
-#> 6   6 17.28310 0.0000001 0.0028178      17.28028
-#> 7   7 17.28470 0.0000003 0.0046587      17.28004
-#> 8   8 17.28793 0.0000006 0.0080829      17.27985
-#> 9   9 17.32364 0.0000076 0.0285784      17.29506
-#> 10 10 20.91990 0.1584212 3.0660332      17.69544
+#>    Id      dIIC dIICintra  dIICflux dIICconnector
+#> 1   1 0.0069072 0.0000016 0.0069043  1.270350e-06
+#> 2   2 0.0211102 0.0000107 0.0210982  1.270214e-06
+#> 3   3 1.0630880 0.0268336 1.0295579  6.696595e-03
+#> 4   4 0.0115004 0.0000032 0.0114959  1.270314e-06
+#> 5   5 0.0208408 0.0000075 0.0208320  1.270250e-06
+#> 6   6 0.0029685 0.0000002 0.0029671  1.270410e-06
+#> 7   7 0.0049074 0.0000004 0.0049057  1.270393e-06
+#> 8   8 0.0088126 0.0000007 0.0088105  1.367677e-06
+#> 9   9 0.0519850 0.0000091 0.0311509  2.082496e-02
+#> 10 10 4.3995169 0.1915165 3.2149196  9.930808e-01
 #>                          geometry
 #> 1  POLYGON ((54911.05 2035815,...
 #> 2  POLYGON ((44591.28 2042209,...
@@ -585,10 +609,13 @@ IIC
 #> 10 POLYGON ((23378.32 2067554,...
 #> 
 #> $d2000$overall_d2000
-#>     Index        Value
-#> 1  IICnum 5.471106e+11
-#> 2 EC(IIC) 7.396693e+05
-#> 3     IIC 7.175048e-02
+#>          Index        Value
+#> 1       IICnum 4.525664e+11
+#> 2      EC(IIC) 6.727305e+05
+#> 3          IIC 5.935154e-02
+#> 4  IICintra(%) 4.061984e+01
+#> 5 IICdirect(%) 9.638750e+00
+#> 6   IICstep(%) 4.974141e+01
 #> 
 #> 
 #> $d10000
@@ -623,10 +650,13 @@ IIC
 #> 10 POLYGON ((23378.32 2067554,...
 #> 
 #> $d10000$overall_d10000
-#>     Index        Value
-#> 1  IICnum 5.693868e+11
-#> 2 EC(IIC) 7.545772e+05
-#> 3     IIC 7.467188e-02
+#>          Index        Value
+#> 1       IICnum 5.693868e+11
+#> 2      EC(IIC) 7.545772e+05
+#> 3          IIC 7.467188e-02
+#> 4  IICintra(%) 3.228592e+01
+#> 5 IICdirect(%) 1.729524e+01
+#> 6   IICstep(%) 5.041884e+01
 #> 
 #> 
 #> $d50000
@@ -661,10 +691,13 @@ IIC
 #> 10 POLYGON ((23378.32 2067554,...
 #> 
 #> $d50000$overall_d50000
-#>     Index        Value
-#> 1  IICnum 7.628072e+11
-#> 2 EC(IIC) 8.733883e+05
-#> 3     IIC 1.000379e-01
+#>          Index        Value
+#> 1       IICnum 7.628072e+11
+#> 2      EC(IIC) 8.733883e+05
+#> 3          IIC 1.000379e-01
+#> 4  IICintra(%) 2.409937e+01
+#> 5 IICdirect(%) 4.455378e+01
+#> 6   IICstep(%) 3.134685e+01
 ```
 
 ## Probabilidad de conectividad (PC)
@@ -690,13 +723,15 @@ PC <- MK_dPCIIC(nodes = habitat_nodes,
                 distance_thresholds = 10000,
                 intern = TRUE) #10 km
 #> Estimating PC index. This may take several minutes depending on the number of nodes
-#>   |                                                          |                                                  |   0%  |                                                          |==================================================| 100%
 #> 
 #> Done!
 PC
-#>    Index        Value
-#> 1  PCnum 1.301622e+12
-#> 2 EC(PC) 1.140887e+06
+#>         Index        Value
+#> 1       PCnum 1.301622e+12
+#> 2      EC(PC) 1.140887e+06
+#> 3  PCintra(%) 1.412328e+01
+#> 4 PCdirect(%) 1.991759e+01
+#> 5   PCstep(%) 6.595913e+01
 ```
 
 ## Ejemplo 2. Distancia euclidiana
@@ -722,14 +757,16 @@ PC <- MK_dPCIIC(nodes = habitat_nodes,
                 distance_thresholds = 10000,
                 intern = TRUE) #10 km
 #> Estimating PC index. This may take several minutes depending on the number of nodes
-#>   |                                                          |                                                  |   0%  |                                                          |==================================================| 100%
 #> 
 #> Done!
 PC
-#>    Index        Value
-#> 1  PCnum 2.136028e+11
-#> 2 EC(PC) 4.621718e+05
-#> 3     PC 2.801281e-02
+#>         Index        Value
+#> 1       PCnum 2.135845e+11
+#> 2      EC(PC) 4.621521e+05
+#> 3          PC 2.801041e-02
+#> 4  PCintra(%) 8.606978e+01
+#> 5 PCdirect(%) 1.310029e+01
+#> 6   PCstep(%) 8.299300e-01
 ```
 
 ## Ejemplo 3. Distancia euclidiana: fracciones
@@ -754,23 +791,38 @@ PC <- MK_dPCIIC(nodes = habitat_nodes,
                 distance_thresholds = 10000,
                 intern = TRUE) #10 km
 #> Estimating PC index. This may take several minutes depending on the number of nodes
-#>   |                                                          |                                                  |   0%  |                                                          |==================================================| 100%
-#>  ■■■■                               9% |  ETA: 37s
-#>  ■■■■■■                            16% |  ETA: 34s
-#>  ■■■■■■■■                          22% |  ETA: 34s
-#>  ■■■■■■■■■                         26% |  ETA: 35s
-#>  ■■■■■■■■■■                        31% |  ETA: 34s
-#>  ■■■■■■■■■■■■                      37% |  ETA: 32s
-#>  ■■■■■■■■■■■■■■                    43% |  ETA: 29s
-#>  ■■■■■■■■■■■■■■■                   48% |  ETA: 27s
-#>  ■■■■■■■■■■■■■■■■■                 54% |  ETA: 24s
-#>  ■■■■■■■■■■■■■■■■■■■               60% |  ETA: 21s
-#>  ■■■■■■■■■■■■■■■■■■■■■             66% |  ETA: 17s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■           73% |  ETA: 14s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■         79% |  ETA: 11s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■        85% |  ETA:  8s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■      91% |  ETA:  5s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    96% |  ETA:  2s
+#>  ■■                                 2% |  ETA:  1m
+#>  ■■■                                5% |  ETA:  1m
+#>  ■■■■                               8% |  ETA:  1m
+#>  ■■■■                              12% |  ETA:  1m
+#>  ■■■■■                             14% |  ETA:  1m
+#>  ■■■■■■                            17% |  ETA:  1m
+#>  ■■■■■■■                           20% |  ETA:  1m
+#>  ■■■■■■■■                          23% |  ETA:  1m
+#>  ■■■■■■■■■                         26% |  ETA:  1m
+#>  ■■■■■■■■■■                        30% |  ETA:  1m
+#>  ■■■■■■■■■■■                       33% |  ETA:  1m
+#>  ■■■■■■■■■■■■                      36% |  ETA:  1m
+#>  ■■■■■■■■■■■■■                     39% |  ETA:  1m
+#>  ■■■■■■■■■■■■■                     41% |  ETA:  1m
+#>  ■■■■■■■■■■■■■■                    45% |  ETA:  1m
+#>  ■■■■■■■■■■■■■■■                   48% |  ETA:  1m
+#>  ■■■■■■■■■■■■■■■■                  51% |  ETA: 48s
+#>  ■■■■■■■■■■■■■■■■■                 54% |  ETA: 45s
+#>  ■■■■■■■■■■■■■■■■■■                57% |  ETA: 41s
+#>  ■■■■■■■■■■■■■■■■■■■               61% |  ETA: 38s
+#>  ■■■■■■■■■■■■■■■■■■■■              63% |  ETA: 37s
+#>  ■■■■■■■■■■■■■■■■■■■■■             66% |  ETA: 33s
+#>  ■■■■■■■■■■■■■■■■■■■■■■            69% |  ETA: 30s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■           72% |  ETA: 27s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■          75% |  ETA: 24s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■         79% |  ETA: 21s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■        82% |  ETA: 18s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■        85% |  ETA: 15s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■       87% |  ETA: 13s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■      90% |  ETA: 10s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■     92% |  ETA:  8s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  100% |  ETA:  0s
 #> 
 #> Done!
 PC
@@ -839,7 +891,7 @@ ggplot() +
   )
 ```
 
-<img src="04-IIC_PC_files/figure-html/unnamed-chunk-22-1.png" width="672" />
+<img src="04-IIC_PC_files/figure-html/unnamed-chunk-22-1.png" alt="" width="672" />
 
 -   dPCIntra
 
@@ -871,7 +923,7 @@ ggplot() +
   )
 ```
 
-<img src="04-IIC_PC_files/figure-html/unnamed-chunk-23-1.png" width="672" />
+<img src="04-IIC_PC_files/figure-html/unnamed-chunk-23-1.png" alt="" width="672" />
 
 -   dPCflux
 
@@ -903,7 +955,7 @@ ggplot() +
   )
 ```
 
-<img src="04-IIC_PC_files/figure-html/unnamed-chunk-24-1.png" width="672" />
+<img src="04-IIC_PC_files/figure-html/unnamed-chunk-24-1.png" alt="" width="672" />
 
 -   dPCconnector
 
@@ -935,7 +987,7 @@ ggplot() +
   )
 ```
 
-<img src="04-IIC_PC_files/figure-html/unnamed-chunk-25-1.png" width="672" />
+<img src="04-IIC_PC_files/figure-html/unnamed-chunk-25-1.png" alt="" width="672" />
 
 ## Ejemplo 4. Distancia euclidiana: fracciones y overall
 
@@ -960,23 +1012,39 @@ PC <- MK_dPCIIC(nodes = habitat_nodes,
                 distance_thresholds = 10000,
                 intern = TRUE) #10 km
 #> Estimating PC index. This may take several minutes depending on the number of nodes
-#>   |                                                          |                                                  |   0%  |                                                          |==================================================| 100%
-#>  ■■                                 4% |  ETA: 30s
-#>  ■■■■                              11% |  ETA: 36s
-#>  ■■■■■■                            18% |  ETA: 33s
-#>  ■■■■■■■■■                         25% |  ETA: 30s
-#>  ■■■■■■■■■■                        31% |  ETA: 29s
-#>  ■■■■■■■■■■■■                      37% |  ETA: 27s
-#>  ■■■■■■■■■■■■■■                    43% |  ETA: 26s
-#>  ■■■■■■■■■■■■■■■                   47% |  ETA: 25s
-#>  ■■■■■■■■■■■■■■■■                  51% |  ETA: 24s
-#>  ■■■■■■■■■■■■■■■■■■                57% |  ETA: 21s
-#>  ■■■■■■■■■■■■■■■■■■■■              64% |  ETA: 18s
-#>  ■■■■■■■■■■■■■■■■■■■■■■            69% |  ETA: 16s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■           75% |  ETA: 12s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■        82% |  ETA:  9s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■       88% |  ETA:  6s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    96% |  ETA:  2s
+#>  ■■                                 3% |  ETA:  1m
+#>  ■■■                                5% |  ETA:  2m
+#>  ■■■■                               8% |  ETA:  2m
+#>  ■■■■                              12% |  ETA:  1m
+#>  ■■■■■■                            15% |  ETA:  1m
+#>  ■■■■■■                            18% |  ETA:  1m
+#>  ■■■■■■■                           22% |  ETA:  1m
+#>  ■■■■■■■■■                         25% |  ETA:  1m
+#>  ■■■■■■■■■                         27% |  ETA:  1m
+#>  ■■■■■■■■■■                        30% |  ETA:  1m
+#>  ■■■■■■■■■■■                       33% |  ETA:  1m
+#>  ■■■■■■■■■■■■                      37% |  ETA:  1m
+#>  ■■■■■■■■■■■■■                     40% |  ETA:  1m
+#>  ■■■■■■■■■■■■■■                    43% |  ETA:  1m
+#>  ■■■■■■■■■■■■■■■                   47% |  ETA:  1m
+#>  ■■■■■■■■■■■■■■■■                  50% |  ETA: 48s
+#>  ■■■■■■■■■■■■■■■■                  51% |  ETA: 48s
+#>  ■■■■■■■■■■■■■■■■■                 55% |  ETA: 44s
+#>  ■■■■■■■■■■■■■■■■■■                58% |  ETA: 41s
+#>  ■■■■■■■■■■■■■■■■■■■               61% |  ETA: 38s
+#>  ■■■■■■■■■■■■■■■■■■■■              64% |  ETA: 35s
+#>  ■■■■■■■■■■■■■■■■■■■■■             68% |  ETA: 32s
+#>  ■■■■■■■■■■■■■■■■■■■■■■            71% |  ETA: 28s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■           74% |  ETA: 26s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■          76% |  ETA: 24s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■         79% |  ETA: 20s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■        82% |  ETA: 17s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■       85% |  ETA: 14s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■      88% |  ETA: 11s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■      92% |  ETA:  8s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■     95% |  ETA:  5s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    98% |  ETA:  2s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  100% |  ETA:  0s
 #> 
 #> Done!
 PC
@@ -1011,10 +1079,13 @@ PC
 #> 10 POLYGON ((23378.32 2067554,...
 #> 
 #> $overall_d10000
-#>    Index        Value
-#> 1  PCnum 1.301622e+12
-#> 2 EC(PC) 1.140887e+06
-#> 3     PC 1.707004e-01
+#>         Index        Value
+#> 1       PCnum 1.301622e+12
+#> 2      EC(PC) 1.140887e+06
+#> 3          PC 1.707004e-01
+#> 4  PCintra(%) 1.412328e+01
+#> 5 PCdirect(%) 1.991759e+01
+#> 6   PCstep(%) 6.595913e+01
 ```
 
 ## Ejemplo 5. Distancia euclidiana: paralelizar
@@ -1065,7 +1136,7 @@ La resistencia del paisaje a la dispersión se estimó con una resolución de 10
 
 ``` r
 library(terra)
-#> terra 1.8.29
+#> terra 1.9.11
 #> 
 #> Adjuntando el paquete: 'terra'
 #> The following objects are masked from 'package:igraph':
@@ -1089,7 +1160,7 @@ ggplot() +
         axis.title.y = element_blank())
 ```
 
-<img src="04-IIC_PC_files/figure-html/unnamed-chunk-29-1.png" width="672" />
+<img src="04-IIC_PC_files/figure-html/unnamed-chunk-29-1.png" alt="" width="672" />
 
 Estamos utilizando un raster de resistencia que esta incluido en el paquete Makurhini. Para cargar un raster de resistencia para tu estudio puedes utilizar la función `raster()` del paquete `raster` o la función `rast()` del paquete `terra`.
 
@@ -1115,12 +1186,20 @@ PC <- MK_dPCIIC(nodes = habitat_nodes,
                 distance_thresholds = 10000) # 10 km
 #> Estimating distances. This may take several minutes depending on the number of nodes and raster resolution
 #> Estimating PC index. This may take several minutes depending on the number of nodes
-#>   |                                                          |                                                  |   0%  |                                                          |==================================================| 100%
-#>  ■■■■                               9% |  ETA: 12s
-#>  ■■■■■■■■■■                        29% |  ETA: 10s
-#>  ■■■■■■■■■■■■■■■■                  49% |  ETA:  7s
-#>  ■■■■■■■■■■■■■■■■■■■■■             68% |  ETA:  5s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■        83% |  ETA:  3s
+#>  ■■                                 4% |  ETA: 35s
+#>  ■■■■                               9% |  ETA: 44s
+#>  ■■■■■■■■■                         26% |  ETA: 20s
+#>  ■■■■■■■■■■■                       35% |  ETA: 19s
+#>  ■■■■■■■■■■■■■                     41% |  ETA: 19s
+#>  ■■■■■■■■■■■■■■■                   48% |  ETA: 18s
+#>  ■■■■■■■■■■■■■■■■■                 54% |  ETA: 16s
+#>  ■■■■■■■■■■■■■■■■■■                58% |  ETA: 16s
+#>  ■■■■■■■■■■■■■■■■■■■■              64% |  ETA: 14s
+#>  ■■■■■■■■■■■■■■■■■■■■■■            71% |  ETA: 12s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■          77% |  ETA:  9s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■        83% |  ETA:  7s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■      90% |  ETA:  4s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    96% |  ETA:  2s
 #> 
 #> Done!
 PC
@@ -1131,16 +1210,16 @@ PC
 #> Projected CRS: NAD_1927_Albers
 #> First 10 features:
 #>    Id       dPC  dPCintra   dPCflux dPCconnector
-#> 1   1 0.0000236 0.0000039 0.0000196 0.000000e+00
-#> 2   2 0.0001155 0.0000259 0.0000896 0.000000e+00
-#> 3   3 0.0674996 0.0648562 0.0026434 4.982560e-15
-#> 4   4 0.0000722 0.0000078 0.0000644 0.000000e+00
-#> 5   5 0.0001142 0.0000182 0.0000959 1.173850e-15
-#> 6   6 0.0000277 0.0000004 0.0000273 0.000000e+00
-#> 7   7 0.0000471 0.0000010 0.0000461 1.153109e-14
-#> 8   8 0.0000596 0.0000018 0.0000579 0.000000e+00
-#> 9   9 0.0001505 0.0000221 0.0001284 4.687580e-15
-#> 10 10 0.4855924 0.4628919 0.0227005 6.487900e-16
+#> 1   1 0.0000039 0.0000039 0.0000000 1.032689e-14
+#> 2   2 0.0000259 0.0000259 0.0000000 0.000000e+00
+#> 3   3 0.0648967 0.0648967 0.0000000 9.256480e-15
+#> 4   4 0.0000078 0.0000078 0.0000000 1.169875e-14
+#> 5   5 0.0000182 0.0000182 0.0000000 1.197705e-14
+#> 6   6 0.0000270 0.0000004 0.0000266 0.000000e+00
+#> 7   7 0.0000459 0.0000010 0.0000449 0.000000e+00
+#> 8   8 0.0000580 0.0000018 0.0000563 7.487090e-15
+#> 9   9 0.0001458 0.0000221 0.0001237 0.000000e+00
+#> 10 10 0.4854453 0.4631809 0.0222643 1.133815e-14
 #>                          geometry
 #> 1  POLYGON ((54911.05 2035815,...
 #> 2  POLYGON ((44591.28 2042209,...
@@ -1185,7 +1264,7 @@ ggplot() +
   )
 ```
 
-<img src="04-IIC_PC_files/figure-html/unnamed-chunk-32-1.png" width="672" />
+<img src="04-IIC_PC_files/figure-html/unnamed-chunk-32-1.png" alt="" width="672" />
 
 -   dPCIntra
 
@@ -1217,7 +1296,7 @@ ggplot() +
   )
 ```
 
-<img src="04-IIC_PC_files/figure-html/unnamed-chunk-33-1.png" width="672" />
+<img src="04-IIC_PC_files/figure-html/unnamed-chunk-33-1.png" alt="" width="672" />
 
 -   dPCflux
 
@@ -1249,7 +1328,7 @@ ggplot() +
   )
 ```
 
-<img src="04-IIC_PC_files/figure-html/unnamed-chunk-34-1.png" width="672" />
+<img src="04-IIC_PC_files/figure-html/unnamed-chunk-34-1.png" alt="" width="672" />
 
 -   dPCconnector
 
@@ -1281,7 +1360,7 @@ ggplot() +
   )
 ```
 
-<img src="04-IIC_PC_files/figure-html/unnamed-chunk-35-1.png" width="672" />
+<img src="04-IIC_PC_files/figure-html/unnamed-chunk-35-1.png" alt="" width="672" />
 
 ## Ejemplo 7. Distancia costo en Java
 
@@ -1316,7 +1395,7 @@ data("habitat_nodes_raster", package = "Makurhini")
 plot(habitat_nodes_raster)
 ```
 
-<img src="04-IIC_PC_files/figure-html/unnamed-chunk-37-1.png" width="672" />
+<img src="04-IIC_PC_files/figure-html/unnamed-chunk-37-1.png" alt="" width="672" />
 
 Estamos utilizando un raster de nodos que esta incluido en el paquete Makurhini. Para cargar un raster de nodos para tu estudio puedes utilizar la función `raster()` del paquete `raster` o la función `rast()` del paquete `terra`.
 
@@ -1338,17 +1417,40 @@ PC <- MK_dPCIIC(nodes = habitat_nodes_raster,
                 overall = TRUE,
                 distance_thresholds = 40000) # 40 km
 #> Estimating PC index. This may take several minutes depending on the number of nodes
-#>   |                                                          |                                                  |   0%  |                                                          |==================================================| 100%
-#>  ■■■■■■■■                          23% |  ETA:  9s
-#>  ■■■■■■■■■■■■■■                    45% |  ETA:  7s
-#>  ■■■■■■■■■■■■■■■■■■■■■             66% |  ETA:  5s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■        85% |  ETA:  2s
+#>  ■■                                 2% |  ETA: 50s
+#>  ■■■                                6% |  ETA:  1m
+#>  ■■■■                              10% |  ETA:  1m
+#>  ■■■■■                             14% |  ETA:  1m
+#>  ■■■■■■■                           18% |  ETA:  1m
+#>  ■■■■■■■■                          23% |  ETA:  1m
+#>  ■■■■■■■■■                         27% |  ETA:  1m
+#>  ■■■■■■■■■■                        31% |  ETA: 49s
+#>  ■■■■■■■■■■■                       33% |  ETA:  1m
+#>  ■■■■■■■■■■■■                      37% |  ETA: 47s
+#>  ■■■■■■■■■■■■■■                    42% |  ETA: 43s
+#>  ■■■■■■■■■■■■■■■                   46% |  ETA: 40s
+#>  ■■■■■■■■■■■■■■■■                  50% |  ETA: 37s
+#>  ■■■■■■■■■■■■■■■■■                 54% |  ETA: 34s
+#>  ■■■■■■■■■■■■■■■■■■                58% |  ETA: 31s
+#>  ■■■■■■■■■■■■■■■■■■■■              62% |  ETA: 28s
+#>  ■■■■■■■■■■■■■■■■■■■■■             66% |  ETA: 25s
+#>  ■■■■■■■■■■■■■■■■■■■■■■            70% |  ETA: 22s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■           75% |  ETA: 19s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■         79% |  ETA: 16s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■        83% |  ETA: 13s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■       87% |  ETA: 10s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■      91% |  ETA:  7s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■     95% |  ETA:  4s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   99% |  ETA:  1s
 #> 
 #> Done!
 PC$overall_d40000
-#>    Index        Value
-#> 1  PCnum 5.116326e+19
-#> 2 EC(PC) 7.152850e+09
+#>         Index        Value
+#> 1       PCnum 5.116326e+19
+#> 2      EC(PC) 7.152850e+09
+#> 3  PCintra(%) 3.592011e+01
+#> 4 PCdirect(%) 6.407342e+01
+#> 5   PCstep(%) 6.470000e-03
 PC$node_importances_d40000
 #> class      : RasterStack 
 #> dimensions : 357, 624, 222768, 5  (nrow, ncol, ncell, nlayers)
@@ -1357,11 +1459,11 @@ PC$node_importances_d40000
 #> crs        : +proj=aea +lat_0=0 +lon_0=-102 +lat_1=17.5 +lat_2=29.5 +x_0=0 +y_0=0 +datum=NAD27 +units=m +no_defs 
 #> names      :           Id,          dPC,     dPCintra,      dPCflux, dPCconnector 
 #> min values :    1.0000000,    0.0020195,    0.0000001,    0.0020194,    0.0000000 
-#> max values : 4.040000e+02, 5.778878e+01, 3.274351e+01, 2.504527e+01, 9.513220e-15
+#> max values : 4.040000e+02, 5.778878e+01, 3.274351e+01, 2.504527e+01, 4.272404e-08
 plot(PC$node_importances_d40000)
 ```
 
-<img src="04-IIC_PC_files/figure-html/unnamed-chunk-39-1.png" width="672" />
+<img src="04-IIC_PC_files/figure-html/unnamed-chunk-39-1.png" alt="" width="672" />
 
 ## Guardar IIC o PC
 

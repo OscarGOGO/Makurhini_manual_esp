@@ -83,7 +83,7 @@ PCrestauracion <- MK_dPCIIC(nodes = habitat_nodes,
                 metric = "PC",
                 probability = 0.5,
                 distance_thresholds = 10000,
-                intern = TRUE) #10 km
+                intern = FALSE) #10 km
 PCrestauracion
 ```
 
@@ -572,7 +572,7 @@ delta <- MK_dPCIIC_links(nodes = parches_ejemplo,
                          distance_thresholds = round(Effec_mean),
                          parallel = NULL,
                          parallel_mode = 0,
-                         intern = TRUE)
+                         intern = FALSE)
 head(delta)
 ```
 
@@ -683,7 +683,7 @@ Aplicamos la función:
 ```{r}
 #Distancia efectiva promedio como umbral de distancia
 Effec_mean <- mean(resistance_matrix[], na.rm = TRUE) * 10000 # 10km
-#[1] 5229259
+#[1] 5229623
 
 #Aplicamos la función
 delta <- MK_dPCIIC_links(nodes = parches_ejemplo,
@@ -697,7 +697,7 @@ delta <- MK_dPCIIC_links(nodes = parches_ejemplo,
                          distance_thresholds = round(Effec_mean),
                          parallel = NULL,
                          parallel_mode = 0,
-                         intern = TRUE)
+                         intern = FALSE)
 names(delta)
 
 ```
@@ -706,13 +706,13 @@ names(delta)
 Vemos el resultado. Es importante recordar que los nombres de los elementos de las listas cambian dependiendo del umbral de distancia que uses (e.g., _d5229259, _d10000, _d200)
 
 ```{r}
-head(delta$Link_change_importances_d5229259)
+head(delta$Link_change_importances_d5229623)
 ```
 
 Lo unimos a nuestro vector con los corredores:
 
 ```{r}
-change_corr <- delta$Link_change_importances_d5229259
+change_corr <- delta$Link_change_importances_d5229623
 change_corr$ID_nuevo <- paste0(change_corr$Destination, "_", change_corr$Source)
 
 #Por precaución guardamos los corredores en otro objeto y generamos el ID

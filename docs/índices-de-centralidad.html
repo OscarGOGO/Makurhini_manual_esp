@@ -7,7 +7,7 @@
 <title>Chapter 3 Índices de centralidad | Manual de uso de Makurhini</title>
 <meta name="author" content="Oscar Godínez Gómez">
 <meta name="description" content="3.1 Insumos y paquetes Seguimos trabajando con los mismos shapefiles de la sección anterior: habitat_nodes y paisaje. library(ggplot2) library(sf) library(Makurhini) library(RColorBrewer) #&gt;...">
-<meta name="generator" content="bookdown 0.43 with bs4_book()">
+<meta name="generator" content="bookdown 0.47 with bs4_book()">
 <meta property="og:title" content="Chapter 3 Índices de centralidad | Manual de uso de Makurhini">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://oscargogo.github.io/Makurhini_manual_esp/índices-de-centralidad.html">
@@ -19,7 +19,7 @@
 <meta name="twitter:image" content="https://oscargogo.github.io/Makurhini_manual_esp/LOGO_MAKHURINI.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -57,6 +57,7 @@
 <li><a class="" href="prioridad-de-enlaces-con-mk_dpciic_links.html"><span class="header-section-number">8</span> Prioridad de enlaces con MK_dPCIIC_links()</a></li>
 <li><a class="" href="conectividad-din%C3%A1mica-con-mk_deca.html"><span class="header-section-number">9</span> Conectividad dinámica con MK_dECA()</a></li>
 <li><a class="" href="protected-connected-indicator-protconn.html"><span class="header-section-number">10</span> Protected Connected indicator (ProtConn)</a></li>
+<li><a class="" href="resistencia.html"><span class="header-section-number">11</span> Resistencia</a></li>
 </ul>
 
         <div class="book-extra">
@@ -88,7 +89,7 @@
 #&gt; 
 #&gt;     union
 #&gt; Cargando paquete requerido: cppRouting
-#&gt; Linking to GEOS 3.13.0, GDAL 3.10.1, PROJ 9.5.1;
+#&gt; Linking to GEOS 3.14.1, GDAL 3.12.1, PROJ 9.7.1;
 #&gt; sf_use_s2() is TRUE
 #&gt; [1] 404</code></pre>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
@@ -99,7 +100,7 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.title.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>        axis.title.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="03-Centralidad_files/figure-html/unnamed-chunk-3-1.png" width="672"></div>
+<div class="inline-figure"><img src="03-Centralidad_files/figure-html/unnamed-chunk-3-1.png" alt="" width="672"></div>
 <p>En caso de necesitar abrir otro vector (e.g., .shp, .gpkg) necesitan usar la fución <code><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf()</a></code> del paquete <code>sf</code>, la función <code>shapefile()</code> del paquete <code>raster</code>, o la funcion <code>vect()</code> del paquete <code>terra</code>.</p>
 <p>Para abrirlo solo necesitan colocar la dirección de su archivo, el nombre y la extensión, ejemplo:</p>
 <ul>
@@ -324,15 +325,15 @@
 <span><span class="co">#&gt; 10 10 12804425 0.0004306005 0.04405417 1063       1       6</span></span>
 <span><span class="co">#&gt;    memb.louvain                       geometry</span></span>
 <span><span class="co">#&gt; 1             1 POLYGON ((54911.05 2035815,...</span></span>
-<span><span class="co">#&gt; 2             1 POLYGON ((44591.28 2042209,...</span></span>
-<span><span class="co">#&gt; 3             1 POLYGON ((46491.11 2042467,...</span></span>
-<span><span class="co">#&gt; 4             1 POLYGON ((54944.49 2048163,...</span></span>
-<span><span class="co">#&gt; 5             2 POLYGON ((80094.28 2064140,...</span></span>
-<span><span class="co">#&gt; 6             2 POLYGON ((69205.24 2066394,...</span></span>
-<span><span class="co">#&gt; 7             2 POLYGON ((68554.2 2066632, ...</span></span>
-<span><span class="co">#&gt; 8             2 POLYGON ((69995.53 2066880,...</span></span>
-<span><span class="co">#&gt; 9             2 POLYGON ((79368.68 2067324,...</span></span>
-<span><span class="co">#&gt; 10            1 POLYGON ((23378.32 2067554,...</span></span></code></pre></div>
+<span><span class="co">#&gt; 2             2 POLYGON ((44591.28 2042209,...</span></span>
+<span><span class="co">#&gt; 3             2 POLYGON ((46491.11 2042467,...</span></span>
+<span><span class="co">#&gt; 4             2 POLYGON ((54944.49 2048163,...</span></span>
+<span><span class="co">#&gt; 5             1 POLYGON ((80094.28 2064140,...</span></span>
+<span><span class="co">#&gt; 6             1 POLYGON ((69205.24 2066394,...</span></span>
+<span><span class="co">#&gt; 7             1 POLYGON ((68554.2 2066632, ...</span></span>
+<span><span class="co">#&gt; 8             1 POLYGON ((69995.53 2066880,...</span></span>
+<span><span class="co">#&gt; 9             1 POLYGON ((79368.68 2067324,...</span></span>
+<span><span class="co">#&gt; 10            2 POLYGON ((23378.32 2067554,...</span></span></code></pre></div>
 <p>Exploremos otra forma de hacer el plot usando intervalos</p>
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"ClassInt"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
@@ -379,7 +380,7 @@
 <span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="03-Centralidad_files/figure-html/unnamed-chunk-7-1.png" width="672"></div>
+<div class="inline-figure"><img src="03-Centralidad_files/figure-html/unnamed-chunk-7-1.png" alt="" width="672"></div>
 <ul>
 <li>BWC:</li>
 </ul>
@@ -403,7 +404,7 @@
 <span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="03-Centralidad_files/figure-html/unnamed-chunk-8-1.png" width="672"></div>
+<div class="inline-figure"><img src="03-Centralidad_files/figure-html/unnamed-chunk-8-1.png" alt="" width="672"></div>
 <ul>
 <li>Membresía por random walk:</li>
 </ul>
@@ -424,7 +425,7 @@
 <span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="03-Centralidad_files/figure-html/unnamed-chunk-9-1.png" width="672"></div>
+<div class="inline-figure"><img src="03-Centralidad_files/figure-html/unnamed-chunk-9-1.png" alt="" width="672"></div>
 <ul>
 <li>Membresía por Louvain:</li>
 </ul>
@@ -445,7 +446,7 @@
 <span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="03-Centralidad_files/figure-html/unnamed-chunk-10-1.png" width="672"></div>
+<div class="inline-figure"><img src="03-Centralidad_files/figure-html/unnamed-chunk-10-1.png" alt="" width="672"></div>
 </div>
 <div id="ejemplo-2" class="section level2" number="3.4">
 <h2>
@@ -458,6 +459,7 @@
 <span>                                 distance_thresholds <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10000</span>, <span class="fl">100000</span><span class="op">)</span>,</span>
 <span>                                 probability <span class="op">=</span> <span class="fl">0.5</span>,</span>
 <span>                                 write <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■                  50% |  ETA:  3s</span></span>
 <span><span class="co">#&gt; Done!</span></span>
 <span><span class="va">centrality_test</span></span>
 <span><span class="co">#&gt; $d10000</span></span>
@@ -482,7 +484,7 @@
 <span><span class="co">#&gt; 1             1 POLYGON ((54911.05 2035815,...</span></span>
 <span><span class="co">#&gt; 2             2 POLYGON ((44591.28 2042209,...</span></span>
 <span><span class="co">#&gt; 3             2 POLYGON ((46491.11 2042467,...</span></span>
-<span><span class="co">#&gt; 4             1 POLYGON ((54944.49 2048163,...</span></span>
+<span><span class="co">#&gt; 4             2 POLYGON ((54944.49 2048163,...</span></span>
 <span><span class="co">#&gt; 5             1 POLYGON ((80094.28 2064140,...</span></span>
 <span><span class="co">#&gt; 6             1 POLYGON ((69205.24 2066394,...</span></span>
 <span><span class="co">#&gt; 7             1 POLYGON ((68554.2 2066632, ...</span></span>
@@ -522,11 +524,11 @@
 <p>10 km:</p>
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">centrality_test</span><span class="op">$</span><span class="va">d10000</span><span class="op">[</span><span class="st">"BWC"</span><span class="op">]</span>, breaks <span class="op">=</span> <span class="st">"quantile"</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="03-Centralidad_files/figure-html/unnamed-chunk-12-1.png" width="672"></div>
+<div class="inline-figure"><img src="03-Centralidad_files/figure-html/unnamed-chunk-12-1.png" alt="" width="672"></div>
 <p>100 km:</p>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">centrality_test</span><span class="op">$</span><span class="va">`d1e+05`</span><span class="op">[</span><span class="st">"BWC"</span><span class="op">]</span>, breaks <span class="op">=</span> <span class="st">"quantile"</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="03-Centralidad_files/figure-html/unnamed-chunk-13-1.png" width="672"></div>
+<div class="inline-figure"><img src="03-Centralidad_files/figure-html/unnamed-chunk-13-1.png" alt="" width="672"></div>
 
 </div>
 </div>
@@ -569,7 +571,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Manual de uso de Makurhini</strong>" was written by Oscar Godínez Gómez. It was last built on 2025-08-15.</p>
+    <p>"<strong>Manual de uso de Makurhini</strong>" was written by Oscar Godínez Gómez. It was last built on 2026-06-22.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -577,6 +579,34 @@
   </div>
 
 </div></div>
-</footer>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
 </body>
 </html>

@@ -7,7 +7,7 @@
 <title>Chapter 6 Prioridades de Restauración con MK_dPCIIC() | Manual de uso de Makurhini</title>
 <meta name="author" content="Oscar Godínez Gómez">
 <meta name="description" content="Con la función MK_dPCIIC() podemos obtener la contribución potencial de un parche que será restaurado. Usaremos los argumentos: restoration = NULL. Vector o nombre de columna que indica si cada...">
-<meta name="generator" content="bookdown 0.43 with bs4_book()">
+<meta name="generator" content="bookdown 0.47 with bs4_book()">
 <meta property="og:title" content="Chapter 6 Prioridades de Restauración con MK_dPCIIC() | Manual de uso de Makurhini">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://oscargogo.github.io/Makurhini_manual_esp/prioridades-de-restauración-con-mk_dpciic.html">
@@ -19,7 +19,7 @@
 <meta name="twitter:image" content="https://oscargogo.github.io/Makurhini_manual_esp/LOGO_MAKHURINI.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -57,6 +57,7 @@
 <li><a class="" href="prioridad-de-enlaces-con-mk_dpciic_links.html"><span class="header-section-number">8</span> Prioridad de enlaces con MK_dPCIIC_links()</a></li>
 <li><a class="" href="conectividad-din%C3%A1mica-con-mk_deca.html"><span class="header-section-number">9</span> Conectividad dinámica con MK_dECA()</a></li>
 <li><a class="" href="protected-connected-indicator-protconn.html"><span class="header-section-number">10</span> Protected Connected indicator (ProtConn)</a></li>
+<li><a class="" href="resistencia.html"><span class="header-section-number">11</span> Resistencia</a></li>
 </ul>
 
         <div class="book-extra">
@@ -97,7 +98,7 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.title.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>        axis.title.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="05-Priorizacion_files/figure-html/unnamed-chunk-3-1.png" width="672"></div>
+<div class="inline-figure"><img src="05-Priorizacion_files/figure-html/unnamed-chunk-3-1.png" alt="" width="672"></div>
 <div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span> <span class="co">#Para que seleccionen los mismos parches que yo </span></span></code></pre></div>
 <div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
@@ -120,44 +121,36 @@
 <div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">habitat_nodes</span><span class="op">$</span><span class="va">restauracion</span><span class="op">[</span><span class="va">parches_restauracion</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">0</span></span></code></pre></div>
 <p>Aplicamos la función <code><a href="https://rdrr.io/pkg/Makurhini/man/MK_dPCIIC.html">MK_dPCIIC()</a></code>. En este ejemplo usaremos el índice PC y una probabbilidad de 0.5 bajo un umbral de distancia de 10 km.</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html#cb100-1" tabindex="-1"></a>PCrestauracion <span class="ot">&lt;-</span> <span class="fu">MK_dPCIIC</span>(<span class="at">nodes =</span> habitat_nodes,</span>
-<span id="cb100-2"><a href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html#cb100-2" tabindex="-1"></a>                <span class="at">attribute =</span> <span class="cn">NULL</span>,</span>
-<span id="cb100-3"><a href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html#cb100-3" tabindex="-1"></a>                <span class="at">area_unit =</span> <span class="st">"ha"</span>,</span>
-<span id="cb100-4"><a href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html#cb100-4" tabindex="-1"></a>                <span class="at">distance =</span> <span class="fu">list</span>(<span class="at">type =</span> <span class="st">"edge"</span>, <span class="at">keep =</span> <span class="fl">0.1</span>),</span>
-<span id="cb100-5"><a href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html#cb100-5" tabindex="-1"></a>                <span class="at">LA =</span> <span class="cn">NULL</span>,</span>
-<span id="cb100-6"><a href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html#cb100-6" tabindex="-1"></a>                <span class="at">restoration =</span> <span class="st">"restauracion"</span>,</span>
-<span id="cb100-7"><a href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html#cb100-7" tabindex="-1"></a>                <span class="at">onlyrestor =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb100-8"><a href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html#cb100-8" tabindex="-1"></a>                <span class="at">metric =</span> <span class="st">"PC"</span>,</span>
-<span id="cb100-9"><a href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html#cb100-9" tabindex="-1"></a>                <span class="at">probability =</span> <span class="fl">0.5</span>,</span>
-<span id="cb100-10"><a href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html#cb100-10" tabindex="-1"></a>                <span class="at">distance_thresholds =</span> <span class="dv">10000</span>,</span>
-<span id="cb100-11"><a href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html#cb100-11" tabindex="-1"></a>                <span class="at">intern =</span> <span class="cn">TRUE</span>) <span class="co">#10 km</span></span>
-<span id="cb100-12"><a href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html#cb100-12" tabindex="-1"></a><span class="co">#&gt; Estimating PC index. This may take several minutes depending on the number of nodes</span></span>
-<span id="cb100-13"><a href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html#cb100-13" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb100-14"><a href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html#cb100-14" tabindex="-1"></a>  <span class="sc">|</span>                                                        </span>
-<span id="cb100-15"><a href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html#cb100-15" tabindex="-1"></a>  <span class="er">|</span>                                                  <span class="er">|</span>   <span class="dv">0</span>%</span>
-<span id="cb100-16"><a href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html#cb100-16" tabindex="-1"></a>  <span class="sc">|</span>                                                        </span>
-<span id="cb100-17"><a href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html#cb100-17" tabindex="-1"></a>  <span class="er">|==================================================|</span> <span class="dv">100</span>%</span>
-<span id="cb100-18"><a href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html#cb100-18" tabindex="-1"></a><span class="co">#&gt;  ■■■■■■■■■■■                       35% |  ETA:  3s</span></span>
-<span id="cb100-19"><a href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html#cb100-19" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb100-20"><a href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html#cb100-20" tabindex="-1"></a><span class="co">#&gt; Done!</span></span>
-<span id="cb100-21"><a href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html#cb100-21" tabindex="-1"></a>PCrestauracion</span>
-<span id="cb100-22"><a href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html#cb100-22" tabindex="-1"></a><span class="co">#&gt; Simple feature collection with 404 features and 3 fields</span></span>
-<span id="cb100-23"><a href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html#cb100-23" tabindex="-1"></a><span class="co">#&gt; Geometry type: POLYGON</span></span>
-<span id="cb100-24"><a href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html#cb100-24" tabindex="-1"></a><span class="co">#&gt; Dimension:     XY</span></span>
-<span id="cb100-25"><a href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html#cb100-25" tabindex="-1"></a><span class="co">#&gt; Bounding box:  xmin: -108954 ymin: 2025032 xmax: 202330.2 ymax: 2198936</span></span>
-<span id="cb100-26"><a href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html#cb100-26" tabindex="-1"></a><span class="co">#&gt; Projected CRS: NAD_1927_Albers</span></span>
-<span id="cb100-27"><a href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html#cb100-27" tabindex="-1"></a><span class="co">#&gt; First 10 features:</span></span>
-<span id="cb100-28"><a href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html#cb100-28" tabindex="-1"></a><span class="co">#&gt;    Id restauracion    dPCres                       geometry</span></span>
-<span id="cb100-29"><a href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html#cb100-29" tabindex="-1"></a><span class="co">#&gt; 1   1            1   0.00000 POLYGON ((54911.05 2035815,...</span></span>
-<span id="cb100-30"><a href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html#cb100-30" tabindex="-1"></a><span class="co">#&gt; 2   2            1   0.00000 POLYGON ((44591.28 2042209,...</span></span>
-<span id="cb100-31"><a href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html#cb100-31" tabindex="-1"></a><span class="co">#&gt; 3   3            1   0.00000 POLYGON ((46491.11 2042467,...</span></span>
-<span id="cb100-32"><a href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html#cb100-32" tabindex="-1"></a><span class="co">#&gt; 4   4            0 -36.02491 POLYGON ((54944.49 2048163,...</span></span>
-<span id="cb100-33"><a href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html#cb100-33" tabindex="-1"></a><span class="co">#&gt; 5   5            1   0.00000 POLYGON ((80094.28 2064140,...</span></span>
-<span id="cb100-34"><a href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html#cb100-34" tabindex="-1"></a><span class="co">#&gt; 6   6            1   0.00000 POLYGON ((69205.24 2066394,...</span></span>
-<span id="cb100-35"><a href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html#cb100-35" tabindex="-1"></a><span class="co">#&gt; 7   7            1   0.00000 POLYGON ((68554.2 2066632, ...</span></span>
-<span id="cb100-36"><a href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html#cb100-36" tabindex="-1"></a><span class="co">#&gt; 8   8            1   0.00000 POLYGON ((69995.53 2066880,...</span></span>
-<span id="cb100-37"><a href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html#cb100-37" tabindex="-1"></a><span class="co">#&gt; 9   9            1   0.00000 POLYGON ((79368.68 2067324,...</span></span>
-<span id="cb100-38"><a href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html#cb100-38" tabindex="-1"></a><span class="co">#&gt; 10 10            1   0.00000 POLYGON ((23378.32 2067554,...</span></span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">PCrestauracion</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_dPCIIC.html">MK_dPCIIC</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">habitat_nodes</span>,</span>
+<span>                attribute <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                area_unit <span class="op">=</span> <span class="st">"ha"</span>,</span>
+<span>                distance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"edge"</span>, keep <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>,</span>
+<span>                LA <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                restoration <span class="op">=</span> <span class="st">"restauracion"</span>,</span>
+<span>                onlyrestor <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                metric <span class="op">=</span> <span class="st">"PC"</span>,</span>
+<span>                probability <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>                distance_thresholds <span class="op">=</span> <span class="fl">10000</span>,</span>
+<span>                intern <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="co">#10 km</span></span>
+<span><span class="va">PCrestauracion</span></span>
+<span><span class="co">#&gt; Simple feature collection with 404 features and 3 fields</span></span>
+<span><span class="co">#&gt; Geometry type: POLYGON</span></span>
+<span><span class="co">#&gt; Dimension:     XY</span></span>
+<span><span class="co">#&gt; Bounding box:  xmin: -108954 ymin: 2025032 xmax: 202330.2 ymax: 2198936</span></span>
+<span><span class="co">#&gt; Projected CRS: NAD_1927_Albers</span></span>
+<span><span class="co">#&gt; First 10 features:</span></span>
+<span><span class="co">#&gt;    Id restauracion    dPCres                       geometry</span></span>
+<span><span class="co">#&gt; 1   1            1   0.00000 POLYGON ((54911.05 2035815,...</span></span>
+<span><span class="co">#&gt; 2   2            1   0.00000 POLYGON ((44591.28 2042209,...</span></span>
+<span><span class="co">#&gt; 3   3            1   0.00000 POLYGON ((46491.11 2042467,...</span></span>
+<span><span class="co">#&gt; 4   4            0 -36.02491 POLYGON ((54944.49 2048163,...</span></span>
+<span><span class="co">#&gt; 5   5            1   0.00000 POLYGON ((80094.28 2064140,...</span></span>
+<span><span class="co">#&gt; 6   6            1   0.00000 POLYGON ((69205.24 2066394,...</span></span>
+<span><span class="co">#&gt; 7   7            1   0.00000 POLYGON ((68554.2 2066632, ...</span></span>
+<span><span class="co">#&gt; 8   8            1   0.00000 POLYGON ((69995.53 2066880,...</span></span>
+<span><span class="co">#&gt; 9   9            1   0.00000 POLYGON ((79368.68 2067324,...</span></span>
+<span><span class="co">#&gt; 10 10            1   0.00000 POLYGON ((23378.32 2067554,...</span></span></code></pre></div>
 <p>Se crea la columna <code>dPCres</code> con la importancia relativa del parche para mejorar la conectividad del paisaje al aparecer cuando es restaurado. Los valores van de -100 a 100, debido a que su contribución puede incluso ser negativa, es decir, disminuye la conectividad global al restaurarlo.</p>
 <div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>  </span>
@@ -177,7 +170,7 @@
 <span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="05-Priorizacion_files/figure-html/unnamed-chunk-9-1.png" width="672"></div>
+<div class="inline-figure"><img src="05-Priorizacion_files/figure-html/unnamed-chunk-9-1.png" alt="" width="672"></div>
 <p>Veamos solo los parches de restauración</p>
 <div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
@@ -201,7 +194,7 @@
 <span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="05-Priorizacion_files/figure-html/unnamed-chunk-10-1.png" width="672"></div>
+<div class="inline-figure"><img src="05-Priorizacion_files/figure-html/unnamed-chunk-10-1.png" alt="" width="672"></div>
 <p>Si desactivamos <code>onlyrestor</code> entonces estima los otros valores delíndice de conectividad (i.e., dPC, intra, flux y connector).</p>
 <div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">PCrestauracion</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_dPCIIC.html">MK_dPCIIC</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">habitat_nodes</span>,</span>
@@ -267,7 +260,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Manual de uso de Makurhini</strong>" was written by Oscar Godínez Gómez. It was last built on 2025-08-15.</p>
+    <p>"<strong>Manual de uso de Makurhini</strong>" was written by Oscar Godínez Gómez. It was last built on 2026-06-22.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -275,6 +268,34 @@
   </div>
 
 </div></div>
-</footer>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
 </body>
 </html>

@@ -7,7 +7,7 @@
 <title>Chapter 8 Prioridad de enlaces con MK_dPCIIC_links() | Manual de uso de Makurhini</title>
 <meta name="author" content="Oscar Godínez Gómez">
 <meta name="description" content="Esta función calcula el índice dPC o dIIC para estimar la importancia de los enlaces para la conservación y la restauración. Calcula la contribución de cada enlace individual para mantener (modo:...">
-<meta name="generator" content="bookdown 0.43 with bs4_book()">
+<meta name="generator" content="bookdown 0.47 with bs4_book()">
 <meta property="og:title" content="Chapter 8 Prioridad de enlaces con MK_dPCIIC_links() | Manual de uso de Makurhini">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://oscargogo.github.io/Makurhini_manual_esp/prioridad-de-enlaces-con-mk_dpciic_links.html">
@@ -19,7 +19,7 @@
 <meta name="twitter:image" content="https://oscargogo.github.io/Makurhini_manual_esp/LOGO_MAKHURINI.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -57,6 +57,7 @@
 <li><a class="active" href="prioridad-de-enlaces-con-mk_dpciic_links.html"><span class="header-section-number">8</span> Prioridad de enlaces con MK_dPCIIC_links()</a></li>
 <li><a class="" href="conectividad-din%C3%A1mica-con-mk_deca.html"><span class="header-section-number">9</span> Conectividad dinámica con MK_dECA()</a></li>
 <li><a class="" href="protected-connected-indicator-protconn.html"><span class="header-section-number">10</span> Protected Connected indicator (ProtConn)</a></li>
+<li><a class="" href="resistencia.html"><span class="header-section-number">11</span> Resistencia</a></li>
 </ul>
 
         <div class="book-extra">
@@ -173,7 +174,7 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.title.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>        axis.title.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="05-Priorizacion_files/figure-html/unnamed-chunk-22-1.png" width="672"></div>
+<div class="inline-figure"><img src="05-Priorizacion_files/figure-html/unnamed-chunk-22-1.png" alt="" width="672"></div>
 <p>Estamos utilizando un raster de resistencia que esta incluido en el paquete Makurhini. Para cargar un raster de resistencia para tu estudio puedes utilizar la función <code><a href="https://rdrr.io/pkg/raster/man/raster.html">raster()</a></code> del paquete <code>raster</code> o la función <code><a href="https://rspatial.github.io/terra/reference/rast.html">rast()</a></code> del paquete <code>terra</code>.</p>
 <div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/raster">raster</a></span><span class="op">)</span></span>
@@ -234,7 +235,7 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
 <span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="05-Priorizacion_files/figure-html/unnamed-chunk-26-1.png" width="672"></div>
+<div class="inline-figure"><img src="05-Priorizacion_files/figure-html/unnamed-chunk-26-1.png" alt="" width="672"></div>
 <p>Ahora aplicamos la función <code><a href="https://rdrr.io/pkg/Makurhini/man/MK_dPCIIC_links.html">MK_dPCIIC_links()</a></code>, pero antes exploremos una nueva variante de estimar el umbral de distancia cuando usamos una resistencia.</p>
 <p>Estimaremos la distancia efectiva promedio: media de la resistencia x dispersión
 De esta forma obtenemos una distancia costo.</p>
@@ -254,17 +255,13 @@ De esta forma obtenemos una distancia costo.</p>
 <span>                         distance_thresholds <span class="op">=</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/math-generics.html">round</a></span><span class="op">(</span><span class="va">Effec_mean</span><span class="op">)</span>,</span>
 <span>                         parallel <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>                         parallel_mode <span class="op">=</span> <span class="fl">0</span>,</span>
-<span>                         intern <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Estimating distances. This may take several minutes depending on the number of nodes and raster resolution</span></span>
-<span><span class="co">#&gt; Estimating PC link index. This may take several minutes depending on the number of nodes</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Done!</span></span>
+<span>                         intern <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">delta</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   Id Source Destination dPC_removal</span></span>
 <span><span class="co">#&gt; 1  1      2           1   0.0004151</span></span>
 <span><span class="co">#&gt; 2  2      3           1   0.0001186</span></span>
 <span><span class="co">#&gt; 3  3      4           1   0.0001053</span></span>
-<span><span class="co">#&gt; 4  4      5           1   0.0502042</span></span>
+<span><span class="co">#&gt; 4  4      5           1   0.0502020</span></span>
 <span><span class="co">#&gt; 5  5      6           1   0.0000061</span></span>
 <span><span class="co">#&gt; 6  6      7           1   0.0000350</span></span></code></pre></div>
 <p>Unir valores con mis corredores de interes:</p>
@@ -288,11 +285,11 @@ De esta forma obtenemos una distancia costo.</p>
 <span><span class="co">#&gt; First 10 features:</span></span>
 <span><span class="co">#&gt;    ID_nuevo from to Id Source Destination dPC_removal</span></span>
 <span><span class="co">#&gt; 1      1_10    1 10  9     10           1   0.0000827</span></span>
-<span><span class="co">#&gt; 2      1_11    1 11 10     11           1   0.0019437</span></span>
-<span><span class="co">#&gt; 3      1_12    1 12 11     12           1   0.0273787</span></span>
+<span><span class="co">#&gt; 2      1_11    1 11 10     11           1   0.0019436</span></span>
+<span><span class="co">#&gt; 3      1_12    1 12 11     12           1   0.0273775</span></span>
 <span><span class="co">#&gt; 4      1_13    1 13 12     13           1   0.0000367</span></span>
 <span><span class="co">#&gt; 5      1_14    1 14 13     14           1   0.0003651</span></span>
-<span><span class="co">#&gt; 6      1_15    1 15 14     15           1   0.0061334</span></span>
+<span><span class="co">#&gt; 6      1_15    1 15 14     15           1   0.0061331</span></span>
 <span><span class="co">#&gt; 7      1_16    1 16 15     16           1   0.0000411</span></span>
 <span><span class="co">#&gt; 8      1_17    1 17 16     17           1   0.0000410</span></span>
 <span><span class="co">#&gt; 9      1_18    1 18 17     18           1   0.0000514</span></span>
@@ -339,8 +336,10 @@ De esta forma obtenemos una distancia costo.</p>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
 <span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
-<span>  <span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="05-Priorizacion_files/figure-html/unnamed-chunk-29-1.png" width="672"></div>
+<span>  <span class="op">)</span></span>
+<span><span class="co">#&gt; Ignoring unknown labels:</span></span>
+<span><span class="co">#&gt; • fill : "dPC"</span></span></code></pre></div>
+<div class="inline-figure"><img src="05-Priorizacion_files/figure-html/unnamed-chunk-29-1.png" alt="" width="672"></div>
 </div>
 <div id="cambio-de-enlaces-link-change" class="section level2" number="8.3">
 <h2>
@@ -394,7 +393,7 @@ De esta forma obtenemos una distancia costo.</p>
 <div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Distancia efectiva promedio como umbral de distancia</span></span>
 <span><span class="va">Effec_mean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/summarize-generics.html">mean</a></span><span class="op">(</span><span class="va">resistance_matrix</span><span class="op">[</span><span class="op">]</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">*</span> <span class="fl">10000</span> <span class="co"># 10km</span></span>
-<span><span class="co">#[1] 5229259</span></span>
+<span><span class="co">#[1] 5229623</span></span>
 <span></span>
 <span><span class="co">#Aplicamos la función</span></span>
 <span><span class="va">delta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Makurhini/man/MK_dPCIIC_links.html">MK_dPCIIC_links</a></span><span class="op">(</span>nodes <span class="op">=</span> <span class="va">parches_ejemplo</span>,</span>
@@ -408,16 +407,13 @@ De esta forma obtenemos una distancia costo.</p>
 <span>                         distance_thresholds <span class="op">=</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/math-generics.html">round</a></span><span class="op">(</span><span class="va">Effec_mean</span><span class="op">)</span>,</span>
 <span>                         parallel <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>                         parallel_mode <span class="op">=</span> <span class="fl">0</span>,</span>
-<span>                         intern <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Estimating PC link index. This may take several minutes depending on the number of nodes</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Done!</span></span>
+<span>                         intern <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rspatial.github.io/terra/reference/names.html">names</a></span><span class="op">(</span><span class="va">delta</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "Link_removal_importances_d5229259"</span></span>
-<span><span class="co">#&gt; [2] "Link_change_importances_d5229259"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "Link_removal_importances_d5229623"</span></span>
+<span><span class="co">#&gt; [2] "Link_change_importances_d5229623"</span></span></code></pre></div>
 <p>Vemos el resultado. Es importante recordar que los nombres de los elementos de las listas cambian dependiendo del umbral de distancia que uses (e.g., _d5229259, _d10000, _d200)</p>
 <div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">delta</span><span class="op">$</span><span class="va">Link_change_importances_d5229259</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">delta</span><span class="op">$</span><span class="va">Link_change_importances_d5229623</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   Id Source Destination dPC_change</span></span>
 <span><span class="co">#&gt; 1  1      2           1          0</span></span>
 <span><span class="co">#&gt; 2  2      3           1          0</span></span>
@@ -427,7 +423,7 @@ De esta forma obtenemos una distancia costo.</p>
 <span><span class="co">#&gt; 6  6      7           1          0</span></span></code></pre></div>
 <p>Lo unimos a nuestro vector con los corredores:</p>
 <div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">change_corr</span> <span class="op">&lt;-</span> <span class="va">delta</span><span class="op">$</span><span class="va">Link_change_importances_d5229259</span></span>
+<code class="sourceCode R"><span><span class="va">change_corr</span> <span class="op">&lt;-</span> <span class="va">delta</span><span class="op">$</span><span class="va">Link_change_importances_d5229623</span></span>
 <span><span class="va">change_corr</span><span class="op">$</span><span class="va">ID_nuevo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">change_corr</span><span class="op">$</span><span class="va">Destination</span>, <span class="st">"_"</span>, <span class="va">change_corr</span><span class="op">$</span><span class="va">Source</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">#Por precaución guardamos los corredores en otro objeto y generamos el ID</span></span>
@@ -491,8 +487,10 @@ De esta forma obtenemos una distancia costo.</p>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
 <span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
-<span>  <span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="05-Priorizacion_files/figure-html/unnamed-chunk-37-1.png" width="672"></div>
+<span>  <span class="op">)</span></span>
+<span><span class="co">#&gt; Ignoring unknown labels:</span></span>
+<span><span class="co">#&gt; • fill : "dPC"</span></span></code></pre></div>
+<div class="inline-figure"><img src="05-Priorizacion_files/figure-html/unnamed-chunk-37-1.png" alt="" width="672"></div>
 <p>Podemos visualizar solo los corredores que sufriedon cambio después de mejorar los corredores:</p>
 <div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">rutas_mc4</span> <span class="op">&lt;-</span> <span class="va">rutas_mc3</span><span class="op">[</span><span class="va">rutas_mc3</span><span class="op">$</span><span class="va">dPC_change</span> <span class="op">!=</span> <span class="fl">0</span>, <span class="op">]</span> </span>
@@ -521,8 +519,10 @@ De esta forma obtenemos una distancia costo.</p>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
 <span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
-<span>  <span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="05-Priorizacion_files/figure-html/unnamed-chunk-38-1.png" width="672"></div>
+<span>  <span class="op">)</span></span>
+<span><span class="co">#&gt; Ignoring unknown labels:</span></span>
+<span><span class="co">#&gt; • fill : "dPC"</span></span></code></pre></div>
+<div class="inline-figure"><img src="05-Priorizacion_files/figure-html/unnamed-chunk-38-1.png" alt="" width="672"></div>
 
 </div>
 </div>
@@ -553,7 +553,7 @@ De esta forma obtenemos una distancia costo.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Manual de uso de Makurhini</strong>" was written by Oscar Godínez Gómez. It was last built on 2025-08-15.</p>
+    <p>"<strong>Manual de uso de Makurhini</strong>" was written by Oscar Godínez Gómez. It was last built on 2026-06-22.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -561,6 +561,34 @@ De esta forma obtenemos una distancia costo.</p>
   </div>
 
 </div></div>
-</footer>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
 </body>
 </html>

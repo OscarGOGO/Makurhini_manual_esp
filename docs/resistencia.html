@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 11 Resistencia | Manual de uso de Makurhini</title>
+<meta name="author" content="Oscar Godínez Gómez">
+<meta name="description" content="La resistencia en conectividad ecológica se refiere al grado en que las características del paisaje dificultan o facilitan el movimiento de los organismos entre parches de hábitat. A diferencia de...">
+<meta name="generator" content="bookdown 0.47 with bs4_book()">
+<meta property="og:title" content="Chapter 11 Resistencia | Manual de uso de Makurhini">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://oscargogo.github.io/Makurhini_manual_esp/resistencia.html">
+<meta property="og:image" content="https://oscargogo.github.io/Makurhini_manual_esp/LOGO_MAKHURINI.png">
+<meta property="og:description" content="La resistencia en conectividad ecológica se refiere al grado en que las características del paisaje dificultan o facilitan el movimiento de los organismos entre parches de hábitat. A diferencia de...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 11 Resistencia | Manual de uso de Makurhini">
+<meta name="twitter:description" content="La resistencia en conectividad ecológica se refiere al grado en que las características del paisaje dificultan o facilitan el movimiento de los organismos entre parches de hábitat. A diferencia de...">
+<meta name="twitter:image" content="https://oscargogo.github.io/Makurhini_manual_esp/LOGO_MAKHURINI.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Manual de uso de Makurhini</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Makurhini</a></li>
+<li><a class="" href="instalaci%C3%B3n-del-paquete-makurhini.html"><span class="header-section-number">1</span> Instalación del paquete Makurhini</a></li>
+<li><a class="" href="estad%C3%ADsticas-de-fragmentaci%C3%B3n-del-paisaje.html"><span class="header-section-number">2</span> Estadísticas de fragmentación del paisaje</a></li>
+<li><a class="" href="%C3%ADndices-de-centralidad.html"><span class="header-section-number">3</span> Índices de centralidad</a></li>
+<li><a class="" href="kernel-de-dispersi%C3%B3n.html"><span class="header-section-number">4</span> Kernel de dispersión</a></li>
+<li><a class="" href="%C3%ADndice-integral-de-conectividad-y-probabilidad-de-conectividad.html"><span class="header-section-number">5</span> índice integral de conectividad y Probabilidad de conectividad</a></li>
+<li><a class="" href="prioridades-de-restauraci%C3%B3n-con-mk_dpciic.html"><span class="header-section-number">6</span> Prioridades de Restauración con MK_dPCIIC()</a></li>
+<li><a class="" href="prioridades-de-conservaci%C3%B3n-y-restauraci%C3%B3n-con-mk_focal_nodes.html"><span class="header-section-number">7</span> Prioridades de conservación y restauración con MK_Focal_nodes()</a></li>
+<li><a class="" href="prioridad-de-enlaces-con-mk_dpciic_links.html"><span class="header-section-number">8</span> Prioridad de enlaces con MK_dPCIIC_links()</a></li>
+<li><a class="" href="conectividad-din%C3%A1mica-con-mk_deca.html"><span class="header-section-number">9</span> Conectividad dinámica con MK_dECA()</a></li>
+<li><a class="" href="protected-connected-indicator-protconn.html"><span class="header-section-number">10</span> Protected Connected indicator (ProtConn)</a></li>
+<li><a class="active" href="resistencia.html"><span class="header-section-number">11</span> Resistencia</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/OscarGOGO/Makurhini_manual_esp">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="resistencia" class="section level1" number="11">
+<h1>
+<span class="header-section-number">11</span> Resistencia<a class="anchor" aria-label="anchor" href="#resistencia"><i class="fas fa-link"></i></a>
+</h1>
+<p>La resistencia en conectividad ecológica se refiere al grado en que las características del paisaje dificultan o facilitan el movimiento de los organismos entre parches de hábitat. A diferencia de una simple medida de distancia geográfica, la resistencia incorpora la calidad y permeabilidad de la matriz, considerando que distintos tipos de cobertura, usos de suelo, carreteras, áreas urbanas, pendientes o niveles de perturbación pueden representar diferentes costos de desplazamiento para una especie. En este sentido, una zona de bosque continuo o de alta idoneidad ambiental puede tener baja resistencia, mientras que una carretera, un cultivo intensivo o un área urbanizada pueden tener alta resistencia. Por ello, las superficies de resistencia son hipótesis espaciales sobre cómo una especie percibe y atraviesa el paisaje, y son fundamentales para modelar corredores, rutas de menor costo, flujo de corriente y conectividad funcional.</p>
+<p>Existen grandes aproximaciones para modelar resistencia, entre ellas se destacan: 1) Paisaje o agnóstico y 2) funcional. En el primero se busca mapear la naturalidad y el grado de transformación humana, un ejemplo es la huella espacial humana. Mientras que en el segundo por lo general la resistencia se asocia a la idoneidad de hábitat, donde una mayor idoneidad representa unamenor resistencia al movimiento.</p>
+<p>En el siguiente ejemplo modelaremos la resistencia desde una perspectiva funcional, usando un modelo de distribución potencial.</p>
+<div id="ejemplo-introducción" class="section level2" number="11.1">
+<h2>
+<span class="header-section-number">11.1</span> Ejemplo: Introducción<a class="anchor" aria-label="anchor" href="#ejemplo-introducci%C3%B3n"><i class="fas fa-link"></i></a>
+</h2>
+<p>Este documento presenta un flujo reproducible para construir un <strong>modelo de distribución potencial</strong> (MDP) del jaguar (<em>Panthera onca</em>) en Colombia y, posteriormente, transformar la idoneidad ambiental estimada por el modelo en una <strong>superficie de resistencia</strong>. La lógica general es que las áreas con mayor idoneidad ambiental pueden interpretarse como zonas de menor costo para el movimiento, mientras que las áreas con baja idoneidad pueden representar una matriz más resistente o menos permeable.</p>
+<p>El flujo se organiza como un pequeño capítulo metodológico: primero se preparan las variables ambientales, después se descargan y depuran las ocurrencias, posteriormente se ajusta un modelo tipo MaxEnt con <code>maxnet</code>, y finalmente se transforma la predicción del MDP en una superficie de resistencia mediante una transformación monomolecular.</p>
+<div id="ejemplo-datos" class="section level3" number="11.1.1">
+<h3>
+<span class="header-section-number">11.1.1</span> Ejemplo: Datos<a class="anchor" aria-label="anchor" href="#ejemplo-datos"><i class="fas fa-link"></i></a>
+</h3>
+<p>Algunos de los pasos siguientes descargan grandes volumenes de datos, lo cual no es necesario y puedes acceder a la información usando el siguiente link:</p>
+<p><a href="https://drive.google.com/drive/folders/1_JYV91x8l7tKOTg9EMbYXcmO4AOA-Vbj?usp=sharing" class="uri">https://drive.google.com/drive/folders/1_JYV91x8l7tKOTg9EMbYXcmO4AOA-Vbj?usp=sharing</a></p>
+</div>
+<div id="preparación-del-ambiente-de-trabajo" class="section level3" number="11.1.2">
+<h3>
+<span class="header-section-number">11.1.2</span> Preparación del ambiente de trabajo<a class="anchor" aria-label="anchor" href="#preparaci%C3%B3n-del-ambiente-de-trabajo"><i class="fas fa-link"></i></a>
+</h3>
+<p>El primer paso consiste en instalar y cargar los paquetes necesarios. En este flujo se combinan paquetes para análisis espacial (<code>terra</code>, <code>sf</code>), descarga de datos (<code>geodata</code>, <code>rgbif</code>), modelación de distribución (<code>maxnet</code>), evaluación (<code>pROC</code>) y visualización (<code>ggplot2</code>).</p>
+<div class="sourceCode" id="cb178"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">packages</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>  <span class="st">"terra"</span>, <span class="st">"sf"</span>, <span class="st">"dplyr"</span>, <span class="st">"geodata"</span>, <span class="st">"rgbif"</span>,</span>
+<span>  <span class="st">"maxnet"</span>, <span class="st">"pROC"</span>, <span class="st">"ggplot2"</span>, <span class="st">"tibble"</span>, <span class="st">"stringr"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">new_packages</span> <span class="op">&lt;-</span> <span class="va">packages</span><span class="op">[</span><span class="op">!</span><span class="op">(</span><span class="va">packages</span> <span class="op"><a href="https://rspatial.github.io/terra/reference/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/installed.packages.html">installed.packages</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span>, <span class="st">"Package"</span><span class="op">]</span><span class="op">)</span><span class="op">]</span></span>
+<span></span>
+<span><span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">new_packages</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="va">new_packages</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/">terra</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; terra 1.9.11</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; Linking to GEOS 3.14.1, GDAL 3.12.1, PROJ 9.7.1;</span></span>
+<span><span class="co">#&gt; sf_use_s2() is TRUE</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Adjuntando el paquete: 'dplyr'</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:terra':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     intersect, union</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     filter, lag</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.github.io/geodata/">geodata</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/rgbif">rgbif</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/mrmaxent/maxnet">maxnet</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://xrobin.github.io/pROC/">pROC</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; Type 'citation("pROC")' for a citation.</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Adjuntando el paquete: 'pROC'</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     cov, smooth, var</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/">tibble</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://stringr.tidyverse.org">stringr</a></span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="parámetros-generales" class="section level3" number="11.1.3">
+<h3>
+<span class="header-section-number">11.1.3</span> Parámetros generales<a class="anchor" aria-label="anchor" href="#par%C3%A1metros-generales"><i class="fas fa-link"></i></a>
+</h3>
+<p>En esta sección se definen los parámetros principales del análisis: la especie focal, el país, la carpeta de trabajo y el sistema de coordenadas proyectado. El sistema proyectado se utiliza especialmente para calcular distancias a carreteras en metros.</p>
+<div class="sourceCode" id="cb179"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">species_name</span> <span class="op">&lt;-</span> <span class="st">"Panthera onca"</span></span>
+<span><span class="va">country_code</span> <span class="op">&lt;-</span> <span class="st">"CO"</span></span>
+<span><span class="va">country_name</span> <span class="op">&lt;-</span> <span class="st">"Colombia"</span></span>
+<span></span>
+<span><span class="co">#Carpeta de trabajo donde están los archivos descargados con el link anterior</span></span>
+<span><span class="va">dir_data</span> <span class="op">&lt;-</span> <span class="st">"C:/Users/oscta/OneDrive/Documents/R/Makurhini_manual/Jaguar/"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span><span class="op">(</span><span class="va">dir_data</span>, showWarnings <span class="op">=</span> <span class="cn">FALSE</span>, recursive <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># CRS métrico aproximado para Colombia.</span></span>
+<span><span class="co"># Se usa para calcular distancia euclidiana a carreteras en metros.</span></span>
+<span><span class="va">crs_col</span> <span class="op">&lt;-</span> <span class="st">"+proj=aea +lat_1=-4 +lat_2=12 +lat_0=4 +lon_0=-74 +datum=WGS84 +units=m +no_defs"</span></span></code></pre></div>
+</div>
+<div id="área-de-estudio" class="section level3" number="11.1.4">
+<h3>
+<span class="header-section-number">11.1.4</span> Área de estudio<a class="anchor" aria-label="anchor" href="#%C3%A1rea-de-estudio"><i class="fas fa-link"></i></a>
+</h3>
+<p>El área de estudio corresponde a una porción de Colombia. En este ejemplo, el polígono se carga desde un archivo <code>GeoPackage</code>. Este polígono será usado para recortar las variables ambientales y filtrar las ocurrencias de jaguar.</p>
+<div class="sourceCode" id="cb180"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">colombia_sf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">dir_data</span>, <span class="st">"area_estudio.gpkg"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Convertir a SpatVector para operaciones con terra</span></span>
+<span><span class="va">colombia_v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/vect.html">vect</a></span><span class="op">(</span><span class="va">colombia_sf</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html">st_geometry</a></span><span class="op">(</span><span class="va">colombia_sf</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"gray90"</span>, main <span class="op">=</span> <span class="st">"Área de estudio"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="08-Resistencia_files/figure-html/unnamed-chunk-2-1.png" alt="" width="672"></div>
+</div>
+<div id="descarga-y-depuración-de-ocurrencias" class="section level3" number="11.1.5">
+<h3>
+<span class="header-section-number">11.1.5</span> Descarga y depuración de ocurrencias<a class="anchor" aria-label="anchor" href="#descarga-y-depuraci%C3%B3n-de-ocurrencias"><i class="fas fa-link"></i></a>
+</h3>
+<p>Las ocurrencias se descargan desde GBIF usando el nombre científico del jaguar. Después se eliminan registros sin coordenadas, registros en coordenadas cero y registros muy antiguos, si se desea limitar temporalmente el análisis.</p>
+<p>En este ejemplo se conservan registros a partir de 1980. Este umbral puede modificarse según el objetivo del estudio, por ejemplo, para usar únicamente registros recientes.</p>
+<p><strong>NO ES NECESARIO CORRER</strong></p>
+<div class="sourceCode" id="cb181"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">occ_raw</span> <span class="op">&lt;-</span> <span class="fu">rgbif</span><span class="fu">::</span><span class="fu"><a href="https://docs.ropensci.org/rgbif/reference/occ_search.html">occ_search</a></span><span class="op">(</span></span>
+<span>  scientificName <span class="op">=</span> <span class="va">species_name</span>,</span>
+<span>  country <span class="op">=</span> <span class="va">country_code</span>,</span>
+<span>  hasCoordinate <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  hasGeospatialIssue <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  limit <span class="op">=</span> <span class="fl">5000</span>,</span>
+<span>  fields <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>    <span class="st">"scientificName"</span>, <span class="st">"decimalLongitude"</span>, <span class="st">"decimalLatitude"</span>,</span>
+<span>    <span class="st">"year"</span>, <span class="st">"basisOfRecord"</span>, <span class="st">"coordinateUncertaintyInMeters"</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span><span class="op">$</span><span class="va">data</span></span>
+<span></span>
+<span><span class="va">occ</span> <span class="op">&lt;-</span> <span class="va">occ_raw</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span></span>
+<span>    <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">decimalLongitude</span><span class="op">)</span>,</span>
+<span>    <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">decimalLatitude</span><span class="op">)</span>,</span>
+<span>    <span class="op">!</span><span class="op">(</span><span class="va">decimalLongitude</span> <span class="op">==</span> <span class="fl">0</span> <span class="op">&amp;</span> <span class="va">decimalLatitude</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span> <span class="op">|</span> <span class="va">year</span> <span class="op">&gt;=</span> <span class="fl">1980</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">occ_sf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html">st_as_sf</a></span><span class="op">(</span></span>
+<span>  <span class="va">occ</span>,</span>
+<span>  coords <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"decimalLongitude"</span>, <span class="st">"decimalLatitude"</span><span class="op">)</span>,</span>
+<span>  crs <span class="op">=</span> <span class="fl">4326</span>,</span>
+<span>  remove <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Mantener solo registros dentro del área de estudio</span></span>
+<span><span class="va">occ_sf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_join.html">st_filter</a></span><span class="op">(</span><span class="va">occ_sf</span>, <span class="va">colombia_sf</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html">st_geometry</a></span><span class="op">(</span><span class="va">colombia_sf</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"gray90"</span>, main <span class="op">=</span> <span class="st">"Ocurrencias GBIF de jaguar"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html">st_geometry</a></span><span class="op">(</span><span class="va">occ_sf</span><span class="op">)</span>, add <span class="op">=</span> <span class="cn">TRUE</span>, pch <span class="op">=</span> <span class="fl">20</span>, col <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Número de ocurrencias dentro del área de estudio:"</span>, <span class="fu"><a href="https://rspatial.github.io/terra/reference/dimensions.html">nrow</a></span><span class="op">(</span><span class="va">occ_sf</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
+<p><strong>SI DESCARGAS DATOS PUEDES CORRER</strong></p>
+<div class="sourceCode" id="cb182"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">occ_sf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">dir_data</span>, <span class="st">"/occ_sf.gpkg"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html">st_geometry</a></span><span class="op">(</span><span class="va">colombia_sf</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"gray90"</span>, main <span class="op">=</span> <span class="st">"Ocurrencias GBIF de jaguar"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html">st_geometry</a></span><span class="op">(</span><span class="va">occ_sf</span><span class="op">)</span>, add <span class="op">=</span> <span class="cn">TRUE</span>, pch <span class="op">=</span> <span class="fl">20</span>, col <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="08-Resistencia_files/figure-html/unnamed-chunk-4-1.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb183"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Número de ocurrencias dentro del área de estudio:"</span>, <span class="fu"><a href="https://rspatial.github.io/terra/reference/dimensions.html">nrow</a></span><span class="op">(</span><span class="va">occ_sf</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Número de ocurrencias dentro del área de estudio: 1037</span></span></code></pre></div>
+</div>
+<div id="variables-climáticas" class="section level3" number="11.1.6">
+<h3>
+<span class="header-section-number">11.1.6</span> Variables climáticas<a class="anchor" aria-label="anchor" href="#variables-clim%C3%A1ticas"><i class="fas fa-link"></i></a>
+</h3>
+<p>Las variables bioclimáticas de WorldClim representan condiciones climáticas promedio, como temperatura media anual, precipitación anual y estacionalidad. Estas variables son útiles para capturar restricciones ambientales amplias sobre la distribución potencial de la especie.</p>
+<p><strong>NO ES NECESARIO CORRER</strong></p>
+<div class="sourceCode" id="cb184"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">bio</span> <span class="op">&lt;-</span> <span class="fu">geodata</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/geodata/reference/worldclim.html">worldclim_global</a></span><span class="op">(</span></span>
+<span>  var <span class="op">=</span> <span class="st">"bio"</span>,</span>
+<span>  res <span class="op">=</span> <span class="fl">2.5</span>,</span>
+<span>  path <span class="op">=</span> <span class="va">dir_data</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">bio_col</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/crop.html">crop</a></span><span class="op">(</span><span class="va">bio</span>, <span class="va">colombia_v</span><span class="op">)</span></span>
+<span><span class="va">bio_col</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/mask.html">mask</a></span><span class="op">(</span><span class="va">bio_col</span>, <span class="va">colombia_v</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/names.html">names</a></span><span class="op">(</span><span class="va">bio_col</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">bio_col</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, main <span class="op">=</span> <span class="st">"BIO1 - Temperatura media anual"</span><span class="op">)</span></span></code></pre></div>
+<p><strong>SI DESCARGAS DATOS PUEDES CORRER</strong></p>
+<div class="sourceCode" id="cb185"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">bio_col</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/rast.html">rast</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="va">dir_data</span>, <span class="st">"bio_col.tif"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/names.html">names</a></span><span class="op">(</span><span class="va">bio_col</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  [1] "wc2.1_2.5m_bio_1"  "wc2.1_2.5m_bio_2" </span></span>
+<span><span class="co">#&gt;  [3] "wc2.1_2.5m_bio_3"  "wc2.1_2.5m_bio_4" </span></span>
+<span><span class="co">#&gt;  [5] "wc2.1_2.5m_bio_5"  "wc2.1_2.5m_bio_6" </span></span>
+<span><span class="co">#&gt;  [7] "wc2.1_2.5m_bio_7"  "wc2.1_2.5m_bio_8" </span></span>
+<span><span class="co">#&gt;  [9] "wc2.1_2.5m_bio_9"  "wc2.1_2.5m_bio_10"</span></span>
+<span><span class="co">#&gt; [11] "wc2.1_2.5m_bio_11" "wc2.1_2.5m_bio_12"</span></span>
+<span><span class="co">#&gt; [13] "wc2.1_2.5m_bio_13" "wc2.1_2.5m_bio_14"</span></span>
+<span><span class="co">#&gt; [15] "wc2.1_2.5m_bio_15" "wc2.1_2.5m_bio_16"</span></span>
+<span><span class="co">#&gt; [17] "wc2.1_2.5m_bio_17" "wc2.1_2.5m_bio_18"</span></span>
+<span><span class="co">#&gt; [19] "wc2.1_2.5m_bio_19"</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">bio_col</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, main <span class="op">=</span> <span class="st">"BIO1 - Temperatura media anual"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="08-Resistencia_files/figure-html/unnamed-chunk-5-1.png" alt="" width="672"></div>
+</div>
+<div id="variables-de-uso-y-cobertura-del-suelo" class="section level3" number="11.1.7">
+<h3>
+<span class="header-section-number">11.1.7</span> Variables de uso y cobertura del suelo<a class="anchor" aria-label="anchor" href="#variables-de-uso-y-cobertura-del-suelo"><i class="fas fa-link"></i></a>
+</h3>
+<p>Además del clima, la distribución del jaguar también puede estar influida por la cobertura de vegetación, la agricultura, las áreas construidas, los cuerpos de agua y los humedales. Aquí se descargan variables globales de cobertura del suelo y se ajustan a la misma resolución y extensión que las variables climáticas.</p>
+<p><strong>NO ES NECESARIO CORRER</strong></p>
+<div class="sourceCode" id="cb186"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">trees</span> <span class="op">&lt;-</span> <span class="fu">geodata</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/geodata/reference/landcover.html">landcover</a></span><span class="op">(</span>var <span class="op">=</span> <span class="st">"trees"</span>, path <span class="op">=</span> <span class="va">dir_data</span><span class="op">)</span></span>
+<span><span class="va">cropland</span> <span class="op">&lt;-</span> <span class="fu">geodata</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/geodata/reference/landcover.html">landcover</a></span><span class="op">(</span>var <span class="op">=</span> <span class="st">"cropland"</span>, path <span class="op">=</span> <span class="va">dir_data</span><span class="op">)</span></span>
+<span><span class="va">built</span> <span class="op">&lt;-</span> <span class="fu">geodata</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/geodata/reference/landcover.html">landcover</a></span><span class="op">(</span>var <span class="op">=</span> <span class="st">"built"</span>, path <span class="op">=</span> <span class="va">dir_data</span><span class="op">)</span></span>
+<span><span class="va">grassland</span> <span class="op">&lt;-</span> <span class="fu">geodata</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/geodata/reference/landcover.html">landcover</a></span><span class="op">(</span>var <span class="op">=</span> <span class="st">"grassland"</span>, path <span class="op">=</span> <span class="va">dir_data</span><span class="op">)</span></span>
+<span><span class="va">shrubs</span> <span class="op">&lt;-</span> <span class="fu">geodata</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/geodata/reference/landcover.html">landcover</a></span><span class="op">(</span>var <span class="op">=</span> <span class="st">"shrubs"</span>, path <span class="op">=</span> <span class="va">dir_data</span><span class="op">)</span></span>
+<span><span class="va">water</span> <span class="op">&lt;-</span> <span class="fu">geodata</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/geodata/reference/landcover.html">landcover</a></span><span class="op">(</span>var <span class="op">=</span> <span class="st">"water"</span>, path <span class="op">=</span> <span class="va">dir_data</span><span class="op">)</span></span>
+<span><span class="va">wetland</span> <span class="op">&lt;-</span> <span class="fu">geodata</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/geodata/reference/landcover.html">landcover</a></span><span class="op">(</span>var <span class="op">=</span> <span class="st">"wetland"</span>, path <span class="op">=</span> <span class="va">dir_data</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">template</span> <span class="op">&lt;-</span> <span class="va">bio_col</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
+<span></span>
+<span><span class="va">prep_lc</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">template</span>, <span class="va">aoi</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/crop.html">crop</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">aoi</span><span class="op">)</span></span>
+<span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/mask.html">mask</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">aoi</span><span class="op">)</span></span>
+<span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/resample.html">resample</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">template</span>, method <span class="op">=</span> <span class="st">"bilinear"</span><span class="op">)</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">trees_col</span> <span class="op">&lt;-</span> <span class="fu">prep_lc</span><span class="op">(</span><span class="va">trees</span>, <span class="va">template</span>, <span class="va">colombia_v</span><span class="op">)</span></span>
+<span><span class="va">cropland_col</span> <span class="op">&lt;-</span> <span class="fu">prep_lc</span><span class="op">(</span><span class="va">cropland</span>, <span class="va">template</span>, <span class="va">colombia_v</span><span class="op">)</span></span>
+<span><span class="va">built_col</span> <span class="op">&lt;-</span> <span class="fu">prep_lc</span><span class="op">(</span><span class="va">built</span>, <span class="va">template</span>, <span class="va">colombia_v</span><span class="op">)</span></span>
+<span><span class="va">grassland_col</span> <span class="op">&lt;-</span> <span class="fu">prep_lc</span><span class="op">(</span><span class="va">grassland</span>, <span class="va">template</span>, <span class="va">colombia_v</span><span class="op">)</span></span>
+<span><span class="va">shrubs_col</span> <span class="op">&lt;-</span> <span class="fu">prep_lc</span><span class="op">(</span><span class="va">shrubs</span>, <span class="va">template</span>, <span class="va">colombia_v</span><span class="op">)</span></span>
+<span><span class="va">water_col</span> <span class="op">&lt;-</span> <span class="fu">prep_lc</span><span class="op">(</span><span class="va">water</span>, <span class="va">template</span>, <span class="va">colombia_v</span><span class="op">)</span></span>
+<span><span class="va">wetland_col</span> <span class="op">&lt;-</span> <span class="fu">prep_lc</span><span class="op">(</span><span class="va">wetland</span>, <span class="va">template</span>, <span class="va">colombia_v</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/names.html">names</a></span><span class="op">(</span><span class="va">trees_col</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"trees"</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/names.html">names</a></span><span class="op">(</span><span class="va">cropland_col</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"cropland"</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/names.html">names</a></span><span class="op">(</span><span class="va">built_col</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"built"</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/names.html">names</a></span><span class="op">(</span><span class="va">grassland_col</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"grassland"</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/names.html">names</a></span><span class="op">(</span><span class="va">shrubs_col</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"shrubs"</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/names.html">names</a></span><span class="op">(</span><span class="va">water_col</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"water"</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/names.html">names</a></span><span class="op">(</span><span class="va">wetland_col</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"wetland"</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">trees_col</span>, main <span class="op">=</span> <span class="st">"Cobertura arbórea"</span><span class="op">)</span></span></code></pre></div>
+<p><strong>SI DESCARGAS DATOS PUEDES CORRER</strong></p>
+<div class="sourceCode" id="cb187"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">lulc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/rast.html">rast</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="va">dir_data</span>, <span class="st">"lulc_col.tif"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">trees_col</span> <span class="op">&lt;-</span> <span class="va">lulc</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="va">cropland_col</span> <span class="op">&lt;-</span> <span class="va">lulc</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="va">built_col</span> <span class="op">&lt;-</span> <span class="va">lulc</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="va">grassland_col</span> <span class="op">&lt;-</span> <span class="va">lulc</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="va">shrubs_col</span> <span class="op">&lt;-</span> <span class="va">lulc</span><span class="op">[[</span><span class="fl">4</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="va">water_col</span> <span class="op">&lt;-</span> <span class="va">lulc</span><span class="op">[[</span><span class="fl">5</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="va">wetland_col</span> <span class="op">&lt;-</span> <span class="va">lulc</span><span class="op">[[</span><span class="fl">6</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="va">template</span> <span class="op">&lt;-</span> <span class="va">bio_col</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/names.html">names</a></span><span class="op">(</span><span class="va">trees_col</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"trees"</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/names.html">names</a></span><span class="op">(</span><span class="va">cropland_col</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"cropland"</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/names.html">names</a></span><span class="op">(</span><span class="va">built_col</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"built"</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/names.html">names</a></span><span class="op">(</span><span class="va">grassland_col</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"grassland"</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/names.html">names</a></span><span class="op">(</span><span class="va">shrubs_col</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"shrubs"</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/names.html">names</a></span><span class="op">(</span><span class="va">water_col</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"water"</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/names.html">names</a></span><span class="op">(</span><span class="va">wetland_col</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"wetland"</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">trees_col</span>, main <span class="op">=</span> <span class="st">"Cobertura arbórea"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="08-Resistencia_files/figure-html/unnamed-chunk-7-1.png" alt="" width="672"></div>
+</div>
+<div id="carreteras-y-distancia-a-carreteras" class="section level3" number="11.1.8">
+<h3>
+<span class="header-section-number">11.1.8</span> Carreteras y distancia a carreteras<a class="anchor" aria-label="anchor" href="#carreteras-y-distancia-a-carreteras"><i class="fas fa-link"></i></a>
+</h3>
+<p>Las carreteras pueden representar barreras, fuentes de mortalidad o indicadores de presión antrópica. En este caso se descargan carreteras desde OpenStreetMap y se calcula la distancia euclidiana a la carretera más cercana. Para que la distancia esté en metros, primero se reproyectan los datos a un sistema métrico.</p>
+<p><strong>NO ES NECESARIO CORRER</strong></p>
+<div class="sourceCode" id="cb188"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">roads</span> <span class="op">&lt;-</span> <span class="fu">geodata</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/geodata/reference/osm.html">osm</a></span><span class="op">(</span></span>
+<span>  country <span class="op">=</span> <span class="va">country_name</span>,</span>
+<span>  var <span class="op">=</span> <span class="st">"highways"</span>,</span>
+<span>  path <span class="op">=</span> <span class="va">dir_data</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Filtrar carreteras principales si existe la columna highway</span></span>
+<span><span class="kw">if</span><span class="op">(</span><span class="st">"highway"</span> <span class="op"><a href="https://rspatial.github.io/terra/reference/match.html">%in%</a></span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/names.html">names</a></span><span class="op">(</span><span class="va">roads</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">roads</span> <span class="op">&lt;-</span> <span class="va">roads</span><span class="op">[</span><span class="va">roads</span><span class="op">$</span><span class="va">highway</span> <span class="op"><a href="https://rspatial.github.io/terra/reference/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>    <span class="st">"motorway"</span>, <span class="st">"trunk"</span>, <span class="st">"primary"</span>, <span class="st">"secondary"</span>, <span class="st">"tertiary"</span>,</span>
+<span>    <span class="st">"motorway_link"</span>, <span class="st">"trunk_link"</span>, <span class="st">"primary_link"</span>, <span class="st">"secondary_link"</span></span>
+<span>  <span class="op">)</span>, <span class="op">]</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># Proyectar área, carreteras y template a CRS métrico</span></span>
+<span><span class="va">colombia_m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/project.html">project</a></span><span class="op">(</span><span class="va">colombia_v</span>, <span class="va">crs_col</span><span class="op">)</span></span>
+<span><span class="va">roads_m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/project.html">project</a></span><span class="op">(</span><span class="va">roads</span>, <span class="va">crs_col</span><span class="op">)</span></span>
+<span><span class="va">template_m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/project.html">project</a></span><span class="op">(</span><span class="va">template</span>, <span class="va">crs_col</span>, method <span class="op">=</span> <span class="st">"near"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Rasterizar carreteras</span></span>
+<span><span class="va">roads_r</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/rasterize.html">rasterize</a></span><span class="op">(</span></span>
+<span>  <span class="va">roads_m</span>,</span>
+<span>  <span class="va">template_m</span>,</span>
+<span>  field <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  background <span class="op">=</span> <span class="cn">NA</span>,</span>
+<span>  touches <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Distancia a carreteras en metros</span></span>
+<span><span class="va">dist_roads_m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/distance.html">distance</a></span><span class="op">(</span><span class="va">roads_r</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/names.html">names</a></span><span class="op">(</span><span class="va">dist_roads_m</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"dist_roads_m"</span></span>
+<span></span>
+<span><span class="co"># Regresar al CRS del stack ambiental</span></span>
+<span><span class="va">dist_roads</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/project.html">project</a></span><span class="op">(</span><span class="va">dist_roads_m</span>, <span class="va">template</span>, method <span class="op">=</span> <span class="st">"bilinear"</span><span class="op">)</span></span>
+<span><span class="va">dist_roads</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/mask.html">mask</a></span><span class="op">(</span><span class="va">dist_roads</span>, <span class="va">colombia_v</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">dist_roads</span>, main <span class="op">=</span> <span class="st">"Distancia a carreteras"</span><span class="op">)</span></span></code></pre></div>
+<p><strong>SI DESCARGAS DATOS PUEDES CORRER</strong></p>
+<div class="sourceCode" id="cb189"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dist_roads</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/rast.html">rast</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="va">dir_data</span>, <span class="st">"dist_roads_col.tif"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">dist_roads</span>, main <span class="op">=</span> <span class="st">"Distancia a carreteras"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="08-Resistencia_files/figure-html/unnamed-chunk-9-1.png" alt="" width="672"></div>
+</div>
+<div id="construcción-del-stack-ambiental" class="section level3" number="11.1.9">
+<h3>
+<span class="header-section-number">11.1.9</span> Construcción del stack ambiental<a class="anchor" aria-label="anchor" href="#construcci%C3%B3n-del-stack-ambiental"><i class="fas fa-link"></i></a>
+</h3>
+<p>Una vez preparadas las variables climáticas, de cobertura y de distancia a carreteras, se combinan en un solo objeto espacial. Este stack será la base para extraer valores ambientales en los puntos de presencia y de fondo.</p>
+<p><strong>NO ES NECESARIO CORRER</strong></p>
+<div class="sourceCode" id="cb190"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">env</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>  <span class="va">bio_col</span>,</span>
+<span>  <span class="va">trees_col</span>,</span>
+<span>  <span class="va">cropland_col</span>,</span>
+<span>  <span class="va">built_col</span>,</span>
+<span>  <span class="va">grassland_col</span>,</span>
+<span>  <span class="va">shrubs_col</span>,</span>
+<span>  <span class="va">water_col</span>,</span>
+<span>  <span class="va">wetland_col</span>,</span>
+<span>  <span class="va">dist_roads</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/names.html">names</a></span><span class="op">(</span><span class="va">env</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/writeRaster.html">writeRaster</a></span><span class="op">(</span></span>
+<span>  <span class="va">env</span>,</span>
+<span>  filename <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="va">dir_data</span>, <span class="st">"variables_ambientales_jaguar_colombia.tif"</span><span class="op">)</span>,</span>
+<span>  overwrite <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p><strong>SI DESCARGAS DATOS PUEDES CORRER</strong></p>
+<div class="sourceCode" id="cb191"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">env</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/rast.html">rast</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="va">dir_data</span>, <span class="st">"variables_ambientales_jaguar_colombia.tif"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">env</span></span>
+<span><span class="co">#&gt; class       : SpatRaster </span></span>
+<span><span class="co">#&gt; size        : 373, 301, 27  (nrow, ncol, nlyr)</span></span>
+<span><span class="co">#&gt; resolution  : 0.04166667, 0.04166667  (x, y)</span></span>
+<span><span class="co">#&gt; extent      : -79.5, -66.95833, -4.25, 11.29167  (xmin, xmax, ymin, ymax)</span></span>
+<span><span class="co">#&gt; coord. ref. : lon/lat WGS 84 (EPSG:4326) </span></span>
+<span><span class="co">#&gt; source      : variables_ambientales_jaguar_colombia.tif </span></span>
+<span><span class="co">#&gt; names       : wc2.1~bio_1, wc2.1~bio_2, wc2.1~bio_3, wc2.1~bio_4, wc2.1~bio_5, wc2.1~bio_6, ... </span></span>
+<span><span class="co">#&gt; min values  :    -0.65150,    5.491666,    63.85305,    8.304407,       5.192,       -6.88, ... </span></span>
+<span><span class="co">#&gt; max values  :    29.10833,   12.730333,    95.48586,  130.102936,      36.560,       24.00, ...</span></span></code></pre></div>
+</div>
+<div id="limpieza-espacial-de-las-ocurrencias" class="section level3" number="11.1.10">
+<h3>
+<span class="header-section-number">11.1.10</span> Limpieza espacial de las ocurrencias<a class="anchor" aria-label="anchor" href="#limpieza-espacial-de-las-ocurrencias"><i class="fas fa-link"></i></a>
+</h3>
+<p>Para reducir duplicación espacial y evitar que muchas ocurrencias en una misma celda dominen el modelo, se conserva una sola ocurrencia por celda ambiental. Este paso es una forma simple de rarefacción espacial a la resolución del raster.</p>
+<div class="sourceCode" id="cb192"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">occ_vect</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/vect.html">vect</a></span><span class="op">(</span><span class="va">occ_sf</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">occ_xy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/crds.html">crds</a></span><span class="op">(</span><span class="va">occ_vect</span><span class="op">)</span></span>
+<span><span class="va">occ_cell</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/xyCellFrom.html">cellFromXY</a></span><span class="op">(</span><span class="va">template</span>, <span class="va">occ_xy</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">occ_clean</span> <span class="op">&lt;-</span> <span class="va">occ_sf</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>cell <span class="op">=</span> <span class="va">occ_cell</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">cell</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">cell</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_sample</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">occ_clean_vect</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/vect.html">vect</a></span><span class="op">(</span><span class="va">occ_clean</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Ocurrencias originales:"</span>, <span class="fu"><a href="https://rspatial.github.io/terra/reference/dimensions.html">nrow</a></span><span class="op">(</span><span class="va">occ_sf</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Ocurrencias originales: 1037</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Ocurrencias después de filtrar una por celda:"</span>, <span class="fu"><a href="https://rspatial.github.io/terra/reference/dimensions.html">nrow</a></span><span class="op">(</span><span class="va">occ_clean</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Ocurrencias después de filtrar una por celda: 315</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html">st_geometry</a></span><span class="op">(</span><span class="va">colombia_sf</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"gray90"</span>, main <span class="op">=</span> <span class="st">"Ocurrencias limpias"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html">st_geometry</a></span><span class="op">(</span><span class="va">occ_clean</span><span class="op">)</span>, add <span class="op">=</span> <span class="cn">TRUE</span>, pch <span class="op">=</span> <span class="fl">20</span>, col <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="08-Resistencia_files/figure-html/occurrence-thinning-1.png" alt="" width="672"></div>
+</div>
+<div id="generación-de-puntos-de-fondo" class="section level3" number="11.1.11">
+<h3>
+<span class="header-section-number">11.1.11</span> Generación de puntos de fondo<a class="anchor" aria-label="anchor" href="#generaci%C3%B3n-de-puntos-de-fondo"><i class="fas fa-link"></i></a>
+</h3>
+<p>El modelo <code>maxnet</code> utiliza datos de presencia y puntos de fondo. Los puntos de fondo no son ausencias verdaderas, sino una muestra del ambiente disponible dentro del área de estudio. En este ejemplo se generan 10,000 puntos aleatorios.</p>
+<div class="sourceCode" id="cb193"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">n_bg</span> <span class="op">&lt;-</span> <span class="fl">10000</span></span>
+<span></span>
+<span><span class="va">bg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/sample.html">spatSample</a></span><span class="op">(</span></span>
+<span>  <span class="va">env</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>  size <span class="op">=</span> <span class="va">n_bg</span>,</span>
+<span>  method <span class="op">=</span> <span class="st">"random"</span>,</span>
+<span>  na.rm <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  xy <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  values <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">bg_vect</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/vect.html">vect</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rspatial.github.io/terra/reference/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">bg</span><span class="op">)</span>,</span>
+<span>  geom <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span>,</span>
+<span>  crs <span class="op">=</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/crs.html">crs</a></span><span class="op">(</span><span class="va">env</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">env</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, main <span class="op">=</span> <span class="st">"Presencias y background"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/lines.html">points</a></span><span class="op">(</span><span class="va">bg_vect</span>, pch <span class="op">=</span> <span class="fl">20</span>, cex <span class="op">=</span> <span class="fl">0.2</span>, col <span class="op">=</span> <span class="st">"gray"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/lines.html">points</a></span><span class="op">(</span><span class="va">occ_clean_vect</span>, pch <span class="op">=</span> <span class="fl">20</span>, col <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="08-Resistencia_files/figure-html/background-1.png" alt="" width="672"></div>
+</div>
+<div id="extracción-de-variables-ambientales" class="section level3" number="11.1.12">
+<h3>
+<span class="header-section-number">11.1.12</span> Extracción de variables ambientales<a class="anchor" aria-label="anchor" href="#extracci%C3%B3n-de-variables-ambientales"><i class="fas fa-link"></i></a>
+</h3>
+<p>En esta etapa se extraen los valores ambientales para las presencias y para los puntos de fondo. Luego se construye una tabla con una columna <code>pa</code>, donde <code>1</code> representa presencia y <code>0</code> representa background.</p>
+<div class="sourceCode" id="cb194"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">pres_vals</span> <span class="op">&lt;-</span> <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/extract.html">extract</a></span><span class="op">(</span><span class="va">env</span>, <span class="va">occ_clean_vect</span>, ID <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="va">bg_vals</span> <span class="op">&lt;-</span> <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/extract.html">extract</a></span><span class="op">(</span><span class="va">env</span>, <span class="va">bg_vect</span>, ID <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">pres_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>pa <span class="op">=</span> <span class="fl">1</span>, <span class="va">pres_vals</span><span class="op">)</span></span>
+<span><span class="va">bg_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>pa <span class="op">=</span> <span class="fl">0</span>, <span class="va">bg_vals</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">sdm_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">pres_df</span>, <span class="va">bg_df</span><span class="op">)</span></span>
+<span><span class="va">sdm_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/na.omit.html">na.omit</a></span><span class="op">(</span><span class="va">sdm_df</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Datos finales para modelar:"</span>, <span class="fu"><a href="https://rspatial.github.io/terra/reference/dimensions.html">nrow</a></span><span class="op">(</span><span class="va">sdm_df</span><span class="op">)</span>, <span class="st">"filas\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Datos finales para modelar: 10290 filas</span></span></code></pre></div>
+</div>
+<div id="reducción-de-colinealidad" class="section level3" number="11.1.13">
+<h3>
+<span class="header-section-number">11.1.13</span> Reducción de colinealidad<a class="anchor" aria-label="anchor" href="#reducci%C3%B3n-de-colinealidad"><i class="fas fa-link"></i></a>
+</h3>
+<p>La colinealidad entre variables puede dificultar la interpretación del modelo. Aquí se usa una regla simple: eliminar variables altamente correlacionadas, usando un umbral de correlación de 0.75. Este paso no reemplaza una selección ecológica de variables, pero ayuda a reducir redundancia.</p>
+<div class="sourceCode" id="cb195"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">remove_correlated</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">df</span>, <span class="va">cutoff</span> <span class="op">=</span> <span class="fl">0.75</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  </span>
+<span>  <span class="va">cormat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">df</span>, use <span class="op">=</span> <span class="st">"pairwise.complete.obs"</span><span class="op">)</span></span>
+<span>  <span class="va">vars</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">cormat</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="va">keep</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">vars</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rspatial.github.io/terra/reference/names.html">names</a></span><span class="op">(</span><span class="va">keep</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">vars</span></span>
+<span>  </span>
+<span>  <span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">vars</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="kw">if</span><span class="op">(</span><span class="va">keep</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span> <span class="op">{</span></span>
+<span>      <span class="va">high_cor</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">cormat</span><span class="op">[</span><span class="va">i</span>, <span class="op">]</span><span class="op">)</span> <span class="op">&gt;</span> <span class="va">cutoff</span><span class="op">)</span></span>
+<span>      <span class="va">high_cor</span> <span class="op">&lt;-</span> <span class="va">high_cor</span><span class="op">[</span><span class="va">high_cor</span> <span class="op">&gt;</span> <span class="va">i</span><span class="op">]</span></span>
+<span>      <span class="va">keep</span><span class="op">[</span><span class="va">high_cor</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">FALSE</span></span>
+<span>    <span class="op">}</span></span>
+<span>  <span class="op">}</span></span>
+<span>  </span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/names.html">names</a></span><span class="op">(</span><span class="va">keep</span><span class="op">[</span><span class="va">keep</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">env_names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/names.html">names</a></span><span class="op">(</span><span class="va">env</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">vars_keep</span> <span class="op">&lt;-</span> <span class="fu">remove_correlated</span><span class="op">(</span></span>
+<span>  <span class="va">sdm_df</span><span class="op">[</span>, <span class="va">env_names</span><span class="op">]</span>,</span>
+<span>  cutoff <span class="op">=</span> <span class="fl">0.75</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Variables retenidas:\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Variables retenidas:</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">vars_keep</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  [1] "wc2.1_2.5m_bio_1"  "wc2.1_2.5m_bio_2" </span></span>
+<span><span class="co">#&gt;  [3] "wc2.1_2.5m_bio_3"  "wc2.1_2.5m_bio_12"</span></span>
+<span><span class="co">#&gt;  [5] "wc2.1_2.5m_bio_15" "wc2.1_2.5m_bio_18"</span></span>
+<span><span class="co">#&gt;  [7] "trees"             "cropland"         </span></span>
+<span><span class="co">#&gt;  [9] "built"             "shrubs"           </span></span>
+<span><span class="co">#&gt; [11] "water"             "wetland"          </span></span>
+<span><span class="co">#&gt; [13] "dist_roads_m"</span></span></code></pre></div>
+</div>
+<div id="división-entre-entrenamiento-y-prueba" class="section level3" number="11.1.14">
+<h3>
+<span class="header-section-number">11.1.14</span> División entre entrenamiento y prueba<a class="anchor" aria-label="anchor" href="#divisi%C3%B3n-entre-entrenamiento-y-prueba"><i class="fas fa-link"></i></a>
+</h3>
+<p>El conjunto de datos se divide en entrenamiento y prueba. El conjunto de entrenamiento se usa para ajustar el modelo, mientras que el conjunto de prueba se usa para evaluar su desempeño predictivo. Esta partición aleatoria es útil como primer análisis, aunque para estudios más rigurosos se recomienda validación espacial.</p>
+<div class="sourceCode" id="cb196"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">train_id</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">FALSE</span><span class="op">)</span>,</span>
+<span>  size <span class="op">=</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/dimensions.html">nrow</a></span><span class="op">(</span><span class="va">sdm_df</span><span class="op">)</span>,</span>
+<span>  replace <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  prob <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.7</span>, <span class="fl">0.3</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">train</span> <span class="op">&lt;-</span> <span class="va">sdm_df</span><span class="op">[</span><span class="va">train_id</span>, <span class="op">]</span></span>
+<span><span class="va">test</span> <span class="op">&lt;-</span> <span class="va">sdm_df</span><span class="op">[</span><span class="op">!</span><span class="va">train_id</span>, <span class="op">]</span></span></code></pre></div>
+</div>
+<div id="ajuste-del-modelo-con-maxnet" class="section level3" number="11.1.15">
+<h3>
+<span class="header-section-number">11.1.15</span> Ajuste del modelo con <code>maxnet</code><a class="anchor" aria-label="anchor" href="#ajuste-del-modelo-con-maxnet"><i class="fas fa-link"></i></a>
+</h3>
+<p><code>maxnet</code> implementa un modelo tipo MaxEnt usando regularización. En este ejemplo se usan clases de features lineales, cuadráticas, producto e hinge (<code>lqph</code>). El resultado es un modelo de presencia-background que estima la idoneidad relativa del paisaje para el jaguar.</p>
+<div class="sourceCode" id="cb197"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mx_formula</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/maxnet/man/maxnet.html">maxnet.formula</a></span><span class="op">(</span></span>
+<span>  p <span class="op">=</span> <span class="va">train</span><span class="op">$</span><span class="va">pa</span>,</span>
+<span>  data <span class="op">=</span> <span class="va">train</span><span class="op">[</span>, <span class="va">vars_keep</span><span class="op">]</span>,</span>
+<span>  classes <span class="op">=</span> <span class="st">"lqph"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">mod_jaguar_colombia</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/maxnet/man/maxnet.html">maxnet</a></span><span class="op">(</span></span>
+<span>  p <span class="op">=</span> <span class="va">train</span><span class="op">$</span><span class="va">pa</span>,</span>
+<span>  data <span class="op">=</span> <span class="va">train</span><span class="op">[</span>, <span class="va">vars_keep</span><span class="op">]</span>,</span>
+<span>  f <span class="op">=</span> <span class="va">mx_formula</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">mod_jaguar_colombia</span><span class="op">$</span><span class="va">call</span><span class="op">)</span></span>
+<span><span class="co">#&gt; glmnet::glmnet(x = mm, y = as.factor(p), family = "binomial", </span></span>
+<span><span class="co">#&gt;     weights = weights, lambda = 10^(seq(4, 0, length.out = 200)) * </span></span>
+<span><span class="co">#&gt;         sum(reg)/length(reg) * sum(p)/sum(weights), standardize = F, </span></span>
+<span><span class="co">#&gt;     penalty.factor = reg)</span></span></code></pre></div>
+</div>
+<div id="evaluación-con-auc" class="section level3" number="11.1.16">
+<h3>
+<span class="header-section-number">11.1.16</span> Evaluación con AUC<a class="anchor" aria-label="anchor" href="#evaluaci%C3%B3n-con-auc"><i class="fas fa-link"></i></a>
+</h3>
+<p>El AUC resume la capacidad del modelo para diferenciar presencias de puntos de fondo. Valores más altos indican mayor discriminación, aunque el AUC debe interpretarse con cuidado en modelos presencia-background, especialmente cuando el background no representa ausencias reales.</p>
+<div class="sourceCode" id="cb198"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">test_pred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/predict.html">predict</a></span><span class="op">(</span></span>
+<span>  <span class="va">mod_jaguar_colombia</span>,</span>
+<span>  newdata <span class="op">=</span> <span class="va">test</span><span class="op">[</span>, <span class="va">vars_keep</span><span class="op">]</span>,</span>
+<span>  type <span class="op">=</span> <span class="st">"cloglog"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">auc_value</span> <span class="op">&lt;-</span> <span class="fu">pROC</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pROC/man/auc.html">auc</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">pa</span>, <span class="va">test_pred</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"AUC del modelo para Colombia:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">auc_value</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; AUC del modelo para Colombia: 0.8790535</span></span></code></pre></div>
+</div>
+<div id="predicción-espacial-del-mdp" class="section level3" number="11.1.17">
+<h3>
+<span class="header-section-number">11.1.17</span> Predicción espacial del MDP<a class="anchor" aria-label="anchor" href="#predicci%C3%B3n-espacial-del-mdp"><i class="fas fa-link"></i></a>
+</h3>
+<p>El modelo ajustado se aplica a todo el stack ambiental para generar un mapa continuo de idoneidad. Esta predicción representa el MDP del jaguar para el área de estudio. Los valores altos indican condiciones ambientales más favorables según el modelo.</p>
+<div class="sourceCode" id="cb199"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">pred_jaguar_colombia</span> <span class="op">&lt;-</span> <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/predict.html">predict</a></span><span class="op">(</span></span>
+<span>  <span class="va">env</span><span class="op">[[</span><span class="va">vars_keep</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>  <span class="va">mod_jaguar_colombia</span>,</span>
+<span>  fun <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">model</span>, <span class="va">data</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://rspatial.github.io/terra/reference/predict.html">predict</a></span><span class="op">(</span><span class="va">model</span>, newdata <span class="op">=</span> <span class="va">data</span>, type <span class="op">=</span> <span class="st">"cloglog"</span><span class="op">)</span></span>
+<span>  <span class="op">}</span>,</span>
+<span>  na.rm <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/names.html">names</a></span><span class="op">(</span><span class="va">pred_jaguar_colombia</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"jaguar_suitability_colombia"</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span></span>
+<span>  <span class="va">pred_jaguar_colombia</span>,</span>
+<span>  main <span class="op">=</span> <span class="st">"MDP de jaguar en Colombia"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="08-Resistencia_files/figure-html/spatial-prediction-1.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb200"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rspatial.github.io/terra/reference/writeRaster.html">writeRaster</a></span><span class="op">(</span></span>
+<span>  <span class="va">pred_jaguar_colombia</span>,</span>
+<span>  filename <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="va">dir_data</span>, <span class="st">"MDP_jaguar_maxnet_colombia.tif"</span><span class="op">)</span>,</span>
+<span>  overwrite <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="mapa-binario-de-distribución-potencial" class="section level3" number="11.1.18">
+<h3>
+<span class="header-section-number">11.1.18</span> Mapa binario de distribución potencial<a class="anchor" aria-label="anchor" href="#mapa-binario-de-distribuci%C3%B3n-potencial"><i class="fas fa-link"></i></a>
+</h3>
+<p>Para convertir la predicción continua en un mapa binario, se aplica un umbral. En este ejemplo se usa el <strong>percentil 50 de las predicciones en las presencias</strong>, una regla común para evitar que unos pocos registros marginales definan todo el rango potencial. Este valor puede modificarse según el objetivo del estudio.</p>
+<div class="sourceCode" id="cb201"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">threshold_prob</span> <span class="op">&lt;-</span> <span class="fl">0.5</span></span>
+<span></span>
+<span><span class="va">pres_pred</span> <span class="op">&lt;-</span> <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/extract.html">extract</a></span><span class="op">(</span></span>
+<span>  <span class="va">pred_jaguar_colombia</span>,</span>
+<span>  <span class="va">occ_clean_vect</span>,</span>
+<span>  ID <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span></span>
+<span></span>
+<span><span class="va">threshold_p50</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/quantile.html">quantile</a></span><span class="op">(</span></span>
+<span>  <span class="va">pres_pred</span>,</span>
+<span>  probs <span class="op">=</span> <span class="va">threshold_prob</span>,</span>
+<span>  na.rm <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">jaguar_binary_colombia</span> <span class="op">&lt;-</span> <span class="va">pred_jaguar_colombia</span></span>
+<span><span class="va">jaguar_binary_colombia</span><span class="op">[</span><span class="va">pred_jaguar_colombia</span> <span class="op">&gt;=</span> <span class="va">threshold_p50</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
+<span><span class="va">jaguar_binary_colombia</span><span class="op">[</span><span class="va">pred_jaguar_colombia</span> <span class="op">&lt;</span> <span class="va">threshold_p50</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/names.html">names</a></span><span class="op">(</span><span class="va">jaguar_binary_colombia</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"jaguar_binary_50_colombia"</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span></span>
+<span>  <span class="va">jaguar_binary_colombia</span>,</span>
+<span>  main <span class="op">=</span> <span class="st">"Distribución binaria de jaguar"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="08-Resistencia_files/figure-html/binary-map-1.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb202"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Umbral percentil 50:"</span>, <span class="va">threshold_p50</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Umbral percentil 50: 0.727955</span></span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rspatial.github.io/terra/reference/writeRaster.html">writeRaster</a></span><span class="op">(</span></span>
+<span>  <span class="va">jaguar_binary_colombia</span>,</span>
+<span>  filename <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="va">dir_data</span>, <span class="st">"MDP_jaguar_binary_p50_colombia.tif"</span><span class="op">)</span>,</span>
+<span>  overwrite <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="importancia-aproximada-de-variables" class="section level3" number="11.1.19">
+<h3>
+<span class="header-section-number">11.1.19</span> Importancia aproximada de variables<a class="anchor" aria-label="anchor" href="#importancia-aproximada-de-variables"><i class="fas fa-link"></i></a>
+</h3>
+<p><code>maxnet</code> no genera una tabla de importancia equivalente a la salida clásica de MaxEnt Java. Sin embargo, es posible inspeccionar los coeficientes no nulos del modelo. Como algunas variables pueden aparecer en varias features, se agrega la importancia por variable original sumando los valores absolutos de sus coeficientes asociados.</p>
+<div class="sourceCode" id="cb204"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">coef_mod</span> <span class="op">&lt;-</span> <span class="va">mod_jaguar_colombia</span><span class="op">$</span><span class="va">betas</span></span>
+<span><span class="va">coef_mod</span> <span class="op">&lt;-</span> <span class="va">coef_mod</span><span class="op">[</span><span class="va">coef_mod</span> <span class="op">!=</span> <span class="fl">0</span><span class="op">]</span></span>
+<span></span>
+<span><span class="va">coef_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
+<span>  feature <span class="op">=</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/names.html">names</a></span><span class="op">(</span><span class="va">coef_mod</span><span class="op">)</span>,</span>
+<span>  coefficient <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">coef_mod</span><span class="op">)</span>,</span>
+<span>  importance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">coefficient</span><span class="op">)</span></span>
+<span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">importance</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">get_original_var</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">feature_name</span>, <span class="va">vars_model</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  </span>
+<span>  <span class="va">matched</span> <span class="op">&lt;-</span> <span class="va">vars_model</span><span class="op">[</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">feature_name</span>, <span class="fu"><a href="https://stringr.tidyverse.org/reference/modifiers.html">fixed</a></span><span class="op">(</span><span class="va">vars_model</span><span class="op">)</span><span class="op">)</span><span class="op">]</span></span>
+<span>  </span>
+<span>  <span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">matched</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">feature_name</span><span class="op">)</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">matched</span><span class="op">[</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/summarize-generics.html">which.max</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nchar.html">nchar</a></span><span class="op">(</span><span class="va">matched</span><span class="op">)</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">coef_df</span> <span class="op">&lt;-</span> <span class="va">coef_df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>    variable <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">feature</span>, <span class="va">get_original_var</span>, vars_model <span class="op">=</span> <span class="va">vars_keep</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="va">var_importance</span> <span class="op">&lt;-</span> <span class="va">coef_df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">variable</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span></span>
+<span>    importance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">coefficient</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    n_features <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    .groups <span class="op">=</span> <span class="st">"drop"</span></span>
+<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">importance</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">var_importance</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 11 × 3</span></span>
+<span><span class="co">#&gt;    variable          importance n_features</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;                  &lt;dbl&gt;      &lt;int&gt;</span></span>
+<span><span class="co">#&gt;  1 wetland               184.            3</span></span>
+<span><span class="co">#&gt;  2 trees                  21.9           8</span></span>
+<span><span class="co">#&gt;  3 wc2.1_2.5m_bio_12       8.94         15</span></span>
+<span><span class="co">#&gt;  4 shrubs                  8.90          2</span></span>
+<span><span class="co">#&gt;  5 wc2.1_2.5m_bio_18       5.72          7</span></span>
+<span><span class="co">#&gt;  6 wc2.1_2.5m_bio_3        4.52          6</span></span>
+<span><span class="co">#&gt;  7 wc2.1_2.5m_bio_15       4.24          7</span></span>
+<span><span class="co">#&gt;  8 dist_roads_m            2.73          3</span></span>
+<span><span class="co">#&gt;  9 wc2.1_2.5m_bio_1        2.45          7</span></span>
+<span><span class="co">#&gt; 10 cropland                1.55          1</span></span>
+<span><span class="co">#&gt; 11 wc2.1_2.5m_bio_2        1.52          2</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">var_importance</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html">reorder</a></span><span class="op">(</span><span class="va">variable</span>, <span class="va">importance</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">importance</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="st">"Variable ambiental"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"Importancia agregada"</span>,</span>
+<span>    title <span class="op">=</span> <span class="st">"Importancia aproximada agregada por variable"</span>,</span>
+<span>    subtitle <span class="op">=</span> <span class="st">"Suma del valor absoluto de coeficientes asociados a cada variable"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span>base_size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="08-Resistencia_files/figure-html/variable-importance-1.png" alt="" width="672"></div>
+</div>
+<div id="transformación-del-mdp-a-resistencia" class="section level3" number="11.1.20">
+<h3>
+<span class="header-section-number">11.1.20</span> Transformación del MDP a resistencia<a class="anchor" aria-label="anchor" href="#transformaci%C3%B3n-del-mdp-a-resistencia"><i class="fas fa-link"></i></a>
+</h3>
+<p>La conectividad funcional requiere una superficie que represente el costo o dificultad de movimiento. Aquí se transforma la idoneidad del MDP en resistencia. Primero se invierte la idoneidad:</p>
+<p><span class="math display">\[
+    \text{costo base} = 1 - \text{idoneidad}
+    \]</span></p>
+<p>Así, las áreas de alta idoneidad tienen bajo costo base, mientras que las áreas de baja idoneidad tienen alto costo base.</p>
+<div class="sourceCode" id="cb205"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">sdm</span> <span class="op">&lt;-</span> <span class="va">pred_jaguar_colombia</span></span>
+<span></span>
+<span><span class="co"># Asegurar que el SDM esté entre 0 y 1</span></span>
+<span><span class="va">sdm</span> <span class="op">&lt;-</span> <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/clamp.html">clamp</a></span><span class="op">(</span><span class="va">sdm</span>, lower <span class="op">=</span> <span class="fl">0</span>, upper <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">sdm</span>, main <span class="op">=</span> <span class="st">"MDP / idoneidad de jaguar"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="08-Resistencia_files/figure-html/cost-base-1.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb206"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="co"># Alta idoneidad = bajo costo base</span></span>
+<span><span class="co"># Baja idoneidad = alto costo base</span></span>
+<span><span class="va">cost_base</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">-</span> <span class="va">sdm</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/names.html">names</a></span><span class="op">(</span><span class="va">cost_base</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"cost_base_inverse_sdm"</span></span>
+<span></span>
+<span><span class="va">cost_base</span><span class="op">[</span><span class="va">cost_base</span> <span class="op">&lt;</span> <span class="fl">0</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
+<span><span class="va">cost_base</span><span class="op">[</span><span class="va">cost_base</span> <span class="op">&gt;</span> <span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">cost_base</span>, main <span class="op">=</span> <span class="st">"Costo base: 1 - SDM"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="08-Resistencia_files/figure-html/cost-base-2.png" alt="" width="672"></div>
+</div>
+<div id="transformación-monomolecular-con-resistancega2" class="section level3" number="11.1.21">
+<h3>
+<span class="header-section-number">11.1.21</span> Transformación monomolecular con <code>ResistanceGA2</code><a class="anchor" aria-label="anchor" href="#transformaci%C3%B3n-monomolecular-con-resistancega2"><i class="fas fa-link"></i></a>
+</h3>
+<p>La transformación monomolecular permite convertir el costo base en una superficie de resistencia no lineal. El parámetro <code>shape</code> controla la curvatura de la transformación, mientras que <code>max</code> define el valor máximo de resistencia. En este ejemplo se usan valores intermedios (<code>shape = 2</code>, <code>max = 100</code>) como hipótesis de resistencia, no como valores calibrados empíricamente.</p>
+<div class="sourceCode" id="cb207"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Si no tienes ResistanceGA2 instalado, instálalo antes de correr esta sección.</span></span>
+<span><span class="co"># La forma de instalación puede depender de tu versión local de R y del repositorio que uses.</span></span>
+<span><span class="co"># install.packages("remotes")</span></span>
+<span><span class="co"># remotes::install_github("wpeterman/ResistanceGA2")</span></span></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">ResistanceGA2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">shape_value</span> <span class="op">&lt;-</span> <span class="fl">2</span></span>
+<span><span class="va">max_resistance</span> <span class="op">&lt;-</span> <span class="fl">100</span></span>
+<span></span>
+<span><span class="va">resistance_mono</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/ResistanceGA2/man/Resistance.tran.html">Resistance.tran</a></span><span class="op">(</span></span>
+<span>  transformation <span class="op">=</span> <span class="st">"Monomolecular"</span>,</span>
+<span>  shape <span class="op">=</span> <span class="va">shape_value</span>,</span>
+<span>  max <span class="op">=</span> <span class="va">max_resistance</span>,</span>
+<span>  r <span class="op">=</span> <span class="va">cost_base</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span></span>
+<span>  <span class="va">resistance_mono</span>,</span>
+<span>  main <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span></span>
+<span>    <span class="st">"Resistencia monomolecular\nshape = "</span>,</span>
+<span>    <span class="va">shape_value</span>,</span>
+<span>    <span class="st">", max = "</span>,</span>
+<span>    <span class="va">max_resistance</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="08-Resistencia_files/figure-html/monomolecular-resistance-1.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb209"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rspatial.github.io/terra/reference/writeRaster.html">writeRaster</a></span><span class="op">(</span></span>
+<span>  <span class="va">resistance_mono</span>,</span>
+<span>  filename <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="va">dir_data</span>, <span class="st">"jaguar_resistance_monomolecular_colombia.tif"</span><span class="op">)</span>,</span>
+<span>  overwrite <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="curva-de-transformación" class="section level3" number="11.1.22">
+<h3>
+<span class="header-section-number">11.1.22</span> Curva de transformación<a class="anchor" aria-label="anchor" href="#curva-de-transformaci%C3%B3n"><i class="fas fa-link"></i></a>
+</h3>
+<p>Antes de usar una superficie de resistencia en conectividad, conviene visualizar la forma de la transformación. La curva ayuda a entender si el modelo penaliza suavemente o fuertemente las áreas de baja idoneidad.</p>
+<div class="sourceCode" id="cb210"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">plot_trans</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/ResistanceGA2/man/Plot.trans.html">Plot.trans</a></span><span class="op">(</span></span>
+<span>  PARM <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">shape_value</span>, <span class="va">max_resistance</span><span class="op">)</span>,</span>
+<span>  Resistance <span class="op">=</span> <span class="va">cost_base</span>,</span>
+<span>  transformation <span class="op">=</span> <span class="st">"Monomolecular"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">plot_trans</span></span></code></pre></div>
+<div class="inline-figure"><img src="08-Resistencia_files/figure-html/plot-transformation-1.png" alt="" width="672"></div>
+</div>
+<div id="del-mapa-binario-a-parches-de-hábitat" class="section level3" number="11.1.23">
+<h3>
+<span class="header-section-number">11.1.23</span> Del mapa binario a parches de hábitat<a class="anchor" aria-label="anchor" href="#del-mapa-binario-a-parches-de-h%C3%A1bitat"><i class="fas fa-link"></i></a>
+</h3>
+<p>El mapa binario puede usarse para identificar parches potenciales de hábitat. Aquí se agrupan celdas contiguas usando conectividad de ocho direcciones. Este paso puede servir como base para análisis posteriores de conectividad estructural o funcional.</p>
+<div class="sourceCode" id="cb211"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">parches</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/patches.html">patches</a></span><span class="op">(</span></span>
+<span>  <span class="va">jaguar_binary_colombia</span>,</span>
+<span>  directions <span class="op">=</span> <span class="fl">8</span>,</span>
+<span>  zeroAsNA <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">parches</span>, main <span class="op">=</span> <span class="st">"Parches de hábitat potencial"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="08-Resistencia_files/figure-html/patches-1.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb212"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">parches_sf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/as.polygons.html">as.polygons</a></span><span class="op">(</span><span class="va">parches</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html">st_as_sf</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">parches_sf</span>, main <span class="op">=</span> <span class="st">"Parches como polígonos"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="08-Resistencia_files/figure-html/patches-2.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb213"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_write.html">write_sf</a></span><span class="op">(</span><span class="va">parches_sf</span>, <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="va">dir_data</span>, <span class="st">"parches_sf.gpkg"</span><span class="op">)</span>, delete_layer <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="interpretación-general" class="section level3" number="11.1.24">
+<h3>
+<span class="header-section-number">11.1.24</span> Interpretación general<a class="anchor" aria-label="anchor" href="#interpretaci%C3%B3n-general"><i class="fas fa-link"></i></a>
+</h3>
+<p>El flujo genera tres productos principales. El primero es el <strong>MDP continuo</strong>, que representa la idoneidad ambiental relativa para el jaguar. El segundo es el <strong>mapa binario</strong>, que delimita áreas potencialmente adecuadas a partir de un umbral. El tercero es la <strong>superficie de resistencia</strong>, que traduce la idoneidad del MDP en costos potenciales de movimiento.</p>
+<p>La resistencia monomolecular debe entenderse como un escenario de conectividad. En este caso, el supuesto central es que la resistencia aumenta de manera no lineal conforme disminuye la idoneidad del paisaje. Para análisis aplicados, se recomienda comparar varios valores de <code>shape</code> y <code>max</code>, o calibrar la superficie con datos independientes de movimiento, genética o detección.</p>
+</div>
+<div id="recomendaciones-metodológicas" class="section level3" number="11.1.25">
+<h3>
+<span class="header-section-number">11.1.25</span> Recomendaciones metodológicas<a class="anchor" aria-label="anchor" href="#recomendaciones-metodol%C3%B3gicas"><i class="fas fa-link"></i></a>
+</h3>
+<p>Para fortalecer este flujo en un análisis formal, se recomienda:</p>
+<ol style="list-style-type: decimal">
+<li>Usar validación espacial en lugar de una partición aleatoria simple.</li>
+<li>Evaluar sesgo de muestreo en las ocurrencias de GBIF.</li>
+<li>Comparar distintos conjuntos de variables ambientales.</li>
+<li>Probar varios umbrales de binarización.</li>
+<li>Realizar análisis de sensibilidad de los parámetros <code>shape</code> y <code>max</code>.</li>
+<li>Calibrar o validar la resistencia con datos independientes cuando sea posible.</li>
+</ol>
+<p>En términos ecológicos, el MDP responde principalmente a la pregunta: <strong>¿dónde existen condiciones ambientales adecuadas para el jaguar?</strong> En cambio, la superficie de resistencia responde a una pregunta diferente: <strong>¿qué tan difícil podría ser para el jaguar moverse a través del paisaje?</strong> Aunque ambos mapas están relacionados, no representan exactamente el mismo proceso ecológico.</p>
+
+</div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="protected-connected-indicator-protconn.html"><span class="header-section-number">10</span> Protected Connected indicator (ProtConn)</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#resistencia"><span class="header-section-number">11</span> Resistencia</a></li>
+<li>
+<a class="nav-link" href="#ejemplo-introducci%C3%B3n"><span class="header-section-number">11.1</span> Ejemplo: Introducción</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#ejemplo-datos"><span class="header-section-number">11.1.1</span> Ejemplo: Datos</a></li>
+<li><a class="nav-link" href="#preparaci%C3%B3n-del-ambiente-de-trabajo"><span class="header-section-number">11.1.2</span> Preparación del ambiente de trabajo</a></li>
+<li><a class="nav-link" href="#par%C3%A1metros-generales"><span class="header-section-number">11.1.3</span> Parámetros generales</a></li>
+<li><a class="nav-link" href="#%C3%A1rea-de-estudio"><span class="header-section-number">11.1.4</span> Área de estudio</a></li>
+<li><a class="nav-link" href="#descarga-y-depuraci%C3%B3n-de-ocurrencias"><span class="header-section-number">11.1.5</span> Descarga y depuración de ocurrencias</a></li>
+<li><a class="nav-link" href="#variables-clim%C3%A1ticas"><span class="header-section-number">11.1.6</span> Variables climáticas</a></li>
+<li><a class="nav-link" href="#variables-de-uso-y-cobertura-del-suelo"><span class="header-section-number">11.1.7</span> Variables de uso y cobertura del suelo</a></li>
+<li><a class="nav-link" href="#carreteras-y-distancia-a-carreteras"><span class="header-section-number">11.1.8</span> Carreteras y distancia a carreteras</a></li>
+<li><a class="nav-link" href="#construcci%C3%B3n-del-stack-ambiental"><span class="header-section-number">11.1.9</span> Construcción del stack ambiental</a></li>
+<li><a class="nav-link" href="#limpieza-espacial-de-las-ocurrencias"><span class="header-section-number">11.1.10</span> Limpieza espacial de las ocurrencias</a></li>
+<li><a class="nav-link" href="#generaci%C3%B3n-de-puntos-de-fondo"><span class="header-section-number">11.1.11</span> Generación de puntos de fondo</a></li>
+<li><a class="nav-link" href="#extracci%C3%B3n-de-variables-ambientales"><span class="header-section-number">11.1.12</span> Extracción de variables ambientales</a></li>
+<li><a class="nav-link" href="#reducci%C3%B3n-de-colinealidad"><span class="header-section-number">11.1.13</span> Reducción de colinealidad</a></li>
+<li><a class="nav-link" href="#divisi%C3%B3n-entre-entrenamiento-y-prueba"><span class="header-section-number">11.1.14</span> División entre entrenamiento y prueba</a></li>
+<li><a class="nav-link" href="#ajuste-del-modelo-con-maxnet"><span class="header-section-number">11.1.15</span> Ajuste del modelo con maxnet</a></li>
+<li><a class="nav-link" href="#evaluaci%C3%B3n-con-auc"><span class="header-section-number">11.1.16</span> Evaluación con AUC</a></li>
+<li><a class="nav-link" href="#predicci%C3%B3n-espacial-del-mdp"><span class="header-section-number">11.1.17</span> Predicción espacial del MDP</a></li>
+<li><a class="nav-link" href="#mapa-binario-de-distribuci%C3%B3n-potencial"><span class="header-section-number">11.1.18</span> Mapa binario de distribución potencial</a></li>
+<li><a class="nav-link" href="#importancia-aproximada-de-variables"><span class="header-section-number">11.1.19</span> Importancia aproximada de variables</a></li>
+<li><a class="nav-link" href="#transformaci%C3%B3n-del-mdp-a-resistencia"><span class="header-section-number">11.1.20</span> Transformación del MDP a resistencia</a></li>
+<li><a class="nav-link" href="#transformaci%C3%B3n-monomolecular-con-resistancega2"><span class="header-section-number">11.1.21</span> Transformación monomolecular con ResistanceGA2</a></li>
+<li><a class="nav-link" href="#curva-de-transformaci%C3%B3n"><span class="header-section-number">11.1.22</span> Curva de transformación</a></li>
+<li><a class="nav-link" href="#del-mapa-binario-a-parches-de-h%C3%A1bitat"><span class="header-section-number">11.1.23</span> Del mapa binario a parches de hábitat</a></li>
+<li><a class="nav-link" href="#interpretaci%C3%B3n-general"><span class="header-section-number">11.1.24</span> Interpretación general</a></li>
+<li><a class="nav-link" href="#recomendaciones-metodol%C3%B3gicas"><span class="header-section-number">11.1.25</span> Recomendaciones metodológicas</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/OscarGOGO/Makurhini_manual_esp/blob/master/08-Resistencia.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/OscarGOGO/Makurhini_manual_esp/edit/master/08-Resistencia.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Manual de uso de Makurhini</strong>" was written by Oscar Godínez Gómez. It was last built on 2026-06-22.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>
